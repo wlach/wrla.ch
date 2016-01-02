@@ -1,0 +1,15 @@
+@(local-require (file "../_util/date-format.rkt"))
+
+<article>
+  <header>
+    <p>@|tags|</p>
+    <h2><a href='@|uri-path|'>@|title|</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> @(pretty-date date-struct)</p>
+  </header>
+  @|content-only|
+  @(when more?
+    @list{<footer>
+            <a href='@|uri-path|'>&hellip; more &hellip;</a>
+          </footer>})
+</article>
+

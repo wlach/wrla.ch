@@ -1,0 +1,15 @@
+@(local-require (file "../_util/date-format.rkt"))
+
+<article>
+  <header>
+    <p>@|tags|</p>
+    <h1>@|title|</h1>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> @(pretty-date date-struct)</p>
+  </header>
+  @|content|
+  <footer>
+    <hr/>
+    @disqus-comments["shortname"]
+    @older/newer-links[older-uri older-title newer-uri newer-title]
+  </footer>
+</article>
