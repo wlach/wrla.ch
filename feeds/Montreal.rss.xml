@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0">
+ <channel>
+  <title>William Lachance's Log: Posts tagged 'Montreal'</title>
+  <description>William Lachance's Log: Posts tagged 'Montreal'</description>
+  <link>https://wlach.github.io/tags/Montreal.html</link>
+  <lastBuildDate>Tue, 22 Apr 2014 04:00:00 UT</lastBuildDate>
+  <pubDate>Tue, 22 Apr 2014 04:00:00 UT</pubDate>
+  <ttl>1800</ttl>
+  <item>
+   <title>PyCon 2014 impressions: ipython notebook is the future &amp;#038; more</title>
+   <link>https://wlach.github.io/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/?utm_source=Montreal&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2014-04-pycon-2014-impressions-ipython-notebook-is-the-future-038-more</guid>
+   <pubDate>Tue, 22 Apr 2014 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;This year&amp;#8217;s PyCon US (&lt;a href="http://python.org"&gt;Python&lt;/a&gt; Conference) was in my city of residence (Montr&amp;eacute;al) so I took the opportunity to go and see what was up in the world of the language I use the most at Mozilla. It was pretty great!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ipython&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The highlight for me was learning about the possibilities of &lt;a href="http://ipython.org/"&gt;ipython notebooks&lt;/a&gt;, an absolutely fantastic interactive tool for debugging python in a live browser-based environment. I&amp;#8217;d heard about it before, but it wasn&amp;#8217;t immediately apparent how it would really improve things &amp;#8212; it seemed to be just a less convenient interface to the python console that required me to futz around with my web browser. Watching a few presentations on the topic made me realize how wrong I was. It&amp;#8217;s already changed the way I do work with Eideticker data, for the better.&lt;/p&gt;
+
+&lt;figure id="attachment_1042" style="width: 848px" class="wp-caption alignnone"&gt;[&lt;img src="/files/2014/04/eideticker-ipython.png" alt="Using ipython to analyze some eideticker data" width="848" height="842" class="size-full wp-image-1042" srcset="/files/2014/04/eideticker-ipython-150x150.png 150w, /files/2014/04/eideticker-ipython-300x297.png 300w, /files/2014/04/eideticker-ipython.png 848w" sizes="(max-width: 848px) 100vw, 848px" /&gt;][3]
+ &lt;figcaption class="wp-caption-text"&gt;Using ipython to analyze some eideticker data&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;I think the basic premise is really quite simple: a better interface for typing in, experimenting with, and running python code. If you stop and think about it, the modern web interface supports a much richer vocabulary of interactive concepts that the console (or even text editors like emacs): there&amp;#8217;s no reason we shouldn&amp;#8217;t take advantage of it.&lt;/p&gt;
+
+&lt;p&gt;Here are the (IMO) killer features that make it worth using:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;The ability to immediately re-execute a block of code after editing and seeing an error (essentially merging the immediacy of the python console with the permanency / cut &amp;#38; pastability of an actual script)&lt;/li&gt;
+ &lt;li&gt;Live-printing out graphs of numerical results using &lt;a href="http://matplotlib.org/"&gt;matplotlib&lt;/a&gt;. ZOMG this is so handy. Especially in conjunction with the live-editing outlined above, there&amp;#8217;s no better tool for fine-tuning mathematical/statistical analysis.&lt;/li&gt;
+ &lt;li&gt;The shareability of the results. Any ipython notebook can be saved and then saved to a public website. Many presentations at PyCon 2014, in fact, were done entirely with ipython notebooks. So handy for answering questions like &amp;#8220;how did you get that&amp;#8221;?&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;To learn more about how to use ipython notebooks for data analysis, I highly recommend Julie Evan&amp;#8217;s talk &lt;a href="http://pyvideo.org/video/2657/diving-into-open-data-with-ipython-notebook-pan-0"&gt;Diving into Open Data with IPython Notebook &amp;#38; Pandas&lt;/a&gt;, which you can find on pyvideo.org.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Other Good Talks&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I saw some other good talks at the conference, here are some of them:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href="http://pyvideo.org/video/2571/all-your-ducks-in-a-row-data-structures-in-the-s"&gt;All Your Ducks In A Row: Data Structures in the Standard Library and Beyond&lt;/a&gt; &amp;#8211; A useful talk by Brandon Rhoades on the implementation of basic data structures in Python, and how to select the ones to use for optimal performance. It turns out that lists aren&amp;#8217;t the best thing to use for long sequences of numerical data (who knew?)&lt;/li&gt;
+ &lt;li&gt;&lt;a href="http://pyvideo.org/video/2627/fast-python-slow-python"&gt;Fast Python, Slow Python&lt;/a&gt; &amp;#8211; An interesting talk by Alex Gaynor about how to write decent performing pure-python code in a single-threaded context. Lots of intelligent stuff about producing robust code that matches your intention and data structures, and caution against doing fancy things in the name of being &amp;#8220;pythonic&amp;#8221; or &amp;#8220;general&amp;#8221;.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="http://pyvideo.org/video/2658/analyzing-rap-lyrics-with-python"&gt;Analyzing Rap Lyrics with Python&lt;/a&gt; &amp;#8211; Another data analysis talk, this one about a subject I knew almost nothing about. The best part of it (for me anyway) was learning how the speaker (Julie Lavoie) narrowed her focus in her research to the exact aspects of the problem that would let her answer the question she was interested in (&amp;#8220;Can we automatically find out which rap lyrics are the most sexist?&amp;#8221;) as opposed to interesting problems (&amp;#8220;how can I design the most general scraping library possible?&amp;#8221;) that don&amp;#8217;t answer the question. In my opinion, this ability to focus is one of the key things that seperates successful projects from unsuccessful ones.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Updates on my ridiculous pet projects</title>
+   <link>https://wlach.github.io/blog/2011/09/updates-on-my-ridiculous-pet-projects/?utm_source=Montreal&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2011-09-updates-on-my-ridiculous-pet-projects</guid>
+   <pubDate>Thu, 29 Sep 2011 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;ol&gt;
+ &lt;li&gt;
+  &lt;p&gt;As you may or may not have noticed, &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt; has been down for the past few weeks. Halifax updated the data but I didn&amp;#8217;t have a chance to update it. Well, I finally did, and hbus is now up in its former glory (minus a small issue with stops named &amp;#8216;6016_merged_3300509&amp;#8217;: thanks Metro Transit, time to update &lt;a href="https://github.com/wlach/routez/blob/master/src/gtfs-hacks/update-halifax-gtfs.py"&gt;that script&lt;/a&gt; to massage your data again!) . I still wonder a bit about why I keep putting time into a site oriented around a city I haven&amp;#8217;t lived in for over 2 years now (especially when Google Maps arguably does a better job at most things than I do), but there you go!&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;&lt;a href="http://nixi.ca"&gt;NIXI&lt;/a&gt; is still up and being useful to me, though I&amp;#8217;m a little bit disappointed by its uptake from the rest of the world (the site gets like 5&amp;ndash;12 unique views a day). What do I need to do for you guys? A mobile version? French localization? I just added support for Washington (Capital Bikeshare) and Boston (Hubway), maybe it&amp;#8217;ll get some uptake there.&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;Not really my project, but Stephane Guidoin put up an awesome site called &lt;a href="http://zonecone.ca"&gt;zonecone.ca&lt;/a&gt; which helps you find out about traffic obstacles that might delay your journey. It even has a nifty feature where you can create an account, specify a route you take regularly (say, your commute), and it&amp;#8217;ll automatically notify you if something pops up. As you may have guessed, I&amp;#8217;m not the biggest fan of automobiles, but this is still very cool. 😉 This site was originally based on &lt;a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/"&gt;the map layout template&lt;/a&gt; that I announced a few months ago.&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;I have a lettuce plant growing on my new balcony. It&amp;#8217;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>A better BIXI web site</title>
+   <link>https://wlach.github.io/blog/2011/06/a-better-bixi-web-site/?utm_source=Montreal&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2011-06-a-better-bixi-web-site</guid>
+   <pubDate>Fri, 10 Jun 2011 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;There&amp;#8217;s much to like about the BIXI bike-sharing system in Montr&amp;eacute;al: it&amp;#8217;s affordable ($78 for a year of biking), accessible and fun to use. There&amp;#8217;s absolutely no doubt in my mind that it&amp;#8217;s made cycling more of a main stream activity here in Montreal, which benefits everyone (even drivers indirectly gain from less congested streets).&lt;/p&gt;
+
+&lt;p&gt;With the arrival of the first BIXI stations in NDG, I decided to subscribe to it this year even though I have a bike of my own. So far, it looks like I&amp;#8217;m going to easily use it enough to justify the cost. I still use my regular bike for my commute from NDG to the Plateau, but on the edges there&amp;#8217;s a ton of cases where it just makes sense to use something that I don&amp;#8217;t have to worry about locking up and returning home. Sometimes I only want to go one way (for weather or whatever other reason). Other times I want to take public transit for one leg of my trip (or day), but need/want to take a quick jaunt elsewhere once I&amp;#8217;m downtown.&lt;/p&gt;
+
+&lt;p&gt;I do have to say though, their new web site drives me &lt;em&gt;crazy&lt;/em&gt;. I&amp;#8217;ve thought prety deeply about the domain of creating user-friendly transit-focused web sites, so I think I can speak with some authority here.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/06/a-better-bixi-web-site/bixi_shot/" rel="attachment wp-att-268"&gt;&lt;img src="/files/2011/06/bixi_shot.png" alt="" title="bixi_shot" width="400" height="265" class="alignnone size-full wp-image-268" srcset="/files/2011/06/bixi_shot-300x198.png 300w, /files/2011/06/bixi_shot.png 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Leaving aside it&amp;#8217;s value as a promotional tool for the service itself (not my area of expertise), the experience of trying to find a nearby station is complicated by a slow, multi-layered UI that requires repeated clicking and searching to find the nearest station that has bikes available. Why bother with this step when we can just display this information outright on the map? iPhone applications like &lt;a href="http://sites.google.com/site/bixouiphone/"&gt;Bixou&lt;/a&gt; have been doing this for years. It&amp;#8217;s time we brought the same experience to the desktop.&lt;/p&gt;
+
+&lt;p&gt;Thus, I present &lt;a href="http://nixi.ca"&gt;nixi.ca&lt;/a&gt;: a clean, useable interface to BIXI&amp;#8217;s bike share system that presents the information you care about as effectively as possible, without all the clutter. I&amp;#8217;ve already found it useful, and I hope you do too. Think you can do better? Fork the source on &lt;a href="http://github.com/wlach/nixi"&gt;github&lt;/a&gt; and submit your changes back to me! Minus some glue code to fetch station info server side, it&amp;#8217;s entirely a client-side application written in HTML/JavaScript.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/06/a-better-bixi-web-site/nixi_shot/" rel="attachment wp-att-269"&gt;&lt;img src="/files/2011/06/nixi_shot.png" alt="" title="nixi_shot" width="400" height="265" class="alignnone size-full wp-image-269" srcset="/files/2011/06/nixi_shot-300x198.png 300w, /files/2011/06/nixi_shot.png 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that the site uses a bunch of modern HTML5 features, so currently requires a modern browser like Firefox, Chrome, or Safari to display properly. I may or may not fix this. Other notable omissions include support for other cities with the BIXI system (Toronto, Ottawa, &amp;#8230;) and French localization. Patches welcome!&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>D&amp;eacute;chets Montr&amp;eacute;al goes mobile</title>
+   <link>https://wlach.github.io/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile/?utm_source=Montreal&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile</guid>
+   <pubDate>Sat, 19 Feb 2011 05:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;A few weekends ago, there was a &lt;a href="http://montrealouvert.net/"&gt;Montr&amp;eacute;al Ouvert&lt;/a&gt; hackfest at the &lt;a href="http://notmanhouse.com"&gt;Notman House&lt;/a&gt;. I decided to take a bit of a break from my usual transit hacking and built up a mobile friendly interface to the wonderful &lt;a href="http://dechetsmontreal.ca/"&gt;D&amp;eacute;chets Montr&amp;eacute;al&lt;/a&gt;, which lets residents easily get information on their garbage collection schedule.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://wrla.ch/blog/?attachment_id=210" rel="attachment wp-att-210"&gt;&lt;img src="/files/2011/02/dechets-screenies.jpg" alt="" title="Dechets Montreal Screenshots" width="400" height="243" class="alignnone size-full wp-image-210" srcset="/files/2011/02/dechets-screenies-300x182.jpg 300w, /files/2011/02/dechets-screenies.jpg 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The interface is intentionally quite simplistic, the idea being that if you&amp;#8217;re accessing the site using a mobile device you&amp;#8217;re probably only interested in the collection schedule for the current week and nothing else. If you want something more complicated you probably should just be using the full site.&lt;/p&gt;
+
+&lt;p&gt;Anyway, another fun opportunity to play with mobile web technology (a bit of break from my current &lt;a href="http://mindsea.com"&gt;consulting gig&lt;/a&gt;, which is mostly native iPhone apps). A few things that I learned this time around:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;It&amp;#8217;s easy to give your application a nice icon when added to the iPhone home screen by using a &lt;a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html#//apple_ref/doc/uid/TP40002051-CH3"&gt;webpage icon&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;Related to the above, you can give the user a nice hint to add your webpage to their homescreen by using Google&amp;#8217;s &lt;a href="http://code.google.com/p/mobile-bookmark-bubble/"&gt;mobile bookmark bubble&lt;/a&gt; library.&lt;/li&gt;
+ &lt;li&gt;The iPhone&amp;#8217;s form interface will persist after pressing &amp;#8220;Search&amp;#8221; unless &lt;a href="http://www.em-motion.mobi/2010/05/01/iphone-ajax-form-submission/"&gt;you change the focus using an anchor element&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="http://jquery.com"&gt;jQuery&lt;/a&gt; is the best thing since sliced bread for dynamic web applications (ok, I actually knew this already but I just can&amp;#8217;t get over how great it is).&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;Thanks muchly to Kent Mewhort, the brains behind D&amp;eacute;chets Montr&amp;eacute;al, for helping me incorporate my work into his Drupal-based site.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Ghetto retroscope with ffmpeg and the &lt;video&gt; tag</title>
+    <meta name="description" content="So yesterday we had a small get-together at my place, which gave me the opportunity to try something I’d been meaning to do for a while: build my own retroscope.  The idea is pretty simple: have a webcam record bits and pieces of a social event, then play...">
+    <meta name="author"      content="William Lachance">
+    <meta name="keywords"    content="Mozilla, Video">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="/favicon.ico">
+    <link rel="canonical" href="https://wlach.github.io/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/">
+    <link rel="next" href="/blog/2012/05/launching-random-web-browsers-on-android/">
+    <link rel="prev" href="/blog/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod/">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <!-- Feeds -->
+    <link rel="alternate" type="application/atom+xml"
+          href="/feeds/all.atom.xml" title="Atom Feed">
+    <link rel="alternate" type="application/rss+xml"
+          href="/feeds/all.rss.xml" title="RSS Feed">
+    <!-- JS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-xxxxx', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <!-- A standard Twitter Bootstrap nav bar -->
+    <header class="navbar navbar-default navbar-inverse"
+            role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button"
+                  class="navbar-toggle"
+                  data-toggle="collapse"
+                  data-target=".our-nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/index.html" class="navbar-brand">William Lachance's Log</a>
+        </div>
+        <div class="collapse navbar-collapse our-nav-collapse"
+             role="navigation">
+          <ul class="nav navbar-nav">
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Tags <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/Android.html">Android</a></li>
+
+<li><a href="/tags/ateam.html">ateam</a></li>
+
+<li><a href="/tags/BIXI.html">BIXI</a></li>
+
+<li><a href="/tags/Buddhism.html">Buddhism</a></li>
+
+<li><a href="/tags/Business.html">Business</a></li>
+
+<li><a href="/tags/Cats.html">Cats</a></li>
+
+<li><a href="/tags/Coffee.html">Coffee</a></li>
+
+<li><a href="/tags/Community.html">Community</a></li>
+
+<li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
+
+<li><a href="/tags/Ebola.html">Ebola</a></li>
+
+<li><a href="/tags/Eideticker.html">Eideticker</a></li>
+
+<li><a href="/tags/email.html">email</a></li>
+
+<li><a href="/tags/Environment.html">Environment</a></li>
+
+<li><a href="/tags/FirefoxOS.html">FirefoxOS</a></li>
+
+<li><a href="/tags/Food.html">Food</a></li>
+
+<li><a href="/tags/Free-Software.html">Free Software</a></li>
+
+<li><a href="/tags/GNOME.html">GNOME</a></li>
+
+<li><a href="/tags/GoFaster.html">GoFaster</a></li>
+
+<li><a href="/tags/hbus.html">hbus</a></li>
+
+<li><a href="/tags/iphone.html">iphone</a></li>
+
+<li><a href="/tags/Life.html">Life</a></li>
+
+<li><a href="/tags/Meditation.html">Meditation</a></li>
+
+<li><a href="/tags/Meta.html">Meta</a></li>
+
+<li><a href="/tags/Montreal.html">Montreal</a></li>
+
+<li><a href="/tags/Mozilla.html">Mozilla</a></li>
+
+<li><a href="/tags/mozregression.html">mozregression</a></li>
+
+<li><a href="/tags/MSF.html">MSF</a></li>
+
+<li><a href="/tags/Music.html">Music</a></li>
+
+<li><a href="/tags/Nixi.html">Nixi</a></li>
+
+<li><a href="/tags/Open-Data.html">Open Data</a></li>
+
+<li><a href="/tags/Orangutan.html">Orangutan</a></li>
+
+<li><a href="/tags/Pandaboard.html">Pandaboard</a></li>
+
+<li><a href="/tags/Perfherder.html">Perfherder</a></li>
+
+<li><a href="/tags/Philosophy.html">Philosophy</a></li>
+
+<li><a href="/tags/Profiling.html">Profiling</a></li>
+
+<li><a href="/tags/Python.html">Python</a></li>
+
+<li><a href="/tags/Release-Engineering.html">Release Engineering</a></li>
+
+<li><a href="/tags/Responsiveness.html">Responsiveness</a></li>
+
+<li><a href="/tags/SQL.html">SQL</a></li>
+
+<li><a href="/tags/Time.html">Time</a></li>
+
+<li><a href="/tags/Toronto.html">Toronto</a></li>
+
+<li><a href="/tags/Transit.html">Transit</a></li>
+
+<li><a href="/tags/Transit-to-Go.html">Transit to Go</a></li>
+
+<li><a href="/tags/Usability.html">Usability</a></li>
+
+<li><a href="/tags/Video.html">Video</a></li>
+
+<li><a href="/tags/Web.html">Web</a></li>
+
+<li><a href="/tags/WifiDog.html">WifiDog</a></li>
+
+<li><a href="/tags/zen.html">zen</a></li>
+
+<li><a href="/tags/Île-Sans-Fil.html">Île Sans Fil</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/About.html">About</a>
+            </li> 
+            <li><a href="/feeds/all.atom.xml">Atom</a></li>
+            <li><a href="/feeds/all.rss.xml">RSS</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+
+        <!-- Main column -->
+        <div id="content" class="col-md-12">
+
+
+
+          <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Video.html">Video</a></span></p>
+    <h1>Ghetto retroscope with ffmpeg and the &lt;video&gt; tag</h1>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 7th, 2012</p>
+  </header>
+
+<p>So yesterday we had a small get-together at my place, which gave me the opportunity to try something I&#8217;d been meaning to do for a while: build my own retroscope.</p>
+
+<p>The idea is pretty simple: have a webcam record bits and pieces of a social event, then play them back on-the-spot a few minutes/hours later. I first heard about the concept from reading Nat Friedman&#8217;s <a href="http://nat.org/blog/2005/10/the-retroscope/">blog entry</a> from 2005 &#8212; if you read that, you see that he just hooked up a video camera to his TiVo. 7 years in the future, laptop webcams are ubiquitous and we have the awesome HTML5  tag, so I figured it would be easy to knock up something interesting in short order with zero custom hardware.</p>
+
+<p>Having only remembered that I wanted to do this about 30 minutes before people were scheduled to start arriving, I didn&#8217;t have much time to do anything really perfect. I settled on using <a href="http://stackoverflow.com/questions/7500763/command-line-streaming-webcam-with-audio-from-ubuntu-server-in-webm-format">this little snippet</a> from stackoverflow to generate short (5 second) movies on my laptop, then used scp to copy them over and display a montage of them in an auto-refreshing webpage on my &#8220;television&#8221; (which is a Mac-Mini connected to a large computer monitor). Despite being a total hack job, the end result generated much amusement. I think this is a bit different from what Nat originally did (it sounds from his blog like his retroscope played back longer segments), but I think the end result is actually a bit more fun.</p>
+
+<p><a href="http://wrla.ch/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-video-tag/retroscope-screenshot/" rel="attachment wp-att-598"><img src="/files/2012/05/retroscope-screenshot-1024x694.png" alt="" title="retroscope-screenshot" width="640" height="433" class="alignnone size-large wp-image-598" srcset="/files/2012/05/retroscope-screenshot-300x203.png 300w, /files/2012/05/retroscope-screenshot-1024x694.png 1024w, /files/2012/05/retroscope-screenshot.png 1319w" sizes="(max-width: 640px) 100vw, 640px" /></a></p>
+
+<p>Perhaps unfortunately, but probably ultimately for the best, only a few snippets from the actual night got stored away. One example is this gem:</p>
+
+<p>(yes, that handsome fellow with the Pernot is me)</p>
+
+<p>I thought it might be fun to release the slightly-cleaned up results of this experiment as opensource for others to play with, so I created a small project for it on github. Unlike the original version, no complicated scp scheme is required &#8212; I just reused Joel Maher&#8217;s most excellent mozhttpd library from <a href="http://github.com/mozilla/mozbase">mozbase</a> to run a web server in the same process as the capture logic. All you need to do is run the server on a Linux machine with a webcam and connect to it with a web browser from any other machine on your local network.</p>
+
+<p><a href="https://github.com/wlach/retroscope">https://github.com/wlach/retroscope</a></p>
+
+<p>Enjoy!</p>
+  <footer>
+    <hr/>
+    <script type="text/javascript">
+      var disqus_shortname = 'shortname';
+      (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <div id="disqus_thread"></div>
+    <ul class="pager">
+    <li class="previous">
+      <a href="/blog/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod/">&larr; <em>Mass code relicensing with facebook&#8217;s codemod</em></a>
+    </li>
+    <li class="next">
+      <a href="/blog/2012/05/launching-random-web-browsers-on-android/"><em>Launching random web browsers on Android</em> &rarr;</a>
+    </li>
+    </ul>
+  </footer>
+</article>
+        </div>
+      </div>
+      <footer>
+        <p>Site generated by <a href="https://github.com/greghendershott/frog">Frog</a>,
+          using <a href="https://getbootstrap.com">Bootstrap</a>.</p>
+        <p>Post content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+      </footer>
+    </div>
+    <!-- </body> JS -->
+    <script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>A new meditation app</title>
+    <meta name="description" content="I had some time on my hands two weekends ago and was feeling a bit of an itch to build something, so I decided to do a project I’ve had in the back of my head for a while: a meditation timer.  If you’ve been following this log, you’d know that meditation ...">
+    <meta name="author"      content="William Lachance">
+    <meta name="keywords"    content="Buddhism, FirefoxOS, Meditation, Mozilla, zen">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="/favicon.ico">
+    <link rel="canonical" href="https://wlach.github.io/blog/2014/08/a-new-meditation-app/">
+    <link rel="next" href="/blog/2014/07/new-city-new-cellphone-provider/">
+    <link rel="prev" href="/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <!-- Feeds -->
+    <link rel="alternate" type="application/atom+xml"
+          href="/feeds/all.atom.xml" title="Atom Feed">
+    <link rel="alternate" type="application/rss+xml"
+          href="/feeds/all.rss.xml" title="RSS Feed">
+    <!-- JS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-xxxxx', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <!-- A standard Twitter Bootstrap nav bar -->
+    <header class="navbar navbar-default navbar-inverse"
+            role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button"
+                  class="navbar-toggle"
+                  data-toggle="collapse"
+                  data-target=".our-nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/index.html" class="navbar-brand">William Lachance's Log</a>
+        </div>
+        <div class="collapse navbar-collapse our-nav-collapse"
+             role="navigation">
+          <ul class="nav navbar-nav">
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Tags <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/Android.html">Android</a></li>
+
+<li><a href="/tags/ateam.html">ateam</a></li>
+
+<li><a href="/tags/BIXI.html">BIXI</a></li>
+
+<li><a href="/tags/Buddhism.html">Buddhism</a></li>
+
+<li><a href="/tags/Business.html">Business</a></li>
+
+<li><a href="/tags/Cats.html">Cats</a></li>
+
+<li><a href="/tags/Coffee.html">Coffee</a></li>
+
+<li><a href="/tags/Community.html">Community</a></li>
+
+<li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
+
+<li><a href="/tags/Ebola.html">Ebola</a></li>
+
+<li><a href="/tags/Eideticker.html">Eideticker</a></li>
+
+<li><a href="/tags/email.html">email</a></li>
+
+<li><a href="/tags/Environment.html">Environment</a></li>
+
+<li><a href="/tags/FirefoxOS.html">FirefoxOS</a></li>
+
+<li><a href="/tags/Food.html">Food</a></li>
+
+<li><a href="/tags/Free-Software.html">Free Software</a></li>
+
+<li><a href="/tags/GNOME.html">GNOME</a></li>
+
+<li><a href="/tags/GoFaster.html">GoFaster</a></li>
+
+<li><a href="/tags/hbus.html">hbus</a></li>
+
+<li><a href="/tags/iphone.html">iphone</a></li>
+
+<li><a href="/tags/Life.html">Life</a></li>
+
+<li><a href="/tags/Meditation.html">Meditation</a></li>
+
+<li><a href="/tags/Meta.html">Meta</a></li>
+
+<li><a href="/tags/Montreal.html">Montreal</a></li>
+
+<li><a href="/tags/Mozilla.html">Mozilla</a></li>
+
+<li><a href="/tags/mozregression.html">mozregression</a></li>
+
+<li><a href="/tags/MSF.html">MSF</a></li>
+
+<li><a href="/tags/Music.html">Music</a></li>
+
+<li><a href="/tags/Nixi.html">Nixi</a></li>
+
+<li><a href="/tags/Open-Data.html">Open Data</a></li>
+
+<li><a href="/tags/Orangutan.html">Orangutan</a></li>
+
+<li><a href="/tags/Pandaboard.html">Pandaboard</a></li>
+
+<li><a href="/tags/Perfherder.html">Perfherder</a></li>
+
+<li><a href="/tags/Philosophy.html">Philosophy</a></li>
+
+<li><a href="/tags/Profiling.html">Profiling</a></li>
+
+<li><a href="/tags/Python.html">Python</a></li>
+
+<li><a href="/tags/Release-Engineering.html">Release Engineering</a></li>
+
+<li><a href="/tags/Responsiveness.html">Responsiveness</a></li>
+
+<li><a href="/tags/SQL.html">SQL</a></li>
+
+<li><a href="/tags/Time.html">Time</a></li>
+
+<li><a href="/tags/Toronto.html">Toronto</a></li>
+
+<li><a href="/tags/Transit.html">Transit</a></li>
+
+<li><a href="/tags/Transit-to-Go.html">Transit to Go</a></li>
+
+<li><a href="/tags/Usability.html">Usability</a></li>
+
+<li><a href="/tags/Video.html">Video</a></li>
+
+<li><a href="/tags/Web.html">Web</a></li>
+
+<li><a href="/tags/WifiDog.html">WifiDog</a></li>
+
+<li><a href="/tags/zen.html">zen</a></li>
+
+<li><a href="/tags/Île-Sans-Fil.html">Île Sans Fil</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/About.html">About</a>
+            </li> 
+            <li><a href="/feeds/all.atom.xml">Atom</a></li>
+            <li><a href="/feeds/all.rss.xml">RSS</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+
+        <!-- Main column -->
+        <div id="content" class="col-md-12">
+
+
+
+          <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Meditation.html">Meditation</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/zen.html">zen</a></span></p>
+    <h1>A new meditation app</h1>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 14th, 2014</p>
+  </header>
+
+<p>I had some time on my hands two weekends ago and was feeling a bit of an itch to build something, so I decided to do a project I&#8217;ve had in the back of my head for a while: a meditation timer.</p>
+
+<p>If you&#8217;ve been following this log, you&#8217;d know that <a href="http://wrla.ch/blog/category/meditation/">meditation</a> has been a pretty major interest of mine for the past year. The foundation of my practice is a daily round of seated meditation at home, where I have been attempting to follow the breath and generally try to connect with the world for a set period every day (usually varying between 10 and 30 minutes, depending on how much of a rush I&#8217;m in).</p>
+
+<p>Clock watching is rather distracting while sitting so having a tool to notify you when a certain amount of time has elapsed is quite useful. Writing a smartphone app to do this is an obvious idea, and indeed approximately a zillion of these things have been written for Android and iOS. Unfortunately, most are not very good. Really, I just want something that does this:</p>
+
+<ol>
+ <li>Select a meditation length (somewhere between 10 and 40 minutes).</li>
+ <li>Sound a bell after a short preparation to demarcate the beginning of meditation.</li>
+ <li>While the meditation period is ongoing, do a countdown of the time remaining (not strictly required, but useful for peace of mind in case you&#8217;re wondering whether you&#8217;ve really only sat for 25 minutes).</li>
+ <li>Sound a bell when the meditation ends.</li></ol>
+
+<p>Yes, meditation can get more complex than that. In Zen practice, for example, sometimes you have several periods of varying length, broken up with kinhin (walking meditation). However, that mostly happens in the context of a formal setting (e.g. <a href="http://en.wikipedia.org/wiki/Zendo">a Zendo</a>) where you leave your smartphone at the door. Trying to shoehorn all that into an app needlessly complicates what should be simple.</p>
+
+<p>Even worse are the apps which &#8220;chart&#8221; your progress or have other gimmicks to connect you to a virtual &#8220;community&#8221; of meditators. I have to say I find that kind of stuff really turns me off. Meditation should be about connecting with reality in a more fundamental way, not charting gamified statistics or interacting online. We already have way too much of that going on elsewhere in our lives without adding even more to it.</p>
+
+<p>So, you might ask why the alarm feature of most clock apps isn&#8217;t sufficient? Really, it is most of the time. A specialized app can make selecting the interval slightly more convenient and we can preselect an appropriate bell sound up front. It&#8217;s also nice to hear something to demarcate the start of a meditation session. But honestly I didn&#8217;t have much of a reason to write this other than the fact than I could. Outside of work, I&#8217;ve been in a bit of a creative rut lately and felt like I needed to build something, anything and put it out into the world (even if it&#8217;s tiny and only a very incremental improvement over what&#8217;s out there already). So here it is:</p>
+
+<p><a href="/files/2014/08/meditation-timer-screen.png"><img src="/files/2014/08/meditation-timer-screen.png" alt="meditation-timer-screen" width="320" height="483" class="alignnone size-full wp-image-1089" srcset="/files/2014/08/meditation-timer-screen-198x300.png 198w, /files/2014/08/meditation-timer-screen.png 320w" sizes="(max-width: 320px) 100vw, 320px" /></a></p>
+
+<p>The app was written entirely in HTML5 so it should work fine on pretty much any reasonably modern device, desktop or mobile. I tested it on my Nexus 5 (Chrome, Firefox for Android)<sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup>, FirefoxOS Flame, and on my laptop (Chrome, Firefox, Safari). It lives on a <a href="http://meditation.wrla.ch">subdomain of this site</a> or you can <a href="https://marketplace.firefox.com/app/meditation/">grab it from the Firefox Marketplace</a> if you&#8217;re using some variant of Firefox (OS). The source, such as it is, <a href="http://github.com/wlach/meditation">can be found</a> on github.</p>
+
+<p>I should acknowledge taking some design inspiration from the <a href="http://helloform.com/projects/mind/">Mind application</a> for iOS, which has a similarly minimalistic take on things. Check that out too if you have an iPhone or iPad!</p>
+
+<p>Happy meditating!</p>
+
+<p><sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup> Note that there isn&#8217;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock">requestWakeLock</a> API to make sure that doesn&#8217;t happen. I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113">a bug</a> to get this implemented on Firefox for Android.</p>
+  <footer>
+    <hr/>
+    <script type="text/javascript">
+      var disqus_shortname = 'shortname';
+      (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <div id="disqus_thread"></div>
+    <ul class="pager">
+    <li class="previous">
+      <a href="/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/">&larr; <em>Hacking on the Treeherder front end: refreshingly easy</em></a>
+    </li>
+    <li class="next">
+      <a href="/blog/2014/07/new-city-new-cellphone-provider/"><em>New city, new cellphone provider</em> &rarr;</a>
+    </li>
+    </ul>
+  </footer>
+</article>
+        </div>
+      </div>
+      <footer>
+        <p>Site generated by <a href="https://github.com/greghendershott/frog">Frog</a>,
+          using <a href="https://getbootstrap.com">Bootstrap</a>.</p>
+        <p>Post content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+      </footer>
+    </div>
+    <!-- </body> JS -->
+    <script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

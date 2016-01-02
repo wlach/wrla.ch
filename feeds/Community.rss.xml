@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0">
+ <channel>
+  <title>William Lachance's Log: Posts tagged 'Community'</title>
+  <description>William Lachance's Log: Posts tagged 'Community'</description>
+  <link>https://wlach.github.io/tags/Community.html</link>
+  <lastBuildDate>Tue, 29 Sep 2015 04:00:00 UT</lastBuildDate>
+  <pubDate>Tue, 29 Sep 2015 04:00:00 UT</pubDate>
+  <ttl>1800</ttl>
+  <item>
+   <title>Perfherder summer of contribution thoughts</title>
+   <link>https://wlach.github.io/blog/2015/09/perfherder-summer-of-contribution-thoughts/?utm_source=Community&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2015-09-perfherder-summer-of-contribution-thoughts</guid>
+   <pubDate>Tue, 29 Sep 2015 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;A few months ago, Joel Maher &lt;a href="https://elvis314.wordpress.com/2015/05/18/a-team-contribution-opportunity-dashboard-hacker/"&gt;announced the Perfherder summer of contribution&lt;/a&gt;. We wrapped things up there a few weeks ago, so I guess it&amp;#8217;s about time I wrote up a bit about how things went.&lt;/p&gt;
+
+&lt;p&gt;As a reminder, the idea of summer of contribution was to give a set of contributors the opportunity to make a substantial contribution to a project we were working on (in this case, the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; performance sheriffing system). We would ask that they sign up to do 5&amp;ndash;10 hours of work a week for at least 8 weeks. In return, Joel and myself would make ourselves available as mentors to answer questions about the project whenever they ran into trouble.&lt;/p&gt;
+
+&lt;p&gt;To get things rolling, I split off a bunch of work that we felt would be reasonable to do by a contributor into bugs of varying difficulty levels (assigning them the bugzilla whiteboard tag &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?keywords=%20ateam-summer-of-contribution&amp;amp;#038;keywords_type=allwords&amp;amp;#038;list_id=12578272&amp;amp;#038;resolution=---&amp;amp;#038;resolution=FIXED&amp;amp;#038;resolution=INVALID&amp;amp;#038;resolution=WONTFIX&amp;amp;#038;resolution=DUPLICATE&amp;amp;#038;resolution=WORKSFORME&amp;amp;#038;resolution=INCOMPLETE&amp;amp;#038;resolution=SUPPORT&amp;amp;#038;resolution=EXPIRED&amp;amp;#038;resolution=MOVED&amp;amp;#038;query_format=advanced&amp;amp;#038;bug_status=UNCONFIRMED&amp;amp;#038;bug_status=NEW&amp;amp;#038;bug_status=ASSIGNED&amp;amp;#038;bug_status=REOPENED&amp;amp;#038;bug_status=RESOLVED&amp;amp;#038;bug_status=VERIFIED&amp;amp;#038;bug_status=CLOSED"&gt;ateam-summer-of-contribution&lt;/a&gt;). When someone first expressed interest in working on the project, I&amp;#8217;d assign them a relatively easy front end one, just to cover the basics of working with the project (checking out code, making a change, submitting a PR to github). If they made it through that, I&amp;#8217;d go on to assign them slightly harder or more complex tasks which dealt with other parts of the codebase, the nature of which depended on what they wanted to learn more about. Perfherder essentially has two components: a data storage and analysis backend written in Python and Django, and a web-based frontend written in JS and Angular. There was (still is) lots to do on both, which gave contributors lots of choice.&lt;/p&gt;
+
+&lt;p&gt;This system worked pretty well for attracting people. I think we got at least 5 people interested and contributing useful patches within the first couple of weeks. In general I think onboarding went well. Having good documentation for Perfherder / Treeherder on the wiki certainly helped. We had lots of the usual problems getting people familiar with git and submitting proper pull requests: we use a somewhat clumsy combination of bugzilla and github to manage treeherder issues (we &amp;#8220;attach&amp;#8221; PRs to bugs as plaintext), which can be a bit offputting to newcomers. But once they got past these issues, things went relatively smoothly.&lt;/p&gt;
+
+&lt;p&gt;A few weeks in, I set up a fortnightly skype call for people to join and update status and ask questions. This proved to be quite useful: it let me and Joel articulate the higher-level vision for the project to people (which can be difficult to summarize in text) but more importantly it was also a great opportunity for people to ask questions and raise concerns about the project in a free-form, high-bandwidth environment. In general I&amp;#8217;m not a big fan of meetings (especially status report meetings) but I think these were pretty useful. Being able to hear someone else&amp;#8217;s voice definitely goes a long way to establishing trust that you just can&amp;#8217;t get in the same way over email and irc.&lt;/p&gt;
+
+&lt;p&gt;I think our biggest challenge was retention. Due to (understandable) time commitments and constraints only one person (Mike Ling) was really able to stick with it until the end. Still, I&amp;#8217;m pretty happy with that success rate: if you stop and think about it, even a 10-hour a week time investment is a fair bit to ask. Some of the people who didn&amp;#8217;t quite make it were quite awesome, I hope they come back some day.&lt;/p&gt;
+
+&lt;p&gt;&amp;#8212;&lt;/p&gt;
+
+&lt;p&gt;On that note, a special thanks to Mike Ling for sticking with us this long (he&amp;#8217;s still around and doing useful things long after the program ended). He&amp;#8217;s done &lt;a href="https://github.com/mozilla/treeherder/commits/master?author=MikeLing"&gt;some really fantastic work&lt;/a&gt; inside Perfherder and the project is much better for it. I think my two favorite features that he wrote up are the improved test chooser which I talked about a few months ago and a &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1134780"&gt;get related platform / branch&lt;/a&gt; feature which is a big time saver when trying to determine when a performance regression was first introduced.&lt;/p&gt;
+
+&lt;p&gt;I took the time to do a short email interview with him last week. Here&amp;#8217;s what he had to say:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;Tell us a little bit about yourself. Where do you live? What is it you do when not contributing to Perfherder?&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;I&amp;#8217;m a postgraduate student of NanChang HangKong university in China whose major is Internet of things. Actually,there are a lot of things I would like to do when I am AFK, play basketball, video game, reading books and listening music, just name it ; )&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;How did you find out about the ateam summer of contribution program?&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;well, I remember when I still a new comer of treeherder, I totally don&amp;#8217;t know how to start my contribution. So, I just go to treeherder irc and ask for advice. As I recall, emorley and jfrench talk with me and give me a lot of hits. Then Will (wlach) send me an Email about ateam summer of contribution and perfherder. He told me it&amp;#8217;s a good opportunity to learn more about treeherder and how to work like a team! I almost jump out of bed (I receive that email just before get asleep) and reply with YES. Thank you Will!&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;What did you find most challenging in the summer of contribution?&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;I think the most challenging thing is I not only need to know how to code but also need to know how treeherder actually work. It&amp;#8217;s a awesome project and there are a ton of things I haven&amp;#8217;t heard before (i.e T-test, regression). So I still have a long way to go before I familiar with it.&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;What advice would give you to future ateam contributors?&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;The only thing you need to do is bring your question to irc and ask. Do not hesitate to ask for help if you need it! All the people in here are nice and willing to help. Enjoy it!&lt;/em&gt;&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

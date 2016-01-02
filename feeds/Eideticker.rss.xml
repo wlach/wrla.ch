@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0">
+ <channel>
+  <title>William Lachance's Log: Posts tagged 'Eideticker'</title>
+  <description>William Lachance's Log: Posts tagged 'Eideticker'</description>
+  <link>https://wlach.github.io/tags/Eideticker.html</link>
+  <lastBuildDate>Mon, 07 Jul 2014 04:00:00 UT</lastBuildDate>
+  <pubDate>Mon, 07 Jul 2014 04:00:00 UT</pubDate>
+  <ttl>1800</ttl>
+  <item>
+   <title>Measuring frames per second and animation smoothness with Eideticker</title>
+   <link>https://wlach.github.io/blog/2014/07/measuring-frames-per-second-and-animation-smoothness-with-eideticker/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2014-07-measuring-frames-per-second-and-animation-smoothness-with-eideticker</guid>
+   <pubDate>Mon, 07 Jul 2014 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Just wanted to write up a few notes on using Eideticker to measure animation smoothness, since this is a topic that comes up pretty often and I wind up explaining these things repeatedly. 😉&lt;/p&gt;
+
+&lt;p&gt;When rendering web content, we want the screen to update something like 60 times per second (typical refresh rate of an LCD screen) when an animation or other change is occurring. When this isn&amp;#8217;t happening, there is often a user perception of jank (a.k.a. things not working as they should). Generally we express how well we measure up to this ideal by counting the number of &amp;#8220;frames per second&amp;#8221; that we&amp;#8217;re producing. If you&amp;#8217;re reading this, you&amp;#8217;re probably already familiar with the concept in outline. If you want to know more, you can check out the &lt;a href="http://en.wikipedia.org/wiki/Frame_rate"&gt;wikipedia article&lt;/a&gt; which goes into more detail.&lt;/p&gt;
+
+&lt;p&gt;At an internal level, this concept matches up conceptually with what Gecko is doing. The graphics pipeline produces frames inside graphics memory, which is then sent to the LCD display (whether it be connected to a laptop or a mobile phone) to be viewed. By instrumenting the code, we can see how often this is happening, and whether it is occurring at the right frequency to reach 60 fps. My understanding is that we have at least some code which does exactly this, though I&amp;#8217;m not 100% up to date on how accurate it is.&lt;/p&gt;
+
+&lt;p&gt;But even assuming the best internal system monitoring, Eideticker might still be useful because:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;It is more &amp;#8220;objective&amp;#8221;. This is valuable not only for our internal purposes to validate other automation (sometimes internal instrumentation can be off due to a bug or whatever), but also to &amp;#8220;prove&amp;#8221; to partners that our software has the performance characteristics that we claim.&lt;/li&gt;
+ &lt;li&gt;The visual artifacts it leaves behind can be valuable for inspection and debugging. i.e. &lt;a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/"&gt;you can correlate videos with profiling information&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;Unfortunately, deriving this sort of information from a video capture is more complicated than you&amp;#8217;d expect.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What does frames per second even mean?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Given a set of N frames captured from the device, the immediate solution when it comes to &amp;#8220;frames per second&amp;#8221; is to just compare frames against each other (e.g. by comparing the value of individual pixels) and then counting the ones that are different as &amp;#8220;unique frames&amp;#8221;. Divide the total number of unique frames by the length of the
+ &lt;br /&gt;capture and&amp;#8230; voila? Frames per second? Not quite.&lt;/p&gt;
+
+&lt;p&gt;First off, there&amp;#8217;s the inherent problem that sometimes the expected behaviour of a test is for the screen to be unchanging for a period of time. For example, at the very beginning of a capture (when we are waiting for the input event to be acknowledged) and at the end (when we are waiting for things to settle). Second, it&amp;#8217;s also easy to imagine the display remaining static for a period of time in the middle of a capture (say in between gestures in a multi-part capture). In these cases, there will likely be no observable change on the screen and thus the number of frames counted will be artificially low, skewing the frames per second number down.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Measurement problems&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Ok, so you might not consider that class of problem that big a deal. Maybe we could just not consider the frames at the beginning or end of the capture. And for pauses in the middle&amp;#8230; as long as we get an absolute number at the end, we&amp;#8217;re fine right? That&amp;#8217;s at least enough to let us know that we&amp;#8217;re getting better or worse, assuming that whatever we&amp;#8217;re testing is behaving the same way between runs and we&amp;#8217;re just trying to measure how many frames hit the screen.&lt;/p&gt;
+
+&lt;p&gt;I might agree with you there, but there&amp;#8217;s a further problems that are specific to measuring on-screen performance using a high-speed camera as we are currently with FirefoxOS.&lt;/p&gt;
+
+&lt;p&gt;An LCD updates gradually, and not all at once. Remnants of previous frames will remain on screen long past their interval. Take for example these five frames (sampled at 120fps) from a capture of a pan down in the FirefoxOS Contacts application (&lt;a href="/files/2014/07/movie.webm"&gt;movie&lt;/a&gt;):&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2014/07/sidebyside.png"&gt;&lt;img src="/files/2014/07/sidebyside-1024x263.png" alt="sidebyside" width="474" height="121" class="alignnone size-large wp-image-1074" srcset="/files/2014/07/sidebyside-300x77.png 300w, /files/2014/07/sidebyside-1024x263.png 1024w" sizes="(max-width: 474px) 100vw, 474px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Note how if you look closely these 5 frames are actually the intersection of *three* seperate frames. One with &amp;#8220;Adam Card&amp;#8221; at the top, another with &amp;#8220;Barbara Bloomquist&amp;#8221; at the top, then another with &amp;#8220;Barbara Bloomquist&amp;#8221; even further up. Between each frame, artifacts of the previous one are clearly visible.&lt;/p&gt;
+
+&lt;p&gt;Plausible sounding solutions:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Try to resolve the original images by distinguishing &amp;#8220;new&amp;#8221; content from ghosting artifacts. Sounds possible, but probably hard? I&amp;#8217;ve tried a number of simplistic techniques (i.e. trying to find times when change is &amp;#8220;peaking&amp;#8221;), but nothing has really worked out very well.&lt;/li&gt;
+ &lt;li&gt;Somehow reverse engineering the interface between the graphics chipset and the LCD panel, and writing some kind of custom hardware to &amp;#8220;capture&amp;#8221; the framebuffer as it is being sent from one to the other. Also sounds difficult.&lt;/li&gt;
+ &lt;li&gt;Just forget about this problem altogether and only try to capture periods of time in the capture where the image has stayed static for a sustained period of time (i.e. for say 4&amp;ndash;5 frames and up) and we&amp;#8217;re pretty sure it&amp;#8217;s jank.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;Personally the last solution appeals to me the most, although it has the obvious disadvantage of being a &amp;#8220;homebrew&amp;#8221; metric that no one has ever heard of before, which might make it difficult to use to prove that performance is adequate &amp;#8212; the numbers come with a long-winded explanation instead of being something that people immediately understand.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>End of Q2 Eideticker update: Flame tests, future plans</title>
+   <link>https://wlach.github.io/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2014-06-end-of-q2-eideticker-update-flame-tests-future-plans</guid>
+   <pubDate>Fri, 27 Jun 2014 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Just wanted to give an update on where Eideticker is at the end of Q2 2014. The big news is that we&amp;#8217;ve started to run startup tests against the Flame, the results of which are starting to appear on the dashboard:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2014/06/eideticker-contacts-flame.png"&gt;&lt;img src="/files/2014/06/eideticker-contacts-flame.png" alt="eideticker-contacts-flame" width="1002" height="664" class="alignnone size-full wp-image-1062" srcset="/files/2014/06/eideticker-contacts-flame-300x198.png 300w, /files/2014/06/eideticker-contacts-flame.png 1002w" sizes="(max-width: 1002px) 100vw, 1002px" /&gt;&lt;/a&gt; &lt;a href="http://eideticker.mozilla.org/b2g/#/flame/b2g-contacts-startup/timetostableframe"&gt;[link]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It is expected that these tests will provide a useful complement to the &lt;a href="https://datazilla.mozilla.org/b2g/?branch=master&amp;amp;#038;device=flame&amp;amp;#038;range=7&amp;amp;#038;test=cold_load_time&amp;amp;#038;app_list=browser,calendar,camera,clock,contacts,email%20FTU,fm_radio,gallery,marketplace,messages,music,phone,settings,template,usage,video&amp;amp;#038;app=phone&amp;amp;#038;gaia_rev=b8f36518696f3191&amp;amp;#038;gecko_rev=c90b38c47a1d&amp;amp;#038;plot=avg"&gt;existing startup tests&lt;/a&gt; we&amp;#8217;re running with b2gperf, in particular answering the &amp;#8220;is this regression real?&amp;#8221; question.&lt;/p&gt;
+
+&lt;p&gt;Pending work for Q3:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Enable scrolling tests on the Flame. I got these working against the Hamachi &lt;a href="http://wrla.ch/blog/2014/03/its-all-about-the-entropy/"&gt;a few months ago&lt;/a&gt; but because of some weird input issue we&amp;#8217;re seeing we can&amp;#8217;t yet enable them on the Flame. This is being tracked in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1028824"&gt;bug 1028824&lt;/a&gt;. If anyone has background on the behaviour of the touch screen driver for this device I would appreciate some help.&lt;/li&gt;
+ &lt;li&gt;Enable tests for multiple branches on the Flame (currently we&amp;#8217;re only doing master). This is pretty much ready to go (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1017834"&gt;bug 1017834&lt;/a&gt;), just need to land it.&lt;/li&gt;
+ &lt;li&gt;Annotate eideticker graphs with internal benchmark information. Eli Perelman of the FirefoxOS performance team has come up with a standard set of on-load events for the Gaia apps (app chrome loaded, app content loaded, &amp;#8230;) that each app will generate, feeding into tools like b2gperf and test-perf. We want to show this information in Eideticker&amp;#8217;s frame-by-frame analysis (&lt;a href="http://eideticker.mozilla.org/b2g/detail.html?id=2b007f8cfd8b11e3923c10ddb19eacac#/framecannyentropies"&gt;example&lt;/a&gt;) so we can verify that the app&amp;#8217;s behaviour is consistent with what it is claimed. This is being tracked in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1018334"&gt;bug 1018334&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;Re-enable Eideticker for Android and run tests more frequently. Sadly we haven&amp;#8217;t been consistently generating new Eideticker results for Android for the last quarter because of networking issues in the new Mountain View office, where the test rig for those live. One way or another, we want to fix this next quarter and hopefully run tests more frequently against mozilla-inbound (instead of just nightly builds)&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;The above isn&amp;#8217;t an exhaustive list: there&amp;#8217;s much more that we have in mind for the future that&amp;#8217;s not yet scheduled or defined well (e.g. get Eideticker reporting to Treeherder&amp;#8217;s new performance module). If you have any questions or feedback on anything outlined above I&amp;#8217;d love to hear it!&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>It&amp;#8217;s all about the entropy</title>
+   <link>https://wlach.github.io/blog/2014/03/it-8217-s-all-about-the-entropy/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2014-03-it-8217-s-all-about-the-entropy</guid>
+   <pubDate>Fri, 14 Mar 2014 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;So recently I&amp;#8217;ve been exploring new and different methods of measuring things that we care about on FirefoxOS &amp;#8212; like startup time or amount of &lt;a href="http://www.masonchang.com/blog/2014/3/2/wow-such-checkerboard"&gt;checkerboarding&lt;/a&gt;. With Android, where we have a mostly clean signal, these measurements were pretty straightforward. Want to measure startup times? Just capture a video of Firefox starting, then compare the frames pixel by pixel to see how much they differ. When the pixels aren&amp;#8217;t that different anymore, we&amp;#8217;re &amp;#8220;done&amp;#8221;. Likewise, to measure checkerboarding we just calculated the areas of the screen where things were not completely drawn yet, frame-by-frame.&lt;/p&gt;
+
+&lt;p&gt;On FirefoxOS, where we&amp;#8217;re using a camera to measure these things, it has not been so simple. I&amp;#8217;ve already discussed this with respect to startup time in a &lt;a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/"&gt;previous post&lt;/a&gt;. One of the ideas I talk about there is &amp;#8220;entropy&amp;#8221; (or the amount of unique information in the frame). It turns out that this is a pretty deep concept, and is useful for even more things than I thought of at the time. Since this is probably a concept that people are going to be thinking/talking about for a while, it&amp;#8217;s worth going into a little more detail about the math behind it.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href="http://en.wikipedia.org/wiki/Shannon_entropy"&gt;wikipedia article&lt;/a&gt; on information theoretic entropy is a pretty good introduction. You should read it. It all boils down to this formula:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/files/2014/03/wikipedia-entropy-formula.png" alt="wikipedia-entropy-formula" width="401" height="37" class="alignnone size-full wp-image-1014" srcset="/files/2014/03/wikipedia-entropy-formula-300x27.png 300w, /files/2014/03/wikipedia-entropy-formula.png 401w" sizes="(max-width: 401px) 100vw, 401px" /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can see this section of the wikipedia article (and the various articles that it links to) if you want to break down where that comes from, but the short answer is that given a set of random samples, the more different values there are, the higher the entropy will be. Look at it from a probabilistic point of view: if you take a random set of data and want to make predictions on what future data will look like. If it is highly random, it will be harder to predict what comes next. Conversely, if it is more uniform it is easier to predict what form it will take.&lt;/p&gt;
+
+&lt;p&gt;Another, possibly more accessible way of thinking about the entropy of a given set of data would be &amp;#8220;how well would it compress?&amp;#8221;. For example, a bitmap image with nothing but black in it could compress very well as there&amp;#8217;s essentially only 1 piece of unique information in it repeated many times &amp;#8212; the black pixel. On the other hand, a bitmap image of completely randomly generated pixels would probably compress very badly, as almost every pixel represents several dimensions of unique information. For all the statistics terminology, etc. that&amp;#8217;s all the above formula is trying to say.&lt;/p&gt;
+
+&lt;p&gt;So we have a model of entropy, now what? For Eideticker, the question is &amp;#8212; how can we break the frame data we&amp;#8217;re gathering down into a form that&amp;#8217;s amenable to this kind of analysis? The approach I took (on the recommendation of &lt;a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html"&gt;this article&lt;/a&gt;) was to create a histogram with 256 bins (representing the number of distinct possibilities in a black &amp;#38; white capture) out of all the pixels in the frame, then run the formula over that. The exact function I wound up using looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def _get_frame_entropy((i, capture, sobelized)):
+    frame = capture.get_frame(i, True).astype('float')
+    if sobelized:
+        frame = ndimage.median_filter(frame, 3)
+
+        dx = ndimage.sobel(frame, 0)  # horizontal derivative
+        dy = ndimage.sobel(frame, 1)  # vertical derivative
+        frame = numpy.hypot(dx, dy)  # magnitude
+        frame *= 255.0 / numpy.max(frame)  # normalize (Q&amp;amp;D)
+
+    histogram = numpy.histogram(frame, bins=256)[0]
+    histogram_length = sum(histogram)
+    samples_probability = [float(h) / histogram_length for h in histogram]
+    entropy = -sum([p * math.log(p, 2) for p in samples_probability if p != 0])
+
+    return entropy
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/mozilla/eideticker/blob/master/src/videocapture/videocapture/entropy.py#L10"&gt;[Context]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The &amp;#8220;sobelized&amp;#8221; bit allows us to optionally convolve the frame with a sobel filter before running the entropy calculation, which removes most of the data in the capture except for the edges. This is especially useful for FirefoxOS, where the signal has quite a bit of random noise from ambient lighting that artificially inflate the entropy values even in places where there is little actual &amp;#8220;information&amp;#8221;.&lt;/p&gt;
+
+&lt;p&gt;This type of transformation often reveals very interesting information about what&amp;#8217;s going on in an eideticker test. For example, take this video of the user panning down in the contacts app:&lt;/p&gt;
+
+&lt;div style="width: 640px; " class="wp-video"&gt;
+ &lt;video class="wp-video-shortcode" id="video-1012-2" width="640" height="917" preload="metadata" controls="controls"&gt;
+  &lt;source type="video/webm" src="/files/2014/03/contacts-scrolling-movie.webm?_=2" /&gt;&lt;a href="/files/2014/03/contacts-scrolling-movie.webm"&gt;/files/2014/03/contacts-scrolling-movie.webm&lt;/a&gt;&lt;/video&gt;&lt;/div&gt;
+
+&lt;p&gt;If you graph the entropies of the frame of the capture using the formula above you, you get a graph like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2014/03/contacts-scrolling-entropy-graph.png"&gt;&lt;img src="/files/2014/03/contacts-scrolling-entropy-graph.png" alt="contacts scrolling entropy graph" width="933" height="482" class="alignnone size-full wp-image-1022" srcset="/files/2014/03/contacts-scrolling-entropy-graph-300x154.png 300w, /files/2014/03/contacts-scrolling-entropy-graph.png 933w" sizes="(max-width: 933px) 100vw, 933px" /&gt;&lt;/a&gt;
+ &lt;br /&gt;&lt;a href="http://eideticker.wrla.ch/b2g/detail.html?id=3f7b7c88a9ed11e380c5f0def1767b24#/framesobelentropies"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The Y axis represents entropy, as calculated by the code above. There is no inherently &amp;#8220;right&amp;#8221; value for this &amp;#8212; it all depends on the application you&amp;#8217;re testing and what you expect to see displayed on the screen. In general though, higher values are better as it indicates more frames of the capture are &amp;#8220;complete&amp;#8221;.&lt;/p&gt;
+
+&lt;p&gt;The region at the beginning where it is at about 5.0 represents the contacts app with a set of contacts fully displayed (at startup). The &amp;#8220;flat&amp;#8221; regions where the entropy is at roughly 4.25? Those are the areas where the app is &amp;#8220;checkerboarding&amp;#8221; (blanking out waiting for graphics or layout engine to draw contact information). Click through to the original and swipe over the graph to see what I mean.&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s easy to see what a hypothetical ideal end state would be for this capture: a graph with a smooth entropy of about 5.0 (similar to the start state, where all contacts are fully drawn in). We can track our progress towards this goal (or our deviation from it), by watching the eideticker b2g dashboard and seeing if the summation of the entropy values for frames over the entire test increases or decreases over time. If we see it generally increase, that probably means we&amp;#8217;re seeing less checkerboarding in the capture. If we see it decrease, that might mean we&amp;#8217;re now seeing checkerboarding where we weren&amp;#8217;t before.&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s too early to say for sure, but over the past few days the trend has been positive:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2014/03/entropy-levels-climbing.png"&gt;&lt;img src="/files/2014/03/entropy-levels-climbing.png" alt="entropy-levels-climbing" width="822" height="529" class="alignnone size-full wp-image-1025" srcset="/files/2014/03/entropy-levels-climbing-300x193.png 300w, /files/2014/03/entropy-levels-climbing.png 822w" sizes="(max-width: 822px) 100vw, 822px" /&gt;&lt;/a&gt;
+ &lt;br /&gt;&lt;a href="http://eideticker.wrla.ch/b2g/#/inari/b2g-contacts-scrolling/overallentropy"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;(note that there were some problems in the way the tests were being run before, so results before the 12th should not be considered valid)&lt;/p&gt;
+
+&lt;p&gt;So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&amp;#8217;s find them!&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Eideticker for FirefoxOS: Becoming more useful</title>
+   <link>https://wlach.github.io/blog/2014/03/eideticker-for-firefoxos-becoming-more-useful/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2014-03-eideticker-for-firefoxos-becoming-more-useful</guid>
+   <pubDate>Sun, 09 Mar 2014 05:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Time for a long overdue eideticker-for-firefoxos update. &lt;a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/"&gt;Last time we were here&lt;/a&gt; (almost 5 months ago! man time flies), I was discussing methodologies for measuring startup performance. Since then, &lt;a href="http://blargon7.com/"&gt;Dave Hunt&lt;/a&gt; and myself have been doing lots of work to make Eideticker more robust and useful. Notably, we now have a setup in London running a suite of Eideticker tests on the latest version of FirefoxOS on the Inari on a daily basis, reporting to &lt;a href="http://eideticker.mozilla.org/b2g"&gt;http://eideticker.mozilla.org/b2g&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2014/03/b2g-contacts-startup-dashboard.png"&gt;&lt;img src="/files/2014/03/b2g-contacts-startup-dashboard.png" alt="b2g-contacts-startup-dashboard" width="840" height="601" class="alignnone size-full wp-image-1005" srcset="/files/2014/03/b2g-contacts-startup-dashboard-300x214.png 300w, /files/2014/03/b2g-contacts-startup-dashboard.png 840w" sizes="(max-width: 840px) 100vw, 840px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;There were more than a few false starts with and some of the earlier data is not to be entirely trusted&amp;#8230; but it now seems to be chugging along nicely, hopefully providing startup numbers that provide a useful counterpoint to the &lt;a href="https://datazilla.mozilla.org/b2g"&gt;datazilla startup numbers&lt;/a&gt; we&amp;#8217;ve already been collecting for some time. There still seem to be some minor problems, but in general I am becoming more and more confident in it as time goes on.&lt;/p&gt;
+
+&lt;p&gt;One feature that I am particularly proud of is the detail view, which enables you to see frame-by-frame what&amp;#8217;s going on. Click on any datapoint on the graph, then open up the view that gives an account of what eideticker is measuring. Hover over the graph and you can see what the video looks like at any point in the capture. This not only lets you know that something regressed, but how. For example, in the messages app, you can scan through this view to see exactly when the first message shows up, and what exact state the application is in when Eideticker says it&amp;#8217;s &amp;#8220;done loading&amp;#8221;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2014/03/capture-detail-view.png"&gt;&lt;img src="/files/2014/03/capture-detail-view.png" alt="Capture Detail View" width="964" height="843" class="alignnone size-full wp-image-1008" srcset="/files/2014/03/capture-detail-view-300x262.png 300w, /files/2014/03/capture-detail-view.png 964w" sizes="(max-width: 964px) 100vw, 964px" /&gt;&lt;/a&gt;
+ &lt;br /&gt;&lt;a href="http://eideticker.wrla.ch/b2g/framediff.html?id=3819a484a6d611e3ab89f0def1767b24"&gt;[link to original]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;(apologies for the low quality of the video &amp;#8212; should be fixed with &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=980479"&gt;this bug&lt;/a&gt; next week)&lt;/p&gt;
+
+&lt;p&gt;As it turns out, this view has also proven to be particularly useful when working with the new entropy measurements in Eideticker which I&amp;#8217;ve been using to measure checkerboarding (redraw delay) on FirefoxOS. More on that next week.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Automatically measuring startup / load time with Eideticker</title>
+   <link>https://wlach.github.io/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2013-10-automatically-measuring-startup-load-time-with-eideticker</guid>
+   <pubDate>Thu, 17 Oct 2013 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;So we&amp;#8217;ve been using Eideticker to automatically measure startup/pageload times for about a year now on Android, and more recently on FirefoxOS as well (albeit not automatically). This gives us nice and pretty graphs like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2013/10/flot-startup-times-gn.png"&gt;&lt;img src="/files/2013/10/flot-startup-times-gn.png" alt="flot-startup-times-gn" width="620" height="568" class="alignnone size-full wp-image-986" srcset="/files/2013/10/flot-startup-times-gn-300x274.png 300w, /files/2013/10/flot-startup-times-gn.png 620w" sizes="(max-width: 620px) 100vw, 620px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ok, so we&amp;#8217;re generating numbers and graphing them. That&amp;#8217;s great. But what&amp;#8217;s really going on behind the scenes? I&amp;#8217;m glad you asked. The story is a bit different depending on which platform you&amp;#8217;re talking about.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Android&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;On Android we connect Eideticker to the device&amp;#8217;s HDMI out, so we count on a nearly pixel-perfect signal. In practice, it isn&amp;#8217;t quite, but it is within a few RGB values that we can easily filter for. This lets us come up with a pretty good mechanism for determining when a page load or app startup is finished: just compare frames, and say we&amp;#8217;ve &amp;#8220;stopped&amp;#8221; when the pixel differences between frames are negligible (previously defined at 2048 pixels, now 4096 &amp;#8212; see below). Eideticker&amp;#8217;s new frame difference view lets us see how this works. Look at this graph of application startup:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2013/10/frame-difference-android-startup.png"&gt;&lt;img src="/files/2013/10/frame-difference-android-startup.png" alt="frame-difference-android-startup" width="803" height="514" class="alignnone size-full wp-image-973" srcset="/files/2013/10/frame-difference-android-startup-300x192.png 300w, /files/2013/10/frame-difference-android-startup.png 803w" sizes="(max-width: 803px) 100vw, 803px" /&gt;&lt;/a&gt;
+ &lt;br /&gt;&lt;a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;What&amp;#8217;s going on here? Well, we see some huge jumps in the beginning. This represents the animated transitions that Android makes as we transition from the SUTAgent application (don&amp;#8217;t ask) to the beginnings of the FirefoxOS browser chrome. You&amp;#8217;ll notice though that there&amp;#8217;s some more changes that come in around the 3 second mark. This is when the site bookmarks are fully loaded. If you load the original page (link above) and swipe your mouse over the graph, you can see what&amp;#8217;s going on for yourself.&lt;/p&gt;
+
+&lt;p&gt;This approach is not completely without problems. It turns out that there is sometimes some minor churn in the display even when the app is for all intents and purposes started. For example, &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=922770"&gt;sometimes the scrollbar fading out of view can result in a significantish pixel value change&lt;/a&gt;, so I recently upped the threshold of pixels that are different from 2048 to 4096. We also recently encountered a &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=926997"&gt;silly problem&lt;/a&gt; with a random automation app displaying &amp;#8220;toasts&amp;#8221; which caused results to artificially spike. More tweaking may still be required. However, on the whole I&amp;#8217;m pretty happy with this solution. It gives useful, undeniably objective results whose meaning is easy to understand.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FirefoxOS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;So as mentioned previously, we use a camera on FirefoxOS to record output instead of HDMI output. Pretty unsurprisingly, this is much noisier. See this movie of the contacts app starting and note all the random lighting changes, for example:&lt;/p&gt;
+
+&lt;div style="width: 409px; " class="wp-video"&gt;&lt;!--[if lt IE 9]&gt;&lt;![endif]--&gt;
+ &lt;video class="wp-video-shortcode" id="video-972-1" width="409" height="580" preload="metadata" controls="controls"&gt;
+  &lt;source type="video/webm" src="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm?_=1" /&gt; &lt;a href="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm"&gt;/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm&lt;/a&gt;&lt;/video&gt;&lt;/div&gt;
+
+&lt;p&gt;My experience has been that pixel differences can be so great between visually identical frames on an eideticker capture on these devices that it&amp;#8217;s pretty much impossible to settle on when startup is done using the frame difference method. It&amp;#8217;s of course possible to detect very large scale changes, but the small scale ones (like the contacts actually appearing in the example above) are very hard to distinguish from random differences in the amount of light absorbed by the camera sensor. Tricks like using median filtering (a.k.a. &amp;#8220;blurring&amp;#8221;) help a bit, but not much. Take a look at this graph, for example:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2013/10/plotly-contacts-load-pixeldiff.png"&gt;&lt;img src="/files/2013/10/plotly-contacts-load-pixeldiff.png" alt="plotly-contacts-load-pixeldiff" width="531" height="679" class="alignnone size-full wp-image-980" srcset="/files/2013/10/plotly-contacts-load-pixeldiff-234x300.png 234w, /files/2013/10/plotly-contacts-load-pixeldiff.png 531w" sizes="(max-width: 531px) 100vw, 531px" /&gt;&lt;/a&gt;
+ &lt;br /&gt;&lt;a href="https://plot.ly/~WilliamLachance/3"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You&amp;#8217;ll note that the pixel differences during &amp;#8220;static&amp;#8221; parts of the capture are highly variable. This is because the pixel difference depends heavily on how &amp;#8220;bright&amp;#8221; each frame is: parts of the capture which are black (e.g. a contacts icon with a black background) have a much lower difference between them than parts that are bright (e.g. the contacts screen fully loaded).&lt;/p&gt;
+
+&lt;p&gt;After a day or so of experimenting and research, I settled on an approach which seems to work pretty reliably. Instead of comparing the frames directly, I measure the &lt;a href="http://en.wikipedia.org/wiki/Entropy"&gt;entropy&lt;/a&gt; of the &lt;a href="http://en.wikipedia.org/wiki/Image_histogram"&gt;histogram&lt;/a&gt; of colours used in each frame (essentially just an indication of brightness in this case, see &lt;a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html"&gt;this article&lt;/a&gt; for more on calculating it), then compare that of each frame with the average of the same measure over 5 previous frames (to account for the fact that two frames may be arbitrarily different, but that is unlikely that a sequence of frames will be). This seems to work much better than frame difference in this environment: although there are plenty of minute differences in light absorption in a capture from this camera, the overall color composition stays mostly the same. See this graph:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2013/10/plotly-contacts-load-entropy.png"&gt;&lt;img src="/files/2013/10/plotly-contacts-load-entropy.png" alt="plotly-contacts-load-entropy" width="546" height="674" class="alignnone size-full wp-image-979" srcset="/files/2013/10/plotly-contacts-load-entropy-243x300.png 243w, /files/2013/10/plotly-contacts-load-entropy.png 546w" sizes="(max-width: 546px) 100vw, 546px" /&gt;&lt;/a&gt;
+ &lt;br /&gt;&lt;a href="https://plot.ly/~WilliamLachance/5"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&amp;#8217;s not nearly as pronounced as before. In practice, I&amp;#8217;ve been able to get extremely consistent numbers with a reasonable &amp;#8220;threshold&amp;#8221; of &amp;#8220;0.05&amp;#8221;.&lt;/p&gt;
+
+&lt;p&gt;In Eideticker I&amp;#8217;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &amp;#8220;pixel differences&amp;#8221; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&amp;#8217;t count on light composition changing the same way for those cases. My initial thought was to use &lt;a href="http://en.wikipedia.org/wiki/Edge_detection"&gt;edge detection&lt;/a&gt; (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>First Eideticker Responsiveness Tests</title>
+   <link>https://wlach.github.io/blog/2013/10/first-eideticker-responsiveness-tests/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2013-10-first-eideticker-responsiveness-tests</guid>
+   <pubDate>Mon, 07 Oct 2013 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Time for another update on Eideticker. In the last quarter, I&amp;#8217;ve been working on two main items:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;Responsiveness tests (Android / FirefoxOS)&lt;/li&gt;
+ &lt;li&gt;Eideticker for FirefoxOS&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;The focus of this post is the responsiveness work. I&amp;#8217;ll talk about Eideticker for FirefoxOS soon.&lt;/p&gt;
+
+&lt;p&gt;So what do I mean by responsiveness? At a high-level, I mean how quickly one sees a response after performing an action on the device. For example, if I perform a swipe gesture to scroll the content down while browsing CNN.com, how long does it take after
+ &lt;br /&gt;I start the gesture for the content to &lt;em&gt;visibly&lt;/em&gt; scroll down? If you break it down, there&amp;#8217;s a multi-step process that happens behind the scenes after a user action like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2013/10/input-events.png"&gt;&lt;img src="/files/2013/10/input-events.png" alt="input-events" width="880" height="752" class="alignnone size-full wp-image-957" srcset="/files/2013/10/input-events-300x256.png 300w, /files/2013/10/input-events.png 880w" sizes="(max-width: 880px) 100vw, 880px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If anywhere in the steps above, there is a significant delay, the user experience is likely to be bad. Usability research
+ &lt;br /&gt;suggests that any lag that is consistently above 100 milliseconds will lead the user to &lt;a href="http://stackoverflow.com/questions/536300/what-is-the-shortest-perceivable-application-response-delay"&gt;perceive things as being laggy&lt;/a&gt;. To keep our users happy, we need to do our bit to make sure that we respond quickly at all levels that we control (just the application layer on Android, but pretty much everything on FirefoxOS). Even if we can&amp;#8217;t complete the work required on our end to completely respond to the user&amp;#8217;s desire, we should at least display something to acknowledge that things have changed.&lt;/p&gt;
+
+&lt;p&gt;But you can&amp;#8217;t improve what you can&amp;#8217;t measure. Fortunately, we have the means to do calculate of the time delta between &lt;em&gt;most&lt;/em&gt; of the steps above. I learned from &lt;a href="http://taras.glek.net/"&gt;Taras Glek&lt;/a&gt; this weekend that it should be &lt;a href="http://hackaday.com/2012/05/04/reaching-out-to-a-touch-screen-with-a-microcontroller/"&gt;possible to simulate&lt;/a&gt; the actual capacitative touch event on a modern touch screen. We can recognize when the hardware event is available to be consumed by userspace by monitoring the `/dev/input` subsystem. And once the event reaches the application (the Android or FirefoxOS application) there&amp;#8217;s no reason we can&amp;#8217;t add instrumentation in all sorts of places to track the processing of both the event and the rendering of the response.&lt;/p&gt;
+
+&lt;p&gt;My working hypothesis is that it&amp;#8217;s application-level latency (i.e. the time between the application receiving the event and being able to act on it) that dominates, so that&amp;#8217;s what I decided to measure. This is purely based on intuition and by no means proven, so we should test this (it would certainly be an interesting exercise!). However, even if it turns out that there are significant problems here, we still care about the other bits of the stack &amp;#8212; there&amp;#8217;s lots of potentially-latency-introducing churn there and the risk of regression in our own code is probably higher than it is elsewhere since it changes so much.&lt;/p&gt;
+
+&lt;p&gt;Last year, I wrote up a tool called &lt;a href="http://wrla.ch/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns/?utm_source=rss&amp;amp;#038;utm_medium=rss&amp;amp;#038;utm_campaign=the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns"&gt;Orangutan&lt;/a&gt; that can directly inject input events into an input device on Android or FirefoxOS. It seemed like a fairly straightforward extension of the tool to output timestamps when these events were registered. It was. Then, by &lt;a href="http://wrla.ch/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/"&gt;synchronizing the time&lt;/a&gt; between the device and the machine doing the capturing, we can then correlate the input timestamps to events. To help visualize what&amp;#8217;s going on, I generated this view:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2013/10/taskjs-framediff-view.png"&gt;&lt;img src="/files/2013/10/taskjs-framediff-view.png" alt="taskjs-framediff-view" width="583" height="418" class="alignnone size-full wp-image-962" srcset="/files/2013/10/taskjs-framediff-view-300x215.png 300w, /files/2013/10/taskjs-framediff-view.png 583w" sizes="(max-width: 583px) 100vw, 583px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Scrolling%20on%20taskjs.org%20%282013-10-06%29&amp;amp;#038;video=videos/video-1381129971.63.webm&amp;amp;#038;framediff=framediffs/framediff-1381129990.79.json&amp;amp;#038;actionlog=actionlogs/action-log-1381129990.79.json"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The X axis in that graph represents time. The Y-axis represents the difference between the frame at that time with the previous one in number of pixels. The &amp;#8220;red&amp;#8221; represents periods in capture when events are ongoing (we use different colours only to
+ &lt;br /&gt;distinguish distinct events). &lt;sup&gt;&lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;For a first pass at measuring responsiveness, I decided to measure the time between the first event being initiated and there being a significant frame difference (i.e. an observable response to the action). You can see some preliminary results on the eideticker dashboard:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2013/10/taskjs-responsiveness.png"&gt;&lt;img src="/files/2013/10/taskjs-responsiveness.png" alt="taskjs-responsiveness" width="637" height="540" class="alignnone size-full wp-image-956" srcset="/files/2013/10/taskjs-responsiveness-300x254.png 300w, /files/2013/10/taskjs-responsiveness.png 637w" sizes="(max-width: 637px) 100vw, 637px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://eideticker.mozilla.org/#/samsung-gn/taskjs/timetoresponse"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The results seem pretty highly variable at first because I was synchronizing time between the device and an external ntp server, rather than the host machine. I believe this is now fixed, hopefully giving us results that will indicate when regressions occur. As time goes by, we may want to craft some special eideticker tests for responsiveness specifically (e.g. a site where there is heavy javascript background processing).&lt;/p&gt;
+
+&lt;p&gt;&lt;sup&gt;&lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;em&gt;Incidentally, these &amp;#8220;frame difference&amp;#8221; graphs are also quite useful for understanding where and how application startup has regressed in Fennec &amp;#8212; try opening these two startup views side-by-side (before/after a large regression) and spot the difference: &lt;a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-20%29&amp;amp;#038;video=videos/video-1377070981.95.webm&amp;amp;#038;framediff=framediffs/framediff-1377070991.95.json"&gt;[1]&lt;/a&gt; and &lt;a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-23%29&amp;amp;#038;video=videos/video-1377330042.28.webm&amp;amp;#038;framediff=framediffs/framediff-1377330051.67.json"&gt;[2]&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Simple command-line ntp client for Android and FirefoxOS</title>
+   <link>https://wlach.github.io/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2013-07-simple-command-line-ntp-client-for-android-and-firefoxos</guid>
+   <pubDate>Mon, 08 Jul 2013 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Today I did a quick port of Larry Doolittle&amp;#8217;s &lt;a href="http://doolittle.icarus.com/ntpclient/"&gt;ntpclient program&lt;/a&gt; to Android and FirefoxOS. Basically this lets you easily synchronize your device&amp;#8217;s time to that of a central server. Yes, there&amp;#8217;s lots and lots of Android &amp;#8220;applications&amp;#8221; which let you do this, but I wanted to be able to do this from the command line because that&amp;#8217;s how I roll. If you&amp;#8217;re interested, source and instructions are here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/wlach/ntpclient-android"&gt;https://github.com/wlach/ntpclient-android&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For those curious, no, I didn&amp;#8217;t just do this for fun. For next quarter, we want to write some Eideticker-based responsiveness tests for FirefoxOS and Android. For example, how long does it take from the time you tap on an icon in the homescreen on FirefoxOS to when the application is fully loaded? Or on Android, how long does it take to see a full list of sites in the awesomebar from the time you tap on the URL field and enter your search term?&lt;/p&gt;
+
+&lt;p&gt;Because an Eideticker test run involves two different machines (a host machine which controls the device and captures video of it in action, as well as the device itself), we need to use timestamps to really understand when and how events are being sent to the device. To do that reliably, we really need some easy way of synchronizing time between two machines (or at least accounting for the difference in their clocks, which amounts to about the same thing). NTP struck me as being the easiest, most standard way of doing this.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Proof of concept Eideticker dashboard for FirefoxOS</title>
+   <link>https://wlach.github.io/blog/2013/05/proof-of-concept-eideticker-dashboard-for-firefoxos/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2013-05-proof-of-concept-eideticker-dashboard-for-firefoxos</guid>
+   <pubDate>Mon, 06 May 2013 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I just put up a proof of concept Eideticker dashboard for FirefoxOS &lt;a href="http://eideticker.wrla.ch/b2g"&gt;here&lt;/a&gt;. Right now it has two days worth of data, manually sampled from an Unagi device running b2g18. Right now there are two tests: one the measures the &amp;#8220;speed&amp;#8221; of the contacts application scrolling, another that measures the amount of time it takes for the contacts application to be fully loaded.&lt;/p&gt;
+
+&lt;p&gt;For those not already familiar with it, Eideticker is a benchmarking suite which captures live video data coming from a device and analyzes it to determine performance. This lets us get data which is more representative of actual user experience (as opposed to an oft artificial benchmark). For example, Eideticker measures contacts startup as taking anywhere between 3.5 seconds and 4.5 seconds, versus than the 0.5 to 1 seconds that the &lt;a href="https://datazilla.mozilla.org/b2g/?branch=master&amp;amp;#038;range=7&amp;amp;#038;test=cold_load_time&amp;amp;#038;app_list=contacts&amp;amp;#038;app=contacts&amp;amp;#038;gaia_rev=114bf216de0a19f7&amp;amp;#038;gecko_rev=9c0de2afd22a8476"&gt;existing datazilla benchmarks&lt;/a&gt; show. What accounts for the difference? If you step through an eideticker-captured video, you can see that even though &lt;em&gt;something&lt;/em&gt; appears very quickly, not all the contacts are displayed until the 3.5 second mark. There is a gap between an app being reported as &amp;#8220;loaded&amp;#8221; and it being fully available for use, which we had not been measuring until now.&lt;/p&gt;
+
+&lt;p&gt;At this point, I am most interested in hearing from FirefoxOS developers on new tests that would be interesting and useful to track performance of the system on an ongoing basis. I&amp;#8217;d obviously prefer to focus on things which have been difficult to measure accurately through other means. My setup is rather fiddly right now, but hopefully soon we can get some useful numbers going on an ongoing basis, as we &lt;a href="http://eideticker.wrla.ch"&gt;do already&lt;/a&gt; for Firefox for Android.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Actual useful FirefoxOS Eideticker results at last</title>
+   <link>https://wlach.github.io/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2013-04-actual-useful-firefoxos-eideticker-results-at-last</guid>
+   <pubDate>Mon, 22 Apr 2013 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Another update on getting &lt;a href="http://wrla.ch/blog/2013/02/eideticker-for-firefoxos/"&gt;Eideticker working with FirefoxOS&lt;/a&gt;. Once again this is sort of high-level, looking forward to writing something more in-depth soon now that we have the basics working.&lt;/p&gt;
+
+&lt;p&gt;I finally got the last kinks out of the rig I was using to capture live video from FirefoxOS phones using the Point Grey devices last week. In order to make things reasonable I had to write some custom code to isolate the actual device screen from the rest of capture and a few other things. The setup looks interesting (reminds me a bit of something out of the War of the Worlds):&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2013/04/eideticker-pointgrey-mounted.jpg"&gt;&lt;img src="/files/2013/04/eideticker-pointgrey-mounted.jpg" alt="eideticker-pointgrey-mounted" width="512" height="683" class="alignnone size-full wp-image-894" srcset="/files/2013/04/eideticker-pointgrey-mounted-224x300.jpg 224w, /files/2013/04/eideticker-pointgrey-mounted.jpg 512w" sizes="(max-width: 512px) 100vw, 512px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s some example video of a test I wrote up to measure the performance of contacts scrolling performance (measured at a very respectable 44 frames per second, in case you wondering):&lt;/p&gt;
+
+&lt;video src="/files/eideticker/contacts-scrolling-pointgrey.webm" controls="controls"&gt;&lt;/video&gt;
+
+&lt;p&gt;Surprisingly enough, I didn&amp;#8217;t wind up having to write up any code to compensate for a noisy image. Of course there&amp;#8217;s a certain amount of variance in every frame depending on how much light is hitting the camera sensor at any particular moment, but apparently not enough to interfere with getting useful results in the tests I&amp;#8217;ve been running.&lt;/p&gt;
+
+&lt;p&gt;Likely next step: Create some kind of chassis for mounting both the camera and device on a permanent basis (instead of an adhoc one on my desk) so we can start running these sorts of tests on a daily basis, much like we currently do with Android on the &lt;a href="http://eideticker.wrla.ch"&gt;Eideticker Dashboard&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;As an aside, I&amp;#8217;ve been really impressed with both the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Marionette"&gt;Marionette&lt;/a&gt; framework and the gaiatests python module that was written up for FirefoxOS. Writing the above test took just 5 minutes &amp;#8212; and &lt;a href="https://github.com/mozilla/eideticker/blob/master/src/tests/b2g/appscrolling/scroll.py"&gt;the code&lt;/a&gt; is quite straightforward. Quite the pleasant change from my various efforts in Android automation.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Eideticker: Limitations in cross-browser performance testing</title>
+   <link>https://wlach.github.io/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2013-03-eideticker-limitations-in-cross-browser-performance-testing</guid>
+   <pubDate>Wed, 20 Mar 2013 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Last summer I &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;wrote a bit&lt;/a&gt; about using &lt;a href="https://wiki.mozilla.org/Project_Eideticker"&gt;Eideticker&lt;/a&gt; to measure the relative performance of Firefox for Android versus other browsers (Chrome, stock, etc.). At the time I was pretty optimistic about Eideticker&amp;#8217;s usefulness as a truly &amp;#8220;objective&amp;#8221; measure of user experience that would give us a more accurate view of how we compared against the competition than traditional benchmarking suites (which more often than not, measure things that a user will never see normally when browsing the web). Since then, there&amp;#8217;s been some things that I&amp;#8217;ve discovered, as well as some developments in terms of the &amp;#8220;state of the art&amp;#8221; in mobile browsing that have caused me to reconsider that view &amp;#8212; while I haven&amp;#8217;t given up entirely on this concept (and I&amp;#8217;m still very much convinced of eideticker&amp;#8217;s utility as an internal benchmarking tool), there&amp;#8217;s definitely some limitations in terms of what we can do that I&amp;#8217;m not sure how to overcome.&lt;/p&gt;
+
+&lt;p&gt;Essentially, there are currently three different types of Eideticker performance tests:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Animation tests: Measure the smoothness of an animation by comparing frames and seeing how many are different. Currently the only example of this is the &lt;a href="http://eideticker.wrla.ch/#/samsung-gn/clock/fps"&gt;canvas &amp;#8220;clock&amp;#8221; test&lt;/a&gt;, but many others are possible.&lt;/li&gt;
+ &lt;li&gt;Startup tests: Measure the amount of time it takes from when the application is launched to when the browser is fully running/available. There are currently two variants of this test in the dashboard, both measure the amount of time taken to fully render Firefox&amp;#8217;s home screen (the only difference between the two is whether the browser profile is fully initialized). The &lt;a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe"&gt;dirty profile&lt;/a&gt; benchmark probably most closely resembles what a user would usually experience.&lt;/li&gt;
+ &lt;li&gt;Scrolling tests: Measure the amount of undrawn areas when the user is panning a website. Most of the current eideticker tests are of this kind. A good example of this is the &lt;a href="http://eideticker.wrla.ch/#/samsung-gn/taskjs/fps"&gt;taskjs benchmark&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;In this blog post, I&amp;#8217;m going to focus on startup and scrolling tests. Animation tests are interesting, but they are also generally the sorts of tests that are easiest to measure in synthetic ways (e.g. by putting a frame counter in your javascript code) and have thus far not been a huge focus for Eideticker development.&lt;/p&gt;
+
+&lt;p&gt;As it turns out, it&amp;#8217;s unfortunately been rather difficult to create truly objective tests which measure the difference between browsers in these two categories. I&amp;#8217;ll go over them in order.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Startup tests&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There are essentially two types of startup tests: one where you measure the amount of time to get to the browser&amp;#8217;s home screen when you explicitly launch the app (e.g. by pressing the Firefox icon in the app chooser), another where you load a web page in a browser from another app (e.g. by clicking on a link in the Twitter application).&lt;/p&gt;
+
+&lt;p&gt;The first is actually fairly easy to test across browsers, although we are not currently. There&amp;#8217;s not really a good reason for that, it was just an oversight, so I filed &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=852744"&gt;bug 852744&lt;/a&gt; to add something like this.&lt;/p&gt;
+
+&lt;p&gt;The second case (startup to the browser&amp;#8217;s homescreen) is a bit more difficult. The problem here is that, in a nutshell, an apples to apples comparison is very difficult if not impossible simply because different browsers do different things when the user presses the application icon. Here&amp;#8217;s what we see with Firefox:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/files/eideticker/firefox-startup.png" style="width:25%;" /&gt;&lt;/p&gt;
+
+&lt;p&gt;And here&amp;#8217;s what we see with Chrome:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/files/eideticker/chrome-startup.png" style="width:25%;" /&gt;&lt;/p&gt;
+
+&lt;p&gt;And here&amp;#8217;s what we see with the stock browser:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/files/eideticker/stock-startup.png" style="width:25%;" /&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see Chrome and the stock browser are totally different: they try to &amp;#8220;restore&amp;#8221; the browser back to its state from the last time (in Chrome&amp;#8217;s case, I was last visiting taskjs.org, in Stock&amp;#8217;s case, I was just on the homepage).&lt;/p&gt;
+
+&lt;p&gt;Personally I prefer Firefox&amp;#8217;s behaviour (generally I want to browse somewhere new when I press the icon on my phone), but that&amp;#8217;s really beside the point. It&amp;#8217;s possible to hack around what chrome is doing by restoring the profile between sessions to some sort of clean &amp;#8220;new tab&amp;#8221; state, but at that point you&amp;#8217;re not really reproducing a realistic user scenario. Sure, we can draw a comparison, but how valid is it really? It seems to me that the comparison is mostly only useful in a very broad &amp;#8220;how quickly does the user see something useful&amp;#8221; sense.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Panning tests&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I had quite a bit of hope for these initially. They seemed like a place where Eideticker could do something that conventional benchmarking suites couldn&amp;#8217;t, as things like panning a web page are not presently possible to do in JavaScript. The main measure I tried to compare against was something called &amp;#8220;checkerboarding&amp;#8221;, which essentially represents the amount of time that the user waits for the page to redraw when panning around.&lt;/p&gt;
+
+&lt;p&gt;At the time that I wrote these tests, most browsers displayed regions that were not yet drawn while panning using the page background. We figured that it would thus be possible to detect regions of the page which were not yet drawn by looking for the background color while initiating a panning action. I thus hacked up existing web pages to have a magenta background, then wrote some image analysis code to detect regions that were that color (under the assumption that magenta is only rarely seen in webpages). It worked pretty well.&lt;/p&gt;
+
+&lt;p&gt;The world&amp;#8217;s moved on a bit since I wrote that: modern browsers like Chrome and Firefox use something like progressive drawing to display a lower resolution &amp;#8220;tile&amp;#8221; where possible in this case, so the user at least sees something resembling the actual page while panning on a slower device. To see what I mean, try visiting a slow-to-render site like taskjs.org and try panning down quickly. You should see something like this (click to expand):&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/eideticker/firefox-partialy-drawn.png"&gt;&lt;img src="/files/eideticker/firefox-partialy-drawn.png" style="width:50%;" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, while this is certainly a better user experience, it is not so easy to detect and measure. For Firefox, we&amp;#8217;ve disabled this behaviour so that we see the old checkerboard pattern. This is useful for our internal measurements (we can see both if our drawing code as well as our heuristics about when to draw are getting better or worse over time) but it only works for us.&lt;/p&gt;
+
+&lt;p&gt;If anyone has any suggestions on what to do here, let me know as I&amp;#8217;m a bit stuck. There are other metrics we could still compare against (i.e. how smooth is the panning animation aka frames per second?) but these aren&amp;#8217;t nearly as interesting.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Follow up on &amp;#8220;Finding a Camera for Eideticker&amp;#8221;</title>
+   <link>https://wlach.github.io/blog/2013/03/follow-up-on-8220-finding-a-camera-for-eideticker-8221/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2013-03-follow-up-on-8220-finding-a-camera-for-eideticker-8221</guid>
+   <pubDate>Fri, 08 Mar 2013 05:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Quick update on my &lt;a href="http://wrla.ch/blog/2013/02/finding-a-camera-for-eideticker/"&gt;last post&lt;/a&gt; about finding some kind of camera suitable for use in automated performance testing of fennec and b2g with eideticker. Shortly after I wrote that, I found out about a company called &lt;a href="http://ptgrey.com"&gt;Point Grey Research&lt;/a&gt; which manufactures custom web cameras intended for exactly the sorts of things we&amp;#8217;re doing. Initial results with the &lt;a href="http://ww2.ptgrey.com/USB3/Flea3"&gt;Flea3 camera&lt;/a&gt; I ordered from them are quite promising:&lt;/p&gt;
+
+&lt;video width="400px" src="/files/eideticker/pointgrey-taskjs.webm" controls="controls"&gt;&lt;/video&gt;
+
+&lt;p&gt;(the actual capture is even higher quality than that would suggest&amp;#8230; some detail is lost in the conversion to webm)&lt;/p&gt;
+
+&lt;p&gt;There seems to be some sort of issue with the white balance in that capture which is causing a flashing effect (I suspect this just involves flipping some kind of software setting&amp;#8230; still trying to grok their SDK), and we&amp;#8217;ll need to create some sort of enclosure for the setup so ambient light doesn&amp;#8217;t interfere with the capture&amp;#8230; but overall I&amp;#8217;m pretty optimistic about this baby. 60 frames per second, very high resolution (1280&amp;#215;960), no issues with HDMI (since it&amp;#8217;s just a USB camera), relatively inexpensive.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Finding a camera for Eideticker</title>
+   <link>https://wlach.github.io/blog/2013/02/finding-a-camera-for-eideticker/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2013-02-finding-a-camera-for-eideticker</guid>
+   <pubDate>Tue, 19 Feb 2013 05:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Ok, so as I mentioned &lt;a href="http://wrla.ch/blog/2013/02/eideticker-for-firefoxos/"&gt;last time&lt;/a&gt; I&amp;#8217;ve been looking into making Eideticker work for devices without native HDMI output by capturing their output with some kind of camera. So far I&amp;#8217;ve tried four different DSLRs for this task, which have all been inadequate for different reasons. I was originally just going to write an email about this to a few concerned parties, but then figured I may as well structure it into a blog post. Maybe someone will find it useful (or better yet, have some ideas.)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Elmo MO&amp;ndash;1&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is the device I mentioned last time. Easy to set up, plays nicely with the Decklink capture card we&amp;#8217;re using for Eideticker. It seemed almost perfect, except for that:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;The image quality is &lt;em&gt;really&lt;/em&gt; bad (beaten even by $200 standard digital camera). Tons of noise, picture quality really bad. Not *necessarily* a deal breaker, but it still sucks.&lt;/li&gt;
+ &lt;li&gt;More importantly, there seems to be no way of turning off the auto white balance adjustment. This makes automated image analysis impossible if the picture changes, as is highlighted in this video:   
+  &lt;video width="400px" src="/files/eideticker/elmo-white-balance-problem.webm" controls="controls"&gt;&lt;/video&gt;&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Canon Rebel T4i&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;This is the first camera that was recommended to me at the camera shop I&amp;#8217;ve been going to. It does have an HDMI output signal, but it&amp;#8217;s not &amp;#8220;clean&amp;#8221;. This &lt;a href="http://www.hireacamera.com/blog/index.asp?post=canon-eos-650d--hdmi-explained"&gt;blog post&lt;/a&gt; explains the details better than I could. Next.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nikon D600&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Supposedly does native clean 720p output, but unfortunately the &lt;a href="http://vimeo.com/49952287"&gt;output is in a &amp;#8220;box&amp;#8221;&lt;/a&gt; so isn&amp;#8217;t recognized by the Decklink cards that we&amp;#8217;re using (which insist on a full 1280&amp;#215;720 HDMI signal to work). Next.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Nikon D800&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;It is possible to configure this one to not put a box around the output, so the Decklink card does recognize it. Except that the camera shuts off the HDMI signal whenever the input parameters change on the card or the signal input is turned on, which essentially makes it useless for Eideticker (this happens every time we start the Eideticker harness). Quite a shame, as the HDMI signal is quite nice otherwise.&lt;/p&gt;
+
+&lt;p&gt;&amp;#8212;&lt;/p&gt;
+
+&lt;p&gt;To be clear, with the exception of the Elmo all the devices above seem like fine cameras, and should more than do for manual captures of B2G or Android phones (which is something we probably want to do anyway). But for Eideticker, we need something that works in automation, and none of the above fit the bill. I guess I could explore using a &amp;#8220;real&amp;#8221; video camera as opposed to a DSLR acting like one, though I suspect I might run into some of the same sorts of issues depending on how the HDMI output of those devices behaves.&lt;/p&gt;
+
+&lt;p&gt;Part of me wonders whether a custom solution wouldn&amp;#8217;t work better. How complicated could it be to construct your own digital camera anyway? 😉 Hook up a fancy camera sensor to a &lt;a href="http://pandaboard.org"&gt;pandaboard&lt;/a&gt;, get it to output through the HDMI port, and then we&amp;#8217;re set? Or better yet, maybe just get a fancy webcam like the &lt;a href="http://en.wikipedia.org/wiki/PlayStation_Eye"&gt;Playstation Eye&lt;/a&gt; and hook it up directly to a computer? That would eliminate the need for our expensive video capture card setup altogether.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Eideticker for FirefoxOS</title>
+   <link>https://wlach.github.io/blog/2013/02/eideticker-for-firefoxos/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2013-02-eideticker-for-firefoxos</guid>
+   <pubDate>Fri, 01 Feb 2013 05:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s a long overdue update on where we&amp;#8217;re at with Eideticker for FirefoxOS. While we&amp;#8217;ve had a good amount of success getting &lt;a href="http://eideticker.wrla.ch"&gt;useful, actionable data&lt;/a&gt; out of Eideticker for Android, so far we haven&amp;#8217;t been able to replicate that success for FirefoxOS. This is not for lack of trying: first, &lt;a href="http://nakubu.com/"&gt;Malini Das&lt;/a&gt; and then me have been working at it since summer 2012.&lt;/p&gt;
+
+&lt;p&gt;When it comes right down to it, instrumenting Eideticker for B2G is just a whole lot more complex. On Android, we could take the operating system (including support for all the things we needed, like HDMI capture) as a given. The only tricky part was instrumenting the capture so the right things happened at the right moment. With FirefoxOS, we need to run these tests on entire builds of a whole operating system which was constantly changing. Not nearly as simple. That said, I&amp;#8217;m starting to see light at the end of the tunnel.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Platforms&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We initially selected the &lt;a href="http://pandaboard.org"&gt;pandaboard&lt;/a&gt; as the main device to use for eideticker testing, for two reasons. First, it&amp;#8217;s the same hardware platform we&amp;#8217;re targeting for other b2g testing in tbpl (mochitest, reftest, etc.), and is the platform we&amp;#8217;re using for running Gaia UI tests. Second, unlike every other device that we&amp;#8217;re prototyping FirefoxOS on (to my knowledge), it has HDMI-out capability, so we can directly interface it with the Eideticker video capture setup.&lt;/p&gt;
+
+&lt;p&gt;However, the panda also has some serious shortcomings. First, it&amp;#8217;s obviously not a platform we&amp;#8217;re shipping, so the performance we&amp;#8217;re seeing from it is subject to different factors that we might not see with a phone actually shipped to users. For the same reason, we&amp;#8217;ve had many problems getting B2G running reliably on it, as it&amp;#8217;s not something most developers have been hacking on a day to day basis. Thanks to the heroic efforts of Thomas Zimmerman, we&amp;#8217;ve mostly got things working ok now, but it was a fairly long road to get here (several months last fall).&lt;/p&gt;
+
+&lt;p&gt;More recently, we became aware of something called an &lt;a href="http://www.elmousa.com/"&gt;Elmo&lt;/a&gt; which might let us combine
+ &lt;br /&gt;the best of both worlds. An elmo is really just a tiny mounted video camera with a bunch of outputs, and is I understand most commonly used to project documents in a classroom/presentation setting. However, it seems to do a great job of capturing mobile phones in action as well.&lt;/p&gt;
+
+&lt;video width="400px" src="/files/eideticker/startup-test-elmo.webm" controls="controls"&gt;&lt;/video&gt;
+
+&lt;p&gt;The nice thing about using an external camera for the video capture part of eideticker is that we are no longer limited to devices with HDMI out &amp;#8212; we can run the standard set of automated tests on ANYTHING. We&amp;#8217;ve already used this to some success in getting some videos of FirefoxOS startup times versus Android on the Unagi (a development phone that we&amp;#8217;re using internally) for manual analysis. Automating this process may be trickier because of the fact that the video capture is no longer &amp;#8220;perfect&amp;#8221;, but we may be able to work around that (more discussion about this later).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FirefoxOS web page tests&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;These are the same tests we run on Android. They should give us an idea of roughly where our performance when browsing / panning web sites like CNN. So far, I&amp;#8217;ve only run these tests on the Pandaboard and they are INCREDIBLY slow (like 1&amp;ndash;3 frames per second when scrolling). So much so that I have to think there is something broken about our hardware acceleration on this platform.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;FirefoxOS application tests&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;These are some new tests written in a framework that allows you to script arbitrary interactions in FirefoxOS, like launching applications or opening the task switcher.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m pretty happy with this. It seems to work well. The only problems I&amp;#8217;m seeing with this is with the platform we&amp;#8217;re running these tests on. With the pandaboard, applications look weird (since the screen resolution doesn&amp;#8217;t remotely resemble the 320&amp;#215;480 resolution on our current devices) and performance is abysmal. Take, for example, this capture of application switching performance, which operates only at roughly 3&amp;ndash;4 fps:&lt;/p&gt;
+
+&lt;video width="400px" src="/files/eideticker/b2g-appswitching-video.webm" controls="controls"&gt;&lt;/video&gt;
+
+&lt;p&gt;&lt;strong&gt;So what now?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m not 100% sure yet (partly it will depend on what others say as well as my own investigation), but I have a feeling that capturing video of real devices running FirefoxOS using the Elmo is the way forward. First, the hardware and driver situation will be much more representative of what we&amp;#8217;ll actually be shipping to users. Second, we can flash new builds of FirefoxOS onto them automatically, unlike the pandaboards where you currently either need to manually flash and reset (a time consuming and error prone process) or set up an instance of &lt;a href="https://github.com/djmitche/mozpool"&gt;mozpool&lt;/a&gt; (which I understand is quite complicated).&lt;/p&gt;
+
+&lt;p&gt;The main use case I see with eideticker-on-panda would be where we wanted to run a suite of tests on checkin (in tbpl-like fashion) and we&amp;#8217;d need to scale to many devices. While cool, this sounds like an expensive project (both in terms of time and hardware) and I think we&amp;#8217;d do better with getting something slightly smaller-scale running first.&lt;/p&gt;
+
+&lt;p&gt;So, the real question is whether or not the capture produced by the Elmo is amenable to the same analysis that we do on the raw HDMI output. At the very least, some of eideticker&amp;#8217;s image analysis code will have to be adapted to handle a much &amp;#8220;noisier&amp;#8221; capture. As opposed to capturing the raw HDMI signal, we now have to deal with the real world and its irritating fluctuations in ambient light levels and all that the rest. I have no doubt it is *possible* to compensate for this (after all this is what the human eye/brain does all the time), but the question is how much work it will be. Can&amp;#8217;t speak for anyone else at Mozilla, but I&amp;#8217;m not sure if I really have the time to start a Ph.D-level research project in computational vision. 😉 I&amp;#8217;m optimistic that won&amp;#8217;t be necessary, but we&amp;#8217;ll just have to wait and see.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>More Eideticker happenings: Profiling and startup testing</title>
+   <link>https://wlach.github.io/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2012-09-more-eideticker-happenings-profiling-and-startup-testing</guid>
+   <pubDate>Thu, 13 Sep 2012 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Just wanted to give some updates on a few new Eideticker features which have landed in the past week.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Profiling support&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;While Eideticker is a great tool for observing the external behaviour of the mobile browser, it hasn&amp;#8217;t been able to tell us much about what&amp;#8217;s going on inside. If something&amp;#8217;s slow, why is it slow? If it&amp;#8217;s slower than it was the day before, what&amp;#8217;s the cause? If it&amp;#8217;s faster? What explains the deviations in test results from one run to the other?&lt;/p&gt;
+
+&lt;p&gt;Thanks to &lt;a href="http://benoitgirard.wordpress.com/"&gt;Benoit Girard&lt;/a&gt; (+ a little bit of integration work from me), we can now start providing answers to these questions. Eideticker now has a mode that allows us to capture a &lt;a href="https://developer.mozilla.org/en-US/docs/Performance/Profiling_with_the_Built-in_Profiler"&gt;sampling profile&lt;/a&gt; of the application while the video capture is ongoing. From the dashboard, you can now get access said profile, just by clicking on a link.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/dash-with-link-to-profile/" rel="attachment wp-att-737"&gt;&lt;img src="/files/2012/09/dash-with-link-to-profile.png" alt="" title="Eideticker dashboard with link to profile" width="764" height="555" class="alignnone size-full wp-image-737" srcset="/files/2012/09/dash-with-link-to-profile-300x217.png 300w, /files/2012/09/dash-with-link-to-profile.png 764w" sizes="(max-width: 764px) 100vw, 764px" /&gt;&lt;/a&gt;
+ &lt;br /&gt;&lt;a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/profiler-et-screenshot/" rel="attachment wp-att-740"&gt;&lt;img src="/files/2012/09/profiler-et-screenshot.png" alt="" title="Profile of Eideticker Capture" width="852" height="425" class="alignnone size-full wp-image-740" srcset="/files/2012/09/profiler-et-screenshot-300x149.png 300w, /files/2012/09/profiler-et-screenshot.png 852w" sizes="(max-width: 852px) 100vw, 852px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that the profile is not yet synchronized precisely to the videocapture (the profile works over the entire run of the browser), but Benoit is busily making that happen. That should hopefully land soon, in the mean time we still have some pretty useful data.&lt;/p&gt;
+
+&lt;p&gt;To say I&amp;#8217;m excited about this would be an understatement. I think it has the potential to open up a whole new world of understanding of why our mobile (and desktop, someday) browser performs the way it does.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Startup / pageload testing&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Eideticker has had support for measuring startup and page load time for a few months now, but I hadn&amp;#8217;t yet hooked it up to the dashboard. As of today, it now is. There&amp;#8217;s a bunch of different angles that are interesting to measure here (new vs. old profiles, whether the browser has been launched since boot, launching web applications, loading about:home or loading a web page, &amp;#8230;) which I&amp;#8217;ll get to in due course. For now, we at least have a baseline of how long it takes to see the Firefox homescreen on a Galaxy Nexus:&lt;/p&gt;
+
+&lt;video width="400px" src="http://wrla.ch/eideticker/dashboard/videos/video-1347572002.11.webm" controls="controls"&gt;&lt;/video&gt;
+
+&lt;p&gt;Of course, this is hooked up to the profiling support previously mentioned. Here&amp;#8217;s &lt;a href="http://people.mozilla.com/~bgirard/cleopatra/?zippedProfile=profiles/sps-profile-1347572285.4.zip&amp;amp;#038;videoCapture=videos/video-1347572285.4.webm"&gt;an example profile&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve already filed &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=791106"&gt;one bug&lt;/a&gt; based on the data gathered so far.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Oh hai, I upergaded yer Eideticker</title>
+   <link>https://wlach.github.io/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2012-09-oh-hai-i-upergaded-yer-eideticker</guid>
+   <pubDate>Wed, 05 Sep 2012 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://wrla.ch/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/multi-device-dash/" rel="attachment wp-att-709"&gt;&lt;img src="/files/2012/09/multi-device-dash.png" alt="" title="multi-device-dash" width="771" height="576" class="alignnone size-full wp-image-709" srcset="/files/2012/09/multi-device-dash-300x224.png 300w, /files/2012/09/multi-device-dash.png 771w" sizes="(max-width: 771px) 100vw, 771px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;More on this to come, but just a quick note that the client-side URL schema for the Eideticker dashboard has been changed, as we now gather benchmarks for more than one device (Samsung Galaxy Nexus benchmarks FTW). To get the new and improved dashboard, please just go to the root:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://wrla.ch/eideticker/dashboard"&gt;http://wrla.ch/eideticker/dashboard&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Old style URLs like &lt;code&gt;http://wrla.ch/eideticker/dashboard/#/taskjs-scrolling/checkerboard&lt;/code&gt; will no longer work. Sorry for any broken links, this is the price of progress. 😉&lt;/p&gt;
+
+&lt;p&gt;Note that some benchmarks for the Galaxy Nexus are still missing. This is a known problem and will be fixed soon.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>The evolution of simulating events in Eideticker: from monkeys to orangutans</title>
+   <link>https://wlach.github.io/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2012-07-the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans</guid>
+   <pubDate>Tue, 10 Jul 2012 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;I just merged a new approach I&amp;#8217;ve been using to simulate touch events into the master branch of Eideticker called &lt;a href="http://github.com/wlach/orangutan"&gt;Orangutan&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://wrla.ch/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns/orangutan/" rel="attachment wp-att-696"&gt;&lt;img src="/files/2012/07/orangutan.jpg" alt="Image of Orangutan" title="orangutan" width="415" height="600" class="alignnone size-full wp-image-696" srcset="/files/2012/07/orangutan-207x300.jpg 207w, /files/2012/07/orangutan.jpg 415w" sizes="(max-width: 415px) 100vw, 415px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As I&amp;#8217;ve mentioned before, we really need to simulate actual user gestures when doing this type of testing to measure real-world performance with Eideticker. Up to now, I&amp;#8217;ve been using google&amp;#8217;s &lt;a href="http://developer.android.com/tools/help/monkeyrunner_concepts.html"&gt;MonkeyRunner&lt;/a&gt; tool to do this. I was always a little skeptical about its approach (which involved using a privileged tool written in Java with special access to Android&amp;#8217;s windowing system), but up until recently I&amp;#8217;d managed to get around its &lt;a href="http://code.google.com/p/android/issues/detail?id=27955"&gt;issues&lt;/a&gt; with a &lt;a href="https://github.com/mozilla/eideticker/commit/8d034212bc38c1fc80b9fe792c0b06919c74141a"&gt;successively&lt;/a&gt; &lt;a href="https://github.com/mozilla/eideticker/commit/55d63960dc0a5090cee00fe917a851db082ee0fd"&gt;more&lt;/a&gt; &lt;a href="https://github.com/mozilla/eideticker/commit/686882d32fb25a700afec35c39e53a73658688e3"&gt;complicated&lt;/a&gt; series of hacks.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, I finally came up with a problem that I couldn&amp;#8217;t figure out how to fix: monkeyrunner doesn&amp;#8217;t attach precise timing information to the events it generates, which completely throws off Google Chrome for Android when you try to simulate a pan gesture. I&amp;#8217;ve tried just about every way of using the existing functionality (both the networked mode and the &amp;#8220;script&amp;#8221; mode), but nothing seemed to help. My conclusion is that the only way of continuing to use monkey would be to create a fix for the software itself, which implies forking and extending the entire Android Open Source Project. As noble a goal as that might be, doing that across all the major Android versions I want to support (2.2, 2.3, 4.0 and now 4.1) was more work than I felt like taking on (not to mention the question of how to deploy that work). I decided to build something entirely new which did not have this requirement.&lt;/p&gt;
+
+&lt;p&gt;Enter Orangutan. Unlike MonkeyRunner, Orangutan simply injects events directly into low-level the kernel device file that represents an Android device&amp;#8217;s touch screen. It&amp;#8217;s fast (written in native C), trivial to build, and seems to work seamlessly with any application I&amp;#8217;ve tried using it with (including Google Chrome for Android). Most interestingly for Mozilla, this interface is also present on Firefox OS (&lt;a href="https://wiki.mozilla.org/B2G"&gt;Boot to Gecko&lt;/a&gt;) based devices, so we should be able to use Orangutan there to support both Eideticker and any other testing framework which needs to test real-world user input test cases. Exciting times!&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Mobile Firefox: Measuring How a Browser Feels</title>
+   <link>https://wlach.github.io/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2012-06-mobile-firefox-measuring-how-a-browser-feels</guid>
+   <pubDate>Tue, 26 Jun 2012 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;blockquote&gt;
+ &lt;p&gt;A while back, I began work on a new test framework for mobile browsers called Eideticker, which aims to benchmark browsers by capturing them on HMDI video, then running image analysis on the result. I wrote about this in a blog post entitled, “&lt;a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/"&gt;Measuring what the user sees&lt;/a&gt;.” Some seven months later, we are about to release a new version of Firefox for Android and Eideticker has played a major role in qualifying its performance and identifying areas for improvement along the way.&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;I thought it would be worth publicizing some of the results that we have seen so far and explain why Eideticker has been useful. This post aims to explain the ideas behind Eideticker and hopes to inspire ideas on how to further improve objective cross-browser benchmarks.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Idea 1: Put cross-browser performance tests on a more rigorous footing&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;One of the problems with existing benchmarks is that the graphical performance that they measure is entirely synthetic. So when something like Microsoft&amp;#8217;s fishbowl demo claims 50 frames per second, that is based entirely on an internal measurement. There is no guarantee that is what the user is actually seeing. For all we know, it could be throwing half those frames away. To say nothing of the fact that measuring the results could interfere with the results themselves!&lt;/p&gt;
+
+&lt;p&gt;With Eideticker, we only analyze what the user sees (under the assumption that what the user sees is what comes out of the device&amp;#8217;s HDMI out). To measure frame rate, Eideticker painstakingly analyzes a video capture to see the difference between each frame. Only if one frame is qualitatively different than the one before it will it consider it to be a step forward in the animation progression. There is no room for a browser to &amp;#8220;cheat&amp;#8221; by, for example, throwing a frame away. Here are two example frames from an Eideticker capture of an animated clock, along with a visual representation of the difference it measured between them:&lt;/p&gt;
+
+&lt;table style="border:none;"&gt;
+ &lt;tr&gt;
+  &lt;td&gt;&lt;/td&gt; 
+  &lt;td&gt;&lt;/td&gt; 
+  &lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Note: The red area of the graphic on the right indicates a region that Eideticker has detected as having changed between the two images. The black area of the graphic indicates a region that is unchanged.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Seeing visual evidence like this increases our confidence that things are truly better than they were before. For example, Eideticker very clearly, and accurately, measured the improvement when &lt;a href="http://benoitgirard.wordpress.com/2012/05/15/off-main-thread-compositing-omtc-and-why-it-matters/"&gt;Off Main Thread Compositing&lt;/a&gt; landed. We saw a big performance jump in the afore-mentioned clock benchmark:
+ &lt;br /&gt;
+ &lt;br /&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;
+ &lt;br /&gt;&lt;em&gt;Note: Nightly = the new Firefox for Android as of that date (an incremental step towards what was just released), XUL = Previous Firefox for Android, Stock = Default browser that comes with Android 2.2.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Idea 2: Measure subjective performance based on actual user interaction patterns&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Measuring real browser output is useful, but the problem is that these benchmarks do not actually measure how a user experiences the Web. Does an animated image of a clock or a &lt;a href="http://ie.microsoft.com/testdrive/Performance/FishIETank/"&gt;fishtank&lt;/a&gt; actually represent a normal user experience? Thanks to the development of mobile gaming, this is slowly changing, but I was still say “no.”  The majority of users time spent mobile browsing is spent on news websites, Wikipedia, Facebook and I Can Haz Cheezburger. &lt;a href="#_msocom_1"&gt;&lt;/a&gt; For these sites, I would submit that there are two things users care about:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;
+  &lt;p&gt;When I swipe to move the content (e.g. to scroll down to see more content on &lt;a href="http://CNN.com/"&gt;CNN.com&lt;/a&gt;), does it respond instantaneously and in a pleasing manner? Do I see a nice smooth animation or a jerky mess?&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;When the content moves, do I see new content right away? Or do I have to wait a few moments while the view updates (this slow load is also called checkerboarding)?&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;&amp;nbsp;
+ &lt;br /&gt;I think the key here is to measure what the user sees. Internal measurements for anything other than what the user experiences are misleading and inconsistent across browsers.&lt;/p&gt;
+
+&lt;p&gt;For the first item, I believe the best indication of perceived responsiveness and smoothness is found by measuring the number of frames that are displayed in response to user interaction. As with all measurements, it is not perfect, but one can safely say that if there are only a few frames changed in response to a swipe, the experience is going to be jerky.&lt;/p&gt;
+
+&lt;p&gt;Compare these two videos of panning on &lt;a href="http://CNN.com/"&gt;CNN.com&lt;/a&gt;. The first is the previous Firefox for Android, clocking in at about 12.3 frames per second (fps). The second is the recent Firefox for Android , clocking in at 23 fps using Eideticker&amp;#8217;s internal measurements:&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;table style="border: none;"&gt;
+ &lt;tr&gt;
+  &lt;td&gt;
+   &lt;video width="200px" height="240" src="/files/2012/06/xul-fennec-cnn.webm" controls="controls"&gt;&lt;/video&gt;&lt;/td&gt; 
+  &lt;td&gt;
+   &lt;video width="200px" height="240" src="/files/2012/06/native-fennec-cnn.webm" controls="controls"&gt;&lt;/video&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;For the second, we can easily measure how quickly a user sees content by setting the background color of the page to an obvious color (in Eideticker we use magenta), overlaying an image on top, then measuring the amount of the page that is magenta while panning around. Since all modern browsers just use the background color of the page when something is to be redrawn (or at least can be configured that way), it&amp;#8217;s easy to compare across browsers. You can see in the videos above that the new Native Firefox does much better than the old one in this regard, at least on this benchmark. Here&amp;#8217;s an image of Eideticker detecting checkerboarding on a capture (red indicates checkerboarded areas):&lt;/p&gt;
+
+&lt;table style="border:none;"&gt;
+ &lt;tr&gt;
+  &lt;td&gt;&lt;/td&gt; 
+  &lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;table style="border: none;"&gt;
+ &lt;tr&gt;
+  &lt;td&gt;&lt;/td&gt; 
+  &lt;td&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;&lt;em&gt;Note: The red area of the graphic on the right indicates a region that Eideticker has detected as checkerboarded (i.e. undrawn). The black area of the graphic indicates a region that is fully drawn.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The important thing in both cases is that these captures represent &lt;strong&gt;a real user experience&lt;/strong&gt;. The swipe gestures are synthesized such that they are interpreted by Android as an actual touch event. This is important: using tricks like &lt;a href="https://developer.mozilla.org/en/DOM/window.scrollTo"&gt;javascript scrollTo&lt;/a&gt; inside your Web page to pan would not actually engage the renderer in quite the same way. On Firefox for Android (and probably other browsers as well, though I haven&amp;#8217;t checked), the response to a touch event is always handled inside the browser internal rendering engine to give the expected &amp;#8220;physical feel.&amp;#8221; Manually moving the viewport would give completely different results since so much of the fancy code we use to reduce the redraw delay would not be engaged.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Conclusion&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Overall, I am very happy with how Eideticker has allowed us to track and measure improvements in Firefox for Android. In developing Eideticker, we aimed to create a benchmark that measured how users actually interact with a browser – not how abstract measurements claim how great a browser is.  As we move ahead with new projects to improve Firefox for Android, Eideticker will continue to be useful in making sure that using our browser is the best experience that it can be, especially combined with other tools like Benoit Girard&amp;#8217;s &lt;a href="http://benoitgirard.wordpress.com/2012/03/30/writing-a-profiler/"&gt;sampling profiler&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;For more information on Eideticker, feel free to visit &lt;a href="https://wiki.mozilla.org/Project_Eideticker"&gt;its homepage&lt;/a&gt; on &lt;a href="http://wiki.mozilla.org/"&gt;wiki.mozilla.org&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Eideticker with less eideticker</title>
+   <link>https://wlach.github.io/blog/2012/04/eideticker-with-less-eideticker/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2012-04-eideticker-with-less-eideticker</guid>
+   <pubDate>Tue, 24 Apr 2012 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;tl;dr: You can now run the standard eideticker benchmarks easily on any Android phone without any kind of specialized hardware.&lt;/p&gt;
+
+&lt;p&gt;So Eideticker is pretty great at comparing relative performance between different browsers and generally measuring things in an absolutely neutral way. Unfortunately it&amp;#8217;s a bit of a pain to use it at the moment to catch regressions: the software still has a few bugs and encoding/decoding/analyzing the capture still takes a great deal of time. Not to mention the fact that it currently requires specialized hardware (though that will soon be less of a concern at least inside MoCo, where we have a bunch of Eideticker boxes on order for the Toronto and Mountain View offices).&lt;/p&gt;
+
+&lt;p&gt;A few months ago, Chris Lord wrote up some great code to internally measure the amount of checkerboarding going on in Fennec. I&amp;#8217;ve thought for a while that it would be a neat idea to hook this up to the Eideticker harness, and today I finally did so. After installing Eideticker, you can now run the benchmark on any machine against an arbitrary fennec build just by typing this from the eideticker root directory:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;adb shell setprop log.tag.GeckoLayerRendererProf DEBUG
+./bin/get-metric-for-build.py --no-capture --get-internal-checkerboard-stats --num-runs 3 nightly.apk src/tests/scrolling/taskjs.org/index.html&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In return, you&amp;#8217;ll get some nice clean results like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;=== Internal Checkerboard Stats (sum of percents, not percentage) ===
+[167.34348, 171.871015, 175.3420296]&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Just to be sure that the results were comparable, I did a quick set of runs on the Eideticker machine in Mountain View with both internal checkerboard statistics gathering and HDMI capturing enabled.&lt;/p&gt;
+
+&lt;table&gt;
+ &lt;tr&gt;
+  &lt;td&gt;Stats file&lt;/td&gt; 
+  &lt;td&gt;HDMI capturing&lt;/td&gt;&lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td&gt;167.34348&lt;/td&gt; 
+  &lt;td&gt;177.022&lt;/td&gt;&lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td&gt;171.87&lt;/td&gt; 
+  &lt;td&gt;184.46&lt;/td&gt;&lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td&gt;175.34&lt;/td&gt; 
+  &lt;td&gt;184.44&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;While the results aren&amp;#8217;t identical (we measure number of frames differently inside Fennec than we do with Eideticker, for one thing), they do seem roughly correlated. So go forth, benchmark and tweak! 😉&lt;/p&gt;
+
+&lt;p&gt;P.S. If you&amp;#8217;ve been following mobile automation, you might be asking why I don&amp;#8217;t just suggest running Talos and Robocop on your workstation. Can&amp;#8217;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&amp;#8217;re much more involved to set up and use at the moment. Arguably they shouldn&amp;#8217;t be, and this is something we (&lt;a href="https://wiki.mozilla.org/Auto-tools/"&gt;Mozilla tools &amp;amp; automation&lt;/a&gt;) need to work on. We&amp;#8217;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Yet more adventures in mobile performance analysis</title>
+   <link>https://wlach.github.io/blog/2012/04/yet-more-adventures-in-mobile-performance-analysis/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2012-04-yet-more-adventures-in-mobile-performance-analysis</guid>
+   <pubDate>Thu, 05 Apr 2012 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Participated in an &lt;a href="https://wiki.mozilla.org/Fennec/NativeUI/checkerboarding"&gt;interesting meeting&lt;/a&gt; on checkerboarding in Firefox for Android yesterday. As a reminder, checkerboarding refers to the amount of time you spend waiting to see the full page after you do a swipe on your mobile device, and it&amp;#8217;s a big issue right now &amp;#8211; so much so that it puts our delivery goal for the new native browser at risk.&lt;/p&gt;
+
+&lt;p&gt;It seems like we have a number of strategies for improving performance which will likely solve the problem, but we need to be able to measure improvements to make sure that we&amp;#8217;re making progress. This is one of the places where Eideticker could be useful (especially with regards to measuring us against the competition), though there are a few things that we need to add before it&amp;#8217;s going to be as useful as it could be. The most urgent, as I understand, is to come up with a suite of tests which accurately represent the set of pages that we&amp;#8217;re having issues with. The current main measure of checkerboarding that we&amp;#8217;re using with eideticker is taskjs.org which, while an interesting test case in some ways, doesn&amp;#8217;t accurately represent the sort of site that the user would normally go to in the wild (and thus be annoyed by). 😉&lt;/p&gt;
+
+&lt;p&gt;This is going to take a few days (and a lot of review: I&amp;#8217;m definitely no expert when it comes to this stuff) to get right, but I just added two tests for the New York Times which I think are a step in the right direction of being more representative of real-world use cases. Have a look here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://wrla.ch/eideticker/dashboard/#/nytimes-scrolling"&gt;http://wrla.ch/eideticker/dashboard/#/nytimes-scrolling&lt;/a&gt;
+ &lt;br /&gt;&lt;a href="http://wrla.ch/eideticker/dashboard/#/nytimes-zooming"&gt;http://wrla.ch/eideticker/dashboard/#/nytimes-zooming&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The results here actually aren&amp;#8217;t as bad as I would have expected/remembered. There amount of checkerboarding after a zoom out is a bit annoying (I understand this a known issue with font caching, or something) but not too terrible. Still, any improvements that show up here will probably apply across a wide variety of sites, as the design patterns on the New York Times site are very common.&lt;/p&gt;
+
+&lt;p&gt;(P.S. yes, I know I promised a comparison with Google Chrome for Android last time&amp;#8230; rest assured that&amp;#8217;s still coming soon!)&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>Eideticker dashboard update</title>
+   <link>https://wlach.github.io/blog/2012/03/eideticker-dashboard-update/?utm_source=Eideticker&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2012-03-eideticker-dashboard-update</guid>
+   <pubDate>Thu, 22 Mar 2012 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Since my &lt;a href="http://wrla.ch/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/"&gt;first Eideticker dashboard post&lt;/a&gt; was &lt;a href="http://download.cnet.com/8301-2007_4-57401261-12/whats-going-on-with-firefox-for-android/?tag=epicStories"&gt;so well received&lt;/a&gt;, I thought I&amp;#8217;d give a quick update on another metric that I just brought online: checkerboarding (a.k.a. the amount of time you spend waiting to see the full page after you do a swipe on your mobile device).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://wrla.ch/blog/2012/03/eideticker-dashboard-update/checkerboard_dashboard/" rel="attachment wp-att-503"&gt;&lt;img src="/files/2012/03/checkerboard_dashboard.png" alt="" title="checkerboard_dashboard" width="715" height="485" class="alignnone size-full wp-image-503" srcset="/files/2012/03/checkerboard_dashboard-300x203.png 300w, /files/2012/03/checkerboard_dashboard.png 715w" sizes="(max-width: 715px) 100vw, 715px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[ &lt;a href="http://wrla.ch/eideticker/dashboard/#/checkerboarding"&gt;link to real thing&lt;/a&gt; ]&lt;/p&gt;
+
+&lt;p&gt;Unfortunately the news here is not as good as before: as the numbers indicate, the new Native Fennec currently performs substantially worse than the version in Android market. This is a known issue, and is currently being tracked in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447"&gt;bug 719447&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next up: Seeing how we do against Google Chrome for Android.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

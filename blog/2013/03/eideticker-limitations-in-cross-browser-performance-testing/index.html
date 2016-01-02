@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Eideticker: Limitations in cross-browser performance testing</title>
+    <meta name="description" content="Last summer I wrote a bit about using Eideticker to measure the relative performance of Firefox for Android versus other browsers (Chrome, stock, etc.). At the time I was pretty optimistic about Eideticker’s usefulness as a truly “objective” measure of us...">
+    <meta name="author"      content="William Lachance">
+    <meta name="keywords"    content="Android, Eideticker, Mozilla">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="/favicon.ico">
+    <link rel="canonical" href="https://wlach.github.io/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing/">
+    <link rel="next" href="/blog/2013/03/documentation-for-mozdevice/">
+    <link rel="prev" href="/blog/2013/03/a-visit-to-the-montreal-zen-center/">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <!-- Feeds -->
+    <link rel="alternate" type="application/atom+xml"
+          href="/feeds/all.atom.xml" title="Atom Feed">
+    <link rel="alternate" type="application/rss+xml"
+          href="/feeds/all.rss.xml" title="RSS Feed">
+    <!-- JS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-xxxxx', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <!-- A standard Twitter Bootstrap nav bar -->
+    <header class="navbar navbar-default navbar-inverse"
+            role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button"
+                  class="navbar-toggle"
+                  data-toggle="collapse"
+                  data-target=".our-nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/index.html" class="navbar-brand">William Lachance's Log</a>
+        </div>
+        <div class="collapse navbar-collapse our-nav-collapse"
+             role="navigation">
+          <ul class="nav navbar-nav">
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Tags <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/Android.html">Android</a></li>
+
+<li><a href="/tags/ateam.html">ateam</a></li>
+
+<li><a href="/tags/BIXI.html">BIXI</a></li>
+
+<li><a href="/tags/Buddhism.html">Buddhism</a></li>
+
+<li><a href="/tags/Business.html">Business</a></li>
+
+<li><a href="/tags/Cats.html">Cats</a></li>
+
+<li><a href="/tags/Coffee.html">Coffee</a></li>
+
+<li><a href="/tags/Community.html">Community</a></li>
+
+<li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
+
+<li><a href="/tags/Ebola.html">Ebola</a></li>
+
+<li><a href="/tags/Eideticker.html">Eideticker</a></li>
+
+<li><a href="/tags/email.html">email</a></li>
+
+<li><a href="/tags/Environment.html">Environment</a></li>
+
+<li><a href="/tags/FirefoxOS.html">FirefoxOS</a></li>
+
+<li><a href="/tags/Food.html">Food</a></li>
+
+<li><a href="/tags/Free-Software.html">Free Software</a></li>
+
+<li><a href="/tags/GNOME.html">GNOME</a></li>
+
+<li><a href="/tags/GoFaster.html">GoFaster</a></li>
+
+<li><a href="/tags/hbus.html">hbus</a></li>
+
+<li><a href="/tags/iphone.html">iphone</a></li>
+
+<li><a href="/tags/Life.html">Life</a></li>
+
+<li><a href="/tags/Meditation.html">Meditation</a></li>
+
+<li><a href="/tags/Meta.html">Meta</a></li>
+
+<li><a href="/tags/Montreal.html">Montreal</a></li>
+
+<li><a href="/tags/Mozilla.html">Mozilla</a></li>
+
+<li><a href="/tags/mozregression.html">mozregression</a></li>
+
+<li><a href="/tags/MSF.html">MSF</a></li>
+
+<li><a href="/tags/Music.html">Music</a></li>
+
+<li><a href="/tags/Nixi.html">Nixi</a></li>
+
+<li><a href="/tags/Open-Data.html">Open Data</a></li>
+
+<li><a href="/tags/Orangutan.html">Orangutan</a></li>
+
+<li><a href="/tags/Pandaboard.html">Pandaboard</a></li>
+
+<li><a href="/tags/Perfherder.html">Perfherder</a></li>
+
+<li><a href="/tags/Philosophy.html">Philosophy</a></li>
+
+<li><a href="/tags/Profiling.html">Profiling</a></li>
+
+<li><a href="/tags/Python.html">Python</a></li>
+
+<li><a href="/tags/Release-Engineering.html">Release Engineering</a></li>
+
+<li><a href="/tags/Responsiveness.html">Responsiveness</a></li>
+
+<li><a href="/tags/SQL.html">SQL</a></li>
+
+<li><a href="/tags/Time.html">Time</a></li>
+
+<li><a href="/tags/Toronto.html">Toronto</a></li>
+
+<li><a href="/tags/Transit.html">Transit</a></li>
+
+<li><a href="/tags/Transit-to-Go.html">Transit to Go</a></li>
+
+<li><a href="/tags/Usability.html">Usability</a></li>
+
+<li><a href="/tags/Video.html">Video</a></li>
+
+<li><a href="/tags/Web.html">Web</a></li>
+
+<li><a href="/tags/WifiDog.html">WifiDog</a></li>
+
+<li><a href="/tags/zen.html">zen</a></li>
+
+<li><a href="/tags/Île-Sans-Fil.html">Île Sans Fil</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/About.html">About</a>
+            </li> 
+            <li><a href="/feeds/all.atom.xml">Atom</a></li>
+            <li><a href="/feeds/all.rss.xml">RSS</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+
+        <!-- Main column -->
+        <div id="content" class="col-md-12">
+
+
+
+          <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h1>Eideticker: Limitations in cross-browser performance testing</h1>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 20th, 2013</p>
+  </header>
+
+<p>Last summer I <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">wrote a bit</a> about using <a href="https://wiki.mozilla.org/Project_Eideticker">Eideticker</a> to measure the relative performance of Firefox for Android versus other browsers (Chrome, stock, etc.). At the time I was pretty optimistic about Eideticker&#8217;s usefulness as a truly &#8220;objective&#8221; measure of user experience that would give us a more accurate view of how we compared against the competition than traditional benchmarking suites (which more often than not, measure things that a user will never see normally when browsing the web). Since then, there&#8217;s been some things that I&#8217;ve discovered, as well as some developments in terms of the &#8220;state of the art&#8221; in mobile browsing that have caused me to reconsider that view &#8212; while I haven&#8217;t given up entirely on this concept (and I&#8217;m still very much convinced of eideticker&#8217;s utility as an internal benchmarking tool), there&#8217;s definitely some limitations in terms of what we can do that I&#8217;m not sure how to overcome.</p>
+
+<p>Essentially, there are currently three different types of Eideticker performance tests:</p>
+
+<ul>
+ <li>Animation tests: Measure the smoothness of an animation by comparing frames and seeing how many are different. Currently the only example of this is the <a href="http://eideticker.wrla.ch/#/samsung-gn/clock/fps">canvas &#8220;clock&#8221; test</a>, but many others are possible.</li>
+ <li>Startup tests: Measure the amount of time it takes from when the application is launched to when the browser is fully running/available. There are currently two variants of this test in the dashboard, both measure the amount of time taken to fully render Firefox&#8217;s home screen (the only difference between the two is whether the browser profile is fully initialized). The <a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe">dirty profile</a> benchmark probably most closely resembles what a user would usually experience.</li>
+ <li>Scrolling tests: Measure the amount of undrawn areas when the user is panning a website. Most of the current eideticker tests are of this kind. A good example of this is the <a href="http://eideticker.wrla.ch/#/samsung-gn/taskjs/fps">taskjs benchmark</a>.</li></ul>
+
+<p>In this blog post, I&#8217;m going to focus on startup and scrolling tests. Animation tests are interesting, but they are also generally the sorts of tests that are easiest to measure in synthetic ways (e.g. by putting a frame counter in your javascript code) and have thus far not been a huge focus for Eideticker development.</p>
+
+<p>As it turns out, it&#8217;s unfortunately been rather difficult to create truly objective tests which measure the difference between browsers in these two categories. I&#8217;ll go over them in order.</p>
+
+<p><strong>Startup tests</strong></p>
+
+<p>There are essentially two types of startup tests: one where you measure the amount of time to get to the browser&#8217;s home screen when you explicitly launch the app (e.g. by pressing the Firefox icon in the app chooser), another where you load a web page in a browser from another app (e.g. by clicking on a link in the Twitter application).</p>
+
+<p>The first is actually fairly easy to test across browsers, although we are not currently. There&#8217;s not really a good reason for that, it was just an oversight, so I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=852744">bug 852744</a> to add something like this.</p>
+
+<p>The second case (startup to the browser&#8217;s homescreen) is a bit more difficult. The problem here is that, in a nutshell, an apples to apples comparison is very difficult if not impossible simply because different browsers do different things when the user presses the application icon. Here&#8217;s what we see with Firefox:</p>
+
+<p><img src="/files/eideticker/firefox-startup.png" style="width:25%;" /></p>
+
+<p>And here&#8217;s what we see with Chrome:</p>
+
+<p><img src="/files/eideticker/chrome-startup.png" style="width:25%;" /></p>
+
+<p>And here&#8217;s what we see with the stock browser:</p>
+
+<p><img src="/files/eideticker/stock-startup.png" style="width:25%;" /></p>
+
+<p>As you can see Chrome and the stock browser are totally different: they try to &#8220;restore&#8221; the browser back to its state from the last time (in Chrome&#8217;s case, I was last visiting taskjs.org, in Stock&#8217;s case, I was just on the homepage).</p>
+
+<p>Personally I prefer Firefox&#8217;s behaviour (generally I want to browse somewhere new when I press the icon on my phone), but that&#8217;s really beside the point. It&#8217;s possible to hack around what chrome is doing by restoring the profile between sessions to some sort of clean &#8220;new tab&#8221; state, but at that point you&#8217;re not really reproducing a realistic user scenario. Sure, we can draw a comparison, but how valid is it really? It seems to me that the comparison is mostly only useful in a very broad &#8220;how quickly does the user see something useful&#8221; sense.</p>
+
+<p><strong>Panning tests</strong></p>
+
+<p>I had quite a bit of hope for these initially. They seemed like a place where Eideticker could do something that conventional benchmarking suites couldn&#8217;t, as things like panning a web page are not presently possible to do in JavaScript. The main measure I tried to compare against was something called &#8220;checkerboarding&#8221;, which essentially represents the amount of time that the user waits for the page to redraw when panning around.</p>
+
+<p>At the time that I wrote these tests, most browsers displayed regions that were not yet drawn while panning using the page background. We figured that it would thus be possible to detect regions of the page which were not yet drawn by looking for the background color while initiating a panning action. I thus hacked up existing web pages to have a magenta background, then wrote some image analysis code to detect regions that were that color (under the assumption that magenta is only rarely seen in webpages). It worked pretty well.</p>
+
+<p>The world&#8217;s moved on a bit since I wrote that: modern browsers like Chrome and Firefox use something like progressive drawing to display a lower resolution &#8220;tile&#8221; where possible in this case, so the user at least sees something resembling the actual page while panning on a slower device. To see what I mean, try visiting a slow-to-render site like taskjs.org and try panning down quickly. You should see something like this (click to expand):</p>
+
+<p><a href="/files/eideticker/firefox-partialy-drawn.png"><img src="/files/eideticker/firefox-partialy-drawn.png" style="width:50%;" /></a></p>
+
+<p>Unfortunately, while this is certainly a better user experience, it is not so easy to detect and measure. For Firefox, we&#8217;ve disabled this behaviour so that we see the old checkerboard pattern. This is useful for our internal measurements (we can see both if our drawing code as well as our heuristics about when to draw are getting better or worse over time) but it only works for us.</p>
+
+<p>If anyone has any suggestions on what to do here, let me know as I&#8217;m a bit stuck. There are other metrics we could still compare against (i.e. how smooth is the panning animation aka frames per second?) but these aren&#8217;t nearly as interesting.</p>
+  <footer>
+    <hr/>
+    <script type="text/javascript">
+      var disqus_shortname = 'shortname';
+      (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <div id="disqus_thread"></div>
+    <ul class="pager">
+    <li class="previous">
+      <a href="/blog/2013/03/a-visit-to-the-montreal-zen-center/">&larr; <em>A visit to the Montreal Zen Center</em></a>
+    </li>
+    <li class="next">
+      <a href="/blog/2013/03/documentation-for-mozdevice/"><em>Documentation for mozdevice</em> &rarr;</a>
+    </li>
+    </ul>
+  </footer>
+</article>
+        </div>
+      </div>
+      <footer>
+        <p>Site generated by <a href="https://github.com/greghendershott/frog">Frog</a>,
+          using <a href="https://getbootstrap.com">Bootstrap</a>.</p>
+        <p>Post content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+      </footer>
+    </div>
+    <!-- </body> JS -->
+    <script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

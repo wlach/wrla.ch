@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>First Eideticker Responsiveness Tests</title>
+    <meta name="description" content="_[ For more information on the Eideticker software I’m referring to, see this entry ]_  Time for another update on Eideticker. In the last quarter, I’ve been working on two main items:   Responsiveness tests (Android / FirefoxOS) Eideticker for FirefoxOS ...">
+    <meta name="author"      content="William Lachance">
+    <meta name="keywords"    content="Eideticker, Mozilla, Responsiveness">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="/favicon.ico">
+    <link rel="canonical" href="https://wlach.github.io/blog/2013/10/first-eideticker-responsiveness-tests/">
+    <link rel="next" href="/blog/2013/09/early-morning-questions/">
+    <link rel="prev" href="/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <!-- Feeds -->
+    <link rel="alternate" type="application/atom+xml"
+          href="/feeds/all.atom.xml" title="Atom Feed">
+    <link rel="alternate" type="application/rss+xml"
+          href="/feeds/all.rss.xml" title="RSS Feed">
+    <!-- JS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-xxxxx', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <!-- A standard Twitter Bootstrap nav bar -->
+    <header class="navbar navbar-default navbar-inverse"
+            role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button"
+                  class="navbar-toggle"
+                  data-toggle="collapse"
+                  data-target=".our-nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/index.html" class="navbar-brand">William Lachance's Log</a>
+        </div>
+        <div class="collapse navbar-collapse our-nav-collapse"
+             role="navigation">
+          <ul class="nav navbar-nav">
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Tags <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/Android.html">Android</a></li>
+
+<li><a href="/tags/ateam.html">ateam</a></li>
+
+<li><a href="/tags/BIXI.html">BIXI</a></li>
+
+<li><a href="/tags/Buddhism.html">Buddhism</a></li>
+
+<li><a href="/tags/Business.html">Business</a></li>
+
+<li><a href="/tags/Cats.html">Cats</a></li>
+
+<li><a href="/tags/Coffee.html">Coffee</a></li>
+
+<li><a href="/tags/Community.html">Community</a></li>
+
+<li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
+
+<li><a href="/tags/Ebola.html">Ebola</a></li>
+
+<li><a href="/tags/Eideticker.html">Eideticker</a></li>
+
+<li><a href="/tags/email.html">email</a></li>
+
+<li><a href="/tags/Environment.html">Environment</a></li>
+
+<li><a href="/tags/FirefoxOS.html">FirefoxOS</a></li>
+
+<li><a href="/tags/Food.html">Food</a></li>
+
+<li><a href="/tags/Free-Software.html">Free Software</a></li>
+
+<li><a href="/tags/GNOME.html">GNOME</a></li>
+
+<li><a href="/tags/GoFaster.html">GoFaster</a></li>
+
+<li><a href="/tags/hbus.html">hbus</a></li>
+
+<li><a href="/tags/iphone.html">iphone</a></li>
+
+<li><a href="/tags/Life.html">Life</a></li>
+
+<li><a href="/tags/Meditation.html">Meditation</a></li>
+
+<li><a href="/tags/Meta.html">Meta</a></li>
+
+<li><a href="/tags/Montreal.html">Montreal</a></li>
+
+<li><a href="/tags/Mozilla.html">Mozilla</a></li>
+
+<li><a href="/tags/mozregression.html">mozregression</a></li>
+
+<li><a href="/tags/MSF.html">MSF</a></li>
+
+<li><a href="/tags/Music.html">Music</a></li>
+
+<li><a href="/tags/Nixi.html">Nixi</a></li>
+
+<li><a href="/tags/Open-Data.html">Open Data</a></li>
+
+<li><a href="/tags/Orangutan.html">Orangutan</a></li>
+
+<li><a href="/tags/Pandaboard.html">Pandaboard</a></li>
+
+<li><a href="/tags/Perfherder.html">Perfherder</a></li>
+
+<li><a href="/tags/Philosophy.html">Philosophy</a></li>
+
+<li><a href="/tags/Profiling.html">Profiling</a></li>
+
+<li><a href="/tags/Python.html">Python</a></li>
+
+<li><a href="/tags/Release-Engineering.html">Release Engineering</a></li>
+
+<li><a href="/tags/Responsiveness.html">Responsiveness</a></li>
+
+<li><a href="/tags/SQL.html">SQL</a></li>
+
+<li><a href="/tags/Time.html">Time</a></li>
+
+<li><a href="/tags/Toronto.html">Toronto</a></li>
+
+<li><a href="/tags/Transit.html">Transit</a></li>
+
+<li><a href="/tags/Transit-to-Go.html">Transit to Go</a></li>
+
+<li><a href="/tags/Usability.html">Usability</a></li>
+
+<li><a href="/tags/Video.html">Video</a></li>
+
+<li><a href="/tags/Web.html">Web</a></li>
+
+<li><a href="/tags/WifiDog.html">WifiDog</a></li>
+
+<li><a href="/tags/zen.html">zen</a></li>
+
+<li><a href="/tags/Île-Sans-Fil.html">Île Sans Fil</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/About.html">About</a>
+            </li> 
+            <li><a href="/feeds/all.atom.xml">Atom</a></li>
+            <li><a href="/feeds/all.rss.xml">RSS</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+
+        <!-- Main column -->
+        <div id="content" class="col-md-12">
+
+
+
+          <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Responsiveness.html">Responsiveness</a></span></p>
+    <h1>First Eideticker Responsiveness Tests</h1>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 7th, 2013</p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+
+<p>Time for another update on Eideticker. In the last quarter, I&#8217;ve been working on two main items:</p>
+
+<ol>
+ <li>Responsiveness tests (Android / FirefoxOS)</li>
+ <li>Eideticker for FirefoxOS</li></ol>
+
+<p>The focus of this post is the responsiveness work. I&#8217;ll talk about Eideticker for FirefoxOS soon.</p>
+
+<p>So what do I mean by responsiveness? At a high-level, I mean how quickly one sees a response after performing an action on the device. For example, if I perform a swipe gesture to scroll the content down while browsing CNN.com, how long does it take after
+ <br />I start the gesture for the content to <em>visibly</em> scroll down? If you break it down, there&#8217;s a multi-step process that happens behind the scenes after a user action like this:</p>
+
+<p><a href="/files/2013/10/input-events.png"><img src="/files/2013/10/input-events.png" alt="input-events" width="880" height="752" class="alignnone size-full wp-image-957" srcset="/files/2013/10/input-events-300x256.png 300w, /files/2013/10/input-events.png 880w" sizes="(max-width: 880px) 100vw, 880px" /></a></p>
+
+<p>If anywhere in the steps above, there is a significant delay, the user experience is likely to be bad. Usability research
+ <br />suggests that any lag that is consistently above 100 milliseconds will lead the user to <a href="http://stackoverflow.com/questions/536300/what-is-the-shortest-perceivable-application-response-delay">perceive things as being laggy</a>. To keep our users happy, we need to do our bit to make sure that we respond quickly at all levels that we control (just the application layer on Android, but pretty much everything on FirefoxOS). Even if we can&#8217;t complete the work required on our end to completely respond to the user&#8217;s desire, we should at least display something to acknowledge that things have changed.</p>
+
+<p>But you can&#8217;t improve what you can&#8217;t measure. Fortunately, we have the means to do calculate of the time delta between <em>most</em> of the steps above. I learned from <a href="http://taras.glek.net/">Taras Glek</a> this weekend that it should be <a href="http://hackaday.com/2012/05/04/reaching-out-to-a-touch-screen-with-a-microcontroller/">possible to simulate</a> the actual capacitative touch event on a modern touch screen. We can recognize when the hardware event is available to be consumed by userspace by monitoring the `/dev/input` subsystem. And once the event reaches the application (the Android or FirefoxOS application) there&#8217;s no reason we can&#8217;t add instrumentation in all sorts of places to track the processing of both the event and the rendering of the response.</p>
+
+<p>My working hypothesis is that it&#8217;s application-level latency (i.e. the time between the application receiving the event and being able to act on it) that dominates, so that&#8217;s what I decided to measure. This is purely based on intuition and by no means proven, so we should test this (it would certainly be an interesting exercise!). However, even if it turns out that there are significant problems here, we still care about the other bits of the stack &#8212; there&#8217;s lots of potentially-latency-introducing churn there and the risk of regression in our own code is probably higher than it is elsewhere since it changes so much.</p>
+
+<p>Last year, I wrote up a tool called <a href="http://wrla.ch/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns/?utm_source=rss&amp;#038;utm_medium=rss&amp;#038;utm_campaign=the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns">Orangutan</a> that can directly inject input events into an input device on Android or FirefoxOS. It seemed like a fairly straightforward extension of the tool to output timestamps when these events were registered. It was. Then, by <a href="http://wrla.ch/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/">synchronizing the time</a> between the device and the machine doing the capturing, we can then correlate the input timestamps to events. To help visualize what&#8217;s going on, I generated this view:</p>
+
+<p><a href="/files/2013/10/taskjs-framediff-view.png"><img src="/files/2013/10/taskjs-framediff-view.png" alt="taskjs-framediff-view" width="583" height="418" class="alignnone size-full wp-image-962" srcset="/files/2013/10/taskjs-framediff-view-300x215.png 300w, /files/2013/10/taskjs-framediff-view.png 583w" sizes="(max-width: 583px) 100vw, 583px" /></a></p>
+
+<p><a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Scrolling%20on%20taskjs.org%20%282013-10-06%29&amp;#038;video=videos/video-1381129971.63.webm&amp;#038;framediff=framediffs/framediff-1381129990.79.json&amp;#038;actionlog=actionlogs/action-log-1381129990.79.json">[Link to original]</a></p>
+
+<p>The X axis in that graph represents time. The Y-axis represents the difference between the frame at that time with the previous one in number of pixels. The &#8220;red&#8221; represents periods in capture when events are ongoing (we use different colours only to
+ <br />distinguish distinct events). <sup><a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">1</a></sup></p>
+
+<p>For a first pass at measuring responsiveness, I decided to measure the time between the first event being initiated and there being a significant frame difference (i.e. an observable response to the action). You can see some preliminary results on the eideticker dashboard:</p>
+
+<p><a href="/files/2013/10/taskjs-responsiveness.png"><img src="/files/2013/10/taskjs-responsiveness.png" alt="taskjs-responsiveness" width="637" height="540" class="alignnone size-full wp-image-956" srcset="/files/2013/10/taskjs-responsiveness-300x254.png 300w, /files/2013/10/taskjs-responsiveness.png 637w" sizes="(max-width: 637px) 100vw, 637px" /></a></p>
+
+<p><a href="http://eideticker.mozilla.org/#/samsung-gn/taskjs/timetoresponse">[Link to original]</a></p>
+
+<p>The results seem pretty highly variable at first because I was synchronizing time between the device and an external ntp server, rather than the host machine. I believe this is now fixed, hopefully giving us results that will indicate when regressions occur. As time goes by, we may want to craft some special eideticker tests for responsiveness specifically (e.g. a site where there is heavy javascript background processing).</p>
+
+<p><sup><a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">1</a></sup> <em>Incidentally, these &#8220;frame difference&#8221; graphs are also quite useful for understanding where and how application startup has regressed in Fennec &#8212; try opening these two startup views side-by-side (before/after a large regression) and spot the difference: <a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-20%29&amp;#038;video=videos/video-1377070981.95.webm&amp;#038;framediff=framediffs/framediff-1377070991.95.json">[1]</a> and <a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-23%29&amp;#038;video=videos/video-1377330042.28.webm&amp;#038;framediff=framediffs/framediff-1377330051.67.json">[2]</a>)</em></p>
+  <footer>
+    <hr/>
+    <script type="text/javascript">
+      var disqus_shortname = 'shortname';
+      (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <div id="disqus_thread"></div>
+    <ul class="pager">
+    <li class="previous">
+      <a href="/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">&larr; <em>Automatically measuring startup / load time with Eideticker</em></a>
+    </li>
+    <li class="next">
+      <a href="/blog/2013/09/early-morning-questions/"><em>Early morning questions</em> &rarr;</a>
+    </li>
+    </ul>
+  </footer>
+</article>
+        </div>
+      </div>
+      <footer>
+        <p>Site generated by <a href="https://github.com/greghendershott/frog">Frog</a>,
+          using <a href="https://getbootstrap.com">Bootstrap</a>.</p>
+        <p>Post content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+      </footer>
+    </div>
+    <!-- </body> JS -->
+    <script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

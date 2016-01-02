@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+ <title type="text">William Lachance's Log: Posts tagged 'BIXI'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/BIXI.atom.xml" />
+ <link href="https://wlach.github.io/tags/BIXI.html" />
+ <id>urn:https-wlach-github-io:-tags-BIXI-html</id>
+ <updated>2013-08-25T04:00:00Z</updated>
+ <entry>
+  <title type="text">NIXI Update</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/08/nixi-update/?utm_source=BIXI&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2013-08-nixi-update</id>
+  <published>2013-08-25T04:00:00Z</published>
+  <updated>2013-08-25T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;I&amp;#8217;ve been working on a new, mobile friendly version of &lt;a href="http://nixi.ca/"&gt;Nixi&lt;/a&gt; on-and-off for the past year and a bit. I&amp;#8217;m not sure when it&amp;#8217;s ever going to be finished, so I thought I might as well post the work-in-progress, which has these noteworthy improvements:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Even faster than before (using the &lt;a href="http://getbootstrap.com"&gt;Bootstrap&lt;/a&gt; library behind the scenes, no longer using slow canvas library to update map)&lt;/li&gt;
+ &lt;li&gt;Sexier graphics (thanks to the aforementioned Bootstrap library)&lt;/li&gt;
+ &lt;li&gt;Now uses client side URLs to keep track of state as you navigate through the site. This allows you to bookmark a favorite spot (e.g. your home) and then go back to it later. For example, &lt;a href="http://nixi.ca/#/cities/montreal/places/5605%20avenue%20de%20Gaspe"&gt;this link&lt;/a&gt; will give you a list of BIXI docks near &lt;a href="http://www.station-c.com/"&gt;Station C&lt;/a&gt;, the coworking space I belong to.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;If you use &lt;a href="http://bixi.com"&gt;BIXI&lt;/a&gt; at all, check it out and let me know what you think!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2013/08/nixi-screenshot.png"&gt; &lt;img src="/files/2013/08/nixi-screenshot-1024x672.png" alt="nixi screenshot" width="640" height="420" class="alignnone size-large wp-image-927" srcset="/files/2013/08/nixi-screenshot-300x196.png 300w, /files/2013/08/nixi-screenshot-1024x672.png 1024w, /files/2013/08/nixi-screenshot.png 1266w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">Updates on my ridiculous pet projects</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2011/09/updates-on-my-ridiculous-pet-projects/?utm_source=BIXI&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2011-09-updates-on-my-ridiculous-pet-projects</id>
+  <published>2011-09-29T04:00:00Z</published>
+  <updated>2011-09-29T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;ol&gt;
+ &lt;li&gt;
+  &lt;p&gt;As you may or may not have noticed, &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt; has been down for the past few weeks. Halifax updated the data but I didn&amp;#8217;t have a chance to update it. Well, I finally did, and hbus is now up in its former glory (minus a small issue with stops named &amp;#8216;6016_merged_3300509&amp;#8217;: thanks Metro Transit, time to update &lt;a href="https://github.com/wlach/routez/blob/master/src/gtfs-hacks/update-halifax-gtfs.py"&gt;that script&lt;/a&gt; to massage your data again!) . I still wonder a bit about why I keep putting time into a site oriented around a city I haven&amp;#8217;t lived in for over 2 years now (especially when Google Maps arguably does a better job at most things than I do), but there you go!&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;&lt;a href="http://nixi.ca"&gt;NIXI&lt;/a&gt; is still up and being useful to me, though I&amp;#8217;m a little bit disappointed by its uptake from the rest of the world (the site gets like 5&amp;ndash;12 unique views a day). What do I need to do for you guys? A mobile version? French localization? I just added support for Washington (Capital Bikeshare) and Boston (Hubway), maybe it&amp;#8217;ll get some uptake there.&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;Not really my project, but Stephane Guidoin put up an awesome site called &lt;a href="http://zonecone.ca"&gt;zonecone.ca&lt;/a&gt; which helps you find out about traffic obstacles that might delay your journey. It even has a nifty feature where you can create an account, specify a route you take regularly (say, your commute), and it&amp;#8217;ll automatically notify you if something pops up. As you may have guessed, I&amp;#8217;m not the biggest fan of automobiles, but this is still very cool. 😉 This site was originally based on &lt;a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/"&gt;the map layout template&lt;/a&gt; that I announced a few months ago.&lt;/p&gt;&lt;/li&gt;
+ &lt;li&gt;
+  &lt;p&gt;I have a lettuce plant growing on my new balcony. It&amp;#8217;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">A better BIXI web site</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2011/06/a-better-bixi-web-site/?utm_source=BIXI&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2011-06-a-better-bixi-web-site</id>
+  <published>2011-06-10T04:00:00Z</published>
+  <updated>2011-06-10T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;There&amp;#8217;s much to like about the BIXI bike-sharing system in Montr&amp;eacute;al: it&amp;#8217;s affordable ($78 for a year of biking), accessible and fun to use. There&amp;#8217;s absolutely no doubt in my mind that it&amp;#8217;s made cycling more of a main stream activity here in Montreal, which benefits everyone (even drivers indirectly gain from less congested streets).&lt;/p&gt;
+
+&lt;p&gt;With the arrival of the first BIXI stations in NDG, I decided to subscribe to it this year even though I have a bike of my own. So far, it looks like I&amp;#8217;m going to easily use it enough to justify the cost. I still use my regular bike for my commute from NDG to the Plateau, but on the edges there&amp;#8217;s a ton of cases where it just makes sense to use something that I don&amp;#8217;t have to worry about locking up and returning home. Sometimes I only want to go one way (for weather or whatever other reason). Other times I want to take public transit for one leg of my trip (or day), but need/want to take a quick jaunt elsewhere once I&amp;#8217;m downtown.&lt;/p&gt;
+
+&lt;p&gt;I do have to say though, their new web site drives me &lt;em&gt;crazy&lt;/em&gt;. I&amp;#8217;ve thought prety deeply about the domain of creating user-friendly transit-focused web sites, so I think I can speak with some authority here.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/06/a-better-bixi-web-site/bixi_shot/" rel="attachment wp-att-268"&gt;&lt;img src="/files/2011/06/bixi_shot.png" alt="" title="bixi_shot" width="400" height="265" class="alignnone size-full wp-image-268" srcset="/files/2011/06/bixi_shot-300x198.png 300w, /files/2011/06/bixi_shot.png 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Leaving aside it&amp;#8217;s value as a promotional tool for the service itself (not my area of expertise), the experience of trying to find a nearby station is complicated by a slow, multi-layered UI that requires repeated clicking and searching to find the nearest station that has bikes available. Why bother with this step when we can just display this information outright on the map? iPhone applications like &lt;a href="http://sites.google.com/site/bixouiphone/"&gt;Bixou&lt;/a&gt; have been doing this for years. It&amp;#8217;s time we brought the same experience to the desktop.&lt;/p&gt;
+
+&lt;p&gt;Thus, I present &lt;a href="http://nixi.ca"&gt;nixi.ca&lt;/a&gt;: a clean, useable interface to BIXI&amp;#8217;s bike share system that presents the information you care about as effectively as possible, without all the clutter. I&amp;#8217;ve already found it useful, and I hope you do too. Think you can do better? Fork the source on &lt;a href="http://github.com/wlach/nixi"&gt;github&lt;/a&gt; and submit your changes back to me! Minus some glue code to fetch station info server side, it&amp;#8217;s entirely a client-side application written in HTML/JavaScript.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/06/a-better-bixi-web-site/nixi_shot/" rel="attachment wp-att-269"&gt;&lt;img src="/files/2011/06/nixi_shot.png" alt="" title="nixi_shot" width="400" height="265" class="alignnone size-full wp-image-269" srcset="/files/2011/06/nixi_shot-300x198.png 300w, /files/2011/06/nixi_shot.png 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that the site uses a bunch of modern HTML5 features, so currently requires a modern browser like Firefox, Chrome, or Safari to display properly. I may or may not fix this. Other notable omissions include support for other cities with the BIXI system (Toronto, Ottawa, &amp;#8230;) and French localization. Patches welcome!&lt;/p&gt;&lt;/html&gt;</content></entry></feed>

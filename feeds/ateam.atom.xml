@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+ <title type="text">William Lachance's Log: Posts tagged 'ateam'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/ateam.atom.xml" />
+ <link href="https://wlach.github.io/tags/ateam.html" />
+ <id>urn:https-wlach-github-io:-tags-ateam-html</id>
+ <updated>2014-06-11T04:00:00Z</updated>
+ <entry>
+  <title type="text">Managing test manifests: ManifestDestiny -&gt; manifestparser</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser/?utm_source=ateam&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2014-06-managing-test-manifests-manifestdestiny-manifestparser</id>
+  <published>2014-06-11T04:00:00Z</published>
+  <updated>2014-06-11T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;Just wanted to make a quick announcement that &lt;a href="https://pypi.python.org/pypi/ManifestDestiny"&gt;ManifestDestiny&lt;/a&gt;, the python package we use internally here at Mozilla for declaratively managing lists of tests in &lt;a href="https://developer.mozilla.org/en/docs/Mochitest"&gt;Mochitest&lt;/a&gt; and other places, has been renamed to &lt;a href="https://pypi.python.org/pypi/manifestparser"&gt;manifestparser&lt;/a&gt;. We kept the versioning the same (0.6), so the only thing you should need to change in your python package dependencies is a quick substitution of &amp;#8220;ManifestDestiny&amp;#8221; with &amp;#8220;manifestparser&amp;#8221;. We will keep ManifestDestiny around indefinitely on pypi, but only to make sure old stuff doesn&amp;#8217;t break. New versions of the software will only be released under the name &amp;#8220;manifestparser&amp;#8221;.&lt;/p&gt;
+
+&lt;p&gt;Quick history lesson: &amp;#8220;Manifest destiny&amp;#8221; refers to a philosophy of exceptionalism and expansionism that was widely held by American settlers in the 19th century. The concept is considered offensive by some, as it was used to justify displacing and dispossessing Native Americans. Wikipedia&amp;#8217;s &lt;a href="http://en.wikipedia.org/wiki/Manifest_destiny"&gt;article&lt;/a&gt; on the subject has a good summary if you want to learn more.&lt;/p&gt;
+
+&lt;p&gt;Here at &lt;a href="https://wiki.mozilla.org/Auto-tools"&gt;Mozilla Tools &amp;#38; Automation&lt;/a&gt;, we&amp;#8217;re most interested in creating software that everyone can feel good about depending on, so we agreed to rename it. When I raised this with my peers, there were no objections. I know these things are often the source of much drama in the free software world, but there&amp;#8217;s really none to see here.&lt;/p&gt;
+
+&lt;p&gt;Happy manifest parsing!&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">Documentation for mozdevice</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/03/documentation-for-mozdevice/?utm_source=ateam&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2013-03-documentation-for-mozdevice</id>
+  <published>2013-03-11T04:00:00Z</published>
+  <updated>2013-03-11T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;Just wanted to give a quick heads up that as part of the ateam&amp;#8217;s ongoing effort to improve the documentation of our automated testing infrastructure, we now have &lt;a href="https://mozbase.readthedocs.org/en/latest/mozdevice.html"&gt;online documentation&lt;/a&gt; for mozdevice, the python library we use for interacting with Android- and FirefoxOS-based devices in automated testing.&lt;/p&gt;
+
+&lt;p&gt;Mozdevice is used in pretty much every one of our testing frameworks that has mobile support, including mochitest, reftest, &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;talos&lt;/a&gt;, &lt;a href="https://github.com/mozilla/autophone"&gt;autophone&lt;/a&gt;, and &lt;a href="https://wiki.mozilla.org/Project_Eideticker"&gt;eideticker&lt;/a&gt;. Additionally, mozdevice is used by release engineering to clean up, monitor, and otherwise manage 
+ &lt;strike&gt;our hundred-odd&lt;/strike&gt; the 1200*** tegra and panda development boards that we use in &lt;a href="http://tbpl.mozilla.org"&gt;tbpl&lt;/a&gt;. See &lt;a href="https://hg.mozilla.org/build/tools/file/tip/sut_tools"&gt;sut_tools&lt;/a&gt; (old, buildbot-based, what we currently use) and &lt;a href="https://github.com/mozilla/mozpool"&gt;mozpool&lt;/a&gt; (the new and shiny future).&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Thanks to Dustin Mitchell for the correction.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</content></entry></feed>

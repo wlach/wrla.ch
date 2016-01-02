@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0">
+ <channel>
+  <title>William Lachance's Log: Posts tagged 'Transit'</title>
+  <description>William Lachance's Log: Posts tagged 'Transit'</description>
+  <link>https://wlach.github.io/tags/Transit.html</link>
+  <lastBuildDate>Wed, 14 Dec 2011 05:00:00 UT</lastBuildDate>
+  <pubDate>Wed, 14 Dec 2011 05:00:00 UT</pubDate>
+  <ttl>1800</ttl>
+  <item>
+   <title>An API for AMT data</title>
+   <link>https://wlach.github.io/blog/2011/12/an-api-for-amt-data/?utm_source=Transit&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2011-12-an-api-for-amt-data</guid>
+   <pubDate>Wed, 14 Dec 2011 05:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;The &lt;a href="http://www.amt.qc.ca"&gt;AMT&lt;/a&gt; released their &lt;a href="http://t.co/AofpyI4E"&gt;GTFS schedule information&lt;/a&gt; to the public earlier this week, which is awesome. Not coincidentally, Montreal is going to have a &lt;a href="http://transportationcamp.org/montreal/"&gt;Transportation Camp&lt;/a&gt; tomorrow, wherein people will hack on transportation software and discuss open data issues.&lt;/p&gt;
+
+&lt;p&gt;GTFS information is useful and standard, but in its raw form it can be a bit difficult to wrangle with. So in advance of the event, I thought it might be helpful/useful to put a simple JSON API to the data, based on my &lt;a href="http://github.com/wlach/routez"&gt;routez&lt;/a&gt; software. Should be useful for creating an app or two! There&amp;#8217;s two endpoints that are currently defined:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;/api/v1/stop/&amp;lt;stop code&amp;gt;/upcoming_stoptimes&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This will give a set of upcoming departures at a particular AMT stop (represented by its code). Example:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://amt.wrla.ch/blog/api/v1/stop/11260/upcoming_stoptimes"&gt;http://amt.wrla.ch/blog/api/v1/stop/11260/upcoming_stoptimes&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;/api/v1/place/&amp;lt;lat,lng&amp;gt;/upcoming_stoptimes?distance=&amp;lt;distance in meters&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This will give a set of AMT stops within range of that endpoint, along with upcoming departures. Example:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://amt.wrla.ch/blog/api/v1/place/45.49640,%20-73.57567/upcoming_stoptimes?distance=1000"&gt;http://amt.wrla.ch/blog/api/v1/place/45.49640,%20-73.57567/upcoming_stoptimes?distance=1000&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

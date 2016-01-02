@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+ <title type="text">William Lachance's Log: Posts tagged 'Perfherder'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/Perfherder.atom.xml" />
+ <link href="https://wlach.github.io/tags/Perfherder.html" />
+ <id>urn:https-wlach-github-io:-tags-Perfherder-html</id>
+ <updated>2015-11-04T05:00:00Z</updated>
+ <entry>
+  <title type="text">Perfherder: Onward!</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2015/11/perfherder-onward/?utm_source=Perfherder&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2015-11-perfherder-onward</id>
+  <published>2015-11-04T05:00:00Z</published>
+  <updated>2015-11-04T05:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;In addition to the &lt;a href="http://wrla.ch/blog/2015/10/the-new-old-perfherder-data-model/"&gt;database refactoring&lt;/a&gt; I mentioned a few weeks ago, some cool stuff has been going into &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; lately.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tracking installer size&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Perfherder is now tracking the size of the Firefox installer for the various platforms we support (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1149164"&gt;bug 1149164&lt;/a&gt;). I originally only intended to track Android .APK size (on request from the mobile team), but installer sizes for other platforms came along for the ride. I don&amp;#8217;t think anyone will complain.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM.png"&gt;&lt;img src="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-300x181.png" alt="Screen Shot 2015-11-03 at 5.28.48 PM" width="300" height="181" class="alignnone size-medium wp-image-1274" srcset="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-300x181.png 300w, /files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-1024x618.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://treeherder.mozilla.org/perf.html#/graphs?series=[mozilla-inbound,4eb0cde5431ee9aeb5eb14512ddb3da6d4702cf0,1]&amp;amp;#038;series=[mozilla-inbound,80cac7ef44b76864458627c574af1a18a425f338,1]&amp;amp;#038;series=[mozilla-inbound,0060252bdfb7632df5877b7594b4d16f1b5ca4c9,1]"&gt;link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Just as exciting to me as the feature itself is how it&amp;#8217;s implemented: I added a log parser to treeherder which just picks up a line called &amp;#8220;PERFHERDER_DATA&amp;#8221; in the logs with specially formatted JSON data, and then automatically stores whatever metrics are in there in the database (platform, options, etc. are automatically determined). For example, on Linux:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;PERFHERDER_DATA: {"framework": {"name": "build_metrics"}, "suites": [{"subtests": [{"name": "libxul.so", "value": 99030741}], "name": "installer size", "value": 55555785}]}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This should make it super easy for people to add their own metrics to Perfherder for build and test jobs. We&amp;#8217;ll have to be somewhat careful about how we do this (we don&amp;#8217;t want to add thousands of new series with irrelevant / inconsistent data) but I think there&amp;#8217;s lots of potential here to be able to track things we care about on a per-commit basis. Maybe build times (?).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;More compare view improvements&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I added filtering to the Perfherder compare view and added back links to the graphs view. Filtering should make it easier to highlight particular problematic tests in bug reports, etc. The graphs links shouldn&amp;#8217;t really be necessary, but unfortunately are due to the unreliability of our data &amp;#8212; sometimes you can only see if a particular difference between two revisions is worth paying attention to in the context of the numbers over the last several weeks.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM.png"&gt;&lt;img src="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-300x157.png" alt="Screen Shot 2015-11-03 at 5.37.02 PM" width="300" height="157" class="alignnone size-medium wp-image-1275" srcset="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-300x157.png 300w, /files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-1024x536.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Miscellaneous&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Even after the &lt;a href="http://wrla.ch/blog/2015/09/perfherder-summer-of-contribution-thoughts/"&gt;summer of contribution&lt;/a&gt; has ended, Mike Ling continues to do great work. Looking at the commit log over the past few weeks, he&amp;#8217;s been responsible for the following fixes and improvements:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1218825"&gt;Bug 1218825&lt;/a&gt;: Can zoom in on perfherder graphs by selecting the main view&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1207309"&gt;Bug 1207309&lt;/a&gt;: Disable &amp;#8216;&amp;lt;&amp;rsquo; button in test chooser if no test selected&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1210503"&gt;Bug 1210503&lt;/a&gt; &amp;#8211; Include non-summary tests in main comparison view&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1153956"&gt;Bug 1153956&lt;/a&gt; &amp;#8211; Persist the selected revision in the url on perfherder (based on earlier work by Akhilesh Pillai)&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Next up&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;My main goal for this quarter is to create a fully functional interface for actually sheriffing performance regressions, to replace &lt;a href="http://alertmanager.allizom.org:8080/alerts.html"&gt;alertmanager&lt;/a&gt;. Work on this has been going well. More soon.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png"&gt;&lt;img src="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png" alt="Screen Shot 2015-11-04 at 10.41.26 AM" width="300" height="176" class="alignnone size-medium wp-image-1280" srcset="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png 300w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-1024x600.png 1024w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png 1126w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">The new old Perfherder data model</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2015/10/the-new-old-perfherder-data-model/?utm_source=Perfherder&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2015-10-the-new-old-perfherder-data-model</id>
+  <published>2015-10-23T04:00:00Z</published>
+  <updated>2015-10-23T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;I spent a good chunk of time last quarter redesigning how &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; stores its data internally. Here are some notes on this change, for posterity.&lt;/p&gt;
+
+&lt;p&gt;Perfherder&amp;#8217;s data model is based around two concepts:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;Series signatures: A unique set of properties (platform, test name, suite name, options) that identifies a performance test.&lt;/li&gt;
+ &lt;li&gt;Series data: A set of measurements for a series signature, indexed by treeherder push and job information.&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;When it was first written, Perfherder stored the second type of data as a JSON-encoded series in a relational (MySQL) database. That is, instead of storing each datum as a row in the database, we would store sequences of them. The assumption was that for the common case (getting a bunch of data to plot on a graph), this would be faster than fetching a bunch of rows and then encoding them as JSON. Unfortunately this wasn&amp;#8217;t really true, and it had some serious drawbacks besides.&lt;/p&gt;
+
+&lt;p&gt;First, the approach&amp;#8217;s performance was awful when it came time to add new data. To avoid needing to decode or download the full stored series when you wanted to render only a small subset of it, we stored the same series multiple times over various time intervals. For example, we stored the series data for one day, one week&amp;#8230; all the way up to one year. You can probably see the problem already: you have to decode and re-encode the same data structure many times for each time interval for every new performance datum you were inserting into the database. The pseudo code looked something like this for each push:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;for each platform we're testing talos on:
+  for each talos job for the platform:
+    for each test suite in the talos job:
+      for each subtest in the test suite:
+        for each time interval in one year, 90 days, 60 days, ...:
+           fetch and decode json series for that time interval from db
+           add datapoint to end of series
+           re-encode series as json and store in db&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Consider that we have some 6 platforms (android, linux64, osx, winxp, win7, win8), 20ish test suites with potentially dozens of subtests&amp;#8230; and you can see where the problems begin.&lt;/p&gt;
+
+&lt;p&gt;In addition to being slow to write, this was also a pig in terms of disk space consumption. The overhead of JSON (&amp;#8220;{, }&amp;#8221; characters, object properties) really starts to add up when you&amp;#8217;re storing millions of performance measurements. We got around this (sort of) by gzipping the contents of these series, but that still left us with gigantic mysql replay logs as we stored the complete &amp;#8220;transaction&amp;#8221; of replacing each of these series rows thousands of times per day. At one point, we completely ran out of disk space on the treeherder staging instance due to this issue.&lt;/p&gt;
+
+&lt;p&gt;Read performance was also often terrible for many common use cases. The original assumption I mentioned above was wrong: rendering points on a graph is only one use case a system like Perfherder has to handle. We also want to be able to get the set of series values associated with two result sets (to render comparison views) or to look up the data associated with a particular job. We were essentially indexing the performance data only on one single dimension (time) which made these other types of operations unnecessarily complex and slow &amp;#8212; especially as the data you want to look up ages. For example, to look up a two week old comparison between two pushes, you&amp;#8217;d also have to fetch the data for &lt;em&gt;every&lt;/em&gt; subsequent push. That&amp;#8217;s a lot of unnecessary overhead when you&amp;#8217;re rendering a comparison view with 100 or so different performance tests:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM.png"&gt;&lt;img src="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM-300x178.png" alt="Screen Shot 2015-08-07 at 1.57.39 PM" width="300" height="178" class="alignnone size-medium wp-image-1229" srcset="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM-300x178.png 300w, /files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM.png 1003w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;So what&amp;#8217;s the alternative? It&amp;#8217;s actually the most obvious thing: just encode one database row per performance series value and create indexes on each of the properties that we might want to search on (repository, timestamp, job id, push id). Yes, this is a lot of rows (the new database stands at 48 million rows of performance data, and counting) but you know what? MySQL is &lt;em&gt;designed&lt;/em&gt; to handle that sort of load. The current performance data table looks like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+----------------+------------------+
+| Field          | Type             |
++----------------+------------------+
+| id             | int(11)          |
+| job_id         | int(10) unsigned |
+| result_set_id  | int(10) unsigned |
+| value          | double           |
+| push_timestamp | datetime(6)      |
+| repository_id  | int(11)          | 
+| signature_id   | int(11)          | 
++----------------+------------------+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;MySQL can store each of these structures very efficiently, I haven&amp;#8217;t done the exact calculations, but this is well under 50 bytes per row. Including indexes, the complete set of performance data going back to last year clocks in at 15 gigs. Not bad. And we can examine this data structure across any combination of dimensions we like (push, job, timestamp, repository) making common queries to perfherder very fast.&lt;/p&gt;
+
+&lt;p&gt;What about the initial assumption, that it would be faster to get a series out of the database if it&amp;#8217;s already pre-encoded? Nope, not really. If you have a good index and you&amp;#8217;re only fetching the data you need, the overhead of encoding a bunch of database rows to JSON is pretty minor. From my (remote) location in Toronto, I can fetch 30 days of &lt;a href="https://treeherder.mozilla.org/perf.html#/graphs?timerange=2592000&amp;amp;#038;series=[mozilla-inbound,c233ba1133abbd544002dfbc29d9e63ced42a20e,1]"&gt;tcheck2 data&lt;/a&gt; in 250 ms. Almost certainly most of that is network latency. If the original implementation was faster, it&amp;#8217;s not by a significant amount.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM.png"&gt;&lt;img src="/files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM-300x188.png" alt="Screen Shot 2015-10-23 at 1.55.09 PM" width="300" height="188" class="alignnone size-medium wp-image-1259" srcset="/files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM-300x188.png 300w, /files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM-1024x643.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Lesson&lt;/strong&gt;: Sometimes using ancient technologies (SQL) in the most obvious way is the right thing to do. &lt;a href="http://c2.com/xp/DoTheSimplestThingThatCouldPossiblyWork.html"&gt;DoTheSimplestThingThatCouldPossiblyWork&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">Perfherder summer of contribution thoughts</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2015/09/perfherder-summer-of-contribution-thoughts/?utm_source=Perfherder&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2015-09-perfherder-summer-of-contribution-thoughts</id>
+  <published>2015-09-29T04:00:00Z</published>
+  <updated>2015-09-29T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;A few months ago, Joel Maher &lt;a href="https://elvis314.wordpress.com/2015/05/18/a-team-contribution-opportunity-dashboard-hacker/"&gt;announced the Perfherder summer of contribution&lt;/a&gt;. We wrapped things up there a few weeks ago, so I guess it&amp;#8217;s about time I wrote up a bit about how things went.&lt;/p&gt;
+
+&lt;p&gt;As a reminder, the idea of summer of contribution was to give a set of contributors the opportunity to make a substantial contribution to a project we were working on (in this case, the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; performance sheriffing system). We would ask that they sign up to do 5&amp;ndash;10 hours of work a week for at least 8 weeks. In return, Joel and myself would make ourselves available as mentors to answer questions about the project whenever they ran into trouble.&lt;/p&gt;
+
+&lt;p&gt;To get things rolling, I split off a bunch of work that we felt would be reasonable to do by a contributor into bugs of varying difficulty levels (assigning them the bugzilla whiteboard tag &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?keywords=%20ateam-summer-of-contribution&amp;amp;#038;keywords_type=allwords&amp;amp;#038;list_id=12578272&amp;amp;#038;resolution=---&amp;amp;#038;resolution=FIXED&amp;amp;#038;resolution=INVALID&amp;amp;#038;resolution=WONTFIX&amp;amp;#038;resolution=DUPLICATE&amp;amp;#038;resolution=WORKSFORME&amp;amp;#038;resolution=INCOMPLETE&amp;amp;#038;resolution=SUPPORT&amp;amp;#038;resolution=EXPIRED&amp;amp;#038;resolution=MOVED&amp;amp;#038;query_format=advanced&amp;amp;#038;bug_status=UNCONFIRMED&amp;amp;#038;bug_status=NEW&amp;amp;#038;bug_status=ASSIGNED&amp;amp;#038;bug_status=REOPENED&amp;amp;#038;bug_status=RESOLVED&amp;amp;#038;bug_status=VERIFIED&amp;amp;#038;bug_status=CLOSED"&gt;ateam-summer-of-contribution&lt;/a&gt;). When someone first expressed interest in working on the project, I&amp;#8217;d assign them a relatively easy front end one, just to cover the basics of working with the project (checking out code, making a change, submitting a PR to github). If they made it through that, I&amp;#8217;d go on to assign them slightly harder or more complex tasks which dealt with other parts of the codebase, the nature of which depended on what they wanted to learn more about. Perfherder essentially has two components: a data storage and analysis backend written in Python and Django, and a web-based frontend written in JS and Angular. There was (still is) lots to do on both, which gave contributors lots of choice.&lt;/p&gt;
+
+&lt;p&gt;This system worked pretty well for attracting people. I think we got at least 5 people interested and contributing useful patches within the first couple of weeks. In general I think onboarding went well. Having good documentation for Perfherder / Treeherder on the wiki certainly helped. We had lots of the usual problems getting people familiar with git and submitting proper pull requests: we use a somewhat clumsy combination of bugzilla and github to manage treeherder issues (we &amp;#8220;attach&amp;#8221; PRs to bugs as plaintext), which can be a bit offputting to newcomers. But once they got past these issues, things went relatively smoothly.&lt;/p&gt;
+
+&lt;p&gt;A few weeks in, I set up a fortnightly skype call for people to join and update status and ask questions. This proved to be quite useful: it let me and Joel articulate the higher-level vision for the project to people (which can be difficult to summarize in text) but more importantly it was also a great opportunity for people to ask questions and raise concerns about the project in a free-form, high-bandwidth environment. In general I&amp;#8217;m not a big fan of meetings (especially status report meetings) but I think these were pretty useful. Being able to hear someone else&amp;#8217;s voice definitely goes a long way to establishing trust that you just can&amp;#8217;t get in the same way over email and irc.&lt;/p&gt;
+
+&lt;p&gt;I think our biggest challenge was retention. Due to (understandable) time commitments and constraints only one person (Mike Ling) was really able to stick with it until the end. Still, I&amp;#8217;m pretty happy with that success rate: if you stop and think about it, even a 10-hour a week time investment is a fair bit to ask. Some of the people who didn&amp;#8217;t quite make it were quite awesome, I hope they come back some day.&lt;/p&gt;
+
+&lt;p&gt;&amp;#8212;&lt;/p&gt;
+
+&lt;p&gt;On that note, a special thanks to Mike Ling for sticking with us this long (he&amp;#8217;s still around and doing useful things long after the program ended). He&amp;#8217;s done &lt;a href="https://github.com/mozilla/treeherder/commits/master?author=MikeLing"&gt;some really fantastic work&lt;/a&gt; inside Perfherder and the project is much better for it. I think my two favorite features that he wrote up are the improved test chooser which I talked about a few months ago and a &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1134780"&gt;get related platform / branch&lt;/a&gt; feature which is a big time saver when trying to determine when a performance regression was first introduced.&lt;/p&gt;
+
+&lt;p&gt;I took the time to do a short email interview with him last week. Here&amp;#8217;s what he had to say:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;Tell us a little bit about yourself. Where do you live? What is it you do when not contributing to Perfherder?&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;I&amp;#8217;m a postgraduate student of NanChang HangKong university in China whose major is Internet of things. Actually,there are a lot of things I would like to do when I am AFK, play basketball, video game, reading books and listening music, just name it ; )&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;How did you find out about the ateam summer of contribution program?&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;well, I remember when I still a new comer of treeherder, I totally don&amp;#8217;t know how to start my contribution. So, I just go to treeherder irc and ask for advice. As I recall, emorley and jfrench talk with me and give me a lot of hits. Then Will (wlach) send me an Email about ateam summer of contribution and perfherder. He told me it&amp;#8217;s a good opportunity to learn more about treeherder and how to work like a team! I almost jump out of bed (I receive that email just before get asleep) and reply with YES. Thank you Will!&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;What did you find most challenging in the summer of contribution?&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;I think the most challenging thing is I not only need to know how to code but also need to know how treeherder actually work. It&amp;#8217;s a awesome project and there are a ton of things I haven&amp;#8217;t heard before (i.e T-test, regression). So I still have a long way to go before I familiar with it.&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;What advice would give you to future ateam contributors?&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;The only thing you need to do is bring your question to irc and ask. Do not hesitate to ask for help if you need it! All the people in here are nice and willing to help. Enjoy it!&lt;/em&gt;&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">More Perfherder  updates</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2015/08/more-perfherder-updates/?utm_source=Perfherder&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2015-08-more-perfherder-updates</id>
+  <published>2015-08-07T04:00:00Z</published>
+  <updated>2015-08-07T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;Since my last update, we&amp;#8217;ve been trucking along with improvements to &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt;, the project for making Firefox performance sheriffing and analysis easier.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Compare visualization improvements&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve been spending quite a bit of time trying to fix up the display of information in the compare view, to address feedback from developers and hopefully generally streamline things. &lt;a href="https://blog.mozilla.org/vdjeric/"&gt;Vladan&lt;/a&gt; (from the perf team) referred me to &lt;a href="https://mozillians.org/en-US/u/bwinton/"&gt;Blake Winton&lt;/a&gt;, who provided tons of awesome suggestions on how to present things more concisely.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s an old versus new picture:&lt;/p&gt;
+
+&lt;table&gt;
+ &lt;tr&gt;
+  &lt;td&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png" alt="Screen Shot 2015-07-14 at 3.53.20 PM" width="300" height="206" class="alignnone size-medium wp-image-1218" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/td&gt; 
+  &lt;td&gt;&lt;a href="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM.png"&gt;&lt;img src="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM-300x178.png" alt="Screen Shot 2015-08-07 at 1.57.39 PM" width="300" height="178" class="alignnone size-medium wp-image-1229" srcset="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM-300x178.png 300w, /files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM.png 1003w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Summary of significant changes in this view:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Removed or consolidated several types of numerical information which were overwhelming or confusing (e.g. presenting both numerical and percentage standard deviation in their own columns).&lt;/li&gt;
+ &lt;li&gt;Added tooltips all over the place to explain what&amp;#8217;s being displayed.&lt;/li&gt;
+ &lt;li&gt;Highlight more strongly when it appears there aren&amp;#8217;t enough runs to make a definitive determination on whether there was a regression or improvement.&lt;/li&gt;
+ &lt;li&gt;Improve display of visual indicator of magnitude of regression/improvement (providing a pseudo-scale showing where the change ranges from 0% &amp;#8211; 20%+).&lt;/li&gt;
+ &lt;li&gt;Provide more detail on the two changesets being compared in the header and make it easier to retrigger them (thanks to Mike Ling).&lt;/li&gt;
+ &lt;li&gt;Much better and more intuitive error handling when something goes wrong (also thanks to Mike Ling).&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;The point of these changes isn&amp;#8217;t necessarily to make everything &amp;#8220;immediately obvious&amp;#8221; to people. We&amp;#8217;re not building general purpose software here: Perfherder will always be a rather specialized tool which presumes significant domain knowledge on the part of the people using it. However, even for our audience, it turns out that there&amp;#8217;s a lot of room to improve how our presentation: reducing the amount of extraneous noise helps people zero in on the things they really need to care about.&lt;/p&gt;
+
+&lt;p&gt;Special thanks to everyone who took time out of their schedules to provide so much good feedback, in particular &lt;a href="http://avih.github.io/"&gt;Avi Halmachi&lt;/a&gt;, &lt;a href="http://glandium.org/blog/"&gt;Glandium&lt;/a&gt;, and &lt;a href="http://elvis314.wordpress.com/"&gt;Joel Maher&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Of course more suggestions are always welcome. Please &lt;a href="https://treeherder.mozilla.org/perf.html#/comparechooser"&gt;give it a try&lt;/a&gt; and &lt;a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Tree%20Management&amp;amp;#038;component=Perfherder"&gt;file bugs against the perfherder component&lt;/a&gt; if you find anything you&amp;#8217;d like to see changed or improved.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Getting the word out&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Hammersmith:mozilla-central wlach$ hg push -f try
+pushing to ssh://hg.mozilla.org/try
+no revisions specified to push; using . to avoid pushing multiple heads
+searching for changes
+remote: waiting for lock on repository /repo/hg/mozilla/try held by 'hgssh1.dmz.scl3.mozilla.com:8270'
+remote: got lock after 4 seconds
+remote: adding changesets
+remote: adding manifests
+remote: adding file changes
+remote: added 1 changesets with 1 changes to 1 files
+remote: Trying to insert into pushlog.
+remote: Inserted into the pushlog db successfully.
+remote:
+remote: View your change here:
+remote:   https://hg.mozilla.org/try/rev/e0aa56fb4ace
+remote:
+remote: Follow the progress of your build on Treeherder:
+remote:   https://treeherder.mozilla.org/#/jobs?repo=try&amp;amp;revision=e0aa56fb4ace
+remote:
+remote: It looks like this try push has talos jobs. Compare performance against a baseline revision:
+remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=try&amp;amp;newRevision=e0aa56fb4ace&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Try pushes incorporating Talos jobs now automatically link to perfherder&amp;#8217;s compare view, both in the output from mercurial and in the emails the system sends. One of the challenges we&amp;#8217;ve been facing up to this point is just letting developers know that Perfherder &lt;em&gt;exists&lt;/em&gt; and it can help them either avoid or resolve performance regressions. I believe this will help.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Data quality and ingestion improvements&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Over the past couple weeks, we&amp;#8217;ve been comparing our regression detection code when run against Graphserver data to Perfherder data. In doing so, we discovered that we&amp;#8217;ve sometimes been using the wrong algorithm (geometric mean) to summarize some of our tests, leading to unexpected and less meaningful results. For example, the v8_7 benchmark uses a custom weighting algorithm for its score, to account for the fact that the things it tests have a particular range of expected values.&lt;/p&gt;
+
+&lt;p&gt;To hopefully prevent this from happening again in the future, we&amp;#8217;ve decided to move the test summarization code out of Perfherder back into Talos (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1184966"&gt;bug 1184966&lt;/a&gt;). This has the additional benefit of creating a stronger connection between the content of the Talos logs and what Perfherder displays in its comparison and graph views, which has thrown people off in the past.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Continuing data challenges&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Having better tools for visualizing this stuff is great, but it also highlights some continuing problems we&amp;#8217;ve had with data quality. It turns out that our automation setup often produces &lt;em&gt;qualitatively different&lt;/em&gt; performance results for the exact same set of data, depending on when and how the tests are run.&lt;/p&gt;
+
+&lt;p&gt;A certain amount of random noise is always expected when running performance tests. As much as we might try to make them uniform, our testing machines and environments are just not 100% identical. That we expect and can deal with: our standard approach is just to retrigger runs, to make sure we get a representative sample of data from our population of machines.&lt;/p&gt;
+
+&lt;p&gt;The problem comes when there&amp;#8217;s a &lt;em&gt;pattern&lt;/em&gt; to the noise: we&amp;#8217;ve already noticed that tests run on the weekends produce different results (see Joel&amp;#8217;s post from a year ago, &lt;a href="https://elvis314.wordpress.com/2014/10/30/a-case-of-the-weekends/"&gt;&amp;#8220;A case of the weekends&amp;#8221;&lt;/a&gt;) but it seems as if there&amp;#8217;s other circumstances where one set of results will be different from another, depending on the time that each set of tests was run. Some tests and platforms (e.g. the a11yr suite, MacOS X 10.10) seem particularly susceptible to this issue.&lt;/p&gt;
+
+&lt;p&gt;We need to find better ways of dealing with this problem, as it can result in a lot of wasted time and energy, for both sheriffs and developers. See for example &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1190877"&gt;bug 1190877&lt;/a&gt;, which concerned a completely spurious regression on the tresize benchmark that was initially blamed on some changes to the media code&amp;#8211; in this case, Joel speculates that the linux64 test machines we use might have changed from under us in some way, but we really don&amp;#8217;t know yet.&lt;/p&gt;
+
+&lt;p&gt;I see two approaches possible here:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;Figure out what&amp;#8217;s causing the same machines to produce qualitatively different result distributions and address that. This is of course the ideal solution, but it requires coordination with other parts of the organization who are likely quite busy and might be hard.&lt;/li&gt;
+ &lt;li&gt;Figure out better ways of detecting and managing these sorts of case. I have noticed that the standard deviation inside the results when we have spurious regressions/improvements tends to be higher (see for example &lt;a href="https://treeherder.mozilla.org/perf.html#/compare?originalProject=mozilla-inbound&amp;amp;#038;originalRevision=4d0818791d07&amp;amp;#038;newProject=mozilla-inbound&amp;amp;#038;newRevision=5e130ad70aa7"&gt;this compare view&lt;/a&gt; for the aforementioned &amp;#8220;regression&amp;#8221;). Knowing what we do, maybe there&amp;#8217;s some statistical methods we can use to detect bad data?&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;For now, I&amp;#8217;m leaning towards (2). I don&amp;#8217;t think we&amp;#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">Perfherder update</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2015/07/perfherder-update/?utm_source=Perfherder&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2015-07-perfherder-update</id>
+  <published>2015-07-14T04:00:00Z</published>
+  <updated>2015-07-14T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;Haven&amp;#8217;t been doing enough blogging about &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; (our project to make Talos and other per-checkin performance data more useful) recently. Let&amp;#8217;s fix that. We&amp;#8217;ve been making some good progress, helped in part by a group of new contributors that joined us through an experimental &amp;#8220;&lt;a href="https://elvis314.wordpress.com/2015/06/09/please-welcome-the-dashboard-hacker-team/"&gt;summer of contribution&lt;/a&gt;&amp;#8221; program.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Comparison mode&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Inspired by Compare Talos, we&amp;#8217;ve designed something similar which hooks into the perfherder backend. This has already gotten some interest: see this post on &lt;a href="https://groups.google.com/d/msg/mozilla.dev.tree-management/IUmMuY8b52A/Asne1cW0I8EJ"&gt;dev.tree-management&lt;/a&gt; and this one on &lt;a href="https://groups.google.com/d/msg/mozilla.dev.platform/PaJFBtvc3Vg/BvX-pFlsAkoJ"&gt;dev.platform&lt;/a&gt;. We&amp;#8217;re working towards building something that will be really useful both for (1) illustrating that the performance regressions we detect are real and (2) helping developers figure out the impact of their changes before they land them.&lt;/p&gt;
+
+&lt;table&gt;
+ &lt;tr&gt;
+  &lt;td&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM-300x207.png" alt="Screen Shot 2015-07-14 at 3.54.57 PM" width="300" height="207" class="alignnone size-medium wp-image-1219" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM-300x207.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/td&gt; 
+  &lt;td&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png" alt="Screen Shot 2015-07-14 at 3.53.20 PM" width="300" height="206" class="alignnone size-medium wp-image-1218" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;Most of the initial work was done by &lt;a href="https://elvis314.wordpress.com/"&gt;Joel Maher&lt;/a&gt; with lots of review for aesthetics and correctness by me. Avi Halmachi from the Performance Team also helped out with the &lt;a href="https://en.wikipedia.org/wiki/Student's_t-test"&gt;t-test&lt;/a&gt; model for detecting the confidence that we have that a difference in performance was real. Lately myself and &lt;a href="https://github.com/MikeLing"&gt;Mike Ling&lt;/a&gt; (one of our summer of contribution members) have been working on further improving the interface for usability &amp;#8212; I&amp;#8217;m hopeful that we&amp;#8217;ll soon have something implemented that&amp;#8217;s broadly usable and comprehensible to the Mozilla Firefox and Platform developer community.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Graphs improvements&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Although it&amp;#8217;s received slightly less attention lately than the comparison view above, we&amp;#8217;ve been making steady progress on the graphs view of performance series. Aside from demonstrations and presentations, the primary use case for this is being able to detect visually sustained changes in the result distribution for talos tests, which is often necessary to be able to confirm regressions. Notable recent changes include a much easier way of selecting tests to add to the graph from Mike Ling and more readable/parseable urls from &lt;a href="https://github.com/akhileshpillai"&gt;Akhilesh Pillai&lt;/a&gt; (another summer of contribution participant).&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-300x174.png" alt="Screen Shot 2015-07-14 at 4.09.45 PM" width="300" height="174" class="alignnone size-medium wp-image-1221" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-300x174.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-1024x595.png 1024w, /files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM.png 1130w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Performance alerts&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve also been steadily working on making Perfherder generate alerts when there is a significant discontinuity in the performance numbers, similar to what &lt;a href="http://graphs.mozilla.org"&gt;GraphServer&lt;/a&gt; does now. Currently we have an option to generate a static CSV file of these alerts, but the eventual plan is to insert these things into a peristent database. After that&amp;#8217;s done, we can actually work on creating a UI inside Perfherder to replace &lt;a href="http://alertmanager.allizom.org:8080/alerts.html#"&gt;alertmanager&lt;/a&gt; (which currently uses GraphServer data) and start using this thing to sheriff performance regressions &amp;#8212; putting the herder into perfherder.&lt;/p&gt;
+
+&lt;p&gt;As part of this, I&amp;#8217;ve converted the graphserver alert generation code into a standalone python library, which has already proven useful as a component in the &lt;a href="https://hacks.mozilla.org/2015/06/performance-testing-firefox-os-with-raptor/"&gt;Raptor project for FirefoxOS&lt;/a&gt;. Yay modularity and reusability.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Python API&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve also been working on creating and improving a &lt;a href="http://treeherder.readthedocs.org/retrieving_data.html#python-client"&gt;python API&lt;/a&gt; to access Treeherder data, which includes Perfherder. This lets you do interesting things, like dynamically run various types of statistical analysis on the data stored in the production instance of Perfherder (no need to ask me for a database dump or other credentials). I&amp;#8217;ve been using this to perform validation of the data we&amp;#8217;re storing and debug various tricky problems. For example, &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1182282"&gt;I found out last week that we were storing up to duplicate 200 entries in each performance series due to double data ingestion&lt;/a&gt; &amp;#8212; oops.&lt;/p&gt;
+
+&lt;p&gt;You can also use this API to dynamically create interesting graphs and visualizations using &lt;a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/"&gt;ipython notebook&lt;/a&gt;, here&amp;#8217;s a simple example of me plotting the last 7 days of youtube.com pageload data inline in a notebook:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png" alt="Screen Shot 2015-07-14 at 4.43.55 PM" width="300" height="224" class="alignnone size-medium wp-image-1224" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png 842w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[&lt;a href="http://nbviewer.ipython.org/url/wrla.ch/blog/wp-content/uploads/2015/07/perfherder-api.ipynb"&gt;original&lt;/a&gt;]&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">Perfherder update: Summary series drilldown</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2015/03/perfherder-update-summary-series-drilldown/?utm_source=Perfherder&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2015-03-perfherder-update-summary-series-drilldown</id>
+  <published>2015-03-27T04:00:00Z</published>
+  <updated>2015-03-27T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;Just wanted to give another quick Perfherder update. Since the &lt;a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/"&gt;last time&lt;/a&gt;, I&amp;#8217;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&amp;#8217;t possible with Graphserver and I&amp;#8217;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;#8217;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354"&gt;bug 1128354&lt;/a&gt;. Using &lt;a href="https://mozillians.org/en-US/u/mishravikas/"&gt;Mishra Vikas&lt;/a&gt;&amp;#8216;s new &amp;#8220;highlight revision mode&amp;#8221; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png"&gt;&lt;img src="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png" alt="Screen Shot 2015-03-27 at 3.18.28 PM" width="474" height="230" class="alignnone size-large wp-image-1184" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-300x146.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png 1167w" sizes="(max-width: 474px) 100vw, 474px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It does indeed look like things ticked up after this commit for the CART suite, but why? By clicking on the datapoint, you can open up a subtest summary view beneath the graph:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png"&gt;&lt;img src="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png" alt="Screen Shot 2015-03-27 at 2.35.25 PM" width="936" height="438" class="alignnone size-full wp-image-1175" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM-300x140.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png 936w" sizes="(max-width: 936px) 100vw, 936px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We see here that it looks like the 3-customize-enter-css.all.TART entry ticked up a bunch. The related test 3-customize-enter-css.half.TART ticked up a bit too. The changes elsewhere look minimal. But is that a trend that holds across the data over time? We can add some of the relevant subtests to the overall graph view to get a closer look:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM.png"&gt;&lt;img src="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-1024x503.png" alt="Screen Shot 2015-03-27 at 2.36.49 PM" width="474" height="232" class="alignnone size-large wp-image-1176" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-300x147.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-1024x503.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM.png 1155w" sizes="(max-width: 474px) 100vw, 474px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;As is hopefully obvious, this confirms that the affected subtest continues to hold its higher value while another test just bounces around more or less in the range it was before.&lt;/p&gt;
+
+&lt;p&gt;Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at &lt;a href="http://treeherder.mozilla.org/perf.html"&gt;http://treeherder.mozilla.org/perf.html&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">Measuring e10s vs. non-e10s performance with Perfherder</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/?utm_source=Perfherder&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2015-02-measuring-e10s-vs-non-e10s-performance-with-perfherder</id>
+  <published>2015-02-18T05:00:00Z</published>
+  <updated>2015-02-18T05:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;For the past few months I&amp;#8217;ve been working on a sub-project of Treeherder called Perfherder, which aims to provide a workflow that will let us more easily detect and manage performance regressions in our products (initially just those detected in &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;Talos&lt;/a&gt;, but there&amp;#8217;s room to expand on that later). This is a long term project and we&amp;#8217;re still sorting out the details of exactly how it will work, but I thought I&amp;#8217;d quickly announce a milestone.&lt;/p&gt;
+
+&lt;p&gt;As a first step, I&amp;#8217;ve been hacking on a graphical user interface to visualize the performance data we&amp;#8217;re now storing inside Treeherder. It&amp;#8217;s pretty bare bones so far, but already it has two features which &lt;a href="http://graphs.mozilla.org"&gt;graphserver&lt;/a&gt; doesn&amp;#8217;t: the ability to view sub-test results (i.e. the page load time for a specific page in the tp5 suite, as opposed to the geometric mean of all of them) and the ability to see results for e10s builds.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s an example, comparing the tp5o 163.com page load times on windows 7 with e10s enabled (and not):&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2015/02/e10s-vs-non-e10s.png"&gt;&lt;img src="/files/2015/02/e10s-vs-non-e10s.png" alt="e10s-vs-non-e10s" width="901" height="489" class="alignnone size-full wp-image-1157" srcset="/files/2015/02/e10s-vs-non-e10s-300x162.png 300w, /files/2015/02/e10s-vs-non-e10s.png 901w" sizes="(max-width: 901px) 100vw, 901px" /&gt;&lt;/a&gt;
+ &lt;br /&gt;&lt;a href="https://treeherder.mozilla.org/perf.html#/graphs?timerange=7776000&amp;amp;#038;seriesList=[[%22mozilla-central%22,%22a78a233646c932ee1c56cf27da58b6aaa4eda2c3%22],[%22mozilla-central%22,%228e9323fd7fadb0623ec520a8ccaec2e733f3d501%22]]"&gt;[link]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Green is e10s, red is non-e10s (the legend picture doesn&amp;#8217;t reflect this because we have yet to deploy a fix to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1130554"&gt;bug 1130554&lt;/a&gt;, but I promise I&amp;#8217;m not lying). As you can see, the gap has been closing (in particular, something landed in mid-January that improved the e10s numbers quite a bit), but page load times are still measurably slower with this feature enabled.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+ <title type="text">William Lachance's Log: Posts tagged 'Python'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/Python.atom.xml" />
+ <link href="https://wlach.github.io/tags/Python.html" />
+ <id>urn:https-wlach-github-io:-tags-Python-html</id>
+ <updated>2015-04-23T04:00:00Z</updated>
+ <entry>
+  <title type="text">PyCon 2015</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2015/04/pycon-2015/?utm_source=Python&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2015-04-pycon-2015</id>
+  <published>2015-04-23T04:00:00Z</published>
+  <updated>2015-04-23T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;So I went to PyCon 2015. While I didn&amp;#8217;t leave quite as inspired as I did in 2014 (&lt;a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/"&gt;when I discovered iPython&lt;/a&gt;), it was a great experience and I learned a ton. Once again, I was incredibly impressed with the organization of the conference and the diversity and quality of the speakers.&lt;/p&gt;
+
+&lt;p&gt;Since Mozilla was nice enough to sponsor my attendance, I figured I should do another round up of notable talks that I went to.&lt;/p&gt;
+
+&lt;p&gt;Technical stuff that was directly relevant to what I work on:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;To ORM or not to ORM (Christine Spang): Useful talk on when using a database ORM (object relational manager) can be helpful and even faster than using a database directly. I feel like there&amp;#8217;s a lot of misinformation and FUD on this topic, so this was refreshing to see. &lt;a href="https://www.youtube.com/watch?v=Sadng6tR7Q4"&gt;video&lt;/a&gt; &lt;a href="https://speakerdeck.com/pycon2015/christine-spang-to-orm-or-not-to-orm"&gt;slides&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;Debugging hard problems (Alex Gaynor): Exactly what it says &amp;#8212; how to figure out what&amp;#8217;s going on when things aren&amp;#8217;t behaving as they should. Great advice and wisdom in this one (hint: take nothing for granted, dive into the source of everything you&amp;#8217;re using!). &lt;a href="https://www.youtube.com/watch?v=ij99SGGEX34"&gt;video&lt;/a&gt; &lt;a href="https://speakerdeck.com/alex/techniques-for-debugging-hard-problems"&gt;slides&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;Python Performance Profiling: The Guts And The Glory (Jesse Jiryu Davis): Quite an entertaining talk on how to properly profile python code. I really liked his systematic and realistic approach &amp;#8212; which also discussed the thought process behind how to do this (hint: again it comes down to understanding what&amp;#8217;s really going on). Unfortunately the video is truncated, but even the first few minutes are useful. &lt;a href="https://www.youtube.com/watch?v=4uJWWXYHxaM"&gt;video&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;Non-technical stuff:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;The Ethical Consequences Of Our Collective Activities (Glyph): A talk on the ethical implications of how our software is used. I feel like this is an under-discussed topic &amp;#8212; how can we know that the results of our activity (programming) serves others and does not harm? &lt;a href="https://www.youtube.com/watch?v=uSbKjRRbjZs"&gt;video&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;How our engineering environments are killing diversity (and how we can fix it) (Kate Heddleston): This was a great talk on how to make the environments in which we develop more welcoming to under-represented groups (women, minorities, etc.). This is something I&amp;#8217;ve been thinking a bunch about lately, especially in the context of expanding the community of people working on our projects in Automation &amp;#38; Tools. The talk had some particularly useful advice (to me, anyway) on giving feedback. &lt;a href="https://www.youtube.com/watch?v=kNke_4WOWAU"&gt;video&lt;/a&gt; &lt;a href="https://speakerdeck.com/pycon2015/kate-heddleston-how-our-engineering-environments-are-killing-diversity-and-how-we-can-fix-it"&gt;slides&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">mozregression: New maintainer, issues tracked in bugzilla</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/?utm_source=Python&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2014-05-mozregression-new-maintainer-issues-tracked-in-bugzilla</id>
+  <published>2014-05-08T04:00:00Z</published>
+  <updated>2014-05-08T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;Just wanted to give some quick updates on &lt;a href="http://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt;, your favorite regression-finding tool for Firefox:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;I moved all issue tracking in mozregression to bugzilla from github issues. Github unfortunately doesn&amp;#8217;t really scale to handle notifications sensibly when you&amp;#8217;re part of a large organization like Mozilla, which meant many problems were flying past me unseen. &lt;a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Testing&amp;amp;#038;component=mozregression"&gt;File your new bugs&lt;/a&gt; in bugzilla, they&amp;#8217;re now much more likely to be acted upon.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="http://blackrhino.io/"&gt;Sam Garrett&lt;/a&gt; has stepped up to be co-maintainer of the project with me. He&amp;#8217;s been doing a great job whacking out a bunch of bugs and keeping things running reliably, and it was time to give him some recognition and power to keep things moving forward.&lt;/li&gt;
+ &lt;li&gt;On that note, I just released mozregression 0.17, which now shows the revision number when running a build (a request from the graphics team, bug &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1007238"&gt;1007238&lt;/a&gt;) and handles respins of nightly builds correctly (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1000422"&gt;bug 1000422&lt;/a&gt;). Both of these were fixed by Sam.&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;If you&amp;#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &amp;#8212; as I&amp;#8217;ve found out over the last few months, people &lt;em&gt;all over&lt;/em&gt; the Mozilla organization (managers, developers, QA &amp;#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">PyCon 2014 impressions: ipython notebook is the future &amp;#038; more</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/?utm_source=Python&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2014-04-pycon-2014-impressions-ipython-notebook-is-the-future-038-more</id>
+  <published>2014-04-22T04:00:00Z</published>
+  <updated>2014-04-22T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;This year&amp;#8217;s PyCon US (&lt;a href="http://python.org"&gt;Python&lt;/a&gt; Conference) was in my city of residence (Montr&amp;eacute;al) so I took the opportunity to go and see what was up in the world of the language I use the most at Mozilla. It was pretty great!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ipython&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The highlight for me was learning about the possibilities of &lt;a href="http://ipython.org/"&gt;ipython notebooks&lt;/a&gt;, an absolutely fantastic interactive tool for debugging python in a live browser-based environment. I&amp;#8217;d heard about it before, but it wasn&amp;#8217;t immediately apparent how it would really improve things &amp;#8212; it seemed to be just a less convenient interface to the python console that required me to futz around with my web browser. Watching a few presentations on the topic made me realize how wrong I was. It&amp;#8217;s already changed the way I do work with Eideticker data, for the better.&lt;/p&gt;
+
+&lt;figure id="attachment_1042" style="width: 848px" class="wp-caption alignnone"&gt;[&lt;img src="/files/2014/04/eideticker-ipython.png" alt="Using ipython to analyze some eideticker data" width="848" height="842" class="size-full wp-image-1042" srcset="/files/2014/04/eideticker-ipython-150x150.png 150w, /files/2014/04/eideticker-ipython-300x297.png 300w, /files/2014/04/eideticker-ipython.png 848w" sizes="(max-width: 848px) 100vw, 848px" /&gt;][3]
+ &lt;figcaption class="wp-caption-text"&gt;Using ipython to analyze some eideticker data&lt;/figcaption&gt;&lt;/figure&gt;
+
+&lt;p&gt;I think the basic premise is really quite simple: a better interface for typing in, experimenting with, and running python code. If you stop and think about it, the modern web interface supports a much richer vocabulary of interactive concepts that the console (or even text editors like emacs): there&amp;#8217;s no reason we shouldn&amp;#8217;t take advantage of it.&lt;/p&gt;
+
+&lt;p&gt;Here are the (IMO) killer features that make it worth using:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;The ability to immediately re-execute a block of code after editing and seeing an error (essentially merging the immediacy of the python console with the permanency / cut &amp;#38; pastability of an actual script)&lt;/li&gt;
+ &lt;li&gt;Live-printing out graphs of numerical results using &lt;a href="http://matplotlib.org/"&gt;matplotlib&lt;/a&gt;. ZOMG this is so handy. Especially in conjunction with the live-editing outlined above, there&amp;#8217;s no better tool for fine-tuning mathematical/statistical analysis.&lt;/li&gt;
+ &lt;li&gt;The shareability of the results. Any ipython notebook can be saved and then saved to a public website. Many presentations at PyCon 2014, in fact, were done entirely with ipython notebooks. So handy for answering questions like &amp;#8220;how did you get that&amp;#8221;?&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;To learn more about how to use ipython notebooks for data analysis, I highly recommend Julie Evan&amp;#8217;s talk &lt;a href="http://pyvideo.org/video/2657/diving-into-open-data-with-ipython-notebook-pan-0"&gt;Diving into Open Data with IPython Notebook &amp;#38; Pandas&lt;/a&gt;, which you can find on pyvideo.org.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Other Good Talks&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I saw some other good talks at the conference, here are some of them:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href="http://pyvideo.org/video/2571/all-your-ducks-in-a-row-data-structures-in-the-s"&gt;All Your Ducks In A Row: Data Structures in the Standard Library and Beyond&lt;/a&gt; &amp;#8211; A useful talk by Brandon Rhoades on the implementation of basic data structures in Python, and how to select the ones to use for optimal performance. It turns out that lists aren&amp;#8217;t the best thing to use for long sequences of numerical data (who knew?)&lt;/li&gt;
+ &lt;li&gt;&lt;a href="http://pyvideo.org/video/2627/fast-python-slow-python"&gt;Fast Python, Slow Python&lt;/a&gt; &amp;#8211; An interesting talk by Alex Gaynor about how to write decent performing pure-python code in a single-threaded context. Lots of intelligent stuff about producing robust code that matches your intention and data structures, and caution against doing fancy things in the name of being &amp;#8220;pythonic&amp;#8221; or &amp;#8220;general&amp;#8221;.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="http://pyvideo.org/video/2658/analyzing-rap-lyrics-with-python"&gt;Analyzing Rap Lyrics with Python&lt;/a&gt; &amp;#8211; Another data analysis talk, this one about a subject I knew almost nothing about. The best part of it (for me anyway) was learning how the speaker (Julie Lavoie) narrowed her focus in her research to the exact aspects of the problem that would let her answer the question she was interested in (&amp;#8220;Can we automatically find out which rap lyrics are the most sexist?&amp;#8221;) as opposed to interesting problems (&amp;#8220;how can I design the most general scraping library possible?&amp;#8221;) that don&amp;#8217;t answer the question. In my opinion, this ability to focus is one of the key things that seperates successful projects from unsuccessful ones.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">Catching problems early with python</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2012/10/catching-problems-early-with-python/?utm_source=Python&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2012-10-catching-problems-early-with-python</id>
+  <published>2012-10-15T04:00:00Z</published>
+  <updated>2012-10-15T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;Just a few quick notes on how to avoid a class of errors I&amp;#8217;ve been seeing in Mozilla&amp;#8217;s automation over the last year. Since python interprets code dynamically, it&amp;#8217;s pretty easy for problems like undefined variables to slip through, especially if they&amp;#8217;re in a codepath that isn&amp;#8217;t frequently tested. The most recent example I found was in some cleanup-after-error code for remote mochitest/reftest, which tried to call &amp;#8220;self.cleanup&amp;#8221; from a standalone method.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def main():
+      ...
+      try:
+        dm.recordLogcat()
+        retVal = mochitest.runTests(options)
+        logcat = dm.getLogcat()
+      except:
+        print "TEST-UNEXPECTED-FAIL | %s | Exception caught while running tests." % sys.exc_info()[1]
+        mochitest.stopWebServer(options)
+        mochitest.stopWebSocketServer(options)
+        try:
+            self.cleanup(None, options)
+        except:
+            pass
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href="http://hg.mozilla.org/mozilla-central/file/942ed5747b63/testing/mochitest/runtestsremote.py#l481"&gt;testing/mochitest/runtestsremote.py&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;We&amp;#8217;re calling cleanup as if it were a class variable, but we&amp;#8217;re not inside any class! It&amp;#8217;s easy to see what will happen if you try to run some similar code from the python console:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; self.cleanup()
+Traceback (most recent call last):
+  File "&amp;amp;lt;stdin&amp;gt;", line 1, in &amp;amp;lt;module&amp;gt;
+NameError: name 'self' is not defined&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However, because we&amp;#8217;re in a blanket try&amp;#8230;except, we will never see an error. The cleanup code will never be called, instead the exception is immediately caught and subsequently ignored. Probably not the end of the world in this case (there are other parts of our mobile automation which will perform the same cleanup later), but it&amp;#8217;s easy to imagine where this would be a more serious problem.&lt;/p&gt;
+
+&lt;p&gt;There&amp;#8217;s two very easy ways to help stop errors like this before they hit our code:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;
+  &lt;p&gt;Try to avoid using a blanket try&amp;#8230;except. In addition to catching legitimate problems which we want to ignore (in the remote case for example, devicemanager exceptions), it also catches (and thus obscures) things like syntax, name, or type errors. Instead, try just catching the specific exception you&amp;#8217;re looking for. For example, we might rewrite the case above as:&lt;/p&gt;``` try:&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt; mochitest.cleanup(None, options) except devicemanager.DMError:  print &amp;ldquo;WARNING: Device error while cleaning up&amp;rdquo; &lt;code&gt;2. pyflakes, pyflakes, pyflakes. [Pyflakes][2] is a fantastic tool for analyzing your python code for common problems. It&amp;amp;#8217;s kind of analagous to [jslint][3], for those of you familiar with that. Here&amp;amp;#8217;s what happens when we run pyflakes against the offending code:&lt;/code&gt; wlach@eideticker:~/src/mozilla-central$ pyflakes testing/mochitest/runtestsremote.py  testing/mochitest/runtestsremote.py:7: &amp;lsquo;time&amp;rsquo; imported but unused testing/mochitest/runtestsremote.py:481: undefined name &amp;lsquo;self&amp;rsquo; testing/mochitest/runtestsremote.py:500: undefined name &amp;lsquo;self&amp;rsquo; ```&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;I&amp;amp;#8217;ve found pyflakes to be an indispensable part of my workflow. I generally run it after making any substantial change to a python file, and certainly before pushing anything to be consumed by others.&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Ultimately there&amp;#8217;s no substitute for actually thoroughly testing your code, no matter what language you&amp;#8217;re using. But using the right techniques and tools can certainly make your life easier.&lt;/p&gt;
+
+&lt;p&gt;[ for those wondering, a fix for the issue mentioned in this post is part of &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=801652"&gt;bug 801652&lt;/a&gt; ]&lt;/p&gt;&lt;/html&gt;</content></entry></feed>

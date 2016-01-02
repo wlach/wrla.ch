@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+ <title type="text">William Lachance's Log: Posts tagged 'iphone'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/iphone.atom.xml" />
+ <link href="https://wlach.github.io/tags/iphone.html" />
+ <id>urn:https-wlach-github-io:-tags-iphone-html</id>
+ <updated>2011-02-19T05:00:00Z</updated>
+ <entry>
+  <title type="text">D&amp;eacute;chets Montr&amp;eacute;al goes mobile</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile/?utm_source=iphone&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile</id>
+  <published>2011-02-19T05:00:00Z</published>
+  <updated>2011-02-19T05:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;A few weekends ago, there was a &lt;a href="http://montrealouvert.net/"&gt;Montr&amp;eacute;al Ouvert&lt;/a&gt; hackfest at the &lt;a href="http://notmanhouse.com"&gt;Notman House&lt;/a&gt;. I decided to take a bit of a break from my usual transit hacking and built up a mobile friendly interface to the wonderful &lt;a href="http://dechetsmontreal.ca/"&gt;D&amp;eacute;chets Montr&amp;eacute;al&lt;/a&gt;, which lets residents easily get information on their garbage collection schedule.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://wrla.ch/blog/?attachment_id=210" rel="attachment wp-att-210"&gt;&lt;img src="/files/2011/02/dechets-screenies.jpg" alt="" title="Dechets Montreal Screenshots" width="400" height="243" class="alignnone size-full wp-image-210" srcset="/files/2011/02/dechets-screenies-300x182.jpg 300w, /files/2011/02/dechets-screenies.jpg 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The interface is intentionally quite simplistic, the idea being that if you&amp;#8217;re accessing the site using a mobile device you&amp;#8217;re probably only interested in the collection schedule for the current week and nothing else. If you want something more complicated you probably should just be using the full site.&lt;/p&gt;
+
+&lt;p&gt;Anyway, another fun opportunity to play with mobile web technology (a bit of break from my current &lt;a href="http://mindsea.com"&gt;consulting gig&lt;/a&gt;, which is mostly native iPhone apps). A few things that I learned this time around:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;It&amp;#8217;s easy to give your application a nice icon when added to the iPhone home screen by using a &lt;a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html#//apple_ref/doc/uid/TP40002051-CH3"&gt;webpage icon&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;Related to the above, you can give the user a nice hint to add your webpage to their homescreen by using Google&amp;#8217;s &lt;a href="http://code.google.com/p/mobile-bookmark-bubble/"&gt;mobile bookmark bubble&lt;/a&gt; library.&lt;/li&gt;
+ &lt;li&gt;The iPhone&amp;#8217;s form interface will persist after pressing &amp;#8220;Search&amp;#8221; unless &lt;a href="http://www.em-motion.mobi/2010/05/01/iphone-ajax-form-submission/"&gt;you change the focus using an anchor element&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="http://jquery.com"&gt;jQuery&lt;/a&gt; is the best thing since sliced bread for dynamic web applications (ok, I actually knew this already but I just can&amp;#8217;t get over how great it is).&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;Thanks muchly to Kent Mewhort, the brains behind D&amp;eacute;chets Montr&amp;eacute;al, for helping me incorporate my work into his Drupal-based site.&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">I can has Edmonton transit iPhone app?</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2010/04/i-can-has-edmonton-transit-iphone-app/?utm_source=iphone&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2010-04-i-can-has-edmonton-transit-iphone-app</id>
+  <published>2010-04-10T04:00:00Z</published>
+  <updated>2010-04-10T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;&lt;img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /&gt;&lt;/p&gt;
+
+&lt;p&gt;With &lt;a href="http://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/"&gt;yesterday&amp;#8217;s work&lt;/a&gt; out of the way, there weren&amp;#8217;t too many extra steps required before I got a basic version of Transit to Go running for Edmonton. There are definitely bugs and rough edges (the bus names could definitely be better described/formatted, and there&amp;#8217;s some serious geocoder issues), but I think the heavy lifting is out of the way. I guess now would be a good time to open up an invitations to anyone in Edmonton with an iPhone to become part of our free private beta. We&amp;#8217;d love to hear what you think! Just send an email to &lt;a href="mailto:wrlach@gmail.com"&gt;wrlach@gmail.com&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
