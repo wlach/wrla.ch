@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 4)</title>
     <meta name="description" content="William Lachance's Log (page 4)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, iphone, Mozilla, Ebola, Free Software, Meta, zen, Business, GoFaster, Philosophy, email, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Montreal, Coffee, Life, GNOME, Music, Orangutan, Cats, mozregression, Python, Open Data, Buddhism, Usability, SQL, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Community, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, iphone, Mozilla, Orangutan, Free Software, Meta, Business, GoFaster, Philosophy, email, MSF, hbus, Food, Coffee, Transit, FirefoxOS, Environment, Toronto, Montreal, Community, Life, GNOME, Music, Cats, mozregression, Python, zen, Buddhism, Usability, SQL, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Release Engineering, Ebola, Open Data, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-4.html">
@@ -176,6 +176,56 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Responsiveness.html">Responsiveness</a></span></p>
+    <h2><a href='/blog/2013/10/first-eideticker-responsiveness-tests/'>First Eideticker Responsiveness Tests</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 7th, 2013</p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+
+<p>Time for another update on Eideticker. In the last quarter, I&#8217;ve been working on two main items:</p>
+
+<ol>
+ <li>Responsiveness tests (Android / FirefoxOS)</li>
+ <li>Eideticker for FirefoxOS</li></ol>
+
+<p>The focus of this post is the responsiveness work. I&#8217;ll talk about Eideticker for FirefoxOS soon.</p>
+
+<p>So what do I mean by responsiveness? At a high-level, I mean how quickly one sees a response after performing an action on the device. For example, if I perform a swipe gesture to scroll the content down while browsing CNN.com, how long does it take after
+ <br />I start the gesture for the content to <em>visibly</em> scroll down? If you break it down, there&#8217;s a multi-step process that happens behind the scenes after a user action like this:</p>
+
+<p><a href="/files/2013/10/input-events.png"><img src="/files/2013/10/input-events.png" alt="input-events" width="880" height="752" class="alignnone size-full wp-image-957" srcset="/files/2013/10/input-events-300x256.png 300w, /files/2013/10/input-events.png 880w" sizes="(max-width: 880px) 100vw, 880px" /></a></p>
+
+<p>If anywhere in the steps above, there is a significant delay, the user experience is likely to be bad. Usability research
+ <br />suggests that any lag that is consistently above 100 milliseconds will lead the user to <a href="http://stackoverflow.com/questions/536300/what-is-the-shortest-perceivable-application-response-delay">perceive things as being laggy</a>. To keep our users happy, we need to do our bit to make sure that we respond quickly at all levels that we control (just the application layer on Android, but pretty much everything on FirefoxOS). Even if we can&#8217;t complete the work required on our end to completely respond to the user&#8217;s desire, we should at least display something to acknowledge that things have changed.</p>
+
+<p>But you can&#8217;t improve what you can&#8217;t measure. Fortunately, we have the means to do calculate of the time delta between <em>most</em> of the steps above. I learned from <a href="http://taras.glek.net/">Taras Glek</a> this weekend that it should be <a href="http://hackaday.com/2012/05/04/reaching-out-to-a-touch-screen-with-a-microcontroller/">possible to simulate</a> the actual capacitative touch event on a modern touch screen. We can recognize when the hardware event is available to be consumed by userspace by monitoring the `/dev/input` subsystem. And once the event reaches the application (the Android or FirefoxOS application) there&#8217;s no reason we can&#8217;t add instrumentation in all sorts of places to track the processing of both the event and the rendering of the response.</p>
+
+<p>My working hypothesis is that it&#8217;s application-level latency (i.e. the time between the application receiving the event and being able to act on it) that dominates, so that&#8217;s what I decided to measure. This is purely based on intuition and by no means proven, so we should test this (it would certainly be an interesting exercise!). However, even if it turns out that there are significant problems here, we still care about the other bits of the stack &#8212; there&#8217;s lots of potentially-latency-introducing churn there and the risk of regression in our own code is probably higher than it is elsewhere since it changes so much.</p>
+
+<p>Last year, I wrote up a tool called <a href="http://wrla.ch/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns/?utm_source=rss&amp;#038;utm_medium=rss&amp;#038;utm_campaign=the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns">Orangutan</a> that can directly inject input events into an input device on Android or FirefoxOS. It seemed like a fairly straightforward extension of the tool to output timestamps when these events were registered. It was. Then, by <a href="http://wrla.ch/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/">synchronizing the time</a> between the device and the machine doing the capturing, we can then correlate the input timestamps to events. To help visualize what&#8217;s going on, I generated this view:</p>
+
+<p><a href="/files/2013/10/taskjs-framediff-view.png"><img src="/files/2013/10/taskjs-framediff-view.png" alt="taskjs-framediff-view" width="583" height="418" class="alignnone size-full wp-image-962" srcset="/files/2013/10/taskjs-framediff-view-300x215.png 300w, /files/2013/10/taskjs-framediff-view.png 583w" sizes="(max-width: 583px) 100vw, 583px" /></a></p>
+
+<p><a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Scrolling%20on%20taskjs.org%20%282013-10-06%29&amp;#038;video=videos/video-1381129971.63.webm&amp;#038;framediff=framediffs/framediff-1381129990.79.json&amp;#038;actionlog=actionlogs/action-log-1381129990.79.json">[Link to original]</a></p>
+
+<p>The X axis in that graph represents time. The Y-axis represents the difference between the frame at that time with the previous one in number of pixels. The &#8220;red&#8221; represents periods in capture when events are ongoing (we use different colours only to
+ <br />distinguish distinct events). <sup><a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">1</a></sup></p>
+
+<p>For a first pass at measuring responsiveness, I decided to measure the time between the first event being initiated and there being a significant frame difference (i.e. an observable response to the action). You can see some preliminary results on the eideticker dashboard:</p>
+
+<p><a href="/files/2013/10/taskjs-responsiveness.png"><img src="/files/2013/10/taskjs-responsiveness.png" alt="taskjs-responsiveness" width="637" height="540" class="alignnone size-full wp-image-956" srcset="/files/2013/10/taskjs-responsiveness-300x254.png 300w, /files/2013/10/taskjs-responsiveness.png 637w" sizes="(max-width: 637px) 100vw, 637px" /></a></p>
+
+<p><a href="http://eideticker.mozilla.org/#/samsung-gn/taskjs/timetoresponse">[Link to original]</a></p>
+
+<p>The results seem pretty highly variable at first because I was synchronizing time between the device and an external ntp server, rather than the host machine. I believe this is now fixed, hopefully giving us results that will indicate when regressions occur. As time goes by, we may want to craft some special eideticker tests for responsiveness specifically (e.g. a site where there is heavy javascript background processing).</p>
+
+<p><sup><a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">1</a></sup> <em>Incidentally, these &#8220;frame difference&#8221; graphs are also quite useful for understanding where and how application startup has regressed in Fennec &#8212; try opening these two startup views side-by-side (before/after a large regression) and spot the difference: <a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-20%29&amp;#038;video=videos/video-1377070981.95.webm&amp;#038;framediff=framediffs/framediff-1377070991.95.json">[1]</a> and <a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-23%29&amp;#038;video=videos/video-1377330042.28.webm&amp;#038;framediff=framediffs/framediff-1377330051.67.json">[2]</a>)</em></p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Philosophy.html">Philosophy</a></span></p>
     <h2><a href='/blog/2013/09/early-morning-questions/'>Early morning questions</a></h2>
@@ -374,64 +424,6 @@
 <p>And on that note, the meditation is austere and almost certainly less than you&#8217;d expect. There is no prayer and very little ritual. Just a very minimal breath counting exercise conducted in a seated posture for 20 minutes, followed by a short walking exercise that lasts 5 minutes, then repeating the breath counting exercise for another 20 minutes. For its utter simplicity, I found it incredibly difficult. I imagine like anything with weeks, months, years of practice it (and the variations of it that experienced practitioners use where they meditate on <a href="http://en.wikipedia.org/wiki/K%C5%8Dan">koans</a>) it would become easier.</p>
 
 <p>I&#8217;m still giving thought on whether I want to take the next steps with them and begin a regular meditation practice. It sounds like really hard work (self meditation practice 6 days a week by yourself, plus regular visits to the zen center), which brings up the question: why do you want to do this? There&#8217;s a weird contradiction between realizing that you as a self don&#8217;t really exist and committing yourself radically to this kind of practice. The only thing I can call it would be a &#8220;leap of faith&#8221;. My current thinking is that I&#8217;m not quite ready for that right now, but maybe in a while. For now I think I&#8217;m pretty happy going to yoga a few times a week and living my sham of a human existence. 😉</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing/'>Eideticker: Limitations in cross-browser performance testing</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 20th, 2013</p>
-  </header>
-
-<p>Last summer I <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">wrote a bit</a> about using <a href="https://wiki.mozilla.org/Project_Eideticker">Eideticker</a> to measure the relative performance of Firefox for Android versus other browsers (Chrome, stock, etc.). At the time I was pretty optimistic about Eideticker&#8217;s usefulness as a truly &#8220;objective&#8221; measure of user experience that would give us a more accurate view of how we compared against the competition than traditional benchmarking suites (which more often than not, measure things that a user will never see normally when browsing the web). Since then, there&#8217;s been some things that I&#8217;ve discovered, as well as some developments in terms of the &#8220;state of the art&#8221; in mobile browsing that have caused me to reconsider that view &#8212; while I haven&#8217;t given up entirely on this concept (and I&#8217;m still very much convinced of eideticker&#8217;s utility as an internal benchmarking tool), there&#8217;s definitely some limitations in terms of what we can do that I&#8217;m not sure how to overcome.</p>
-
-<p>Essentially, there are currently three different types of Eideticker performance tests:</p>
-
-<ul>
- <li>Animation tests: Measure the smoothness of an animation by comparing frames and seeing how many are different. Currently the only example of this is the <a href="http://eideticker.wrla.ch/#/samsung-gn/clock/fps">canvas &#8220;clock&#8221; test</a>, but many others are possible.</li>
- <li>Startup tests: Measure the amount of time it takes from when the application is launched to when the browser is fully running/available. There are currently two variants of this test in the dashboard, both measure the amount of time taken to fully render Firefox&#8217;s home screen (the only difference between the two is whether the browser profile is fully initialized). The <a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe">dirty profile</a> benchmark probably most closely resembles what a user would usually experience.</li>
- <li>Scrolling tests: Measure the amount of undrawn areas when the user is panning a website. Most of the current eideticker tests are of this kind. A good example of this is the <a href="http://eideticker.wrla.ch/#/samsung-gn/taskjs/fps">taskjs benchmark</a>.</li></ul>
-
-<p>In this blog post, I&#8217;m going to focus on startup and scrolling tests. Animation tests are interesting, but they are also generally the sorts of tests that are easiest to measure in synthetic ways (e.g. by putting a frame counter in your javascript code) and have thus far not been a huge focus for Eideticker development.</p>
-
-<p>As it turns out, it&#8217;s unfortunately been rather difficult to create truly objective tests which measure the difference between browsers in these two categories. I&#8217;ll go over them in order.</p>
-
-<p><strong>Startup tests</strong></p>
-
-<p>There are essentially two types of startup tests: one where you measure the amount of time to get to the browser&#8217;s home screen when you explicitly launch the app (e.g. by pressing the Firefox icon in the app chooser), another where you load a web page in a browser from another app (e.g. by clicking on a link in the Twitter application).</p>
-
-<p>The first is actually fairly easy to test across browsers, although we are not currently. There&#8217;s not really a good reason for that, it was just an oversight, so I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=852744">bug 852744</a> to add something like this.</p>
-
-<p>The second case (startup to the browser&#8217;s homescreen) is a bit more difficult. The problem here is that, in a nutshell, an apples to apples comparison is very difficult if not impossible simply because different browsers do different things when the user presses the application icon. Here&#8217;s what we see with Firefox:</p>
-
-<p><img src="/files/eideticker/firefox-startup.png" style="width:25%;" /></p>
-
-<p>And here&#8217;s what we see with Chrome:</p>
-
-<p><img src="/files/eideticker/chrome-startup.png" style="width:25%;" /></p>
-
-<p>And here&#8217;s what we see with the stock browser:</p>
-
-<p><img src="/files/eideticker/stock-startup.png" style="width:25%;" /></p>
-
-<p>As you can see Chrome and the stock browser are totally different: they try to &#8220;restore&#8221; the browser back to its state from the last time (in Chrome&#8217;s case, I was last visiting taskjs.org, in Stock&#8217;s case, I was just on the homepage).</p>
-
-<p>Personally I prefer Firefox&#8217;s behaviour (generally I want to browse somewhere new when I press the icon on my phone), but that&#8217;s really beside the point. It&#8217;s possible to hack around what chrome is doing by restoring the profile between sessions to some sort of clean &#8220;new tab&#8221; state, but at that point you&#8217;re not really reproducing a realistic user scenario. Sure, we can draw a comparison, but how valid is it really? It seems to me that the comparison is mostly only useful in a very broad &#8220;how quickly does the user see something useful&#8221; sense.</p>
-
-<p><strong>Panning tests</strong></p>
-
-<p>I had quite a bit of hope for these initially. They seemed like a place where Eideticker could do something that conventional benchmarking suites couldn&#8217;t, as things like panning a web page are not presently possible to do in JavaScript. The main measure I tried to compare against was something called &#8220;checkerboarding&#8221;, which essentially represents the amount of time that the user waits for the page to redraw when panning around.</p>
-
-<p>At the time that I wrote these tests, most browsers displayed regions that were not yet drawn while panning using the page background. We figured that it would thus be possible to detect regions of the page which were not yet drawn by looking for the background color while initiating a panning action. I thus hacked up existing web pages to have a magenta background, then wrote some image analysis code to detect regions that were that color (under the assumption that magenta is only rarely seen in webpages). It worked pretty well.</p>
-
-<p>The world&#8217;s moved on a bit since I wrote that: modern browsers like Chrome and Firefox use something like progressive drawing to display a lower resolution &#8220;tile&#8221; where possible in this case, so the user at least sees something resembling the actual page while panning on a slower device. To see what I mean, try visiting a slow-to-render site like taskjs.org and try panning down quickly. You should see something like this (click to expand):</p>
-
-<p><a href="/files/eideticker/firefox-partialy-drawn.png"><img src="/files/eideticker/firefox-partialy-drawn.png" style="width:50%;" /></a></p>
-
-<p>Unfortunately, while this is certainly a better user experience, it is not so easy to detect and measure. For Firefox, we&#8217;ve disabled this behaviour so that we see the old checkerboard pattern. This is useful for our internal measurements (we can see both if our drawing code as well as our heuristics about when to draw are getting better or worse over time) but it only works for us.</p>
-
-<p>If anyone has any suggestions on what to do here, let me know as I&#8217;m a bit stuck. There are other metrics we could still compare against (i.e. how smooth is the panning animation aka frames per second?) but these aren&#8217;t nearly as interesting.</p>
 
 </article>
 

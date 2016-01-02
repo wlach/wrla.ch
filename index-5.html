@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 5)</title>
     <meta name="description" content="William Lachance's Log (page 5)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, iphone, Mozilla, Ebola, Free Software, Meta, zen, Business, GoFaster, Philosophy, email, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Montreal, Coffee, Life, GNOME, Music, Orangutan, Cats, mozregression, Python, Open Data, Buddhism, Usability, SQL, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Community, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, iphone, Mozilla, Orangutan, Free Software, Meta, Business, GoFaster, Philosophy, email, MSF, hbus, Food, Coffee, Transit, FirefoxOS, Environment, Toronto, Montreal, Community, Life, GNOME, Music, Cats, mozregression, Python, zen, Buddhism, Usability, SQL, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Release Engineering, Ebola, Open Data, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-5.html">
@@ -176,6 +176,64 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing/'>Eideticker: Limitations in cross-browser performance testing</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 20th, 2013</p>
+  </header>
+
+<p>Last summer I <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">wrote a bit</a> about using <a href="https://wiki.mozilla.org/Project_Eideticker">Eideticker</a> to measure the relative performance of Firefox for Android versus other browsers (Chrome, stock, etc.). At the time I was pretty optimistic about Eideticker&#8217;s usefulness as a truly &#8220;objective&#8221; measure of user experience that would give us a more accurate view of how we compared against the competition than traditional benchmarking suites (which more often than not, measure things that a user will never see normally when browsing the web). Since then, there&#8217;s been some things that I&#8217;ve discovered, as well as some developments in terms of the &#8220;state of the art&#8221; in mobile browsing that have caused me to reconsider that view &#8212; while I haven&#8217;t given up entirely on this concept (and I&#8217;m still very much convinced of eideticker&#8217;s utility as an internal benchmarking tool), there&#8217;s definitely some limitations in terms of what we can do that I&#8217;m not sure how to overcome.</p>
+
+<p>Essentially, there are currently three different types of Eideticker performance tests:</p>
+
+<ul>
+ <li>Animation tests: Measure the smoothness of an animation by comparing frames and seeing how many are different. Currently the only example of this is the <a href="http://eideticker.wrla.ch/#/samsung-gn/clock/fps">canvas &#8220;clock&#8221; test</a>, but many others are possible.</li>
+ <li>Startup tests: Measure the amount of time it takes from when the application is launched to when the browser is fully running/available. There are currently two variants of this test in the dashboard, both measure the amount of time taken to fully render Firefox&#8217;s home screen (the only difference between the two is whether the browser profile is fully initialized). The <a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe">dirty profile</a> benchmark probably most closely resembles what a user would usually experience.</li>
+ <li>Scrolling tests: Measure the amount of undrawn areas when the user is panning a website. Most of the current eideticker tests are of this kind. A good example of this is the <a href="http://eideticker.wrla.ch/#/samsung-gn/taskjs/fps">taskjs benchmark</a>.</li></ul>
+
+<p>In this blog post, I&#8217;m going to focus on startup and scrolling tests. Animation tests are interesting, but they are also generally the sorts of tests that are easiest to measure in synthetic ways (e.g. by putting a frame counter in your javascript code) and have thus far not been a huge focus for Eideticker development.</p>
+
+<p>As it turns out, it&#8217;s unfortunately been rather difficult to create truly objective tests which measure the difference between browsers in these two categories. I&#8217;ll go over them in order.</p>
+
+<p><strong>Startup tests</strong></p>
+
+<p>There are essentially two types of startup tests: one where you measure the amount of time to get to the browser&#8217;s home screen when you explicitly launch the app (e.g. by pressing the Firefox icon in the app chooser), another where you load a web page in a browser from another app (e.g. by clicking on a link in the Twitter application).</p>
+
+<p>The first is actually fairly easy to test across browsers, although we are not currently. There&#8217;s not really a good reason for that, it was just an oversight, so I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=852744">bug 852744</a> to add something like this.</p>
+
+<p>The second case (startup to the browser&#8217;s homescreen) is a bit more difficult. The problem here is that, in a nutshell, an apples to apples comparison is very difficult if not impossible simply because different browsers do different things when the user presses the application icon. Here&#8217;s what we see with Firefox:</p>
+
+<p><img src="/files/eideticker/firefox-startup.png" style="width:25%;" /></p>
+
+<p>And here&#8217;s what we see with Chrome:</p>
+
+<p><img src="/files/eideticker/chrome-startup.png" style="width:25%;" /></p>
+
+<p>And here&#8217;s what we see with the stock browser:</p>
+
+<p><img src="/files/eideticker/stock-startup.png" style="width:25%;" /></p>
+
+<p>As you can see Chrome and the stock browser are totally different: they try to &#8220;restore&#8221; the browser back to its state from the last time (in Chrome&#8217;s case, I was last visiting taskjs.org, in Stock&#8217;s case, I was just on the homepage).</p>
+
+<p>Personally I prefer Firefox&#8217;s behaviour (generally I want to browse somewhere new when I press the icon on my phone), but that&#8217;s really beside the point. It&#8217;s possible to hack around what chrome is doing by restoring the profile between sessions to some sort of clean &#8220;new tab&#8221; state, but at that point you&#8217;re not really reproducing a realistic user scenario. Sure, we can draw a comparison, but how valid is it really? It seems to me that the comparison is mostly only useful in a very broad &#8220;how quickly does the user see something useful&#8221; sense.</p>
+
+<p><strong>Panning tests</strong></p>
+
+<p>I had quite a bit of hope for these initially. They seemed like a place where Eideticker could do something that conventional benchmarking suites couldn&#8217;t, as things like panning a web page are not presently possible to do in JavaScript. The main measure I tried to compare against was something called &#8220;checkerboarding&#8221;, which essentially represents the amount of time that the user waits for the page to redraw when panning around.</p>
+
+<p>At the time that I wrote these tests, most browsers displayed regions that were not yet drawn while panning using the page background. We figured that it would thus be possible to detect regions of the page which were not yet drawn by looking for the background color while initiating a panning action. I thus hacked up existing web pages to have a magenta background, then wrote some image analysis code to detect regions that were that color (under the assumption that magenta is only rarely seen in webpages). It worked pretty well.</p>
+
+<p>The world&#8217;s moved on a bit since I wrote that: modern browsers like Chrome and Firefox use something like progressive drawing to display a lower resolution &#8220;tile&#8221; where possible in this case, so the user at least sees something resembling the actual page while panning on a slower device. To see what I mean, try visiting a slow-to-render site like taskjs.org and try panning down quickly. You should see something like this (click to expand):</p>
+
+<p><a href="/files/eideticker/firefox-partialy-drawn.png"><img src="/files/eideticker/firefox-partialy-drawn.png" style="width:50%;" /></a></p>
+
+<p>Unfortunately, while this is certainly a better user experience, it is not so easy to detect and measure. For Firefox, we&#8217;ve disabled this behaviour so that we see the old checkerboard pattern. This is useful for our internal measurements (we can see both if our drawing code as well as our heuristics about when to draw are getting better or worse over time) but it only works for us.</p>
+
+<p>If anyone has any suggestions on what to do here, let me know as I&#8217;m a bit stuck. There are other metrics we could still compare against (i.e. how smooth is the panning animation aka frames per second?) but these aren&#8217;t nearly as interesting.</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/ateam.html">ateam</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2013/03/documentation-for-mozdevice/'>Documentation for mozdevice</a></h2>
@@ -467,27 +525,6 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <p>Old style URLs like <code>http://wrla.ch/eideticker/dashboard/#/taskjs-scrolling/checkerboard</code> will no longer work. Sorry for any broken links, this is the price of progress. 😉</p>
 
 <p>Note that some benchmarks for the Galaxy Nexus are still missing. This is a known problem and will be fixed soon.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Orangutan.html">Orangutan</a></span></p>
-    <h2><a href='/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans/'>The evolution of simulating events in Eideticker: from monkeys to orangutans</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 10th, 2012</p>
-  </header>
-
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
-
-<p>I just merged a new approach I&#8217;ve been using to simulate touch events into the master branch of Eideticker called <a href="http://github.com/wlach/orangutan">Orangutan</a>.</p>
-
-<p><a href="http://wrla.ch/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns/orangutan/" rel="attachment wp-att-696"><img src="/files/2012/07/orangutan.jpg" alt="Image of Orangutan" title="orangutan" width="415" height="600" class="alignnone size-full wp-image-696" srcset="/files/2012/07/orangutan-207x300.jpg 207w, /files/2012/07/orangutan.jpg 415w" sizes="(max-width: 415px) 100vw, 415px" /></a></p>
-
-<p>As I&#8217;ve mentioned before, we really need to simulate actual user gestures when doing this type of testing to measure real-world performance with Eideticker. Up to now, I&#8217;ve been using google&#8217;s <a href="http://developer.android.com/tools/help/monkeyrunner_concepts.html">MonkeyRunner</a> tool to do this. I was always a little skeptical about its approach (which involved using a privileged tool written in Java with special access to Android&#8217;s windowing system), but up until recently I&#8217;d managed to get around its <a href="http://code.google.com/p/android/issues/detail?id=27955">issues</a> with a <a href="https://github.com/mozilla/eideticker/commit/8d034212bc38c1fc80b9fe792c0b06919c74141a">successively</a> <a href="https://github.com/mozilla/eideticker/commit/55d63960dc0a5090cee00fe917a851db082ee0fd">more</a> <a href="https://github.com/mozilla/eideticker/commit/686882d32fb25a700afec35c39e53a73658688e3">complicated</a> series of hacks.</p>
-
-<p>Unfortunately, I finally came up with a problem that I couldn&#8217;t figure out how to fix: monkeyrunner doesn&#8217;t attach precise timing information to the events it generates, which completely throws off Google Chrome for Android when you try to simulate a pan gesture. I&#8217;ve tried just about every way of using the existing functionality (both the networked mode and the &#8220;script&#8221; mode), but nothing seemed to help. My conclusion is that the only way of continuing to use monkey would be to create a fix for the software itself, which implies forking and extending the entire Android Open Source Project. As noble a goal as that might be, doing that across all the major Android versions I want to support (2.2, 2.3, 4.0 and now 4.1) was more work than I felt like taking on (not to mention the question of how to deploy that work). I decided to build something entirely new which did not have this requirement.</p>
-
-<p>Enter Orangutan. Unlike MonkeyRunner, Orangutan simply injects events directly into low-level the kernel device file that represents an Android device&#8217;s touch screen. It&#8217;s fast (written in native C), trivial to build, and seems to work seamlessly with any application I&#8217;ve tried using it with (including Google Chrome for Android). Most interestingly for Mozilla, this interface is also present on Firefox OS (<a href="https://wiki.mozilla.org/B2G">Boot to Gecko</a>) based devices, so we should be able to use Orangutan there to support both Eideticker and any other testing framework which needs to test real-world user input test cases. Exciting times!</p>
 
 </article>
 
