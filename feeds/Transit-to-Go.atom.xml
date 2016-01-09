@@ -37,6 +37,18 @@
 
 &lt;p&gt;Even with these problems, I figured it would be better to open up what I have for people to check out and play with. Have a look and let me know what you think!&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
+  <title type="text">I can has Edmonton transit iPhone app?</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2010/04/i-can-has-edmonton-transit-iphone-app/?utm_source=Transit-to-Go&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2010-04-i-can-has-edmonton-transit-iphone-app</id>
+  <published>2010-04-10T04:00:00Z</published>
+  <updated>2010-04-10T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;&lt;img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /&gt;&lt;/p&gt;
+
+&lt;p&gt;With &lt;a href="http://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/"&gt;yesterday&amp;#8217;s work&lt;/a&gt; out of the way, there weren&amp;#8217;t too many extra steps required before I got a basic version of Transit to Go running for Edmonton. There are definitely bugs and rough edges (the bus names could definitely be better described/formatted, and there&amp;#8217;s some serious geocoder issues), but I think the heavy lifting is out of the way. I guess now would be a good time to open up an invitations to anyone in Edmonton with an iPhone to become part of our free private beta. We&amp;#8217;d love to hear what you think! Just send an email to &lt;a href="mailto:wrlach@gmail.com"&gt;wrlach@gmail.com&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
   <title type="text">Oh, the lines! And some help for Edmonton.</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/?utm_source=Transit-to-Go&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2010-04-oh-the-lines-and-some-help-for-edmonton</id>
@@ -52,16 +64,4 @@
 &lt;ul&gt;
  &lt;li&gt;Sped up the graph and database generation by an order of magnitude. Not too exciting from a user perspective, but I should now be able to iterate the codebase much faster.&lt;/li&gt;
  &lt;li&gt;Better transit stop / street graph linking: No more does libroutez simply try to find the closest street level vertice to link to when merging transit stops with street information&amp;#8211; we now actually create _new_ street level vertices as needed and link to those. Upshot? Slightly better directions and prettier polylines. When I first thought up the algorithm a month ago, I thought I was totally brilliant, only to later find out that Andrew Byrd had done something almost identical a few months earlier for &lt;a href="http://github.com/andrewbyrd/graphserver"&gt;graphserver&lt;/a&gt;. Ah well, at least it&amp;#8217;s implemented.&lt;/li&gt;
- &lt;li&gt;I &lt;a href="http://gist.github.com/361848"&gt;coded up a script&lt;/a&gt; to automatically generate synthetic headsigns for GTFS feeds which don&amp;#8217;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&amp;#8217;t you do better than saying that all your buses go in the &amp;#8220;1&amp;#8221; direction? There&amp;#8217;s a reason why it&amp;#8217;s a required field you know. Not only would it help me, but &lt;a href="http://google.com/transit"&gt;Google Transit&lt;/a&gt; would give better results for your city as well.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</content></entry>
- <entry>
-  <title type="text">I can has Edmonton transit iPhone app?</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2010/04/i-can-has-edmonton-transit-iphone-app/?utm_source=Transit-to-Go&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2010-04-i-can-has-edmonton-transit-iphone-app</id>
-  <published>2010-04-10T04:00:00Z</published>
-  <updated>2010-04-10T04:00:00Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">&lt;html&gt;
-&lt;p&gt;&lt;img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /&gt;&lt;/p&gt;
-
-&lt;p&gt;With &lt;a href="http://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/"&gt;yesterday&amp;#8217;s work&lt;/a&gt; out of the way, there weren&amp;#8217;t too many extra steps required before I got a basic version of Transit to Go running for Edmonton. There are definitely bugs and rough edges (the bus names could definitely be better described/formatted, and there&amp;#8217;s some serious geocoder issues), but I think the heavy lifting is out of the way. I guess now would be a good time to open up an invitations to anyone in Edmonton with an iPhone to become part of our free private beta. We&amp;#8217;d love to hear what you think! Just send an email to &lt;a href="mailto:wrlach@gmail.com"&gt;wrlach@gmail.com&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+ &lt;li&gt;I &lt;a href="http://gist.github.com/361848"&gt;coded up a script&lt;/a&gt; to automatically generate synthetic headsigns for GTFS feeds which don&amp;#8217;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&amp;#8217;t you do better than saying that all your buses go in the &amp;#8220;1&amp;#8221; direction? There&amp;#8217;s a reason why it&amp;#8217;s a required field you know. Not only would it help me, but &lt;a href="http://google.com/transit"&gt;Google Transit&lt;/a&gt; would give better results for your city as well.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</content></entry></feed>

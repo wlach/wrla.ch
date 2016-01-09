@@ -3,15 +3,15 @@
   <head>
 
     <meta charset="utf-8">
-    <title>Hellofax rocks my world</title>
-    <meta name="description" content="It’s kind of rare for me to pimp out products and services on my blog, but I’m going to do so just this once.  I really despise faxes, but occasionally I do have to send them in the course of some of the admin work I still do on the side for my old consul...">
+    <title>William Lachance's Log (page 11)</title>
+    <meta name="description" content="William Lachance's Log (page 11)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Business, Usability">
+    <meta name="keywords"    content="Pandaboard, Meditation, iphone, Mozilla, Orangutan, Free Software, Meta, zen, Business, GoFaster, Philosophy, email, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Montreal, Coffee, Life, GNOME, Music, Cats, mozregression, Python, Open Data, Buddhism, Usability, SQL, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Community, Ebola, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2011/11/hellofax-rocks-my-world/">
-    <link rel="next" href="/blog/2011/11/measuring-what-the-user-sees/">
-    <link rel="prev" href="/blog/2011/11/a-planet-to-call-our-own/">
+    <link rel="canonical" href="https://wlach.github.io/index-11.html">
+
+
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -177,37 +177,42 @@
 
           <article>
   <header>
-    <p><span class="tags"><a href="/tags/Business.html">Business</a>, <a href="/tags/Usability.html">Usability</a></span></p>
-    <h1>Hellofax rocks my world</h1>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 18th, 2011</p>
+    <p><span class="tags"><a href="/tags/.html"></a></span></p>
+    <h2><a href='/blog/2009/02/maps-urls-on-mobile-safari/'>Maps URLs on mobile Safari</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 2nd, 2009</p>
   </header>
 
-<p>It&#8217;s kind of rare for me to pimp out products and services on my blog, but I&#8217;m going to do so just this once.</p>
+<p>I&#8217;ve been experimenting a little bit with maps urls on the iphone. If you&#8217;ve read Apple&#8217;s web developer guidelines, you&#8217;ll know that URLs of this form will automatically redirect to the maps application:</p>
 
-<p>I really despise faxes, but occasionally I do have to send them in the course of some of the admin work I still do on the side for my old consulting company (address changes, etc.). If you&#8217;re in a similar boat, you really owe it to yourself to check out <a href="http://hellofax.com">hellofax.com</a>. It&#8217;s about three gazillion times better than any other similar service that I&#8217;ve tried (which were all embarassingly bad: I&#8217;d sooner just go to a copy shop) and has saved me hours and hours of time and frustration.</p>
-  <footer>
-    <hr/>
-    <script type="text/javascript">
-      var disqus_shortname = 'wlach';
-      (function() {
-          var dsq = document.createElement('script');
-          dsq.type = 'text/javascript';
-          dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-      })();
-    </script>
-    <div id="disqus_thread"></div>
-    <ul class="pager">
-    <li class="previous">
-      <a href="/blog/2011/11/a-planet-to-call-our-own/">&larr; <em>A planet to call our own</em></a>
-    </li>
-    <li class="next">
-      <a href="/blog/2011/11/measuring-what-the-user-sees/"><em>Measuring what the user sees</em> &rarr;</a>
-    </li>
-    </ul>
-  </footer>
+<p><a href="http://maps.google.com/maps?geocode=&amp;#038;q=Halifax,Nova">Halifax, Nova Scotia</a>
+ <br />&lt;a href=&#8221;http://maps.google.com/maps?geocode=&#38;q=Halifax,Nova Scotia&#8221;&gt;Halifax, Nova Scotia</p>
+
+<p>This is fine if you just want to highlight one particular location (with no custom metadata), but what if you want to do something more interesting, like display a KML file? You can load these easily from the maps application, so why can&#8217;t you link to them from a web browser? The URL guidelines explicitly say that the KML part of a query string will be discarded, and indeed it is. What is a web developer to do? Resort to undocumented behaviour, of course! At least in version 2.2 of the iphone software, URLs which request a &#8220;maps&#8221; resource with the appropriate parameters will automatically load the appropriate KML file in the maps application:</p>
+
+<p>[Map link][2]
+ <br />&lt;a href=&#8221;maps://?geocode=&#38;q=http://code.google.com/apis/kml/documentation/KML_Samples.kml&#8221;&gt;Map link</p>
+
+<p>Scotia  [2]: maps://?geocode=&#38;q=http://code.google.com/apis/kml/documentation/KML_Samples.kml</p>
+
 </article>
+
+<footer>
+ <ul class="pagination">
+  <li><a href="/index-10.html">
+    <quote>&larr;</quote></a></li>
+  <li><a href="/index.html">1</a></li>
+  <li><a href="/index-2.html">2</a></li>
+  <li><a href="/index-3.html">3</a></li>
+  <li><a href="/index-4.html">4</a></li>
+  <li><a href="/index-5.html">5</a></li>
+  <li><a href="/index-6.html">6</a></li>
+  <li><a href="/index-7.html">7</a></li>
+  <li><a href="/index-8.html">8</a></li>
+  <li><a href="/index-9.html">9</a></li>
+  <li><a href="/index-10.html">10</a></li>
+  <li class="active"><a href="/index-11.html">11</a></li>
+  <li class="disabled"><a href="#">
+    <quote>&rarr;</quote></a></li></ul></footer>
         </div>
       </div>
       <footer>
