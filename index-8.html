@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 8)</title>
     <meta name="description" content="William Lachance's Log (page 8)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, iphone, Mozilla, Orangutan, Free Software, Meta, zen, Business, GoFaster, Philosophy, email, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Montreal, Coffee, Life, GNOME, Music, Cats, mozregression, Python, Open Data, Buddhism, Usability, SQL, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Community, Ebola, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, iphone, Mozilla, Orangutan, Free Software, Meta, Business, GoFaster, Philosophy, email, MSF, hbus, Food, Coffee, Transit, FirefoxOS, Environment, Toronto, Montreal, Community, Life, GNOME, Music, Cats, mozregression, Python, zen, Buddhism, Usability, SQL, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Release Engineering, Ebola, Open Data, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-8.html">
@@ -177,18 +177,36 @@
 
           <article>
   <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2011/11/a-planet-to-call-our-own/'>A planet to call our own</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 18th, 2011</p>
+    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2011/12/eideticker-update/'>Eideticker update</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Dec 8th, 2011</p>
   </header>
 
-<p>Just a quick note that a planet for Mozilla Tools &#38; Automation (the so-called &#8220;a team&#8221;) is now up, thanks to Reed Loden. With the exception of <a href="http://k0s.org/mozilla/blog">Jeff Hammel</a>, everyone there was already being syndicated on <a href="http://planet.mozilla.org">Planet Mozilla</a>, but this should offer a more focused feed of our doings for those who can&#8217;t always keep up with the firehose. Have a look:</p>
+<p>Since I last <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">blogged</a> about Eideticker, I&#8217;ve made some good progress. Here&#8217;s some highlights:</p>
 
-<p><a href="http://planet.mozilla.org/ateam">http://planet.mozilla.org/ateam</a></p>
+<ol>
+ <li>Eideticker has a new, <a href="https://github.com/mozilla/eideticker/blob/master/bin/runtest.py">much simpler harness</a> and tests are much easier to write. Initially, I was using <a href="https://wiki.mozilla.org/Buildbot/Talos">Talos</a> for this task with the idea that it&#8217;s better not to have duplicate code where it&#8217;s not really required. Seemed like a fine idea in principle, but in practice Talos&#8217;s architecture (which is really oriented around running a large sequence of tests and uploading the results to a central server) was difficult to extend to do what we need to do. At heart, eideticker really only needs to do a few things right now (start up Firefox, start videocapture, load a webpage, stop videocapture) so it&#8217;s best to keep things simple.</li>
+ <li>I&#8217;ve reworked the capture analysis API to use <a href="http://numpy.scipy.org">numpy</a> behind the scenes. It&#8217;s still not quite as fast as I would like (doing a framediff analysis on a 30 second animation still takes a minute or so on my fast machine), but we&#8217;re doing an order of magnitude better than before. numpy also seem to have quite the library of routines for doing the types of matrix algebra useful in image analysis, which should be helpful as the project progresses.</li>
+ <li>I added the beginnings of a fancy pants web interface for browsing captures and doing visualizations on them! I&#8217;m pretty happy with how this is turning out so far, it&#8217;s already been an incredibly useful tool for debugging Eideticker&#8217;s analysis system and I think it will be equally useful for understanding Firefox&#8217;s behaviour in general.</li></ol>
 
-<p>Who should care? Well, we maintain all the major testing frameworks like Mochitest, Reftest, and Talos as well as automated tooling for QA like <a href="https://developer.mozilla.org/en/Mozmill">Mozmill</a>. Our latest work is focused on making sure that Firefox is as robust, responsive, and performant as possible on desktop and mobile. In short, if you&#8217;re writing or verifying code from mozilla-central, what we&#8217;re doing probably affects you. Please let us know what you think about our projects and whether there&#8217;s anything we can do to make your job easier: we&#8217;re listening.</p>
+<p>Here&#8217;s an example analysis session, where I examine a ~60 second capture of the fishtank demo from Microsoft, borrowed from Mark Cote&#8217;s <a href="http://brasstacks.mozilla.com/speedtests/results.html">speedtest</a> library. You might want to view this fullscreen:</p>
 
-<p><strong>Quick bonus note</strong>: It&#8217;s not immediately obvious (or at least it wasn&#8217;t to me), but Mozilla has some fairly finely tuned infrastructure for running planets. If your team or group wants one, it&#8217;s definitely better to plug into that instead of rolling your own. 😉 Reed Loden is the maintainer and the source <a href="http://viewvc.svn.mozilla.org/vc/projects/planet/">lives in subversion</a>.</p>
+<video src="/files/eideticker/eideticker-20111207.webm" width="600px" controls="controls"></video>
+
+<p>A few interesting things to note about this capture:</p>
+
+<ol>
+ <li>Our frame comparison algorithm is still comparatively dumb, it just computes the norm of the difference in RGB values between two frames. Since there&#8217;s a (very tiny) amount of noise in the capture, we have to use a threshold to determine whether two frames are the same or not. For all that, the FPS estimate it comes with for the fishtank demo seems about right (and unfortunately at 2 fps, it&#8217;s not particularly good).
+  <br /></li>
+ <li>I added a green screen / red screen at the start / end of every capture to eliminate race conditions with starting the capture, but haven&#8217;t yet actually taken those frames out of the analysis.
+  <br /></li>
+ <li>If you look carefully at the animation, not all of the fish that should be displaying in the demo are. I think this has to do with the new native version of Fennec that I&#8217;m using to test (old versions don&#8217;t exhibit this property). I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=708633">a bug</a> for this.</li></ol>
+
+<p>What&#8217;s next? Well, as I mentioned last time, the real goal is to create a tool that developers will find useful. To that end, we have plans to set up an Eideticker machine in Mozilla Mountain View office that more people can use (either locally or remotely over the VPN). For this to be workable, I need to figure out how to get the full setup working on &#8220;demand&#8221;. Most of the setup already allows this, with one big exception: the actual Android device that we want to capture video from. The LG G2X that I&#8217;m currently using works fine when I have physical access to it, but as far as I can tell it&#8217;s not possible to get it outputting proper video of an application unless it&#8217;s in an unlocked state (which it obviously isn&#8217;t most of the time).</p>
+
+<p>My current thinking is that a <a href="http://pandaboard.org/">Panda Board</a> running a Vanilla version of Android might be a good candidate for a permanently-connected device. It is capable of HDMI output, doesn&#8217;t have unwanted the bells and whistles of a physical phone (e.g. a lock screen), and should be much reliable due to its physical networking. So far I haven&#8217;t <a href="http://ask.linaro.org/questions/361/hdmi-output-on-android-build">had much luck</a> getting it the video output working with the Decklink capture card, but I&#8217;ve only just started trying. Work will continue.</p>
+
+<p>If I can somehow figure that out, and smooth out some of the rough edges with the web interface and capture API, I think the stage will be set for us all to do some pretty interesting stuff! Looking forward to it.</p>
 
 </article>
 
@@ -202,6 +220,23 @@
 <p>It&#8217;s kind of rare for me to pimp out products and services on my blog, but I&#8217;m going to do so just this once.</p>
 
 <p>I really despise faxes, but occasionally I do have to send them in the course of some of the admin work I still do on the side for my old consulting company (address changes, etc.). If you&#8217;re in a similar boat, you really owe it to yourself to check out <a href="http://hellofax.com">hellofax.com</a>. It&#8217;s about three gazillion times better than any other similar service that I&#8217;ve tried (which were all embarassingly bad: I&#8217;d sooner just go to a copy shop) and has saved me hours and hours of time and frustration.</p>
+
+</article>
+
+<article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2011/11/a-planet-to-call-our-own/'>A planet to call our own</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 18th, 2011</p>
+  </header>
+
+<p>Just a quick note that a planet for Mozilla Tools &#38; Automation (the so-called &#8220;a team&#8221;) is now up, thanks to Reed Loden. With the exception of <a href="http://k0s.org/mozilla/blog">Jeff Hammel</a>, everyone there was already being syndicated on <a href="http://planet.mozilla.org">Planet Mozilla</a>, but this should offer a more focused feed of our doings for those who can&#8217;t always keep up with the firehose. Have a look:</p>
+
+<p><a href="http://planet.mozilla.org/ateam">http://planet.mozilla.org/ateam</a></p>
+
+<p>Who should care? Well, we maintain all the major testing frameworks like Mochitest, Reftest, and Talos as well as automated tooling for QA like <a href="https://developer.mozilla.org/en/Mozmill">Mozmill</a>. Our latest work is focused on making sure that Firefox is as robust, responsive, and performant as possible on desktop and mobile. In short, if you&#8217;re writing or verifying code from mozilla-central, what we&#8217;re doing probably affects you. Please let us know what you think about our projects and whether there&#8217;s anything we can do to make your job easier: we&#8217;re listening.</p>
+
+<p><strong>Quick bonus note</strong>: It&#8217;s not immediately obvious (or at least it wasn&#8217;t to me), but Mozilla has some fairly finely tuned infrastructure for running planets. If your team or group wants one, it&#8217;s definitely better to plug into that instead of rolling your own. 😉 Reed Loden is the maintainer and the source <a href="http://viewvc.svn.mozilla.org/vc/projects/planet/">lives in subversion</a>.</p>
 
 </article>
 
@@ -388,21 +423,6 @@ Unique frames: 121/272&lt;br /&gt;</code></p>
 <p><a href="http://wrla.ch/blog/2011/06/a-better-bixi-web-site/nixi_shot/" rel="attachment wp-att-269"><img src="/files/2011/06/nixi_shot.png" alt="" title="nixi_shot" width="400" height="265" class="alignnone size-full wp-image-269" srcset="/files/2011/06/nixi_shot-300x198.png 300w, /files/2011/06/nixi_shot.png 400w" sizes="(max-width: 400px) 100vw, 400px" /></a></p>
 
 <p>Note that the site uses a bunch of modern HTML5 features, so currently requires a modern browser like Firefox, Chrome, or Safari to display properly. I may or may not fix this. Other notable omissions include support for other cities with the BIXI system (Toronto, Ottawa, &#8230;) and French localization. Patches welcome!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Open-Data.html">Open Data</a></span></p>
-    <h2><a href='/blog/2011/06/template-for-a-map-based-web-app/'>Template for a map-based web app</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 3rd, 2011</p>
-  </header>
-
-<p>Finally got around doing something I&#8217;d meaning to for a while, which is create a simple template for a web-based mapping application based on jQuery and some of my earlier work on <a href="https://github.com/wlach/routez">routez</a>. I&#8217;m hoping this might be useful as a starter for a few open data applications!</p>
-
-<p><a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/example-map-site-2/" rel="attachment wp-att-258"><img src="/files/2011/06/example-map-site1.png" alt="" title="Example Map Site" width="400" height="303" class="alignnone size-full wp-image-258" srcset="/files/2011/06/example-map-site1-300x227.png 300w, /files/2011/06/example-map-site1.png 400w" sizes="(max-width: 400px) 100vw, 400px" /></a></p>
-
-<p><a href="http://wlach.wrla.ch/blog/Map-Layout-Template/">Preview</a> <a href="https://github.com/wlach/Map-Layout-Template">Source</a></p>
 
 </article>
 
