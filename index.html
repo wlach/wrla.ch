@@ -6,7 +6,7 @@
     <title>William Lachance's Log</title>
     <meta name="description" content="William Lachance's Log">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, iphone, Mozilla, Orangutan, Free Software, Meta, Business, GoFaster, Philosophy, email, MSF, hbus, Food, Coffee, Transit, FirefoxOS, Environment, Toronto, Montreal, Community, Life, GNOME, Music, Cats, mozregression, Python, zen, Buddhism, Usability, SQL, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Release Engineering, Ebola, Open Data, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, iphone, Mozilla, Ebola, Free Software, Meta, zen, Business, GoFaster, Philosophy, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Montreal, Coffee, Life, GNOME, Music, Orangutan, Cats, mozregression, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Community, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index.html">
@@ -137,6 +137,8 @@
 
 <li><a href="/tags/SQL.html">SQL</a></li>
 
+<li><a href="/tags/Talos.html">Talos</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -176,6 +178,23 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Talos.html">Talos</a></span></p>
+    <h2><a href='/blog/2016/02/talos-suites-now-visible-from-trychooser/'>Talos suites now visible from trychooser</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 13th, 2016</p>
+  </header>
+
+<p>It&rsquo;s a small thing, but I submitted a patch to <a href="http://trychooser.pub.build.mozilla.org/">trychooser</a> last week which adds a tooltip indicating the actual Talos tests that are run as part of the various jobs that you can schedule as part of a try push. It&rsquo;s in production as of now:</p>
+
+<video src="/files/2016/02/talos-trychooser.webm" controls="controls" autoplay="autoplay"></video>
+
+<p>Previously, the only way to do this was to dig into the actual buildbot code, which was more than a little annoying.</p>
+
+<p>If you think your patch might have a good chance of regressing performance, please do run the <a href="https://wiki.mozilla.org/Buildbot/Talos/Tests">Talos tests</a> before you check in. It&rsquo;s much less work for all of us when these things are caught before integration and back outs are no fun for anyone. We really need better documentation for this stuff, but meanwhile if you need help with this, please ask in the #perf channel on irc.mozilla.org</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/zen.html">zen</a></span></p>
     <h2><a href='/blog/2016/02/albert-low/'>Albert Low</a></h2>
@@ -550,34 +569,6 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <p>The math and programming behind the simulation is completely arbitrary and anything but rigorous. There are probably a bunch of bugs and unintended behaviors. This has all probably been done a million times before by people I&#8217;ve never met and never will. I&#8217;m ok with that.</p>
 
 <p><strong>Update</strong>: <a href="https://github.com/wlach/ecoautomata">Source now on github</a>, for those who want to play with it and submit pull requests.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Python.html">Python</a></span></p>
-    <h2><a href='/blog/2015/04/pycon-2015/'>PyCon 2015</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 23rd, 2015</p>
-  </header>
-
-<p>So I went to PyCon 2015. While I didn&#8217;t leave quite as inspired as I did in 2014 (<a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/">when I discovered iPython</a>), it was a great experience and I learned a ton. Once again, I was incredibly impressed with the organization of the conference and the diversity and quality of the speakers.</p>
-
-<p>Since Mozilla was nice enough to sponsor my attendance, I figured I should do another round up of notable talks that I went to.</p>
-
-<p>Technical stuff that was directly relevant to what I work on:</p>
-
-<ul>
- <li>To ORM or not to ORM (Christine Spang): Useful talk on when using a database ORM (object relational manager) can be helpful and even faster than using a database directly. I feel like there&#8217;s a lot of misinformation and FUD on this topic, so this was refreshing to see. <a href="https://www.youtube.com/watch?v=Sadng6tR7Q4">video</a> <a href="https://speakerdeck.com/pycon2015/christine-spang-to-orm-or-not-to-orm">slides</a></li>
- <li>Debugging hard problems (Alex Gaynor): Exactly what it says &#8212; how to figure out what&#8217;s going on when things aren&#8217;t behaving as they should. Great advice and wisdom in this one (hint: take nothing for granted, dive into the source of everything you&#8217;re using!). <a href="https://www.youtube.com/watch?v=ij99SGGEX34">video</a> <a href="https://speakerdeck.com/alex/techniques-for-debugging-hard-problems">slides</a></li>
- <li>Python Performance Profiling: The Guts And The Glory (Jesse Jiryu Davis): Quite an entertaining talk on how to properly profile python code. I really liked his systematic and realistic approach &#8212; which also discussed the thought process behind how to do this (hint: again it comes down to understanding what&#8217;s really going on). Unfortunately the video is truncated, but even the first few minutes are useful. <a href="https://www.youtube.com/watch?v=4uJWWXYHxaM">video</a></li></ul>
-
-<p>Non-technical stuff:</p>
-
-<ul>
- <li>The Ethical Consequences Of Our Collective Activities (Glyph): A talk on the ethical implications of how our software is used. I feel like this is an under-discussed topic &#8212; how can we know that the results of our activity (programming) serves others and does not harm? <a href="https://www.youtube.com/watch?v=uSbKjRRbjZs">video</a></li>
- <li>How our engineering environments are killing diversity (and how we can fix it) (Kate Heddleston): This was a great talk on how to make the environments in which we develop more welcoming to under-represented groups (women, minorities, etc.). This is something I&#8217;ve been thinking a bunch about lately, especially in the context of expanding the community of people working on our projects in Automation &#38; Tools. The talk had some particularly useful advice (to me, anyway) on giving feedback. <a href="https://www.youtube.com/watch?v=kNke_4WOWAU">video</a> <a href="https://speakerdeck.com/pycon2015/kate-heddleston-how-our-engineering-environments-are-killing-diversity-and-how-we-can-fix-it">slides</a></li></ul>
-
-<p>I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!</p>
 
 </article>
 

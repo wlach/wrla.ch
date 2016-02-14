@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0">
+ <channel>
+  <title>William Lachance's Log: Posts tagged 'Talos'</title>
+  <description>William Lachance's Log: Posts tagged 'Talos'</description>
+  <link>https://wlach.github.io/tags/Talos.html</link>
+  <lastBuildDate>Sat, 13 Feb 2016 19:28:47 UT</lastBuildDate>
+  <pubDate>Sat, 13 Feb 2016 19:28:47 UT</pubDate>
+  <ttl>1800</ttl>
+  <item>
+   <title>Talos suites now visible from trychooser</title>
+   <link>https://wlach.github.io/blog/2016/02/talos-suites-now-visible-from-trychooser/?utm_source=Talos&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2016-02-talos-suites-now-visible-from-trychooser</guid>
+   <pubDate>Sat, 13 Feb 2016 19:28:47 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;It&amp;rsquo;s a small thing, but I submitted a patch to &lt;a href="http://trychooser.pub.build.mozilla.org/"&gt;trychooser&lt;/a&gt; last week which adds a tooltip indicating the actual Talos tests that are run as part of the various jobs that you can schedule as part of a try push. It&amp;rsquo;s in production as of now:&lt;/p&gt;
+
+&lt;video src="/files/2016/02/talos-trychooser.webm" controls="controls" autoplay="autoplay"&gt;&lt;/video&gt;
+
+&lt;p&gt;Previously, the only way to do this was to dig into the actual buildbot code, which was more than a little annoying.&lt;/p&gt;
+
+&lt;p&gt;If you think your patch might have a good chance of regressing performance, please do run the &lt;a href="https://wiki.mozilla.org/Buildbot/Talos/Tests"&gt;Talos tests&lt;/a&gt; before you check in. It&amp;rsquo;s much less work for all of us when these things are caught before integration and back outs are no fun for anyone. We really need better documentation for this stuff, but meanwhile if you need help with this, please ask in the #perf channel on irc.mozilla.org&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

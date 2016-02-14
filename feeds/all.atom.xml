@@ -4,7 +4,23 @@
  <link rel="self" href="https://wlach.github.io/feeds/all.atom.xml" />
  <link href="https://wlach.github.io/index.html" />
  <id>urn:https-wlach-github-io:-index-html</id>
- <updated>2016-02-07T21:45:41Z</updated>
+ <updated>2016-02-13T19:28:47Z</updated>
+ <entry>
+  <title type="text">Talos suites now visible from trychooser</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2016/02/talos-suites-now-visible-from-trychooser/?utm_source=all&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2016-02-talos-suites-now-visible-from-trychooser</id>
+  <published>2016-02-13T19:28:47Z</published>
+  <updated>2016-02-13T19:28:47Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;It&amp;rsquo;s a small thing, but I submitted a patch to &lt;a href="http://trychooser.pub.build.mozilla.org/"&gt;trychooser&lt;/a&gt; last week which adds a tooltip indicating the actual Talos tests that are run as part of the various jobs that you can schedule as part of a try push. It&amp;rsquo;s in production as of now:&lt;/p&gt;
+
+&lt;video src="/files/2016/02/talos-trychooser.webm" controls="controls" autoplay="autoplay"&gt;&lt;/video&gt;
+
+&lt;p&gt;Previously, the only way to do this was to dig into the actual buildbot code, which was more than a little annoying.&lt;/p&gt;
+
+&lt;p&gt;If you think your patch might have a good chance of regressing performance, please do run the &lt;a href="https://wiki.mozilla.org/Buildbot/Talos/Tests"&gt;Talos tests&lt;/a&gt; before you check in. It&amp;rsquo;s much less work for all of us when these things are caught before integration and back outs are no fun for anyone. We really need better documentation for this stuff, but meanwhile if you need help with this, please ask in the #perf channel on irc.mozilla.org&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Albert Low</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2016/02/albert-low/?utm_source=all&amp;utm_medium=Atom" />
@@ -605,24 +621,4 @@ cd treeherder-ui/webapp&amp;lt;br /&amp;gt;
 
 &lt;p&gt;Happy meditating!&lt;/p&gt;
 
-&lt;p&gt;&lt;sup&gt;&lt;a href="http://wrla.ch/blog/category/meditation/"&gt;1&lt;/a&gt;&lt;/sup&gt; Note that there isn&amp;#8217;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock"&gt;requestWakeLock&lt;/a&gt; API to make sure that doesn&amp;#8217;t happen. I filed &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113"&gt;a bug&lt;/a&gt; to get this implemented on Firefox for Android.&lt;/p&gt;&lt;/html&gt;</content></entry>
- <entry>
-  <title type="text">New city, new cellphone provider</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/07/new-city-new-cellphone-provider/?utm_source=all&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-07-new-city-new-cellphone-provider</id>
-  <published>2014-07-12T04:00:00Z</published>
-  <updated>2014-07-12T04:00:00Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">&lt;html&gt;
-&lt;p&gt;Rogers, my previous cell phone provider, is ridiculous.&lt;/p&gt;
-
-&lt;p&gt;So for those of you who don&amp;#8217;t know, I just moved from Montreal to Toronto. There are very few people who call me these days, but some still do and keeping my old Montreal number subjects me to a bunch of long distance fees I didn&amp;#8217;t want to pay every time someone dials my number while I&amp;#8217;m here.&lt;/p&gt;
-
-&lt;p&gt;I really didn&amp;#8217;t want to go to the trouble of changing my cellphone company, so was ready to just switch my number and keep my $60/mo. plan with Rogers. I knew it was kind of expensive, but they haven&amp;#8217;t given me much trouble and I do put a premium on my time not being occupied with changing service providers. I also figured I had bigger fish to fry in terms of finding budgetary savings.&lt;/p&gt;
-
-&lt;p&gt;But no, apparently the &amp;#8220;market&amp;#8221; in Ontario is &amp;#8220;less competitive&amp;#8221;, so my plan doesn&amp;#8217;t exist here. After an hour and several levels of polite escalation (in strict violation of the &amp;#8220;don&amp;#8217;t waste my time&amp;#8221; rule), the best they could give me was a $70/mo. plan (a $10 increase) with a decrease of 3gb data -&amp;gt; 2gb. I gave them plenty of opportunities to relent, but they wouldn&amp;#8217;t budge. They claimed there was no reasonable alternative.&lt;/p&gt;
-
-&lt;p&gt;Did some shopping around&amp;#8211; unfortunately Wind (the best value) didn&amp;#8217;t seem to work with my Nexus 5, so I went with Virgin Mobile who looked like the next best option. Up and running in just half an hour, and will probably be paying no more than $50 a month now.&lt;/p&gt;
-
-&lt;p&gt;So what happened to the legendary Rogers customer retention department? How do they think they can get away charging these kinds of rates?&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;&lt;sup&gt;&lt;a href="http://wrla.ch/blog/category/meditation/"&gt;1&lt;/a&gt;&lt;/sup&gt; Note that there isn&amp;#8217;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock"&gt;requestWakeLock&lt;/a&gt; API to make sure that doesn&amp;#8217;t happen. I filed &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113"&gt;a bug&lt;/a&gt; to get this implemented on Firefox for Android.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>

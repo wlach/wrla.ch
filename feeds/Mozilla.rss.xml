@@ -4,9 +4,22 @@
   <title>William Lachance's Log: Posts tagged 'Mozilla'</title>
   <description>William Lachance's Log: Posts tagged 'Mozilla'</description>
   <link>https://wlach.github.io/tags/Mozilla.html</link>
-  <lastBuildDate>Wed, 04 Nov 2015 05:00:00 UT</lastBuildDate>
-  <pubDate>Wed, 04 Nov 2015 05:00:00 UT</pubDate>
+  <lastBuildDate>Sat, 13 Feb 2016 19:28:47 UT</lastBuildDate>
+  <pubDate>Sat, 13 Feb 2016 19:28:47 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Talos suites now visible from trychooser</title>
+   <link>https://wlach.github.io/blog/2016/02/talos-suites-now-visible-from-trychooser/?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2016-02-talos-suites-now-visible-from-trychooser</guid>
+   <pubDate>Sat, 13 Feb 2016 19:28:47 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;It&amp;rsquo;s a small thing, but I submitted a patch to &lt;a href="http://trychooser.pub.build.mozilla.org/"&gt;trychooser&lt;/a&gt; last week which adds a tooltip indicating the actual Talos tests that are run as part of the various jobs that you can schedule as part of a try push. It&amp;rsquo;s in production as of now:&lt;/p&gt;
+
+&lt;video src="/files/2016/02/talos-trychooser.webm" controls="controls" autoplay="autoplay"&gt;&lt;/video&gt;
+
+&lt;p&gt;Previously, the only way to do this was to dig into the actual buildbot code, which was more than a little annoying.&lt;/p&gt;
+
+&lt;p&gt;If you think your patch might have a good chance of regressing performance, please do run the &lt;a href="https://wiki.mozilla.org/Buildbot/Talos/Tests"&gt;Talos tests&lt;/a&gt; before you check in. It&amp;rsquo;s much less work for all of us when these things are caught before integration and back outs are no fun for anyone. We really need better documentation for this stuff, but meanwhile if you need help with this, please ask in the #perf channel on irc.mozilla.org&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Perfherder: Onward!</title>
    <link>https://wlach.github.io/blog/2015/11/perfherder-onward/?utm_source=Mozilla&amp;utm_medium=RSS</link>
@@ -592,74 +605,4 @@ cd treeherder-ui/webapp&amp;lt;br /&amp;gt;
  &lt;li&gt;Tue Mar 25 &amp;#8211; Thu Mar 27: Tokyo, Japan&lt;/li&gt;
  &lt;li&gt;Thu Mar 27 &amp;#8211; Sun Mar 30: Taipei, Taiwan&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;I will also be in Taipei the week of the March 31st, though I expect most of my time to be occupied with discussions/activities inside the Taipei office about FirefoxOS performance matters (the Firefox performance team is having a work week there, and I&amp;#8217;m tagging along to talk about / hack on Eideticker and other automation stuff).&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
-   <title>It&amp;#8217;s all about the entropy</title>
-   <link>https://wlach.github.io/blog/2014/03/it-8217-s-all-about-the-entropy/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2014-03-it-8217-s-all-about-the-entropy</guid>
-   <pubDate>Fri, 14 Mar 2014 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;So recently I&amp;#8217;ve been exploring new and different methods of measuring things that we care about on FirefoxOS &amp;#8212; like startup time or amount of &lt;a href="http://www.masonchang.com/blog/2014/3/2/wow-such-checkerboard"&gt;checkerboarding&lt;/a&gt;. With Android, where we have a mostly clean signal, these measurements were pretty straightforward. Want to measure startup times? Just capture a video of Firefox starting, then compare the frames pixel by pixel to see how much they differ. When the pixels aren&amp;#8217;t that different anymore, we&amp;#8217;re &amp;#8220;done&amp;#8221;. Likewise, to measure checkerboarding we just calculated the areas of the screen where things were not completely drawn yet, frame-by-frame.&lt;/p&gt;
-
-&lt;p&gt;On FirefoxOS, where we&amp;#8217;re using a camera to measure these things, it has not been so simple. I&amp;#8217;ve already discussed this with respect to startup time in a &lt;a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/"&gt;previous post&lt;/a&gt;. One of the ideas I talk about there is &amp;#8220;entropy&amp;#8221; (or the amount of unique information in the frame). It turns out that this is a pretty deep concept, and is useful for even more things than I thought of at the time. Since this is probably a concept that people are going to be thinking/talking about for a while, it&amp;#8217;s worth going into a little more detail about the math behind it.&lt;/p&gt;
-
-&lt;p&gt;The &lt;a href="http://en.wikipedia.org/wiki/Shannon_entropy"&gt;wikipedia article&lt;/a&gt; on information theoretic entropy is a pretty good introduction. You should read it. It all boils down to this formula:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src="/files/2014/03/wikipedia-entropy-formula.png" alt="wikipedia-entropy-formula" width="401" height="37" class="alignnone size-full wp-image-1014" srcset="/files/2014/03/wikipedia-entropy-formula-300x27.png 300w, /files/2014/03/wikipedia-entropy-formula.png 401w" sizes="(max-width: 401px) 100vw, 401px" /&gt;&lt;/p&gt;
-
-&lt;p&gt;You can see this section of the wikipedia article (and the various articles that it links to) if you want to break down where that comes from, but the short answer is that given a set of random samples, the more different values there are, the higher the entropy will be. Look at it from a probabilistic point of view: if you take a random set of data and want to make predictions on what future data will look like. If it is highly random, it will be harder to predict what comes next. Conversely, if it is more uniform it is easier to predict what form it will take.&lt;/p&gt;
-
-&lt;p&gt;Another, possibly more accessible way of thinking about the entropy of a given set of data would be &amp;#8220;how well would it compress?&amp;#8221;. For example, a bitmap image with nothing but black in it could compress very well as there&amp;#8217;s essentially only 1 piece of unique information in it repeated many times &amp;#8212; the black pixel. On the other hand, a bitmap image of completely randomly generated pixels would probably compress very badly, as almost every pixel represents several dimensions of unique information. For all the statistics terminology, etc. that&amp;#8217;s all the above formula is trying to say.&lt;/p&gt;
-
-&lt;p&gt;So we have a model of entropy, now what? For Eideticker, the question is &amp;#8212; how can we break the frame data we&amp;#8217;re gathering down into a form that&amp;#8217;s amenable to this kind of analysis? The approach I took (on the recommendation of &lt;a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html"&gt;this article&lt;/a&gt;) was to create a histogram with 256 bins (representing the number of distinct possibilities in a black &amp;#38; white capture) out of all the pixels in the frame, then run the formula over that. The exact function I wound up using looks like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def _get_frame_entropy((i, capture, sobelized)):
-    frame = capture.get_frame(i, True).astype('float')
-    if sobelized:
-        frame = ndimage.median_filter(frame, 3)
-
-        dx = ndimage.sobel(frame, 0)  # horizontal derivative
-        dy = ndimage.sobel(frame, 1)  # vertical derivative
-        frame = numpy.hypot(dx, dy)  # magnitude
-        frame *= 255.0 / numpy.max(frame)  # normalize (Q&amp;amp;D)
-
-    histogram = numpy.histogram(frame, bins=256)[0]
-    histogram_length = sum(histogram)
-    samples_probability = [float(h) / histogram_length for h in histogram]
-    entropy = -sum([p * math.log(p, 2) for p in samples_probability if p != 0])
-
-    return entropy
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href="https://github.com/mozilla/eideticker/blob/master/src/videocapture/videocapture/entropy.py#L10"&gt;[Context]&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The &amp;#8220;sobelized&amp;#8221; bit allows us to optionally convolve the frame with a sobel filter before running the entropy calculation, which removes most of the data in the capture except for the edges. This is especially useful for FirefoxOS, where the signal has quite a bit of random noise from ambient lighting that artificially inflate the entropy values even in places where there is little actual &amp;#8220;information&amp;#8221;.&lt;/p&gt;
-
-&lt;p&gt;This type of transformation often reveals very interesting information about what&amp;#8217;s going on in an eideticker test. For example, take this video of the user panning down in the contacts app:&lt;/p&gt;
-
-&lt;div style="width: 640px; " class="wp-video"&gt;
- &lt;video class="wp-video-shortcode" id="video-1012-2" width="640" height="917" preload="metadata" controls="controls"&gt;
-  &lt;source type="video/webm" src="/files/2014/03/contacts-scrolling-movie.webm?_=2" /&gt;&lt;a href="/files/2014/03/contacts-scrolling-movie.webm"&gt;/files/2014/03/contacts-scrolling-movie.webm&lt;/a&gt;&lt;/video&gt;&lt;/div&gt;
-
-&lt;p&gt;If you graph the entropies of the frame of the capture using the formula above you, you get a graph like this:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2014/03/contacts-scrolling-entropy-graph.png"&gt;&lt;img src="/files/2014/03/contacts-scrolling-entropy-graph.png" alt="contacts scrolling entropy graph" width="933" height="482" class="alignnone size-full wp-image-1022" srcset="/files/2014/03/contacts-scrolling-entropy-graph-300x154.png 300w, /files/2014/03/contacts-scrolling-entropy-graph.png 933w" sizes="(max-width: 933px) 100vw, 933px" /&gt;&lt;/a&gt;
- &lt;br /&gt;&lt;a href="http://eideticker.wrla.ch/b2g/detail.html?id=3f7b7c88a9ed11e380c5f0def1767b24#/framesobelentropies"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The Y axis represents entropy, as calculated by the code above. There is no inherently &amp;#8220;right&amp;#8221; value for this &amp;#8212; it all depends on the application you&amp;#8217;re testing and what you expect to see displayed on the screen. In general though, higher values are better as it indicates more frames of the capture are &amp;#8220;complete&amp;#8221;.&lt;/p&gt;
-
-&lt;p&gt;The region at the beginning where it is at about 5.0 represents the contacts app with a set of contacts fully displayed (at startup). The &amp;#8220;flat&amp;#8221; regions where the entropy is at roughly 4.25? Those are the areas where the app is &amp;#8220;checkerboarding&amp;#8221; (blanking out waiting for graphics or layout engine to draw contact information). Click through to the original and swipe over the graph to see what I mean.&lt;/p&gt;
-
-&lt;p&gt;It&amp;#8217;s easy to see what a hypothetical ideal end state would be for this capture: a graph with a smooth entropy of about 5.0 (similar to the start state, where all contacts are fully drawn in). We can track our progress towards this goal (or our deviation from it), by watching the eideticker b2g dashboard and seeing if the summation of the entropy values for frames over the entire test increases or decreases over time. If we see it generally increase, that probably means we&amp;#8217;re seeing less checkerboarding in the capture. If we see it decrease, that might mean we&amp;#8217;re now seeing checkerboarding where we weren&amp;#8217;t before.&lt;/p&gt;
-
-&lt;p&gt;It&amp;#8217;s too early to say for sure, but over the past few days the trend has been positive:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2014/03/entropy-levels-climbing.png"&gt;&lt;img src="/files/2014/03/entropy-levels-climbing.png" alt="entropy-levels-climbing" width="822" height="529" class="alignnone size-full wp-image-1025" srcset="/files/2014/03/entropy-levels-climbing-300x193.png 300w, /files/2014/03/entropy-levels-climbing.png 822w" sizes="(max-width: 822px) 100vw, 822px" /&gt;&lt;/a&gt;
- &lt;br /&gt;&lt;a href="http://eideticker.wrla.ch/b2g/#/inari/b2g-contacts-scrolling/overallentropy"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;(note that there were some problems in the way the tests were being run before, so results before the 12th should not be considered valid)&lt;/p&gt;
-
-&lt;p&gt;So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&amp;#8217;s find them!&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;I will also be in Taipei the week of the March 31st, though I expect most of my time to be occupied with discussions/activities inside the Taipei office about FirefoxOS performance matters (the Firefox performance team is having a work week there, and I&amp;#8217;m tagging along to talk about / hack on Eideticker and other automation stuff).&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

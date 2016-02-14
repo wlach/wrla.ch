@@ -3,15 +3,15 @@
   <head>
 
     <meta charset="utf-8">
-    <title>Albert Low</title>
-    <meta name="description" content="I was saddened to find out last week that the person who introduced me to Zen practice three years ago, Albert Low, has passed away. Albert was the teacher of the Montreal Zen Center, which I was a member of for a brief period (6 months) in 2014 before I ...">
+    <title>Talos suites now visible from trychooser</title>
+    <meta name="description" content="It's a small thing, but I submitted a patch to trychooser last week which adds a tooltip indicating the actual Talos tests that are run as part of the various jobs that you can schedule as part of a try push. It's in production as of now:  Previously, the...">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="zen">
+    <meta name="keywords"    content="Mozilla, Talos">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2016/02/albert-low/">
-    <link rel="next" href="/blog/2016/01/nixi-is-moving-too/">
-    <link rel="prev" href="/blog/2016/02/talos-suites-now-visible-from-trychooser/">
+    <link rel="canonical" href="https://wlach.github.io/blog/2016/02/talos-suites-now-visible-from-trychooser/">
+    <link rel="next" href="/blog/2016/02/albert-low/">
+
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -179,14 +179,18 @@
 
           <article>
   <header>
-    <p><span class="tags"><a href="/tags/zen.html">zen</a></span></p>
-    <h1>Albert Low</h1>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 7th, 2016</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Talos.html">Talos</a></span></p>
+    <h1>Talos suites now visible from trychooser</h1>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 13th, 2016</p>
   </header>
 
-<p>I was saddened to find out last week that the person who introduced me to Zen practice three years ago, Albert Low, has passed away. Albert was the teacher of the <a href="http://www.zenmontreal.ca/">Montreal Zen Center</a>, which I was a member of for a brief period (6 months) in 2014 before I moved to Toronto and started practicing at <a href="http://torontozen.org/">the center</a> here.</p>
+<p>It&rsquo;s a small thing, but I submitted a patch to <a href="http://trychooser.pub.build.mozilla.org/">trychooser</a> last week which adds a tooltip indicating the actual Talos tests that are run as part of the various jobs that you can schedule as part of a try push. It&rsquo;s in production as of now:</p>
 
-<p>Albert&rsquo;s instruction was the gateway to a practice that has had a profound impact on my life. More than anything, he helped me understand Zen as something that one could incorporate directly into daily life. I will remain forever grateful.</p>
+<video src="/files/2016/02/talos-trychooser.webm" controls="controls" autoplay="autoplay"></video>
+
+<p>Previously, the only way to do this was to dig into the actual buildbot code, which was more than a little annoying.</p>
+
+<p>If you think your patch might have a good chance of regressing performance, please do run the <a href="https://wiki.mozilla.org/Buildbot/Talos/Tests">Talos tests</a> before you check in. It&rsquo;s much less work for all of us when these things are caught before integration and back outs are no fun for anyone. We really need better documentation for this stuff, but meanwhile if you need help with this, please ask in the #perf channel on irc.mozilla.org</p>
   <footer>
     <hr/>
     <script type="text/javascript">
@@ -201,11 +205,9 @@
     </script>
     <div id="disqus_thread"></div>
     <ul class="pager">
-    <li class="previous">
-      <a href="/blog/2016/02/talos-suites-now-visible-from-trychooser/">&larr; <em>Talos suites now visible from trychooser</em></a>
-    </li>
+
     <li class="next">
-      <a href="/blog/2016/01/nixi-is-moving-too/"><em>NIXI is moving too</em> &rarr;</a>
+      <a href="/blog/2016/02/albert-low/"><em>Albert Low</em> &rarr;</a>
     </li>
     </ul>
   </footer>
