@@ -90,6 +90,7 @@ https://wlach.github.io/blog/2014/09/hacking-on-the-treeherder-front-end-refresh
 https://wlach.github.io/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/
 https://wlach.github.io/blog/2013/09/early-morning-questions/
 https://wlach.github.io/blog/2015/09/perfherder-summer-of-contribution-thoughts/
+https://wlach.github.io/blog/2016/03/platform-engineering-project-of-the-month-perfherder/
 https://wlach.github.io/blog/2011/12/eideticker-update/
 https://wlach.github.io/blog/2014/07/measuring-frames-per-second-and-animation-smoothness-with-eideticker/
 https://wlach.github.io/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser/
