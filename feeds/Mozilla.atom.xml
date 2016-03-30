@@ -4,7 +4,46 @@
  <link rel="self" href="https://wlach.github.io/feeds/Mozilla.atom.xml" />
  <link href="https://wlach.github.io/tags/Mozilla.html" />
  <id>urn:https-wlach-github-io:-tags-Mozilla-html</id>
- <updated>2016-03-15T00:10:57Z</updated>
+ <updated>2016-03-30T15:42:39Z</updated>
+ <entry>
+  <title type="text">Are We Fast Yet and Perfherder</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2016/03/are-we-fast-yet-and-perfherder/?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2016-03-are-we-fast-yet-and-perfherder</id>
+  <published>2016-03-30T15:42:39Z</published>
+  <updated>2016-03-30T15:42:39Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;Historically at Mozilla, we&amp;rsquo;ve had a bunch of different systems running to benchmark Firefox&amp;rsquo;s performance. The two most broadly-scoped are &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;Talos&lt;/a&gt; (which runs as part of our build process, and emphasizes common real-world use cases, like page loading) and &lt;a href="https://arewefastyet.com/"&gt;Are We Fast Yet&lt;/a&gt; (which runs seperately, and emphasizes JavaScript performance and benchmarks).&lt;/p&gt;
+
+&lt;p&gt;As many of you know, most of my focus over the last year-and-a-bit has been developing a system called Perfherder, which aims to make monitoring and acting on performance data easier. A great introduction to Perfherder is my &lt;a href="/blog/2016/03/platform-engineering-project-of-the-month-perfherder/"&gt;project of the month post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The initial focus of Perfherder has been Talos, which is deeply integrated into our automation and also maintained by Engineering Productivity (my group). However, the intention was always to allow anyone in the Mozilla community to submit performance data for Firefox and sheriff it, much like Treeherder has supported the submission of test result data from third parties (e.g. autophone, Firefox UI tests). There are more commonalities than differences in how we do performance sheriffing with Are We Fast Yet (which currently has its own web interface) and Perfherder, so it made sense to see if we could pool resources.&lt;/p&gt;
+
+&lt;p&gt;So, over the last couple of months, &lt;a href="https://elvis314.wordpress.com/"&gt;Joel Maher&lt;/a&gt; and I have been in discussions with Hannes Verschore, current maintainer of Are We Fast Yet (AWFY) to see what could be done. It looks like it is possible for Perfherder to provide most of what AWFY needs, though there are a few exceptions. I thought for the benefit of others, it might be useful to outline what&amp;rsquo;s done, what&amp;rsquo;s coming next, and what might not be implemented (at least not any time soon).&lt;/p&gt;
+
+&lt;h3 id="whats-done"&gt;What&amp;rsquo;s done&lt;/h3&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Get AWFY submitting data to Perfherder and allow it to be sheriffed  seperately from Talos. This is working on treeherder stage, and you  can already examine the &lt;a href="https://treeherder.allizom.org/perf.html#/alerts?status=0&amp;amp;framework=5"&gt;alert data&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;h3 id="whats-in-progress-or-in-the-near-term-pipeline"&gt;What&amp;rsquo;s in progress (or in the near-term pipeline)&lt;/h3&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Allow custom alerting behaviour (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1254595"&gt;bug 1254595&lt;/a&gt;). For example, we want  to alert on subtests for AWFY while still summarizing the results.  This is something we don&amp;rsquo;t currently support.&lt;/li&gt;
+ &lt;li&gt;Allow creating an alert manually (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1260791"&gt;bug 1260791&lt;/a&gt;). Sadly, our regression detection  algorithm is not perfect. AWFY already supports this, we should too. This is something we also want for Talos.&lt;/li&gt;
+ &lt;li&gt;Make regression-filing templates non-talos-specific (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1260805"&gt;bug 1260805&lt;/a&gt;). Currently we have a convenience template for filing bugs for performance  regressions, but this is currently specific to various things about Talos (job running instructions, links to documentation, etc.). We should  make it configurable so other projects like AWFY can take advantage of this functionality.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;h3 id="under-consideration"&gt;Under consideration&lt;/h3&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Some kind of support for bisecting a push to figure out which patch  caused a regression. AWFY currently supports this, but it&amp;rsquo;s a fairly  difficult thing to add to Perfherder (much of which is built upon  Treeherder&amp;rsquo;s per-push result model). Maybe this is something we should  do, but it would be a significant amount of effort.&lt;/li&gt;
+ &lt;li&gt;Proprietary benchmarks: AWFY runs one benchmark the results for  which we can&amp;rsquo;t make public. Adding &amp;ldquo;private&amp;rdquo; jobs or results to  Treeherder is likely a big can of worms, but it might be something  we want to do eventually.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;h3 id="probably-wont-fix"&gt;Probably won&amp;rsquo;t fix&lt;/h3&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Supporting comparative measurements between Firefox and other  browsers. This is an important task, but doesn&amp;rsquo;t really fit into the  model of Perfherder, which is intimately tied to the revision data  associated with Firefox. To do this would require detailed tracking  of Chrome on the same basis, and I don&amp;rsquo;t think that&amp;rsquo;s really a place  where we want to go. We should definitely monitor for general  trends, but I think that is best done with a seperate system.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Platform engineering project of the month: Perfherder</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2016/03/platform-engineering-project-of-the-month-perfherder/?utm_source=Mozilla&amp;utm_medium=Atom" />
@@ -654,41 +693,4 @@ cd treeherder-ui/webapp&amp;lt;br /&amp;gt;
  &lt;li&gt;&lt;a href="http://blackrhino.io/"&gt;Sam Garrett&lt;/a&gt; has stepped up to be co-maintainer of the project with me. He&amp;#8217;s been doing a great job whacking out a bunch of bugs and keeping things running reliably, and it was time to give him some recognition and power to keep things moving forward.&lt;/li&gt;
  &lt;li&gt;On that note, I just released mozregression 0.17, which now shows the revision number when running a build (a request from the graphics team, bug &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1007238"&gt;1007238&lt;/a&gt;) and handles respins of nightly builds correctly (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1000422"&gt;bug 1000422&lt;/a&gt;). Both of these were fixed by Sam.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;If you&amp;#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &amp;#8212; as I&amp;#8217;ve found out over the last few months, people &lt;em&gt;all over&lt;/em&gt; the Mozilla organization (managers, developers, QA &amp;#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry>
- <entry>
-  <title type="text">PyCon 2014 impressions: ipython notebook is the future &amp;#038; more</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/?utm_source=Mozilla&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-04-pycon-2014-impressions-ipython-notebook-is-the-future-038-more</id>
-  <published>2014-04-22T04:00:00Z</published>
-  <updated>2014-04-22T04:00:00Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">&lt;html&gt;
-&lt;p&gt;This year&amp;#8217;s PyCon US (&lt;a href="http://python.org"&gt;Python&lt;/a&gt; Conference) was in my city of residence (Montr&amp;eacute;al) so I took the opportunity to go and see what was up in the world of the language I use the most at Mozilla. It was pretty great!&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;ipython&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;The highlight for me was learning about the possibilities of &lt;a href="http://ipython.org/"&gt;ipython notebooks&lt;/a&gt;, an absolutely fantastic interactive tool for debugging python in a live browser-based environment. I&amp;#8217;d heard about it before, but it wasn&amp;#8217;t immediately apparent how it would really improve things &amp;#8212; it seemed to be just a less convenient interface to the python console that required me to futz around with my web browser. Watching a few presentations on the topic made me realize how wrong I was. It&amp;#8217;s already changed the way I do work with Eideticker data, for the better.&lt;/p&gt;
-
-&lt;figure id="attachment_1042" style="width: 848px" class="wp-caption alignnone"&gt;[&lt;img src="/files/2014/04/eideticker-ipython.png" alt="Using ipython to analyze some eideticker data" width="848" height="842" class="size-full wp-image-1042" srcset="/files/2014/04/eideticker-ipython-150x150.png 150w, /files/2014/04/eideticker-ipython-300x297.png 300w, /files/2014/04/eideticker-ipython.png 848w" sizes="(max-width: 848px) 100vw, 848px" /&gt;][3]
- &lt;figcaption class="wp-caption-text"&gt;Using ipython to analyze some eideticker data&lt;/figcaption&gt;&lt;/figure&gt;
-
-&lt;p&gt;I think the basic premise is really quite simple: a better interface for typing in, experimenting with, and running python code. If you stop and think about it, the modern web interface supports a much richer vocabulary of interactive concepts that the console (or even text editors like emacs): there&amp;#8217;s no reason we shouldn&amp;#8217;t take advantage of it.&lt;/p&gt;
-
-&lt;p&gt;Here are the (IMO) killer features that make it worth using:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;The ability to immediately re-execute a block of code after editing and seeing an error (essentially merging the immediacy of the python console with the permanency / cut &amp;#38; pastability of an actual script)&lt;/li&gt;
- &lt;li&gt;Live-printing out graphs of numerical results using &lt;a href="http://matplotlib.org/"&gt;matplotlib&lt;/a&gt;. ZOMG this is so handy. Especially in conjunction with the live-editing outlined above, there&amp;#8217;s no better tool for fine-tuning mathematical/statistical analysis.&lt;/li&gt;
- &lt;li&gt;The shareability of the results. Any ipython notebook can be saved and then saved to a public website. Many presentations at PyCon 2014, in fact, were done entirely with ipython notebooks. So handy for answering questions like &amp;#8220;how did you get that&amp;#8221;?&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;To learn more about how to use ipython notebooks for data analysis, I highly recommend Julie Evan&amp;#8217;s talk &lt;a href="http://pyvideo.org/video/2657/diving-into-open-data-with-ipython-notebook-pan-0"&gt;Diving into Open Data with IPython Notebook &amp;#38; Pandas&lt;/a&gt;, which you can find on pyvideo.org.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Other Good Talks&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I saw some other good talks at the conference, here are some of them:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;&lt;a href="http://pyvideo.org/video/2571/all-your-ducks-in-a-row-data-structures-in-the-s"&gt;All Your Ducks In A Row: Data Structures in the Standard Library and Beyond&lt;/a&gt; &amp;#8211; A useful talk by Brandon Rhoades on the implementation of basic data structures in Python, and how to select the ones to use for optimal performance. It turns out that lists aren&amp;#8217;t the best thing to use for long sequences of numerical data (who knew?)&lt;/li&gt;
- &lt;li&gt;&lt;a href="http://pyvideo.org/video/2627/fast-python-slow-python"&gt;Fast Python, Slow Python&lt;/a&gt; &amp;#8211; An interesting talk by Alex Gaynor about how to write decent performing pure-python code in a single-threaded context. Lots of intelligent stuff about producing robust code that matches your intention and data structures, and caution against doing fancy things in the name of being &amp;#8220;pythonic&amp;#8221; or &amp;#8220;general&amp;#8221;.&lt;/li&gt;
- &lt;li&gt;&lt;a href="http://pyvideo.org/video/2658/analyzing-rap-lyrics-with-python"&gt;Analyzing Rap Lyrics with Python&lt;/a&gt; &amp;#8211; Another data analysis talk, this one about a subject I knew almost nothing about. The best part of it (for me anyway) was learning how the speaker (Julie Lavoie) narrowed her focus in her research to the exact aspects of the problem that would let her answer the question she was interested in (&amp;#8220;Can we automatically find out which rap lyrics are the most sexist?&amp;#8221;) as opposed to interesting problems (&amp;#8220;how can I design the most general scraping library possible?&amp;#8221;) that don&amp;#8217;t answer the question. In my opinion, this ability to focus is one of the key things that seperates successful projects from unsuccessful ones.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;If you&amp;#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &amp;#8212; as I&amp;#8217;ve found out over the last few months, people &lt;em&gt;all over&lt;/em&gt; the Mozilla organization (managers, developers, QA &amp;#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>

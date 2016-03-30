@@ -79,6 +79,7 @@ https://wlach.github.io/blog/2016/02/talos-suites-now-visible-from-trychooser/
 https://wlach.github.io/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/
 https://wlach.github.io/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/
 https://wlach.github.io/blog/2014/03/upcoming-travels-to-japan-and-taiwan/
+https://wlach.github.io/blog/2016/03/are-we-fast-yet-and-perfherder/
 https://wlach.github.io/blog/2014/09/mozregression-0-24/
 https://wlach.github.io/blog/2009/08/icon-metaphor-fail/
 https://wlach.github.io/blog/2012/10/using-the-dm-utility-to-interact-with-android-or-firefoxos-devices/

@@ -4,9 +4,45 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Tue, 15 Mar 2016 00:10:57 UT</lastBuildDate>
-  <pubDate>Tue, 15 Mar 2016 00:10:57 UT</pubDate>
+  <lastBuildDate>Wed, 30 Mar 2016 15:42:39 UT</lastBuildDate>
+  <pubDate>Wed, 30 Mar 2016 15:42:39 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Are We Fast Yet and Perfherder</title>
+   <link>https://wlach.github.io/blog/2016/03/are-we-fast-yet-and-perfherder/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2016-03-are-we-fast-yet-and-perfherder</guid>
+   <pubDate>Wed, 30 Mar 2016 15:42:39 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Historically at Mozilla, we&amp;rsquo;ve had a bunch of different systems running to benchmark Firefox&amp;rsquo;s performance. The two most broadly-scoped are &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;Talos&lt;/a&gt; (which runs as part of our build process, and emphasizes common real-world use cases, like page loading) and &lt;a href="https://arewefastyet.com/"&gt;Are We Fast Yet&lt;/a&gt; (which runs seperately, and emphasizes JavaScript performance and benchmarks).&lt;/p&gt;
+
+&lt;p&gt;As many of you know, most of my focus over the last year-and-a-bit has been developing a system called Perfherder, which aims to make monitoring and acting on performance data easier. A great introduction to Perfherder is my &lt;a href="/blog/2016/03/platform-engineering-project-of-the-month-perfherder/"&gt;project of the month post&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The initial focus of Perfherder has been Talos, which is deeply integrated into our automation and also maintained by Engineering Productivity (my group). However, the intention was always to allow anyone in the Mozilla community to submit performance data for Firefox and sheriff it, much like Treeherder has supported the submission of test result data from third parties (e.g. autophone, Firefox UI tests). There are more commonalities than differences in how we do performance sheriffing with Are We Fast Yet (which currently has its own web interface) and Perfherder, so it made sense to see if we could pool resources.&lt;/p&gt;
+
+&lt;p&gt;So, over the last couple of months, &lt;a href="https://elvis314.wordpress.com/"&gt;Joel Maher&lt;/a&gt; and I have been in discussions with Hannes Verschore, current maintainer of Are We Fast Yet (AWFY) to see what could be done. It looks like it is possible for Perfherder to provide most of what AWFY needs, though there are a few exceptions. I thought for the benefit of others, it might be useful to outline what&amp;rsquo;s done, what&amp;rsquo;s coming next, and what might not be implemented (at least not any time soon).&lt;/p&gt;
+
+&lt;h3 id="whats-done"&gt;What&amp;rsquo;s done&lt;/h3&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Get AWFY submitting data to Perfherder and allow it to be sheriffed  seperately from Talos. This is working on treeherder stage, and you  can already examine the &lt;a href="https://treeherder.allizom.org/perf.html#/alerts?status=0&amp;amp;framework=5"&gt;alert data&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;h3 id="whats-in-progress-or-in-the-near-term-pipeline"&gt;What&amp;rsquo;s in progress (or in the near-term pipeline)&lt;/h3&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Allow custom alerting behaviour (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1254595"&gt;bug 1254595&lt;/a&gt;). For example, we want  to alert on subtests for AWFY while still summarizing the results.  This is something we don&amp;rsquo;t currently support.&lt;/li&gt;
+ &lt;li&gt;Allow creating an alert manually (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1260791"&gt;bug 1260791&lt;/a&gt;). Sadly, our regression detection  algorithm is not perfect. AWFY already supports this, we should too. This is something we also want for Talos.&lt;/li&gt;
+ &lt;li&gt;Make regression-filing templates non-talos-specific (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1260805"&gt;bug 1260805&lt;/a&gt;). Currently we have a convenience template for filing bugs for performance  regressions, but this is currently specific to various things about Talos (job running instructions, links to documentation, etc.). We should  make it configurable so other projects like AWFY can take advantage of this functionality.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;h3 id="under-consideration"&gt;Under consideration&lt;/h3&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Some kind of support for bisecting a push to figure out which patch  caused a regression. AWFY currently supports this, but it&amp;rsquo;s a fairly  difficult thing to add to Perfherder (much of which is built upon  Treeherder&amp;rsquo;s per-push result model). Maybe this is something we should  do, but it would be a significant amount of effort.&lt;/li&gt;
+ &lt;li&gt;Proprietary benchmarks: AWFY runs one benchmark the results for  which we can&amp;rsquo;t make public. Adding &amp;ldquo;private&amp;rdquo; jobs or results to  Treeherder is likely a big can of worms, but it might be something  we want to do eventually.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;h3 id="probably-wont-fix"&gt;Probably won&amp;rsquo;t fix&lt;/h3&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Supporting comparative measurements between Firefox and other  browsers. This is an important task, but doesn&amp;rsquo;t really fit into the  model of Perfherder, which is intimately tied to the revision data  associated with Firefox. To do this would require detailed tracking  of Chrome on the same basis, and I don&amp;rsquo;t think that&amp;rsquo;s really a place  where we want to go. We should definitely monitor for general  trends, but I think that is best done with a seperate system.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Platform engineering project of the month: Perfherder</title>
    <link>https://wlach.github.io/blog/2016/03/platform-engineering-project-of-the-month-perfherder/?utm_source=all&amp;utm_medium=RSS</link>
@@ -553,26 +589,4 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
  &lt;li&gt;Fixed a bug where we could get an incorrect regression range (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1059856"&gt;bug 1059856&lt;/a&gt;). Unfortunately the root cause of the bug is still open (it&amp;#8217;s a bit tricky to match mozilla-central commits to that of other branches) but I think this most recent fix should make things work in 99.9% of cases. Let me know if I&amp;#8217;m wrong.&lt;/li&gt;
  &lt;li&gt;Thanks to Julien Pagès, we now download the inbound build metadata in parallel, which speeds up inbound bisection quite significantly&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;If you know a bit of python, contributing to mozregression is a great way to have a high impact on Mozilla. Many platform developers use this project in their day-to-day work, but there&amp;#8217;s still &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;lots of room for improvement&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
-   <title>Hacking on the Treeherder front end: refreshingly easy</title>
-   <link>https://wlach.github.io/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2014-09-hacking-on-the-treeherder-front-end-refreshingly-easy</guid>
-   <pubDate>Thu, 11 Sep 2014 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;Over the past two weeks, I&amp;#8217;ve been working a bit on the &lt;a href="http://treeherder.mozilla.org"&gt;Treeherder&lt;/a&gt; front end (our interface to managing build and test jobs from mercurial changesets), trying to help get things in shape so that the sheriffs can feel comfortable transitioning to it from &lt;a href="https://tbpl.mozilla.org/"&gt;tbpl&lt;/a&gt; by the end of the quarter.&lt;/p&gt;
-
-&lt;p&gt;One thing that has pleasantly surprised me is just how easy it&amp;#8217;s been to get going and be productive. The process looks like this on Linux or Mac:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;&amp;lt;br /&amp;gt;
-git clone https://github.com/mozilla/treeherder-ui.git&amp;lt;br /&amp;gt;
-cd treeherder-ui/webapp&amp;lt;br /&amp;gt;
-./scripts/web-server.js&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Then just load http://localhost:8000 in your favorite web browser (Firefox) and you should be good to go (it will load data from the actually treeherder site). If you want to make modifications to the HTML, Javascript, or CSS just go ahead and do so with your favorite editor and the changes will be immediately reflected.&lt;/p&gt;
-
-&lt;p&gt;We have a fair backlog of issues to get through, many of them related to the front end. If you&amp;#8217;re interested in helping out, please have a look:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Treeherder#Bugs_.26_Project_Tracking"&gt;https://wiki.mozilla.org/Auto-tools/Projects/Treeherder#Bugs_.26_Project_Tracking&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;If nothing jumps out at you, please drop by irc.mozilla.org #treeherder and we can probably find something for you to work on. We&amp;#8217;re most active during Pacific Time working hours.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;If you know a bit of python, contributing to mozregression is a great way to have a high impact on Mozilla. Many platform developers use this project in their day-to-day work, but there&amp;#8217;s still &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;lots of room for improvement&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

@@ -179,6 +179,51 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2012/04/eideticker-with-less-eideticker/'>Eideticker with less eideticker</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 24th, 2012</p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+
+<p>tl;dr: You can now run the standard eideticker benchmarks easily on any Android phone without any kind of specialized hardware.</p>
+
+<p>So Eideticker is pretty great at comparing relative performance between different browsers and generally measuring things in an absolutely neutral way. Unfortunately it&#8217;s a bit of a pain to use it at the moment to catch regressions: the software still has a few bugs and encoding/decoding/analyzing the capture still takes a great deal of time. Not to mention the fact that it currently requires specialized hardware (though that will soon be less of a concern at least inside MoCo, where we have a bunch of Eideticker boxes on order for the Toronto and Mountain View offices).</p>
+
+<p>A few months ago, Chris Lord wrote up some great code to internally measure the amount of checkerboarding going on in Fennec. I&#8217;ve thought for a while that it would be a neat idea to hook this up to the Eideticker harness, and today I finally did so. After installing Eideticker, you can now run the benchmark on any machine against an arbitrary fennec build just by typing this from the eideticker root directory:</p>
+
+<pre><code>adb shell setprop log.tag.GeckoLayerRendererProf DEBUG
+./bin/get-metric-for-build.py --no-capture --get-internal-checkerboard-stats --num-runs 3 nightly.apk src/tests/scrolling/taskjs.org/index.html</code></pre>
+
+<p>In return, you&#8217;ll get some nice clean results like this:</p>
+
+<pre><code>=== Internal Checkerboard Stats (sum of percents, not percentage) ===
+[167.34348, 171.871015, 175.3420296]</code></pre>
+
+<p>Just to be sure that the results were comparable, I did a quick set of runs on the Eideticker machine in Mountain View with both internal checkerboard statistics gathering and HDMI capturing enabled.</p>
+
+<table>
+ <tr>
+  <td>Stats file</td> 
+  <td>HDMI capturing</td></tr>
+ <tr>
+  <td>167.34348</td> 
+  <td>177.022</td></tr>
+ <tr>
+  <td>171.87</td> 
+  <td>184.46</td></tr>
+ <tr>
+  <td>175.34</td> 
+  <td>184.44</td></tr></table>
+
+<p>While the results aren&#8217;t identical (we measure number of frames differently inside Fennec than we do with Eideticker, for one thing), they do seem roughly correlated. So go forth, benchmark and tweak! 😉</p>
+
+<p>P.S. If you&#8217;ve been following mobile automation, you might be asking why I don&#8217;t just suggest running Talos and Robocop on your workstation. Can&#8217;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&#8217;re much more involved to set up and use at the moment. Arguably they shouldn&#8217;t be, and this is something we (<a href="https://wiki.mozilla.org/Auto-tools/">Mozilla tools &amp; automation</a>) need to work on. We&#8217;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/GoFaster.html">GoFaster</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Release-Engineering.html">Release Engineering</a></span></p>
     <h2><a href='/blog/2012/04/gofaster-dashboard-back-online/'>GoFaster dashboard back online</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 19th, 2012</p>
@@ -408,28 +453,6 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 <p>After:</p>
 
 <video src="/files/eideticker/almostnocheckerboarding.webm" width="600px" controls="controls"></video>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2011/12/year-end-eideticker-update/'>Year end Eideticker update</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Dec 23rd, 2011</p>
-  </header>
-
-<p>Just before I leave for some Christmas vacation, it&#8217;s time for another update on the state of <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">Eideticker</a>. Since I last blogged about the software, I&#8217;ve been working on the following three areas:</p>
-
-<ol>
- <li>Coming up with better algorithm (green screen / red screen) for both determining the area of the capture as well as the start/end of the capture. The harness was already flood filling the area with these colours at the beginning/end of the capture, but now we&#8217;re actually using this information. The code&#8217;s a little hacky, but it seems to work well enough for the test cases I&#8217;ve been using so far.</li>
- <li>As a demonstration, I wrote up a quick test that demonstrates checkerboarding on mobile Fennec, and wrote up a quick bit of analysis code to detect this pattern and give an overall measure of how much this test &#8220;checkerboards&#8221; (i.e. has regions that are not fully painted when the user scrolls). As I understand this is an area that our mobile team is currently working on this problem quite a bit, it will be interesting to watch the numbers given by this test and see if things improve.</li>
- <li>It&#8217;s a minor thing, but you can now view a complete webm movie of the captured movie right from the web interface.</li></ol>
-
-<p>Here&#8217;s a quick demonstration video that shows all the above in action. As before, you might want to watch this full screen:</p>
-
-<video src="/files/eideticker/eideticker-2011-12-21.webm" width="600px" controls="controls"></video>
-
-<p>Happy holidays!</p>
 
 </article>
 

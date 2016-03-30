@@ -180,6 +180,46 @@
           <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
+    <h2><a href='/blog/2016/03/are-we-fast-yet-and-perfherder/'>Are We Fast Yet and Perfherder</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 30th, 2016</p>
+  </header>
+
+<p>Historically at Mozilla, we&rsquo;ve had a bunch of different systems running to benchmark Firefox&rsquo;s performance. The two most broadly-scoped are <a href="https://wiki.mozilla.org/Buildbot/Talos">Talos</a> (which runs as part of our build process, and emphasizes common real-world use cases, like page loading) and <a href="https://arewefastyet.com/">Are We Fast Yet</a> (which runs seperately, and emphasizes JavaScript performance and benchmarks).</p>
+
+<p>As many of you know, most of my focus over the last year-and-a-bit has been developing a system called Perfherder, which aims to make monitoring and acting on performance data easier. A great introduction to Perfherder is my <a href="/blog/2016/03/platform-engineering-project-of-the-month-perfherder/">project of the month post</a>.</p>
+
+<p>The initial focus of Perfherder has been Talos, which is deeply integrated into our automation and also maintained by Engineering Productivity (my group). However, the intention was always to allow anyone in the Mozilla community to submit performance data for Firefox and sheriff it, much like Treeherder has supported the submission of test result data from third parties (e.g. autophone, Firefox UI tests). There are more commonalities than differences in how we do performance sheriffing with Are We Fast Yet (which currently has its own web interface) and Perfherder, so it made sense to see if we could pool resources.</p>
+
+<p>So, over the last couple of months, <a href="https://elvis314.wordpress.com/">Joel Maher</a> and I have been in discussions with Hannes Verschore, current maintainer of Are We Fast Yet (AWFY) to see what could be done. It looks like it is possible for Perfherder to provide most of what AWFY needs, though there are a few exceptions. I thought for the benefit of others, it might be useful to outline what&rsquo;s done, what&rsquo;s coming next, and what might not be implemented (at least not any time soon).</p>
+
+<h3 id="whats-done">What&rsquo;s done</h3>
+
+<ul>
+ <li>Get AWFY submitting data to Perfherder and allow it to be sheriffed  seperately from Talos. This is working on treeherder stage, and you  can already examine the <a href="https://treeherder.allizom.org/perf.html#/alerts?status=0&amp;framework=5">alert data</a>.</li></ul>
+
+<h3 id="whats-in-progress-or-in-the-near-term-pipeline">What&rsquo;s in progress (or in the near-term pipeline)</h3>
+
+<ul>
+ <li>Allow custom alerting behaviour (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1254595">bug 1254595</a>). For example, we want  to alert on subtests for AWFY while still summarizing the results.  This is something we don&rsquo;t currently support.</li>
+ <li>Allow creating an alert manually (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1260791">bug 1260791</a>). Sadly, our regression detection  algorithm is not perfect. AWFY already supports this, we should too. This is something we also want for Talos.</li>
+ <li>Make regression-filing templates non-talos-specific (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1260805">bug 1260805</a>). Currently we have a convenience template for filing bugs for performance  regressions, but this is currently specific to various things about Talos (job running instructions, links to documentation, etc.). We should  make it configurable so other projects like AWFY can take advantage of this functionality.</li></ul>
+
+<h3 id="under-consideration">Under consideration</h3>
+
+<ul>
+ <li>Some kind of support for bisecting a push to figure out which patch  caused a regression. AWFY currently supports this, but it&rsquo;s a fairly  difficult thing to add to Perfherder (much of which is built upon  Treeherder&rsquo;s per-push result model). Maybe this is something we should  do, but it would be a significant amount of effort.</li>
+ <li>Proprietary benchmarks: AWFY runs one benchmark the results for  which we can&rsquo;t make public. Adding &ldquo;private&rdquo; jobs or results to  Treeherder is likely a big can of worms, but it might be something  we want to do eventually.</li></ul>
+
+<h3 id="probably-wont-fix">Probably won&rsquo;t fix</h3>
+
+<ul>
+ <li>Supporting comparative measurements between Firefox and other  browsers. This is an important task, but doesn&rsquo;t really fit into the  model of Perfherder, which is intimately tied to the revision data  associated with Firefox. To do this would require detailed tracking  of Chrome on the same basis, and I don&rsquo;t think that&rsquo;s really a place  where we want to go. We should definitely monitor for general  trends, but I think that is best done with a seperate system.</li></ul>
+
+</article>
+
+<article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
     <h2><a href='/blog/2016/03/platform-engineering-project-of-the-month-perfherder/'>Platform engineering project of the month: Perfherder</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 14th, 2016</p>
   </header>
