@@ -4,7 +4,21 @@
  <link rel="self" href="https://wlach.github.io/feeds/Mozilla.atom.xml" />
  <link href="https://wlach.github.io/tags/Mozilla.html" />
  <id>urn:https-wlach-github-io:-tags-Mozilla-html</id>
- <updated>2016-03-30T15:42:39Z</updated>
+ <updated>2016-05-27T14:51:54Z</updated>
+ <entry>
+  <title type="text">Quarter of Contribution: June / July 2016 edition</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2016/05/quarter-of-contribution-june-july-2016-edition/?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2016-05-quarter-of-contribution-june-july-2016-edition</id>
+  <published>2016-05-27T14:51:54Z</published>
+  <updated>2016-05-27T14:51:54Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;Just wanted to announce that, once again, my team (&lt;a href="https://wiki.mozilla.org/EngineeringProductivity"&gt;Mozilla Engineering Productivity&lt;/a&gt;) is just about to start running another &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution"&gt;quarter of contribution&lt;/a&gt; &amp;mdash; a great opportunity for newer community members to dive deep on some of the projects we&amp;rsquo;re working on, brush up on their programming and problem solving skills, and work with experienced mentors. You can find more information on this program &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Summer_2016"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve found this program to be a really great experience on both sides &amp;mdash; it&amp;rsquo;s an opportunity for contributors to really go beyond the &amp;ldquo;good first bug&amp;rdquo; style of patches to having a really substantial impact on some of the projects that we&amp;rsquo;re working on while gaining lots of software development skills that are useful in the real world.&lt;/p&gt;
+
+&lt;p&gt;Once again, I&amp;rsquo;m going to be mentoring one or two people on the Perfherder project, a tool we use to measure and sheriff Firefox performance. If you&amp;rsquo;re inclined to work on some really interesting data analysis and user interface problems in Python and JavaScript, please have a look at the &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Perfherder"&gt;project page&lt;/a&gt; and get in touch. :)&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Are We Fast Yet and Perfherder</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2016/03/are-we-fast-yet-and-perfherder/?utm_source=Mozilla&amp;utm_medium=Atom" />
@@ -676,21 +690,4 @@ cd treeherder-ui/webapp&amp;lt;br /&amp;gt;
 
 &lt;p&gt;Here at &lt;a href="https://wiki.mozilla.org/Auto-tools"&gt;Mozilla Tools &amp;#38; Automation&lt;/a&gt;, we&amp;#8217;re most interested in creating software that everyone can feel good about depending on, so we agreed to rename it. When I raised this with my peers, there were no objections. I know these things are often the source of much drama in the free software world, but there&amp;#8217;s really none to see here.&lt;/p&gt;
 
-&lt;p&gt;Happy manifest parsing!&lt;/p&gt;&lt;/html&gt;</content></entry>
- <entry>
-  <title type="text">mozregression: New maintainer, issues tracked in bugzilla</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/?utm_source=Mozilla&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-05-mozregression-new-maintainer-issues-tracked-in-bugzilla</id>
-  <published>2014-05-08T04:00:00Z</published>
-  <updated>2014-05-08T04:00:00Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">&lt;html&gt;
-&lt;p&gt;Just wanted to give some quick updates on &lt;a href="http://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt;, your favorite regression-finding tool for Firefox:&lt;/p&gt;
-
-&lt;ol&gt;
- &lt;li&gt;I moved all issue tracking in mozregression to bugzilla from github issues. Github unfortunately doesn&amp;#8217;t really scale to handle notifications sensibly when you&amp;#8217;re part of a large organization like Mozilla, which meant many problems were flying past me unseen. &lt;a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Testing&amp;amp;#038;component=mozregression"&gt;File your new bugs&lt;/a&gt; in bugzilla, they&amp;#8217;re now much more likely to be acted upon.&lt;/li&gt;
- &lt;li&gt;&lt;a href="http://blackrhino.io/"&gt;Sam Garrett&lt;/a&gt; has stepped up to be co-maintainer of the project with me. He&amp;#8217;s been doing a great job whacking out a bunch of bugs and keeping things running reliably, and it was time to give him some recognition and power to keep things moving forward.&lt;/li&gt;
- &lt;li&gt;On that note, I just released mozregression 0.17, which now shows the revision number when running a build (a request from the graphics team, bug &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1007238"&gt;1007238&lt;/a&gt;) and handles respins of nightly builds correctly (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1000422"&gt;bug 1000422&lt;/a&gt;). Both of these were fixed by Sam.&lt;/li&gt;&lt;/ol&gt;
-
-&lt;p&gt;If you&amp;#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &amp;#8212; as I&amp;#8217;ve found out over the last few months, people &lt;em&gt;all over&lt;/em&gt; the Mozilla organization (managers, developers, QA &amp;#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;Happy manifest parsing!&lt;/p&gt;&lt;/html&gt;</content></entry></feed>

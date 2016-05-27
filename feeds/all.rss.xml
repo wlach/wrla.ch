@@ -4,9 +4,20 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Wed, 30 Mar 2016 15:42:39 UT</lastBuildDate>
-  <pubDate>Wed, 30 Mar 2016 15:42:39 UT</pubDate>
+  <lastBuildDate>Fri, 27 May 2016 14:51:54 UT</lastBuildDate>
+  <pubDate>Fri, 27 May 2016 14:51:54 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Quarter of Contribution: June / July 2016 edition</title>
+   <link>https://wlach.github.io/blog/2016/05/quarter-of-contribution-june-july-2016-edition/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2016-05-quarter-of-contribution-june-july-2016-edition</guid>
+   <pubDate>Fri, 27 May 2016 14:51:54 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Just wanted to announce that, once again, my team (&lt;a href="https://wiki.mozilla.org/EngineeringProductivity"&gt;Mozilla Engineering Productivity&lt;/a&gt;) is just about to start running another &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution"&gt;quarter of contribution&lt;/a&gt; &amp;mdash; a great opportunity for newer community members to dive deep on some of the projects we&amp;rsquo;re working on, brush up on their programming and problem solving skills, and work with experienced mentors. You can find more information on this program &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Summer_2016"&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve found this program to be a really great experience on both sides &amp;mdash; it&amp;rsquo;s an opportunity for contributors to really go beyond the &amp;ldquo;good first bug&amp;rdquo; style of patches to having a really substantial impact on some of the projects that we&amp;rsquo;re working on while gaining lots of software development skills that are useful in the real world.&lt;/p&gt;
+
+&lt;p&gt;Once again, I&amp;rsquo;m going to be mentoring one or two people on the Perfherder project, a tool we use to measure and sheriff Firefox performance. If you&amp;rsquo;re inclined to work on some really interesting data analysis and user interface problems in Python and JavaScript, please have a look at the &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Perfherder"&gt;project page&lt;/a&gt; and get in touch. :)&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Are We Fast Yet and Perfherder</title>
    <link>https://wlach.github.io/blog/2016/03/are-we-fast-yet-and-perfherder/?utm_source=all&amp;utm_medium=RSS</link>
@@ -574,19 +585,4 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;Flexbox has pretty much put an end to these problems for me. There&amp;#8217;s no longer any need to &amp;#8220;give up and use tables&amp;#8221; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&amp;#8217;re so great. I think we&amp;#8217;re pretty close to Flexbox being supported across all the major browsers, so it&amp;#8217;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.&lt;/p&gt;
 
-&lt;p&gt;To try and spread the word, I wrote up &lt;a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications"&gt;a howto article on using flexbox for web applications on MDN&lt;/a&gt;, covering some of the common use cases I mention above. If you&amp;#8217;ve been curious about flexbox but unsure how to use it, please have a look.&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
-   <title>mozregression 0.24</title>
-   <link>https://wlach.github.io/blog/2014/09/mozregression-0-24/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2014-09-mozregression-0-24</guid>
-   <pubDate>Mon, 15 Sep 2014 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;I just released &lt;a href="http://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt; 0.24. This would be a good time to note some of the user-visible fixes / additions that have gone in recently:&lt;/p&gt;
-
-&lt;ol&gt;
- &lt;li&gt;
-  &lt;p&gt;Thanks to Sam Garrett, you can now specify a different branch other than inbound to get finer grained regression ranges from. E.g. if you&amp;#8217;re pretty sure a regression occurred on fx-team, you can do something like:   &lt;code&gt;mozregression --inbound-branch fx-team -g 2014-09-13 -b 2014-09-14&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
- &lt;li&gt;Fixed a bug where we could get an incorrect regression range (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1059856"&gt;bug 1059856&lt;/a&gt;). Unfortunately the root cause of the bug is still open (it&amp;#8217;s a bit tricky to match mozilla-central commits to that of other branches) but I think this most recent fix should make things work in 99.9% of cases. Let me know if I&amp;#8217;m wrong.&lt;/li&gt;
- &lt;li&gt;Thanks to Julien Pagès, we now download the inbound build metadata in parallel, which speeds up inbound bisection quite significantly&lt;/li&gt;&lt;/ol&gt;
-
-&lt;p&gt;If you know a bit of python, contributing to mozregression is a great way to have a high impact on Mozilla. Many platform developers use this project in their day-to-day work, but there&amp;#8217;s still &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;lots of room for improvement&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;To try and spread the word, I wrote up &lt;a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications"&gt;a howto article on using flexbox for web applications on MDN&lt;/a&gt;, covering some of the common use cases I mention above. If you&amp;#8217;ve been curious about flexbox but unsure how to use it, please have a look.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

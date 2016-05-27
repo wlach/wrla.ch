@@ -179,6 +179,21 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2016/05/quarter-of-contribution-june-july-2016-edition/'>Quarter of Contribution: June / July 2016 edition</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 27th, 2016</p>
+  </header>
+
+<p>Just wanted to announce that, once again, my team (<a href="https://wiki.mozilla.org/EngineeringProductivity">Mozilla Engineering Productivity</a>) is just about to start running another <a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution">quarter of contribution</a> &mdash; a great opportunity for newer community members to dive deep on some of the projects we&rsquo;re working on, brush up on their programming and problem solving skills, and work with experienced mentors. You can find more information on this program <a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Summer_2016">here</a>.</p>
+
+<p>I&rsquo;ve found this program to be a really great experience on both sides &mdash; it&rsquo;s an opportunity for contributors to really go beyond the &ldquo;good first bug&rdquo; style of patches to having a really substantial impact on some of the projects that we&rsquo;re working on while gaining lots of software development skills that are useful in the real world.</p>
+
+<p>Once again, I&rsquo;m going to be mentoring one or two people on the Perfherder project, a tool we use to measure and sheriff Firefox performance. If you&rsquo;re inclined to work on some really interesting data analysis and user interface problems in Python and JavaScript, please have a look at the <a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Perfherder">project page</a> and get in touch. :)</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
     <h2><a href='/blog/2016/03/are-we-fast-yet-and-perfherder/'>Are We Fast Yet and Perfherder</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 30th, 2016</p>
@@ -594,33 +609,6 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
  <li>How our engineering environments are killing diversity (and how we can fix it) (Kate Heddleston): This was a great talk on how to make the environments in which we develop more welcoming to under-represented groups (women, minorities, etc.). This is something I&#8217;ve been thinking a bunch about lately, especially in the context of expanding the community of people working on our projects in Automation &#38; Tools. The talk had some particularly useful advice (to me, anyway) on giving feedback. <a href="https://www.youtube.com/watch?v=kNke_4WOWAU">video</a> <a href="https://speakerdeck.com/pycon2015/kate-heddleston-how-our-engineering-environments-are-killing-diversity-and-how-we-can-fix-it">slides</a></li></ul>
 
 <p>I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/03/perfherder-update-summary-series-drilldown/'>Perfherder update: Summary series drilldown</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 27th, 2015</p>
-  </header>
-
-<p>Just wanted to give another quick Perfherder update. Since the <a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/">last time</a>, I&#8217;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&#8217;t possible with Graphserver and I&#8217;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.</p>
-
-<p>Let&#8217;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354">bug 1128354</a>. Using <a href="https://mozillians.org/en-US/u/mishravikas/">Mishra Vikas</a>&#8216;s new &#8220;highlight revision mode&#8221; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:</p>
-
-<p><a href="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png"><img src="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png" alt="Screen Shot 2015-03-27 at 3.18.28 PM" width="474" height="230" class="alignnone size-large wp-image-1184" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-300x146.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png 1167w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
-
-<p>It does indeed look like things ticked up after this commit for the CART suite, but why? By clicking on the datapoint, you can open up a subtest summary view beneath the graph:</p>
-
-<p><a href="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png"><img src="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png" alt="Screen Shot 2015-03-27 at 2.35.25 PM" width="936" height="438" class="alignnone size-full wp-image-1175" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM-300x140.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png 936w" sizes="(max-width: 936px) 100vw, 936px" /></a></p>
-
-<p>We see here that it looks like the 3-customize-enter-css.all.TART entry ticked up a bunch. The related test 3-customize-enter-css.half.TART ticked up a bit too. The changes elsewhere look minimal. But is that a trend that holds across the data over time? We can add some of the relevant subtests to the overall graph view to get a closer look:</p>
-
-<p><a href="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM.png"><img src="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-1024x503.png" alt="Screen Shot 2015-03-27 at 2.36.49 PM" width="474" height="232" class="alignnone size-large wp-image-1176" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-300x147.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-1024x503.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM.png 1155w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
-
-<p>As is hopefully obvious, this confirms that the affected subtest continues to hold its higher value while another test just bounces around more or less in the range it was before.</p>
-
-<p>Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at <a href="http://treeherder.mozilla.org/perf.html">http://treeherder.mozilla.org/perf.html</a>.</p>
 
 </article>
 
