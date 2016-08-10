@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 6)</title>
     <meta name="description" content="William Lachance's Log (page 6)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, iphone, Mozilla, Orangutan, Free Software, Meta, Business, GoFaster, Philosophy, email, SQL, MSF, hbus, Food, Coffee, Transit, FirefoxOS, Environment, Toronto, Montreal, Community, Life, GNOME, Music, Cats, mozregression, Python, zen, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Release Engineering, Ebola, Open Data, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, iphone, Mozilla, Ebola, Free Software, Meta, zen, Business, GoFaster, Philosophy, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Montreal, Coffee, Life, GNOME, Music, Orangutan, Cats, mozregression, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Community, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-6.html">
@@ -178,6 +178,46 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2013/02/finding-a-camera-for-eideticker/'>Finding a camera for Eideticker</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 19th, 2013</p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+
+<p>Ok, so as I mentioned <a href="http://wrla.ch/blog/2013/02/eideticker-for-firefoxos/">last time</a> I&#8217;ve been looking into making Eideticker work for devices without native HDMI output by capturing their output with some kind of camera. So far I&#8217;ve tried four different DSLRs for this task, which have all been inadequate for different reasons. I was originally just going to write an email about this to a few concerned parties, but then figured I may as well structure it into a blog post. Maybe someone will find it useful (or better yet, have some ideas.)</p>
+
+<p><strong>Elmo MO&ndash;1</strong></p>
+
+<p>This is the device I mentioned last time. Easy to set up, plays nicely with the Decklink capture card we&#8217;re using for Eideticker. It seemed almost perfect, except for that:</p>
+
+<ol>
+ <li>The image quality is <em>really</em> bad (beaten even by $200 standard digital camera). Tons of noise, picture quality really bad. Not *necessarily* a deal breaker, but it still sucks.</li>
+ <li>More importantly, there seems to be no way of turning off the auto white balance adjustment. This makes automated image analysis impossible if the picture changes, as is highlighted in this video:   
+  <video width="400px" src="/files/eideticker/elmo-white-balance-problem.webm" controls="controls"></video></li></ol>
+
+<p><strong>Canon Rebel T4i</strong></p>
+
+<p>This is the first camera that was recommended to me at the camera shop I&#8217;ve been going to. It does have an HDMI output signal, but it&#8217;s not &#8220;clean&#8221;. This <a href="http://www.hireacamera.com/blog/index.asp?post=canon-eos-650d--hdmi-explained">blog post</a> explains the details better than I could. Next.</p>
+
+<p><strong>Nikon D600</strong></p>
+
+<p>Supposedly does native clean 720p output, but unfortunately the <a href="http://vimeo.com/49952287">output is in a &#8220;box&#8221;</a> so isn&#8217;t recognized by the Decklink cards that we&#8217;re using (which insist on a full 1280&#215;720 HDMI signal to work). Next.</p>
+
+<p><strong>Nikon D800</strong></p>
+
+<p>It is possible to configure this one to not put a box around the output, so the Decklink card does recognize it. Except that the camera shuts off the HDMI signal whenever the input parameters change on the card or the signal input is turned on, which essentially makes it useless for Eideticker (this happens every time we start the Eideticker harness). Quite a shame, as the HDMI signal is quite nice otherwise.</p>
+
+<p>&#8212;</p>
+
+<p>To be clear, with the exception of the Elmo all the devices above seem like fine cameras, and should more than do for manual captures of B2G or Android phones (which is something we probably want to do anyway). But for Eideticker, we need something that works in automation, and none of the above fit the bill. I guess I could explore using a &#8220;real&#8221; video camera as opposed to a DSLR acting like one, though I suspect I might run into some of the same sorts of issues depending on how the HDMI output of those devices behaves.</p>
+
+<p>Part of me wonders whether a custom solution wouldn&#8217;t work better. How complicated could it be to construct your own digital camera anyway? 😉 Hook up a fancy camera sensor to a <a href="http://pandaboard.org">pandaboard</a>, get it to output through the HDMI port, and then we&#8217;re set? Or better yet, maybe just get a fancy webcam like the <a href="http://en.wikipedia.org/wiki/PlayStation_Eye">Playstation Eye</a> and hook it up directly to a computer? That would eliminate the need for our expensive video capture card setup altogether.</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2013/02/eideticker-for-firefoxos/'>Eideticker for FirefoxOS</a></h2>
@@ -526,33 +566,6 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <p><code>../codemod/src/codemod.py --extensions py -m '# \*\*\*\*\* BEGIN LICENSE.*END LICENSE BLOCK \*\*\*\*\*' '# This Source Code Form is subject to the terms of the Mozilla Public\n# License, v. 2.0. If a copy of the MPL was not distributed with this file,\n# You can obtain one at http://mozilla.org/MPL/2.0/.'</code></p>
 
 <p>&#8230; et voila, out popped <a href="https://github.com/mozilla/eideticker/commit/9456933670fb4590af3060f4ff40d11271859b8d">shiny new boilerplate</a>.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Video.html">Video</a></span></p>
-    <h2><a href='/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/'>Ghetto retroscope with ffmpeg and the &lt;video&gt; tag</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 7th, 2012</p>
-  </header>
-
-<p>So yesterday we had a small get-together at my place, which gave me the opportunity to try something I&#8217;d been meaning to do for a while: build my own retroscope.</p>
-
-<p>The idea is pretty simple: have a webcam record bits and pieces of a social event, then play them back on-the-spot a few minutes/hours later. I first heard about the concept from reading Nat Friedman&#8217;s <a href="http://nat.org/blog/2005/10/the-retroscope/">blog entry</a> from 2005 &#8212; if you read that, you see that he just hooked up a video camera to his TiVo. 7 years in the future, laptop webcams are ubiquitous and we have the awesome HTML5  tag, so I figured it would be easy to knock up something interesting in short order with zero custom hardware.</p>
-
-<p>Having only remembered that I wanted to do this about 30 minutes before people were scheduled to start arriving, I didn&#8217;t have much time to do anything really perfect. I settled on using <a href="http://stackoverflow.com/questions/7500763/command-line-streaming-webcam-with-audio-from-ubuntu-server-in-webm-format">this little snippet</a> from stackoverflow to generate short (5 second) movies on my laptop, then used scp to copy them over and display a montage of them in an auto-refreshing webpage on my &#8220;television&#8221; (which is a Mac-Mini connected to a large computer monitor). Despite being a total hack job, the end result generated much amusement. I think this is a bit different from what Nat originally did (it sounds from his blog like his retroscope played back longer segments), but I think the end result is actually a bit more fun.</p>
-
-<p><a href="http://wrla.ch/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-video-tag/retroscope-screenshot/" rel="attachment wp-att-598"><img src="/files/2012/05/retroscope-screenshot-1024x694.png" alt="" title="retroscope-screenshot" width="640" height="433" class="alignnone size-large wp-image-598" srcset="/files/2012/05/retroscope-screenshot-300x203.png 300w, /files/2012/05/retroscope-screenshot-1024x694.png 1024w, /files/2012/05/retroscope-screenshot.png 1319w" sizes="(max-width: 640px) 100vw, 640px" /></a></p>
-
-<p>Perhaps unfortunately, but probably ultimately for the best, only a few snippets from the actual night got stored away. One example is this gem:</p>
-
-<p>(yes, that handsome fellow with the Pernot is me)</p>
-
-<p>I thought it might be fun to release the slightly-cleaned up results of this experiment as opensource for others to play with, so I created a small project for it on github. Unlike the original version, no complicated scp scheme is required &#8212; I just reused Joel Maher&#8217;s most excellent mozhttpd library from <a href="http://github.com/mozilla/mozbase">mozbase</a> to run a web server in the same process as the capture logic. All you need to do is run the server on a Linux machine with a webcam and connect to it with a web browser from any other machine on your local network.</p>
-
-<p><a href="https://github.com/wlach/retroscope">https://github.com/wlach/retroscope</a></p>
-
-<p>Enjoy!</p>
 
 </article>
 

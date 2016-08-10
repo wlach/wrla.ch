@@ -4,9 +4,30 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Fri, 27 May 2016 14:51:54 UT</lastBuildDate>
-  <pubDate>Fri, 27 May 2016 14:51:54 UT</pubDate>
+  <lastBuildDate>Wed, 10 Aug 2016 17:38:49 UT</lastBuildDate>
+  <pubDate>Wed, 10 Aug 2016 17:38:49 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Perfherder Quarter of Contribution: Summer 2016 Edition Results!</title>
+   <link>https://wlach.github.io/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-edition-results/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2016-08-perfherder-quarter-of-contribution-summer-2016-edition-results</guid>
+   <pubDate>Wed, 10 Aug 2016 17:38:49 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Following on the footsteps of Mike Ling&amp;rsquo;s &lt;a href="/blog/2015/09/perfherder-summer-of-contribution-thoughts/"&gt;amazing work&lt;/a&gt; on &lt;a href="https://wiki.mozilla.org/ngineeringProductivity‎/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; in 2015 (he&amp;rsquo;s gone on to do a GSOC project), I got two amazing contributors to continue working on the project for a few weeks this summer as part of our &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution"&gt;quarter of contribution&lt;/a&gt; program: Shruti Jasoria and Roy Chiang.&lt;/p&gt;
+
+&lt;p&gt;Shruti started by adding a feature to the treeherder/perfherder backend (ability to enable or disable a new performance framework on a tentative basis), then went on to make all sorts of improvements to the Treeherder / Perfherder frontend, fixing bugs in the performance sheriffing frontend, updating code to use more modern standards (including a gigantic patch to enable a bunch of eslint rules and fix the corresponding problems).&lt;/p&gt;
+
+&lt;p&gt;Roy worked all over the codebase, starting with some simple frontend fixes to Treeherder, moving on to fix a large number of nits in Perfherder&amp;rsquo;s alerts view. My personal favorite is the fact that we now paginate the list of alerts inside this view, which makes navigation waaaaay back into history possible:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2016/08/perfherder-alert-pagination.png"&gt;&lt;img src="/files/2016/08/perfherder-alert-pagination.png" alt="alert pagination" width="300px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can see a summary of their work at these links:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href="https://github.com/mozilla/treeherder/commits/master?author=SJasoria"&gt;Shruti Jasoria&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://github.com/mozilla/treeherder/commits/master?author=crosscent"&gt;Roy Chiang&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;Thank you Shruti and Roy! You&amp;rsquo;ve helped to make sure Firefox (and Servo!) performance remains top-notch.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Quarter of Contribution: June / July 2016 edition</title>
    <link>https://wlach.github.io/blog/2016/05/quarter-of-contribution-june-july-2016-edition/?utm_source=all&amp;utm_medium=RSS</link>
@@ -567,22 +588,4 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;&lt;a href="http://msf.ca"&gt;Doctors without Borders&lt;/a&gt; seem to be the non-profit organiztion who have been able to do the most to be able to respond to this situation (and they&amp;#8217;ve generally gotten good reviews in the past as a no-nonsense humanitarian group responding to crises all over the world). For the next week, I will match dollar for dollar any contribution (of any amount) that anyone donates to this organization, up to a maximum of $2500 (total across all contributions). Just email me at &lt;a href="mailto:wrlach@gmail.com"&gt;wrlach@gmail.com&lt;/a&gt; with your donation and whether you&amp;#8217;d like to remain anonymous.&lt;/p&gt;
 
-&lt;p&gt;At the end of this coming week (Sunday, October 19th), I&amp;#8217;ll donate the matching funds to MSF and do up another blog post with the results and the names of the people who donated and consented to have their names published. The world needs to know that I&amp;#8217;m not the only one that cares about this.&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
-   <title>Using Flexbox in web applications</title>
-   <link>https://wlach.github.io/blog/2014/09/using-flexbox-in-web-applications/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2014-09-using-flexbox-in-web-applications</guid>
-   <pubDate>Mon, 29 Sep 2014 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;Over last few months, I discovered the joy that is CSS Flexbox, which solves the &amp;#8220;how do I lay out this set of div&amp;#8217;s in horizontally or vertically&amp;#8221;. I&amp;#8217;ve used it in three projects so far:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;Centering the timer interface in my &lt;a href="http://wrla.ch/blog/2014/08/a-new-meditation-app/"&gt;meditation app&lt;/a&gt;, so that it scales nicely from a 320&amp;#215;480 FirefoxOS device all the way up to a high definition monitor&lt;/li&gt;
- &lt;li&gt;Laying out the chart / sidebar elements in the &lt;a href="http://eideticker.mozilla.org"&gt;Eideticker dashboard&lt;/a&gt; so that maximum horizontal space is used&lt;/li&gt;
- &lt;li&gt;Fixing various problems in the &lt;a href="http://treeherder.mozilla.org"&gt;Treeherder UI&lt;/a&gt; on smaller screens (see &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1043474"&gt;bug 1043474&lt;/a&gt; and its dependent bugs)&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;When I talk to people about their troubles with CSS, layout comes up really high on the list. Historically, basic layout problems like a panel of vertical buttons have been ridiculously difficult, involving hacks involving floating divs and absolute positioning or &lt;a href="http://layout.jquery-dev.com/"&gt;JavaScript layout libraries&lt;/a&gt;. This is why people write articles entitled &lt;a href="http://uxmag.com/articles/give-and-use-tables"&gt;&amp;#8220;Give up and use tables&amp;#8221;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Flexbox has pretty much put an end to these problems for me. There&amp;#8217;s no longer any need to &amp;#8220;give up and use tables&amp;#8221; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&amp;#8217;re so great. I think we&amp;#8217;re pretty close to Flexbox being supported across all the major browsers, so it&amp;#8217;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.&lt;/p&gt;
-
-&lt;p&gt;To try and spread the word, I wrote up &lt;a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications"&gt;a howto article on using flexbox for web applications on MDN&lt;/a&gt;, covering some of the common use cases I mention above. If you&amp;#8217;ve been curious about flexbox but unsure how to use it, please have a look.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;At the end of this coming week (Sunday, October 19th), I&amp;#8217;ll donate the matching funds to MSF and do up another blog post with the results and the names of the people who donated and consented to have their names published. The world needs to know that I&amp;#8217;m not the only one that cares about this.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
