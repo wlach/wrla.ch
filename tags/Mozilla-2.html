@@ -179,6 +179,50 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
+    <h2><a href='/blog/2015/07/perfherder-update/'>Perfherder update</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 14th, 2015</p>
+  </header>
+
+<p>Haven&#8217;t been doing enough blogging about <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a> (our project to make Talos and other per-checkin performance data more useful) recently. Let&#8217;s fix that. We&#8217;ve been making some good progress, helped in part by a group of new contributors that joined us through an experimental &#8220;<a href="https://elvis314.wordpress.com/2015/06/09/please-welcome-the-dashboard-hacker-team/">summer of contribution</a>&#8221; program.</p>
+
+<p><strong>Comparison mode</strong></p>
+
+<p>Inspired by Compare Talos, we&#8217;ve designed something similar which hooks into the perfherder backend. This has already gotten some interest: see this post on <a href="https://groups.google.com/d/msg/mozilla.dev.tree-management/IUmMuY8b52A/Asne1cW0I8EJ">dev.tree-management</a> and this one on <a href="https://groups.google.com/d/msg/mozilla.dev.platform/PaJFBtvc3Vg/BvX-pFlsAkoJ">dev.platform</a>. We&#8217;re working towards building something that will be really useful both for (1) illustrating that the performance regressions we detect are real and (2) helping developers figure out the impact of their changes before they land them.</p>
+
+<table>
+ <tr>
+  <td><a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM.png"><img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM-300x207.png" alt="Screen Shot 2015-07-14 at 3.54.57 PM" width="300" height="207" class="alignnone size-medium wp-image-1219" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM-300x207.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /></a></td> 
+  <td><a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png"><img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png" alt="Screen Shot 2015-07-14 at 3.53.20 PM" width="300" height="206" class="alignnone size-medium wp-image-1218" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /></a></td></tr></table>
+
+<p>Most of the initial work was done by <a href="https://elvis314.wordpress.com/">Joel Maher</a> with lots of review for aesthetics and correctness by me. Avi Halmachi from the Performance Team also helped out with the <a href="https://en.wikipedia.org/wiki/Student's_t-test">t-test</a> model for detecting the confidence that we have that a difference in performance was real. Lately myself and <a href="https://github.com/MikeLing">Mike Ling</a> (one of our summer of contribution members) have been working on further improving the interface for usability &#8212; I&#8217;m hopeful that we&#8217;ll soon have something implemented that&#8217;s broadly usable and comprehensible to the Mozilla Firefox and Platform developer community.</p>
+
+<p><strong>Graphs improvements</strong></p>
+
+<p>Although it&#8217;s received slightly less attention lately than the comparison view above, we&#8217;ve been making steady progress on the graphs view of performance series. Aside from demonstrations and presentations, the primary use case for this is being able to detect visually sustained changes in the result distribution for talos tests, which is often necessary to be able to confirm regressions. Notable recent changes include a much easier way of selecting tests to add to the graph from Mike Ling and more readable/parseable urls from <a href="https://github.com/akhileshpillai">Akhilesh Pillai</a> (another summer of contribution participant).</p>
+
+<p><a href="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM.png"><img src="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-300x174.png" alt="Screen Shot 2015-07-14 at 4.09.45 PM" width="300" height="174" class="alignnone size-medium wp-image-1221" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-300x174.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-1024x595.png 1024w, /files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM.png 1130w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+
+<p><strong>Performance alerts</strong></p>
+
+<p>I&#8217;ve also been steadily working on making Perfherder generate alerts when there is a significant discontinuity in the performance numbers, similar to what <a href="http://graphs.mozilla.org">GraphServer</a> does now. Currently we have an option to generate a static CSV file of these alerts, but the eventual plan is to insert these things into a peristent database. After that&#8217;s done, we can actually work on creating a UI inside Perfherder to replace <a href="http://alertmanager.allizom.org:8080/alerts.html#">alertmanager</a> (which currently uses GraphServer data) and start using this thing to sheriff performance regressions &#8212; putting the herder into perfherder.</p>
+
+<p>As part of this, I&#8217;ve converted the graphserver alert generation code into a standalone python library, which has already proven useful as a component in the <a href="https://hacks.mozilla.org/2015/06/performance-testing-firefox-os-with-raptor/">Raptor project for FirefoxOS</a>. Yay modularity and reusability.</p>
+
+<p><strong>Python API</strong></p>
+
+<p>I&#8217;ve also been working on creating and improving a <a href="http://treeherder.readthedocs.org/retrieving_data.html#python-client">python API</a> to access Treeherder data, which includes Perfherder. This lets you do interesting things, like dynamically run various types of statistical analysis on the data stored in the production instance of Perfherder (no need to ask me for a database dump or other credentials). I&#8217;ve been using this to perform validation of the data we&#8217;re storing and debug various tricky problems. For example, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1182282">I found out last week that we were storing up to duplicate 200 entries in each performance series due to double data ingestion</a> &#8212; oops.</p>
+
+<p>You can also use this API to dynamically create interesting graphs and visualizations using <a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/">ipython notebook</a>, here&#8217;s a simple example of me plotting the last 7 days of youtube.com pageload data inline in a notebook:</p>
+
+<p><a href="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png"><img src="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png" alt="Screen Shot 2015-07-14 at 4.43.55 PM" width="300" height="224" class="alignnone size-medium wp-image-1224" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png 842w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+
+<p>[<a href="http://nbviewer.ipython.org/url/wrla.ch/blog/wp-content/uploads/2015/07/perfherder-api.ipynb">original</a>]</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Python.html">Python</a></span></p>
     <h2><a href='/blog/2015/04/pycon-2015/'>PyCon 2015</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 23rd, 2015</p>
@@ -429,33 +473,6 @@ cd treeherder-ui/webapp&lt;br /&gt;
  <li>Just forget about this problem altogether and only try to capture periods of time in the capture where the image has stayed static for a sustained period of time (i.e. for say 4&ndash;5 frames and up) and we&#8217;re pretty sure it&#8217;s jank.</li></ul>
 
 <p>Personally the last solution appeals to me the most, although it has the obvious disadvantage of being a &#8220;homebrew&#8221; metric that no one has ever heard of before, which might make it difficult to use to prove that performance is adequate &#8212; the numbers come with a long-winded explanation instead of being something that people immediately understand.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans/'>End of Q2 Eideticker update: Flame tests, future plans</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 27th, 2014</p>
-  </header>
-
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
-
-<p>Just wanted to give an update on where Eideticker is at the end of Q2 2014. The big news is that we&#8217;ve started to run startup tests against the Flame, the results of which are starting to appear on the dashboard:</p>
-
-<p><a href="/files/2014/06/eideticker-contacts-flame.png"><img src="/files/2014/06/eideticker-contacts-flame.png" alt="eideticker-contacts-flame" width="1002" height="664" class="alignnone size-full wp-image-1062" srcset="/files/2014/06/eideticker-contacts-flame-300x198.png 300w, /files/2014/06/eideticker-contacts-flame.png 1002w" sizes="(max-width: 1002px) 100vw, 1002px" /></a> <a href="http://eideticker.mozilla.org/b2g/#/flame/b2g-contacts-startup/timetostableframe">[link]</a></p>
-
-<p>It is expected that these tests will provide a useful complement to the <a href="https://datazilla.mozilla.org/b2g/?branch=master&amp;#038;device=flame&amp;#038;range=7&amp;#038;test=cold_load_time&amp;#038;app_list=browser,calendar,camera,clock,contacts,email%20FTU,fm_radio,gallery,marketplace,messages,music,phone,settings,template,usage,video&amp;#038;app=phone&amp;#038;gaia_rev=b8f36518696f3191&amp;#038;gecko_rev=c90b38c47a1d&amp;#038;plot=avg">existing startup tests</a> we&#8217;re running with b2gperf, in particular answering the &#8220;is this regression real?&#8221; question.</p>
-
-<p>Pending work for Q3:</p>
-
-<ul>
- <li>Enable scrolling tests on the Flame. I got these working against the Hamachi <a href="http://wrla.ch/blog/2014/03/its-all-about-the-entropy/">a few months ago</a> but because of some weird input issue we&#8217;re seeing we can&#8217;t yet enable them on the Flame. This is being tracked in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1028824">bug 1028824</a>. If anyone has background on the behaviour of the touch screen driver for this device I would appreciate some help.</li>
- <li>Enable tests for multiple branches on the Flame (currently we&#8217;re only doing master). This is pretty much ready to go (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1017834">bug 1017834</a>), just need to land it.</li>
- <li>Annotate eideticker graphs with internal benchmark information. Eli Perelman of the FirefoxOS performance team has come up with a standard set of on-load events for the Gaia apps (app chrome loaded, app content loaded, &#8230;) that each app will generate, feeding into tools like b2gperf and test-perf. We want to show this information in Eideticker&#8217;s frame-by-frame analysis (<a href="http://eideticker.mozilla.org/b2g/detail.html?id=2b007f8cfd8b11e3923c10ddb19eacac#/framecannyentropies">example</a>) so we can verify that the app&#8217;s behaviour is consistent with what it is claimed. This is being tracked in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1018334">bug 1018334</a></li>
- <li>Re-enable Eideticker for Android and run tests more frequently. Sadly we haven&#8217;t been consistently generating new Eideticker results for Android for the last quarter because of networking issues in the new Mountain View office, where the test rig for those live. One way or another, we want to fix this next quarter and hopefully run tests more frequently against mozilla-inbound (instead of just nightly builds)</li></ul>
-
-<p>The above isn&#8217;t an exhaustive list: there&#8217;s much more that we have in mind for the future that&#8217;s not yet scheduled or defined well (e.g. get Eideticker reporting to Treeherder&#8217;s new performance module). If you have any questions or feedback on anything outlined above I&#8217;d love to hear it!</p>
 
 </article>
 

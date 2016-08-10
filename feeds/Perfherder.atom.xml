@@ -4,7 +4,31 @@
  <link rel="self" href="https://wlach.github.io/feeds/Perfherder.atom.xml" />
  <link href="https://wlach.github.io/tags/Perfherder.html" />
  <id>urn:https-wlach-github-io:-tags-Perfherder-html</id>
- <updated>2016-08-10T17:38:49Z</updated>
+ <updated>2016-08-10T20:37:05Z</updated>
+ <entry>
+  <title type="text">Perfherder Quarter of Contribution Summer 2016: Results</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-results/?utm_source=Perfherder&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2016-08-perfherder-quarter-of-contribution-summer-2016-results</id>
+  <published>2016-08-10T20:37:05Z</published>
+  <updated>2016-08-10T20:37:05Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;Following on the footsteps of Mike Ling&amp;rsquo;s &lt;a href="/blog/2015/09/perfherder-summer-of-contribution-thoughts/"&gt;amazing work&lt;/a&gt; on &lt;a href="https://wiki.mozilla.org/ngineeringProductivity‎/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; in 2015 (he&amp;rsquo;s gone on to do a GSOC project), I got two amazing contributors to continue working on the project for a few weeks this summer as part of our &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution"&gt;quarter of contribution&lt;/a&gt; program: Shruti Jasoria and Roy Chiang.&lt;/p&gt;
+
+&lt;p&gt;Shruti started by adding a feature to the treeherder/perfherder backend (ability to enable or disable a new performance framework on a tentative basis), then went on to make all sorts of improvements to the Treeherder / Perfherder frontend, fixing bugs in the performance sheriffing frontend, updating code to use more modern standards (including a gigantic patch to enable a bunch of eslint rules and fix the corresponding problems).&lt;/p&gt;
+
+&lt;p&gt;Roy worked all over the codebase, starting with some simple frontend fixes to Treeherder, moving on to fix a large number of nits in Perfherder&amp;rsquo;s alerts view. My personal favorite is the fact that we now paginate the list of alerts inside this view, which makes navigation waaaaay back into history possible:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2016/08/perfherder-alert-pagination.png"&gt;&lt;img src="/files/2016/08/perfherder-alert-pagination.png" alt="alert pagination" width="300px" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;You can see a summary of their work at these links:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href="https://github.com/mozilla/treeherder/commits/master?author=SJasoria"&gt;Shruti Jasoria&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://github.com/mozilla/treeherder/commits/master?author=crosscent"&gt;Roy Chiang&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;Thank you Shruti and Roy! You&amp;rsquo;ve helped to make sure Firefox (and Servo!) performance remains top-notch.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Perfherder Quarter of Contribution: Summer 2016 Edition Results!</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-edition-results/?utm_source=Perfherder&amp;utm_medium=Atom" />
