@@ -30,30 +30,6 @@
 
 &lt;p&gt;Thank you Shruti and Roy! You&amp;rsquo;ve helped to make sure Firefox (and Servo!) performance remains top-notch.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
-  <title type="text">Perfherder Quarter of Contribution: Summer 2016 Edition Results!</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-edition-results/?utm_source=all&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2016-08-perfherder-quarter-of-contribution-summer-2016-edition-results</id>
-  <published>2016-08-10T17:38:49Z</published>
-  <updated>2016-08-10T17:38:49Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">&lt;html&gt;
-&lt;p&gt;Following on the footsteps of Mike Ling&amp;rsquo;s &lt;a href="/blog/2015/09/perfherder-summer-of-contribution-thoughts/"&gt;amazing work&lt;/a&gt; on &lt;a href="https://wiki.mozilla.org/ngineeringProductivity‎/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; in 2015 (he&amp;rsquo;s gone on to do a GSOC project), I got two amazing contributors to continue working on the project for a few weeks this summer as part of our &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution"&gt;quarter of contribution&lt;/a&gt; program: Shruti Jasoria and Roy Chiang.&lt;/p&gt;
-
-&lt;p&gt;Shruti started by adding a feature to the treeherder/perfherder backend (ability to enable or disable a new performance framework on a tentative basis), then went on to make all sorts of improvements to the Treeherder / Perfherder frontend, fixing bugs in the performance sheriffing frontend, updating code to use more modern standards (including a gigantic patch to enable a bunch of eslint rules and fix the corresponding problems).&lt;/p&gt;
-
-&lt;p&gt;Roy worked all over the codebase, starting with some simple frontend fixes to Treeherder, moving on to fix a large number of nits in Perfherder&amp;rsquo;s alerts view. My personal favorite is the fact that we now paginate the list of alerts inside this view, which makes navigation waaaaay back into history possible:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2016/08/perfherder-alert-pagination.png"&gt;&lt;img src="/files/2016/08/perfherder-alert-pagination.png" alt="alert pagination" width="300px" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;You can see a summary of their work at these links:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;&lt;a href="https://github.com/mozilla/treeherder/commits/master?author=SJasoria"&gt;Shruti Jasoria&lt;/a&gt;&lt;/li&gt;
- &lt;li&gt;&lt;a href="https://github.com/mozilla/treeherder/commits/master?author=crosscent"&gt;Roy Chiang&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;Thank you Shruti and Roy! You&amp;rsquo;ve helped to make sure Firefox (and Servo!) performance remains top-notch.&lt;/p&gt;&lt;/html&gt;</content></entry>
- <entry>
   <title type="text">Quarter of Contribution: June / July 2016 edition</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2016/05/quarter-of-contribution-june-july-2016-edition/?utm_source=all&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2016-05-quarter-of-contribution-june-july-2016-edition</id>
@@ -650,4 +626,24 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;Most of the people who donated wanted to remain anonymous, which is cool. But among those who were cool about being public, big thanks to: Julia Evans, Chris Atlee, Mike Conley, Ted Tibbetts, Paul and Eva Lachance, Alex Demarsh and Lauren Reid (if I&amp;#8217;m missing someone who wants to be named, please let me know).&lt;/p&gt;
 
-&lt;p&gt;Incidentally, I&amp;#8217;ve learned a bit more about Ebola over the past week, and I&amp;#8217;m fairly sure that we&amp;#8217;ll be ok here in Canada and the States given the fact that the virus isn&amp;#8217;t actually that contagious (and that we have reasonable facilities for treating it in a safe manner, major screwups in Dallas notwithstanding). Liberia and other parts of Africa are still very much worth worrying about though, so I still 100% that starting this campaign was the right thing for me to do as an individual. Actually wiping out the disease will likely require government-level resources and intervention. Still waiting for a more serious resource commitment from Canada (cautiously optimistic about what&amp;#8217;s happening with the States).&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;Incidentally, I&amp;#8217;ve learned a bit more about Ebola over the past week, and I&amp;#8217;m fairly sure that we&amp;#8217;ll be ok here in Canada and the States given the fact that the virus isn&amp;#8217;t actually that contagious (and that we have reasonable facilities for treating it in a safe manner, major screwups in Dallas notwithstanding). Liberia and other parts of Africa are still very much worth worrying about though, so I still 100% that starting this campaign was the right thing for me to do as an individual. Actually wiping out the disease will likely require government-level resources and intervention. Still waiting for a more serious resource commitment from Canada (cautiously optimistic about what&amp;#8217;s happening with the States).&lt;/p&gt;&lt;/html&gt;</content></entry>
+ <entry>
+  <title type="text">Doing something about Ebola before it becomes a catostrophe</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe/?utm_source=all&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2014-10-doing-something-about-ebola-before-it-becomes-a-catostrophe</id>
+  <published>2014-10-12T04:00:00Z</published>
+  <updated>2014-10-12T04:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;I&amp;#8217;ve been appalled at the (lack of) response to the Ebola epidemic in Africa. We&amp;#8217;re talking about a deadly disease which could infect &lt;a href="http://www.nytimes.com/2014/09/24/health/ebola-cases-could-reach-14-million-in-4-months-cdc-estimates.html"&gt;more than a million people&lt;/a&gt; by January 2015 and explode out of control&amp;#8230; but the response from our governments has been pitiful, ranging from &amp;#8220;inadequate&amp;#8221; in the case of the United States to &amp;#8220;pretty much nothing&amp;#8221; from Canada.&lt;/p&gt;
+
+&lt;p&gt;Closer to home, my friends and acquaintances seem more interested in trading cute quips (&amp;#8220;Want to get space on public transit? Pretend to have a conversation on your cellphone about how you just came home from Liberia!&amp;#8221; LOL) and image captures from CNN and Fox News saying dumb things (&amp;#8220;Is Ebola the ISIS of epidemics?&amp;#8221;) than anything else.&lt;/p&gt;
+
+&lt;p&gt;I don&amp;#8217;t really know how to emphasize how serious this situation is. Yes, there are a million causes and issues competing for people&amp;#8217;s attention these days. But Ebola is an &lt;em&gt;epidemic&lt;/em&gt;. Many, many people could die. Even more could suffer. In the extreme case, &lt;a href="http://cluborlov.blogspot.ca/2014/10/ebola-and-five-stages-of-collapse.html"&gt;this could be the end of civilization as we know it&lt;/a&gt;. Some kind of action is called for.&lt;/p&gt;
+
+&lt;p&gt;I don&amp;#8217;t have any medical expertise, otherwise I&amp;#8217;d probably be offering to volunteer abroad. The most I have to offer is money and a very modest circle of influence. So be it, that will have to do. I&amp;#8217;m not going to sit back and do nothing while this happens.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://msf.ca"&gt;Doctors without Borders&lt;/a&gt; seem to be the non-profit organiztion who have been able to do the most to be able to respond to this situation (and they&amp;#8217;ve generally gotten good reviews in the past as a no-nonsense humanitarian group responding to crises all over the world). For the next week, I will match dollar for dollar any contribution (of any amount) that anyone donates to this organization, up to a maximum of $2500 (total across all contributions). Just email me at &lt;a href="mailto:wrlach@gmail.com"&gt;wrlach@gmail.com&lt;/a&gt; with your donation and whether you&amp;#8217;d like to remain anonymous.&lt;/p&gt;
+
+&lt;p&gt;At the end of this coming week (Sunday, October 19th), I&amp;#8217;ll donate the matching funds to MSF and do up another blog post with the results and the names of the people who donated and consented to have their names published. The world needs to know that I&amp;#8217;m not the only one that cares about this.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>

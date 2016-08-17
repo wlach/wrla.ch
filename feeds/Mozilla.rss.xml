@@ -29,27 +29,6 @@
 
 &lt;p&gt;Thank you Shruti and Roy! You&amp;rsquo;ve helped to make sure Firefox (and Servo!) performance remains top-notch.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
-   <title>Perfherder Quarter of Contribution: Summer 2016 Edition Results!</title>
-   <link>https://wlach.github.io/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-edition-results/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-08-perfherder-quarter-of-contribution-summer-2016-edition-results</guid>
-   <pubDate>Wed, 10 Aug 2016 17:38:49 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;Following on the footsteps of Mike Ling&amp;rsquo;s &lt;a href="/blog/2015/09/perfherder-summer-of-contribution-thoughts/"&gt;amazing work&lt;/a&gt; on &lt;a href="https://wiki.mozilla.org/ngineeringProductivity‎/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; in 2015 (he&amp;rsquo;s gone on to do a GSOC project), I got two amazing contributors to continue working on the project for a few weeks this summer as part of our &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution"&gt;quarter of contribution&lt;/a&gt; program: Shruti Jasoria and Roy Chiang.&lt;/p&gt;
-
-&lt;p&gt;Shruti started by adding a feature to the treeherder/perfherder backend (ability to enable or disable a new performance framework on a tentative basis), then went on to make all sorts of improvements to the Treeherder / Perfherder frontend, fixing bugs in the performance sheriffing frontend, updating code to use more modern standards (including a gigantic patch to enable a bunch of eslint rules and fix the corresponding problems).&lt;/p&gt;
-
-&lt;p&gt;Roy worked all over the codebase, starting with some simple frontend fixes to Treeherder, moving on to fix a large number of nits in Perfherder&amp;rsquo;s alerts view. My personal favorite is the fact that we now paginate the list of alerts inside this view, which makes navigation waaaaay back into history possible:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2016/08/perfherder-alert-pagination.png"&gt;&lt;img src="/files/2016/08/perfherder-alert-pagination.png" alt="alert pagination" width="300px" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;You can see a summary of their work at these links:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;&lt;a href="https://github.com/mozilla/treeherder/commits/master?author=SJasoria"&gt;Shruti Jasoria&lt;/a&gt;&lt;/li&gt;
- &lt;li&gt;&lt;a href="https://github.com/mozilla/treeherder/commits/master?author=crosscent"&gt;Roy Chiang&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;Thank you Shruti and Roy! You&amp;rsquo;ve helped to make sure Firefox (and Servo!) performance remains top-notch.&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
    <title>Quarter of Contribution: June / July 2016 edition</title>
    <link>https://wlach.github.io/blog/2016/05/quarter-of-contribution-june-july-2016-edition/?utm_source=Mozilla&amp;utm_medium=RSS</link>
    <guid>urn:https-wlach-github-io:-blog-2016-05-quarter-of-contribution-june-july-2016-edition</guid>
@@ -638,4 +617,27 @@ cd treeherder-ui/webapp&amp;lt;br /&amp;gt;
  &lt;li&gt;Somehow reverse engineering the interface between the graphics chipset and the LCD panel, and writing some kind of custom hardware to &amp;#8220;capture&amp;#8221; the framebuffer as it is being sent from one to the other. Also sounds difficult.&lt;/li&gt;
  &lt;li&gt;Just forget about this problem altogether and only try to capture periods of time in the capture where the image has stayed static for a sustained period of time (i.e. for say 4&amp;ndash;5 frames and up) and we&amp;#8217;re pretty sure it&amp;#8217;s jank.&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;Personally the last solution appeals to me the most, although it has the obvious disadvantage of being a &amp;#8220;homebrew&amp;#8221; metric that no one has ever heard of before, which might make it difficult to use to prove that performance is adequate &amp;#8212; the numbers come with a long-winded explanation instead of being something that people immediately understand.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;Personally the last solution appeals to me the most, although it has the obvious disadvantage of being a &amp;#8220;homebrew&amp;#8221; metric that no one has ever heard of before, which might make it difficult to use to prove that performance is adequate &amp;#8212; the numbers come with a long-winded explanation instead of being something that people immediately understand.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
+   <title>End of Q2 Eideticker update: Flame tests, future plans</title>
+   <link>https://wlach.github.io/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans/?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2014-06-end-of-q2-eideticker-update-flame-tests-future-plans</guid>
+   <pubDate>Fri, 27 Jun 2014 04:00:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Just wanted to give an update on where Eideticker is at the end of Q2 2014. The big news is that we&amp;#8217;ve started to run startup tests against the Flame, the results of which are starting to appear on the dashboard:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="/files/2014/06/eideticker-contacts-flame.png"&gt;&lt;img src="/files/2014/06/eideticker-contacts-flame.png" alt="eideticker-contacts-flame" width="1002" height="664" class="alignnone size-full wp-image-1062" srcset="/files/2014/06/eideticker-contacts-flame-300x198.png 300w, /files/2014/06/eideticker-contacts-flame.png 1002w" sizes="(max-width: 1002px) 100vw, 1002px" /&gt;&lt;/a&gt; &lt;a href="http://eideticker.mozilla.org/b2g/#/flame/b2g-contacts-startup/timetostableframe"&gt;[link]&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It is expected that these tests will provide a useful complement to the &lt;a href="https://datazilla.mozilla.org/b2g/?branch=master&amp;amp;#038;device=flame&amp;amp;#038;range=7&amp;amp;#038;test=cold_load_time&amp;amp;#038;app_list=browser,calendar,camera,clock,contacts,email%20FTU,fm_radio,gallery,marketplace,messages,music,phone,settings,template,usage,video&amp;amp;#038;app=phone&amp;amp;#038;gaia_rev=b8f36518696f3191&amp;amp;#038;gecko_rev=c90b38c47a1d&amp;amp;#038;plot=avg"&gt;existing startup tests&lt;/a&gt; we&amp;#8217;re running with b2gperf, in particular answering the &amp;#8220;is this regression real?&amp;#8221; question.&lt;/p&gt;
+
+&lt;p&gt;Pending work for Q3:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Enable scrolling tests on the Flame. I got these working against the Hamachi &lt;a href="http://wrla.ch/blog/2014/03/its-all-about-the-entropy/"&gt;a few months ago&lt;/a&gt; but because of some weird input issue we&amp;#8217;re seeing we can&amp;#8217;t yet enable them on the Flame. This is being tracked in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1028824"&gt;bug 1028824&lt;/a&gt;. If anyone has background on the behaviour of the touch screen driver for this device I would appreciate some help.&lt;/li&gt;
+ &lt;li&gt;Enable tests for multiple branches on the Flame (currently we&amp;#8217;re only doing master). This is pretty much ready to go (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1017834"&gt;bug 1017834&lt;/a&gt;), just need to land it.&lt;/li&gt;
+ &lt;li&gt;Annotate eideticker graphs with internal benchmark information. Eli Perelman of the FirefoxOS performance team has come up with a standard set of on-load events for the Gaia apps (app chrome loaded, app content loaded, &amp;#8230;) that each app will generate, feeding into tools like b2gperf and test-perf. We want to show this information in Eideticker&amp;#8217;s frame-by-frame analysis (&lt;a href="http://eideticker.mozilla.org/b2g/detail.html?id=2b007f8cfd8b11e3923c10ddb19eacac#/framecannyentropies"&gt;example&lt;/a&gt;) so we can verify that the app&amp;#8217;s behaviour is consistent with what it is claimed. This is being tracked in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1018334"&gt;bug 1018334&lt;/a&gt;&lt;/li&gt;
+ &lt;li&gt;Re-enable Eideticker for Android and run tests more frequently. Sadly we haven&amp;#8217;t been consistently generating new Eideticker results for Android for the last quarter because of networking issues in the new Mountain View office, where the test rig for those live. One way or another, we want to fix this next quarter and hopefully run tests more frequently against mozilla-inbound (instead of just nightly builds)&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;The above isn&amp;#8217;t an exhaustive list: there&amp;#8217;s much more that we have in mind for the future that&amp;#8217;s not yet scheduled or defined well (e.g. get Eideticker reporting to Treeherder&amp;#8217;s new performance module). If you have any questions or feedback on anything outlined above I&amp;#8217;d love to hear it!&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

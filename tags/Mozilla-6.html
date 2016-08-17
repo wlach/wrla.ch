@@ -179,30 +179,6 @@
 
           <article>
   <header>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/04/yet-more-adventures-in-mobile-performance-analysis/'>Yet more adventures in mobile performance analysis</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 5th, 2012</p>
-  </header>
-
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
-
-<p>Participated in an <a href="https://wiki.mozilla.org/Fennec/NativeUI/checkerboarding">interesting meeting</a> on checkerboarding in Firefox for Android yesterday. As a reminder, checkerboarding refers to the amount of time you spend waiting to see the full page after you do a swipe on your mobile device, and it&#8217;s a big issue right now &#8211; so much so that it puts our delivery goal for the new native browser at risk.</p>
-
-<p>It seems like we have a number of strategies for improving performance which will likely solve the problem, but we need to be able to measure improvements to make sure that we&#8217;re making progress. This is one of the places where Eideticker could be useful (especially with regards to measuring us against the competition), though there are a few things that we need to add before it&#8217;s going to be as useful as it could be. The most urgent, as I understand, is to come up with a suite of tests which accurately represent the set of pages that we&#8217;re having issues with. The current main measure of checkerboarding that we&#8217;re using with eideticker is taskjs.org which, while an interesting test case in some ways, doesn&#8217;t accurately represent the sort of site that the user would normally go to in the wild (and thus be annoyed by). 😉</p>
-
-<p>This is going to take a few days (and a lot of review: I&#8217;m definitely no expert when it comes to this stuff) to get right, but I just added two tests for the New York Times which I think are a step in the right direction of being more representative of real-world use cases. Have a look here:</p>
-
-<p><a href="http://wrla.ch/eideticker/dashboard/#/nytimes-scrolling">http://wrla.ch/eideticker/dashboard/#/nytimes-scrolling</a>
- <br /><a href="http://wrla.ch/eideticker/dashboard/#/nytimes-zooming">http://wrla.ch/eideticker/dashboard/#/nytimes-zooming</a></p>
-
-<p>The results here actually aren&#8217;t as bad as I would have expected/remembered. There amount of checkerboarding after a zoom out is a bit annoying (I understand this a known issue with font caching, or something) but not too terrible. Still, any improvements that show up here will probably apply across a wide variety of sites, as the design patterns on the New York Times site are very common.</p>
-
-<p>(P.S. yes, I know I promised a comparison with Google Chrome for Android last time&#8230; rest assured that&#8217;s still coming soon!)</p>
-
-</article>
-
-<article>
-  <header>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2012/04/an-even-better-way-of-taking-screenshots-on-android/'>An even better way of taking screenshots on Android</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 3rd, 2012</p>
@@ -454,6 +430,23 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 <p>My current thinking is that a <a href="http://pandaboard.org/">Panda Board</a> running a Vanilla version of Android might be a good candidate for a permanently-connected device. It is capable of HDMI output, doesn&#8217;t have unwanted the bells and whistles of a physical phone (e.g. a lock screen), and should be much reliable due to its physical networking. So far I haven&#8217;t <a href="http://ask.linaro.org/questions/361/hdmi-output-on-android-build">had much luck</a> getting it the video output working with the Decklink capture card, but I&#8217;ve only just started trying. Work will continue.</p>
 
 <p>If I can somehow figure that out, and smooth out some of the rough edges with the web interface and capture API, I think the stage will be set for us all to do some pretty interesting stuff! Looking forward to it.</p>
+
+</article>
+
+<article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2011/11/a-planet-to-call-our-own/'>A planet to call our own</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 18th, 2011</p>
+  </header>
+
+<p>Just a quick note that a planet for Mozilla Tools &#38; Automation (the so-called &#8220;a team&#8221;) is now up, thanks to Reed Loden. With the exception of <a href="http://k0s.org/mozilla/blog">Jeff Hammel</a>, everyone there was already being syndicated on <a href="http://planet.mozilla.org">Planet Mozilla</a>, but this should offer a more focused feed of our doings for those who can&#8217;t always keep up with the firehose. Have a look:</p>
+
+<p><a href="http://planet.mozilla.org/ateam">http://planet.mozilla.org/ateam</a></p>
+
+<p>Who should care? Well, we maintain all the major testing frameworks like Mochitest, Reftest, and Talos as well as automated tooling for QA like <a href="https://developer.mozilla.org/en/Mozmill">Mozmill</a>. Our latest work is focused on making sure that Firefox is as robust, responsive, and performant as possible on desktop and mobile. In short, if you&#8217;re writing or verifying code from mozilla-central, what we&#8217;re doing probably affects you. Please let us know what you think about our projects and whether there&#8217;s anything we can do to make your job easier: we&#8217;re listening.</p>
+
+<p><strong>Quick bonus note</strong>: It&#8217;s not immediately obvious (or at least it wasn&#8217;t to me), but Mozilla has some fairly finely tuned infrastructure for running planets. If your team or group wants one, it&#8217;s definitely better to plug into that instead of rolling your own. 😉 Reed Loden is the maintainer and the source <a href="http://viewvc.svn.mozilla.org/vc/projects/planet/">lives in subversion</a>.</p>
 
 </article>
 
