@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 7)</title>
     <meta name="description" content="William Lachance's Log (page 7)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, iphone, Mozilla, Ebola, Free Software, Meta, zen, Business, GoFaster, Philosophy, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Montreal, Coffee, Life, GNOME, Music, Orangutan, Cats, mozregression, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Community, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, Meta, zen, Business, GoFaster, Philosophy, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Montreal, Coffee, Life, GNOME, Music, Orangutan, Cats, mozregression, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Community, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-7.html">
@@ -97,6 +97,8 @@
 
 <li><a href="/tags/hbus.html">hbus</a></li>
 
+<li><a href="/tags/Infraherder.html">Infraherder</a></li>
+
 <li><a href="/tags/iphone.html">iphone</a></li>
 
 <li><a href="/tags/Life.html">Life</a></li>
@@ -178,6 +180,25 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod/'>Mass code relicensing with facebook&#8217;s codemod</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 7th, 2012</p>
+  </header>
+
+<p>Recently the Firefox source repository (mozilla-central) was converted over recently to a new license with a <a href="http://www.mozilla.org/MPL/headers/">lovely short boilerplate</a>. This is great, but here in <a href="https://wiki.mozilla.org/Auto-tools">automation and tools</a>, we have a fairly large number of projects that live outside of the main tree but for which the new license still applies. A few weeks ago, I wanted to move one our projects over (mozbase), but didn&#8217;t want to spend hours manually editing text files. I understand that a script was used to convert mozilla-central, but a quick google didn&#8217;t turn it up. <strong>[ edit:** thanks to Ed Morley for pointing out to me that it lives here: <a href="http://hg.mozilla.org/users/gerv_mozilla.org/relic/">http://hg.mozilla.org/users/gerv_mozilla.org/relic/</a> **]</strong></p>
+
+<p>I surely could have asked about where this script is, but this problem gave me an excuse to try something that I&#8217;d been meaning to for a while: Facebook&#8217;s <a href="https://github.com/facebook/codemod">codemod</a>. Codemod is a neat little command-line utility which aims to help with mass refactorings of code. All you have to do is provide a few regular expressions to replace, and off it goes. I tried it out with mozbase, and the results were great: 5 minutes spent coming up with a regular expression and jiggering with command line options, and the job was done.</p>
+
+<p>I had the desire to do this again today for <a href="http://github.com/mozilla/eideticker">Eideticker</a>, and decided to document the (extremely simple) process for posterity. I just used this simple command line&#8230;</p>
+
+<p><code>../codemod/src/codemod.py --extensions py -m '# \*\*\*\*\* BEGIN LICENSE.*END LICENSE BLOCK \*\*\*\*\*' '# This Source Code Form is subject to the terms of the Mozilla Public\n# License, v. 2.0. If a copy of the MPL was not distributed with this file,\n# You can obtain one at http://mozilla.org/MPL/2.0/.'</code></p>
+
+<p>&#8230; et voila, out popped <a href="https://github.com/mozilla/eideticker/commit/9456933670fb4590af3060f4ff40d11271859b8d">shiny new boilerplate</a>.</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Video.html">Video</a></span></p>
     <h2><a href='/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/'>Ghetto retroscope with ffmpeg and the &lt;video&gt; tag</a></h2>
@@ -447,23 +468,6 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 <p>Also, while not strictly necessary to get something up and running, I recommend highly getting an HDMI monitor as well as a serialUSB adapter. The former is useful to see if your Android device actually successfully booted up, the latter is useful for debugging boot issues where you don&#8217;t get that far (the serial console is always available from boot).</p>
 
 <p>So, after painfully learning about the above caveats, I have managed to get things mostly working. I can see the ICS homescreen on my attached HDMI monitor and interact with it if I attach a USB mouse. The one gotcha is that both ethernet and WIFI networking are totally broken. Plugging in an ethernet cable or connecting to a WIFI network seems to result in the machine randomly rebooting, with the logs saying nothing useful. Both of these things are ostensibly supposed to be working according to the latest I&#8217;ve read from Google so I&#8217;m not exactly sure what&#8217;s going on. Investigations will continue.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Meta.html">Meta</a></span></p>
-    <h2><a href='/blog/2012/02/a-new-domain/'>A new domain</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 6th, 2012</p>
-  </header>
-
-<p>A few years ago, I fancied the idea of creating my own software consulting business. For some reason, I thought &#8220;Masala Labs&#8221; would be a cool and witty name for it (&#8220;masala&#8221; means spice mixture in Hindi, and who doesn&#8217;t like spicy things?), so I registered the domain along with the associated small business paperwork in Nova Scotia. I only ever had one client, and it was only a few months before I wound up joining a few of my colleagues in founding &#8220;The Navarra Group&#8221; (which is also now defunct, a story I will perhaps tell at another time), so it never got very huge.</p>
-
-<p>Anyway, I still had my own domain, and I wanted to move my blog from livejournal, which was beginning to jump the shark. The masalalabs domain was mine, so why not use it? I created a wordpress blog, pointed my DNS registration at it, and started writing. This worked well for a while (names don&#8217;t really matter for random personal blogs), but lately I&#8217;ve been wanting to start a new project and &#8220;Masala Labs&#8221; doesn&#8217;t exactly seem like a winning banner for me to put it under.</p>
-
-<p>So I&#8217;ve decided it&#8217;s time for a bit of a change. I just registered the swiss domain name &#8216;wrla.ch&#8217;, created a fancy new <a href="http://wrla.ch">landing page</a>, and made this blog its first &#8220;sub site&#8221;. More to come.</p>
-
-<p>So, for all 20 of you who are subscribed to my doings, please update your links. For those of you using Google Reader / RSS, the new feed is at <a href="http://wrla.ch/blog/feed/">this URL</a>. All the old masalalabs links should at least <strong>work</strong> until the domain expires in a few years, so there&#8217;s no huge rush. Then again, you&#8217;ll probably forget if you don&#8217;t do it now (and thus be deprived of my endless ravings about checkerboarding on mobile Fennec on Android), so why wait?</p>
 
 </article>
 
