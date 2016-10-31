@@ -4,16 +4,36 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Wed, 17 Aug 2016 20:18:12 UT</lastBuildDate>
-  <pubDate>Wed, 17 Aug 2016 20:18:12 UT</pubDate>
+  <lastBuildDate>Mon, 31 Oct 2016 15:40:00 UT</lastBuildDate>
+  <pubDate>Mon, 31 Oct 2016 15:40:00 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Slow Treeherder, Fast Treeherder</title>
+   <link>https://wlach.github.io/blog/2016/10/slow-treeherder-fast-treeherder/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2016-10-slow-treeherder-fast-treeherder</guid>
+   <pubDate>Mon, 31 Oct 2016 15:40:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Just wanted to talk about some recent performance improvements we&amp;rsquo;ve made recently to &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Treeherder"&gt;Treeherder&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1311511"&gt;Bug 1311511&lt;/a&gt;: Changed the repository endpoint so we don&amp;rsquo;t do 40 redundant database  queries (this was generally innocuous, but could delay loading by  400ms if the database was under heavy load).&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1310016"&gt;Bug 1310016&lt;/a&gt;: Persisted database connections across requests (this  can save ~40&amp;ndash;50ms per request, of which there can be 5&amp;ndash;10  when loading a Treeherder page).&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1308782"&gt;Bug 1308782&lt;/a&gt;: &lt;em&gt;Don&amp;rsquo;t&lt;/em&gt; download job type and group information  from the server to get a &amp;ldquo;sorting order&amp;rdquo; for the job lists. This was  never necessary, but it&amp;rsquo;s gotten exponentially more painful as  people have added job types to Treeherder (job type information is  now around a megabyte of JSON these days). This saves 5&amp;ndash;10 seconds on a  typical page load.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;There&amp;rsquo;s more to come, but with these changes Treeherder should be faster for everyone to load. It should be particularly noticeable on try pushes, where the last item was by far the largest bottleneck. Here&amp;rsquo;s a youtube video of the changes:&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/xNJGoZhA4Vs" frameborder="0" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;The original is on the left. The newer, faster Treeherder is on the right. Pay particular attention to how much faster the job information populates.&lt;/p&gt;
+
+&lt;p&gt;Moral of the story? Optimization can be helpful, but it&amp;rsquo;s better if you can avoid doing the work altogether.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Herding Automation Infrastructure</title>
    <link>https://wlach.github.io/blog/2016/08/herding-automation-infrastructure/?utm_source=all&amp;utm_medium=RSS</link>
    <guid>urn:https-wlach-github-io:-blog-2016-08-herding-automation-infrastructure</guid>
    <pubDate>Wed, 17 Aug 2016 20:18:12 UT</pubDate>
    <description>&lt;html&gt;
-&lt;p&gt;For every commit to Firefox, we run a battery of builds and automated tests on the resulting source tree to make sure that the result still works and meets our correctness and performance quality criteria. This is expensive: every new push to our repository implies hundreds of hours of machine time. However, this type of quality control is essential to ensure that the product that we&amp;rsquo;re shipping to users is something that we can be proud of.&lt;/p&gt;
+&lt;p&gt;For every commit to Firefox, we run a battery of builds and automated tests on the resulting source tree to make sure that the result still works and meets our correctness and performance quality criteria. This is expensive: every new push to our repository implies hundreds of hours of machine time. However, automated quality control is essential to ensure that the product that we&amp;rsquo;re shipping to users is something that we can be proud of.&lt;/p&gt;
 
 &lt;p&gt;But what about evaluating the quality of the product which does the building and testing? Who does that? And by what criteria would we say that our automation system is good or bad? Up to now, our procedures for this have been rather embarassingly adhoc. With some exceptions (such as &lt;a href="https://brasstacks.mozilla.com/orangefactor/"&gt;OrangeFactor&lt;/a&gt;), our QA process amounts to motivated engineers doing a one-off analysis of a particular piece of the system, filing a few bugs, then forgetting about it. Occasionally someone will propose turning build and test automation for a specific platform on or off in mozilla.dev.planning.&lt;/p&gt;
 
@@ -603,19 +623,4 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;Also thanks to Julien, we have a &lt;a href="http://mozilla.github.io/mozregression/"&gt;spiffy new website&lt;/a&gt; which documents many of these features. If it&amp;#8217;s been a while, be sure to &lt;a href="http://mozilla.github.io/mozregression/install.html"&gt;update your copy of mozregression to the latest version&lt;/a&gt; and check out the site for documentation on how to use the new features described above!&lt;/p&gt;
 
-&lt;p&gt;Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&amp;#8217;s just that much more useful to Firefox contributors everywhere.&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
-   <title>Ebola mini-campaign successful: $6212 for MSF</title>
-   <link>https://wlach.github.io/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2014-10-ebola-mini-campaign-successful-6212-for-msf</guid>
-   <pubDate>Mon, 20 Oct 2014 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;Just a quick note that my campaign to raise funds for &lt;a href="http://msf.ca"&gt;MSF&lt;/a&gt; was successful. From friends and family, coworkers, and my extended network I managed to raise the sum of $3106. This was a bit above my maximum of $2500 that I said I would match, but what the hell:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2014/10/Screen-Shot-2014-10-20-at-12.05.19-AM.png"&gt;&lt;img src="/files/2014/10/Screen-Shot-2014-10-20-at-12.05.19-AM.png" alt="Screen Shot 2014-10-20 at 12.05.19 AM" width="455" height="341" class="alignnone size-full wp-image-1132" srcset="/files/2014/10/Screen-Shot-2014-10-20-at-12.05.19-AM-300x224.png 300w, /files/2014/10/Screen-Shot-2014-10-20-at-12.05.19-AM.png 455w" sizes="(max-width: 455px) 100vw, 455px" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;So in total that means $6212 for Doctors without Borders. Not half bad for a week long campaign from someone as insignificant as myself!&lt;/p&gt;
-
-&lt;p&gt;Most of the people who donated wanted to remain anonymous, which is cool. But among those who were cool about being public, big thanks to: Julia Evans, Chris Atlee, Mike Conley, Ted Tibbetts, Paul and Eva Lachance, Alex Demarsh and Lauren Reid (if I&amp;#8217;m missing someone who wants to be named, please let me know).&lt;/p&gt;
-
-&lt;p&gt;Incidentally, I&amp;#8217;ve learned a bit more about Ebola over the past week, and I&amp;#8217;m fairly sure that we&amp;#8217;ll be ok here in Canada and the States given the fact that the virus isn&amp;#8217;t actually that contagious (and that we have reasonable facilities for treating it in a safe manner, major screwups in Dallas notwithstanding). Liberia and other parts of Africa are still very much worth worrying about though, so I still 100% that starting this campaign was the right thing for me to do as an individual. Actually wiping out the disease will likely require government-level resources and intervention. Still waiting for a more serious resource commitment from Canada (cautiously optimistic about what&amp;#8217;s happening with the States).&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&amp;#8217;s just that much more useful to Firefox contributors everywhere.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0">
+ <channel>
+  <title>William Lachance's Log: Posts tagged 'Performance'</title>
+  <description>William Lachance's Log: Posts tagged 'Performance'</description>
+  <link>https://wlach.github.io/tags/Performance.html</link>
+  <lastBuildDate>Mon, 31 Oct 2016 15:40:00 UT</lastBuildDate>
+  <pubDate>Mon, 31 Oct 2016 15:40:00 UT</pubDate>
+  <ttl>1800</ttl>
+  <item>
+   <title>Slow Treeherder, Fast Treeherder</title>
+   <link>https://wlach.github.io/blog/2016/10/slow-treeherder-fast-treeherder/?utm_source=Performance&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2016-10-slow-treeherder-fast-treeherder</guid>
+   <pubDate>Mon, 31 Oct 2016 15:40:00 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Just wanted to talk about some recent performance improvements we&amp;rsquo;ve made recently to &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Treeherder"&gt;Treeherder&lt;/a&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1311511"&gt;Bug 1311511&lt;/a&gt;: Changed the repository endpoint so we don&amp;rsquo;t do 40 redundant database  queries (this was generally innocuous, but could delay loading by  400ms if the database was under heavy load).&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1310016"&gt;Bug 1310016&lt;/a&gt;: Persisted database connections across requests (this  can save ~40&amp;ndash;50ms per request, of which there can be 5&amp;ndash;10  when loading a Treeherder page).&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1308782"&gt;Bug 1308782&lt;/a&gt;: &lt;em&gt;Don&amp;rsquo;t&lt;/em&gt; download job type and group information  from the server to get a &amp;ldquo;sorting order&amp;rdquo; for the job lists. This was  never necessary, but it&amp;rsquo;s gotten exponentially more painful as  people have added job types to Treeherder (job type information is  now around a megabyte of JSON these days). This saves 5&amp;ndash;10 seconds on a  typical page load.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;There&amp;rsquo;s more to come, but with these changes Treeherder should be faster for everyone to load. It should be particularly noticeable on try pushes, where the last item was by far the largest bottleneck. Here&amp;rsquo;s a youtube video of the changes:&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/xNJGoZhA4Vs" frameborder="0" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;The original is on the left. The newer, faster Treeherder is on the right. Pay particular attention to how much faster the job information populates.&lt;/p&gt;
+
+&lt;p&gt;Moral of the story? Optimization can be helpful, but it&amp;rsquo;s better if you can avoid doing the work altogether.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

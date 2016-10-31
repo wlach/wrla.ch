@@ -127,6 +127,8 @@
 
 <li><a href="/tags/Perfherder.html">Perfherder</a></li>
 
+<li><a href="/tags/Performance.html">Performance</a></li>
+
 <li><a href="/tags/Philosophy.html">Philosophy</a></li>
 
 <li><a href="/tags/Profiling.html">Profiling</a></li>
@@ -148,6 +150,8 @@
 <li><a href="/tags/Transit.html">Transit</a></li>
 
 <li><a href="/tags/Transit-to-Go.html">Transit to Go</a></li>
+
+<li><a href="/tags/Treeherder.html">Treeherder</a></li>
 
 <li><a href="/tags/Usability.html">Usability</a></li>
 
@@ -180,6 +184,56 @@
           <h1>Posts tagged <em>Mozilla</em></h1>
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Responsiveness.html">Responsiveness</a></span></p>
+    <h2><a href='/blog/2013/10/first-eideticker-responsiveness-tests/'>First Eideticker Responsiveness Tests</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 7th, 2013</p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+
+<p>Time for another update on Eideticker. In the last quarter, I&#8217;ve been working on two main items:</p>
+
+<ol>
+ <li>Responsiveness tests (Android / FirefoxOS)</li>
+ <li>Eideticker for FirefoxOS</li></ol>
+
+<p>The focus of this post is the responsiveness work. I&#8217;ll talk about Eideticker for FirefoxOS soon.</p>
+
+<p>So what do I mean by responsiveness? At a high-level, I mean how quickly one sees a response after performing an action on the device. For example, if I perform a swipe gesture to scroll the content down while browsing CNN.com, how long does it take after
+ <br />I start the gesture for the content to <em>visibly</em> scroll down? If you break it down, there&#8217;s a multi-step process that happens behind the scenes after a user action like this:</p>
+
+<p><a href="/files/2013/10/input-events.png"><img src="/files/2013/10/input-events.png" alt="input-events" width="880" height="752" class="alignnone size-full wp-image-957" srcset="/files/2013/10/input-events-300x256.png 300w, /files/2013/10/input-events.png 880w" sizes="(max-width: 880px) 100vw, 880px" /></a></p>
+
+<p>If anywhere in the steps above, there is a significant delay, the user experience is likely to be bad. Usability research
+ <br />suggests that any lag that is consistently above 100 milliseconds will lead the user to <a href="http://stackoverflow.com/questions/536300/what-is-the-shortest-perceivable-application-response-delay">perceive things as being laggy</a>. To keep our users happy, we need to do our bit to make sure that we respond quickly at all levels that we control (just the application layer on Android, but pretty much everything on FirefoxOS). Even if we can&#8217;t complete the work required on our end to completely respond to the user&#8217;s desire, we should at least display something to acknowledge that things have changed.</p>
+
+<p>But you can&#8217;t improve what you can&#8217;t measure. Fortunately, we have the means to do calculate of the time delta between <em>most</em> of the steps above. I learned from <a href="http://taras.glek.net/">Taras Glek</a> this weekend that it should be <a href="http://hackaday.com/2012/05/04/reaching-out-to-a-touch-screen-with-a-microcontroller/">possible to simulate</a> the actual capacitative touch event on a modern touch screen. We can recognize when the hardware event is available to be consumed by userspace by monitoring the `/dev/input` subsystem. And once the event reaches the application (the Android or FirefoxOS application) there&#8217;s no reason we can&#8217;t add instrumentation in all sorts of places to track the processing of both the event and the rendering of the response.</p>
+
+<p>My working hypothesis is that it&#8217;s application-level latency (i.e. the time between the application receiving the event and being able to act on it) that dominates, so that&#8217;s what I decided to measure. This is purely based on intuition and by no means proven, so we should test this (it would certainly be an interesting exercise!). However, even if it turns out that there are significant problems here, we still care about the other bits of the stack &#8212; there&#8217;s lots of potentially-latency-introducing churn there and the risk of regression in our own code is probably higher than it is elsewhere since it changes so much.</p>
+
+<p>Last year, I wrote up a tool called <a href="http://wrla.ch/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns/?utm_source=rss&amp;#038;utm_medium=rss&amp;#038;utm_campaign=the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns">Orangutan</a> that can directly inject input events into an input device on Android or FirefoxOS. It seemed like a fairly straightforward extension of the tool to output timestamps when these events were registered. It was. Then, by <a href="http://wrla.ch/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/">synchronizing the time</a> between the device and the machine doing the capturing, we can then correlate the input timestamps to events. To help visualize what&#8217;s going on, I generated this view:</p>
+
+<p><a href="/files/2013/10/taskjs-framediff-view.png"><img src="/files/2013/10/taskjs-framediff-view.png" alt="taskjs-framediff-view" width="583" height="418" class="alignnone size-full wp-image-962" srcset="/files/2013/10/taskjs-framediff-view-300x215.png 300w, /files/2013/10/taskjs-framediff-view.png 583w" sizes="(max-width: 583px) 100vw, 583px" /></a></p>
+
+<p><a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Scrolling%20on%20taskjs.org%20%282013-10-06%29&amp;#038;video=videos/video-1381129971.63.webm&amp;#038;framediff=framediffs/framediff-1381129990.79.json&amp;#038;actionlog=actionlogs/action-log-1381129990.79.json">[Link to original]</a></p>
+
+<p>The X axis in that graph represents time. The Y-axis represents the difference between the frame at that time with the previous one in number of pixels. The &#8220;red&#8221; represents periods in capture when events are ongoing (we use different colours only to
+ <br />distinguish distinct events). <sup><a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">1</a></sup></p>
+
+<p>For a first pass at measuring responsiveness, I decided to measure the time between the first event being initiated and there being a significant frame difference (i.e. an observable response to the action). You can see some preliminary results on the eideticker dashboard:</p>
+
+<p><a href="/files/2013/10/taskjs-responsiveness.png"><img src="/files/2013/10/taskjs-responsiveness.png" alt="taskjs-responsiveness" width="637" height="540" class="alignnone size-full wp-image-956" srcset="/files/2013/10/taskjs-responsiveness-300x254.png 300w, /files/2013/10/taskjs-responsiveness.png 637w" sizes="(max-width: 637px) 100vw, 637px" /></a></p>
+
+<p><a href="http://eideticker.mozilla.org/#/samsung-gn/taskjs/timetoresponse">[Link to original]</a></p>
+
+<p>The results seem pretty highly variable at first because I was synchronizing time between the device and an external ntp server, rather than the host machine. I believe this is now fixed, hopefully giving us results that will indicate when regressions occur. As time goes by, we may want to craft some special eideticker tests for responsiveness specifically (e.g. a site where there is heavy javascript background processing).</p>
+
+<p><sup><a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">1</a></sup> <em>Incidentally, these &#8220;frame difference&#8221; graphs are also quite useful for understanding where and how application startup has regressed in Fennec &#8212; try opening these two startup views side-by-side (before/after a large regression) and spot the difference: <a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-20%29&amp;#038;video=videos/video-1377070981.95.webm&amp;#038;framediff=framediffs/framediff-1377070991.95.json">[1]</a> and <a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-23%29&amp;#038;video=videos/video-1377330042.28.webm&amp;#038;framediff=framediffs/framediff-1377330051.67.json">[2]</a>)</em></p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Time.html">Time</a></span></p>
     <h2><a href='/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/'>Simple command-line ntp client for Android and FirefoxOS</a></h2>
@@ -455,58 +509,6 @@ dm --help</code></pre>
 <pre><code>Before you ask, yes, it&amp;#8217;s technically possible to do much of this with the original adb utility. But (1) some of our internal stuff can&amp;#8217;t use adb a variety of reasons and (2) some of the tasks above (e.g. launching an app, getting a screenshot) involve considerably more typing with adb than with dm. So it&amp;#8217;s still a win. &lt;/li&gt; &lt;/ol&gt; 
 
 Happy command-lining!</code></pre>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Python.html">Python</a></span></p>
-    <h2><a href='/blog/2012/10/catching-problems-early-with-python/'>Catching problems early with python</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 15th, 2012</p>
-  </header>
-
-<p>Just a few quick notes on how to avoid a class of errors I&#8217;ve been seeing in Mozilla&#8217;s automation over the last year. Since python interprets code dynamically, it&#8217;s pretty easy for problems like undefined variables to slip through, especially if they&#8217;re in a codepath that isn&#8217;t frequently tested. The most recent example I found was in some cleanup-after-error code for remote mochitest/reftest, which tried to call &#8220;self.cleanup&#8221; from a standalone method.</p>
-
-<pre><code>def main():
-      ...
-      try:
-        dm.recordLogcat()
-        retVal = mochitest.runTests(options)
-        logcat = dm.getLogcat()
-      except:
-        print "TEST-UNEXPECTED-FAIL | %s | Exception caught while running tests." % sys.exc_info()[1]
-        mochitest.stopWebServer(options)
-        mochitest.stopWebSocketServer(options)
-        try:
-            self.cleanup(None, options)
-        except:
-            pass
-</code></pre>
-
-<p><a href="http://hg.mozilla.org/mozilla-central/file/942ed5747b63/testing/mochitest/runtestsremote.py#l481">testing/mochitest/runtestsremote.py</a></p>
-
-<p>We&#8217;re calling cleanup as if it were a class variable, but we&#8217;re not inside any class! It&#8217;s easy to see what will happen if you try to run some similar code from the python console:</p>
-
-<pre><code>&gt;&gt;&gt; self.cleanup()
-Traceback (most recent call last):
-  File "&amp;lt;stdin&gt;", line 1, in &amp;lt;module&gt;
-NameError: name 'self' is not defined</code></pre>
-
-<p>However, because we&#8217;re in a blanket try&#8230;except, we will never see an error. The cleanup code will never be called, instead the exception is immediately caught and subsequently ignored. Probably not the end of the world in this case (there are other parts of our mobile automation which will perform the same cleanup later), but it&#8217;s easy to imagine where this would be a more serious problem.</p>
-
-<p>There&#8217;s two very easy ways to help stop errors like this before they hit our code:</p>
-
-<ol>
- <li>
-  <p>Try to avoid using a blanket try&#8230;except. In addition to catching legitimate problems which we want to ignore (in the remote case for example, devicemanager exceptions), it also catches (and thus obscures) things like syntax, name, or type errors. Instead, try just catching the specific exception you&#8217;re looking for. For example, we might rewrite the case above as:</p>``` try:</li></ol>
-
-<p> mochitest.cleanup(None, options) except devicemanager.DMError:  print &ldquo;WARNING: Device error while cleaning up&rdquo; <code>2. pyflakes, pyflakes, pyflakes. [Pyflakes][2] is a fantastic tool for analyzing your python code for common problems. It&amp;#8217;s kind of analagous to [jslint][3], for those of you familiar with that. Here&amp;#8217;s what happens when we run pyflakes against the offending code:</code> wlach@eideticker:~/src/mozilla-central$ pyflakes testing/mochitest/runtestsremote.py  testing/mochitest/runtestsremote.py:7: &lsquo;time&rsquo; imported but unused testing/mochitest/runtestsremote.py:481: undefined name &lsquo;self&rsquo; testing/mochitest/runtestsremote.py:500: undefined name &lsquo;self&rsquo; ```</p>
-
-<pre><code>I&amp;#8217;ve found pyflakes to be an indispensable part of my workflow. I generally run it after making any substantial change to a python file, and certainly before pushing anything to be consumed by others.</code></pre>
-
-<p>Ultimately there&#8217;s no substitute for actually thoroughly testing your code, no matter what language you&#8217;re using. But using the right techniques and tools can certainly make your life easier.</p>
-
-<p>[ for those wondering, a fix for the issue mentioned in this post is part of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=801652">bug 801652</a> ]</p>
 
 </article>
 

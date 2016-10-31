@@ -80,6 +80,7 @@ https://wlach.github.io/blog/2015/04/pycon-2015/
 https://wlach.github.io/blog/2011/11/measuring-what-the-user-sees/
 https://wlach.github.io/blog/2016/02/talos-suites-now-visible-from-trychooser/
 https://wlach.github.io/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/
+https://wlach.github.io/blog/2016/10/slow-treeherder-fast-treeherder/
 https://wlach.github.io/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/
 https://wlach.github.io/blog/2014/03/upcoming-travels-to-japan-and-taiwan/
 https://wlach.github.io/blog/2016/03/are-we-fast-yet-and-perfherder/
