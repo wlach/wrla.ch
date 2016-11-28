@@ -26,6 +26,7 @@ https://wlach.github.io/blog/2016/01/nixi-is-moving-too/
 https://wlach.github.io/blog/2011/11/weirdest-and-saddest-unsolicited-email-ever/
 https://wlach.github.io/blog/2014/08/a-new-meditation-app/
 https://wlach.github.io/blog/2010/05/hbus-is-back/
+https://wlach.github.io/blog/2016/11/training-an-autoclassifier/
 https://wlach.github.io/blog/2010/11/rice-038-barley-rae-spoon-at-casa-del-popolo/
 https://wlach.github.io/blog/2012/04/gofaster-dashboard-back-online/
 https://wlach.github.io/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/

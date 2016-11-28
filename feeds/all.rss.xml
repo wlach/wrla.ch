@@ -4,9 +4,195 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Mon, 31 Oct 2016 15:40:00 UT</lastBuildDate>
-  <pubDate>Mon, 31 Oct 2016 15:40:00 UT</pubDate>
+  <lastBuildDate>Mon, 28 Nov 2016 21:29:47 UT</lastBuildDate>
+  <pubDate>Mon, 28 Nov 2016 21:29:47 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Training an autoclassifier</title>
+   <link>https://wlach.github.io/blog/2016/11/training-an-autoclassifier/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2016-11-training-an-autoclassifier</guid>
+   <pubDate>Mon, 28 Nov 2016 21:29:47 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Here at Mozilla, we&amp;rsquo;ve accepted that a certain amount of intermittent failure in our automated testing of Firefox is to be expected. That is, for every push, a subset of the tests that we run will fail for reasons that have nothing to do with the quality (or lack thereof) of the push itself.&lt;/p&gt;
+
+&lt;p&gt;On the main integration branches that developers commit code to, we have dedicated staff and volunteers called sheriffs who attempt to distinguish these expected failures from intermittents through a manual classification process using &lt;a href="https://treeherder.mozilla.org"&gt;Treeherder&lt;/a&gt;. On any given push, you can usually find some failed jobs that have stars beside them, this is the work of the sheriffs, indicating that a job&amp;rsquo;s failure is &amp;ldquo;nothing to worry about&amp;rdquo;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/files/2016/11/treeherder-in-action.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;This generally works pretty well, though unfortunately it doesn&amp;rsquo;t help developers who need to test their changes on Try, which have the same sorts of failures but no sheriffs to watch them or interpret the results. For this reason (and a few others which I won&amp;rsquo;t go into detail on here), there&amp;rsquo;s been much interest in having Treeherder autoclassify known failures.&lt;/p&gt;
+
+&lt;p&gt;We have a partially implemented version that attempts to do this based on structured (failure line) information, but we&amp;rsquo;ve had some difficulty creating a reasonable user interface to train it. Sheriffs are used to being able to quickly tag many jobs with the same bug. Having to go through each job&amp;rsquo;s failure lines and manually annotate each of them is much more time consuming, at least with the approaches that have been tried so far.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/files/2016/11/treeherder-per-line-classification.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s quite possible that this is a solvable problem, but I thought it might be an interesting exercise to see how far we could get training an autoclassifier with only the existing per-job classifications as training data. With some recent work I&amp;rsquo;ve done on refactoring Treeherder&amp;rsquo;s database, getting a complete set of per-job failure line information is only a small SQL query away:&lt;/p&gt;
+
+&lt;div class="brush: sql"&gt;
+ &lt;table class="sourcetable"&gt;
+  &lt;tbody&gt;
+   &lt;tr&gt;
+    &lt;td class="linenos"&gt;
+     &lt;div class="linenodiv"&gt;
+      &lt;pre&gt;1
+2
+3
+4
+5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td class="code"&gt;
+     &lt;div class="source"&gt;
+      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bug_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;bug_job_map&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;
+  &lt;span class="k"&gt;left&lt;/span&gt; &lt;span class="k"&gt;join&lt;/span&gt; &lt;span class="n"&gt;text_log_step&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;tls&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job_id&lt;/span&gt;
+  &lt;span class="k"&gt;left&lt;/span&gt; &lt;span class="k"&gt;join&lt;/span&gt; &lt;span class="n"&gt;text_log_error&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;
+  &lt;span class="k"&gt;where&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;created&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2016-10-31&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;created&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2016-11-24&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user_id&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;NULL&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bug_id&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;NULL&lt;/span&gt;
+  &lt;span class="k"&gt;order&lt;/span&gt; &lt;span class="k"&gt;by&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Just to give some explanation of this query, the &amp;ldquo;bug_job_map&amp;rdquo; provides a list of bugs that have been applied to jobs. The &amp;ldquo;text_log_step&amp;rdquo; and &amp;ldquo;text_log_error&amp;rdquo; tables contain the actual errors that Treeherder has extracted from the textual logs (to explain the failure). From this raw list of mappings and errors, we can construct a data structure incorporating the job, the assigned bug and the textual errors inside it. For example:&lt;/p&gt;
+
+&lt;div class="brush: json"&gt;
+ &lt;table class="sourcetable"&gt;
+  &lt;tbody&gt;
+   &lt;tr&gt;
+    &lt;td class="linenos"&gt;
+     &lt;div class="linenodiv"&gt;
+      &lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td class="code"&gt;
+     &lt;div class="source"&gt;
+      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+&lt;span class="nt"&gt;"bug_number"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1202623&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="nt"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+  &lt;span class="s2"&gt;"browser_private_clicktoplay.js Test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;"browser_private_clicktoplay.js Found a tab after previous test timed out: http:/&amp;lt;number&amp;gt;&amp;lt;number&amp;gt;:&amp;lt;number&amp;gt;/browser/browser/base/content/test/plugins/plugin_test.html -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;"browser_private_clicktoplay.js Found a browser window after previous test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;"browser_private_clicktoplay.js A promise chain failed to handle a rejection:  - at chrome://mochikit/content/browser-test.js:&amp;lt;number&amp;gt; - TypeError: this.SimpleTest.isExpectingUncaughtException is not a function"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;"browser_privatebrowsing_newtab_from_popup.js Test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="s2"&gt;"browser_privatebrowsing_newtab_from_popup.js Found a browser window&lt;/span&gt;
+&lt;span class="s2"&gt;  after previous test timed out -"&lt;/span&gt;
+  &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Some quick google searching revealed that &lt;a href="http://scikit-learn.org/"&gt;scikit-learn&lt;/a&gt; is a popular tool for experimenting with text classifications. They even had a &lt;a href="http://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html"&gt;tutorial&lt;/a&gt; on classifying newsgroup posts which seemed tantalizingly close to what we needed to do here. In that example, they wanted to predict which newsgroup a post belonged to based on its content. In our case, we want to predict which existing bug a job failure should belong to based on its error lines.&lt;/p&gt;
+
+&lt;p&gt;There are obviously some differences in our domain: test failures are much more regular and structured. There are lots of numbers in them which are mostly irrelevant to the classification (e.g. the &amp;ldquo;expected 12 pixels different, got 10!&amp;rdquo; type errors in reftests). Ordering of failures might matter. Still, some of the techniques used on corpora of normal text documents for training a classifier probably map nicely onto what we&amp;rsquo;re trying to do here: it seems plausible that weighting words which occur more frequently less strongly against ones that are less common would be helpful, for example, and that&amp;rsquo;s one thing their default transformers does.&lt;/p&gt;
+
+&lt;p&gt;In any case, I built up a small little script to download a subset of the downloaded data (from November 1st to November 23rd), used it as training data for a classifier, then tested that against another subset of test failures between November 24th and 28th.&lt;/p&gt;
+
+&lt;div class="brush: py"&gt;
+ &lt;table class="sourcetable"&gt;
+  &lt;tbody&gt;
+   &lt;tr&gt;
+    &lt;td class="linenos"&gt;
+     &lt;div class="linenodiv"&gt;
+      &lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
+    &lt;td class="code"&gt;
+     &lt;div class="source"&gt;
+      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.datasets&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;load_files&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.feature_extraction.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CountVectorizer&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.feature_extraction.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TfidfTransformer&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.linear_model&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;SGDClassifier&lt;/span&gt;
+
+
+&lt;span class="n"&gt;training_set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load_files&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;training&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;count_vect&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CountVectorizer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;X_train_counts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count_vect&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit_transform&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;training_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;tfidf_transformer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TfidfTransformer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;span class="n"&gt;X_train_tfidf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tfidf_transformer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit_transform&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train_counts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;clf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;SGDClassifier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hinge&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;penalty&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;l2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                    &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;1e-3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n_iter&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train_tfidf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;training_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;span class="n"&gt;num_missed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subdir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;walk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;testing/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;bugnum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;basename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subdir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;bugnum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;
+        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;fname&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+            &lt;span class="n"&gt;doc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subdir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fname&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"--&amp;gt; (skipping, empty)"&lt;/span&gt;
+            &lt;span class="n"&gt;X_new_counts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count_vect&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+            &lt;span class="n"&gt;X_new_tfidf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tfidf_transformer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_new_counts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;predicted_bugnum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;training_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target_names&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;clf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_new_tfidf&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;bugnum&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;predicted_bugnum&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"--&amp;gt; correct"&lt;/span&gt;
+            &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+                &lt;span class="n"&gt;num_missed&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"--&amp;gt; missed (&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;)"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;predicted_bugnum&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"Correct: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; Missed: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; Ratio: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num_correct&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_missed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;num_missed&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;p&gt;With absolutely no tweaking whatsoever, I got an accuracy rate of 75% on the test data. That is, the algorithm chose the correct classification given the failure text 1312 times out of 1959. Not bad for a first attempt!&lt;/p&gt;
+
+&lt;p&gt;After getting that working, I did some initial testing to see if I could get better results by reusing some of the error ETL summary code in Treeherder we use for bug suggestions, but the results were pretty much the same.&lt;/p&gt;
+
+&lt;p&gt;So what&amp;rsquo;s next? This seems like a wide open area to me, but some initial areas that seem worth exploring, if we wanted to take this idea further:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;Investigate cases where the autoclassification failed or had a near miss. Is there a pattern here? Is there something simple we could do, either by tweaking the input data or using a better vectorizer/tokenizer?&lt;/li&gt;
+ &lt;li&gt;Have a confidence threshold for using the autoclassifier&amp;rsquo;s data. It seems likely to me that many of the cases above where we got the wrong were cases where the classifier itself wasn&amp;rsquo;t that confident in the result (vs. others). We can either present that in the user interface or avoid classifications for these cases altogether (and leave it up to a human being to make a decision on whether this is an intermittent).&lt;/li&gt;
+ &lt;li&gt;Using the structured log data inside the database as input to a classifier. Structured log data here is much more regular and denser than the free text that we&amp;rsquo;re using. Even if it isn&amp;rsquo;t explicitly classified, we may well get better results by using it as our input data.&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;If you&amp;rsquo;d like to experiment with the data and/or code, I&amp;rsquo;ve put it up on a &lt;a href="https://github.com/wlach/treeherder-classifier"&gt;github repository&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Slow Treeherder, Fast Treeherder</title>
    <link>https://wlach.github.io/blog/2016/10/slow-treeherder-fast-treeherder/?utm_source=all&amp;utm_medium=RSS</link>
@@ -604,23 +790,4 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;&lt;a href="/files/2015/02/e10s-vs-non-e10s.png"&gt;&lt;img src="/files/2015/02/e10s-vs-non-e10s.png" alt="e10s-vs-non-e10s" width="901" height="489" class="alignnone size-full wp-image-1157" srcset="/files/2015/02/e10s-vs-non-e10s-300x162.png 300w, /files/2015/02/e10s-vs-non-e10s.png 901w" sizes="(max-width: 901px) 100vw, 901px" /&gt;&lt;/a&gt;
  &lt;br /&gt;&lt;a href="https://treeherder.mozilla.org/perf.html#/graphs?timerange=7776000&amp;amp;#038;seriesList=[[%22mozilla-central%22,%22a78a233646c932ee1c56cf27da58b6aaa4eda2c3%22],[%22mozilla-central%22,%228e9323fd7fadb0623ec520a8ccaec2e733f3d501%22]]"&gt;[link]&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Green is e10s, red is non-e10s (the legend picture doesn&amp;#8217;t reflect this because we have yet to deploy a fix to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1130554"&gt;bug 1130554&lt;/a&gt;, but I promise I&amp;#8217;m not lying). As you can see, the gap has been closing (in particular, something landed in mid-January that improved the e10s numbers quite a bit), but page load times are still measurably slower with this feature enabled.&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
-   <title>mozregression updates</title>
-   <link>https://wlach.github.io/blog/2015/01/mozregression-updates/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-01-mozregression-updates</guid>
-   <pubDate>Tue, 27 Jan 2015 05:00:00 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;Lots of movement in &lt;a href="http://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt; (a tool for automatically determining when a regression was introduced in Firefox by bisecting builds on ftp.mozilla.org) in the last few months. Here&amp;#8217;s some highlights:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;Support for win64 nightly and inbound builds (Kapil Singh, Vaibhav Agarwal)&lt;/li&gt;
- &lt;li&gt;Support for using an http cache to reduce time spent downloading builds (Sam Garrett)&lt;/li&gt;
- &lt;li&gt;Way better logging and printing of remaining time to finish bisection (Julien Pagès)&lt;/li&gt;
- &lt;li&gt;Much improved performance when bisecting inbound (Julien)&lt;/li&gt;
- &lt;li&gt;Support for automatic determination on whether a build is good/bad via a custom script (Julien)&lt;/li&gt;
- &lt;li&gt;Tons of bug fixes and other robustness improvements (me, Sam, Julien, others&amp;#8230;)&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;Also thanks to Julien, we have a &lt;a href="http://mozilla.github.io/mozregression/"&gt;spiffy new website&lt;/a&gt; which documents many of these features. If it&amp;#8217;s been a while, be sure to &lt;a href="http://mozilla.github.io/mozregression/install.html"&gt;update your copy of mozregression to the latest version&lt;/a&gt; and check out the site for documentation on how to use the new features described above!&lt;/p&gt;
-
-&lt;p&gt;Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&amp;#8217;s just that much more useful to Firefox contributors everywhere.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;Green is e10s, red is non-e10s (the legend picture doesn&amp;#8217;t reflect this because we have yet to deploy a fix to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1130554"&gt;bug 1130554&lt;/a&gt;, but I promise I&amp;#8217;m not lying). As you can see, the gap has been closing (in particular, something landed in mid-January that improved the e10s numbers quite a bit), but page load times are still measurably slower with this feature enabled.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

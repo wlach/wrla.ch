@@ -185,6 +185,56 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/'>Automatically measuring startup / load time with Eideticker</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 17th, 2013</p>
+  </header>
+
+<p>So we&#8217;ve been using Eideticker to automatically measure startup/pageload times for about a year now on Android, and more recently on FirefoxOS as well (albeit not automatically). This gives us nice and pretty graphs like this:</p>
+
+<p><a href="/files/2013/10/flot-startup-times-gn.png"><img src="/files/2013/10/flot-startup-times-gn.png" alt="flot-startup-times-gn" width="620" height="568" class="alignnone size-full wp-image-986" srcset="/files/2013/10/flot-startup-times-gn-300x274.png 300w, /files/2013/10/flot-startup-times-gn.png 620w" sizes="(max-width: 620px) 100vw, 620px" /></a></p>
+
+<p>Ok, so we&#8217;re generating numbers and graphing them. That&#8217;s great. But what&#8217;s really going on behind the scenes? I&#8217;m glad you asked. The story is a bit different depending on which platform you&#8217;re talking about.</p>
+
+<p><strong>Android</strong></p>
+
+<p>On Android we connect Eideticker to the device&#8217;s HDMI out, so we count on a nearly pixel-perfect signal. In practice, it isn&#8217;t quite, but it is within a few RGB values that we can easily filter for. This lets us come up with a pretty good mechanism for determining when a page load or app startup is finished: just compare frames, and say we&#8217;ve &#8220;stopped&#8221; when the pixel differences between frames are negligible (previously defined at 2048 pixels, now 4096 &#8212; see below). Eideticker&#8217;s new frame difference view lets us see how this works. Look at this graph of application startup:</p>
+
+<p><a href="/files/2013/10/frame-difference-android-startup.png"><img src="/files/2013/10/frame-difference-android-startup.png" alt="frame-difference-android-startup" width="803" height="514" class="alignnone size-full wp-image-973" srcset="/files/2013/10/frame-difference-android-startup-300x192.png 300w, /files/2013/10/frame-difference-android-startup.png 803w" sizes="(max-width: 803px) 100vw, 803px" /></a>
+ <br /><a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe">[Link to original]</a></p>
+
+<p>What&#8217;s going on here? Well, we see some huge jumps in the beginning. This represents the animated transitions that Android makes as we transition from the SUTAgent application (don&#8217;t ask) to the beginnings of the FirefoxOS browser chrome. You&#8217;ll notice though that there&#8217;s some more changes that come in around the 3 second mark. This is when the site bookmarks are fully loaded. If you load the original page (link above) and swipe your mouse over the graph, you can see what&#8217;s going on for yourself.</p>
+
+<p>This approach is not completely without problems. It turns out that there is sometimes some minor churn in the display even when the app is for all intents and purposes started. For example, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=922770">sometimes the scrollbar fading out of view can result in a significantish pixel value change</a>, so I recently upped the threshold of pixels that are different from 2048 to 4096. We also recently encountered a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=926997">silly problem</a> with a random automation app displaying &#8220;toasts&#8221; which caused results to artificially spike. More tweaking may still be required. However, on the whole I&#8217;m pretty happy with this solution. It gives useful, undeniably objective results whose meaning is easy to understand.</p>
+
+<p><strong>FirefoxOS</strong></p>
+
+<p>So as mentioned previously, we use a camera on FirefoxOS to record output instead of HDMI output. Pretty unsurprisingly, this is much noisier. See this movie of the contacts app starting and note all the random lighting changes, for example:</p>
+
+<div style="width: 409px; " class="wp-video"><!--[if lt IE 9]><![endif]-->
+ <video class="wp-video-shortcode" id="video-972-1" width="409" height="580" preload="metadata" controls="controls">
+  <source type="video/webm" src="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm?_=1" /> <a href="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm">/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm</a></video></div>
+
+<p>My experience has been that pixel differences can be so great between visually identical frames on an eideticker capture on these devices that it&#8217;s pretty much impossible to settle on when startup is done using the frame difference method. It&#8217;s of course possible to detect very large scale changes, but the small scale ones (like the contacts actually appearing in the example above) are very hard to distinguish from random differences in the amount of light absorbed by the camera sensor. Tricks like using median filtering (a.k.a. &#8220;blurring&#8221;) help a bit, but not much. Take a look at this graph, for example:</p>
+
+<p><a href="/files/2013/10/plotly-contacts-load-pixeldiff.png"><img src="/files/2013/10/plotly-contacts-load-pixeldiff.png" alt="plotly-contacts-load-pixeldiff" width="531" height="679" class="alignnone size-full wp-image-980" srcset="/files/2013/10/plotly-contacts-load-pixeldiff-234x300.png 234w, /files/2013/10/plotly-contacts-load-pixeldiff.png 531w" sizes="(max-width: 531px) 100vw, 531px" /></a>
+ <br /><a href="https://plot.ly/~WilliamLachance/3">[Link to original]</a></p>
+
+<p>You&#8217;ll note that the pixel differences during &#8220;static&#8221; parts of the capture are highly variable. This is because the pixel difference depends heavily on how &#8220;bright&#8221; each frame is: parts of the capture which are black (e.g. a contacts icon with a black background) have a much lower difference between them than parts that are bright (e.g. the contacts screen fully loaded).</p>
+
+<p>After a day or so of experimenting and research, I settled on an approach which seems to work pretty reliably. Instead of comparing the frames directly, I measure the <a href="http://en.wikipedia.org/wiki/Entropy">entropy</a> of the <a href="http://en.wikipedia.org/wiki/Image_histogram">histogram</a> of colours used in each frame (essentially just an indication of brightness in this case, see <a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html">this article</a> for more on calculating it), then compare that of each frame with the average of the same measure over 5 previous frames (to account for the fact that two frames may be arbitrarily different, but that is unlikely that a sequence of frames will be). This seems to work much better than frame difference in this environment: although there are plenty of minute differences in light absorption in a capture from this camera, the overall color composition stays mostly the same. See this graph:</p>
+
+<p><a href="/files/2013/10/plotly-contacts-load-entropy.png"><img src="/files/2013/10/plotly-contacts-load-entropy.png" alt="plotly-contacts-load-entropy" width="546" height="674" class="alignnone size-full wp-image-979" srcset="/files/2013/10/plotly-contacts-load-entropy-243x300.png 243w, /files/2013/10/plotly-contacts-load-entropy.png 546w" sizes="(max-width: 546px) 100vw, 546px" /></a>
+ <br /><a href="https://plot.ly/~WilliamLachance/5">[Link to original]</a></p>
+
+<p>If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&#8217;s not nearly as pronounced as before. In practice, I&#8217;ve been able to get extremely consistent numbers with a reasonable &#8220;threshold&#8221; of &#8220;0.05&#8221;.</p>
+
+<p>In Eideticker I&#8217;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &#8220;pixel differences&#8221; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&#8217;t count on light composition changing the same way for those cases. My initial thought was to use <a href="http://en.wikipedia.org/wiki/Edge_detection">edge detection</a> (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Responsiveness.html">Responsiveness</a></span></p>
     <h2><a href='/blog/2013/10/first-eideticker-responsiveness-tests/'>First Eideticker Responsiveness Tests</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 7th, 2013</p>
@@ -469,46 +519,6 @@
 <p>The main use case I see with eideticker-on-panda would be where we wanted to run a suite of tests on checkin (in tbpl-like fashion) and we&#8217;d need to scale to many devices. While cool, this sounds like an expensive project (both in terms of time and hardware) and I think we&#8217;d do better with getting something slightly smaller-scale running first.</p>
 
 <p>So, the real question is whether or not the capture produced by the Elmo is amenable to the same analysis that we do on the raw HDMI output. At the very least, some of eideticker&#8217;s image analysis code will have to be adapted to handle a much &#8220;noisier&#8221; capture. As opposed to capturing the raw HDMI signal, we now have to deal with the real world and its irritating fluctuations in ambient light levels and all that the rest. I have no doubt it is *possible* to compensate for this (after all this is what the human eye/brain does all the time), but the question is how much work it will be. Can&#8217;t speak for anyone else at Mozilla, but I&#8217;m not sure if I really have the time to start a Ph.D-level research project in computational vision. 😉 I&#8217;m optimistic that won&#8217;t be necessary, but we&#8217;ll just have to wait and see.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/10/using-the-dm-utility-to-interact-with-android-or-firefoxos-devices/'>Using the dm utility to interact with Android or FirefoxOS devices</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 18th, 2012</p>
-  </header>
-
-<p>I promised a few people I&#8217;d blog about this, so here you go.</p>
-
-<p>To help with the business of making Android or FirefoxOS devices do our bidding, <a href="https://wiki.mozilla.org/Auto-tools">Mozilla Automation &#38; Tools</a> developed a Python library called <a href="https://github.com/mozilla/mozbase/tree/master/mozdevice">mozdevice</a> which allows you to control these devices either using the Android Debug Bridge protocol (which is actually not Android specific: FirefoxOS devices use it too) or the <a href="https://wiki.mozilla.org/Auto-tools/Projects/SUTAgent">System Under Test protocol</a> (a Mozilla-specific thing).</p>
-
-<p>Anyone familiar with debugging these devices is doubtless familiar with adb, which provides a command line interface that allows you to push/pull files, run a shell, etc. To help test our python code (as well as expand the scope of what&#8217;s possible on the command line), I created a similar utility a few months ago called &#8220;dm&#8221; which provides a command-line interface to the aforementioned mozdevice code. It&#8217;s shipped as part of mozdevice, and testing it out is pretty simple if you have virtualenv installed:</p>
-
-<pre><code>virtualenv mozdevice
-cd mozdevice
-./bin/pip install mozdevice
-source bin/activate
-dm --help</code></pre>
-
-<p>I generally use this utility for two things:</p>
-
-<ol>
- <li>
-  <p>Testing out mozdevice code. For example, today we discovered an (unfortunate) <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=803177">bug</a> in devicemanagerADB&#8217;s killProcess routine. It was easy to verify both the problem and my fix did what I expected by starting my custom build of fennec and running this command:</p>
-  <pre><code>dm --package-name org.mozilla.fennec_wlach killapp org.mozilla.fennec_wlach</code></pre>
-  <p>(yes, it&#8217;s a bit unfortunate that this bug occurred in the first place: devicemanagerADB really needs unit tests)</p></li>
- <li>
-  <p>Day-to-day menial tasks, like getting device info/status, capturing screenshots, etc. You can get a full list of what this utility is capable of by running &#8211;help. E.g.:</p>
-  <p>``` (mozbase)wlach@eideticker:~/src/eideticker$ dm &mdash;help Usage: dm [options] &lt;command&gt; [&lt;args&gt;]</p></li></ol>
-
-<p>device commands:  info [os|id|uptime|systime|screen|memory|processes] - get  information on a specified aspect of the device (if no argument  given, print all available information)  install &lt;file&gt; - push this package file to the device and install it  killapp &lt;process name&gt; - kills any processes with a particular name  on device  launchapp &lt;appname&gt; &lt;activity name&gt; &lt;intent&gt; &lt;URL&gt; - launches  application on device  ls &lt;remote&gt; - list files on device  ps - get information on running processes on device  pull &lt;local&gt; [remote] - copy file/dir from device  push &lt;local&gt; &lt;remote&gt; - copy file/dir to device  rm &lt;remote&gt; - remove file from device  rmdir &lt;remote&gt; - recursively remove directory from device  screencap &lt;png file&gt; - capture screenshot of device in action  shell &lt;command&gt; - run shell command on device</p>
-
-<p>Options:  -h, &mdash;help show this help message and exit  -v, &mdash;verbose Verbose output from DeviceManager  &mdash;host=HOST Device hostname (only if using TCP/IP)  -p PORT, &mdash;port=PORT Custom device port (if using SUTAgent or adb-over-tcp)  -m DMTYPE, &mdash;dmtype=DMTYPE  DeviceManager type (adb or sut, defaults to adb)  -d HWID, &mdash;hwid=HWID HWID  &mdash;package-name=PACKAGENAME  Packagename (if using DeviceManagerADB) ```</p>
-
-<pre><code>Before you ask, yes, it&amp;#8217;s technically possible to do much of this with the original adb utility. But (1) some of our internal stuff can&amp;#8217;t use adb a variety of reasons and (2) some of the tasks above (e.g. launching an app, getting a screenshot) involve considerably more typing with adb than with dm. So it&amp;#8217;s still a win. &lt;/li&gt; &lt;/ol&gt; 
-
-Happy command-lining!</code></pre>
 
 </article>
 

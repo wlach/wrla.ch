@@ -185,6 +185,51 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2012/04/eideticker-with-less-eideticker/'>Eideticker with less eideticker</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 24th, 2012</p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+
+<p>tl;dr: You can now run the standard eideticker benchmarks easily on any Android phone without any kind of specialized hardware.</p>
+
+<p>So Eideticker is pretty great at comparing relative performance between different browsers and generally measuring things in an absolutely neutral way. Unfortunately it&#8217;s a bit of a pain to use it at the moment to catch regressions: the software still has a few bugs and encoding/decoding/analyzing the capture still takes a great deal of time. Not to mention the fact that it currently requires specialized hardware (though that will soon be less of a concern at least inside MoCo, where we have a bunch of Eideticker boxes on order for the Toronto and Mountain View offices).</p>
+
+<p>A few months ago, Chris Lord wrote up some great code to internally measure the amount of checkerboarding going on in Fennec. I&#8217;ve thought for a while that it would be a neat idea to hook this up to the Eideticker harness, and today I finally did so. After installing Eideticker, you can now run the benchmark on any machine against an arbitrary fennec build just by typing this from the eideticker root directory:</p>
+
+<pre><code>adb shell setprop log.tag.GeckoLayerRendererProf DEBUG
+./bin/get-metric-for-build.py --no-capture --get-internal-checkerboard-stats --num-runs 3 nightly.apk src/tests/scrolling/taskjs.org/index.html</code></pre>
+
+<p>In return, you&#8217;ll get some nice clean results like this:</p>
+
+<pre><code>=== Internal Checkerboard Stats (sum of percents, not percentage) ===
+[167.34348, 171.871015, 175.3420296]</code></pre>
+
+<p>Just to be sure that the results were comparable, I did a quick set of runs on the Eideticker machine in Mountain View with both internal checkerboard statistics gathering and HDMI capturing enabled.</p>
+
+<table>
+ <tr>
+  <td>Stats file</td> 
+  <td>HDMI capturing</td></tr>
+ <tr>
+  <td>167.34348</td> 
+  <td>177.022</td></tr>
+ <tr>
+  <td>171.87</td> 
+  <td>184.46</td></tr>
+ <tr>
+  <td>175.34</td> 
+  <td>184.44</td></tr></table>
+
+<p>While the results aren&#8217;t identical (we measure number of frames differently inside Fennec than we do with Eideticker, for one thing), they do seem roughly correlated. So go forth, benchmark and tweak! 😉</p>
+
+<p>P.S. If you&#8217;ve been following mobile automation, you might be asking why I don&#8217;t just suggest running Talos and Robocop on your workstation. Can&#8217;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&#8217;re much more involved to set up and use at the moment. Arguably they shouldn&#8217;t be, and this is something we (<a href="https://wiki.mozilla.org/Auto-tools/">Mozilla tools &amp; automation</a>) need to work on. We&#8217;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/GoFaster.html">GoFaster</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Release-Engineering.html">Release Engineering</a></span></p>
     <h2><a href='/blog/2012/04/gofaster-dashboard-back-online/'>GoFaster dashboard back online</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 19th, 2012</p>
@@ -419,31 +464,6 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 <video src="/files/eideticker/eideticker-2011-12-21.webm" width="600px" controls="controls"></video>
 
 <p>Happy holidays!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2011/12/eideticker-areas-to-explore/'>Eideticker areas to explore</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Dec 9th, 2011</p>
-  </header>
-
-<p>So I got some nice feedback on my <a href="http://wrla.ch/blog/2011/12/eideticker-update/">Eideticker post</a> yesterday on various channels. It seems like some people are interested in hacking on the analysis portion, so I thought I&#8217;d give some quick pointers and suggestions of things to look at.</p>
-
-<ol>
- <li>As I mentioned yesterday, the frame analysis is rather stupid. We need to come up with a better algorithm for disambiguating input noise (small fluctuations in the HDMI signal?) from actual changes in the page. Unfortunately the breadth of things that Eideticker&#8217;s meant to analyze makes this a bit difficult. I.e. edge detection probably wouldn&#8217;t work for something like Microsoft&#8217;s <a href="http://ie.microsoft.com/testdrive/performance/psychedelicbrowsing/Default.html">psychedelic browsing demo</a>. I suspect the best route here is to put some work into better understanding the nature of this &#8220;noise&#8221; and finding a way to filter it out explicitly.</li>
- <li>Our analysis code is still rather slow, and is crying out to be parallelized (either by using multiple cores of the same CPU or a GPU). Burak Yiğit Kaya recommended I look into <a href="http://mathema.tician.de/software/pycuda">PyCuda</a> which looks interesting. It looks like there are other possibilities as well though.</li>
- <li>Clipping capture by green screen/red screen. This should be doable by writing some relatively simple code to detect large amounts of green and red and then ignoring previous/current/subsequent frames as appropriate.</li>
- <li>Moar test cases! It was initially suggested to use some of the classic benchmarks, but these only seem to barely work on Fennec (at least with the setup I have). I don&#8217;t know if this is fixable or not, but until it is, we might be better off coming up with more reasonable/realistics measures of visual performance.</li></ol>
-
-<p>You might be able to find other inspiration on the <a href="https://wiki.mozilla.org/Project_Eideticker">Eideticker project page</a> (note that some of this is out of date).</p>
-
-<p>You obviously need the decklink card to perform captures, but the analysis portion of Eideticker can be used/modified on any machine running Linux (Mac should also work, but is untested). To get up and running, just follow the instructions in <a href="https://github.com/mozilla/eideticker/blob/master/README.md">README.md</a>, dump a pregenerated capture into the captures/ directory (here&#8217;s <a href="http://people.mozilla.com/~wlachance/clock.zip">one</a> of a clock), and off you go! The actual analysis code (such as it is) is currently located in <a href="https://github.com/mozilla/eideticker/blob/master/src/videocapture/videocapture/capture.py">src/videocapture/videocapture/capture.py</a> while the web interface is in <a href="https://github.com/mozilla/eideticker/blob/master/src/webapp">https://github.com/mozilla/eideticker/blob/master/src/webapp</a>.</p>
-
-<p>I&#8217;m going to be out later today (Friday), but I&#8217;m mostly around on IRC M-F 9ish&ndash;5ish EST on irc.mozilla.org #ateam as `wlach`. Feel free to pester me with questions!</p>
-
-<p>P.S. I didn&#8217;t really cover infrastructure/automation portions above as I suspect people will find that less interesting (especially without a video capture card to test with), but you can look at my <a href="http://groups.google.com/group/mozilla.tools/browse_thread/thread/a469b7909af589de#">newsgroup post</a> from yesterday if you want to see what I&#8217;ll likely be up to over the next few weeks.</p>
 
 </article>
 

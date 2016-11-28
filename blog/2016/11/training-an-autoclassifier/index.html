@@ -3,14 +3,14 @@
   <head>
 
     <meta charset="utf-8">
-    <title>Posts tagged 'Treeherder'</title>
-    <meta name="description" content="Posts tagged 'Treeherder'">
+    <title>Training an autoclassifier</title>
+    <meta name="description" content="Here at Mozilla, we've accepted that a certain amount of intermittent failure in our automated testing of Firefox is to be expected. That is, for every push, a subset of the tests that we run will fail for reasons that have nothing to do with the quality ...">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Treeherder">
+    <meta name="keywords"    content="Mozilla, Treeherder">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/tags/Treeherder.html">
-
+    <link rel="canonical" href="https://wlach.github.io/blog/2016/11/training-an-autoclassifier/">
+    <link rel="next" href="/blog/2016/10/slow-treeherder-fast-treeherder/">
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
@@ -19,9 +19,9 @@
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
     <!-- Feeds -->
     <link rel="alternate" type="application/atom+xml"
-          href="/feeds/Treeherder.atom.xml" title="Atom Feed">
+          href="/feeds/all.atom.xml" title="Atom Feed">
     <link rel="alternate" type="application/rss+xml"
-          href="/feeds/Treeherder.rss.xml" title="RSS Feed">
+          href="/feeds/all.rss.xml" title="RSS Feed">
     <!-- JS -->
     <script type="text/javascript">
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -169,8 +169,8 @@
             <li>
               <a href="/About.html">About</a>
             </li> 
-            <li><a href="/feeds/Treeherder.atom.xml">Atom</a></li>
-            <li><a href="/feeds/Treeherder.rss.xml">RSS</a></li>
+            <li><a href="/feeds/all.atom.xml">Atom</a></li>
+            <li><a href="/feeds/all.rss.xml">RSS</a></li>
           </ul>
         </div>
       </div>
@@ -181,12 +181,12 @@
         <!-- Main column -->
         <div id="content" class="col-md-12">
 
-          <h1>Posts tagged <em>Treeherder</em></h1>
+
 
           <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a></span></p>
-    <h2><a href='/blog/2016/11/training-an-autoclassifier/'>Training an autoclassifier</a></h2>
+    <h1>Training an autoclassifier</h1>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 28th, 2016</p>
   </header>
 
@@ -370,33 +370,27 @@
  <li>Using the structured log data inside the database as input to a classifier. Structured log data here is much more regular and denser than the free text that we&rsquo;re using. Even if it isn&rsquo;t explicitly classified, we may well get better results by using it as our input data.</li></ol>
 
 <p>If you&rsquo;d like to experiment with the data and/or code, I&rsquo;ve put it up on a <a href="https://github.com/wlach/treeherder-classifier">github repository</a>.</p>
+  <footer>
+    <hr/>
+    <script type="text/javascript">
+      var disqus_shortname = 'wlach';
+      (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <div id="disqus_thread"></div>
+    <ul class="pager">
 
+    <li class="next">
+      <a href="/blog/2016/10/slow-treeherder-fast-treeherder/"><em>Slow Treeherder, Fast Treeherder</em> &rarr;</a>
+    </li>
+    </ul>
+  </footer>
 </article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a>, <a href="/tags/Performance.html">Performance</a></span></p>
-    <h2><a href='/blog/2016/10/slow-treeherder-fast-treeherder/'>Slow Treeherder, Fast Treeherder</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 3131, 2016</p>
-  </header>
-
-<p>Just wanted to talk about some recent performance improvements we&rsquo;ve made recently to <a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Treeherder">Treeherder</a>:</p>
-
-<ul>
- <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1311511">Bug 1311511</a>: Changed the repository endpoint so we don&rsquo;t do 40 redundant database  queries (this was generally innocuous, but could delay loading by  400ms if the database was under heavy load).</li>
- <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1310016">Bug 1310016</a>: Persisted database connections across requests (this  can save ~40&ndash;50ms per request, of which there can be 5&ndash;10  when loading a Treeherder page).</li>
- <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1308782">Bug 1308782</a>: <em>Don&rsquo;t</em> download job type and group information  from the server to get a &ldquo;sorting order&rdquo; for the job lists. This was  never necessary, but it&rsquo;s gotten exponentially more painful as  people have added job types to Treeherder (job type information is  now around a megabyte of JSON these days). This saves 5&ndash;10 seconds on a  typical page load.</li></ul>
-
-<p>There&rsquo;s more to come, but with these changes Treeherder should be faster for everyone to load. It should be particularly noticeable on try pushes, where the last item was by far the largest bottleneck. Here&rsquo;s a youtube video of the changes:</p>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xNJGoZhA4Vs" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-
-<p>The original is on the left. The newer, faster Treeherder is on the right. Pay particular attention to how much faster the job information populates.</p>
-
-<p>Moral of the story? Optimization can be helpful, but it&rsquo;s better if you can avoid doing the work altogether.</p>
-
-</article>
-
         </div>
       </div>
       <footer>

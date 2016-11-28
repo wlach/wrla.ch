@@ -185,6 +185,28 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/'>Announcing the Eideticker mobile performance dashboard</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 16th, 2012</p>
+  </header>
+
+<p>Over the last while, Clint Talbert and I have been working on setting up automatic mobile performance tests using Eideticker (a framework to measure perceived Firefox performance by video capturing automated browser interactions: for more information, see my <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">earlier post</a>).</p>
+
+<p>There&#8217;s many reasons why this is interesting, but probably the most important one is that it can measure differences reliably across different types of mobile browsers. Currently I&#8217;m testing the old XUL fennec, the Android stock browser, and the latest nightlies.</p>
+
+<p>I&#8217;m pleased to announce that the first iteration of the dashboard is available for public consumption, on my site.</p>
+
+<p><a href="http://wrla.ch/eideticker/dashboard/#/canvas">http://wrla.ch/eideticker/dashboard/#/canvas</a></p>
+
+<div class="figure"><img src="/files/2012/03/eideticker-results.png" alt="Eideticker Results" />
+ <p class="caption">Eideticker Results</p></div>
+
+<p>The demo is pretty cheesey (just click on any of the datapoints to see the video capture), but nonetheless does seem to illustrate some interesting differences between the three browsers. The big jump in performance for nightly comes from the landing of the Maple branch, which happened earlier this week. Hopefully this validates some of the work that the mobile/graphics team has been doing over the past while. Exciting times!</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Pandaboard.html">Pandaboard</a></span></p>
     <h2><a href='/blog/2012/02/playing-with-pandas/'>Playing with pandas</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 10th, 2012</p>
@@ -417,19 +439,6 @@
 <p>Who should care? Well, we maintain all the major testing frameworks like Mochitest, Reftest, and Talos as well as automated tooling for QA like <a href="https://developer.mozilla.org/en/Mozmill">Mozmill</a>. Our latest work is focused on making sure that Firefox is as robust, responsive, and performant as possible on desktop and mobile. In short, if you&#8217;re writing or verifying code from mozilla-central, what we&#8217;re doing probably affects you. Please let us know what you think about our projects and whether there&#8217;s anything we can do to make your job easier: we&#8217;re listening.</p>
 
 <p><strong>Quick bonus note</strong>: It&#8217;s not immediately obvious (or at least it wasn&#8217;t to me), but Mozilla has some fairly finely tuned infrastructure for running planets. If your team or group wants one, it&#8217;s definitely better to plug into that instead of rolling your own. 😉 Reed Loden is the maintainer and the source <a href="http://viewvc.svn.mozilla.org/vc/projects/planet/">lives in subversion</a>.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Business.html">Business</a>, <a href="/tags/Usability.html">Usability</a></span></p>
-    <h2><a href='/blog/2011/11/hellofax-rocks-my-world/'>Hellofax rocks my world</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 18th, 2011</p>
-  </header>
-
-<p>It&#8217;s kind of rare for me to pimp out products and services on my blog, but I&#8217;m going to do so just this once.</p>
-
-<p>I really despise faxes, but occasionally I do have to send them in the course of some of the admin work I still do on the side for my old consulting company (address changes, etc.). If you&#8217;re in a similar boat, you really owe it to yourself to check out <a href="http://hellofax.com">hellofax.com</a>. It&#8217;s about three gazillion times better than any other similar service that I&#8217;ve tried (which were all embarassingly bad: I&#8217;d sooner just go to a copy shop) and has saved me hours and hours of time and frustration.</p>
 
 </article>
 
