@@ -4,9 +4,22 @@
   <title>William Lachance's Log: Posts tagged 'Treeherder'</title>
   <description>William Lachance's Log: Posts tagged 'Treeherder'</description>
   <link>https://wlach.github.io/tags/Treeherder.html</link>
-  <lastBuildDate>Mon, 28 Nov 2016 21:29:47 UT</lastBuildDate>
-  <pubDate>Mon, 28 Nov 2016 21:29:47 UT</pubDate>
+  <lastBuildDate>Tue, 07 Feb 2017 18:36:09 UT</lastBuildDate>
+  <pubDate>Tue, 07 Feb 2017 18:36:09 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Cancel all the things</title>
+   <link>https://wlach.github.io/blog/2017/02/cancel-all-the-things/?utm_source=Treeherder&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2017-02-cancel-all-the-things</guid>
+   <pubDate>Tue, 07 Feb 2017 18:36:09 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;I just added a feature to Treeherder which lets you cancel a set of jobs (say, from a botched try push) much more easily. I&amp;rsquo;m hopeful that this will be helpful in keeping our resource usage on try more under control.&lt;/p&gt;
+
+&lt;p&gt;It uses the &amp;ldquo;pinboard&amp;rdquo; feature of Treeherder which very few people are familiar with, so I made a very short video tutorial on how to make use of this feature and put it on the Joy of Automation channel:&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/ryzsy38yw5A" frameborder="0" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Happy cancelling!&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Training an autoclassifier</title>
    <link>https://wlach.github.io/blog/2016/11/training-an-autoclassifier/?utm_source=Treeherder&amp;utm_medium=RSS</link>

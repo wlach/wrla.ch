@@ -185,6 +185,23 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
+    <h2><a href='/blog/2013/11/mozregression-now-supports-inbound-builds/'>mozregression now supports inbound builds</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 28th, 2013</p>
+  </header>
+
+<p>Just wanted to send out a quick note that I recently added inbound support to <a href="http://mozilla.github.io/mozregression/">mozregression</a> for desktop builds of Firefox on Windows, Mac, and Linux.</p>
+
+<p>For the uninitiated, mozregression is an automated tool that lets you bisect through builds of Firefox to find out when a problem was introduced. You give it the last known good date, the last known bad date and off it will go, automatically pulling down builds to test. After each iteration, it will ask you whether this build was good or bad, update the regression range accordingly, and then the cycle repeats until there are no more intermediate builds.</p>
+
+<p>Previously, it would only use nightlies which meant a one day granularity &#8212; this meant pretty wide regression ranges, made wider in the last year by the fact that so much more is now going into the tree over the course of the day. However, with inbound support (using the new inbound archive) we now have the potential to get a much tighter range, which should be super helpful for developers. Best of all, mozregression doesn&#8217;t require any particularly advanced skills to use which means everyone in the Mozilla community can help out.</p>
+
+<p>For anyone interested, there&#8217;s quite a bit of scope to improve mozregression to make it do more things (FirefoxOS support, easier installation&#8230;). Feel free to check out <a href="http://github.com/mozilla/mozregression">the repository</a>, the <a href="https://github.com/mozilla/mozregression/issues?state=open">issues list</a> (I just added <a href="https://github.com/mozilla/mozregression/issues/76">an easy one</a> which would make a great first bug) and ask questions on irc.mozilla.org#ateam!</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/'>Automatically measuring startup / load time with Eideticker</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 17th, 2013</p>
@@ -471,54 +488,6 @@
 <p>To be clear, with the exception of the Elmo all the devices above seem like fine cameras, and should more than do for manual captures of B2G or Android phones (which is something we probably want to do anyway). But for Eideticker, we need something that works in automation, and none of the above fit the bill. I guess I could explore using a &#8220;real&#8221; video camera as opposed to a DSLR acting like one, though I suspect I might run into some of the same sorts of issues depending on how the HDMI output of those devices behaves.</p>
 
 <p>Part of me wonders whether a custom solution wouldn&#8217;t work better. How complicated could it be to construct your own digital camera anyway? 😉 Hook up a fancy camera sensor to a <a href="http://pandaboard.org">pandaboard</a>, get it to output through the HDMI port, and then we&#8217;re set? Or better yet, maybe just get a fancy webcam like the <a href="http://en.wikipedia.org/wiki/PlayStation_Eye">Playstation Eye</a> and hook it up directly to a computer? That would eliminate the need for our expensive video capture card setup altogether.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2013/02/eideticker-for-firefoxos/'>Eideticker for FirefoxOS</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 1st, 2013</p>
-  </header>
-
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
-
-<p>Here&#8217;s a long overdue update on where we&#8217;re at with Eideticker for FirefoxOS. While we&#8217;ve had a good amount of success getting <a href="http://eideticker.wrla.ch">useful, actionable data</a> out of Eideticker for Android, so far we haven&#8217;t been able to replicate that success for FirefoxOS. This is not for lack of trying: first, <a href="http://nakubu.com/">Malini Das</a> and then me have been working at it since summer 2012.</p>
-
-<p>When it comes right down to it, instrumenting Eideticker for B2G is just a whole lot more complex. On Android, we could take the operating system (including support for all the things we needed, like HDMI capture) as a given. The only tricky part was instrumenting the capture so the right things happened at the right moment. With FirefoxOS, we need to run these tests on entire builds of a whole operating system which was constantly changing. Not nearly as simple. That said, I&#8217;m starting to see light at the end of the tunnel.</p>
-
-<p><strong>Platforms</strong></p>
-
-<p>We initially selected the <a href="http://pandaboard.org">pandaboard</a> as the main device to use for eideticker testing, for two reasons. First, it&#8217;s the same hardware platform we&#8217;re targeting for other b2g testing in tbpl (mochitest, reftest, etc.), and is the platform we&#8217;re using for running Gaia UI tests. Second, unlike every other device that we&#8217;re prototyping FirefoxOS on (to my knowledge), it has HDMI-out capability, so we can directly interface it with the Eideticker video capture setup.</p>
-
-<p>However, the panda also has some serious shortcomings. First, it&#8217;s obviously not a platform we&#8217;re shipping, so the performance we&#8217;re seeing from it is subject to different factors that we might not see with a phone actually shipped to users. For the same reason, we&#8217;ve had many problems getting B2G running reliably on it, as it&#8217;s not something most developers have been hacking on a day to day basis. Thanks to the heroic efforts of Thomas Zimmerman, we&#8217;ve mostly got things working ok now, but it was a fairly long road to get here (several months last fall).</p>
-
-<p>More recently, we became aware of something called an <a href="http://www.elmousa.com/">Elmo</a> which might let us combine
- <br />the best of both worlds. An elmo is really just a tiny mounted video camera with a bunch of outputs, and is I understand most commonly used to project documents in a classroom/presentation setting. However, it seems to do a great job of capturing mobile phones in action as well.</p>
-
-<video width="400px" src="/files/eideticker/startup-test-elmo.webm" controls="controls"></video>
-
-<p>The nice thing about using an external camera for the video capture part of eideticker is that we are no longer limited to devices with HDMI out &#8212; we can run the standard set of automated tests on ANYTHING. We&#8217;ve already used this to some success in getting some videos of FirefoxOS startup times versus Android on the Unagi (a development phone that we&#8217;re using internally) for manual analysis. Automating this process may be trickier because of the fact that the video capture is no longer &#8220;perfect&#8221;, but we may be able to work around that (more discussion about this later).</p>
-
-<p><strong>FirefoxOS web page tests</strong></p>
-
-<p>These are the same tests we run on Android. They should give us an idea of roughly where our performance when browsing / panning web sites like CNN. So far, I&#8217;ve only run these tests on the Pandaboard and they are INCREDIBLY slow (like 1&ndash;3 frames per second when scrolling). So much so that I have to think there is something broken about our hardware acceleration on this platform.</p>
-
-<p><strong>FirefoxOS application tests</strong></p>
-
-<p>These are some new tests written in a framework that allows you to script arbitrary interactions in FirefoxOS, like launching applications or opening the task switcher.</p>
-
-<p>I&#8217;m pretty happy with this. It seems to work well. The only problems I&#8217;m seeing with this is with the platform we&#8217;re running these tests on. With the pandaboard, applications look weird (since the screen resolution doesn&#8217;t remotely resemble the 320&#215;480 resolution on our current devices) and performance is abysmal. Take, for example, this capture of application switching performance, which operates only at roughly 3&ndash;4 fps:</p>
-
-<video width="400px" src="/files/eideticker/b2g-appswitching-video.webm" controls="controls"></video>
-
-<p><strong>So what now?</strong></p>
-
-<p>I&#8217;m not 100% sure yet (partly it will depend on what others say as well as my own investigation), but I have a feeling that capturing video of real devices running FirefoxOS using the Elmo is the way forward. First, the hardware and driver situation will be much more representative of what we&#8217;ll actually be shipping to users. Second, we can flash new builds of FirefoxOS onto them automatically, unlike the pandaboards where you currently either need to manually flash and reset (a time consuming and error prone process) or set up an instance of <a href="https://github.com/djmitche/mozpool">mozpool</a> (which I understand is quite complicated).</p>
-
-<p>The main use case I see with eideticker-on-panda would be where we wanted to run a suite of tests on checkin (in tbpl-like fashion) and we&#8217;d need to scale to many devices. While cool, this sounds like an expensive project (both in terms of time and hardware) and I think we&#8217;d do better with getting something slightly smaller-scale running first.</p>
-
-<p>So, the real question is whether or not the capture produced by the Elmo is amenable to the same analysis that we do on the raw HDMI output. At the very least, some of eideticker&#8217;s image analysis code will have to be adapted to handle a much &#8220;noisier&#8221; capture. As opposed to capturing the raw HDMI signal, we now have to deal with the real world and its irritating fluctuations in ambient light levels and all that the rest. I have no doubt it is *possible* to compensate for this (after all this is what the human eye/brain does all the time), but the question is how much work it will be. Can&#8217;t speak for anyone else at Mozilla, but I&#8217;m not sure if I really have the time to start a Ph.D-level research project in computational vision. 😉 I&#8217;m optimistic that won&#8217;t be necessary, but we&#8217;ll just have to wait and see.</p>
 
 </article>
 

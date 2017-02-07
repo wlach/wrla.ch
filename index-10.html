@@ -185,6 +185,38 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Free-Software.html">Free Software</a>, <a href="/tags/hbus.html">hbus</a>, <a href="/tags/Open-Data.html">Open Data</a>, <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
+    <h2><a href='/blog/2011/04/routez-opensourced/'>Routez opensourced</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 19th, 2011</p>
+  </header>
+
+<p>Just a quick note to say that I just opensourced the software behind <a href="http://hbus.ca">hbus.ca</a>, nicknamed &#8220;Routez&#8221; under the <a href="http://www.affero.org/oagpl.html">Affero GPL</a>. You can get the code on <a href="http://github.com/wlach/routez">github</a>.</p>
+
+<p><a href="http://wrla.ch/blog/2011/04/routez-opensourced/hbus_shot_apr_2011/" rel="attachment wp-att-238"><img src="/files/2011/04/hbus_shot_apr_2011.png" alt="" title="hbus_shot_apr_2011" width="300" height="225" class="aligncenter size-full wp-image-238" /></a></p>
+
+<p>For those new to the project, hbus.ca is a generic trip planning / transit information site for Halifax, Nova Scotia written using the <a href="http://www.django-project.com">Django</a> web framework. It currently has two main features:</p>
+
+<ul>
+ <li>A trip planning front-end much like Google Transit (built from the ground up using the <a href="http://github.com/wlach/libroutez">libroutez</a> library).</li>
+ <li>A &#8220;nearby&#8221; routes feature which gives you all the bus departures near a particular location.</li></ul>
+
+<p>On the backend, both of these features are accessible via JSON APIs, for use in transit apps, etc. <a href="http://transittogo.mindsea.ca">Transit to Go</a> uses these to great effect.</p>
+
+<p>There is nothing particularly Halifax-specific to the underlying Routez software, aside from various references in the web front end to Halifax and hbus.ca. In fact, we use Routez to provide information for Transit to Go Edmonton right now, with no modification.</p>
+
+<p>Originally my plan was to release something that was completely generic out of the box so that anyone could trivially make up a version of this site for their favourite city. I&#8217;ve made some headway towards that goal over the last week or so, but there&#8217;s still some ways to go. There&#8217;s basically two major issues:</p>
+
+<ol>
+ <li>The geocoder depends on information gleaned from the geobase road network dataset. The intent behind this is noble (provide an end-to-end solution that doesn&#8217;t depend on third parties) but in practice this limits the software&#8217;s usefulness. It would be better to optionally allow a Routez-based site to use Google&#8217;s geocoder on the front-end. Unfortunately, to comply with Google&#8217;s terms of service, we&#8217;d also need to use their Maps API for the base map as well. Perhaps the best option here would be to use something like <a href="http://mapstraction.com">Mapstraction</a> to allow users to select their preferred mapping provider.
+  <br /></li>
+ <li>The trip planning software used in the backend, libroutez, is getting a bit long in the tooth and is quite finicky about what kind of data it will accept. I think the long-term solution to this is to switch to <a href="http://graphserver.github.com/graphserver/">Graphserver</a> (which is more mature and better supported), but some features would have to be added to it to support the kind of things that Routez needs (like a list of upcoming departures at a particular transit stop).</li></ol>
+
+<p>Even with these problems, I figured it would be better to open up what I have for people to check out and play with. Have a look and let me know what you think!</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Free-Software.html">Free Software</a>, <a href="/tags/iphone.html">iphone</a>, <a href="/tags/Montreal.html">Montreal</a>, <a href="/tags/Open-Data.html">Open Data</a>, <a href="/tags/Usability.html">Usability</a></span></p>
     <h2><a href='/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile/'>D&eacute;chets Montr&eacute;al goes mobile</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 19th, 2011</p>
@@ -388,19 +420,6 @@
 
 </article>
 
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/.html"></a></span></p>
-    <h2><a href='/blog/2010/03/nexus-one/'>Nexus One</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 16th, 2010</p>
-  </header>
-
-<p>Oh glorious day, the Nexus One is <a href="http://googlenexusoneboard.blogspot.com/2010/03/nexus-one-now-compatible-with-at-3g.html">now available</a> for purchase in Canada!</p>
-
-<p>I&#8217;ve been feeling less and less enthusiastic about the iPhone lately, in particular after the <a href="http://lwn.net/Articles/376793/">ridiculous lawsuit against HTC</a>. It&#8217;s no secret that we at <a href="http://navarra.ca">Navarra</a> have been doing quite a bit of work on that platform, as have my associates at <a href="http://mindsea.ca">Mindsea</a>. As long as there&#8217;s demand from our clients, that won&#8217;t change, but as an individual I&#8217;m feeling less and less enthusiastic about supporting a company that (through its actions) demonstrates hostility to the ideals of autonomy and innovation that I hold dear. Now that an attractive alternative is available on reasonable terms, I&#8217;m seriously considering switching horses in the not-too-distant future.</p>
-
-</article>
-
 <footer>
  <ul class="pagination">
   <li><a href="/index-9.html">
@@ -416,6 +435,7 @@
   <li><a href="/index-9.html">9</a></li>
   <li class="active"><a href="/index-10.html">10</a></li>
   <li><a href="/index-11.html">11</a></li>
+  <li><a href="/index-12.html">12</a></li>
   <li><a href="/index-11.html">
     <quote>&rarr;</quote></a></li></ul></footer>
         </div>

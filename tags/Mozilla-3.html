@@ -185,6 +185,32 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/'>Hacking on the Treeherder front end: refreshingly easy</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 11th, 2014</p>
+  </header>
+
+<p>Over the past two weeks, I&#8217;ve been working a bit on the <a href="http://treeherder.mozilla.org">Treeherder</a> front end (our interface to managing build and test jobs from mercurial changesets), trying to help get things in shape so that the sheriffs can feel comfortable transitioning to it from <a href="https://tbpl.mozilla.org/">tbpl</a> by the end of the quarter.</p>
+
+<p>One thing that has pleasantly surprised me is just how easy it&#8217;s been to get going and be productive. The process looks like this on Linux or Mac:</p>
+
+<p><code>&lt;br /&gt;
+git clone https://github.com/mozilla/treeherder-ui.git&lt;br /&gt;
+cd treeherder-ui/webapp&lt;br /&gt;
+./scripts/web-server.js&lt;br /&gt;</code></p>
+
+<p>Then just load http://localhost:8000 in your favorite web browser (Firefox) and you should be good to go (it will load data from the actually treeherder site). If you want to make modifications to the HTML, Javascript, or CSS just go ahead and do so with your favorite editor and the changes will be immediately reflected.</p>
+
+<p>We have a fair backlog of issues to get through, many of them related to the front end. If you&#8217;re interested in helping out, please have a look:</p>
+
+<p><a href="https://wiki.mozilla.org/Auto-tools/Projects/Treeherder#Bugs_.26_Project_Tracking">https://wiki.mozilla.org/Auto-tools/Projects/Treeherder#Bugs_.26_Project_Tracking</a></p>
+
+<p>If nothing jumps out at you, please drop by irc.mozilla.org #treeherder and we can probably find something for you to work on. We&#8217;re most active during Pacific Time working hours.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Meditation.html">Meditation</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/zen.html">zen</a></span></p>
     <h2><a href='/blog/2014/08/a-new-meditation-app/'>A new meditation app</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 14th, 2014</p>
@@ -491,23 +517,6 @@
 <p>(apologies for the low quality of the video &#8212; should be fixed with <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=980479">this bug</a> next week)</p>
 
 <p>As it turns out, this view has also proven to be particularly useful when working with the new entropy measurements in Eideticker which I&#8217;ve been using to measure checkerboarding (redraw delay) on FirefoxOS. More on that next week.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
-    <h2><a href='/blog/2013/11/mozregression-now-supports-inbound-builds/'>mozregression now supports inbound builds</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 28th, 2013</p>
-  </header>
-
-<p>Just wanted to send out a quick note that I recently added inbound support to <a href="http://mozilla.github.io/mozregression/">mozregression</a> for desktop builds of Firefox on Windows, Mac, and Linux.</p>
-
-<p>For the uninitiated, mozregression is an automated tool that lets you bisect through builds of Firefox to find out when a problem was introduced. You give it the last known good date, the last known bad date and off it will go, automatically pulling down builds to test. After each iteration, it will ask you whether this build was good or bad, update the regression range accordingly, and then the cycle repeats until there are no more intermediate builds.</p>
-
-<p>Previously, it would only use nightlies which meant a one day granularity &#8212; this meant pretty wide regression ranges, made wider in the last year by the fact that so much more is now going into the tree over the course of the day. However, with inbound support (using the new inbound archive) we now have the potential to get a much tighter range, which should be super helpful for developers. Best of all, mozregression doesn&#8217;t require any particularly advanced skills to use which means everyone in the Mozilla community can help out.</p>
-
-<p>For anyone interested, there&#8217;s quite a bit of scope to improve mozregression to make it do more things (FirefoxOS support, easier installation&#8230;). Feel free to check out <a href="http://github.com/mozilla/mozregression">the repository</a>, the <a href="https://github.com/mozilla/mozregression/issues?state=open">issues list</a> (I just added <a href="https://github.com/mozilla/mozregression/issues/76">an easy one</a> which would make a great first bug) and ask questions on irc.mozilla.org#ateam!</p>
 
 </article>
 
