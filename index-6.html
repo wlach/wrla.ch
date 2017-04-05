@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 6)</title>
     <meta name="description" content="William Lachance's Log (page 6)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Orangutan, Free Software, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Montreal, Coffee, Life, GNOME, Music, Cats, mozregression, Performance, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Community, Ebola, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Orangutan, Free Software, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Montreal, Coffee, Life, GNOME, Music, Cats, mozregression, Performance, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Ebola, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-6.html">
@@ -143,6 +143,8 @@
 
 <li><a href="/tags/Talos.html">Talos</a></li>
 
+<li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -184,6 +186,22 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/email.html">email</a>, <a href="/tags/Free-Software.html">Free Software</a>, <a href="/tags/GNOME.html">GNOME</a></span></p>
+    <h2><a href='/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser/'>The need for a modern open source email client and Geary&#8217;s fundraiser</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 19th, 2013</p>
+  </header>
+
+<div class="figure"><img src="http://www.yorba.org/images/igg/geary-2.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>One of my frustrations with the Linux desktop is the lack of an email client that&#8217;s in the same league as GMail or Apple&#8217;s mail.app. <a href="https://www.mozilla.org/EN/thunderbird">Thunderbird</a> is ok as far as it goes (I use it for my day-to-day Mozilla correspondence) but I miss having a decent conversation view of email (yes, I tried the <a href="https://addons.mozilla.org/en-us/thunderbird/addon/gmail-conversation-view/">conversation view extension</a> &#8212; while impressive in some ways, it ultimately didn&#8217;t work particularly well for me) and the search functionality is rather slow and cumbersome. I&#8217;d like to be optimistic about these problems being fixed at some point&#8230; but after nearly 2 years of using the product without much visible improvement my expectation of that happening is rather low.</p>
+
+<p>The <a href="http://yorba.org">Yorba</a> non-profit recently started a <a href="http://www.indiegogo.com/projects/geary-a-beautiful-modern-open-source-email-client">fundraiser</a> to work on the next edition of Geary, an email client which I hope will fill the niche that I&#8217;m talking about. It&#8217;s pretty rough around the edges still, but even at this early stage the conversation view is beautiful and more or less exactly what I want. The example of Shotwell (their photo management application) suggests that they know a thing or two about creating robust and useable software, not a common thing in this day and age. In any case, their pitch was compelling enough for me to donate a few dollars to the cause. If you care about having a great email experience that is completely under your control (and not that of an advertising or product company with their own agenda), then maybe you could too?</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>, <a href="/tags/zen.html">zen</a></span></p>
     <h2><a href='/blog/2013/03/a-visit-to-the-montreal-zen-center/'>A visit to the Montreal Zen Center</a></h2>
@@ -497,42 +515,6 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <p>Unfortunately in my case, the gecko profile didn&#8217;t tell me much, aside from the fact that Gecko didn&#8217;t seem to be the culprit (remember that on Android we also have lots of Java-based frontend code to contend with, which the profiler doesn&#8217;t measure). I&#8217;m going to stare more at the Java code and dig into the various high-level tools that Android provides for profiling performance and memory usage. My current hypothesis is that the problem is the screenshot code and the CSS transitions that leaflet generates when zooming. In the mean time, the only thing I have to show for my foray away from writing tools for Mozilla is &#8230; yet another tool.</p>
 
 <p>Oh well, it could be worse. My fervent hope is that frof will be helpful for both Fennec developers and QA. Let me know if you wind up using it!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/'>More Eideticker happenings: Profiling and startup testing</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 13th, 2012</p>
-  </header>
-
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
-
-<p>Just wanted to give some updates on a few new Eideticker features which have landed in the past week.</p>
-
-<p><strong>Profiling support</strong></p>
-
-<p>While Eideticker is a great tool for observing the external behaviour of the mobile browser, it hasn&#8217;t been able to tell us much about what&#8217;s going on inside. If something&#8217;s slow, why is it slow? If it&#8217;s slower than it was the day before, what&#8217;s the cause? If it&#8217;s faster? What explains the deviations in test results from one run to the other?</p>
-
-<p>Thanks to <a href="http://benoitgirard.wordpress.com/">Benoit Girard</a> (+ a little bit of integration work from me), we can now start providing answers to these questions. Eideticker now has a mode that allows us to capture a <a href="https://developer.mozilla.org/en-US/docs/Performance/Profiling_with_the_Built-in_Profiler">sampling profile</a> of the application while the video capture is ongoing. From the dashboard, you can now get access said profile, just by clicking on a link.</p>
-
-<p><a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/dash-with-link-to-profile/" rel="attachment wp-att-737"><img src="/files/2012/09/dash-with-link-to-profile.png" alt="" title="Eideticker dashboard with link to profile" width="764" height="555" class="alignnone size-full wp-image-737" srcset="/files/2012/09/dash-with-link-to-profile-300x217.png 300w, /files/2012/09/dash-with-link-to-profile.png 764w" sizes="(max-width: 764px) 100vw, 764px" /></a>
- <br /><a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/profiler-et-screenshot/" rel="attachment wp-att-740"><img src="/files/2012/09/profiler-et-screenshot.png" alt="" title="Profile of Eideticker Capture" width="852" height="425" class="alignnone size-full wp-image-740" srcset="/files/2012/09/profiler-et-screenshot-300x149.png 300w, /files/2012/09/profiler-et-screenshot.png 852w" sizes="(max-width: 852px) 100vw, 852px" /></a></p>
-
-<p>Note that the profile is not yet synchronized precisely to the videocapture (the profile works over the entire run of the browser), but Benoit is busily making that happen. That should hopefully land soon, in the mean time we still have some pretty useful data.</p>
-
-<p>To say I&#8217;m excited about this would be an understatement. I think it has the potential to open up a whole new world of understanding of why our mobile (and desktop, someday) browser performs the way it does.</p>
-
-<p><strong>Startup / pageload testing</strong></p>
-
-<p>Eideticker has had support for measuring startup and page load time for a few months now, but I hadn&#8217;t yet hooked it up to the dashboard. As of today, it now is. There&#8217;s a bunch of different angles that are interesting to measure here (new vs. old profiles, whether the browser has been launched since boot, launching web applications, loading about:home or loading a web page, &#8230;) which I&#8217;ll get to in due course. For now, we at least have a baseline of how long it takes to see the Firefox homescreen on a Galaxy Nexus:</p>
-
-<video width="400px" src="http://wrla.ch/eideticker/dashboard/videos/video-1347572002.11.webm" controls="controls"></video>
-
-<p>Of course, this is hooked up to the profiling support previously mentioned. Here&#8217;s <a href="http://people.mozilla.com/~bgirard/cleopatra/?zippedProfile=profiles/sps-profile-1347572285.4.zip&amp;#038;videoCapture=videos/video-1347572285.4.webm">an example profile</a>.</p>
-
-<p>I&#8217;ve already filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=791106">one bug</a> based on the data gathered so far.</p>
 
 </article>
 

@@ -143,6 +143,8 @@
 
 <li><a href="/tags/Talos.html">Talos</a></li>
 
+<li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -184,6 +186,25 @@
           <h1>Posts tagged <em>Mozilla</em></h1>
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
+    <h2><a href='/blog/2014/09/mozregression-0-24/'>mozregression 0.24</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 15th, 2014</p>
+  </header>
+
+<p>I just released <a href="http://mozilla.github.io/mozregression/">mozregression</a> 0.24. This would be a good time to note some of the user-visible fixes / additions that have gone in recently:</p>
+
+<ol>
+ <li>
+  <p>Thanks to Sam Garrett, you can now specify a different branch other than inbound to get finer grained regression ranges from. E.g. if you&#8217;re pretty sure a regression occurred on fx-team, you can do something like:   <code>mozregression --inbound-branch fx-team -g 2014-09-13 -b 2014-09-14</code></p></li>
+ <li>Fixed a bug where we could get an incorrect regression range (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1059856">bug 1059856</a>). Unfortunately the root cause of the bug is still open (it&#8217;s a bit tricky to match mozilla-central commits to that of other branches) but I think this most recent fix should make things work in 99.9% of cases. Let me know if I&#8217;m wrong.</li>
+ <li>Thanks to Julien Pagès, we now download the inbound build metadata in parallel, which speeds up inbound bisection quite significantly</li></ol>
+
+<p>If you know a bit of python, contributing to mozregression is a great way to have a high impact on Mozilla. Many platform developers use this project in their day-to-day work, but there&#8217;s still <a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;#038;product=Testing">lots of room for improvement</a>.</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/'>Hacking on the Treeherder front end: refreshingly easy</a></h2>
@@ -491,32 +512,6 @@ cd treeherder-ui/webapp&lt;br /&gt;
 <p>(note that there were some problems in the way the tests were being run before, so results before the 12th should not be considered valid)</p>
 
 <p>So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&#8217;s find them!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/03/eideticker-for-firefoxos-becoming-more-useful/'>Eideticker for FirefoxOS: Becoming more useful</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 9th, 2014</p>
-  </header>
-
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
-
-<p>Time for a long overdue eideticker-for-firefoxos update. <a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">Last time we were here</a> (almost 5 months ago! man time flies), I was discussing methodologies for measuring startup performance. Since then, <a href="http://blargon7.com/">Dave Hunt</a> and myself have been doing lots of work to make Eideticker more robust and useful. Notably, we now have a setup in London running a suite of Eideticker tests on the latest version of FirefoxOS on the Inari on a daily basis, reporting to <a href="http://eideticker.mozilla.org/b2g">http://eideticker.mozilla.org/b2g</a>.</p>
-
-<p><a href="/files/2014/03/b2g-contacts-startup-dashboard.png"><img src="/files/2014/03/b2g-contacts-startup-dashboard.png" alt="b2g-contacts-startup-dashboard" width="840" height="601" class="alignnone size-full wp-image-1005" srcset="/files/2014/03/b2g-contacts-startup-dashboard-300x214.png 300w, /files/2014/03/b2g-contacts-startup-dashboard.png 840w" sizes="(max-width: 840px) 100vw, 840px" /></a></p>
-
-<p>There were more than a few false starts with and some of the earlier data is not to be entirely trusted&#8230; but it now seems to be chugging along nicely, hopefully providing startup numbers that provide a useful counterpoint to the <a href="https://datazilla.mozilla.org/b2g">datazilla startup numbers</a> we&#8217;ve already been collecting for some time. There still seem to be some minor problems, but in general I am becoming more and more confident in it as time goes on.</p>
-
-<p>One feature that I am particularly proud of is the detail view, which enables you to see frame-by-frame what&#8217;s going on. Click on any datapoint on the graph, then open up the view that gives an account of what eideticker is measuring. Hover over the graph and you can see what the video looks like at any point in the capture. This not only lets you know that something regressed, but how. For example, in the messages app, you can scan through this view to see exactly when the first message shows up, and what exact state the application is in when Eideticker says it&#8217;s &#8220;done loading&#8221;.</p>
-
-<p><a href="/files/2014/03/capture-detail-view.png"><img src="/files/2014/03/capture-detail-view.png" alt="Capture Detail View" width="964" height="843" class="alignnone size-full wp-image-1008" srcset="/files/2014/03/capture-detail-view-300x262.png 300w, /files/2014/03/capture-detail-view.png 964w" sizes="(max-width: 964px) 100vw, 964px" /></a>
- <br /><a href="http://eideticker.wrla.ch/b2g/framediff.html?id=3819a484a6d611e3ab89f0def1767b24">[link to original]</a></p>
-
-<p>(apologies for the low quality of the video &#8212; should be fixed with <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=980479">this bug</a> next week)</p>
-
-<p>As it turns out, this view has also proven to be particularly useful when working with the new entropy measurements in Eideticker which I&#8217;ve been using to measure checkerboarding (redraw delay) on FirefoxOS. More on that next week.</p>
 
 </article>
 

@@ -4,7 +4,53 @@
  <link rel="self" href="https://wlach.github.io/feeds/all.atom.xml" />
  <link href="https://wlach.github.io/index.html" />
  <id>urn:https-wlach-github-io:-index-html</id>
- <updated>2017-02-07T18:36:09Z</updated>
+ <updated>2017-04-05T20:14:35Z</updated>
+ <entry>
+  <title type="text">Easier reproduction of intermittent test failures in automation</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/?utm_source=all&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2017-04-easier-reproduction-of-intermittent-test-failures-in-automation</id>
+  <published>2017-04-05T20:14:35Z</published>
+  <updated>2017-04-05T20:14:35Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;As part of the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell"&gt;Stockwell project&lt;/a&gt;, I&amp;rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&amp;rsquo;s often very difficult to reproduce an intermittent we see in Treeherder locally since the environment is so different, so figuring out workflows that support debugging of problems remotely is essential.&lt;/p&gt;
+
+&lt;p&gt;One option that rolled out last year was the so-called one-click loaner, which enabled developers to sign out an virtual machine instance identical to the ones used to run unit tests (at least if the tests are running on Taskcluster, which is increasingly often the case), then execute their particular case with whatever extra debugging options they would find useful. This is a big step forward, but it&amp;rsquo;s still quite a bit of hassle, since it requires a bunch of manual work on the part of the developer to interact with the instance.&lt;/p&gt;
+
+&lt;p&gt;What if we could &lt;em&gt;just&lt;/em&gt; re-run the particular test an arbitrary number of times with whatever options we wanted, simply by clicking on a few buttons on Treeherder? I&amp;rsquo;ve been exploring this for the first few months of 2017 and I&amp;rsquo;ve come up with a prototype which I think is ready for people to start playing with.&lt;/p&gt;
+
+&lt;p&gt;The user interface to this is pretty straightforward. Just find a job you want to retrigger in Treeherder:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/files/2017/04/treeherder-selected-mochitest.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;Then select the &amp;rsquo;&amp;hellip;&amp;rsquo; option in the panel below and press &amp;ldquo;Custom Action&amp;hellip;&amp;rdquo;:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/files/2017/04/treeherder-taskcluster-options.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;You should get a small piece of JSON to edit, which corresponds to the configuration for the retriggered job:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/files/2017/04/treeherder-custom-action.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;The main field to edit is &amp;ldquo;path&amp;rdquo;. You should set this to the name of the test you want to try retriggering. For example &lt;code&gt;dom/animation/test/css-transitions/test_animation-ready.html&lt;/code&gt;. You can also set custom Firefox preferences and environment variables, to turn on different types of debugging.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately as usual with a new feature at Mozilla, there are a bunch of limitations and caveats:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;This depends on functionality that&amp;rsquo;s only in Taskcluster, so  buildbot jobs are exempt.&lt;/li&gt;
+ &lt;li&gt;No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which probably isn&amp;rsquo;t that far off).&lt;/li&gt;
+ &lt;li&gt;Browser chrome tests failing in mysterious ways if run repeatedly  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347654"&gt;bug 1347654&lt;/a&gt;)&lt;/li&gt;
+ &lt;li&gt;Only reftest and mochitest are currently supported. XPCShell  support is blocked by the lack of support in its harness for  running a job repeatedly (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347696"&gt;bug 1347696&lt;/a&gt;).  Web Platform Tests need the requisite support in mozharness for  just setting up the tests without running them &amp;mdash; the same issue  that prevents us from debugging such tests with a one-click loaner  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348833"&gt;bug 1348833&lt;/a&gt;).&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;Aside from fixing the above limitations, the following features would also be really nifty to have:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Ability to trigger a custom job as part of a try push (i.e.  not needing to retrigger off an existing job)&lt;/li&gt;
+ &lt;li&gt;Run these jobs under rr, and provide a way to login and  interactively debug when the problem is actually reproduced.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;I am actually in the process of moving to another team @ Mozilla (more on that in another post), so I probably won&amp;rsquo;t have a ton of time to work on the above &amp;mdash; but I&amp;rsquo;d be happy to help anyone who&amp;rsquo;s interested in developing this idea further.&lt;/p&gt;
+
+&lt;p&gt;A special shout out to the Taskcluster team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to implement this in the first place.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Cancel all the things</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2017/02/cancel-all-the-things/?utm_source=all&amp;utm_medium=Atom" />
@@ -819,30 +865,4 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
  &lt;li&gt;The Ethical Consequences Of Our Collective Activities (Glyph): A talk on the ethical implications of how our software is used. I feel like this is an under-discussed topic &amp;#8212; how can we know that the results of our activity (programming) serves others and does not harm? &lt;a href="https://www.youtube.com/watch?v=uSbKjRRbjZs"&gt;video&lt;/a&gt;&lt;/li&gt;
  &lt;li&gt;How our engineering environments are killing diversity (and how we can fix it) (Kate Heddleston): This was a great talk on how to make the environments in which we develop more welcoming to under-represented groups (women, minorities, etc.). This is something I&amp;#8217;ve been thinking a bunch about lately, especially in the context of expanding the community of people working on our projects in Automation &amp;#38; Tools. The talk had some particularly useful advice (to me, anyway) on giving feedback. &lt;a href="https://www.youtube.com/watch?v=kNke_4WOWAU"&gt;video&lt;/a&gt; &lt;a href="https://speakerdeck.com/pycon2015/kate-heddleston-how-our-engineering-environments-are-killing-diversity-and-how-we-can-fix-it"&gt;slides&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!&lt;/p&gt;&lt;/html&gt;</content></entry>
- <entry>
-  <title type="text">Perfherder update: Summary series drilldown</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2015/03/perfherder-update-summary-series-drilldown/?utm_source=all&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2015-03-perfherder-update-summary-series-drilldown</id>
-  <published>2015-03-27T04:00:00Z</published>
-  <updated>2015-03-27T04:00:00Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">&lt;html&gt;
-&lt;p&gt;Just wanted to give another quick Perfherder update. Since the &lt;a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/"&gt;last time&lt;/a&gt;, I&amp;#8217;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&amp;#8217;t possible with Graphserver and I&amp;#8217;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.&lt;/p&gt;
-
-&lt;p&gt;Let&amp;#8217;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354"&gt;bug 1128354&lt;/a&gt;. Using &lt;a href="https://mozillians.org/en-US/u/mishravikas/"&gt;Mishra Vikas&lt;/a&gt;&amp;#8216;s new &amp;#8220;highlight revision mode&amp;#8221; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png"&gt;&lt;img src="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png" alt="Screen Shot 2015-03-27 at 3.18.28 PM" width="474" height="230" class="alignnone size-large wp-image-1184" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-300x146.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png 1167w" sizes="(max-width: 474px) 100vw, 474px" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;It does indeed look like things ticked up after this commit for the CART suite, but why? By clicking on the datapoint, you can open up a subtest summary view beneath the graph:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png"&gt;&lt;img src="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png" alt="Screen Shot 2015-03-27 at 2.35.25 PM" width="936" height="438" class="alignnone size-full wp-image-1175" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM-300x140.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png 936w" sizes="(max-width: 936px) 100vw, 936px" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;We see here that it looks like the 3-customize-enter-css.all.TART entry ticked up a bunch. The related test 3-customize-enter-css.half.TART ticked up a bit too. The changes elsewhere look minimal. But is that a trend that holds across the data over time? We can add some of the relevant subtests to the overall graph view to get a closer look:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM.png"&gt;&lt;img src="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-1024x503.png" alt="Screen Shot 2015-03-27 at 2.36.49 PM" width="474" height="232" class="alignnone size-large wp-image-1176" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-300x147.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-1024x503.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM.png 1155w" sizes="(max-width: 474px) 100vw, 474px" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;As is hopefully obvious, this confirms that the affected subtest continues to hold its higher value while another test just bounces around more or less in the range it was before.&lt;/p&gt;
-
-&lt;p&gt;Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at &lt;a href="http://treeherder.mozilla.org/perf.html"&gt;http://treeherder.mozilla.org/perf.html&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
