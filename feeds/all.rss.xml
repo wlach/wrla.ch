@@ -4,16 +4,38 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Wed, 05 Apr 2017 20:14:35 UT</lastBuildDate>
-  <pubDate>Wed, 05 Apr 2017 20:14:35 UT</pubDate>
+  <lastBuildDate>Fri, 02 Jun 2017 20:04:38 UT</lastBuildDate>
+  <pubDate>Fri, 02 Jun 2017 20:04:38 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Using Docker to run automated tests</title>
+   <link>https://wlach.github.io/blog/2017/06/using-docker-to-run-automated-tests/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2017-06-using-docker-to-run-automated-tests</guid>
+   <pubDate>Fri, 02 Jun 2017 20:04:38 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;A couple months ago, I joined the Mozilla Data Platform team, to work on our &lt;a href="https://wiki.mozilla.org/Telemetry"&gt;Telemetry&lt;/a&gt; and automated data collection services. This has been an interesting transition for me, and a natural jumping off point from my work on &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder"&gt;Perfherder&lt;/a&gt;. Now, instead of manipulating mere 10s of gigabytes worth of fairly regular data, I&amp;rsquo;m working with 100s of terrabytes of noisy data with a much larger number of dimensions. :P It&amp;rsquo;s been interesting so far.&lt;/p&gt;
+
+&lt;p&gt;One of the first things I decided to work on was improving our unit testing story around a few of our primary packages for data analysis/etl: &lt;a href="https://github.com/mozilla/python_moztelemetry/"&gt;python_moztelemetry&lt;/a&gt; (a library we use for running custom spark jobs against Telemetry data) and &lt;a href="https://github.com/mozilla/telemetry-batch-view/"&gt;telemetry-batch-view&lt;/a&gt; (a set of scala jobs we run against the main telemetry data store to create a useful set of aggregations that are easily queried with tools like &lt;a href="https://redash.io/"&gt;redash&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;It turns out that these tools interact with several larger / more involved pieces than I&amp;rsquo;m used to dealing with (such as hbase and thrift). For continuous integration/automation, we already had a set of travis scripts to install and reproduce the environment needed to test these parts, but there was no straightforward way to do this locally. My third time through creating an Ubuntu virtual machine environment to reproduce this environment locally (long story), I figured it was finally time for me to investigate using something to automate that setup procedure and make it easier for new developers to get into these projects.&lt;/p&gt;
+
+&lt;p&gt;I hadn&amp;rsquo;t used it much before, but &lt;a href="https://docker.com"&gt;Docker&lt;/a&gt; seemed like a fairly obvious choice. Small, simple, and Linuxy? Sign me up.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m pretty happy with how things turned out, but there were a few caveats. Docker is more of a general purpose tool for building environments for running &lt;em&gt;things&lt;/em&gt;, whether that be an apache webserver or a jabber messaging doohickey (whereas e.g. something like travis is basically a domain-specific language for creating and running automated tests). There were a few tricks I needed to employ to make the whole testing process smooth in both cases, which I&amp;rsquo;ll document here for posterity:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;You can &lt;code&gt;ADD&lt;/code&gt; a set of files / directories to a docker environment inside your Dockerfile, but if you want your set of tests to pick up any changes made since the environment was created, you really should mount your testing directory inside the container using the &lt;code&gt;-v&lt;/code&gt; option.&lt;/li&gt;
+ &lt;li&gt;If you need to download/install a piece of software when building the docker container, use the &lt;code&gt;RUN&lt;/code&gt; directive instead of &lt;code&gt;ADD&lt;/code&gt;. This will speed up rebuilding the container while you&amp;rsquo;re iterating on it (because you can take advantage of the Docker layers cache).&lt;/li&gt;
+ &lt;li&gt;You almost certainly want to create a script (&lt;a href="https://github.com/mozilla/python_moztelemetry/blob/d2aa84bbac09465d38eeb0b5beb20edc7ddcc21b/runtests.sh"&gt;example&lt;/a&gt;) to streamline all the steps of running the tests: this will make running the tests easier for anyone wanting to contribute to your project and reduce the amount of documentation that you will have to write.&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;The relevant files and documentation are in the repositories linked above.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Easier reproduction of intermittent test failures in automation</title>
    <link>https://wlach.github.io/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/?utm_source=all&amp;utm_medium=RSS</link>
    <guid>urn:https-wlach-github-io:-blog-2017-04-easier-reproduction-of-intermittent-test-failures-in-automation</guid>
    <pubDate>Wed, 05 Apr 2017 20:14:35 UT</pubDate>
    <description>&lt;html&gt;
-&lt;p&gt;As part of the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell"&gt;Stockwell project&lt;/a&gt;, I&amp;rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&amp;rsquo;s often very difficult to reproduce an intermittent we see in Treeherder locally since the environment is so different, so figuring out workflows that support debugging of problems remotely is essential.&lt;/p&gt;
+&lt;p&gt;As part of the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell"&gt;Stockwell project&lt;/a&gt;, I&amp;rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&amp;rsquo;s often very difficult to reproduce an intermittent failure we see in Treeherder locally since the environment is so different, but historically it has been a big hassle to get access to the machines we use in automation for various reasons.&lt;/p&gt;
 
 &lt;p&gt;One option that rolled out last year was the so-called one-click loaner, which enabled developers to sign out an virtual machine instance identical to the ones used to run unit tests (at least if the tests are running on Taskcluster, which is increasingly often the case), then execute their particular case with whatever extra debugging options they would find useful. This is a big step forward, but it&amp;rsquo;s still quite a bit of hassle, since it requires a bunch of manual work on the part of the developer to interact with the instance.&lt;/p&gt;
 
@@ -37,7 +59,7 @@
 
 &lt;ul&gt;
  &lt;li&gt;This depends on functionality that&amp;rsquo;s only in Taskcluster, so  buildbot jobs are exempt.&lt;/li&gt;
- &lt;li&gt;No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which probably isn&amp;rsquo;t that far off).&lt;/li&gt;
+ &lt;li&gt;No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which hopefully isn&amp;rsquo;t that far off).&lt;/li&gt;
  &lt;li&gt;Browser chrome tests failing in mysterious ways if run repeatedly  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347654"&gt;bug 1347654&lt;/a&gt;)&lt;/li&gt;
  &lt;li&gt;Only reftest and mochitest are currently supported. XPCShell  support is blocked by the lack of support in its harness for  running a job repeatedly (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347696"&gt;bug 1347696&lt;/a&gt;).  Web Platform Tests need the requisite support in mozharness for  just setting up the tests without running them &amp;mdash; the same issue  that prevents us from debugging such tests with a one-click loaner  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348833"&gt;bug 1348833&lt;/a&gt;).&lt;/li&gt;&lt;/ul&gt;
 
@@ -49,7 +71,7 @@
 
 &lt;p&gt;I am actually in the process of moving to another team @ Mozilla (more on that in another post), so I probably won&amp;rsquo;t have a ton of time to work on the above &amp;mdash; but I&amp;rsquo;d be happy to help anyone who&amp;rsquo;s interested in developing this idea further.&lt;/p&gt;
 
-&lt;p&gt;A special shout out to the Taskcluster team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to implement this in the first place.&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;A special shout out to the &lt;a href="https://wiki.mozilla.org/TaskCluster"&gt;Taskcluster&lt;/a&gt; team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to develop this feature in the first place.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Cancel all the things</title>
    <link>https://wlach.github.io/blog/2017/02/cancel-all-the-things/?utm_source=all&amp;utm_medium=RSS</link>
@@ -783,28 +805,4 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;The math and programming behind the simulation is completely arbitrary and anything but rigorous. There are probably a bunch of bugs and unintended behaviors. This has all probably been done a million times before by people I&amp;#8217;ve never met and never will. I&amp;#8217;m ok with that.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: &lt;a href="https://github.com/wlach/ecoautomata"&gt;Source now on github&lt;/a&gt;, for those who want to play with it and submit pull requests.&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
-   <title>PyCon 2015</title>
-   <link>https://wlach.github.io/blog/2015/04/pycon-2015/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-04-pycon-2015</guid>
-   <pubDate>Thu, 23 Apr 2015 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;So I went to PyCon 2015. While I didn&amp;#8217;t leave quite as inspired as I did in 2014 (&lt;a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/"&gt;when I discovered iPython&lt;/a&gt;), it was a great experience and I learned a ton. Once again, I was incredibly impressed with the organization of the conference and the diversity and quality of the speakers.&lt;/p&gt;
-
-&lt;p&gt;Since Mozilla was nice enough to sponsor my attendance, I figured I should do another round up of notable talks that I went to.&lt;/p&gt;
-
-&lt;p&gt;Technical stuff that was directly relevant to what I work on:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;To ORM or not to ORM (Christine Spang): Useful talk on when using a database ORM (object relational manager) can be helpful and even faster than using a database directly. I feel like there&amp;#8217;s a lot of misinformation and FUD on this topic, so this was refreshing to see. &lt;a href="https://www.youtube.com/watch?v=Sadng6tR7Q4"&gt;video&lt;/a&gt; &lt;a href="https://speakerdeck.com/pycon2015/christine-spang-to-orm-or-not-to-orm"&gt;slides&lt;/a&gt;&lt;/li&gt;
- &lt;li&gt;Debugging hard problems (Alex Gaynor): Exactly what it says &amp;#8212; how to figure out what&amp;#8217;s going on when things aren&amp;#8217;t behaving as they should. Great advice and wisdom in this one (hint: take nothing for granted, dive into the source of everything you&amp;#8217;re using!). &lt;a href="https://www.youtube.com/watch?v=ij99SGGEX34"&gt;video&lt;/a&gt; &lt;a href="https://speakerdeck.com/alex/techniques-for-debugging-hard-problems"&gt;slides&lt;/a&gt;&lt;/li&gt;
- &lt;li&gt;Python Performance Profiling: The Guts And The Glory (Jesse Jiryu Davis): Quite an entertaining talk on how to properly profile python code. I really liked his systematic and realistic approach &amp;#8212; which also discussed the thought process behind how to do this (hint: again it comes down to understanding what&amp;#8217;s really going on). Unfortunately the video is truncated, but even the first few minutes are useful. &lt;a href="https://www.youtube.com/watch?v=4uJWWXYHxaM"&gt;video&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;Non-technical stuff:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;The Ethical Consequences Of Our Collective Activities (Glyph): A talk on the ethical implications of how our software is used. I feel like this is an under-discussed topic &amp;#8212; how can we know that the results of our activity (programming) serves others and does not harm? &lt;a href="https://www.youtube.com/watch?v=uSbKjRRbjZs"&gt;video&lt;/a&gt;&lt;/li&gt;
- &lt;li&gt;How our engineering environments are killing diversity (and how we can fix it) (Kate Heddleston): This was a great talk on how to make the environments in which we develop more welcoming to under-represented groups (women, minorities, etc.). This is something I&amp;#8217;ve been thinking a bunch about lately, especially in the context of expanding the community of people working on our projects in Automation &amp;#38; Tools. The talk had some particularly useful advice (to me, anyway) on giving feedback. &lt;a href="https://www.youtube.com/watch?v=kNke_4WOWAU"&gt;video&lt;/a&gt; &lt;a href="https://speakerdeck.com/pycon2015/kate-heddleston-how-our-engineering-environments-are-killing-diversity-and-how-we-can-fix-it"&gt;slides&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: &lt;a href="https://github.com/wlach/ecoautomata"&gt;Source now on github&lt;/a&gt;, for those who want to play with it and submit pull requests.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

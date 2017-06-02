@@ -4,7 +4,32 @@
  <link rel="self" href="https://wlach.github.io/feeds/Mozilla.atom.xml" />
  <link href="https://wlach.github.io/tags/Mozilla.html" />
  <id>urn:https-wlach-github-io:-tags-Mozilla-html</id>
- <updated>2017-04-05T20:14:35Z</updated>
+ <updated>2017-06-02T20:04:38Z</updated>
+ <entry>
+  <title type="text">Using Docker to run automated tests</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/06/using-docker-to-run-automated-tests/?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2017-06-using-docker-to-run-automated-tests</id>
+  <published>2017-06-02T20:04:38Z</published>
+  <updated>2017-06-02T20:04:38Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;A couple months ago, I joined the Mozilla Data Platform team, to work on our &lt;a href="https://wiki.mozilla.org/Telemetry"&gt;Telemetry&lt;/a&gt; and automated data collection services. This has been an interesting transition for me, and a natural jumping off point from my work on &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder"&gt;Perfherder&lt;/a&gt;. Now, instead of manipulating mere 10s of gigabytes worth of fairly regular data, I&amp;rsquo;m working with 100s of terrabytes of noisy data with a much larger number of dimensions. :P It&amp;rsquo;s been interesting so far.&lt;/p&gt;
+
+&lt;p&gt;One of the first things I decided to work on was improving our unit testing story around a few of our primary packages for data analysis/etl: &lt;a href="https://github.com/mozilla/python_moztelemetry/"&gt;python_moztelemetry&lt;/a&gt; (a library we use for running custom spark jobs against Telemetry data) and &lt;a href="https://github.com/mozilla/telemetry-batch-view/"&gt;telemetry-batch-view&lt;/a&gt; (a set of scala jobs we run against the main telemetry data store to create a useful set of aggregations that are easily queried with tools like &lt;a href="https://redash.io/"&gt;redash&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;It turns out that these tools interact with several larger / more involved pieces than I&amp;rsquo;m used to dealing with (such as hbase and thrift). For continuous integration/automation, we already had a set of travis scripts to install and reproduce the environment needed to test these parts, but there was no straightforward way to do this locally. My third time through creating an Ubuntu virtual machine environment to reproduce this environment locally (long story), I figured it was finally time for me to investigate using something to automate that setup procedure and make it easier for new developers to get into these projects.&lt;/p&gt;
+
+&lt;p&gt;I hadn&amp;rsquo;t used it much before, but &lt;a href="https://docker.com"&gt;Docker&lt;/a&gt; seemed like a fairly obvious choice. Small, simple, and Linuxy? Sign me up.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m pretty happy with how things turned out, but there were a few caveats. Docker is more of a general purpose tool for building environments for running &lt;em&gt;things&lt;/em&gt;, whether that be an apache webserver or a jabber messaging doohickey (whereas e.g. something like travis is basically a domain-specific language for creating and running automated tests). There were a few tricks I needed to employ to make the whole testing process smooth in both cases, which I&amp;rsquo;ll document here for posterity:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;You can &lt;code&gt;ADD&lt;/code&gt; a set of files / directories to a docker environment inside your Dockerfile, but if you want your set of tests to pick up any changes made since the environment was created, you really should mount your testing directory inside the container using the &lt;code&gt;-v&lt;/code&gt; option.&lt;/li&gt;
+ &lt;li&gt;If you need to download/install a piece of software when building the docker container, use the &lt;code&gt;RUN&lt;/code&gt; directive instead of &lt;code&gt;ADD&lt;/code&gt;. This will speed up rebuilding the container while you&amp;rsquo;re iterating on it (because you can take advantage of the Docker layers cache).&lt;/li&gt;
+ &lt;li&gt;You almost certainly want to create a script (&lt;a href="https://github.com/mozilla/python_moztelemetry/blob/d2aa84bbac09465d38eeb0b5beb20edc7ddcc21b/runtests.sh"&gt;example&lt;/a&gt;) to streamline all the steps of running the tests: this will make running the tests easier for anyone wanting to contribute to your project and reduce the amount of documentation that you will have to write.&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;The relevant files and documentation are in the repositories linked above.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Easier reproduction of intermittent test failures in automation</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/?utm_source=Mozilla&amp;utm_medium=Atom" />
@@ -14,7 +39,7 @@
   <author>
    <name>William Lachance</name></author>
   <content type="html">&lt;html&gt;
-&lt;p&gt;As part of the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell"&gt;Stockwell project&lt;/a&gt;, I&amp;rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&amp;rsquo;s often very difficult to reproduce an intermittent we see in Treeherder locally since the environment is so different, so figuring out workflows that support debugging of problems remotely is essential.&lt;/p&gt;
+&lt;p&gt;As part of the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell"&gt;Stockwell project&lt;/a&gt;, I&amp;rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&amp;rsquo;s often very difficult to reproduce an intermittent failure we see in Treeherder locally since the environment is so different, but historically it has been a big hassle to get access to the machines we use in automation for various reasons.&lt;/p&gt;
 
 &lt;p&gt;One option that rolled out last year was the so-called one-click loaner, which enabled developers to sign out an virtual machine instance identical to the ones used to run unit tests (at least if the tests are running on Taskcluster, which is increasingly often the case), then execute their particular case with whatever extra debugging options they would find useful. This is a big step forward, but it&amp;rsquo;s still quite a bit of hassle, since it requires a bunch of manual work on the part of the developer to interact with the instance.&lt;/p&gt;
 
@@ -38,7 +63,7 @@
 
 &lt;ul&gt;
  &lt;li&gt;This depends on functionality that&amp;rsquo;s only in Taskcluster, so  buildbot jobs are exempt.&lt;/li&gt;
- &lt;li&gt;No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which probably isn&amp;rsquo;t that far off).&lt;/li&gt;
+ &lt;li&gt;No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which hopefully isn&amp;rsquo;t that far off).&lt;/li&gt;
  &lt;li&gt;Browser chrome tests failing in mysterious ways if run repeatedly  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347654"&gt;bug 1347654&lt;/a&gt;)&lt;/li&gt;
  &lt;li&gt;Only reftest and mochitest are currently supported. XPCShell  support is blocked by the lack of support in its harness for  running a job repeatedly (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347696"&gt;bug 1347696&lt;/a&gt;).  Web Platform Tests need the requisite support in mozharness for  just setting up the tests without running them &amp;mdash; the same issue  that prevents us from debugging such tests with a one-click loaner  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348833"&gt;bug 1348833&lt;/a&gt;).&lt;/li&gt;&lt;/ul&gt;
 
@@ -50,7 +75,7 @@
 
 &lt;p&gt;I am actually in the process of moving to another team @ Mozilla (more on that in another post), so I probably won&amp;rsquo;t have a ton of time to work on the above &amp;mdash; but I&amp;rsquo;d be happy to help anyone who&amp;rsquo;s interested in developing this idea further.&lt;/p&gt;
 
-&lt;p&gt;A special shout out to the Taskcluster team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to implement this in the first place.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;A special shout out to the &lt;a href="https://wiki.mozilla.org/TaskCluster"&gt;Taskcluster&lt;/a&gt; team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to develop this feature in the first place.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Cancel all the things</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2017/02/cancel-all-the-things/?utm_source=Mozilla&amp;utm_medium=Atom" />
@@ -844,25 +869,4 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;Also thanks to Julien, we have a &lt;a href="http://mozilla.github.io/mozregression/"&gt;spiffy new website&lt;/a&gt; which documents many of these features. If it&amp;#8217;s been a while, be sure to &lt;a href="http://mozilla.github.io/mozregression/install.html"&gt;update your copy of mozregression to the latest version&lt;/a&gt; and check out the site for documentation on how to use the new features described above!&lt;/p&gt;
 
-&lt;p&gt;Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&amp;#8217;s just that much more useful to Firefox contributors everywhere.&lt;/p&gt;&lt;/html&gt;</content></entry>
- <entry>
-  <title type="text">Using Flexbox in web applications</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/09/using-flexbox-in-web-applications/?utm_source=Mozilla&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-09-using-flexbox-in-web-applications</id>
-  <published>2014-09-29T04:00:00Z</published>
-  <updated>2014-09-29T04:00:00Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">&lt;html&gt;
-&lt;p&gt;Over last few months, I discovered the joy that is CSS Flexbox, which solves the &amp;#8220;how do I lay out this set of div&amp;#8217;s in horizontally or vertically&amp;#8221;. I&amp;#8217;ve used it in three projects so far:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;Centering the timer interface in my &lt;a href="http://wrla.ch/blog/2014/08/a-new-meditation-app/"&gt;meditation app&lt;/a&gt;, so that it scales nicely from a 320&amp;#215;480 FirefoxOS device all the way up to a high definition monitor&lt;/li&gt;
- &lt;li&gt;Laying out the chart / sidebar elements in the &lt;a href="http://eideticker.mozilla.org"&gt;Eideticker dashboard&lt;/a&gt; so that maximum horizontal space is used&lt;/li&gt;
- &lt;li&gt;Fixing various problems in the &lt;a href="http://treeherder.mozilla.org"&gt;Treeherder UI&lt;/a&gt; on smaller screens (see &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1043474"&gt;bug 1043474&lt;/a&gt; and its dependent bugs)&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;When I talk to people about their troubles with CSS, layout comes up really high on the list. Historically, basic layout problems like a panel of vertical buttons have been ridiculously difficult, involving hacks involving floating divs and absolute positioning or &lt;a href="http://layout.jquery-dev.com/"&gt;JavaScript layout libraries&lt;/a&gt;. This is why people write articles entitled &lt;a href="http://uxmag.com/articles/give-and-use-tables"&gt;&amp;#8220;Give up and use tables&amp;#8221;&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Flexbox has pretty much put an end to these problems for me. There&amp;#8217;s no longer any need to &amp;#8220;give up and use tables&amp;#8221; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&amp;#8217;re so great. I think we&amp;#8217;re pretty close to Flexbox being supported across all the major browsers, so it&amp;#8217;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.&lt;/p&gt;
-
-&lt;p&gt;To try and spread the word, I wrote up &lt;a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications"&gt;a howto article on using flexbox for web applications on MDN&lt;/a&gt;, covering some of the common use cases I mention above. If you&amp;#8217;ve been curious about flexbox but unsure how to use it, please have a look.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&amp;#8217;s just that much more useful to Firefox contributors everywhere.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>

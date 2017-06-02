@@ -4,14 +4,14 @@
 
     <meta charset="utf-8">
     <title>Easier reproduction of intermittent test failures in automation</title>
-    <meta name="description" content="As part of the Stockwell project, I've been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It's often very difficult to reproduce an intermittent we see in Treeherder locally since the environment is so di...">
+    <meta name="description" content="As part of the Stockwell project, I've been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It's often very difficult to reproduce an intermittent failure we see in Treeherder locally since the environment ...">
     <meta name="author"      content="William Lachance">
     <meta name="keywords"    content="Mozilla, Treeherder, Taskcluster">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/">
     <link rel="next" href="/blog/2017/02/cancel-all-the-things/">
-
+    <link rel="prev" href="/blog/2017/06/using-docker-to-run-automated-tests/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -76,6 +76,8 @@
 <li><a href="/tags/Community.html">Community</a></li>
 
 <li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
+
+<li><a href="/tags/Docker.html">Docker</a></li>
 
 <li><a href="/tags/Ebola.html">Ebola</a></li>
 
@@ -192,7 +194,7 @@
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 5th, 2017</p>
   </header>
 
-<p>As part of the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell">Stockwell project</a>, I&rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&rsquo;s often very difficult to reproduce an intermittent we see in Treeherder locally since the environment is so different, so figuring out workflows that support debugging of problems remotely is essential.</p>
+<p>As part of the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell">Stockwell project</a>, I&rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&rsquo;s often very difficult to reproduce an intermittent failure we see in Treeherder locally since the environment is so different, but historically it has been a big hassle to get access to the machines we use in automation for various reasons.</p>
 
 <p>One option that rolled out last year was the so-called one-click loaner, which enabled developers to sign out an virtual machine instance identical to the ones used to run unit tests (at least if the tests are running on Taskcluster, which is increasingly often the case), then execute their particular case with whatever extra debugging options they would find useful. This is a big step forward, but it&rsquo;s still quite a bit of hassle, since it requires a bunch of manual work on the part of the developer to interact with the instance.</p>
 
@@ -216,7 +218,7 @@
 
 <ul>
  <li>This depends on functionality that&rsquo;s only in Taskcluster, so  buildbot jobs are exempt.</li>
- <li>No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which probably isn&rsquo;t that far off).</li>
+ <li>No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which hopefully isn&rsquo;t that far off).</li>
  <li>Browser chrome tests failing in mysterious ways if run repeatedly  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347654">bug 1347654</a>)</li>
  <li>Only reftest and mochitest are currently supported. XPCShell  support is blocked by the lack of support in its harness for  running a job repeatedly (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347696">bug 1347696</a>).  Web Platform Tests need the requisite support in mozharness for  just setting up the tests without running them &mdash; the same issue  that prevents us from debugging such tests with a one-click loaner  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348833">bug 1348833</a>).</li></ul>
 
@@ -228,7 +230,7 @@
 
 <p>I am actually in the process of moving to another team @ Mozilla (more on that in another post), so I probably won&rsquo;t have a ton of time to work on the above &mdash; but I&rsquo;d be happy to help anyone who&rsquo;s interested in developing this idea further.</p>
 
-<p>A special shout out to the Taskcluster team for helping me with the development of this feature: in particular the action task implementation from <a href="https://jonasfj.dk/">Jonas Finnemann Jensen</a> that made it possible to implement this in the first place.</p>
+<p>A special shout out to the <a href="https://wiki.mozilla.org/TaskCluster">Taskcluster</a> team for helping me with the development of this feature: in particular the action task implementation from <a href="https://jonasfj.dk/">Jonas Finnemann Jensen</a> that made it possible to develop this feature in the first place.</p>
   <footer>
     <hr/>
     <script type="text/javascript">
@@ -243,7 +245,9 @@
     </script>
     <div id="disqus_thread"></div>
     <ul class="pager">
-
+    <li class="previous">
+      <a href="/blog/2017/06/using-docker-to-run-automated-tests/">&larr; <em>Using Docker to run automated tests</em></a>
+    </li>
     <li class="next">
       <a href="/blog/2017/02/cancel-all-the-things/"><em>Cancel all the things</em> &rarr;</a>
     </li>

@@ -14,7 +14,7 @@
   <author>
    <name>William Lachance</name></author>
   <content type="html">&lt;html&gt;
-&lt;p&gt;As part of the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell"&gt;Stockwell project&lt;/a&gt;, I&amp;rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&amp;rsquo;s often very difficult to reproduce an intermittent we see in Treeherder locally since the environment is so different, so figuring out workflows that support debugging of problems remotely is essential.&lt;/p&gt;
+&lt;p&gt;As part of the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell"&gt;Stockwell project&lt;/a&gt;, I&amp;rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&amp;rsquo;s often very difficult to reproduce an intermittent failure we see in Treeherder locally since the environment is so different, but historically it has been a big hassle to get access to the machines we use in automation for various reasons.&lt;/p&gt;
 
 &lt;p&gt;One option that rolled out last year was the so-called one-click loaner, which enabled developers to sign out an virtual machine instance identical to the ones used to run unit tests (at least if the tests are running on Taskcluster, which is increasingly often the case), then execute their particular case with whatever extra debugging options they would find useful. This is a big step forward, but it&amp;rsquo;s still quite a bit of hassle, since it requires a bunch of manual work on the part of the developer to interact with the instance.&lt;/p&gt;
 
@@ -38,7 +38,7 @@
 
 &lt;ul&gt;
  &lt;li&gt;This depends on functionality that&amp;rsquo;s only in Taskcluster, so  buildbot jobs are exempt.&lt;/li&gt;
- &lt;li&gt;No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which probably isn&amp;rsquo;t that far off).&lt;/li&gt;
+ &lt;li&gt;No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which hopefully isn&amp;rsquo;t that far off).&lt;/li&gt;
  &lt;li&gt;Browser chrome tests failing in mysterious ways if run repeatedly  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347654"&gt;bug 1347654&lt;/a&gt;)&lt;/li&gt;
  &lt;li&gt;Only reftest and mochitest are currently supported. XPCShell  support is blocked by the lack of support in its harness for  running a job repeatedly (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347696"&gt;bug 1347696&lt;/a&gt;).  Web Platform Tests need the requisite support in mozharness for  just setting up the tests without running them &amp;mdash; the same issue  that prevents us from debugging such tests with a one-click loaner  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348833"&gt;bug 1348833&lt;/a&gt;).&lt;/li&gt;&lt;/ul&gt;
 
@@ -50,7 +50,7 @@
 
 &lt;p&gt;I am actually in the process of moving to another team @ Mozilla (more on that in another post), so I probably won&amp;rsquo;t have a ton of time to work on the above &amp;mdash; but I&amp;rsquo;d be happy to help anyone who&amp;rsquo;s interested in developing this idea further.&lt;/p&gt;
 
-&lt;p&gt;A special shout out to the Taskcluster team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to implement this in the first place.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;A special shout out to the &lt;a href="https://wiki.mozilla.org/TaskCluster"&gt;Taskcluster&lt;/a&gt; team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to develop this feature in the first place.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Cancel all the things</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2017/02/cancel-all-the-things/?utm_source=Treeherder&amp;utm_medium=Atom" />

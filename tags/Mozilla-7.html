@@ -77,6 +77,8 @@
 
 <li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
 
+<li><a href="/tags/Docker.html">Docker</a></li>
+
 <li><a href="/tags/Ebola.html">Ebola</a></li>
 
 <li><a href="/tags/Eideticker.html">Eideticker</a></li>
@@ -186,6 +188,47 @@
           <h1>Posts tagged <em>Mozilla</em></h1>
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2012/01/yet-more-checkerboarding-analysis/'>Yet more checkerboarding analysis</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 25th, 2012</p>
+  </header>
+
+<p>I&#8217;ve been spending a bit more time on refining the checkerboarding tests in Eideticker that I talked about last time. Most of my work has been focused on making the results as representative of a real world scenario as possible, to that effect I&#8217;ve been working on:</p>
+
+<ul>
+ <li>Changed the test case from a web site of my own concoction to a more realistic example (the <a href="http://taskjs.org">taskjs.org</a> site)</li>
+ <li>Use actual Android native events (via <a href="http://developer.android.com/guide/developing/tools/monkeyrunner_concepts.html">MonkeyRunner</a>) to synthesize touch-based scrolling instead of simulating the event in JavaScript (which exercises a completely different codepath).</li>
+ <li>Fixing various synchronization issues to make results more repeatable. Before captures were of wildly variable lengths, which made the numbers extremely suspect. There&#8217;s probably still a few issues, but much less than before.</li></ul>
+
+<p>The end result of this is a framework that gives much more meaningful results. The bad news is that the results that I&#8217;m measuring don&#8217;t show a very positive picture for where we&#8217;re at with the native re-write of Firefox. Even relative to the version of mobile Firefox which is currently on the Android Market, we still have some catching up to do. Here&#8217;s some video of the &#8220;old&#8221; firefox in action:</p>
+
+<video src="/files/eideticker/taskjs_xul.webm" width="600px" controls="controls"></video>
+
+<p>And here&#8217;s the Native fennec (what we&#8217;re currently offering in nightly, with some minor modifications by me to change the way the &#8220;checkerboard&#8221; is drawn for analysis purposes):</p>
+
+<video src="/files/eideticker/taskjs_native.webm" width="600px" controls="controls"></video>
+
+<p>The numbers behind this comparison:</p>
+
+<table>
+ <tr>
+  <td>Platform</td> 
+  <td>Percent checkerboarding over run of test</td></tr>
+ <tr>
+  <td>Old Fennec</td> 
+  <td>2%</td></tr>
+ <tr>
+  <td>Native Fennec</td> 
+  <td>57%</td></tr></table>
+
+<p>(by the way, this performance regression is filed as <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447">bug 719447</a>)</p>
+
+<p>I know there&#8217;s lots of great effort going into improving this situation, so I have hope that we&#8217;ll be doing much better on this metric in the coming days/weeks. The process for creating these videos/analyses is mostly automated at this point, so my plan is to create a small dashboard (ala <a href="http://arewefastyet.com">arewefastyet.com</a>) to measure these numbers over time on the latest nightlies. Stay tuned!</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2012/01/measuring-reduced-checkerboarding-in-mobile-fennec/'>Measuring reduced checkerboarding in mobile Fennec</a></h2>
