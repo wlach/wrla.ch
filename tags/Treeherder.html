@@ -75,6 +75,8 @@
 
 <li><a href="/tags/Community.html">Community</a></li>
 
+<li><a href="/tags/Counting.html">Counting</a></li>
+
 <li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
 
 <li><a href="/tags/Docker.html">Docker</a></li>
@@ -285,7 +287,7 @@
 5</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span></span><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
+      <pre><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
   <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_step</span> <span class="k">as</span> <span class="n">tls</span> <span class="k">on</span> <span class="n">tls</span><span class="p">.</span><span class="n">job_id</span> <span class="o">=</span> <span class="n">bjm</span><span class="p">.</span><span class="n">job_id</span>
   <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_error</span> <span class="k">as</span> <span class="n">tle</span> <span class="k">on</span> <span class="n">tle</span><span class="p">.</span><span class="n">step_id</span> <span class="o">=</span> <span class="n">tls</span><span class="p">.</span><span class="n">id</span>
   <span class="k">where</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&gt;</span> <span class="s1">&#39;2016-10-31&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&lt;</span> <span class="s1">&#39;2016-11-24&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">user_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span>
@@ -318,7 +320,7 @@
 14</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span></span><span class="p">{</span>
+      <pre><span class="p">{</span>
 <span class="nt">"bug_number"</span><span class="p">:</span> <span class="mi">1202623</span><span class="p">,</span>
 <span class="nt">"lines"</span><span class="p">:</span> <span class="p">[</span>
   <span class="s2">"browser_private_clicktoplay.js Test timed out -"</span><span class="p">,</span>
@@ -386,42 +388,42 @@
 36</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+      <pre><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
 
 
-<span class="n">training_set</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s1">&#39;training&#39;</span><span class="p">)</span>
+<span class="n">training_set</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s">&#39;training&#39;</span><span class="p">)</span>
 <span class="n">count_vect</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
 <span class="n">X_train_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">training_set</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="n">tfidf_transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
 <span class="n">X_train_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_counts</span><span class="p">)</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;hinge&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">&#39;hinge&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">,</span>
                     <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_tfidf</span><span class="p">,</span> <span class="n">training_set</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 
 <span class="n">num_correct</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">num_missed</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">for</span> <span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fnames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;testing/&#39;</span><span class="p">):</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fnames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s">&#39;testing/&#39;</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">fnames</span><span class="p">:</span>
         <span class="n">bugnum</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">subdir</span><span class="p">)</span>
         <span class="k">print</span> <span class="n">bugnum</span><span class="p">,</span> <span class="n">fnames</span>
         <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">fnames</span><span class="p">:</span>
             <span class="n">doc</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">fname</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
-                <span class="k">print</span> <span class="s2">"--&gt; (skipping, empty)"</span>
+                <span class="k">print</span> <span class="s">"--&gt; (skipping, empty)"</span>
             <span class="n">X_new_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">doc</span><span class="p">])</span>
             <span class="n">X_new_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_new_counts</span><span class="p">)</span>
             <span class="n">predicted_bugnum</span> <span class="o">=</span> <span class="n">training_set</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new_tfidf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
             <span class="k">if</span> <span class="n">bugnum</span> <span class="o">==</span> <span class="n">predicted_bugnum</span><span class="p">:</span>
                 <span class="n">num_correct</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">print</span> <span class="s2">"--&gt; correct"</span>
+                <span class="k">print</span> <span class="s">"--&gt; correct"</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">num_missed</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">print</span> <span class="s2">"--&gt; missed (</span><span class="si">%s</span><span class="s2">)"</span> <span class="o">%</span> <span class="n">predicted_bugnum</span>
-<span class="k">print</span> <span class="s2">"Correct: </span><span class="si">%s</span><span class="s2"> Missed: </span><span class="si">%s</span><span class="s2"> Ratio: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">num_correct</span><span class="p">,</span> <span class="n">num_missed</span><span class="p">,</span> <span class="n">num_correct</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num_correct</span> <span class="o">+</span> <span class="n">num_missed</span><span class="p">))</span>
+                <span class="k">print</span> <span class="s">"--&gt; missed (</span><span class="si">%s</span><span class="s">)"</span> <span class="o">%</span> <span class="n">predicted_bugnum</span>
+<span class="k">print</span> <span class="s">"Correct: </span><span class="si">%s</span><span class="s"> Missed: </span><span class="si">%s</span><span class="s"> Ratio: </span><span class="si">%s</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">num_correct</span><span class="p">,</span> <span class="n">num_missed</span><span class="p">,</span> <span class="n">num_correct</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num_correct</span> <span class="o">+</span> <span class="n">num_missed</span><span class="p">))</span>
 </pre></div>
 </td></tr></tbody></table>
 </div>

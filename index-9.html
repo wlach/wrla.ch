@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 9)</title>
     <meta name="description" content="William Lachance's Log (page 9)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Orangutan, Free Software, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Docker, Montreal, Coffee, Life, GNOME, Music, Cats, mozregression, Performance, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Ebola, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, Meta, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Docker, Montreal, Life, GNOME, Music, Orangutan, Cats, mozregression, Performance, Python, zen, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Coffee, Taskcluster, Community, Counting, Open Data, Android, ateam, Time">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-9.html">
@@ -74,6 +74,8 @@
 <li><a href="/tags/Coffee.html">Coffee</a></li>
 
 <li><a href="/tags/Community.html">Community</a></li>
+
+<li><a href="/tags/Counting.html">Counting</a></li>
 
 <li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
 
@@ -189,6 +191,31 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Open-Data.html">Open Data</a>, <a href="/tags/Transit.html">Transit</a></span></p>
+    <h2><a href='/blog/2011/12/an-api-for-amt-data/'>An API for AMT data</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Dec 14th, 2011</p>
+  </header>
+
+<p>The <a href="http://www.amt.qc.ca">AMT</a> released their <a href="http://t.co/AofpyI4E">GTFS schedule information</a> to the public earlier this week, which is awesome. Not coincidentally, Montreal is going to have a <a href="http://transportationcamp.org/montreal/">Transportation Camp</a> tomorrow, wherein people will hack on transportation software and discuss open data issues.</p>
+
+<p>GTFS information is useful and standard, but in its raw form it can be a bit difficult to wrangle with. So in advance of the event, I thought it might be helpful/useful to put a simple JSON API to the data, based on my <a href="http://github.com/wlach/routez">routez</a> software. Should be useful for creating an app or two! There&#8217;s two endpoints that are currently defined:</p>
+
+<p><code>/api/v1/stop/&lt;stop code&gt;/upcoming_stoptimes</code></p>
+
+<p>This will give a set of upcoming departures at a particular AMT stop (represented by its code). Example:</p>
+
+<p><a href="http://amt.wrla.ch/blog/api/v1/stop/11260/upcoming_stoptimes">http://amt.wrla.ch/blog/api/v1/stop/11260/upcoming_stoptimes</a></p>
+
+<p><code>/api/v1/place/&lt;lat,lng&gt;/upcoming_stoptimes?distance=&lt;distance in meters&gt;</code></p>
+
+<p>This will give a set of AMT stops within range of that endpoint, along with upcoming departures. Example:</p>
+
+<p><a href="http://amt.wrla.ch/blog/api/v1/place/45.49640,%20-73.57567/upcoming_stoptimes?distance=1000">http://amt.wrla.ch/blog/api/v1/place/45.49640,%20-73.57567/upcoming_stoptimes?distance=1000</a></p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2011/12/eideticker-areas-to-explore/'>Eideticker areas to explore</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Dec 9th, 2011</p>
@@ -249,6 +276,19 @@
 
 <article>
   <header>
+    <p><span class="tags"><a href="/tags/Business.html">Business</a>, <a href="/tags/Usability.html">Usability</a></span></p>
+    <h2><a href='/blog/2011/11/hellofax-rocks-my-world/'>Hellofax rocks my world</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 18th, 2011</p>
+  </header>
+
+<p>It&#8217;s kind of rare for me to pimp out products and services on my blog, but I&#8217;m going to do so just this once.</p>
+
+<p>I really despise faxes, but occasionally I do have to send them in the course of some of the admin work I still do on the side for my old consulting company (address changes, etc.). If you&#8217;re in a similar boat, you really owe it to yourself to check out <a href="http://hellofax.com">hellofax.com</a>. It&#8217;s about three gazillion times better than any other similar service that I&#8217;ve tried (which were all embarassingly bad: I&#8217;d sooner just go to a copy shop) and has saved me hours and hours of time and frustration.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2011/11/a-planet-to-call-our-own/'>A planet to call our own</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 18th, 2011</p>
@@ -261,19 +301,6 @@
 <p>Who should care? Well, we maintain all the major testing frameworks like Mochitest, Reftest, and Talos as well as automated tooling for QA like <a href="https://developer.mozilla.org/en/Mozmill">Mozmill</a>. Our latest work is focused on making sure that Firefox is as robust, responsive, and performant as possible on desktop and mobile. In short, if you&#8217;re writing or verifying code from mozilla-central, what we&#8217;re doing probably affects you. Please let us know what you think about our projects and whether there&#8217;s anything we can do to make your job easier: we&#8217;re listening.</p>
 
 <p><strong>Quick bonus note</strong>: It&#8217;s not immediately obvious (or at least it wasn&#8217;t to me), but Mozilla has some fairly finely tuned infrastructure for running planets. If your team or group wants one, it&#8217;s definitely better to plug into that instead of rolling your own. 😉 Reed Loden is the maintainer and the source <a href="http://viewvc.svn.mozilla.org/vc/projects/planet/">lives in subversion</a>.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Business.html">Business</a>, <a href="/tags/Usability.html">Usability</a></span></p>
-    <h2><a href='/blog/2011/11/hellofax-rocks-my-world/'>Hellofax rocks my world</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 18th, 2011</p>
-  </header>
-
-<p>It&#8217;s kind of rare for me to pimp out products and services on my blog, but I&#8217;m going to do so just this once.</p>
-
-<p>I really despise faxes, but occasionally I do have to send them in the course of some of the admin work I still do on the side for my old consulting company (address changes, etc.). If you&#8217;re in a similar boat, you really owe it to yourself to check out <a href="http://hellofax.com">hellofax.com</a>. It&#8217;s about three gazillion times better than any other similar service that I&#8217;ve tried (which were all embarassingly bad: I&#8217;d sooner just go to a copy shop) and has saved me hours and hours of time and frustration.</p>
 
 </article>
 
@@ -415,26 +442,6 @@ Unique frames: 121/272&lt;br /&gt;</code></p>
   <p>Not really my project, but Stephane Guidoin put up an awesome site called <a href="http://zonecone.ca">zonecone.ca</a> which helps you find out about traffic obstacles that might delay your journey. It even has a nifty feature where you can create an account, specify a route you take regularly (say, your commute), and it&#8217;ll automatically notify you if something pops up. As you may have guessed, I&#8217;m not the biggest fan of automobiles, but this is still very cool. 😉 This site was originally based on <a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/">the map layout template</a> that I announced a few months ago.</p></li>
  <li>
   <p>I have a lettuce plant growing on my new balcony. It&#8217;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!</p></li></ol>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Life.html">Life</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2011/09/changes/'>Changes!</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 1st, 2011</p>
-  </header>
-
-<p>A bit quiet here for the last few months. What&#8217;s been happening?</p>
-
-<ol>
- <li>I got married and had a <a href="http://www.flickr.com/photos/wlach/sets/72157626998555629">wonderful honeymoon</a> in France.
-  <br /></li>
- <li>I started a fantastic new job with Mozilla&#8217;s <a href="https://wiki.mozilla.org/Auto-tools/">tools &#38; automation</a> group. Currently working on bringing down the build/test times for Firefox (part of a project called <a href="http://brasstacks.mozilla.com/gofaster/">GoFaster</a>), which has been really interesting.
-  <br /></li>
- <li>I moved into a fantastic new apartment in an old victorian building near Vend&ocirc;me metro.</li></ol>
-
-<p>In short, life has been treating me really well! More updates soon.</p>
 
 </article>
 

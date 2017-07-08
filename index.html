@@ -6,7 +6,7 @@
     <title>William Lachance's Log</title>
     <meta name="description" content="William Lachance's Log">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Orangutan, Free Software, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Docker, Montreal, Coffee, Life, GNOME, Music, Cats, mozregression, Performance, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Ebola, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, Meta, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Docker, Montreal, Life, GNOME, Music, Orangutan, Cats, mozregression, Performance, Python, zen, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Coffee, Taskcluster, Community, Counting, Open Data, Android, ateam, Time">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index.html">
@@ -74,6 +74,8 @@
 <li><a href="/tags/Coffee.html">Coffee</a></li>
 
 <li><a href="/tags/Community.html">Community</a></li>
+
+<li><a href="/tags/Counting.html">Counting</a></li>
 
 <li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
 
@@ -188,6 +190,21 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Counting.html">Counting</a></span></p>
+    <h2><a href='/blog/2017/07/the-vastness/'>The vastness</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 8th, 2017</p>
+  </header>
+
+<p>Had a good all hands with the rest of Mozilla in San Francisco (at least those able and willing to attend due to the current political situation in the U.S.). I stayed a few extra days to hang out with some of my friends who had moved to S.F. On Sunday we went to Muir Woods, where I took this picture:</p>
+
+<p><a href="/files/2017/07/muirwoods-20170702.jpg"><img style="width:640px" src="/files/2017/07/muirwoods-20170702.jpg" /></a></p>
+
+<p>It occurred to me at the time that I took that photo that pretty much every sensory receptor in my optic nerve was registering the signal of some kind of life. Thousands of beings (trees, clover, moss, lichens) in turn made up of trillions upon trillions of tiny beings (cells, bacteria) all conscious and interacting with each other in ways that I can barely begin to understand.</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Docker.html">Docker</a></span></p>
     <h2><a href='/blog/2017/06/using-docker-to-run-automated-tests/'>Using Docker to run automated tests</a></h2>
@@ -311,7 +328,7 @@
 5</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span></span><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
+      <pre><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
   <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_step</span> <span class="k">as</span> <span class="n">tls</span> <span class="k">on</span> <span class="n">tls</span><span class="p">.</span><span class="n">job_id</span> <span class="o">=</span> <span class="n">bjm</span><span class="p">.</span><span class="n">job_id</span>
   <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_error</span> <span class="k">as</span> <span class="n">tle</span> <span class="k">on</span> <span class="n">tle</span><span class="p">.</span><span class="n">step_id</span> <span class="o">=</span> <span class="n">tls</span><span class="p">.</span><span class="n">id</span>
   <span class="k">where</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&gt;</span> <span class="s1">&#39;2016-10-31&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&lt;</span> <span class="s1">&#39;2016-11-24&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">user_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span>
@@ -344,7 +361,7 @@
 14</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span></span><span class="p">{</span>
+      <pre><span class="p">{</span>
 <span class="nt">"bug_number"</span><span class="p">:</span> <span class="mi">1202623</span><span class="p">,</span>
 <span class="nt">"lines"</span><span class="p">:</span> <span class="p">[</span>
   <span class="s2">"browser_private_clicktoplay.js Test timed out -"</span><span class="p">,</span>
@@ -412,42 +429,42 @@
 36</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+      <pre><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
 
 
-<span class="n">training_set</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s1">&#39;training&#39;</span><span class="p">)</span>
+<span class="n">training_set</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s">&#39;training&#39;</span><span class="p">)</span>
 <span class="n">count_vect</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
 <span class="n">X_train_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">training_set</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="n">tfidf_transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
 <span class="n">X_train_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_counts</span><span class="p">)</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;hinge&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">&#39;hinge&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">,</span>
                     <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_tfidf</span><span class="p">,</span> <span class="n">training_set</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 
 <span class="n">num_correct</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">num_missed</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">for</span> <span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fnames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;testing/&#39;</span><span class="p">):</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fnames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s">&#39;testing/&#39;</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">fnames</span><span class="p">:</span>
         <span class="n">bugnum</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">subdir</span><span class="p">)</span>
         <span class="k">print</span> <span class="n">bugnum</span><span class="p">,</span> <span class="n">fnames</span>
         <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">fnames</span><span class="p">:</span>
             <span class="n">doc</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">fname</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
-                <span class="k">print</span> <span class="s2">"--&gt; (skipping, empty)"</span>
+                <span class="k">print</span> <span class="s">"--&gt; (skipping, empty)"</span>
             <span class="n">X_new_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">doc</span><span class="p">])</span>
             <span class="n">X_new_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_new_counts</span><span class="p">)</span>
             <span class="n">predicted_bugnum</span> <span class="o">=</span> <span class="n">training_set</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new_tfidf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
             <span class="k">if</span> <span class="n">bugnum</span> <span class="o">==</span> <span class="n">predicted_bugnum</span><span class="p">:</span>
                 <span class="n">num_correct</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">print</span> <span class="s2">"--&gt; correct"</span>
+                <span class="k">print</span> <span class="s">"--&gt; correct"</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">num_missed</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">print</span> <span class="s2">"--&gt; missed (</span><span class="si">%s</span><span class="s2">)"</span> <span class="o">%</span> <span class="n">predicted_bugnum</span>
-<span class="k">print</span> <span class="s2">"Correct: </span><span class="si">%s</span><span class="s2"> Missed: </span><span class="si">%s</span><span class="s2"> Ratio: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">num_correct</span><span class="p">,</span> <span class="n">num_missed</span><span class="p">,</span> <span class="n">num_correct</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num_correct</span> <span class="o">+</span> <span class="n">num_missed</span><span class="p">))</span>
+                <span class="k">print</span> <span class="s">"--&gt; missed (</span><span class="si">%s</span><span class="s">)"</span> <span class="o">%</span> <span class="n">predicted_bugnum</span>
+<span class="k">print</span> <span class="s">"Correct: </span><span class="si">%s</span><span class="s"> Missed: </span><span class="si">%s</span><span class="s"> Ratio: </span><span class="si">%s</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">num_correct</span><span class="p">,</span> <span class="n">num_missed</span><span class="p">,</span> <span class="n">num_correct</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num_correct</span> <span class="o">+</span> <span class="n">num_missed</span><span class="p">))</span>
 </pre></div>
 </td></tr></tbody></table>
 </div>
@@ -619,55 +636,6 @@
 
 <ul>
  <li>Supporting comparative measurements between Firefox and other  browsers. This is an important task, but doesn&rsquo;t really fit into the  model of Perfherder, which is intimately tied to the revision data  associated with Firefox. To do this would require detailed tracking  of Chrome on the same basis, and I don&rsquo;t think that&rsquo;s really a place  where we want to go. We should definitely monitor for general  trends, but I think that is best done with a seperate system.</li></ul>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2016/03/platform-engineering-project-of-the-month-perfherder/'>Platform engineering project of the month: Perfherder</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 14th, 2016</p>
-  </header>
-
-<p><em>[ originally posted on <a href="https://groups.google.com/d/msg/mozilla.dev.platform/itdfru6csSk/vfVP_WDXBgAJ">mozilla.dev.platform</a> ]</em></p>
-
-<p>Hello from Platform Engineering Operations! Once a month we highlight one of our projects to help the Mozilla community discover a useful tool or an interesting contribution opportunity.</p>
-
-<p>This month’s project is Perfherder!</p>
-
-<h3 id="what-is-perfherder">What is Perfherder?</h3>
-
-<p>Perfherder is a generic system for visualizing and analyzing performance data produced by the many automated tests we run here at Mozilla (such as Talos, &ldquo;Are we fast yet?&rdquo; or &ldquo;Are we slim yet?&rdquo;). The chief goal of the project is to make sure that performance of Firefox gets better, not worse over time. It does this by:</p>
-
-<ul>
- <li>Tracking the performance generated by our automated tests, allowing  them to be visualized on a graph.</li>
- <li>Providing a sheriffing dashboard which allows for incoming  alerts of performance regressions to be annotated and triaged - bugs  can be filed based on a template and their resolution status can be  tracked.</li></ul>
-
-<p>In addition to its own user interface, Perfherder also provides an API on the backend that other people can use to build custom performance visualizations and dashboards. For example, the metrics group has been working on a set of release quality indices for performance based on Perfherder data:</p>
-
-<p><a href="https://metrics.mozilla.com/quality-indices/">https://metrics.mozilla.com/quality-indices/</a></p>
-
-<h3 id="how-it-works">How it works</h3>
-
-<p>Perfherder is part of Treeherder, building on that project&rsquo;s existing support for tracking revision and test job information. Like the rest of Treeherder, Perfherder&rsquo;s backend is written in Python, using the Django web framework. The user interface is written as an AngularJS application.</p>
-
-<h3 id="learning-more">Learning more</h3>
-
-<p>For more information on Perfherder than you ever wanted to know, please see the wiki page:</p>
-
-<p><a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder">https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder</a></p>
-
-<h3 id="can-i-contribute">Can I contribute?</h3>
-
-<p>Yes! We have had some fantastic contributions from the community to Perfherder, and are always looking for more. This is a great way to help developers make Firefox faster (or use less memory). The core of Perfherder is relatively small, so this is a great chance to learn either Django or Angular if you have a small amount of Python and/or JavaScript experience.</p>
-
-<p>We have set aside a set of bugs that are suitable for getting started here:</p>
-
-<p><a href="https://bugzilla.mozilla.org/buglist.cgi?list_id=12722722&amp;resolution=---&amp;status_whiteboard_type=allwordssubstr&amp;query_format=advanced&amp;status_whiteboard=perfherder-starter-bug">https://bugzilla.mozilla.org/buglist.cgi?list_id=12722722&amp;resolution=---&amp;status_whiteboard_type=allwordssubstr&amp;query_format=advanced&amp;status_whiteboard=perfherder-starter-bug</a></p>
-
-<p>For more information on contributing to Perfherder, please see the contribution section of the above wiki page:</p>
-
-<p><a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution">https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution</a></p>
 
 </article>
 
