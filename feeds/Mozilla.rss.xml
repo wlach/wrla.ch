@@ -4,9 +4,32 @@
   <title>William Lachance's Log: Posts tagged 'Mozilla'</title>
   <description>William Lachance's Log: Posts tagged 'Mozilla'</description>
   <link>https://wlach.github.io/tags/Mozilla.html</link>
-  <lastBuildDate>Fri, 02 Jun 2017 20:04:38 UT</lastBuildDate>
-  <pubDate>Fri, 02 Jun 2017 20:04:38 UT</pubDate>
+  <lastBuildDate>Thu, 13 Jul 2017 15:08:40 UT</lastBuildDate>
+  <pubDate>Thu, 13 Jul 2017 15:08:40 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Taking over an npm package: sanity prevails</title>
+   <link>https://wlach.github.io/blog/2017/07/taking-over-an-npm-package-sanity-prevails/?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2017-07-taking-over-an-npm-package-sanity-prevails</guid>
+   <pubDate>Thu, 13 Jul 2017 15:08:40 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Sometimes problems are easier to solve than expected.&lt;/p&gt;
+
+&lt;p&gt;For the last few months I&amp;rsquo;ve been working on the front end of a new project called &lt;a href="https://github.com/mozilla/missioncontrol"&gt;Mission Control&lt;/a&gt;, which aims to chart lots of interesting live information in something approximating realtime. Since this is a greenfield project, I thought it would make sense to use the currently-invogue framework at Mozilla (react) along with our standard visualization library, &lt;a href="http://metricsgraphicsjs.org/"&gt;metricsgraphics&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Metricsgraphics is great, but its jquery-esque api is somewhat at odds with the react way. The obvious solution to this problem is to wrap its functionality in a react component, and a quick google search determined that several people have tried to do exactly that, the most popular one being one called (obviously) react-metrics-graphics. Unfortunately, it hadn&amp;rsquo;t been updated in quite some time and some pull requests (including ones implementing features I needed for my project) weren&amp;rsquo;t being responded to.&lt;/p&gt;
+
+&lt;p&gt;I expected this to be pretty difficult to resolve: I had no interaction with the author (Carter Feldman) before but based on my past experiences in free software, I was expecting stonewalling, leaving me no choice but to fork the package and give it a new name, a rather unsatisfying end result.&lt;/p&gt;
+
+&lt;p&gt;But, hey, let&amp;rsquo;s keep an open mind on this. What does google say about unmaintained npm packages? Oh what&amp;rsquo;s this? They actually have a &lt;a href="https://docs.npmjs.com/misc/disputes"&gt;policy&lt;/a&gt;?&lt;/p&gt;
+
+&lt;p&gt;tl;dr: You email the maintainer (politely) and CC support@npmjs.org about your interest in helping maintain the software. If you&amp;rsquo;re unable to come up with a resolution on your own, they will intervene.&lt;/p&gt;
+
+&lt;p&gt;So I tried that. It turns out that Carter was really happy to hear that Mozilla was interested in taking over maintenance of this project, and not only gave me permission to start publishing newer versions to npm, but even transferred his repository over to Mozilla (so we could preserve issue and PR history). The project&amp;rsquo;s new location is here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/mozilla/react-metrics-graphics"&gt;https://github.com/mozilla/react-metrics-graphics&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In hindsight, this is obviously the most reasonable outcome and I&amp;rsquo;m not sure why I was expecting anything else. Is the node community just friendlier than other areas I&amp;rsquo;ve worked in? Have community standards improved generally? In any case, thank you Carter for a great piece of software, hopefully it will thrive in its new home. :P&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Using Docker to run automated tests</title>
    <link>https://wlach.github.io/blog/2017/06/using-docker-to-run-automated-tests/?utm_source=Mozilla&amp;utm_medium=RSS</link>
@@ -792,23 +815,4 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;&lt;a href="/files/2015/02/e10s-vs-non-e10s.png"&gt;&lt;img src="/files/2015/02/e10s-vs-non-e10s.png" alt="e10s-vs-non-e10s" width="901" height="489" class="alignnone size-full wp-image-1157" srcset="/files/2015/02/e10s-vs-non-e10s-300x162.png 300w, /files/2015/02/e10s-vs-non-e10s.png 901w" sizes="(max-width: 901px) 100vw, 901px" /&gt;&lt;/a&gt;
  &lt;br /&gt;&lt;a href="https://treeherder.mozilla.org/perf.html#/graphs?timerange=7776000&amp;amp;#038;seriesList=[[%22mozilla-central%22,%22a78a233646c932ee1c56cf27da58b6aaa4eda2c3%22],[%22mozilla-central%22,%228e9323fd7fadb0623ec520a8ccaec2e733f3d501%22]]"&gt;[link]&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Green is e10s, red is non-e10s (the legend picture doesn&amp;#8217;t reflect this because we have yet to deploy a fix to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1130554"&gt;bug 1130554&lt;/a&gt;, but I promise I&amp;#8217;m not lying). As you can see, the gap has been closing (in particular, something landed in mid-January that improved the e10s numbers quite a bit), but page load times are still measurably slower with this feature enabled.&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
-   <title>mozregression updates</title>
-   <link>https://wlach.github.io/blog/2015/01/mozregression-updates/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-01-mozregression-updates</guid>
-   <pubDate>Tue, 27 Jan 2015 05:00:00 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;Lots of movement in &lt;a href="http://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt; (a tool for automatically determining when a regression was introduced in Firefox by bisecting builds on ftp.mozilla.org) in the last few months. Here&amp;#8217;s some highlights:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;Support for win64 nightly and inbound builds (Kapil Singh, Vaibhav Agarwal)&lt;/li&gt;
- &lt;li&gt;Support for using an http cache to reduce time spent downloading builds (Sam Garrett)&lt;/li&gt;
- &lt;li&gt;Way better logging and printing of remaining time to finish bisection (Julien Pagès)&lt;/li&gt;
- &lt;li&gt;Much improved performance when bisecting inbound (Julien)&lt;/li&gt;
- &lt;li&gt;Support for automatic determination on whether a build is good/bad via a custom script (Julien)&lt;/li&gt;
- &lt;li&gt;Tons of bug fixes and other robustness improvements (me, Sam, Julien, others&amp;#8230;)&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;Also thanks to Julien, we have a &lt;a href="http://mozilla.github.io/mozregression/"&gt;spiffy new website&lt;/a&gt; which documents many of these features. If it&amp;#8217;s been a while, be sure to &lt;a href="http://mozilla.github.io/mozregression/install.html"&gt;update your copy of mozregression to the latest version&lt;/a&gt; and check out the site for documentation on how to use the new features described above!&lt;/p&gt;
-
-&lt;p&gt;Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&amp;#8217;s just that much more useful to Firefox contributors everywhere.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;Green is e10s, red is non-e10s (the legend picture doesn&amp;#8217;t reflect this because we have yet to deploy a fix to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1130554"&gt;bug 1130554&lt;/a&gt;, but I promise I&amp;#8217;m not lying). As you can see, the gap has been closing (in particular, something landed in mid-January that improved the e10s numbers quite a bit), but page load times are still measurably slower with this feature enabled.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

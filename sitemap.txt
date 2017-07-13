@@ -31,6 +31,7 @@ https://wlach.github.io/blog/2017/04/easier-reproduction-of-intermittent-test-fa
 https://wlach.github.io/blog/2013/03/a-visit-to-the-montreal-zen-center/
 https://wlach.github.io/blog/2014/03/eideticker-for-firefoxos-becoming-more-useful/
 https://wlach.github.io/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/
+https://wlach.github.io/blog/2017/07/taking-over-an-npm-package-sanity-prevails/
 https://wlach.github.io/blog/2016/01/nixi-is-moving-too/
 https://wlach.github.io/blog/2016/03/are-we-fast-yet-and-perfherder/
 https://wlach.github.io/blog/2013/02/finding-a-camera-for-eideticker/

@@ -191,6 +191,23 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2013/05/proof-of-concept-eideticker-dashboard-for-firefoxos/'>Proof of concept Eideticker dashboard for FirefoxOS</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 6th, 2013</p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+
+<p>I just put up a proof of concept Eideticker dashboard for FirefoxOS <a href="http://eideticker.wrla.ch/b2g">here</a>. Right now it has two days worth of data, manually sampled from an Unagi device running b2g18. Right now there are two tests: one the measures the &#8220;speed&#8221; of the contacts application scrolling, another that measures the amount of time it takes for the contacts application to be fully loaded.</p>
+
+<p>For those not already familiar with it, Eideticker is a benchmarking suite which captures live video data coming from a device and analyzes it to determine performance. This lets us get data which is more representative of actual user experience (as opposed to an oft artificial benchmark). For example, Eideticker measures contacts startup as taking anywhere between 3.5 seconds and 4.5 seconds, versus than the 0.5 to 1 seconds that the <a href="https://datazilla.mozilla.org/b2g/?branch=master&amp;#038;range=7&amp;#038;test=cold_load_time&amp;#038;app_list=contacts&amp;#038;app=contacts&amp;#038;gaia_rev=114bf216de0a19f7&amp;#038;gecko_rev=9c0de2afd22a8476">existing datazilla benchmarks</a> show. What accounts for the difference? If you step through an eideticker-captured video, you can see that even though <em>something</em> appears very quickly, not all the contacts are displayed until the 3.5 second mark. There is a gap between an app being reported as &#8220;loaded&#8221; and it being fully available for use, which we had not been measuring until now.</p>
+
+<p>At this point, I am most interested in hearing from FirefoxOS developers on new tests that would be interesting and useful to track performance of the system on an ongoing basis. I&#8217;d obviously prefer to focus on things which have been difficult to measure accurately through other means. My setup is rather fiddly right now, but hopefully soon we can get some useful numbers going on an ongoing basis, as we <a href="http://eideticker.wrla.ch">do already</a> for Firefox for Android.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>, <a href="/tags/Meditation.html">Meditation</a>, <a href="/tags/zen.html">zen</a></span></p>
     <h2><a href='/blog/2013/04/further-meditative-practice/'>Further meditative practice</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 28th, 2013</p>
@@ -451,46 +468,6 @@
 <p>The main use case I see with eideticker-on-panda would be where we wanted to run a suite of tests on checkin (in tbpl-like fashion) and we&#8217;d need to scale to many devices. While cool, this sounds like an expensive project (both in terms of time and hardware) and I think we&#8217;d do better with getting something slightly smaller-scale running first.</p>
 
 <p>So, the real question is whether or not the capture produced by the Elmo is amenable to the same analysis that we do on the raw HDMI output. At the very least, some of eideticker&#8217;s image analysis code will have to be adapted to handle a much &#8220;noisier&#8221; capture. As opposed to capturing the raw HDMI signal, we now have to deal with the real world and its irritating fluctuations in ambient light levels and all that the rest. I have no doubt it is *possible* to compensate for this (after all this is what the human eye/brain does all the time), but the question is how much work it will be. Can&#8217;t speak for anyone else at Mozilla, but I&#8217;m not sure if I really have the time to start a Ph.D-level research project in computational vision. 😉 I&#8217;m optimistic that won&#8217;t be necessary, but we&#8217;ll just have to wait and see.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/10/using-the-dm-utility-to-interact-with-android-or-firefoxos-devices/'>Using the dm utility to interact with Android or FirefoxOS devices</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 18th, 2012</p>
-  </header>
-
-<p>I promised a few people I&#8217;d blog about this, so here you go.</p>
-
-<p>To help with the business of making Android or FirefoxOS devices do our bidding, <a href="https://wiki.mozilla.org/Auto-tools">Mozilla Automation &#38; Tools</a> developed a Python library called <a href="https://github.com/mozilla/mozbase/tree/master/mozdevice">mozdevice</a> which allows you to control these devices either using the Android Debug Bridge protocol (which is actually not Android specific: FirefoxOS devices use it too) or the <a href="https://wiki.mozilla.org/Auto-tools/Projects/SUTAgent">System Under Test protocol</a> (a Mozilla-specific thing).</p>
-
-<p>Anyone familiar with debugging these devices is doubtless familiar with adb, which provides a command line interface that allows you to push/pull files, run a shell, etc. To help test our python code (as well as expand the scope of what&#8217;s possible on the command line), I created a similar utility a few months ago called &#8220;dm&#8221; which provides a command-line interface to the aforementioned mozdevice code. It&#8217;s shipped as part of mozdevice, and testing it out is pretty simple if you have virtualenv installed:</p>
-
-<pre><code>virtualenv mozdevice
-cd mozdevice
-./bin/pip install mozdevice
-source bin/activate
-dm --help</code></pre>
-
-<p>I generally use this utility for two things:</p>
-
-<ol>
- <li>
-  <p>Testing out mozdevice code. For example, today we discovered an (unfortunate) <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=803177">bug</a> in devicemanagerADB&#8217;s killProcess routine. It was easy to verify both the problem and my fix did what I expected by starting my custom build of fennec and running this command:</p>
-  <pre><code>dm --package-name org.mozilla.fennec_wlach killapp org.mozilla.fennec_wlach</code></pre>
-  <p>(yes, it&#8217;s a bit unfortunate that this bug occurred in the first place: devicemanagerADB really needs unit tests)</p></li>
- <li>
-  <p>Day-to-day menial tasks, like getting device info/status, capturing screenshots, etc. You can get a full list of what this utility is capable of by running &#8211;help. E.g.:</p>
-  <p>``` (mozbase)wlach@eideticker:~/src/eideticker$ dm &mdash;help Usage: dm [options] &lt;command&gt; [&lt;args&gt;]</p></li></ol>
-
-<p>device commands:  info [os|id|uptime|systime|screen|memory|processes] - get  information on a specified aspect of the device (if no argument  given, print all available information)  install &lt;file&gt; - push this package file to the device and install it  killapp &lt;process name&gt; - kills any processes with a particular name  on device  launchapp &lt;appname&gt; &lt;activity name&gt; &lt;intent&gt; &lt;URL&gt; - launches  application on device  ls &lt;remote&gt; - list files on device  ps - get information on running processes on device  pull &lt;local&gt; [remote] - copy file/dir from device  push &lt;local&gt; &lt;remote&gt; - copy file/dir to device  rm &lt;remote&gt; - remove file from device  rmdir &lt;remote&gt; - recursively remove directory from device  screencap &lt;png file&gt; - capture screenshot of device in action  shell &lt;command&gt; - run shell command on device</p>
-
-<p>Options:  -h, &mdash;help show this help message and exit  -v, &mdash;verbose Verbose output from DeviceManager  &mdash;host=HOST Device hostname (only if using TCP/IP)  -p PORT, &mdash;port=PORT Custom device port (if using SUTAgent or adb-over-tcp)  -m DMTYPE, &mdash;dmtype=DMTYPE  DeviceManager type (adb or sut, defaults to adb)  -d HWID, &mdash;hwid=HWID HWID  &mdash;package-name=PACKAGENAME  Packagename (if using DeviceManagerADB) ```</p>
-
-<pre><code>Before you ask, yes, it&amp;#8217;s technically possible to do much of this with the original adb utility. But (1) some of our internal stuff can&amp;#8217;t use adb a variety of reasons and (2) some of the tasks above (e.g. launching an app, getting a screenshot) involve considerably more typing with adb than with dm. So it&amp;#8217;s still a win. &lt;/li&gt; &lt;/ol&gt; 
-
-Happy command-lining!</code></pre>
 
 </article>
 

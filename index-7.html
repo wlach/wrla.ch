@@ -191,6 +191,46 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2012/10/using-the-dm-utility-to-interact-with-android-or-firefoxos-devices/'>Using the dm utility to interact with Android or FirefoxOS devices</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 18th, 2012</p>
+  </header>
+
+<p>I promised a few people I&#8217;d blog about this, so here you go.</p>
+
+<p>To help with the business of making Android or FirefoxOS devices do our bidding, <a href="https://wiki.mozilla.org/Auto-tools">Mozilla Automation &#38; Tools</a> developed a Python library called <a href="https://github.com/mozilla/mozbase/tree/master/mozdevice">mozdevice</a> which allows you to control these devices either using the Android Debug Bridge protocol (which is actually not Android specific: FirefoxOS devices use it too) or the <a href="https://wiki.mozilla.org/Auto-tools/Projects/SUTAgent">System Under Test protocol</a> (a Mozilla-specific thing).</p>
+
+<p>Anyone familiar with debugging these devices is doubtless familiar with adb, which provides a command line interface that allows you to push/pull files, run a shell, etc. To help test our python code (as well as expand the scope of what&#8217;s possible on the command line), I created a similar utility a few months ago called &#8220;dm&#8221; which provides a command-line interface to the aforementioned mozdevice code. It&#8217;s shipped as part of mozdevice, and testing it out is pretty simple if you have virtualenv installed:</p>
+
+<pre><code>virtualenv mozdevice
+cd mozdevice
+./bin/pip install mozdevice
+source bin/activate
+dm --help</code></pre>
+
+<p>I generally use this utility for two things:</p>
+
+<ol>
+ <li>
+  <p>Testing out mozdevice code. For example, today we discovered an (unfortunate) <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=803177">bug</a> in devicemanagerADB&#8217;s killProcess routine. It was easy to verify both the problem and my fix did what I expected by starting my custom build of fennec and running this command:</p>
+  <pre><code>dm --package-name org.mozilla.fennec_wlach killapp org.mozilla.fennec_wlach</code></pre>
+  <p>(yes, it&#8217;s a bit unfortunate that this bug occurred in the first place: devicemanagerADB really needs unit tests)</p></li>
+ <li>
+  <p>Day-to-day menial tasks, like getting device info/status, capturing screenshots, etc. You can get a full list of what this utility is capable of by running &#8211;help. E.g.:</p>
+  <p>``` (mozbase)wlach@eideticker:~/src/eideticker$ dm &mdash;help Usage: dm [options] &lt;command&gt; [&lt;args&gt;]</p></li></ol>
+
+<p>device commands:  info [os|id|uptime|systime|screen|memory|processes] - get  information on a specified aspect of the device (if no argument  given, print all available information)  install &lt;file&gt; - push this package file to the device and install it  killapp &lt;process name&gt; - kills any processes with a particular name  on device  launchapp &lt;appname&gt; &lt;activity name&gt; &lt;intent&gt; &lt;URL&gt; - launches  application on device  ls &lt;remote&gt; - list files on device  ps - get information on running processes on device  pull &lt;local&gt; [remote] - copy file/dir from device  push &lt;local&gt; &lt;remote&gt; - copy file/dir to device  rm &lt;remote&gt; - remove file from device  rmdir &lt;remote&gt; - recursively remove directory from device  screencap &lt;png file&gt; - capture screenshot of device in action  shell &lt;command&gt; - run shell command on device</p>
+
+<p>Options:  -h, &mdash;help show this help message and exit  -v, &mdash;verbose Verbose output from DeviceManager  &mdash;host=HOST Device hostname (only if using TCP/IP)  -p PORT, &mdash;port=PORT Custom device port (if using SUTAgent or adb-over-tcp)  -m DMTYPE, &mdash;dmtype=DMTYPE  DeviceManager type (adb or sut, defaults to adb)  -d HWID, &mdash;hwid=HWID HWID  &mdash;package-name=PACKAGENAME  Packagename (if using DeviceManagerADB) ```</p>
+
+<pre><code>Before you ask, yes, it&amp;#8217;s technically possible to do much of this with the original adb utility. But (1) some of our internal stuff can&amp;#8217;t use adb a variety of reasons and (2) some of the tasks above (e.g. launching an app, getting a screenshot) involve considerably more typing with adb than with dm. So it&amp;#8217;s still a win. &lt;/li&gt; &lt;/ol&gt; 
+
+Happy command-lining!</code></pre>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Python.html">Python</a></span></p>
     <h2><a href='/blog/2012/10/catching-problems-early-with-python/'>Catching problems early with python</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 15th, 2012</p>
@@ -521,51 +561,6 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <pre><code>am start -a android.intent.action.VIEW -n com.android.chrome/.Main -d http://mygreatsite.info</code></pre>
 
 <p>Hope this helps someone, somewhere.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/04/eideticker-with-less-eideticker/'>Eideticker with less eideticker</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 24th, 2012</p>
-  </header>
-
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
-
-<p>tl;dr: You can now run the standard eideticker benchmarks easily on any Android phone without any kind of specialized hardware.</p>
-
-<p>So Eideticker is pretty great at comparing relative performance between different browsers and generally measuring things in an absolutely neutral way. Unfortunately it&#8217;s a bit of a pain to use it at the moment to catch regressions: the software still has a few bugs and encoding/decoding/analyzing the capture still takes a great deal of time. Not to mention the fact that it currently requires specialized hardware (though that will soon be less of a concern at least inside MoCo, where we have a bunch of Eideticker boxes on order for the Toronto and Mountain View offices).</p>
-
-<p>A few months ago, Chris Lord wrote up some great code to internally measure the amount of checkerboarding going on in Fennec. I&#8217;ve thought for a while that it would be a neat idea to hook this up to the Eideticker harness, and today I finally did so. After installing Eideticker, you can now run the benchmark on any machine against an arbitrary fennec build just by typing this from the eideticker root directory:</p>
-
-<pre><code>adb shell setprop log.tag.GeckoLayerRendererProf DEBUG
-./bin/get-metric-for-build.py --no-capture --get-internal-checkerboard-stats --num-runs 3 nightly.apk src/tests/scrolling/taskjs.org/index.html</code></pre>
-
-<p>In return, you&#8217;ll get some nice clean results like this:</p>
-
-<pre><code>=== Internal Checkerboard Stats (sum of percents, not percentage) ===
-[167.34348, 171.871015, 175.3420296]</code></pre>
-
-<p>Just to be sure that the results were comparable, I did a quick set of runs on the Eideticker machine in Mountain View with both internal checkerboard statistics gathering and HDMI capturing enabled.</p>
-
-<table>
- <tr>
-  <td>Stats file</td> 
-  <td>HDMI capturing</td></tr>
- <tr>
-  <td>167.34348</td> 
-  <td>177.022</td></tr>
- <tr>
-  <td>171.87</td> 
-  <td>184.46</td></tr>
- <tr>
-  <td>175.34</td> 
-  <td>184.44</td></tr></table>
-
-<p>While the results aren&#8217;t identical (we measure number of frames differently inside Fennec than we do with Eideticker, for one thing), they do seem roughly correlated. So go forth, benchmark and tweak! 😉</p>
-
-<p>P.S. If you&#8217;ve been following mobile automation, you might be asking why I don&#8217;t just suggest running Talos and Robocop on your workstation. Can&#8217;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&#8217;re much more involved to set up and use at the moment. Arguably they shouldn&#8217;t be, and this is something we (<a href="https://wiki.mozilla.org/Auto-tools/">Mozilla tools &amp; automation</a>) need to work on. We&#8217;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.</p>
 
 </article>
 

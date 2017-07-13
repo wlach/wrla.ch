@@ -4,9 +4,32 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Sat, 08 Jul 2017 14:25:33 UT</lastBuildDate>
-  <pubDate>Sat, 08 Jul 2017 14:25:33 UT</pubDate>
+  <lastBuildDate>Thu, 13 Jul 2017 15:08:40 UT</lastBuildDate>
+  <pubDate>Thu, 13 Jul 2017 15:08:40 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Taking over an npm package: sanity prevails</title>
+   <link>https://wlach.github.io/blog/2017/07/taking-over-an-npm-package-sanity-prevails/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2017-07-taking-over-an-npm-package-sanity-prevails</guid>
+   <pubDate>Thu, 13 Jul 2017 15:08:40 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Sometimes problems are easier to solve than expected.&lt;/p&gt;
+
+&lt;p&gt;For the last few months I&amp;rsquo;ve been working on the front end of a new project called &lt;a href="https://github.com/mozilla/missioncontrol"&gt;Mission Control&lt;/a&gt;, which aims to chart lots of interesting live information in something approximating realtime. Since this is a greenfield project, I thought it would make sense to use the currently-invogue framework at Mozilla (react) along with our standard visualization library, &lt;a href="http://metricsgraphicsjs.org/"&gt;metricsgraphics&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Metricsgraphics is great, but its jquery-esque api is somewhat at odds with the react way. The obvious solution to this problem is to wrap its functionality in a react component, and a quick google search determined that several people have tried to do exactly that, the most popular one being one called (obviously) react-metrics-graphics. Unfortunately, it hadn&amp;rsquo;t been updated in quite some time and some pull requests (including ones implementing features I needed for my project) weren&amp;rsquo;t being responded to.&lt;/p&gt;
+
+&lt;p&gt;I expected this to be pretty difficult to resolve: I had no interaction with the author (Carter Feldman) before but based on my past experiences in free software, I was expecting stonewalling, leaving me no choice but to fork the package and give it a new name, a rather unsatisfying end result.&lt;/p&gt;
+
+&lt;p&gt;But, hey, let&amp;rsquo;s keep an open mind on this. What does google say about unmaintained npm packages? Oh what&amp;rsquo;s this? They actually have a &lt;a href="https://docs.npmjs.com/misc/disputes"&gt;policy&lt;/a&gt;?&lt;/p&gt;
+
+&lt;p&gt;tl;dr: You email the maintainer (politely) and CC support@npmjs.org about your interest in helping maintain the software. If you&amp;rsquo;re unable to come up with a resolution on your own, they will intervene.&lt;/p&gt;
+
+&lt;p&gt;So I tried that. It turns out that Carter was really happy to hear that Mozilla was interested in taking over maintenance of this project, and not only gave me permission to start publishing newer versions to npm, but even transferred his repository over to Mozilla (so we could preserve issue and PR history). The project&amp;rsquo;s new location is here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/mozilla/react-metrics-graphics"&gt;https://github.com/mozilla/react-metrics-graphics&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In hindsight, this is obviously the most reasonable outcome and I&amp;rsquo;m not sure why I was expecting anything else. Is the node community just friendlier than other areas I&amp;rsquo;ve worked in? Have community standards improved generally? In any case, thank you Carter for a great piece of software, hopefully it will thrive in its new home. :P&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>The vastness</title>
    <link>https://wlach.github.io/blog/2017/07/the-vastness/?utm_source=all&amp;utm_medium=RSS</link>
@@ -753,44 +776,4 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
  &lt;li&gt;Figure out what&amp;#8217;s causing the same machines to produce qualitatively different result distributions and address that. This is of course the ideal solution, but it requires coordination with other parts of the organization who are likely quite busy and might be hard.&lt;/li&gt;
  &lt;li&gt;Figure out better ways of detecting and managing these sorts of case. I have noticed that the standard deviation inside the results when we have spurious regressions/improvements tends to be higher (see for example &lt;a href="https://treeherder.mozilla.org/perf.html#/compare?originalProject=mozilla-inbound&amp;amp;#038;originalRevision=4d0818791d07&amp;amp;#038;newProject=mozilla-inbound&amp;amp;#038;newRevision=5e130ad70aa7"&gt;this compare view&lt;/a&gt; for the aforementioned &amp;#8220;regression&amp;#8221;). Knowing what we do, maybe there&amp;#8217;s some statistical methods we can use to detect bad data?&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;For now, I&amp;#8217;m leaning towards (2). I don&amp;#8217;t think we&amp;#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
-   <title>Perfherder update</title>
-   <link>https://wlach.github.io/blog/2015/07/perfherder-update/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-07-perfherder-update</guid>
-   <pubDate>Tue, 14 Jul 2015 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;Haven&amp;#8217;t been doing enough blogging about &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; (our project to make Talos and other per-checkin performance data more useful) recently. Let&amp;#8217;s fix that. We&amp;#8217;ve been making some good progress, helped in part by a group of new contributors that joined us through an experimental &amp;#8220;&lt;a href="https://elvis314.wordpress.com/2015/06/09/please-welcome-the-dashboard-hacker-team/"&gt;summer of contribution&lt;/a&gt;&amp;#8221; program.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Comparison mode&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Inspired by Compare Talos, we&amp;#8217;ve designed something similar which hooks into the perfherder backend. This has already gotten some interest: see this post on &lt;a href="https://groups.google.com/d/msg/mozilla.dev.tree-management/IUmMuY8b52A/Asne1cW0I8EJ"&gt;dev.tree-management&lt;/a&gt; and this one on &lt;a href="https://groups.google.com/d/msg/mozilla.dev.platform/PaJFBtvc3Vg/BvX-pFlsAkoJ"&gt;dev.platform&lt;/a&gt;. We&amp;#8217;re working towards building something that will be really useful both for (1) illustrating that the performance regressions we detect are real and (2) helping developers figure out the impact of their changes before they land them.&lt;/p&gt;
-
-&lt;table&gt;
- &lt;tr&gt;
-  &lt;td&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM-300x207.png" alt="Screen Shot 2015-07-14 at 3.54.57 PM" width="300" height="207" class="alignnone size-medium wp-image-1219" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM-300x207.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/td&gt; 
-  &lt;td&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png" alt="Screen Shot 2015-07-14 at 3.53.20 PM" width="300" height="206" class="alignnone size-medium wp-image-1218" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;Most of the initial work was done by &lt;a href="https://elvis314.wordpress.com/"&gt;Joel Maher&lt;/a&gt; with lots of review for aesthetics and correctness by me. Avi Halmachi from the Performance Team also helped out with the &lt;a href="https://en.wikipedia.org/wiki/Student's_t-test"&gt;t-test&lt;/a&gt; model for detecting the confidence that we have that a difference in performance was real. Lately myself and &lt;a href="https://github.com/MikeLing"&gt;Mike Ling&lt;/a&gt; (one of our summer of contribution members) have been working on further improving the interface for usability &amp;#8212; I&amp;#8217;m hopeful that we&amp;#8217;ll soon have something implemented that&amp;#8217;s broadly usable and comprehensible to the Mozilla Firefox and Platform developer community.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Graphs improvements&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Although it&amp;#8217;s received slightly less attention lately than the comparison view above, we&amp;#8217;ve been making steady progress on the graphs view of performance series. Aside from demonstrations and presentations, the primary use case for this is being able to detect visually sustained changes in the result distribution for talos tests, which is often necessary to be able to confirm regressions. Notable recent changes include a much easier way of selecting tests to add to the graph from Mike Ling and more readable/parseable urls from &lt;a href="https://github.com/akhileshpillai"&gt;Akhilesh Pillai&lt;/a&gt; (another summer of contribution participant).&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-300x174.png" alt="Screen Shot 2015-07-14 at 4.09.45 PM" width="300" height="174" class="alignnone size-medium wp-image-1221" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-300x174.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-1024x595.png 1024w, /files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM.png 1130w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Performance alerts&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I&amp;#8217;ve also been steadily working on making Perfherder generate alerts when there is a significant discontinuity in the performance numbers, similar to what &lt;a href="http://graphs.mozilla.org"&gt;GraphServer&lt;/a&gt; does now. Currently we have an option to generate a static CSV file of these alerts, but the eventual plan is to insert these things into a peristent database. After that&amp;#8217;s done, we can actually work on creating a UI inside Perfherder to replace &lt;a href="http://alertmanager.allizom.org:8080/alerts.html#"&gt;alertmanager&lt;/a&gt; (which currently uses GraphServer data) and start using this thing to sheriff performance regressions &amp;#8212; putting the herder into perfherder.&lt;/p&gt;
-
-&lt;p&gt;As part of this, I&amp;#8217;ve converted the graphserver alert generation code into a standalone python library, which has already proven useful as a component in the &lt;a href="https://hacks.mozilla.org/2015/06/performance-testing-firefox-os-with-raptor/"&gt;Raptor project for FirefoxOS&lt;/a&gt;. Yay modularity and reusability.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Python API&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I&amp;#8217;ve also been working on creating and improving a &lt;a href="http://treeherder.readthedocs.org/retrieving_data.html#python-client"&gt;python API&lt;/a&gt; to access Treeherder data, which includes Perfherder. This lets you do interesting things, like dynamically run various types of statistical analysis on the data stored in the production instance of Perfherder (no need to ask me for a database dump or other credentials). I&amp;#8217;ve been using this to perform validation of the data we&amp;#8217;re storing and debug various tricky problems. For example, &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1182282"&gt;I found out last week that we were storing up to duplicate 200 entries in each performance series due to double data ingestion&lt;/a&gt; &amp;#8212; oops.&lt;/p&gt;
-
-&lt;p&gt;You can also use this API to dynamically create interesting graphs and visualizations using &lt;a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/"&gt;ipython notebook&lt;/a&gt;, here&amp;#8217;s a simple example of me plotting the last 7 days of youtube.com pageload data inline in a notebook:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png" alt="Screen Shot 2015-07-14 at 4.43.55 PM" width="300" height="224" class="alignnone size-medium wp-image-1224" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png 842w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;[&lt;a href="http://nbviewer.ipython.org/url/wrla.ch/blog/wp-content/uploads/2015/07/perfherder-api.ipynb"&gt;original&lt;/a&gt;]&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;For now, I&amp;#8217;m leaning towards (2). I don&amp;#8217;t think we&amp;#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
