@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 11)</title>
     <meta name="description" content="William Lachance's Log (page 11)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, Meta, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Docker, Montreal, Life, GNOME, Music, Orangutan, Cats, mozregression, Performance, Python, zen, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Coffee, Taskcluster, Community, Counting, Open Data, Android, ateam, Time">
+    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Orangutan, Free Software, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Docker, Montreal, Coffee, Life, Music, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Ebola, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Counting, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-11.html">
@@ -192,6 +192,23 @@
           <article>
   <header>
     <p><span class="tags"><a href="/tags/hbus.html">hbus</a></span></p>
+    <h2><a href='/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up/'>Google Transit Halifax is down (but hbus and Transit to Go are still up)</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 29th, 2010</p>
+  </header>
+
+<p>Due to some schedule adjustments, it appears as if Metro Transit&#8217;s Google Transit is <a href="http://www.halifax.ca/googletransit/">temporarily out of service</a> while they wait for Google to process their new transit feed.</p>
+
+<p>However, fear not! Unlike Google, obsessive compulsive computer programmer William Lachance works on weekends for free (or the low, low price of $1.99 in the case of iPhone applications) so your thirst for updated transit information can be satisfied. I link to these things often enough on this blog, but here they are again, for the benefit of first time viewers:</p>
+
+<ul>
+ <li><a href="http://hbus.ca">hbus.ca</a></li>
+ <li><a href="http://transittogo.mindsea.ca">Transit to Go</a>    In other news, it appears as if Metro Transit has finally seen the light and made their transit information available to anyone who wants it. I would like to think that I might have had <a href="http://www.thecoast.ca/halifax/beta-the-public-transit-day-tripper/Content?oid=1098826">something to do with this</a>, but I honestly have no idea. Anyway, if you want to check it out, it&#8217;s available <a href="http://www.halifax.ca/GoogleTransit/developerdata.html">here</a>.</li></ul>
+
+</article>
+
+<article>
+  <header>
+    <p><span class="tags"><a href="/tags/hbus.html">hbus</a></span></p>
     <h2><a href='/blog/2010/05/hbus-is-back/'>hbus is back</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 24th, 2010</p>
   </header>
@@ -199,6 +216,19 @@
 <p><a href="http://hbus.ca"><img src="/files/2010/05/hbus_shot1.png" alt="hbus_shot" title="hbus_shot" width="320" height="181" class="alignleft size-full wp-image-135" /></a></p>
 
 <p>After a month long hiatus, I finally had a chance to get <a href="http://hbus.ca">hbus.ca</a> back into a working state. The big difference is that we&#8217;re now using the <a href="http://www.mindsea.com/2010/03/03/transit-to-go-pulling-out-all-the-stops/">official HRM transit data</a>. Lots more remains to be done to make this site competitive for 2010 (most of the recent work has been back-end infrastructure stuff), but at least it&#8217;s usable again.</p>
+
+</article>
+
+<article>
+  <header>
+    <p><span class="tags"><a href="/tags/iphone.html">iphone</a>, <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
+    <h2><a href='/blog/2010/04/i-can-has-edmonton-transit-iphone-app/'>I can has Edmonton transit iPhone app?</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 10th, 2010</p>
+  </header>
+
+<p><img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /></p>
+
+<p>With <a href="http://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/">yesterday&#8217;s work</a> out of the way, there weren&#8217;t too many extra steps required before I got a basic version of Transit to Go running for Edmonton. There are definitely bugs and rough edges (the bus names could definitely be better described/formatted, and there&#8217;s some serious geocoder issues), but I think the heavy lifting is out of the way. I guess now would be a good time to open up an invitations to anyone in Edmonton with an iPhone to become part of our free private beta. We&#8217;d love to hear what you think! Just send an email to <a href="mailto:wrlach@gmail.com">wrlach@gmail.com</a>.</p>
 
 </article>
 
@@ -217,19 +247,6 @@
  <li>Sped up the graph and database generation by an order of magnitude. Not too exciting from a user perspective, but I should now be able to iterate the codebase much faster.</li>
  <li>Better transit stop / street graph linking: No more does libroutez simply try to find the closest street level vertice to link to when merging transit stops with street information&#8211; we now actually create _new_ street level vertices as needed and link to those. Upshot? Slightly better directions and prettier polylines. When I first thought up the algorithm a month ago, I thought I was totally brilliant, only to later find out that Andrew Byrd had done something almost identical a few months earlier for <a href="http://github.com/andrewbyrd/graphserver">graphserver</a>. Ah well, at least it&#8217;s implemented.</li>
  <li>I <a href="http://gist.github.com/361848">coded up a script</a> to automatically generate synthetic headsigns for GTFS feeds which don&#8217;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&#8217;t you do better than saying that all your buses go in the &#8220;1&#8221; direction? There&#8217;s a reason why it&#8217;s a required field you know. Not only would it help me, but <a href="http://google.com/transit">Google Transit</a> would give better results for your city as well.</li></ul>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/iphone.html">iphone</a>, <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
-    <h2><a href='/blog/2010/04/i-can-has-edmonton-transit-iphone-app/'>I can has Edmonton transit iPhone app?</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 10th, 2010</p>
-  </header>
-
-<p><img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /></p>
-
-<p>With <a href="http://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/">yesterday&#8217;s work</a> out of the way, there weren&#8217;t too many extra steps required before I got a basic version of Transit to Go running for Edmonton. There are definitely bugs and rough edges (the bus names could definitely be better described/formatted, and there&#8217;s some serious geocoder issues), but I think the heavy lifting is out of the way. I guess now would be a good time to open up an invitations to anyone in Edmonton with an iPhone to become part of our free private beta. We&#8217;d love to hear what you think! Just send an email to <a href="mailto:wrlach@gmail.com">wrlach@gmail.com</a>.</p>
 
 </article>
 
@@ -337,19 +354,6 @@ SQL: select firstHouseNumber, lastHouseNumber, length, coords from road where na
 <p>I&#8217;m now back living in Montr&eacute;al, which has been great. Very sad to leave Halifax and all the <a href="http://thehubhalifax.ca">goings</a> <a href="http://apps4good.ca">on</a>, but I&#8217;ll be back to visit. And I&#8217;m not done with <a href="http://hbus.ca">disruptive transit-related apps</a> for that city. Au contraire. More news on that soon.</p>
 
 <br clear="all" />
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/GNOME.html">GNOME</a>, <a href="/tags/Usability.html">Usability</a></span></p>
-    <h2><a href='/blog/2009/08/icon-metaphor-fail/'>Icon metaphor fail</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 21st, 2009</p>
-  </header>
-
-<p>Started to use a new piece of hardware at the Navarra office today, which resulted in the following gem being added to the GNOME notification area. Would anyone care to guess what the following icon is supposed to represent?
- <figure id="attachment_54" style="width: 277px" class="wp-caption alignleft"><img src="/files/2009/08/dock-icon-fail.jpg" alt="Image of crazy status icon in notification area" title="dock-icon-fail" width="277" height="35" class="size-full wp-image-54" />
-  <figcaption class="wp-caption-text">Image of crazy status icon in notification area</figcaption></figure></p>
 
 </article>
 

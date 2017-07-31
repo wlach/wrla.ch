@@ -4,7 +4,21 @@
  <link rel="self" href="https://wlach.github.io/feeds/all.atom.xml" />
  <link href="https://wlach.github.io/index.html" />
  <id>urn:https-wlach-github-io:-index-html</id>
- <updated>2017-07-13T15:08:40Z</updated>
+ <updated>2017-07-31T15:32:02Z</updated>
+ <entry>
+  <title type="text">mozregression's new mascot</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/07/mozregression-s-new-mascot/?utm_source=all&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2017-07-mozregression-s-new-mascot</id>
+  <published>2017-07-31T15:32:02Z</published>
+  <updated>2017-07-31T15:32:02Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;Spent a few hours this morning on a few housekeeping issues with &lt;a href="https://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt;. The web site was badly in need of an update (it was full of references to obsolete stuff like B2G and codefirefox.com) and the usual pile of fixes motivated a new release of the actual software. But most importantly, mozregression now has a proper application icon / logo, thanks to Victoria Wang!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/files/2017/07/mozregressionicon3.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;One of the nice parts about working at Mozilla is the flexibility it offers to just hack on stuff that&amp;rsquo;s important, whether or not it&amp;rsquo;s part of your formal job description. Maintaining mozregression is pretty far outside my current set of responsibilities (or even interests), but I keep it going because it&amp;rsquo;s a key tool used by developers team here and no one else seems willing to take it over. Fortunately, tools like appveyor and pypi keep the time suckage to a mostly-reasonable level.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Taking over an npm package: sanity prevails</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2017/07/taking-over-an-npm-package-sanity-prevails/?utm_source=all&amp;utm_medium=Atom" />
@@ -168,7 +182,7 @@
 5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
     &lt;td class="code"&gt;
      &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bug_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;bug_job_map&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;
+      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bug_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;bug_job_map&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;
   &lt;span class="k"&gt;left&lt;/span&gt; &lt;span class="k"&gt;join&lt;/span&gt; &lt;span class="n"&gt;text_log_step&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;tls&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job_id&lt;/span&gt;
   &lt;span class="k"&gt;left&lt;/span&gt; &lt;span class="k"&gt;join&lt;/span&gt; &lt;span class="n"&gt;text_log_error&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;
   &lt;span class="k"&gt;where&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;created&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2016-10-31&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;created&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2016-11-24&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user_id&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;NULL&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bug_id&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;NULL&lt;/span&gt;
@@ -201,7 +215,7 @@
 14&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
     &lt;td class="code"&gt;
      &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
 &lt;span class="nt"&gt;"bug_number"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1202623&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="nt"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
   &lt;span class="s2"&gt;"browser_private_clicktoplay.js Test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -269,42 +283,42 @@
 36&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
     &lt;td class="code"&gt;
      &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.datasets&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;load_files&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.feature_extraction.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CountVectorizer&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.feature_extraction.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TfidfTransformer&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.linear_model&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;SGDClassifier&lt;/span&gt;
 
 
-&lt;span class="n"&gt;training_set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load_files&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;training&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;training_set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load_files&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;training&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;count_vect&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CountVectorizer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;X_train_counts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count_vect&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit_transform&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;training_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;tfidf_transformer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TfidfTransformer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;X_train_tfidf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tfidf_transformer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit_transform&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train_counts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;clf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;SGDClassifier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;hinge&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;penalty&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;l2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="n"&gt;clf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;SGDClassifier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hinge&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;penalty&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;l2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                     &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;1e-3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n_iter&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train_tfidf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;training_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
 &lt;span class="n"&gt;num_missed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
 
-&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subdir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;walk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;testing/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subdir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;walk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;testing/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;bugnum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;basename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subdir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;bugnum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;
         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;fname&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="n"&gt;doc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subdir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fname&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
             &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;"--&amp;gt; (skipping, empty)"&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"--&amp;gt; (skipping, empty)"&lt;/span&gt;
             &lt;span class="n"&gt;X_new_counts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count_vect&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
             &lt;span class="n"&gt;X_new_tfidf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tfidf_transformer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_new_counts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
             &lt;span class="n"&gt;predicted_bugnum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;training_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target_names&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;clf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_new_tfidf&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
             &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;bugnum&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;predicted_bugnum&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
                 &lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;"--&amp;gt; correct"&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"--&amp;gt; correct"&lt;/span&gt;
             &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
                 &lt;span class="n"&gt;num_missed&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;"--&amp;gt; missed (&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;)"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;predicted_bugnum&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;"Correct: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt; Missed: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt; Ratio: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num_correct&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_missed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;num_missed&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"--&amp;gt; missed (&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;)"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;predicted_bugnum&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"Correct: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; Missed: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; Ratio: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num_correct&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_missed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;num_missed&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
@@ -747,91 +761,4 @@
 &lt;ol&gt;
  &lt;li&gt;What advice would give you to future ateam contributors?&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;&lt;em&gt;The only thing you need to do is bring your question to irc and ask. Do not hesitate to ask for help if you need it! All the people in here are nice and willing to help. Enjoy it!&lt;/em&gt;&lt;/p&gt;&lt;/html&gt;</content></entry>
- <entry>
-  <title type="text">More Perfherder  updates</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2015/08/more-perfherder-updates/?utm_source=all&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2015-08-more-perfherder-updates</id>
-  <published>2015-08-07T04:00:00Z</published>
-  <updated>2015-08-07T04:00:00Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">&lt;html&gt;
-&lt;p&gt;Since my last update, we&amp;#8217;ve been trucking along with improvements to &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt;, the project for making Firefox performance sheriffing and analysis easier.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Compare visualization improvements&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I&amp;#8217;ve been spending quite a bit of time trying to fix up the display of information in the compare view, to address feedback from developers and hopefully generally streamline things. &lt;a href="https://blog.mozilla.org/vdjeric/"&gt;Vladan&lt;/a&gt; (from the perf team) referred me to &lt;a href="https://mozillians.org/en-US/u/bwinton/"&gt;Blake Winton&lt;/a&gt;, who provided tons of awesome suggestions on how to present things more concisely.&lt;/p&gt;
-
-&lt;p&gt;Here&amp;#8217;s an old versus new picture:&lt;/p&gt;
-
-&lt;table&gt;
- &lt;tr&gt;
-  &lt;td&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png" alt="Screen Shot 2015-07-14 at 3.53.20 PM" width="300" height="206" class="alignnone size-medium wp-image-1218" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/td&gt; 
-  &lt;td&gt;&lt;a href="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM.png"&gt;&lt;img src="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM-300x178.png" alt="Screen Shot 2015-08-07 at 1.57.39 PM" width="300" height="178" class="alignnone size-medium wp-image-1229" srcset="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM-300x178.png 300w, /files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM.png 1003w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;Summary of significant changes in this view:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;Removed or consolidated several types of numerical information which were overwhelming or confusing (e.g. presenting both numerical and percentage standard deviation in their own columns).&lt;/li&gt;
- &lt;li&gt;Added tooltips all over the place to explain what&amp;#8217;s being displayed.&lt;/li&gt;
- &lt;li&gt;Highlight more strongly when it appears there aren&amp;#8217;t enough runs to make a definitive determination on whether there was a regression or improvement.&lt;/li&gt;
- &lt;li&gt;Improve display of visual indicator of magnitude of regression/improvement (providing a pseudo-scale showing where the change ranges from 0% &amp;#8211; 20%+).&lt;/li&gt;
- &lt;li&gt;Provide more detail on the two changesets being compared in the header and make it easier to retrigger them (thanks to Mike Ling).&lt;/li&gt;
- &lt;li&gt;Much better and more intuitive error handling when something goes wrong (also thanks to Mike Ling).&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;The point of these changes isn&amp;#8217;t necessarily to make everything &amp;#8220;immediately obvious&amp;#8221; to people. We&amp;#8217;re not building general purpose software here: Perfherder will always be a rather specialized tool which presumes significant domain knowledge on the part of the people using it. However, even for our audience, it turns out that there&amp;#8217;s a lot of room to improve how our presentation: reducing the amount of extraneous noise helps people zero in on the things they really need to care about.&lt;/p&gt;
-
-&lt;p&gt;Special thanks to everyone who took time out of their schedules to provide so much good feedback, in particular &lt;a href="http://avih.github.io/"&gt;Avi Halmachi&lt;/a&gt;, &lt;a href="http://glandium.org/blog/"&gt;Glandium&lt;/a&gt;, and &lt;a href="http://elvis314.wordpress.com/"&gt;Joel Maher&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Of course more suggestions are always welcome. Please &lt;a href="https://treeherder.mozilla.org/perf.html#/comparechooser"&gt;give it a try&lt;/a&gt; and &lt;a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Tree%20Management&amp;amp;#038;component=Perfherder"&gt;file bugs against the perfherder component&lt;/a&gt; if you find anything you&amp;#8217;d like to see changed or improved.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Getting the word out&lt;/strong&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Hammersmith:mozilla-central wlach$ hg push -f try
-pushing to ssh://hg.mozilla.org/try
-no revisions specified to push; using . to avoid pushing multiple heads
-searching for changes
-remote: waiting for lock on repository /repo/hg/mozilla/try held by 'hgssh1.dmz.scl3.mozilla.com:8270'
-remote: got lock after 4 seconds
-remote: adding changesets
-remote: adding manifests
-remote: adding file changes
-remote: added 1 changesets with 1 changes to 1 files
-remote: Trying to insert into pushlog.
-remote: Inserted into the pushlog db successfully.
-remote:
-remote: View your change here:
-remote:   https://hg.mozilla.org/try/rev/e0aa56fb4ace
-remote:
-remote: Follow the progress of your build on Treeherder:
-remote:   https://treeherder.mozilla.org/#/jobs?repo=try&amp;amp;revision=e0aa56fb4ace
-remote:
-remote: It looks like this try push has talos jobs. Compare performance against a baseline revision:
-remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=try&amp;amp;newRevision=e0aa56fb4ace&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Try pushes incorporating Talos jobs now automatically link to perfherder&amp;#8217;s compare view, both in the output from mercurial and in the emails the system sends. One of the challenges we&amp;#8217;ve been facing up to this point is just letting developers know that Perfherder &lt;em&gt;exists&lt;/em&gt; and it can help them either avoid or resolve performance regressions. I believe this will help.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Data quality and ingestion improvements&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Over the past couple weeks, we&amp;#8217;ve been comparing our regression detection code when run against Graphserver data to Perfherder data. In doing so, we discovered that we&amp;#8217;ve sometimes been using the wrong algorithm (geometric mean) to summarize some of our tests, leading to unexpected and less meaningful results. For example, the v8_7 benchmark uses a custom weighting algorithm for its score, to account for the fact that the things it tests have a particular range of expected values.&lt;/p&gt;
-
-&lt;p&gt;To hopefully prevent this from happening again in the future, we&amp;#8217;ve decided to move the test summarization code out of Perfherder back into Talos (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1184966"&gt;bug 1184966&lt;/a&gt;). This has the additional benefit of creating a stronger connection between the content of the Talos logs and what Perfherder displays in its comparison and graph views, which has thrown people off in the past.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Continuing data challenges&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Having better tools for visualizing this stuff is great, but it also highlights some continuing problems we&amp;#8217;ve had with data quality. It turns out that our automation setup often produces &lt;em&gt;qualitatively different&lt;/em&gt; performance results for the exact same set of data, depending on when and how the tests are run.&lt;/p&gt;
-
-&lt;p&gt;A certain amount of random noise is always expected when running performance tests. As much as we might try to make them uniform, our testing machines and environments are just not 100% identical. That we expect and can deal with: our standard approach is just to retrigger runs, to make sure we get a representative sample of data from our population of machines.&lt;/p&gt;
-
-&lt;p&gt;The problem comes when there&amp;#8217;s a &lt;em&gt;pattern&lt;/em&gt; to the noise: we&amp;#8217;ve already noticed that tests run on the weekends produce different results (see Joel&amp;#8217;s post from a year ago, &lt;a href="https://elvis314.wordpress.com/2014/10/30/a-case-of-the-weekends/"&gt;&amp;#8220;A case of the weekends&amp;#8221;&lt;/a&gt;) but it seems as if there&amp;#8217;s other circumstances where one set of results will be different from another, depending on the time that each set of tests was run. Some tests and platforms (e.g. the a11yr suite, MacOS X 10.10) seem particularly susceptible to this issue.&lt;/p&gt;
-
-&lt;p&gt;We need to find better ways of dealing with this problem, as it can result in a lot of wasted time and energy, for both sheriffs and developers. See for example &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1190877"&gt;bug 1190877&lt;/a&gt;, which concerned a completely spurious regression on the tresize benchmark that was initially blamed on some changes to the media code&amp;#8211; in this case, Joel speculates that the linux64 test machines we use might have changed from under us in some way, but we really don&amp;#8217;t know yet.&lt;/p&gt;
-
-&lt;p&gt;I see two approaches possible here:&lt;/p&gt;
-
-&lt;ol&gt;
- &lt;li&gt;Figure out what&amp;#8217;s causing the same machines to produce qualitatively different result distributions and address that. This is of course the ideal solution, but it requires coordination with other parts of the organization who are likely quite busy and might be hard.&lt;/li&gt;
- &lt;li&gt;Figure out better ways of detecting and managing these sorts of case. I have noticed that the standard deviation inside the results when we have spurious regressions/improvements tends to be higher (see for example &lt;a href="https://treeherder.mozilla.org/perf.html#/compare?originalProject=mozilla-inbound&amp;amp;#038;originalRevision=4d0818791d07&amp;amp;#038;newProject=mozilla-inbound&amp;amp;#038;newRevision=5e130ad70aa7"&gt;this compare view&lt;/a&gt; for the aforementioned &amp;#8220;regression&amp;#8221;). Knowing what we do, maybe there&amp;#8217;s some statistical methods we can use to detect bad data?&lt;/li&gt;&lt;/ol&gt;
-
-&lt;p&gt;For now, I&amp;#8217;m leaning towards (2). I don&amp;#8217;t think we&amp;#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;&lt;em&gt;The only thing you need to do is bring your question to irc and ask. Do not hesitate to ask for help if you need it! All the people in here are nice and willing to help. Enjoy it!&lt;/em&gt;&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
