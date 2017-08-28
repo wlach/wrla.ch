@@ -191,6 +191,33 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Video.html">Video</a></span></p>
+    <h2><a href='/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/'>Ghetto retroscope with ffmpeg and the &lt;video&gt; tag</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 7th, 2012</p>
+  </header>
+
+<p>So yesterday we had a small get-together at my place, which gave me the opportunity to try something I&#8217;d been meaning to do for a while: build my own retroscope.</p>
+
+<p>The idea is pretty simple: have a webcam record bits and pieces of a social event, then play them back on-the-spot a few minutes/hours later. I first heard about the concept from reading Nat Friedman&#8217;s <a href="http://nat.org/blog/2005/10/the-retroscope/">blog entry</a> from 2005 &#8212; if you read that, you see that he just hooked up a video camera to his TiVo. 7 years in the future, laptop webcams are ubiquitous and we have the awesome HTML5  tag, so I figured it would be easy to knock up something interesting in short order with zero custom hardware.</p>
+
+<p>Having only remembered that I wanted to do this about 30 minutes before people were scheduled to start arriving, I didn&#8217;t have much time to do anything really perfect. I settled on using <a href="http://stackoverflow.com/questions/7500763/command-line-streaming-webcam-with-audio-from-ubuntu-server-in-webm-format">this little snippet</a> from stackoverflow to generate short (5 second) movies on my laptop, then used scp to copy them over and display a montage of them in an auto-refreshing webpage on my &#8220;television&#8221; (which is a Mac-Mini connected to a large computer monitor). Despite being a total hack job, the end result generated much amusement. I think this is a bit different from what Nat originally did (it sounds from his blog like his retroscope played back longer segments), but I think the end result is actually a bit more fun.</p>
+
+<p><a href="http://wrla.ch/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-video-tag/retroscope-screenshot/" rel="attachment wp-att-598"><img src="/files/2012/05/retroscope-screenshot-1024x694.png" alt="" title="retroscope-screenshot" width="640" height="433" class="alignnone size-large wp-image-598" srcset="/files/2012/05/retroscope-screenshot-300x203.png 300w, /files/2012/05/retroscope-screenshot-1024x694.png 1024w, /files/2012/05/retroscope-screenshot.png 1319w" sizes="(max-width: 640px) 100vw, 640px" /></a></p>
+
+<p>Perhaps unfortunately, but probably ultimately for the best, only a few snippets from the actual night got stored away. One example is this gem:</p>
+
+<p>(yes, that handsome fellow with the Pernot is me)</p>
+
+<p>I thought it might be fun to release the slightly-cleaned up results of this experiment as opensource for others to play with, so I created a small project for it on github. Unlike the original version, no complicated scp scheme is required &#8212; I just reused Joel Maher&#8217;s most excellent mozhttpd library from <a href="http://github.com/mozilla/mozbase">mozbase</a> to run a web server in the same process as the capture logic. All you need to do is run the server on a Linux machine with a webcam and connect to it with a web browser from any other machine on your local network.</p>
+
+<p><a href="https://github.com/wlach/retroscope">https://github.com/wlach/retroscope</a></p>
+
+<p>Enjoy!</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2012/05/launching-random-web-browsers-on-android/'>Launching random web browsers on Android</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 4th, 2012</p>
@@ -449,47 +476,6 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 <p>So I&#8217;ve decided it&#8217;s time for a bit of a change. I just registered the swiss domain name &#8216;wrla.ch&#8217;, created a fancy new <a href="http://wrla.ch">landing page</a>, and made this blog its first &#8220;sub site&#8221;. More to come.</p>
 
 <p>So, for all 20 of you who are subscribed to my doings, please update your links. For those of you using Google Reader / RSS, the new feed is at <a href="http://wrla.ch/blog/feed/">this URL</a>. All the old masalalabs links should at least <strong>work</strong> until the domain expires in a few years, so there&#8217;s no huge rush. Then again, you&#8217;ll probably forget if you don&#8217;t do it now (and thus be deprived of my endless ravings about checkerboarding on mobile Fennec on Android), so why wait?</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/01/yet-more-checkerboarding-analysis/'>Yet more checkerboarding analysis</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 25th, 2012</p>
-  </header>
-
-<p>I&#8217;ve been spending a bit more time on refining the checkerboarding tests in Eideticker that I talked about last time. Most of my work has been focused on making the results as representative of a real world scenario as possible, to that effect I&#8217;ve been working on:</p>
-
-<ul>
- <li>Changed the test case from a web site of my own concoction to a more realistic example (the <a href="http://taskjs.org">taskjs.org</a> site)</li>
- <li>Use actual Android native events (via <a href="http://developer.android.com/guide/developing/tools/monkeyrunner_concepts.html">MonkeyRunner</a>) to synthesize touch-based scrolling instead of simulating the event in JavaScript (which exercises a completely different codepath).</li>
- <li>Fixing various synchronization issues to make results more repeatable. Before captures were of wildly variable lengths, which made the numbers extremely suspect. There&#8217;s probably still a few issues, but much less than before.</li></ul>
-
-<p>The end result of this is a framework that gives much more meaningful results. The bad news is that the results that I&#8217;m measuring don&#8217;t show a very positive picture for where we&#8217;re at with the native re-write of Firefox. Even relative to the version of mobile Firefox which is currently on the Android Market, we still have some catching up to do. Here&#8217;s some video of the &#8220;old&#8221; firefox in action:</p>
-
-<video src="/files/eideticker/taskjs_xul.webm" width="600px" controls="controls"></video>
-
-<p>And here&#8217;s the Native fennec (what we&#8217;re currently offering in nightly, with some minor modifications by me to change the way the &#8220;checkerboard&#8221; is drawn for analysis purposes):</p>
-
-<video src="/files/eideticker/taskjs_native.webm" width="600px" controls="controls"></video>
-
-<p>The numbers behind this comparison:</p>
-
-<table>
- <tr>
-  <td>Platform</td> 
-  <td>Percent checkerboarding over run of test</td></tr>
- <tr>
-  <td>Old Fennec</td> 
-  <td>2%</td></tr>
- <tr>
-  <td>Native Fennec</td> 
-  <td>57%</td></tr></table>
-
-<p>(by the way, this performance regression is filed as <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447">bug 719447</a>)</p>
-
-<p>I know there&#8217;s lots of great effort going into improving this situation, so I have hope that we&#8217;ll be doing much better on this metric in the coming days/weeks. The process for creating these videos/analyses is mostly automated at this point, so my plan is to create a small dashboard (ala <a href="http://arewefastyet.com">arewefastyet.com</a>) to measure these numbers over time on the latest nightlies. Stay tuned!</p>
 
 </article>
 

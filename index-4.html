@@ -191,6 +191,28 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Web.html">Web</a></span></p>
+    <h2><a href='/blog/2014/09/using-flexbox-in-web-applications/'>Using Flexbox in web applications</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 29th, 2014</p>
+  </header>
+
+<p>Over last few months, I discovered the joy that is CSS Flexbox, which solves the &#8220;how do I lay out this set of div&#8217;s in horizontally or vertically&#8221;. I&#8217;ve used it in three projects so far:</p>
+
+<ul>
+ <li>Centering the timer interface in my <a href="http://wrla.ch/blog/2014/08/a-new-meditation-app/">meditation app</a>, so that it scales nicely from a 320&#215;480 FirefoxOS device all the way up to a high definition monitor</li>
+ <li>Laying out the chart / sidebar elements in the <a href="http://eideticker.mozilla.org">Eideticker dashboard</a> so that maximum horizontal space is used</li>
+ <li>Fixing various problems in the <a href="http://treeherder.mozilla.org">Treeherder UI</a> on smaller screens (see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1043474">bug 1043474</a> and its dependent bugs)</li></ul>
+
+<p>When I talk to people about their troubles with CSS, layout comes up really high on the list. Historically, basic layout problems like a panel of vertical buttons have been ridiculously difficult, involving hacks involving floating divs and absolute positioning or <a href="http://layout.jquery-dev.com/">JavaScript layout libraries</a>. This is why people write articles entitled <a href="http://uxmag.com/articles/give-and-use-tables">&#8220;Give up and use tables&#8221;</a>.</p>
+
+<p>Flexbox has pretty much put an end to these problems for me. There&#8217;s no longer any need to &#8220;give up and use tables&#8221; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&#8217;re so great. I think we&#8217;re pretty close to Flexbox being supported across all the major browsers, so it&#8217;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.</p>
+
+<p>To try and spread the word, I wrote up <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications">a howto article on using flexbox for web applications on MDN</a>, covering some of the common use cases I mention above. If you&#8217;ve been curious about flexbox but unsure how to use it, please have a look.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
     <h2><a href='/blog/2014/09/mozregression-0-24/'>mozregression 0.24</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 15th, 2014</p>
@@ -442,27 +464,6 @@ cd treeherder-ui/webapp&lt;br /&gt;
  <li><a href="http://pyvideo.org/video/2571/all-your-ducks-in-a-row-data-structures-in-the-s">All Your Ducks In A Row: Data Structures in the Standard Library and Beyond</a> &#8211; A useful talk by Brandon Rhoades on the implementation of basic data structures in Python, and how to select the ones to use for optimal performance. It turns out that lists aren&#8217;t the best thing to use for long sequences of numerical data (who knew?)</li>
  <li><a href="http://pyvideo.org/video/2627/fast-python-slow-python">Fast Python, Slow Python</a> &#8211; An interesting talk by Alex Gaynor about how to write decent performing pure-python code in a single-threaded context. Lots of intelligent stuff about producing robust code that matches your intention and data structures, and caution against doing fancy things in the name of being &#8220;pythonic&#8221; or &#8220;general&#8221;.</li>
  <li><a href="http://pyvideo.org/video/2658/analyzing-rap-lyrics-with-python">Analyzing Rap Lyrics with Python</a> &#8211; Another data analysis talk, this one about a subject I knew almost nothing about. The best part of it (for me anyway) was learning how the speaker (Julie Lavoie) narrowed her focus in her research to the exact aspects of the problem that would let her answer the question she was interested in (&#8220;Can we automatically find out which rap lyrics are the most sexist?&#8221;) as opposed to interesting problems (&#8220;how can I design the most general scraping library possible?&#8221;) that don&#8217;t answer the question. In my opinion, this ability to focus is one of the key things that seperates successful projects from unsuccessful ones.</li></ul>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/03/upcoming-travels-to-japan-and-taiwan/'>Upcoming travels to Japan and Taiwan</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 16th, 2014</p>
-  </header>
-
-<p>Just a quick note that I&#8217;ll shortly be travelling from the frozen land of Montreal, Canada to Japan and Taiwan over the next week, with no particular agenda other than to explore and meet people. If any Mozillians are interested in meeting up for food or drink, and discussion of <a href="https://wiki.mozilla.org/B2G/Performance">FirefoxOS performance</a>, <a href="https://wiki.mozilla.org/Project_Eideticker">Eideticker</a>, <a href="http://wrla.ch/blog/2014/03/its-all-about-the-entropy/">entropy</a> or anything else&#8230; feel free to contact me at <a href="mailto:wrlach@gmail.com">wrlach@gmail.com</a>.</p>
-
-<p>Exact itinerary:</p>
-
-<ul>
- <li>Thu Mar 20 &#8211; Sat Mar 22: Tokyo, Japan</li>
- <li>Sat Mar 22 &#8211; Tue Mar 25: Kyoto, Japan</li>
- <li>Tue Mar 25 &#8211; Thu Mar 27: Tokyo, Japan</li>
- <li>Thu Mar 27 &#8211; Sun Mar 30: Taipei, Taiwan</li></ul>
-
-<p>I will also be in Taipei the week of the March 31st, though I expect most of my time to be occupied with discussions/activities inside the Taipei office about FirefoxOS performance matters (the Firefox performance team is having a work week there, and I&#8217;m tagging along to talk about / hack on Eideticker and other automation stuff).</p>
 
 </article>
 

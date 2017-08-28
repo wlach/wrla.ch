@@ -33,6 +33,7 @@ https://wlach.github.io/blog/2010/11/rice-038-barley-rae-spoon-at-casa-del-popol
 https://wlach.github.io/blog/2012/04/gofaster-dashboard-back-online/
 https://wlach.github.io/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/
 https://wlach.github.io/blog/2014/03/it-8217-s-all-about-the-entropy/
+https://wlach.github.io/blog/2017/08/functional-is-the-future/
 https://wlach.github.io/blog/2011/12/year-end-eideticker-update/
 https://wlach.github.io/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing/
 https://wlach.github.io/blog/2017/07/the-vastness/

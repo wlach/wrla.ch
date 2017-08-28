@@ -191,6 +191,47 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2012/01/yet-more-checkerboarding-analysis/'>Yet more checkerboarding analysis</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 25th, 2012</p>
+  </header>
+
+<p>I&#8217;ve been spending a bit more time on refining the checkerboarding tests in Eideticker that I talked about last time. Most of my work has been focused on making the results as representative of a real world scenario as possible, to that effect I&#8217;ve been working on:</p>
+
+<ul>
+ <li>Changed the test case from a web site of my own concoction to a more realistic example (the <a href="http://taskjs.org">taskjs.org</a> site)</li>
+ <li>Use actual Android native events (via <a href="http://developer.android.com/guide/developing/tools/monkeyrunner_concepts.html">MonkeyRunner</a>) to synthesize touch-based scrolling instead of simulating the event in JavaScript (which exercises a completely different codepath).</li>
+ <li>Fixing various synchronization issues to make results more repeatable. Before captures were of wildly variable lengths, which made the numbers extremely suspect. There&#8217;s probably still a few issues, but much less than before.</li></ul>
+
+<p>The end result of this is a framework that gives much more meaningful results. The bad news is that the results that I&#8217;m measuring don&#8217;t show a very positive picture for where we&#8217;re at with the native re-write of Firefox. Even relative to the version of mobile Firefox which is currently on the Android Market, we still have some catching up to do. Here&#8217;s some video of the &#8220;old&#8221; firefox in action:</p>
+
+<video src="/files/eideticker/taskjs_xul.webm" width="600px" controls="controls"></video>
+
+<p>And here&#8217;s the Native fennec (what we&#8217;re currently offering in nightly, with some minor modifications by me to change the way the &#8220;checkerboard&#8221; is drawn for analysis purposes):</p>
+
+<video src="/files/eideticker/taskjs_native.webm" width="600px" controls="controls"></video>
+
+<p>The numbers behind this comparison:</p>
+
+<table>
+ <tr>
+  <td>Platform</td> 
+  <td>Percent checkerboarding over run of test</td></tr>
+ <tr>
+  <td>Old Fennec</td> 
+  <td>2%</td></tr>
+ <tr>
+  <td>Native Fennec</td> 
+  <td>57%</td></tr></table>
+
+<p>(by the way, this performance regression is filed as <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447">bug 719447</a>)</p>
+
+<p>I know there&#8217;s lots of great effort going into improving this situation, so I have hope that we&#8217;ll be doing much better on this metric in the coming days/weeks. The process for creating these videos/analyses is mostly automated at this point, so my plan is to create a small dashboard (ala <a href="http://arewefastyet.com">arewefastyet.com</a>) to measure these numbers over time on the latest nightlies. Stay tuned!</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2012/01/measuring-reduced-checkerboarding-in-mobile-fennec/'>Measuring reduced checkerboarding in mobile Fennec</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 3rd, 2012</p>
@@ -420,23 +461,6 @@ Unique frames: 121/272&lt;br /&gt;</code></p>
  <p>Do let me know if you&#8217;re interested, and if so I can get something written for you over the course of the next few days. Needless to say, the offer is open to any other sites you might own as well as wrla.ch/blog. I appreciate you may not be interested in this kind of mutual back-scratching however, so if I don&#8217;t hear from you, no offence taken and I won&#8217;t trouble you again.</p>
  <p>Very best,
   <br />XXXXXX</p></blockquote>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2011/10/faster-but-not-quite-there-yet-8230/'>Faster, but not quite there yet&#8230;</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 25th, 2011</p>
-  </header>
-
-<p>So as others have been posting about, we&#8217;ve been making <a href="http://atlee.ca/blog/2011/10/17/going-faster/">some headway</a> on our progress on the GoFaster project. Unfortunately it seems like we&#8217;re still some distance away from reaching our magic number of a 2 hour turnaround for each revision pushed.</p>
-
-<p><a href="http://wrla.ch/blog/2011/10/faster-but-not-quite-there-yet/gofaster-e2e-graph-oct25/" rel="attachment wp-att-312"><img src="/files/2011/10/gofaster-e2e-graph-oct25.png" alt="" title="gofaster-e2e-graph-oct25" width="632" height="511" class="alignnone size-full wp-image-312" srcset="/files/2011/10/gofaster-e2e-graph-oct25-300x242.png 300w, /files/2011/10/gofaster-e2e-graph-oct25.png 632w" sizes="(max-width: 632px) 100vw, 632px" /></a></p>
-
-<p>It&#8217;s a bit hard to see the exact number on the graph (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697277">someone should fix that</a>), but we seem to teetering around an average of 3 hours at this point. Looking at our <a href="http://brasstacks.mozilla.com/gofaster/#/buildcharts">build charts</a>, it seems like the critical path has shifted in many cases from Windows to MacOS X. Is there something we can do to close the gap there? Or is there a more general fix which would lead to substantial savings? If you have any thoughts, or would like to help out, we&#8217;re scheduled to have a <a href="https://wiki.mozilla.org/ReleaseEngineering/BuildFaster/Meetings/2011-10-26">short meeting tomorrow</a>.</p>
-
-<p>Anyone is welcome to join, but note that we&#8217;re practical, results-oriented people. Crazy ideas are fun, but we&#8217;re most interested in proposals that have measurable data behind them and can be implemented in reasonable amounts of time.</p>
 
 </article>
 

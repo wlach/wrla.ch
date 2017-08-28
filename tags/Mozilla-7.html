@@ -192,6 +192,27 @@
           <article>
   <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2012/03/eideticker-dashboard-update/'>Eideticker dashboard update</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 22nd, 2012</p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+
+<p>Since my <a href="http://wrla.ch/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/">first Eideticker dashboard post</a> was <a href="http://download.cnet.com/8301-2007_4-57401261-12/whats-going-on-with-firefox-for-android/?tag=epicStories">so well received</a>, I thought I&#8217;d give a quick update on another metric that I just brought online: checkerboarding (a.k.a. the amount of time you spend waiting to see the full page after you do a swipe on your mobile device).</p>
+
+<p><a href="http://wrla.ch/blog/2012/03/eideticker-dashboard-update/checkerboard_dashboard/" rel="attachment wp-att-503"><img src="/files/2012/03/checkerboard_dashboard.png" alt="" title="checkerboard_dashboard" width="715" height="485" class="alignnone size-full wp-image-503" srcset="/files/2012/03/checkerboard_dashboard-300x203.png 300w, /files/2012/03/checkerboard_dashboard.png 715w" sizes="(max-width: 715px) 100vw, 715px" /></a></p>
+
+<p>[ <a href="http://wrla.ch/eideticker/dashboard/#/checkerboarding">link to real thing</a> ]</p>
+
+<p>Unfortunately the news here is not as good as before: as the numbers indicate, the new Native Fennec currently performs substantially worse than the version in Android market. This is a known issue, and is currently being tracked in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447">bug 719447</a>.</p>
+
+<p>Next up: Seeing how we do against Google Chrome for Android.</p>
+
+</article>
+
+<article>
+  <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/'>Announcing the Eideticker mobile performance dashboard</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 16th, 2012</p>
   </header>
@@ -459,23 +480,6 @@ Unique frames: 121/272&lt;br /&gt;</code></p>
 <p>My goal is to make something that people will love, so please do let me know what you think. Nothing about this project is cast in stone and the last thing I want is to deliver a product that people don&#8217;t actually want to use.</p>
 
 <p>Equally, while Eideticker is being written primarily with the goal of making Mobile Firefox better (and in the slightly-less short term, desktop Firefox and <a href="https://github.com/andreasgal/B2G">Boot to Gecko</a>), much of it is broadly applicable to any user-facing mobile or desktop application. If you think some component of Eideticker might be interesting to your project and want to collaborate, feel free to get in touch.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2011/10/faster-but-not-quite-there-yet-8230/'>Faster, but not quite there yet&#8230;</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 25th, 2011</p>
-  </header>
-
-<p>So as others have been posting about, we&#8217;ve been making <a href="http://atlee.ca/blog/2011/10/17/going-faster/">some headway</a> on our progress on the GoFaster project. Unfortunately it seems like we&#8217;re still some distance away from reaching our magic number of a 2 hour turnaround for each revision pushed.</p>
-
-<p><a href="http://wrla.ch/blog/2011/10/faster-but-not-quite-there-yet/gofaster-e2e-graph-oct25/" rel="attachment wp-att-312"><img src="/files/2011/10/gofaster-e2e-graph-oct25.png" alt="" title="gofaster-e2e-graph-oct25" width="632" height="511" class="alignnone size-full wp-image-312" srcset="/files/2011/10/gofaster-e2e-graph-oct25-300x242.png 300w, /files/2011/10/gofaster-e2e-graph-oct25.png 632w" sizes="(max-width: 632px) 100vw, 632px" /></a></p>
-
-<p>It&#8217;s a bit hard to see the exact number on the graph (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697277">someone should fix that</a>), but we seem to teetering around an average of 3 hours at this point. Looking at our <a href="http://brasstacks.mozilla.com/gofaster/#/buildcharts">build charts</a>, it seems like the critical path has shifted in many cases from Windows to MacOS X. Is there something we can do to close the gap there? Or is there a more general fix which would lead to substantial savings? If you have any thoughts, or would like to help out, we&#8217;re scheduled to have a <a href="https://wiki.mozilla.org/ReleaseEngineering/BuildFaster/Meetings/2011-10-26">short meeting tomorrow</a>.</p>
-
-<p>Anyone is welcome to join, but note that we&#8217;re practical, results-oriented people. Crazy ideas are fun, but we&#8217;re most interested in proposals that have measurable data behind them and can be implemented in reasonable amounts of time.</p>
 
 </article>
 

@@ -191,6 +191,31 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last/'>Actual useful FirefoxOS Eideticker results at last</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 22nd, 2013</p>
+  </header>
+
+<p>Another update on getting <a href="http://wrla.ch/blog/2013/02/eideticker-for-firefoxos/">Eideticker working with FirefoxOS</a>. Once again this is sort of high-level, looking forward to writing something more in-depth soon now that we have the basics working.</p>
+
+<p>I finally got the last kinks out of the rig I was using to capture live video from FirefoxOS phones using the Point Grey devices last week. In order to make things reasonable I had to write some custom code to isolate the actual device screen from the rest of capture and a few other things. The setup looks interesting (reminds me a bit of something out of the War of the Worlds):</p>
+
+<p><a href="/files/2013/04/eideticker-pointgrey-mounted.jpg"><img src="/files/2013/04/eideticker-pointgrey-mounted.jpg" alt="eideticker-pointgrey-mounted" width="512" height="683" class="alignnone size-full wp-image-894" srcset="/files/2013/04/eideticker-pointgrey-mounted-224x300.jpg 224w, /files/2013/04/eideticker-pointgrey-mounted.jpg 512w" sizes="(max-width: 512px) 100vw, 512px" /></a></p>
+
+<p>Here&#8217;s some example video of a test I wrote up to measure the performance of contacts scrolling performance (measured at a very respectable 44 frames per second, in case you wondering):</p>
+
+<video src="/files/eideticker/contacts-scrolling-pointgrey.webm" controls="controls"></video>
+
+<p>Surprisingly enough, I didn&#8217;t wind up having to write up any code to compensate for a noisy image. Of course there&#8217;s a certain amount of variance in every frame depending on how much light is hitting the camera sensor at any particular moment, but apparently not enough to interfere with getting useful results in the tests I&#8217;ve been running.</p>
+
+<p>Likely next step: Create some kind of chassis for mounting both the camera and device on a permanent basis (instead of an adhoc one on my desk) so we can start running these sorts of tests on a daily basis, much like we currently do with Android on the <a href="http://eideticker.wrla.ch">Eideticker Dashboard</a>.</p>
+
+<p>As an aside, I&#8217;ve been really impressed with both the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Marionette">Marionette</a> framework and the gaiatests python module that was written up for FirefoxOS. Writing the above test took just 5 minutes &#8212; and <a href="https://github.com/mozilla/eideticker/blob/master/src/tests/b2g/appscrolling/scroll.py">the code</a> is quite straightforward. Quite the pleasant change from my various efforts in Android automation.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing/'>Eideticker: Limitations in cross-browser performance testing</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 20th, 2013</p>
@@ -518,27 +543,6 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <p>Of course, this is hooked up to the profiling support previously mentioned. Here&#8217;s <a href="http://people.mozilla.com/~bgirard/cleopatra/?zippedProfile=profiles/sps-profile-1347572285.4.zip&amp;#038;videoCapture=videos/video-1347572285.4.webm">an example profile</a>.</p>
 
 <p>I&#8217;ve already filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=791106">one bug</a> based on the data gathered so far.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/'>Oh hai, I upergaded yer Eideticker</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 5th, 2012</p>
-  </header>
-
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
-
-<p><a href="http://wrla.ch/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/multi-device-dash/" rel="attachment wp-att-709"><img src="/files/2012/09/multi-device-dash.png" alt="" title="multi-device-dash" width="771" height="576" class="alignnone size-full wp-image-709" srcset="/files/2012/09/multi-device-dash-300x224.png 300w, /files/2012/09/multi-device-dash.png 771w" sizes="(max-width: 771px) 100vw, 771px" /></a></p>
-
-<p>More on this to come, but just a quick note that the client-side URL schema for the Eideticker dashboard has been changed, as we now gather benchmarks for more than one device (Samsung Galaxy Nexus benchmarks FTW). To get the new and improved dashboard, please just go to the root:</p>
-
-<p><a href="http://wrla.ch/eideticker/dashboard">http://wrla.ch/eideticker/dashboard</a></p>
-
-<p>Old style URLs like <code>http://wrla.ch/eideticker/dashboard/#/taskjs-scrolling/checkerboard</code> will no longer work. Sorry for any broken links, this is the price of progress. 😉</p>
-
-<p>Note that some benchmarks for the Galaxy Nexus are still missing. This is a known problem and will be fixed soon.</p>
 
 </article>
 
