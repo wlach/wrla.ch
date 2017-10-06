@@ -191,6 +191,31 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
+    <h2><a href='/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-results/'>Perfherder Quarter of Contribution Summer 2016: Results</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 10th, 2016</p>
+  </header>
+
+<p>Following on the footsteps of Mike Ling&rsquo;s <a href="/blog/2015/09/perfherder-summer-of-contribution-thoughts/">amazing work</a> on <a href="https://wiki.mozilla.org/ngineeringProductivity‎/Projects/Perfherder">Perfherder</a> in 2015 (he&rsquo;s gone on to do a GSOC project), I got two amazing contributors to continue working on the project for a few weeks this summer as part of our <a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution">quarter of contribution</a> program: Shruti Jasoria and Roy Chiang.</p>
+
+<p>Shruti started by adding a feature to the treeherder/perfherder backend (ability to enable or disable a new performance framework on a tentative basis), then went on to make all sorts of improvements to the Treeherder / Perfherder frontend, fixing bugs in the performance sheriffing frontend, updating code to use more modern standards (including a gigantic patch to enable a bunch of eslint rules and fix the corresponding problems).</p>
+
+<p>Roy worked all over the codebase, starting with some simple frontend fixes to Treeherder, moving on to fix a large number of nits in Perfherder&rsquo;s alerts view. My personal favorite is the fact that we now paginate the list of alerts inside this view, which makes navigation waaaaay back into history possible:</p>
+
+<p><a href="/files/2016/08/perfherder-alert-pagination.png"><img src="/files/2016/08/perfherder-alert-pagination.png" alt="alert pagination" width="300px" /></a></p>
+
+<p>You can see a summary of their work at these links:</p>
+
+<ul>
+ <li><a href="https://github.com/mozilla/treeherder/commits/master?author=SJasoria">Shruti Jasoria</a></li>
+ <li><a href="https://github.com/mozilla/treeherder/commits/master?author=crosscent">Roy Chiang</a></li></ul>
+
+<p>Thank you Shruti and Roy! You&rsquo;ve helped to make sure Firefox (and Servo!) performance remains top-notch.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2016/05/quarter-of-contribution-june-july-2016-edition/'>Quarter of Contribution: June / July 2016 edition</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 27th, 2016</p>
@@ -593,34 +618,6 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <p><a href="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png"><img src="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png" alt="Screen Shot 2015-07-14 at 4.43.55 PM" width="300" height="224" class="alignnone size-medium wp-image-1224" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png 842w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
 
 <p>[<a href="http://nbviewer.ipython.org/url/wrla.ch/blog/wp-content/uploads/2015/07/perfherder-api.ipynb">original</a>]</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Python.html">Python</a></span></p>
-    <h2><a href='/blog/2015/04/pycon-2015/'>PyCon 2015</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 23rd, 2015</p>
-  </header>
-
-<p>So I went to PyCon 2015. While I didn&#8217;t leave quite as inspired as I did in 2014 (<a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/">when I discovered iPython</a>), it was a great experience and I learned a ton. Once again, I was incredibly impressed with the organization of the conference and the diversity and quality of the speakers.</p>
-
-<p>Since Mozilla was nice enough to sponsor my attendance, I figured I should do another round up of notable talks that I went to.</p>
-
-<p>Technical stuff that was directly relevant to what I work on:</p>
-
-<ul>
- <li>To ORM or not to ORM (Christine Spang): Useful talk on when using a database ORM (object relational manager) can be helpful and even faster than using a database directly. I feel like there&#8217;s a lot of misinformation and FUD on this topic, so this was refreshing to see. <a href="https://www.youtube.com/watch?v=Sadng6tR7Q4">video</a> <a href="https://speakerdeck.com/pycon2015/christine-spang-to-orm-or-not-to-orm">slides</a></li>
- <li>Debugging hard problems (Alex Gaynor): Exactly what it says &#8212; how to figure out what&#8217;s going on when things aren&#8217;t behaving as they should. Great advice and wisdom in this one (hint: take nothing for granted, dive into the source of everything you&#8217;re using!). <a href="https://www.youtube.com/watch?v=ij99SGGEX34">video</a> <a href="https://speakerdeck.com/alex/techniques-for-debugging-hard-problems">slides</a></li>
- <li>Python Performance Profiling: The Guts And The Glory (Jesse Jiryu Davis): Quite an entertaining talk on how to properly profile python code. I really liked his systematic and realistic approach &#8212; which also discussed the thought process behind how to do this (hint: again it comes down to understanding what&#8217;s really going on). Unfortunately the video is truncated, but even the first few minutes are useful. <a href="https://www.youtube.com/watch?v=4uJWWXYHxaM">video</a></li></ul>
-
-<p>Non-technical stuff:</p>
-
-<ul>
- <li>The Ethical Consequences Of Our Collective Activities (Glyph): A talk on the ethical implications of how our software is used. I feel like this is an under-discussed topic &#8212; how can we know that the results of our activity (programming) serves others and does not harm? <a href="https://www.youtube.com/watch?v=uSbKjRRbjZs">video</a></li>
- <li>How our engineering environments are killing diversity (and how we can fix it) (Kate Heddleston): This was a great talk on how to make the environments in which we develop more welcoming to under-represented groups (women, minorities, etc.). This is something I&#8217;ve been thinking a bunch about lately, especially in the context of expanding the community of people working on our projects in Automation &#38; Tools. The talk had some particularly useful advice (to me, anyway) on giving feedback. <a href="https://www.youtube.com/watch?v=kNke_4WOWAU">video</a> <a href="https://speakerdeck.com/pycon2015/kate-heddleston-how-our-engineering-environments-are-killing-diversity-and-how-we-can-fix-it">slides</a></li></ul>
-
-<p>I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!</p>
 
 </article>
 

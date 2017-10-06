@@ -4,7 +4,31 @@
  <link rel="self" href="https://wlach.github.io/feeds/Mozilla.atom.xml" />
  <link href="https://wlach.github.io/tags/Mozilla.html" />
  <id>urn:https-wlach-github-io:-tags-Mozilla-html</id>
- <updated>2017-08-28T21:02:21Z</updated>
+ <updated>2017-10-06T19:05:37Z</updated>
+ <entry>
+  <title type="text">Mission Control</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/10/mission-control/?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2017-10-mission-control</id>
+  <published>2017-10-06T19:05:37Z</published>
+  <updated>2017-10-06T19:05:37Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;Time for an overdue post on the mission control project that I&amp;rsquo;ve been working on for the past few quarters, since I transitioned to the data platform team.&lt;/p&gt;
+
+&lt;p&gt;One of the gaps in our data story when it comes to Firefox is being able to see how a new release is doing in the immediate hours after release. Tools like &lt;a href="https://crash-stats.mozilla.com/home/product/Firefox"&gt;crashstats&lt;/a&gt; and the &lt;a href="https://telemetry.mozilla.org/new-pipeline/evo.html"&gt;telemetry evolution dashboard&lt;/a&gt; are great, but it can take many hours (if not days) before you can reliably see that there is an issue in a metric that we care about (number of crashes, say). This is just too long &amp;mdash; such delays unnecessarily retard rolling out a release when it is safe (because there is a paranoia that there might be some lingering problem which we we&amp;rsquo;re waiting to see reported). And if, somehow, despite our abundant caution a problem &lt;em&gt;did&lt;/em&gt; slip through it would take us some time to recognize it and roll out a fix.&lt;/p&gt;
+
+&lt;p&gt;Enter mission control. By hooking up a high-performance spark streaming job directly to our ingestion pipeline, we can now be able to detect within moments whether firefox is performing unacceptably within the field according to a particular measure.&lt;/p&gt;
+
+&lt;p&gt;To make the volume of data manageable, we create a grouped data set with the raw count of the various measures (e.g. main crashes, content crashes, slow script dialog counts) along with each unique combination of dimensions (e.g. platform, channel, release).&lt;/p&gt;
+
+&lt;p&gt;Of course, all this data is not so useful without a tool to visualize it, which is what I&amp;rsquo;ve been spending the majority of my time on. The idea is to be able to go from a top level description of what&amp;rsquo;s going on a particular channel (release for example) all the way down to a detailed view of how a measure has been performing over a time interval:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2017/10/missioncontrol-ui.png 2x" /&gt;&lt;/p&gt;
+
+&lt;p&gt;This particular screenshot shows the volume of content crashes (sampled every 5 minutes) over the last 48 hours on windows release. You&amp;rsquo;ll note that the later version (56.0) seems to be much crashier than earlier versions (55.0.3) which would seem to be a problem except that the populations are not directly comparable (since the profile of a user still on an older version of Firefox is rather different from that of one who has already upgraded). This is one of the still unsolved problems of this project: finding a reliable, automatable baseline of what an &amp;ldquo;acceptable result&amp;rdquo; for any particular measure might be.&lt;/p&gt;
+
+&lt;p&gt;Even still, the tool can still be useful for exploring a bunch of data quickly and it has been progressing rapidly over the last few weeks. And like almost everything Mozilla does, both the &lt;a href="https://github.com/mozilla/missioncontrol/"&gt;source&lt;/a&gt; and &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;dashboard&lt;/a&gt; are open to the public. I&amp;rsquo;m planning on flagging some easier bugs for newer contributors to work on in the next couple weeks, but in the meantime if you&amp;rsquo;re interested in this project and want to get involved, feel free to look us up on irc.mozilla.org #missioncontrol (I&amp;rsquo;m there as &amp;lsquo;wlach&amp;rsquo;).&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Functional is the future</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2017/08/functional-is-the-future/?utm_source=Mozilla&amp;utm_medium=Atom" />
@@ -187,16 +211,16 @@
      &lt;div class="source"&gt;
       &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;transformedBuildData&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;mapValues&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;buildData&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;({&lt;/span&gt;
     &lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="nx"&gt;buildData&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;buildData&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+    &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;buildData&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;
       &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;datum&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;minTimestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
       &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;tzcified&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])].&lt;/span&gt;&lt;span class="nx"&gt;concat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
   &lt;span class="p"&gt;})),&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;buildId&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;buildId&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;A little bit easier to understand, but more importantly it comes across as idiomatic and natural in a way that the python version just doesn&amp;rsquo;t. I&amp;rsquo;ve been happily programming Python for the last 10 years, but it&amp;rsquo;s increasingly feeling time to move on to greener pastures.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;A little bit easier to understand, but more importantly (to me anyway) it comes across as idiomatic and natural in a way that the python version just doesn&amp;rsquo;t. I&amp;rsquo;ve been happily programming Python for the last 10 years, but it&amp;rsquo;s increasingly feeling time to move on to greener pastures.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">mozregression's new mascot</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2017/07/mozregression-s-new-mascot/?utm_source=Mozilla&amp;utm_medium=Atom" />
@@ -1007,31 +1031,4 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png" alt="Screen Shot 2015-07-14 at 4.43.55 PM" width="300" height="224" class="alignnone size-medium wp-image-1224" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png 842w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;[&lt;a href="http://nbviewer.ipython.org/url/wrla.ch/blog/wp-content/uploads/2015/07/perfherder-api.ipynb"&gt;original&lt;/a&gt;]&lt;/p&gt;&lt;/html&gt;</content></entry>
- <entry>
-  <title type="text">PyCon 2015</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2015/04/pycon-2015/?utm_source=Mozilla&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2015-04-pycon-2015</id>
-  <published>2015-04-23T04:00:00Z</published>
-  <updated>2015-04-23T04:00:00Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">&lt;html&gt;
-&lt;p&gt;So I went to PyCon 2015. While I didn&amp;#8217;t leave quite as inspired as I did in 2014 (&lt;a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/"&gt;when I discovered iPython&lt;/a&gt;), it was a great experience and I learned a ton. Once again, I was incredibly impressed with the organization of the conference and the diversity and quality of the speakers.&lt;/p&gt;
-
-&lt;p&gt;Since Mozilla was nice enough to sponsor my attendance, I figured I should do another round up of notable talks that I went to.&lt;/p&gt;
-
-&lt;p&gt;Technical stuff that was directly relevant to what I work on:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;To ORM or not to ORM (Christine Spang): Useful talk on when using a database ORM (object relational manager) can be helpful and even faster than using a database directly. I feel like there&amp;#8217;s a lot of misinformation and FUD on this topic, so this was refreshing to see. &lt;a href="https://www.youtube.com/watch?v=Sadng6tR7Q4"&gt;video&lt;/a&gt; &lt;a href="https://speakerdeck.com/pycon2015/christine-spang-to-orm-or-not-to-orm"&gt;slides&lt;/a&gt;&lt;/li&gt;
- &lt;li&gt;Debugging hard problems (Alex Gaynor): Exactly what it says &amp;#8212; how to figure out what&amp;#8217;s going on when things aren&amp;#8217;t behaving as they should. Great advice and wisdom in this one (hint: take nothing for granted, dive into the source of everything you&amp;#8217;re using!). &lt;a href="https://www.youtube.com/watch?v=ij99SGGEX34"&gt;video&lt;/a&gt; &lt;a href="https://speakerdeck.com/alex/techniques-for-debugging-hard-problems"&gt;slides&lt;/a&gt;&lt;/li&gt;
- &lt;li&gt;Python Performance Profiling: The Guts And The Glory (Jesse Jiryu Davis): Quite an entertaining talk on how to properly profile python code. I really liked his systematic and realistic approach &amp;#8212; which also discussed the thought process behind how to do this (hint: again it comes down to understanding what&amp;#8217;s really going on). Unfortunately the video is truncated, but even the first few minutes are useful. &lt;a href="https://www.youtube.com/watch?v=4uJWWXYHxaM"&gt;video&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;Non-technical stuff:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;The Ethical Consequences Of Our Collective Activities (Glyph): A talk on the ethical implications of how our software is used. I feel like this is an under-discussed topic &amp;#8212; how can we know that the results of our activity (programming) serves others and does not harm? &lt;a href="https://www.youtube.com/watch?v=uSbKjRRbjZs"&gt;video&lt;/a&gt;&lt;/li&gt;
- &lt;li&gt;How our engineering environments are killing diversity (and how we can fix it) (Kate Heddleston): This was a great talk on how to make the environments in which we develop more welcoming to under-represented groups (women, minorities, etc.). This is something I&amp;#8217;ve been thinking a bunch about lately, especially in the context of expanding the community of people working on our projects in Automation &amp;#38; Tools. The talk had some particularly useful advice (to me, anyway) on giving feedback. &lt;a href="https://www.youtube.com/watch?v=kNke_4WOWAU"&gt;video&lt;/a&gt; &lt;a href="https://speakerdeck.com/pycon2015/kate-heddleston-how-our-engineering-environments-are-killing-diversity-and-how-we-can-fix-it"&gt;slides&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;[&lt;a href="http://nbviewer.ipython.org/url/wrla.ch/blog/wp-content/uploads/2015/07/perfherder-api.ipynb"&gt;original&lt;/a&gt;]&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
