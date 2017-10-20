@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 2)</title>
     <meta name="description" content="William Lachance's Log (page 2)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Orangutan, Free Software, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Docker, Montreal, Coffee, Life, Music, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Ebola, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Counting, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Orangutan, Free Software, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Docker, Montreal, Coffee, Life, Music, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Ebola, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Counting, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-2.html">
@@ -111,6 +111,8 @@
 
 <li><a href="/tags/Meta.html">Meta</a></li>
 
+<li><a href="/tags/Mission-Control.html">Mission Control</a></li>
+
 <li><a href="/tags/Montreal.html">Montreal</a></li>
 
 <li><a href="/tags/Mozilla.html">Mozilla</a></li>
@@ -190,6 +192,30 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a>, <a href="/tags/Performance.html">Performance</a></span></p>
+    <h2><a href='/blog/2016/10/slow-treeherder-fast-treeherder/'>Slow Treeherder, Fast Treeherder</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 3131, 2016</p>
+  </header>
+
+<p>Just wanted to talk about some recent performance improvements we&rsquo;ve made recently to <a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Treeherder">Treeherder</a>:</p>
+
+<ul>
+ <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1311511">Bug 1311511</a>: Changed the repository endpoint so we don&rsquo;t do 40 redundant database  queries (this was generally innocuous, but could delay loading by  400ms if the database was under heavy load).</li>
+ <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1310016">Bug 1310016</a>: Persisted database connections across requests (this  can save ~40&ndash;50ms per request, of which there can be 5&ndash;10  when loading a Treeherder page).</li>
+ <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1308782">Bug 1308782</a>: <em>Don&rsquo;t</em> download job type and group information  from the server to get a &ldquo;sorting order&rdquo; for the job lists. This was  never necessary, but it&rsquo;s gotten exponentially more painful as  people have added job types to Treeherder (job type information is  now around a megabyte of JSON these days). This saves 5&ndash;10 seconds on a  typical page load.</li></ul>
+
+<p>There&rsquo;s more to come, but with these changes Treeherder should be faster for everyone to load. It should be particularly noticeable on try pushes, where the last item was by far the largest bottleneck. Here&rsquo;s a youtube video of the changes:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xNJGoZhA4Vs" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
+<p>The original is on the left. The newer, faster Treeherder is on the right. Pay particular attention to how much faster the job information populates.</p>
+
+<p>Moral of the story? Optimization can be helpful, but it&rsquo;s better if you can avoid doing the work altogether.</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Infraherder.html">Infraherder</a></span></p>
     <h2><a href='/blog/2016/08/herding-automation-infrastructure/'>Herding Automation Infrastructure</a></h2>
@@ -448,53 +474,6 @@
 <p>So though I&rsquo;ll be keeping around wrla.ch for a little bit to give people time to migrate their links (it doesn&rsquo;t expire until the end of February 2016), it will also be going away. Please redirect your feed readers to <a href="https://wlach.github.io">wlach.github.io</a>.</p>
 
 <p>Now, onto more interesting things!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/11/perfherder-onward/'>Perfherder: Onward!</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 4th, 2015</p>
-  </header>
-
-<p>In addition to the <a href="http://wrla.ch/blog/2015/10/the-new-old-perfherder-data-model/">database refactoring</a> I mentioned a few weeks ago, some cool stuff has been going into <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a> lately.</p>
-
-<p><strong>Tracking installer size</strong></p>
-
-<p>Perfherder is now tracking the size of the Firefox installer for the various platforms we support (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1149164">bug 1149164</a>). I originally only intended to track Android .APK size (on request from the mobile team), but installer sizes for other platforms came along for the ride. I don&#8217;t think anyone will complain.</p>
-
-<p><a href="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM.png"><img src="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-300x181.png" alt="Screen Shot 2015-11-03 at 5.28.48 PM" width="300" height="181" class="alignnone size-medium wp-image-1274" srcset="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-300x181.png 300w, /files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-1024x618.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
-
-<p><a href="https://treeherder.mozilla.org/perf.html#/graphs?series=[mozilla-inbound,4eb0cde5431ee9aeb5eb14512ddb3da6d4702cf0,1]&amp;#038;series=[mozilla-inbound,80cac7ef44b76864458627c574af1a18a425f338,1]&amp;#038;series=[mozilla-inbound,0060252bdfb7632df5877b7594b4d16f1b5ca4c9,1]">link</a></p>
-
-<p>Just as exciting to me as the feature itself is how it&#8217;s implemented: I added a log parser to treeherder which just picks up a line called &#8220;PERFHERDER_DATA&#8221; in the logs with specially formatted JSON data, and then automatically stores whatever metrics are in there in the database (platform, options, etc. are automatically determined). For example, on Linux:</p>
-
-<pre><code>PERFHERDER_DATA: {"framework": {"name": "build_metrics"}, "suites": [{"subtests": [{"name": "libxul.so", "value": 99030741}], "name": "installer size", "value": 55555785}]}</code></pre>
-
-<p>This should make it super easy for people to add their own metrics to Perfherder for build and test jobs. We&#8217;ll have to be somewhat careful about how we do this (we don&#8217;t want to add thousands of new series with irrelevant / inconsistent data) but I think there&#8217;s lots of potential here to be able to track things we care about on a per-commit basis. Maybe build times (?).</p>
-
-<p><strong>More compare view improvements</strong></p>
-
-<p>I added filtering to the Perfherder compare view and added back links to the graphs view. Filtering should make it easier to highlight particular problematic tests in bug reports, etc. The graphs links shouldn&#8217;t really be necessary, but unfortunately are due to the unreliability of our data &#8212; sometimes you can only see if a particular difference between two revisions is worth paying attention to in the context of the numbers over the last several weeks.</p>
-
-<p><a href="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM.png"><img src="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-300x157.png" alt="Screen Shot 2015-11-03 at 5.37.02 PM" width="300" height="157" class="alignnone size-medium wp-image-1275" srcset="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-300x157.png 300w, /files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-1024x536.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
-
-<p><strong>Miscellaneous</strong></p>
-
-<p>Even after the <a href="http://wrla.ch/blog/2015/09/perfherder-summer-of-contribution-thoughts/">summer of contribution</a> has ended, Mike Ling continues to do great work. Looking at the commit log over the past few weeks, he&#8217;s been responsible for the following fixes and improvements:</p>
-
-<ul>
- <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1218825">Bug 1218825</a>: Can zoom in on perfherder graphs by selecting the main view</li>
- <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1207309">Bug 1207309</a>: Disable &#8216;&lt;&rsquo; button in test chooser if no test selected</li>
- <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1210503">Bug 1210503</a> &#8211; Include non-summary tests in main comparison view</li>
- <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1153956">Bug 1153956</a> &#8211; Persist the selected revision in the url on perfherder (based on earlier work by Akhilesh Pillai)</li></ul>
-
-<p><strong>Next up</strong></p>
-
-<p>My main goal for this quarter is to create a fully functional interface for actually sheriffing performance regressions, to replace <a href="http://alertmanager.allizom.org:8080/alerts.html">alertmanager</a>. Work on this has been going well. More soon.</p>
-
-<p><a href="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png"><img src="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png" alt="Screen Shot 2015-11-04 at 10.41.26 AM" width="300" height="176" class="alignnone size-medium wp-image-1280" srcset="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png 300w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-1024x600.png 1024w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png 1126w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
 
 </article>
 

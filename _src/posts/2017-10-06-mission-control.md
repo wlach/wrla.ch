@@ -1,6 +1,6 @@
     Title: Mission Control
     Date: 2017-10-06T15:05:37
-    Tags: Mozilla, Data Visualization
+    Tags: Mozilla, Data Visualization, Mission Control
 
 Time for an overdue post on the mission control project that I've been
 working on for the past few quarters, since I transitioned to the data

@@ -69,6 +69,7 @@ https://wlach.github.io/blog/2017/07/taking-over-an-npm-package-sanity-prevails/
 https://wlach.github.io/blog/2011/09/updates-on-my-ridiculous-pet-projects/
 https://wlach.github.io/blog/2013/08/nixi-update/
 https://wlach.github.io/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/
+https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions/
 https://wlach.github.io/blog/2012/04/eideticker-with-less-eideticker/
 https://wlach.github.io/blog/2014/03/the-highest-form/
 https://wlach.github.io/blog/2010/02/it-8217-s-alive/

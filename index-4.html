@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 4)</title>
     <meta name="description" content="William Lachance's Log (page 4)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Orangutan, Free Software, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, FirefoxOS, Environment, Toronto, Docker, Montreal, Coffee, Life, Music, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Ebola, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Counting, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Orangutan, Free Software, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Docker, Montreal, Coffee, Life, Music, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Ebola, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Perfherder, Responsiveness, BIXI, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Counting, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-4.html">
@@ -111,6 +111,8 @@
 
 <li><a href="/tags/Meta.html">Meta</a></li>
 
+<li><a href="/tags/Mission-Control.html">Mission Control</a></li>
+
 <li><a href="/tags/Montreal.html">Montreal</a></li>
 
 <li><a href="/tags/Mozilla.html">Mozilla</a></li>
@@ -190,6 +192,25 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Ebola.html">Ebola</a>, <a href="/tags/MSF.html">MSF</a></span></p>
+    <h2><a href='/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf/'>Ebola mini-campaign successful: $6212 for MSF</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 20th, 2014</p>
+  </header>
+
+<p>Just a quick note that my campaign to raise funds for <a href="http://msf.ca">MSF</a> was successful. From friends and family, coworkers, and my extended network I managed to raise the sum of $3106. This was a bit above my maximum of $2500 that I said I would match, but what the hell:</p>
+
+<p><a href="/files/2014/10/Screen-Shot-2014-10-20-at-12.05.19-AM.png"><img src="/files/2014/10/Screen-Shot-2014-10-20-at-12.05.19-AM.png" alt="Screen Shot 2014-10-20 at 12.05.19 AM" width="455" height="341" class="alignnone size-full wp-image-1132" srcset="/files/2014/10/Screen-Shot-2014-10-20-at-12.05.19-AM-300x224.png 300w, /files/2014/10/Screen-Shot-2014-10-20-at-12.05.19-AM.png 455w" sizes="(max-width: 455px) 100vw, 455px" /></a></p>
+
+<p>So in total that means $6212 for Doctors without Borders. Not half bad for a week long campaign from someone as insignificant as myself!</p>
+
+<p>Most of the people who donated wanted to remain anonymous, which is cool. But among those who were cool about being public, big thanks to: Julia Evans, Chris Atlee, Mike Conley, Ted Tibbetts, Paul and Eva Lachance, Alex Demarsh and Lauren Reid (if I&#8217;m missing someone who wants to be named, please let me know).</p>
+
+<p>Incidentally, I&#8217;ve learned a bit more about Ebola over the past week, and I&#8217;m fairly sure that we&#8217;ll be ok here in Canada and the States given the fact that the virus isn&#8217;t actually that contagious (and that we have reasonable facilities for treating it in a safe manner, major screwups in Dallas notwithstanding). Liberia and other parts of Africa are still very much worth worrying about though, so I still 100% that starting this campaign was the right thing for me to do as an individual. Actually wiping out the disease will likely require government-level resources and intervention. Still waiting for a more serious resource commitment from Canada (cautiously optimistic about what&#8217;s happening with the States).</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Ebola.html">Ebola</a>, <a href="/tags/MSF.html">MSF</a></span></p>
     <h2><a href='/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe/'>Doing something about Ebola before it becomes a catostrophe</a></h2>
@@ -429,24 +450,6 @@ cd treeherder-ui/webapp&lt;br /&gt;
 <p>Here at <a href="https://wiki.mozilla.org/Auto-tools">Mozilla Tools &#38; Automation</a>, we&#8217;re most interested in creating software that everyone can feel good about depending on, so we agreed to rename it. When I raised this with my peers, there were no objections. I know these things are often the source of much drama in the free software world, but there&#8217;s really none to see here.</p>
 
 <p>Happy manifest parsing!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a>, <a href="/tags/Python.html">Python</a></span></p>
-    <h2><a href='/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/'>mozregression: New maintainer, issues tracked in bugzilla</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 8th, 2014</p>
-  </header>
-
-<p>Just wanted to give some quick updates on <a href="http://mozilla.github.io/mozregression/">mozregression</a>, your favorite regression-finding tool for Firefox:</p>
-
-<ol>
- <li>I moved all issue tracking in mozregression to bugzilla from github issues. Github unfortunately doesn&#8217;t really scale to handle notifications sensibly when you&#8217;re part of a large organization like Mozilla, which meant many problems were flying past me unseen. <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Testing&amp;#038;component=mozregression">File your new bugs</a> in bugzilla, they&#8217;re now much more likely to be acted upon.</li>
- <li><a href="http://blackrhino.io/">Sam Garrett</a> has stepped up to be co-maintainer of the project with me. He&#8217;s been doing a great job whacking out a bunch of bugs and keeping things running reliably, and it was time to give him some recognition and power to keep things moving forward.</li>
- <li>On that note, I just released mozregression 0.17, which now shows the revision number when running a build (a request from the graphics team, bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1007238">1007238</a>) and handles respins of nightly builds correctly (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1000422">bug 1000422</a>). Both of these were fixed by Sam.</li></ol>
-
-<p>If you&#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &#8212; as I&#8217;ve found out over the last few months, people <em>all over</em> the Mozilla organization (managers, developers, QA &#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is <a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;#038;product=Testing">here</a>.</p>
 
 </article>
 

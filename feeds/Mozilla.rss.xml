@@ -4,9 +4,22 @@
   <title>William Lachance's Log: Posts tagged 'Mozilla'</title>
   <description>William Lachance's Log: Posts tagged 'Mozilla'</description>
   <link>https://wlach.github.io/tags/Mozilla.html</link>
-  <lastBuildDate>Fri, 06 Oct 2017 19:05:37 UT</lastBuildDate>
-  <pubDate>Fri, 06 Oct 2017 19:05:37 UT</pubDate>
+  <lastBuildDate>Fri, 20 Oct 2017 18:33:19 UT</lastBuildDate>
+  <pubDate>Fri, 20 Oct 2017 18:33:19 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Mission Control: Ready for contributions</title>
+   <link>https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions/?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2017-10-mission-control-ready-for-contributions</guid>
+   <pubDate>Fri, 20 Oct 2017 18:33:19 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;One of the great design decisions that was made for &lt;a href="https://treeherder.mozilla.org"&gt;Treeherder&lt;/a&gt; was a strict seperation of the client and server portions of the codebase. While its backend was moderately complicated to get up and running (especially into a state that looked at all like what we were running in production), you could get its web frontend running (pointed against the production data) just by starting up a simple node.js server. This dramatically lowered the barrier to entry, for Mozilla employees and casual contributors alike.&lt;/p&gt;
+
+&lt;p&gt;I knew right from the beginning that I wanted to take the same approach with &lt;a href="https://wlach.github.io/blog/2017/10/mission-control/"&gt;Mission Control&lt;/a&gt;. While the full source of the project is available, unfortunately it isn&amp;rsquo;t presently possible to bring up the full stack with real data, as that requires privileged access to the athena/parquet error aggregates table. But since the UI is self-contained, it&amp;rsquo;s quite easy to bring up a development environment that allows you to freely browse the cached data which is stored server-side (essentially: &lt;code&gt;git clone https://github.com/mozilla/missioncontrol.git &amp;amp;&amp;amp; yarn install &amp;amp;&amp;amp; yarn start&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;In my experience, the most interesting problems when it comes to projects like these center around the question of how to present extremely complex data in a way that is intuitive but not misleading. Probably 90% of that work happens in the frontend. In the past, I&amp;rsquo;ve had pretty good luck finding contributors for my projects (especially &lt;a href="/tags/Perfherder.html"&gt;Perfherder&lt;/a&gt;) by doing call-outs on this blog. So let it be known: If Mission Control sounds like an interesting project and you know &lt;a href="https://reactjs.org/"&gt;React&lt;/a&gt;/&lt;a href="http://redux.js.org/"&gt;Redux&lt;/a&gt;/&lt;a href="https://d3js.org/"&gt;D3&lt;/a&gt;/&lt;a href="https://www.metricsgraphicsjs.org/"&gt;MetricsGraphics&lt;/a&gt; (or want to learn), let&amp;rsquo;s work together!&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Mission Control</title>
    <link>https://wlach.github.io/blog/2017/10/mission-control/?utm_source=Mozilla&amp;utm_medium=RSS</link>
@@ -933,44 +946,4 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
  &lt;li&gt;Figure out what&amp;#8217;s causing the same machines to produce qualitatively different result distributions and address that. This is of course the ideal solution, but it requires coordination with other parts of the organization who are likely quite busy and might be hard.&lt;/li&gt;
  &lt;li&gt;Figure out better ways of detecting and managing these sorts of case. I have noticed that the standard deviation inside the results when we have spurious regressions/improvements tends to be higher (see for example &lt;a href="https://treeherder.mozilla.org/perf.html#/compare?originalProject=mozilla-inbound&amp;amp;#038;originalRevision=4d0818791d07&amp;amp;#038;newProject=mozilla-inbound&amp;amp;#038;newRevision=5e130ad70aa7"&gt;this compare view&lt;/a&gt; for the aforementioned &amp;#8220;regression&amp;#8221;). Knowing what we do, maybe there&amp;#8217;s some statistical methods we can use to detect bad data?&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;For now, I&amp;#8217;m leaning towards (2). I don&amp;#8217;t think we&amp;#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
-   <title>Perfherder update</title>
-   <link>https://wlach.github.io/blog/2015/07/perfherder-update/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-07-perfherder-update</guid>
-   <pubDate>Tue, 14 Jul 2015 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;Haven&amp;#8217;t been doing enough blogging about &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; (our project to make Talos and other per-checkin performance data more useful) recently. Let&amp;#8217;s fix that. We&amp;#8217;ve been making some good progress, helped in part by a group of new contributors that joined us through an experimental &amp;#8220;&lt;a href="https://elvis314.wordpress.com/2015/06/09/please-welcome-the-dashboard-hacker-team/"&gt;summer of contribution&lt;/a&gt;&amp;#8221; program.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Comparison mode&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Inspired by Compare Talos, we&amp;#8217;ve designed something similar which hooks into the perfherder backend. This has already gotten some interest: see this post on &lt;a href="https://groups.google.com/d/msg/mozilla.dev.tree-management/IUmMuY8b52A/Asne1cW0I8EJ"&gt;dev.tree-management&lt;/a&gt; and this one on &lt;a href="https://groups.google.com/d/msg/mozilla.dev.platform/PaJFBtvc3Vg/BvX-pFlsAkoJ"&gt;dev.platform&lt;/a&gt;. We&amp;#8217;re working towards building something that will be really useful both for (1) illustrating that the performance regressions we detect are real and (2) helping developers figure out the impact of their changes before they land them.&lt;/p&gt;
-
-&lt;table&gt;
- &lt;tr&gt;
-  &lt;td&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM-300x207.png" alt="Screen Shot 2015-07-14 at 3.54.57 PM" width="300" height="207" class="alignnone size-medium wp-image-1219" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM-300x207.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/td&gt; 
-  &lt;td&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png" alt="Screen Shot 2015-07-14 at 3.53.20 PM" width="300" height="206" class="alignnone size-medium wp-image-1218" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
-
-&lt;p&gt;Most of the initial work was done by &lt;a href="https://elvis314.wordpress.com/"&gt;Joel Maher&lt;/a&gt; with lots of review for aesthetics and correctness by me. Avi Halmachi from the Performance Team also helped out with the &lt;a href="https://en.wikipedia.org/wiki/Student's_t-test"&gt;t-test&lt;/a&gt; model for detecting the confidence that we have that a difference in performance was real. Lately myself and &lt;a href="https://github.com/MikeLing"&gt;Mike Ling&lt;/a&gt; (one of our summer of contribution members) have been working on further improving the interface for usability &amp;#8212; I&amp;#8217;m hopeful that we&amp;#8217;ll soon have something implemented that&amp;#8217;s broadly usable and comprehensible to the Mozilla Firefox and Platform developer community.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Graphs improvements&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Although it&amp;#8217;s received slightly less attention lately than the comparison view above, we&amp;#8217;ve been making steady progress on the graphs view of performance series. Aside from demonstrations and presentations, the primary use case for this is being able to detect visually sustained changes in the result distribution for talos tests, which is often necessary to be able to confirm regressions. Notable recent changes include a much easier way of selecting tests to add to the graph from Mike Ling and more readable/parseable urls from &lt;a href="https://github.com/akhileshpillai"&gt;Akhilesh Pillai&lt;/a&gt; (another summer of contribution participant).&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-300x174.png" alt="Screen Shot 2015-07-14 at 4.09.45 PM" width="300" height="174" class="alignnone size-medium wp-image-1221" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-300x174.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-1024x595.png 1024w, /files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM.png 1130w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Performance alerts&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I&amp;#8217;ve also been steadily working on making Perfherder generate alerts when there is a significant discontinuity in the performance numbers, similar to what &lt;a href="http://graphs.mozilla.org"&gt;GraphServer&lt;/a&gt; does now. Currently we have an option to generate a static CSV file of these alerts, but the eventual plan is to insert these things into a peristent database. After that&amp;#8217;s done, we can actually work on creating a UI inside Perfherder to replace &lt;a href="http://alertmanager.allizom.org:8080/alerts.html#"&gt;alertmanager&lt;/a&gt; (which currently uses GraphServer data) and start using this thing to sheriff performance regressions &amp;#8212; putting the herder into perfherder.&lt;/p&gt;
-
-&lt;p&gt;As part of this, I&amp;#8217;ve converted the graphserver alert generation code into a standalone python library, which has already proven useful as a component in the &lt;a href="https://hacks.mozilla.org/2015/06/performance-testing-firefox-os-with-raptor/"&gt;Raptor project for FirefoxOS&lt;/a&gt;. Yay modularity and reusability.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Python API&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I&amp;#8217;ve also been working on creating and improving a &lt;a href="http://treeherder.readthedocs.org/retrieving_data.html#python-client"&gt;python API&lt;/a&gt; to access Treeherder data, which includes Perfherder. This lets you do interesting things, like dynamically run various types of statistical analysis on the data stored in the production instance of Perfherder (no need to ask me for a database dump or other credentials). I&amp;#8217;ve been using this to perform validation of the data we&amp;#8217;re storing and debug various tricky problems. For example, &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1182282"&gt;I found out last week that we were storing up to duplicate 200 entries in each performance series due to double data ingestion&lt;/a&gt; &amp;#8212; oops.&lt;/p&gt;
-
-&lt;p&gt;You can also use this API to dynamically create interesting graphs and visualizations using &lt;a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/"&gt;ipython notebook&lt;/a&gt;, here&amp;#8217;s a simple example of me plotting the last 7 days of youtube.com pageload data inline in a notebook:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png"&gt;&lt;img src="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png" alt="Screen Shot 2015-07-14 at 4.43.55 PM" width="300" height="224" class="alignnone size-medium wp-image-1224" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png 842w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;[&lt;a href="http://nbviewer.ipython.org/url/wrla.ch/blog/wp-content/uploads/2015/07/perfherder-api.ipynb"&gt;original&lt;/a&gt;]&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;For now, I&amp;#8217;m leaning towards (2). I don&amp;#8217;t think we&amp;#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

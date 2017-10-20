@@ -111,6 +111,8 @@
 
 <li><a href="/tags/Meta.html">Meta</a></li>
 
+<li><a href="/tags/Mission-Control.html">Mission Control</a></li>
+
 <li><a href="/tags/Montreal.html">Montreal</a></li>
 
 <li><a href="/tags/Mozilla.html">Mozilla</a></li>
@@ -190,6 +192,23 @@
           <h1>Posts tagged <em>Mozilla</em></h1>
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Time.html">Time</a></span></p>
+    <h2><a href='/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/'>Simple command-line ntp client for Android and FirefoxOS</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 8th, 2013</p>
+  </header>
+
+<p>Today I did a quick port of Larry Doolittle&#8217;s <a href="http://doolittle.icarus.com/ntpclient/">ntpclient program</a> to Android and FirefoxOS. Basically this lets you easily synchronize your device&#8217;s time to that of a central server. Yes, there&#8217;s lots and lots of Android &#8220;applications&#8221; which let you do this, but I wanted to be able to do this from the command line because that&#8217;s how I roll. If you&#8217;re interested, source and instructions are here:</p>
+
+<p><a href="https://github.com/wlach/ntpclient-android">https://github.com/wlach/ntpclient-android</a></p>
+
+<p>For those curious, no, I didn&#8217;t just do this for fun. For next quarter, we want to write some Eideticker-based responsiveness tests for FirefoxOS and Android. For example, how long does it take from the time you tap on an icon in the homescreen on FirefoxOS to when the application is fully loaded? Or on Android, how long does it take to see a full list of sites in the awesomebar from the time you tap on the URL field and enter your search term?</p>
+
+<p>Because an Eideticker test run involves two different machines (a host machine which controls the device and captures video of it in action, as well as the device itself), we need to use timestamps to really understand when and how events are being sent to the device. To do that reliably, we really need some easy way of synchronizing time between two machines (or at least accounting for the difference in their clocks, which amounts to about the same thing). NTP struck me as being the easiest, most standard way of doing this.</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2013/05/proof-of-concept-eideticker-dashboard-for-firefoxos/'>Proof of concept Eideticker dashboard for FirefoxOS</a></h2>
@@ -500,30 +519,6 @@ NameError: name 'self' is not defined</code></pre>
 <p>Ultimately there&#8217;s no substitute for actually thoroughly testing your code, no matter what language you&#8217;re using. But using the right techniques and tools can certainly make your life easier.</p>
 
 <p>[ for those wondering, a fix for the issue mentioned in this post is part of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=801652">bug 801652</a> ]</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Profiling.html">Profiling</a></span></p>
-    <h2><a href='/blog/2012/09/say-hello-to-frof/'>Say hello to frof</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 25th, 2012</p>
-  </header>
-
-<p>Inspired by the work I&#8217;d been doing with Benoit Girard to <a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/">integrate the Firefox Profiler with Eideticker</a>, I decided to create an easy-to-use python script to help with gathering profiles on Fennec, which I call <a href="https://github.com/wlach/frof">frof</a>.</p>
-
-<p>Frof pretty considerably reduces the amount of busywork you need to do to gather a profile. Instead of a rather complicated multi-step process to initialize fennec with the right parameters for profiling, downloading profiles, etc., you can just run the frof script like so:
- <br /><code>&lt;br /&gt;
-frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
- <br />Assuming that frof was bootstrapped correctly (and your phone is connected to your computer in debugging mode), this should start up fennec automatically with that URL loaded. Now, just perform whatever action you want to profile on your phone, then press enter in the terminal when you&#8217;re done. Voila, instant profile trace which you can examine, post to bugs, etc. All the other details are automated.</p>
-
-<p>Backstory: the inspiration for frof came from a personal itch of mine, the fact that leaflet.js maps seem to be causing out-of-memory errors on Fennec when zooming is enabled (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=784580">bug 784580</a>). I wanted to be able to capture some profiles to see what was going on, but the <a href="https://developer.mozilla.org/en-US/docs/Performance/Profiling_with_the_Built-in_Profiler#Profiling_Firefox_mobile">current instructions</a> on MDN seem a bit unwieldly. I figured I&#8217;d get lots of mileage out of a tool to make this easier (especially if I was going to get into a profile, edit, debug cycle), so I spent a few hours dilligently copying the logic we put into eideticker to gather profiles into a standalone script.</p>
-
-<p><a href="http://wrla.ch/blog/2012/09/say-hello-to-frof/frof-profile-leaflet/" rel="attachment wp-att-760"><img src="/files/2012/09/frof-profile-leaflet.png" alt="A profile I generated of a leaflet map with frof" title="frof profile leaflet" width="703" height="365" class="alignnone size-full wp-image-760" srcset="/files/2012/09/frof-profile-leaflet-300x155.png 300w, /files/2012/09/frof-profile-leaflet.png 703w" sizes="(max-width: 703px) 100vw, 703px" /></a></p>
-
-<p>Unfortunately in my case, the gecko profile didn&#8217;t tell me much, aside from the fact that Gecko didn&#8217;t seem to be the culprit (remember that on Android we also have lots of Java-based frontend code to contend with, which the profiler doesn&#8217;t measure). I&#8217;m going to stare more at the Java code and dig into the various high-level tools that Android provides for profiling performance and memory usage. My current hypothesis is that the problem is the screenshot code and the CSS transitions that leaflet generates when zooming. In the mean time, the only thing I have to show for my foray away from writing tools for Mozilla is &#8230; yet another tool.</p>
-
-<p>Oh well, it could be worse. My fervent hope is that frof will be helpful for both Fennec developers and QA. Let me know if you wind up using it!</p>
 
 </article>
 

@@ -4,9 +4,22 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Fri, 06 Oct 2017 19:05:37 UT</lastBuildDate>
-  <pubDate>Fri, 06 Oct 2017 19:05:37 UT</pubDate>
+  <lastBuildDate>Fri, 20 Oct 2017 18:33:19 UT</lastBuildDate>
+  <pubDate>Fri, 20 Oct 2017 18:33:19 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Mission Control: Ready for contributions</title>
+   <link>https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2017-10-mission-control-ready-for-contributions</guid>
+   <pubDate>Fri, 20 Oct 2017 18:33:19 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;One of the great design decisions that was made for &lt;a href="https://treeherder.mozilla.org"&gt;Treeherder&lt;/a&gt; was a strict seperation of the client and server portions of the codebase. While its backend was moderately complicated to get up and running (especially into a state that looked at all like what we were running in production), you could get its web frontend running (pointed against the production data) just by starting up a simple node.js server. This dramatically lowered the barrier to entry, for Mozilla employees and casual contributors alike.&lt;/p&gt;
+
+&lt;p&gt;I knew right from the beginning that I wanted to take the same approach with &lt;a href="https://wlach.github.io/blog/2017/10/mission-control/"&gt;Mission Control&lt;/a&gt;. While the full source of the project is available, unfortunately it isn&amp;rsquo;t presently possible to bring up the full stack with real data, as that requires privileged access to the athena/parquet error aggregates table. But since the UI is self-contained, it&amp;rsquo;s quite easy to bring up a development environment that allows you to freely browse the cached data which is stored server-side (essentially: &lt;code&gt;git clone https://github.com/mozilla/missioncontrol.git &amp;amp;&amp;amp; yarn install &amp;amp;&amp;amp; yarn start&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;In my experience, the most interesting problems when it comes to projects like these center around the question of how to present extremely complex data in a way that is intuitive but not misleading. Probably 90% of that work happens in the frontend. In the past, I&amp;rsquo;ve had pretty good luck finding contributors for my projects (especially &lt;a href="/tags/Perfherder.html"&gt;Perfherder&lt;/a&gt;) by doing call-outs on this blog. So let it be known: If Mission Control sounds like an interesting project and you know &lt;a href="https://reactjs.org/"&gt;React&lt;/a&gt;/&lt;a href="http://redux.js.org/"&gt;Redux&lt;/a&gt;/&lt;a href="https://d3js.org/"&gt;D3&lt;/a&gt;/&lt;a href="https://www.metricsgraphicsjs.org/"&gt;MetricsGraphics&lt;/a&gt; (or want to learn), let&amp;rsquo;s work together!&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Mission Control</title>
    <link>https://wlach.github.io/blog/2017/10/mission-control/?utm_source=all&amp;utm_medium=RSS</link>
@@ -771,47 +784,4 @@
 
 &lt;p&gt;So though I&amp;rsquo;ll be keeping around wrla.ch for a little bit to give people time to migrate their links (it doesn&amp;rsquo;t expire until the end of February 2016), it will also be going away. Please redirect your feed readers to &lt;a href="https://wlach.github.io"&gt;wlach.github.io&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Now, onto more interesting things!&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
-   <title>Perfherder: Onward!</title>
-   <link>https://wlach.github.io/blog/2015/11/perfherder-onward/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-11-perfherder-onward</guid>
-   <pubDate>Wed, 04 Nov 2015 05:00:00 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;In addition to the &lt;a href="http://wrla.ch/blog/2015/10/the-new-old-perfherder-data-model/"&gt;database refactoring&lt;/a&gt; I mentioned a few weeks ago, some cool stuff has been going into &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; lately.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Tracking installer size&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Perfherder is now tracking the size of the Firefox installer for the various platforms we support (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1149164"&gt;bug 1149164&lt;/a&gt;). I originally only intended to track Android .APK size (on request from the mobile team), but installer sizes for other platforms came along for the ride. I don&amp;#8217;t think anyone will complain.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM.png"&gt;&lt;img src="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-300x181.png" alt="Screen Shot 2015-11-03 at 5.28.48 PM" width="300" height="181" class="alignnone size-medium wp-image-1274" srcset="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-300x181.png 300w, /files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-1024x618.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://treeherder.mozilla.org/perf.html#/graphs?series=[mozilla-inbound,4eb0cde5431ee9aeb5eb14512ddb3da6d4702cf0,1]&amp;amp;#038;series=[mozilla-inbound,80cac7ef44b76864458627c574af1a18a425f338,1]&amp;amp;#038;series=[mozilla-inbound,0060252bdfb7632df5877b7594b4d16f1b5ca4c9,1]"&gt;link&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Just as exciting to me as the feature itself is how it&amp;#8217;s implemented: I added a log parser to treeherder which just picks up a line called &amp;#8220;PERFHERDER_DATA&amp;#8221; in the logs with specially formatted JSON data, and then automatically stores whatever metrics are in there in the database (platform, options, etc. are automatically determined). For example, on Linux:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;PERFHERDER_DATA: {"framework": {"name": "build_metrics"}, "suites": [{"subtests": [{"name": "libxul.so", "value": 99030741}], "name": "installer size", "value": 55555785}]}&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This should make it super easy for people to add their own metrics to Perfherder for build and test jobs. We&amp;#8217;ll have to be somewhat careful about how we do this (we don&amp;#8217;t want to add thousands of new series with irrelevant / inconsistent data) but I think there&amp;#8217;s lots of potential here to be able to track things we care about on a per-commit basis. Maybe build times (?).&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;More compare view improvements&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;I added filtering to the Perfherder compare view and added back links to the graphs view. Filtering should make it easier to highlight particular problematic tests in bug reports, etc. The graphs links shouldn&amp;#8217;t really be necessary, but unfortunately are due to the unreliability of our data &amp;#8212; sometimes you can only see if a particular difference between two revisions is worth paying attention to in the context of the numbers over the last several weeks.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM.png"&gt;&lt;img src="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-300x157.png" alt="Screen Shot 2015-11-03 at 5.37.02 PM" width="300" height="157" class="alignnone size-medium wp-image-1275" srcset="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-300x157.png 300w, /files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-1024x536.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Miscellaneous&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;Even after the &lt;a href="http://wrla.ch/blog/2015/09/perfherder-summer-of-contribution-thoughts/"&gt;summer of contribution&lt;/a&gt; has ended, Mike Ling continues to do great work. Looking at the commit log over the past few weeks, he&amp;#8217;s been responsible for the following fixes and improvements:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1218825"&gt;Bug 1218825&lt;/a&gt;: Can zoom in on perfherder graphs by selecting the main view&lt;/li&gt;
- &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1207309"&gt;Bug 1207309&lt;/a&gt;: Disable &amp;#8216;&amp;lt;&amp;rsquo; button in test chooser if no test selected&lt;/li&gt;
- &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1210503"&gt;Bug 1210503&lt;/a&gt; &amp;#8211; Include non-summary tests in main comparison view&lt;/li&gt;
- &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1153956"&gt;Bug 1153956&lt;/a&gt; &amp;#8211; Persist the selected revision in the url on perfherder (based on earlier work by Akhilesh Pillai)&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Next up&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;My main goal for this quarter is to create a fully functional interface for actually sheriffing performance regressions, to replace &lt;a href="http://alertmanager.allizom.org:8080/alerts.html"&gt;alertmanager&lt;/a&gt;. Work on this has been going well. More soon.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png"&gt;&lt;img src="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png" alt="Screen Shot 2015-11-04 at 10.41.26 AM" width="300" height="176" class="alignnone size-medium wp-image-1280" srcset="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png 300w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-1024x600.png 1024w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png 1126w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;Now, onto more interesting things!&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
