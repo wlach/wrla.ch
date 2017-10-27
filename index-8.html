@@ -193,6 +193,27 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Orangutan.html">Orangutan</a></span></p>
+    <h2><a href='/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans/'>The evolution of simulating events in Eideticker: from monkeys to orangutans</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 10th, 2012</p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+
+<p>I just merged a new approach I&#8217;ve been using to simulate touch events into the master branch of Eideticker called <a href="http://github.com/wlach/orangutan">Orangutan</a>.</p>
+
+<p><a href="http://wrla.ch/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns/orangutan/" rel="attachment wp-att-696"><img src="/files/2012/07/orangutan.jpg" alt="Image of Orangutan" title="orangutan" width="415" height="600" class="alignnone size-full wp-image-696" srcset="/files/2012/07/orangutan-207x300.jpg 207w, /files/2012/07/orangutan.jpg 415w" sizes="(max-width: 415px) 100vw, 415px" /></a></p>
+
+<p>As I&#8217;ve mentioned before, we really need to simulate actual user gestures when doing this type of testing to measure real-world performance with Eideticker. Up to now, I&#8217;ve been using google&#8217;s <a href="http://developer.android.com/tools/help/monkeyrunner_concepts.html">MonkeyRunner</a> tool to do this. I was always a little skeptical about its approach (which involved using a privileged tool written in Java with special access to Android&#8217;s windowing system), but up until recently I&#8217;d managed to get around its <a href="http://code.google.com/p/android/issues/detail?id=27955">issues</a> with a <a href="https://github.com/mozilla/eideticker/commit/8d034212bc38c1fc80b9fe792c0b06919c74141a">successively</a> <a href="https://github.com/mozilla/eideticker/commit/55d63960dc0a5090cee00fe917a851db082ee0fd">more</a> <a href="https://github.com/mozilla/eideticker/commit/686882d32fb25a700afec35c39e53a73658688e3">complicated</a> series of hacks.</p>
+
+<p>Unfortunately, I finally came up with a problem that I couldn&#8217;t figure out how to fix: monkeyrunner doesn&#8217;t attach precise timing information to the events it generates, which completely throws off Google Chrome for Android when you try to simulate a pan gesture. I&#8217;ve tried just about every way of using the existing functionality (both the networked mode and the &#8220;script&#8221; mode), but nothing seemed to help. My conclusion is that the only way of continuing to use monkey would be to create a fix for the software itself, which implies forking and extending the entire Android Open Source Project. As noble a goal as that might be, doing that across all the major Android versions I want to support (2.2, 2.3, 4.0 and now 4.1) was more work than I felt like taking on (not to mention the question of how to deploy that work). I decided to build something entirely new which did not have this requirement.</p>
+
+<p>Enter Orangutan. Unlike MonkeyRunner, Orangutan simply injects events directly into low-level the kernel device file that represents an Android device&#8217;s touch screen. It&#8217;s fast (written in native C), trivial to build, and seems to work seamlessly with any application I&#8217;ve tried using it with (including Google Chrome for Android). Most interestingly for Mozilla, this interface is also present on Firefox OS (<a href="https://wiki.mozilla.org/B2G">Boot to Gecko</a>) based devices, so we should be able to use Orangutan there to support both Eideticker and any other testing framework which needs to test real-world user input test cases. Exciting times!</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/'>Mobile Firefox: Measuring How a Browser Feels</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 26th, 2012</p>
@@ -513,28 +534,6 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 <p>Unfortunately the news here is not as good as before: as the numbers indicate, the new Native Fennec currently performs substantially worse than the version in Android market. This is a known issue, and is currently being tracked in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447">bug 719447</a>.</p>
 
 <p>Next up: Seeing how we do against Google Chrome for Android.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/'>Announcing the Eideticker mobile performance dashboard</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 16th, 2012</p>
-  </header>
-
-<p>Over the last while, Clint Talbert and I have been working on setting up automatic mobile performance tests using Eideticker (a framework to measure perceived Firefox performance by video capturing automated browser interactions: for more information, see my <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">earlier post</a>).</p>
-
-<p>There&#8217;s many reasons why this is interesting, but probably the most important one is that it can measure differences reliably across different types of mobile browsers. Currently I&#8217;m testing the old XUL fennec, the Android stock browser, and the latest nightlies.</p>
-
-<p>I&#8217;m pleased to announce that the first iteration of the dashboard is available for public consumption, on my site.</p>
-
-<p><a href="http://wrla.ch/eideticker/dashboard/#/canvas">http://wrla.ch/eideticker/dashboard/#/canvas</a></p>
-
-<div class="figure"><img src="/files/2012/03/eideticker-results.png" alt="Eideticker Results" />
- <p class="caption">Eideticker Results</p></div>
-
-<p>The demo is pretty cheesey (just click on any of the datapoints to see the video capture), but nonetheless does seem to illustrate some interesting differences between the three browsers. The big jump in performance for nightly comes from the landing of the Maple branch, which happened earlier this week. Hopefully this validates some of the work that the mobile/graphics team has been doing over the past while. Exciting times!</p>
 
 </article>
 
