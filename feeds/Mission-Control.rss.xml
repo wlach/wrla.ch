@@ -4,9 +4,20 @@
   <title>William Lachance's Log: Posts tagged 'Mission Control'</title>
   <description>William Lachance's Log: Posts tagged 'Mission Control'</description>
   <link>https://wlach.github.io/tags/Mission-Control.html</link>
-  <lastBuildDate>Thu, 26 Oct 2017 20:58:20 UT</lastBuildDate>
-  <pubDate>Thu, 26 Oct 2017 20:58:20 UT</pubDate>
+  <lastBuildDate>Wed, 06 Dec 2017 22:16:23 UT</lastBuildDate>
+  <pubDate>Wed, 06 Dec 2017 22:16:23 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Maintaining metricsgraphics</title>
+   <link>https://wlach.github.io/blog/2017/12/maintaining-metricsgraphics/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2017-12-maintaining-metricsgraphics</guid>
+   <pubDate>Wed, 06 Dec 2017 22:16:23 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Just a quick announcement that I&amp;rsquo;ve taken it upon myself to assume some maintership duties of the popular &lt;a href="https://github.com/mozilla/metrics-graphics"&gt;MetricsGraphics&lt;/a&gt; library and have released a &lt;a href="https://www.npmjs.com/package/metrics-graphics"&gt;new version&lt;/a&gt; with some bug fixes (2.12.0). We use this package pretty extensively at Mozilla for visualizing telemetry and other time series data, but its original authors (Hamilton Ulmer and Ali Almossawi) have mostly moved on to other things so there was a bit of a gap in getting fixes and improvements in that I hope to fill.&lt;/p&gt;
+
+&lt;p&gt;I don&amp;rsquo;t yet claim to be an expert in this library (which is quite rich and complex), but I&amp;rsquo;m sure I&amp;rsquo;ll learn more as I go along. At least initially, I expect that the changes I make will be small and primarily targetted to filling the needs of the &lt;a href="https://github.com/mozilla/missioncontrol"&gt;Mission Control&lt;/a&gt; project.&lt;/p&gt;
+
+&lt;p&gt;Note that this emphatically does &lt;em&gt;not&lt;/em&gt; mean I am promising to respond to every issue/question/pull request made against the project. Like my work with mozregression and perfherder, my maintenance work is being done on a best-effort basis to support Mozilla and the larger open source community. I&amp;rsquo;ll help people out where I can, but there are only so many working hours in a day and I need to spend most of those pushing my team&amp;rsquo;s immediate projects and deliverables forward! In particular, when it comes to getting pull requests merged, small, self-contained and logical changes with good commit messages will take priority.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Better or worse: by what measure?</title>
    <link>https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure/?utm_source=Mission-Control&amp;utm_medium=RSS</link>

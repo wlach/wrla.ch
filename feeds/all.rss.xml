@@ -4,9 +4,20 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Thu, 26 Oct 2017 20:58:20 UT</lastBuildDate>
-  <pubDate>Thu, 26 Oct 2017 20:58:20 UT</pubDate>
+  <lastBuildDate>Wed, 06 Dec 2017 22:16:23 UT</lastBuildDate>
+  <pubDate>Wed, 06 Dec 2017 22:16:23 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Maintaining metricsgraphics</title>
+   <link>https://wlach.github.io/blog/2017/12/maintaining-metricsgraphics/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid>urn:https-wlach-github-io:-blog-2017-12-maintaining-metricsgraphics</guid>
+   <pubDate>Wed, 06 Dec 2017 22:16:23 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;Just a quick announcement that I&amp;rsquo;ve taken it upon myself to assume some maintership duties of the popular &lt;a href="https://github.com/mozilla/metrics-graphics"&gt;MetricsGraphics&lt;/a&gt; library and have released a &lt;a href="https://www.npmjs.com/package/metrics-graphics"&gt;new version&lt;/a&gt; with some bug fixes (2.12.0). We use this package pretty extensively at Mozilla for visualizing telemetry and other time series data, but its original authors (Hamilton Ulmer and Ali Almossawi) have mostly moved on to other things so there was a bit of a gap in getting fixes and improvements in that I hope to fill.&lt;/p&gt;
+
+&lt;p&gt;I don&amp;rsquo;t yet claim to be an expert in this library (which is quite rich and complex), but I&amp;rsquo;m sure I&amp;rsquo;ll learn more as I go along. At least initially, I expect that the changes I make will be small and primarily targetted to filling the needs of the &lt;a href="https://github.com/mozilla/missioncontrol"&gt;Mission Control&lt;/a&gt; project.&lt;/p&gt;
+
+&lt;p&gt;Note that this emphatically does &lt;em&gt;not&lt;/em&gt; mean I am promising to respond to every issue/question/pull request made against the project. Like my work with mozregression and perfherder, my maintenance work is being done on a best-effort basis to support Mozilla and the larger open source community. I&amp;rsquo;ll help people out where I can, but there are only so many working hours in a day and I need to spend most of those pushing my team&amp;rsquo;s immediate projects and deliverables forward! In particular, when it comes to getting pull requests merged, small, self-contained and logical changes with good commit messages will take priority.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Better or worse: by what measure?</title>
    <link>https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure/?utm_source=all&amp;utm_medium=RSS</link>
@@ -790,23 +801,4 @@
    <description>&lt;html&gt;
 &lt;p&gt;I was saddened to find out last week that the person who introduced me to Zen practice three years ago, Albert Low, has passed away. Albert was the teacher of the &lt;a href="http://www.zenmontreal.ca/"&gt;Montreal Zen Center&lt;/a&gt;, which I was a member of for a brief period (6 months) in 2014 before I moved to Toronto and started practicing at &lt;a href="http://torontozen.org/"&gt;the center&lt;/a&gt; here.&lt;/p&gt;
 
-&lt;p&gt;Albert&amp;rsquo;s instruction was the gateway to a practice that has had a profound impact on my life. More than anything, he helped me understand Zen as something that one could incorporate directly into daily life. I will remain forever grateful.&lt;/p&gt;&lt;/html&gt;</description></item>
-  <item>
-   <title>NIXI is moving too</title>
-   <link>https://wlach.github.io/blog/2016/01/nixi-is-moving-too/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-01-nixi-is-moving-too</guid>
-   <pubDate>Sat, 09 Jan 2016 04:21:13 UT</pubDate>
-   <description>&lt;html&gt;
-&lt;p&gt;As my blog goes to github pages, so do my other side projects. I just moved nixi, my bikestation finder project, to github pages. Its new location:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="http://wlach.github.io/nixi"&gt;http://wlach.github.io/nixi&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;I opted not to move over the domain: it would have cost extra money, time and hassle and I couldn&amp;rsquo;t justify it for the very, very small number of people that still use this site (yes, there are a few, including myself!). For now, nixi.ca will redirect to the github pages site until I decommision my linode server, probably at the end of January (end of Feburary at the latest).&lt;/p&gt;
-
-&lt;p&gt;This transition brings some other changes with it:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;Now using the &lt;a href="https://citybik.es"&gt;citybik.es&lt;/a&gt; API directly,  instead of proxing through an intermediary server. This was necessitated  by the switch to github pages, but I suspect this will be more reliable  than what we were doing before. Thanks citybik.es!&lt;/li&gt;
- &lt;li&gt;Removed all analytics and facebook integration. As with the domain, it didn&amp;rsquo;t  seem worth bringing over. Also, it&amp;rsquo;s nice to give people at least marginally  more privacy than they had before where possible.&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;I still think nixi is worlds more usable than most bikesharing maps, even if it&amp;rsquo;s not an actively maintained project of mine any more. Here&amp;rsquo;s hoping it lasts many more years in its new incarnation.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;Albert&amp;rsquo;s instruction was the gateway to a practice that has had a profound impact on my life. More than anything, he helped me understand Zen as something that one could incorporate directly into daily life. I will remain forever grateful.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>

@@ -111,6 +111,7 @@ https://wlach.github.io/blog/2017/07/mozregression-s-new-mascot/
 https://wlach.github.io/blog/2014/07/measuring-frames-per-second-and-animation-smoothness-with-eideticker/
 https://wlach.github.io/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser/
 https://wlach.github.io/blog/2009/03/hbus-ca-and-thoughts-about-crowdsourcing/
+https://wlach.github.io/blog/2017/12/maintaining-metricsgraphics/
 https://wlach.github.io/blog/2013/11/meditative-practice-followup/
 https://wlach.github.io/blog/2016/02/albert-low/
 https://wlach.github.io/blog/2015/08/more-perfherder-updates/
