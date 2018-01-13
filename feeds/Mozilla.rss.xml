@@ -9,21 +9,23 @@
   <ttl>1800</ttl>
   <item>
    <title>Maintaining metricsgraphics</title>
-   <link>https://wlach.github.io/blog/2017/12/maintaining-metricsgraphics/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2017-12-maintaining-metricsgraphics</guid>
+   <link>https://wlach.github.io/blog/2017/12/maintaining-metricsgraphics?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-12-maintaining-metricsgraphics</guid>
    <pubDate>Wed, 06 Dec 2017 22:16:23 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Just a quick announcement that I&amp;rsquo;ve taken it upon myself to assume some maintership duties of the popular &lt;a href="https://github.com/mozilla/metrics-graphics"&gt;MetricsGraphics&lt;/a&gt; library and have released a &lt;a href="https://www.npmjs.com/package/metrics-graphics"&gt;new version&lt;/a&gt; with some bug fixes (2.12.0). We use this package pretty extensively at Mozilla for visualizing telemetry and other time series data, but its original authors (Hamilton Ulmer and Ali Almossawi) have mostly moved on to other things so there was a bit of a gap in getting fixes and improvements in that I hope to fill.&lt;/p&gt;
 
 &lt;p&gt;I don&amp;rsquo;t yet claim to be an expert in this library (which is quite rich and complex), but I&amp;rsquo;m sure I&amp;rsquo;ll learn more as I go along. At least initially, I expect that the changes I make will be small and primarily targetted to filling the needs of the &lt;a href="https://github.com/mozilla/missioncontrol"&gt;Mission Control&lt;/a&gt; project.&lt;/p&gt;
 
-&lt;p&gt;Note that this emphatically does &lt;em&gt;not&lt;/em&gt; mean I am promising to respond to every issue/question/pull request made against the project. Like my work with mozregression and perfherder, my maintenance work is being done on a best-effort basis to support Mozilla and the larger open source community. I&amp;rsquo;ll help people out where I can, but there are only so many working hours in a day and I need to spend most of those pushing my team&amp;rsquo;s immediate projects and deliverables forward! In particular, when it comes to getting pull requests merged, small, self-contained and logical changes with good commit messages will take priority.&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;Note that this emphatically does &lt;em&gt;not&lt;/em&gt; mean I am promising to respond to every issue/question/pull request made against the project. Like my work with mozregression and perfherder, my maintenance work is being done on a best-effort basis to support Mozilla and the larger open source community. I&amp;rsquo;ll help people out where I can, but there are only so many working hours in a day and I need to spend most of those pushing my team&amp;rsquo;s immediate projects and deliverables forward! In particular, when it comes to getting pull requests merged, small, self-contained and logical changes with good commit messages will take priority.&lt;/p&gt;</description></item>
   <item>
    <title>Better or worse: by what measure?</title>
-   <link>https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2017-10-better-or-worse-by-what-measure</guid>
+   <link>https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-better-or-worse-by-what-measure</guid>
    <pubDate>Thu, 26 Oct 2017 20:58:20 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Ok, after a series of posts extolling the virtues of my current project, it&amp;rsquo;s time to take a more critical look at some of its current limitations, and what we might do about them. In my &lt;a href="/blog/2017/10/mission-control/"&gt;introductory post&lt;/a&gt;, I talked about how Mission Control can let us know how &amp;ldquo;crashy&amp;rdquo; a new release is, within a short interval of it being released. I also alluded to the fact that things appear considerably worse when something first goes out, though I didn&amp;rsquo;t go into a lot of detail about how and why that happens.&lt;/p&gt;
 
 &lt;p&gt;It just so happens that a new point release (56.0.2) just went out, so it&amp;rsquo;s a perfect opportunity to revisit this issue. Let&amp;rsquo;s take a look at what the graphs are saying (each of the images is also a link to the dashboard where they were generated):&lt;/p&gt;
@@ -67,26 +69,28 @@
 
 &lt;p&gt;If this sounds interesting and you have some react/d3/data visualization skills (or would like to gain some), &lt;a href="/blog/2017/10/mission-control-ready-for-contributions/"&gt;learn about contributing to mission control&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Shout out to &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; for reviewing this post and providing feedback and additions.&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;Shout out to &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; for reviewing this post and providing feedback and additions.&lt;/p&gt;</description></item>
   <item>
    <title>Mission Control: Ready for contributions</title>
-   <link>https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2017-10-mission-control-ready-for-contributions</guid>
+   <link>https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-mission-control-ready-for-contributions</guid>
    <pubDate>Fri, 20 Oct 2017 18:33:19 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;One of the great design decisions that was made for &lt;a href="https://treeherder.mozilla.org"&gt;Treeherder&lt;/a&gt; was a strict seperation of the client and server portions of the codebase. While its backend was moderately complicated to get up and running (especially into a state that looked at all like what we were running in production), you could get its web frontend running (pointed against the production data) just by starting up a simple node.js server. This dramatically lowered the barrier to entry, for Mozilla employees and casual contributors alike.&lt;/p&gt;
 
 &lt;p&gt;I knew right from the beginning that I wanted to take the same approach with &lt;a href="https://wlach.github.io/blog/2017/10/mission-control/"&gt;Mission Control&lt;/a&gt;. While the full source of the project is available, unfortunately it isn&amp;rsquo;t presently possible to bring up the full stack with real data, as that requires privileged access to the athena/parquet error aggregates table. But since the UI is self-contained, it&amp;rsquo;s quite easy to bring up a development environment that allows you to freely browse the cached data which is stored server-side (essentially: &lt;code&gt;git clone https://github.com/mozilla/missioncontrol.git &amp;amp;&amp;amp; yarn install &amp;amp;&amp;amp; yarn start&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;In my experience, the most interesting problems when it comes to projects like these center around the question of how to present extremely complex data in a way that is intuitive but not misleading. Probably 90% of that work happens in the frontend. In the past, I&amp;rsquo;ve had pretty good luck finding contributors for my projects (especially &lt;a href="/tags/Perfherder.html"&gt;Perfherder&lt;/a&gt;) by doing call-outs on this blog. So let it be known: If Mission Control sounds like an interesting project and you know &lt;a href="https://reactjs.org/"&gt;React&lt;/a&gt;/&lt;a href="http://redux.js.org/"&gt;Redux&lt;/a&gt;/&lt;a href="https://d3js.org/"&gt;D3&lt;/a&gt;/&lt;a href="https://www.metricsgraphicsjs.org/"&gt;MetricsGraphics&lt;/a&gt; (or want to learn), let&amp;rsquo;s work together!&lt;/p&gt;
 
-&lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;</description></item>
   <item>
    <title>Mission Control</title>
-   <link>https://wlach.github.io/blog/2017/10/mission-control/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2017-10-mission-control</guid>
+   <link>https://wlach.github.io/blog/2017/10/mission-control?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-mission-control</guid>
    <pubDate>Fri, 06 Oct 2017 19:05:37 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Time for an overdue post on the mission control project that I&amp;rsquo;ve been working on for the past few quarters, since I transitioned to the data platform team.&lt;/p&gt;
 
 &lt;p&gt;One of the gaps in our data story when it comes to Firefox is being able to see how a new release is doing in the immediate hours after release. Tools like &lt;a href="https://crash-stats.mozilla.com/home/product/Firefox"&gt;crashstats&lt;/a&gt; and the &lt;a href="https://telemetry.mozilla.org/new-pipeline/evo.html"&gt;telemetry evolution dashboard&lt;/a&gt; are great, but it can take many hours (if not days) before you can reliably see that there is an issue in a metric that we care about (number of crashes, say). This is just too long &amp;mdash; such delays unnecessarily retard rolling out a release when it is safe (because there is a paranoia that there might be some lingering problem which we we&amp;rsquo;re waiting to see reported). And if, somehow, despite our abundant caution a problem &lt;em&gt;did&lt;/em&gt; slip through it would take us some time to recognize it and roll out a fix.&lt;/p&gt;
@@ -101,13 +105,14 @@
 
 &lt;p&gt;This particular screenshot shows the volume of content crashes (sampled every 5 minutes) over the last 48 hours on windows release. You&amp;rsquo;ll note that the later version (56.0) seems to be much crashier than earlier versions (55.0.3) which would seem to be a problem except that the populations are not directly comparable (since the profile of a user still on an older version of Firefox is rather different from that of one who has already upgraded). This is one of the still unsolved problems of this project: finding a reliable, automatable baseline of what an &amp;ldquo;acceptable result&amp;rdquo; for any particular measure might be.&lt;/p&gt;
 
-&lt;p&gt;Even still, the tool can still be useful for exploring a bunch of data quickly and it has been progressing rapidly over the last few weeks. And like almost everything Mozilla does, both the &lt;a href="https://github.com/mozilla/missioncontrol/"&gt;source&lt;/a&gt; and &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;dashboard&lt;/a&gt; are open to the public. I&amp;rsquo;m planning on flagging some easier bugs for newer contributors to work on in the next couple weeks, but in the meantime if you&amp;rsquo;re interested in this project and want to get involved, feel free to look us up on irc.mozilla.org #missioncontrol (I&amp;rsquo;m there as &amp;lsquo;wlach&amp;rsquo;).&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;Even still, the tool can still be useful for exploring a bunch of data quickly and it has been progressing rapidly over the last few weeks. And like almost everything Mozilla does, both the &lt;a href="https://github.com/mozilla/missioncontrol/"&gt;source&lt;/a&gt; and &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;dashboard&lt;/a&gt; are open to the public. I&amp;rsquo;m planning on flagging some easier bugs for newer contributors to work on in the next couple weeks, but in the meantime if you&amp;rsquo;re interested in this project and want to get involved, feel free to look us up on irc.mozilla.org #missioncontrol (I&amp;rsquo;m there as &amp;lsquo;wlach&amp;rsquo;).&lt;/p&gt;</description></item>
   <item>
    <title>Functional is the future</title>
-   <link>https://wlach.github.io/blog/2017/08/functional-is-the-future/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2017-08-functional-is-the-future</guid>
+   <link>https://wlach.github.io/blog/2017/08/functional-is-the-future?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-08-functional-is-the-future</guid>
    <pubDate>Mon, 28 Aug 2017 21:02:21 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Just spent well over an hour tracking down a silly bug in my code. For the &lt;a href="https://github.com/mozilla/missioncontrol/"&gt;mission control&lt;/a&gt; project, I wrote this very simple API method that returns a cached data structure to our front end:&lt;/p&gt;
 
 &lt;div class="brush: py"&gt;
@@ -146,34 +151,34 @@
 28&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
     &lt;td class="code"&gt;
      &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;measure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;channel_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;channel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;platform_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;platform&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;measure_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;measure&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;interval&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;interval&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;measure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;channel_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;channel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;platform_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;platform&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;measure_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;measure&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;interval&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;interval&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;all&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;channel_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;platform_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;measure_name&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseBadRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"All of channel, platform, measure required"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseBadRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"All of channel, platform, measure required"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cache&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;get_measure_cache_key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;platform_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;channel_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;measure_name&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseNotFound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Data not available for this measure combination"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseNotFound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Data not available for this measure combination"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;interval&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="n"&gt;min_time&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;seconds&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;interval&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
         &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseBadRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Interval must be specified in seconds (as an integer)"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseBadRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;"Interval must be specified in seconds (as an integer)"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# Return any build data in the interval&lt;/span&gt;
+        &lt;span class="c"&gt;# Return any build data in the interval&lt;/span&gt;
         &lt;span class="n"&gt;empty_buildids&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-            &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;min_time&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
+            &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;min_time&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
                 &lt;span class="n"&gt;empty_buildids&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-        &lt;span class="c1"&gt;# don&amp;#39;t bother returning empty indexed data&lt;/span&gt;
+        &lt;span class="c"&gt;# don&amp;#39;t bother returning empty indexed data&lt;/span&gt;
         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;empty_buildid&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;empty_buildids&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;empty_buildid&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;JsonResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;measure_data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;JsonResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;measure_data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
@@ -192,7 +197,7 @@
 2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
     &lt;td class="code"&gt;
      &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;dateutil.tz&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;tzutc&lt;/span&gt;
+      &lt;pre&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;dateutil.tz&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;tzutc&lt;/span&gt;
 &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromtimestamp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mydatestamp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;tz&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tzutc&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
@@ -216,13 +221,13 @@
 8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
     &lt;td class="code"&gt;
      &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-    &lt;span class="c1"&gt;# add utc timezone info to each date, so django will serialize a&lt;/span&gt;
-    &lt;span class="c1"&gt;# &amp;#39;Z&amp;#39; to the end of the string (and so javascript&amp;#39;s date constructor&lt;/span&gt;
-    &lt;span class="c1"&gt;# will know it&amp;#39;s utc)&lt;/span&gt;
-    &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+      &lt;pre&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+    &lt;span class="c"&gt;# add utc timezone info to each date, so django will serialize a&lt;/span&gt;
+    &lt;span class="c"&gt;# &amp;#39;Z&amp;#39; to the end of the string (and so javascript&amp;#39;s date constructor&lt;/span&gt;
+    &lt;span class="c"&gt;# will know it&amp;#39;s utc)&lt;/span&gt;
+    &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
         &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromtimestamp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;tz&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tzutc&lt;/span&gt;&lt;span class="p"&gt;())]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt;
-        &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;min_time&lt;/span&gt;
+        &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;min_time&lt;/span&gt;
     &lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
@@ -250,14 +255,14 @@
 8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
     &lt;td class="code"&gt;
      &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;transform_and_filter_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+      &lt;pre&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;transform_and_filter_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="n"&gt;new_build_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;new_build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="n"&gt;new_build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
         &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromtimestamp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;tz&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tzutc&lt;/span&gt;&lt;span class="p"&gt;())]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt;
-        &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;min_time&lt;/span&gt;
+        &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;min_time&lt;/span&gt;
     &lt;span class="p"&gt;]&lt;/span&gt;
     &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new_build_data&lt;/span&gt;
-&lt;span class="n"&gt;transformed_build_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;transform_and_filter_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="n"&gt;transformed_build_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;transform_and_filter_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
@@ -279,35 +284,37 @@
 7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
     &lt;td class="code"&gt;
      &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;transformedBuildData&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;mapValues&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;buildData&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;({&lt;/span&gt;
+      &lt;pre&gt;&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;transformedBuildData&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;mapValues&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;buildData&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;({&lt;/span&gt;
     &lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="nx"&gt;buildData&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;buildData&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;
-      &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;datum&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;minTimestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-      &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;tzcified&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])].&lt;/span&gt;&lt;span class="nx"&gt;concat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+      &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;datum&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;minTimestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+      &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;tzcified&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])].&lt;/span&gt;&lt;span class="nx"&gt;concat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
   &lt;span class="p"&gt;})),&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;buildId&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;buildId&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
 
-&lt;p&gt;A little bit easier to understand, but more importantly (to me anyway) it comes across as idiomatic and natural in a way that the python version just doesn&amp;rsquo;t. I&amp;rsquo;ve been happily programming Python for the last 10 years, but it&amp;rsquo;s increasingly feeling time to move on to greener pastures.&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;A little bit easier to understand, but more importantly (to me anyway) it comes across as idiomatic and natural in a way that the python version just doesn&amp;rsquo;t. I&amp;rsquo;ve been happily programming Python for the last 10 years, but it&amp;rsquo;s increasingly feeling time to move on to greener pastures.&lt;/p&gt;</description></item>
   <item>
    <title>mozregression's new mascot</title>
-   <link>https://wlach.github.io/blog/2017/07/mozregression-s-new-mascot/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2017-07-mozregression-s-new-mascot</guid>
+   <link>https://wlach.github.io/blog/2017/07/mozregression-s-new-mascot?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-07-mozregression-s-new-mascot</guid>
    <pubDate>Mon, 31 Jul 2017 15:32:02 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Spent a few hours this morning on a few housekeeping issues with &lt;a href="https://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt;. The web site was badly in need of an update (it was full of references to obsolete stuff like B2G and codefirefox.com) and the usual pile of fixes motivated a new release of the actual software. But most importantly, mozregression now has a proper application icon / logo, thanks to Victoria Wang!&lt;/p&gt;
 
 &lt;p&gt;&lt;img src="/files/2017/07/mozregressionicon3.png" /&gt;&lt;/p&gt;
 
-&lt;p&gt;One of the nice parts about working at Mozilla is the flexibility it offers to just hack on stuff that&amp;rsquo;s important, whether or not it&amp;rsquo;s part of your formal job description. Maintaining mozregression is pretty far outside my current set of responsibilities (or even interests), but I keep it going because it&amp;rsquo;s a key tool used by developers team here and no one else seems willing to take it over. Fortunately, tools like appveyor and pypi keep the time suckage to a mostly-reasonable level.&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;One of the nice parts about working at Mozilla is the flexibility it offers to just hack on stuff that&amp;rsquo;s important, whether or not it&amp;rsquo;s part of your formal job description. Maintaining mozregression is pretty far outside my current set of responsibilities (or even interests), but I keep it going because it&amp;rsquo;s a key tool used by developers team here and no one else seems willing to take it over. Fortunately, tools like appveyor and pypi keep the time suckage to a mostly-reasonable level.&lt;/p&gt;</description></item>
   <item>
    <title>Taking over an npm package: sanity prevails</title>
    <link>https://wlach.github.io/blog/2017/07/taking-over-an-npm-package-sanity-prevails/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2017-07-taking-over-an-npm-package-sanity-prevails</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-07-taking-over-an-npm-package-sanity-prevails</guid>
    <pubDate>Thu, 13 Jul 2017 15:08:40 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Sometimes problems are easier to solve than expected.&lt;/p&gt;
 
 &lt;p&gt;For the last few months I&amp;rsquo;ve been working on the front end of a new project called &lt;a href="https://github.com/mozilla/missioncontrol"&gt;Mission Control&lt;/a&gt;, which aims to chart lots of interesting live information in something approximating realtime. Since this is a greenfield project, I thought it would make sense to use the currently-invogue framework at Mozilla (react) along with our standard visualization library, &lt;a href="http://metricsgraphicsjs.org/"&gt;metricsgraphics&lt;/a&gt;.&lt;/p&gt;
@@ -324,13 +331,14 @@
 
 &lt;p&gt;&lt;a href="https://github.com/mozilla/react-metrics-graphics"&gt;https://github.com/mozilla/react-metrics-graphics&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;In hindsight, this is obviously the most reasonable outcome and I&amp;rsquo;m not sure why I was expecting anything else. Is the node community just friendlier than other areas I&amp;rsquo;ve worked in? Have community standards improved generally? In any case, thank you Carter for a great piece of software, hopefully it will thrive in its new home. :P&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;In hindsight, this is obviously the most reasonable outcome and I&amp;rsquo;m not sure why I was expecting anything else. Is the node community just friendlier than other areas I&amp;rsquo;ve worked in? Have community standards improved generally? In any case, thank you Carter for a great piece of software, hopefully it will thrive in its new home. :P&lt;/p&gt;</description></item>
   <item>
    <title>Using Docker to run automated tests</title>
    <link>https://wlach.github.io/blog/2017/06/using-docker-to-run-automated-tests/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2017-06-using-docker-to-run-automated-tests</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-06-using-docker-to-run-automated-tests</guid>
    <pubDate>Fri, 02 Jun 2017 20:04:38 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;A couple months ago, I joined the Mozilla Data Platform team, to work on our &lt;a href="https://wiki.mozilla.org/Telemetry"&gt;Telemetry&lt;/a&gt; and automated data collection services. This has been an interesting transition for me, and a natural jumping off point from my work on &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder"&gt;Perfherder&lt;/a&gt;. Now, instead of manipulating mere 10s of gigabytes worth of fairly regular data, I&amp;rsquo;m working with 100s of terrabytes of noisy data with a much larger number of dimensions. :P It&amp;rsquo;s been interesting so far.&lt;/p&gt;
 
 &lt;p&gt;One of the first things I decided to work on was improving our unit testing story around a few of our primary packages for data analysis/etl: &lt;a href="https://github.com/mozilla/python_moztelemetry/"&gt;python_moztelemetry&lt;/a&gt; (a library we use for running custom spark jobs against Telemetry data) and &lt;a href="https://github.com/mozilla/telemetry-batch-view/"&gt;telemetry-batch-view&lt;/a&gt; (a set of scala jobs we run against the main telemetry data store to create a useful set of aggregations that are easily queried with tools like &lt;a href="https://redash.io/"&gt;redash&lt;/a&gt;).&lt;/p&gt;
@@ -346,13 +354,14 @@
  &lt;li&gt;If you need to download/install a piece of software when building the docker container, use the &lt;code&gt;RUN&lt;/code&gt; directive instead of &lt;code&gt;ADD&lt;/code&gt;. This will speed up rebuilding the container while you&amp;rsquo;re iterating on it (because you can take advantage of the Docker layers cache).&lt;/li&gt;
  &lt;li&gt;You almost certainly want to create a script (&lt;a href="https://github.com/mozilla/python_moztelemetry/blob/d2aa84bbac09465d38eeb0b5beb20edc7ddcc21b/runtests.sh"&gt;example&lt;/a&gt;) to streamline all the steps of running the tests: this will make running the tests easier for anyone wanting to contribute to your project and reduce the amount of documentation that you will have to write.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;The relevant files and documentation are in the repositories linked above.&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;The relevant files and documentation are in the repositories linked above.&lt;/p&gt;</description></item>
   <item>
    <title>Easier reproduction of intermittent test failures in automation</title>
    <link>https://wlach.github.io/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2017-04-easier-reproduction-of-intermittent-test-failures-in-automation</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-04-easier-reproduction-of-intermittent-test-failures-in-automation</guid>
    <pubDate>Wed, 05 Apr 2017 20:14:35 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;As part of the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell"&gt;Stockwell project&lt;/a&gt;, I&amp;rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&amp;rsquo;s often very difficult to reproduce an intermittent failure we see in Treeherder locally since the environment is so different, but historically it has been a big hassle to get access to the machines we use in automation for various reasons.&lt;/p&gt;
 
 &lt;p&gt;One option that rolled out last year was the so-called one-click loaner, which enabled developers to sign out an virtual machine instance identical to the ones used to run unit tests (at least if the tests are running on Taskcluster, which is increasingly often the case), then execute their particular case with whatever extra debugging options they would find useful. This is a big step forward, but it&amp;rsquo;s still quite a bit of hassle, since it requires a bunch of manual work on the part of the developer to interact with the instance.&lt;/p&gt;
@@ -389,26 +398,28 @@
 
 &lt;p&gt;I am actually in the process of moving to another team @ Mozilla (more on that in another post), so I probably won&amp;rsquo;t have a ton of time to work on the above &amp;mdash; but I&amp;rsquo;d be happy to help anyone who&amp;rsquo;s interested in developing this idea further.&lt;/p&gt;
 
-&lt;p&gt;A special shout out to the &lt;a href="https://wiki.mozilla.org/TaskCluster"&gt;Taskcluster&lt;/a&gt; team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to develop this feature in the first place.&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;A special shout out to the &lt;a href="https://wiki.mozilla.org/TaskCluster"&gt;Taskcluster&lt;/a&gt; team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to develop this feature in the first place.&lt;/p&gt;</description></item>
   <item>
    <title>Cancel all the things</title>
    <link>https://wlach.github.io/blog/2017/02/cancel-all-the-things/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2017-02-cancel-all-the-things</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-02-cancel-all-the-things</guid>
    <pubDate>Tue, 07 Feb 2017 18:36:09 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;I just added a feature to Treeherder which lets you cancel a set of jobs (say, from a botched try push) much more easily. I&amp;rsquo;m hopeful that this will be helpful in keeping our resource usage on try more under control.&lt;/p&gt;
 
 &lt;p&gt;It uses the &amp;ldquo;pinboard&amp;rdquo; feature of Treeherder which very few people are familiar with, so I made a very short video tutorial on how to make use of this feature and put it on the Joy of Automation channel:&lt;/p&gt;
 
 &lt;iframe width="560" height="315" src="https://www.youtube.com/embed/ryzsy38yw5A" frameborder="0" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
 
-&lt;p&gt;Happy cancelling!&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;Happy cancelling!&lt;/p&gt;</description></item>
   <item>
    <title>Training an autoclassifier</title>
    <link>https://wlach.github.io/blog/2016/11/training-an-autoclassifier/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-11-training-an-autoclassifier</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-11-training-an-autoclassifier</guid>
    <pubDate>Mon, 28 Nov 2016 21:29:47 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Here at Mozilla, we&amp;rsquo;ve accepted that a certain amount of intermittent failure in our automated testing of Firefox is to be expected. That is, for every push, a subset of the tests that we run will fail for reasons that have nothing to do with the quality (or lack thereof) of the push itself.&lt;/p&gt;
 
 &lt;p&gt;On the main integration branches that developers commit code to, we have dedicated staff and volunteers called sheriffs who attempt to distinguish these expected failures from intermittents through a manual classification process using &lt;a href="https://treeherder.mozilla.org"&gt;Treeherder&lt;/a&gt;. On any given push, you can usually find some failed jobs that have stars beside them, this is the work of the sheriffs, indicating that a job&amp;rsquo;s failure is &amp;ldquo;nothing to worry about&amp;rdquo;:&lt;/p&gt;
@@ -436,7 +447,7 @@
 5&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
     &lt;td class="code"&gt;
      &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bug_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;bug_job_map&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;
+      &lt;pre&gt;&lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bug_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;bug_job_map&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;
   &lt;span class="k"&gt;left&lt;/span&gt; &lt;span class="k"&gt;join&lt;/span&gt; &lt;span class="n"&gt;text_log_step&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;tls&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job_id&lt;/span&gt;
   &lt;span class="k"&gt;left&lt;/span&gt; &lt;span class="k"&gt;join&lt;/span&gt; &lt;span class="n"&gt;text_log_error&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;
   &lt;span class="k"&gt;where&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;created&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2016-10-31&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;created&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2016-11-24&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user_id&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;NULL&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bug_id&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;NULL&lt;/span&gt;
@@ -469,7 +480,7 @@
 14&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
     &lt;td class="code"&gt;
      &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+      &lt;pre&gt;&lt;span class="p"&gt;{&lt;/span&gt;
 &lt;span class="nt"&gt;"bug_number"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1202623&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
 &lt;span class="nt"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
   &lt;span class="s2"&gt;"browser_private_clicktoplay.js Test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
@@ -537,42 +548,42 @@
 36&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
     &lt;td class="code"&gt;
      &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
+      &lt;pre&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;os&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.datasets&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;load_files&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.feature_extraction.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;CountVectorizer&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.feature_extraction.text&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;TfidfTransformer&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;sklearn.linear_model&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;SGDClassifier&lt;/span&gt;
 
 
-&lt;span class="n"&gt;training_set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load_files&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;training&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;training_set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load_files&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;training&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;count_vect&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CountVectorizer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;X_train_counts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count_vect&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit_transform&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;training_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;tfidf_transformer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;TfidfTransformer&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;span class="n"&gt;X_train_tfidf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tfidf_transformer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit_transform&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train_counts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;clf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;SGDClassifier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;hinge&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;penalty&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;l2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="n"&gt;clf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;SGDClassifier&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;loss&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;hinge&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;penalty&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;l2&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
                     &lt;span class="n"&gt;alpha&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;1e-3&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n_iter&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;5&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;42&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_train_tfidf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;training_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
 &lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
 &lt;span class="n"&gt;num_missed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
 
-&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subdir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;walk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;testing/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subdir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;walk&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;testing/&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
     &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
         &lt;span class="n"&gt;bugnum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;basename&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subdir&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
         &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="n"&gt;bugnum&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;
         &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;fname&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;fnames&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
             &lt;span class="n"&gt;doc&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;subdir&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fname&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;read&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
             &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"--&amp;gt; (skipping, empty)"&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;"--&amp;gt; (skipping, empty)"&lt;/span&gt;
             &lt;span class="n"&gt;X_new_counts&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;count_vect&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;doc&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
             &lt;span class="n"&gt;X_new_tfidf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tfidf_transformer&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;transform&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_new_counts&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
             &lt;span class="n"&gt;predicted_bugnum&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;training_set&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;target_names&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;clf&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;predict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X_new_tfidf&lt;/span&gt;&lt;span class="p"&gt;)[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
             &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;bugnum&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="n"&gt;predicted_bugnum&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
                 &lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"--&amp;gt; correct"&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;"--&amp;gt; correct"&lt;/span&gt;
             &lt;span class="k"&gt;else&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
                 &lt;span class="n"&gt;num_missed&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
-                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"--&amp;gt; missed (&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;)"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;predicted_bugnum&lt;/span&gt;
-&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s2"&gt;"Correct: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; Missed: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt; Ratio: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num_correct&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_missed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;num_missed&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+                &lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;"--&amp;gt; missed (&lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;)"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;predicted_bugnum&lt;/span&gt;
+&lt;span class="k"&gt;print&lt;/span&gt; &lt;span class="s"&gt;"Correct: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt; Missed: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt; Ratio: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;"&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num_correct&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_missed&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;num_correct&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;num_missed&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
 &lt;/div&gt;
@@ -588,13 +599,14 @@
  &lt;li&gt;Have a confidence threshold for using the autoclassifier&amp;rsquo;s data. It seems likely to me that many of the cases above where we got the wrong were cases where the classifier itself wasn&amp;rsquo;t that confident in the result (vs. others). We can either present that in the user interface or avoid classifications for these cases altogether (and leave it up to a human being to make a decision on whether this is an intermittent).&lt;/li&gt;
  &lt;li&gt;Using the structured log data inside the database as input to a classifier. Structured log data here is much more regular and denser than the free text that we&amp;rsquo;re using. Even if it isn&amp;rsquo;t explicitly classified, we may well get better results by using it as our input data.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;If you&amp;rsquo;d like to experiment with the data and/or code, I&amp;rsquo;ve put it up on a &lt;a href="https://github.com/wlach/treeherder-classifier"&gt;github repository&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;If you&amp;rsquo;d like to experiment with the data and/or code, I&amp;rsquo;ve put it up on a &lt;a href="https://github.com/wlach/treeherder-classifier"&gt;github repository&lt;/a&gt;.&lt;/p&gt;</description></item>
   <item>
    <title>Slow Treeherder, Fast Treeherder</title>
    <link>https://wlach.github.io/blog/2016/10/slow-treeherder-fast-treeherder/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-10-slow-treeherder-fast-treeherder</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-10-slow-treeherder-fast-treeherder</guid>
    <pubDate>Mon, 31 Oct 2016 15:40:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Just wanted to talk about some recent performance improvements we&amp;rsquo;ve made recently to &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Treeherder"&gt;Treeherder&lt;/a&gt;:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -608,13 +620,14 @@
 
 &lt;p&gt;The original is on the left. The newer, faster Treeherder is on the right. Pay particular attention to how much faster the job information populates.&lt;/p&gt;
 
-&lt;p&gt;Moral of the story? Optimization can be helpful, but it&amp;rsquo;s better if you can avoid doing the work altogether.&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;Moral of the story? Optimization can be helpful, but it&amp;rsquo;s better if you can avoid doing the work altogether.&lt;/p&gt;</description></item>
   <item>
    <title>Herding Automation Infrastructure</title>
    <link>https://wlach.github.io/blog/2016/08/herding-automation-infrastructure/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-08-herding-automation-infrastructure</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-08-herding-automation-infrastructure</guid>
    <pubDate>Wed, 17 Aug 2016 20:18:12 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;For every commit to Firefox, we run a battery of builds and automated tests on the resulting source tree to make sure that the result still works and meets our correctness and performance quality criteria. This is expensive: every new push to our repository implies hundreds of hours of machine time. However, automated quality control is essential to ensure that the product that we&amp;rsquo;re shipping to users is something that we can be proud of.&lt;/p&gt;
 
 &lt;p&gt;But what about evaluating the quality of the product which does the building and testing? Who does that? And by what criteria would we say that our automation system is good or bad? Up to now, our procedures for this have been rather embarassingly adhoc. With some exceptions (such as &lt;a href="https://brasstacks.mozilla.com/orangefactor/"&gt;OrangeFactor&lt;/a&gt;), our QA process amounts to motivated engineers doing a one-off analysis of a particular piece of the system, filing a few bugs, then forgetting about it. Occasionally someone will propose turning build and test automation for a specific platform on or off in mozilla.dev.planning.&lt;/p&gt;
@@ -655,13 +668,14 @@
 
 &lt;h3 id="request-for-comments"&gt;Request for comments&lt;/h3&gt;
 
-&lt;p&gt;I&amp;rsquo;ve created &lt;a href="https://docs.google.com/document/d/1SrlJQQ3qWuM0tvruG6Lr59t3hJ4XRUoMIrIRQYvwu9A/edit?usp=sharing"&gt;an RFC&lt;/a&gt; for this project on Google Docs, as a sort of test case for a new process we&amp;rsquo;re thinking of using in Engineering Productivity for these sorts of projects. If you have any questions or comments, I&amp;rsquo;d love to hear them! My perspective on this vast problem space is limited, so I&amp;rsquo;m sure there are things that I&amp;rsquo;m missing.&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;I&amp;rsquo;ve created &lt;a href="https://docs.google.com/document/d/1SrlJQQ3qWuM0tvruG6Lr59t3hJ4XRUoMIrIRQYvwu9A/edit?usp=sharing"&gt;an RFC&lt;/a&gt; for this project on Google Docs, as a sort of test case for a new process we&amp;rsquo;re thinking of using in Engineering Productivity for these sorts of projects. If you have any questions or comments, I&amp;rsquo;d love to hear them! My perspective on this vast problem space is limited, so I&amp;rsquo;m sure there are things that I&amp;rsquo;m missing.&lt;/p&gt;</description></item>
   <item>
    <title>Perfherder Quarter of Contribution Summer 2016: Results</title>
    <link>https://wlach.github.io/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-results/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-08-perfherder-quarter-of-contribution-summer-2016-results</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-08-perfherder-quarter-of-contribution-summer-2016-results</guid>
    <pubDate>Wed, 10 Aug 2016 20:37:05 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Following on the footsteps of Mike Ling&amp;rsquo;s &lt;a href="/blog/2015/09/perfherder-summer-of-contribution-thoughts/"&gt;amazing work&lt;/a&gt; on &lt;a href="https://wiki.mozilla.org/ngineeringProductivity‎/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; in 2015 (he&amp;rsquo;s gone on to do a GSOC project), I got two amazing contributors to continue working on the project for a few weeks this summer as part of our &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution"&gt;quarter of contribution&lt;/a&gt; program: Shruti Jasoria and Roy Chiang.&lt;/p&gt;
 
 &lt;p&gt;Shruti started by adding a feature to the treeherder/perfherder backend (ability to enable or disable a new performance framework on a tentative basis), then went on to make all sorts of improvements to the Treeherder / Perfherder frontend, fixing bugs in the performance sheriffing frontend, updating code to use more modern standards (including a gigantic patch to enable a bunch of eslint rules and fix the corresponding problems).&lt;/p&gt;
@@ -676,24 +690,26 @@
  &lt;li&gt;&lt;a href="https://github.com/mozilla/treeherder/commits/master?author=SJasoria"&gt;Shruti Jasoria&lt;/a&gt;&lt;/li&gt;
  &lt;li&gt;&lt;a href="https://github.com/mozilla/treeherder/commits/master?author=crosscent"&gt;Roy Chiang&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;Thank you Shruti and Roy! You&amp;rsquo;ve helped to make sure Firefox (and Servo!) performance remains top-notch.&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;Thank you Shruti and Roy! You&amp;rsquo;ve helped to make sure Firefox (and Servo!) performance remains top-notch.&lt;/p&gt;</description></item>
   <item>
    <title>Quarter of Contribution: June / July 2016 edition</title>
    <link>https://wlach.github.io/blog/2016/05/quarter-of-contribution-june-july-2016-edition/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-05-quarter-of-contribution-june-july-2016-edition</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-05-quarter-of-contribution-june-july-2016-edition</guid>
    <pubDate>Fri, 27 May 2016 14:51:54 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Just wanted to announce that, once again, my team (&lt;a href="https://wiki.mozilla.org/EngineeringProductivity"&gt;Mozilla Engineering Productivity&lt;/a&gt;) is just about to start running another &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution"&gt;quarter of contribution&lt;/a&gt; &amp;mdash; a great opportunity for newer community members to dive deep on some of the projects we&amp;rsquo;re working on, brush up on their programming and problem solving skills, and work with experienced mentors. You can find more information on this program &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Summer_2016"&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;ve found this program to be a really great experience on both sides &amp;mdash; it&amp;rsquo;s an opportunity for contributors to really go beyond the &amp;ldquo;good first bug&amp;rdquo; style of patches to having a really substantial impact on some of the projects that we&amp;rsquo;re working on while gaining lots of software development skills that are useful in the real world.&lt;/p&gt;
 
-&lt;p&gt;Once again, I&amp;rsquo;m going to be mentoring one or two people on the Perfherder project, a tool we use to measure and sheriff Firefox performance. If you&amp;rsquo;re inclined to work on some really interesting data analysis and user interface problems in Python and JavaScript, please have a look at the &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Perfherder"&gt;project page&lt;/a&gt; and get in touch. :)&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;Once again, I&amp;rsquo;m going to be mentoring one or two people on the Perfherder project, a tool we use to measure and sheriff Firefox performance. If you&amp;rsquo;re inclined to work on some really interesting data analysis and user interface problems in Python and JavaScript, please have a look at the &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Perfherder"&gt;project page&lt;/a&gt; and get in touch. :)&lt;/p&gt;</description></item>
   <item>
    <title>Are We Fast Yet and Perfherder</title>
    <link>https://wlach.github.io/blog/2016/03/are-we-fast-yet-and-perfherder/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-03-are-we-fast-yet-and-perfherder</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-03-are-we-fast-yet-and-perfherder</guid>
    <pubDate>Wed, 30 Mar 2016 15:42:39 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Historically at Mozilla, we&amp;rsquo;ve had a bunch of different systems running to benchmark Firefox&amp;rsquo;s performance. The two most broadly-scoped are &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;Talos&lt;/a&gt; (which runs as part of our build process, and emphasizes common real-world use cases, like page loading) and &lt;a href="https://arewefastyet.com/"&gt;Are We Fast Yet&lt;/a&gt; (which runs seperately, and emphasizes JavaScript performance and benchmarks).&lt;/p&gt;
 
 &lt;p&gt;As many of you know, most of my focus over the last year-and-a-bit has been developing a system called Perfherder, which aims to make monitoring and acting on performance data easier. A great introduction to Perfherder is my &lt;a href="/blog/2016/03/platform-engineering-project-of-the-month-perfherder/"&gt;project of the month post&lt;/a&gt;.&lt;/p&gt;
@@ -723,13 +739,14 @@
 &lt;h3 id="probably-wont-fix"&gt;Probably won&amp;rsquo;t fix&lt;/h3&gt;
 
 &lt;ul&gt;
- &lt;li&gt;Supporting comparative measurements between Firefox and other  browsers. This is an important task, but doesn&amp;rsquo;t really fit into the  model of Perfherder, which is intimately tied to the revision data  associated with Firefox. To do this would require detailed tracking  of Chrome on the same basis, and I don&amp;rsquo;t think that&amp;rsquo;s really a place  where we want to go. We should definitely monitor for general  trends, but I think that is best done with a seperate system.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</description></item>
+ &lt;li&gt;Supporting comparative measurements between Firefox and other  browsers. This is an important task, but doesn&amp;rsquo;t really fit into the  model of Perfherder, which is intimately tied to the revision data  associated with Firefox. To do this would require detailed tracking  of Chrome on the same basis, and I don&amp;rsquo;t think that&amp;rsquo;s really a place  where we want to go. We should definitely monitor for general  trends, but I think that is best done with a seperate system.&lt;/li&gt;&lt;/ul&gt;</description></item>
   <item>
    <title>Platform engineering project of the month: Perfherder</title>
    <link>https://wlach.github.io/blog/2016/03/platform-engineering-project-of-the-month-perfherder/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-03-platform-engineering-project-of-the-month-perfherder</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-03-platform-engineering-project-of-the-month-perfherder</guid>
    <pubDate>Tue, 15 Mar 2016 00:10:57 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;&lt;em&gt;[ originally posted on &lt;a href="https://groups.google.com/d/msg/mozilla.dev.platform/itdfru6csSk/vfVP_WDXBgAJ"&gt;mozilla.dev.platform&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Hello from Platform Engineering Operations! Once a month we highlight one of our projects to help the Mozilla community discover a useful tool or an interesting contribution opportunity.&lt;/p&gt;
@@ -768,26 +785,28 @@
 
 &lt;p&gt;For more information on contributing to Perfherder, please see the contribution section of the above wiki page:&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution"&gt;https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;&lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution"&gt;https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution&lt;/a&gt;&lt;/p&gt;</description></item>
   <item>
    <title>Talos suites now visible from trychooser</title>
    <link>https://wlach.github.io/blog/2016/02/talos-suites-now-visible-from-trychooser/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-02-talos-suites-now-visible-from-trychooser</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-02-talos-suites-now-visible-from-trychooser</guid>
    <pubDate>Sat, 13 Feb 2016 19:28:47 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;It&amp;rsquo;s a small thing, but I submitted a patch to &lt;a href="http://trychooser.pub.build.mozilla.org/"&gt;trychooser&lt;/a&gt; last week which adds a tooltip indicating the actual Talos tests that are run as part of the various jobs that you can schedule as part of a try push. It&amp;rsquo;s in production as of now:&lt;/p&gt;
 
 &lt;video src="/files/2016/02/talos-trychooser.webm" controls="controls" autoplay="autoplay"&gt;&lt;/video&gt;
 
 &lt;p&gt;Previously, the only way to do this was to dig into the actual buildbot code, which was more than a little annoying.&lt;/p&gt;
 
-&lt;p&gt;If you think your patch might have a good chance of regressing performance, please do run the &lt;a href="https://wiki.mozilla.org/Buildbot/Talos/Tests"&gt;Talos tests&lt;/a&gt; before you check in. It&amp;rsquo;s much less work for all of us when these things are caught before integration and back outs are no fun for anyone. We really need better documentation for this stuff, but meanwhile if you need help with this, please ask in the #perf channel on irc.mozilla.org&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;If you think your patch might have a good chance of regressing performance, please do run the &lt;a href="https://wiki.mozilla.org/Buildbot/Talos/Tests"&gt;Talos tests&lt;/a&gt; before you check in. It&amp;rsquo;s much less work for all of us when these things are caught before integration and back outs are no fun for anyone. We really need better documentation for this stuff, but meanwhile if you need help with this, please ask in the #perf channel on irc.mozilla.org&lt;/p&gt;</description></item>
   <item>
    <title>Perfherder: Onward!</title>
    <link>https://wlach.github.io/blog/2015/11/perfherder-onward/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-11-perfherder-onward</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-11-perfherder-onward</guid>
    <pubDate>Wed, 04 Nov 2015 05:00:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;In addition to the &lt;a href="http://wrla.ch/blog/2015/10/the-new-old-perfherder-data-model/"&gt;database refactoring&lt;/a&gt; I mentioned a few weeks ago, some cool stuff has been going into &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; lately.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Tracking installer size&lt;/strong&gt;&lt;/p&gt;
@@ -824,13 +843,14 @@
 
 &lt;p&gt;My main goal for this quarter is to create a fully functional interface for actually sheriffing performance regressions, to replace &lt;a href="http://alertmanager.allizom.org:8080/alerts.html"&gt;alertmanager&lt;/a&gt;. Work on this has been going well. More soon.&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png"&gt;&lt;img src="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png" alt="Screen Shot 2015-11-04 at 10.41.26 AM" width="300" height="176" class="alignnone size-medium wp-image-1280" srcset="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png 300w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-1024x600.png 1024w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png 1126w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</description></item>
+&lt;p&gt;&lt;a href="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png"&gt;&lt;img src="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png" alt="Screen Shot 2015-11-04 at 10.41.26 AM" width="300" height="176" class="alignnone size-medium wp-image-1280" srcset="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png 300w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-1024x600.png 1024w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png 1126w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;</description></item>
   <item>
    <title>The new old Perfherder data model</title>
    <link>https://wlach.github.io/blog/2015/10/the-new-old-perfherder-data-model/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-10-the-new-old-perfherder-data-model</guid>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-10-the-new-old-perfherder-data-model</guid>
    <pubDate>Fri, 23 Oct 2015 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;I spent a good chunk of time last quarter redesigning how &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; stores its data internally. Here are some notes on this change, for posterity.&lt;/p&gt;
 
 &lt;p&gt;Perfherder&amp;#8217;s data model is based around two concepts:&lt;/p&gt;
@@ -880,4 +900,4 @@
 
 &lt;p&gt;&lt;a href="/files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM.png"&gt;&lt;img src="/files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM-300x188.png" alt="Screen Shot 2015-10-23 at 1.55.09 PM" width="300" height="188" class="alignnone size-medium wp-image-1259" srcset="/files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM-300x188.png 300w, /files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM-1024x643.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Lesson&lt;/strong&gt;: Sometimes using ancient technologies (SQL) in the most obvious way is the right thing to do. &lt;a href="http://c2.com/xp/DoTheSimplestThingThatCouldPossiblyWork.html"&gt;DoTheSimplestThingThatCouldPossiblyWork&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;&lt;strong&gt;Lesson&lt;/strong&gt;: Sometimes using ancient technologies (SQL) in the most obvious way is the right thing to do. &lt;a href="http://c2.com/xp/DoTheSimplestThingThatCouldPossiblyWork.html"&gt;DoTheSimplestThingThatCouldPossiblyWork&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0">
+ <channel>
+  <title>William Lachance's Log: Posts tagged 'Île Sans Fil'</title>
+  <description>William Lachance's Log: Posts tagged 'Île Sans Fil'</description>
+  <link>https://wlach.github.io/tags/I%CC%82le-Sans-Fil.html</link>
+  <lastBuildDate>Tue, 23 Mar 2010 04:00:00 UT</lastBuildDate>
+  <pubDate>Tue, 23 Mar 2010 04:00:00 UT</pubDate>
+  <ttl>1800</ttl>
+  <item>
+   <title>Fun with WifiDog</title>
+   <link>https://wlach.github.io/blog/2010/03/fun-with-wifidog/?utm_source=I%CC%82le-Sans-Fil&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2010-03-fun-with-wifidog</guid>
+   <pubDate>Tue, 23 Mar 2010 04:00:00 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;Because I don&amp;#8217;t have enough spare time projects (&lt;em&gt;this is a joke&lt;/em&gt;), I decided to take on the task of adding a must-requested special iPhone/iPod-touch friendly view for the &lt;a href="http://dev.wifidog.org/"&gt;WifiDog&lt;/a&gt; authentication server (used by the infamous &lt;a href="http://www.ilesansfil.org/"&gt;Île Sans Fil&lt;/a&gt;) after being inspired by the WifiDog camp held a few weeks ago at Station C. I finally finally finished up a prototype today. It&amp;#8217;s a bit of a hack, but a relatively clean one&amp;#8211; hopefully some version of it can be integrated into trunk, and users with mobile devices will have a better experience when they&amp;#8217;re on the go in Montr&amp;eacute;al (or any other area with a community-oriented wifidog deployment: I hear there&amp;#8217;s lots).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="/files/2010/03/wifidog_iphone_2.jpg" alt="WifiDog on iPhone yo" title="WifiDog on iPhone yo" width="320" height="480" class="alignnone size-full wp-image-108" /&gt;&lt;/p&gt;
+
+&lt;p&gt;For those interested in grubby details, you can track the progress of this work on the &lt;a href="http://dev.wifidog.org/ticket/696"&gt;WifiDog ticket tracker&lt;/a&gt;.&lt;/p&gt;</description></item></channel></rss>
