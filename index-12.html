@@ -3,13 +3,13 @@
   <head>
 
     <meta charset="utf-8">
-    <title>William Lachance's Log (page 12)</title>
-    <meta name="description" content="William Lachance's Log (page 12)">
-    <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="GoFaster, Talos, Social Media, Android, iphone, Counting, Community, MSF, Buddhism, Music, Performance, Transit to Go, Toronto, Web, Orangutan, Business, Ebola, Meditation, Profiling, ateam, Usability, hbus, zen, Free Software, WifiDog, FirefoxOS, Infraherder, Python, Food, Transit, Eideticker, Pandaboard, Cats, GNOME, Release Engineering, Video, Treeherder, Psychology, email, Coffee, Mission Control, Time, Meta, all, Life, Responsiveness, Open Data, SQL, Taskcluster, mozregression, Perfherder, BIXI, Mozilla, Nixi, Environment, Philosophy, Data Visualization, Île Sans Fil, Montreal, Docker">
+    <title>Untitled Site (page 12)</title>
+    <meta name="description" content="Untitled Site (page 12)">
+    <meta name="author"      content="The Unknown Author">
+    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Docker, Montreal, Coffee, Life, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Counting, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/index-12.html">
+    <link rel="canonical" href="http://www.example.com/index-12.html">
 
 
     <!-- CSS -->
@@ -175,7 +175,7 @@
 
 <li><a href="/tags/zen.html">zen</a></li>
 
-<li><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a></li>
+<li><a href="/tags/Île-Sans-Fil.html">Île Sans Fil</a></li>
               </ul>
             </li>
             <li>
@@ -197,7 +197,25 @@
 
           <article>
   <header>
-    <p><span class="tags"><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a>, <a href="/tags/Usability.html">Usability</a>, <a href="/tags/WifiDog.html">WifiDog</a></span></p>
+    <p><span class="tags"><a href="/tags/hbus.html">hbus</a>, <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
+    <h2><a href='/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/'>Oh, the lines! And some help for Edmonton.</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 10th, 2010</p>
+  </header>
+
+<p><img src="/files/2010/04/linked_map1.jpg" alt="Map with new link nodes" title="Map with new link nodes" width="320" height="242" class="aligncenter size-full wp-image-118" /></p>
+
+<p>A productive day on the transit development front. Finished up a few big features related to hbus.ca and Transit to Go:</p>
+
+<ul>
+ <li>Sped up the graph and database generation by an order of magnitude. Not too exciting from a user perspective, but I should now be able to iterate the codebase much faster.</li>
+ <li>Better transit stop / street graph linking: No more does libroutez simply try to find the closest street level vertice to link to when merging transit stops with street information&#8211; we now actually create _new_ street level vertices as needed and link to those. Upshot? Slightly better directions and prettier polylines. When I first thought up the algorithm a month ago, I thought I was totally brilliant, only to later find out that Andrew Byrd had done something almost identical a few months earlier for <a href="http://github.com/andrewbyrd/graphserver">graphserver</a>. Ah well, at least it&#8217;s implemented.</li>
+ <li>I <a href="http://gist.github.com/361848">coded up a script</a> to automatically generate synthetic headsigns for GTFS feeds which don&#8217;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&#8217;t you do better than saying that all your buses go in the &#8220;1&#8221; direction? There&#8217;s a reason why it&#8217;s a required field you know. Not only would it help me, but <a href="http://google.com/transit">Google Transit</a> would give better results for your city as well.</li></ul>
+
+</article>
+
+<article>
+  <header>
+    <p><span class="tags"><a href="/tags/Île-Sans-Fil.html">Île Sans Fil</a>, <a href="/tags/Usability.html">Usability</a>, <a href="/tags/WifiDog.html">WifiDog</a></span></p>
     <h2><a href='/blog/2010/03/fun-with-wifidog/'>Fun with WifiDog</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 23rd, 2010</p>
   </header>
@@ -412,32 +430,6 @@ pdftotext -raw route60.pdf&lt;br /&gt;</code>
 
 <p>Getting that problem solved seems to be more a political problem than a technical one, and it&#8217;s not my specialty. It really does make me wonder if I shouldn&#8217;t reconsider the option of crowd sourcing, which I had
  <br /><a href="http://wrla.ch/blog/2009/03/hbusca-and-thoughts-about-crowdsourcing/">rejected</a> earlier.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/hbus.html">hbus</a></span></p>
-    <h2><a href='/blog/2009/03/hbus-ca-and-thoughts-about-crowdsourcing/'>hbus.ca and thoughts about crowdsourcing</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 25th, 2009</p>
-  </header>
-
-<figure id="attachment_18" style="width: 410px" class="wp-caption alignleft"><img src="/files/2009/03/hbus_mini.png" alt="hbus in action" title="hbus_mini" width="410" height="409" class="size-full wp-image-18" />
- <figcaption class="wp-caption-text">hbus in action</figcaption></figure>
-
-<p>So I opened up my baby, <a href="http://hbus.ca" title="hbus.ca">hbus.ca</a>, to the public last week (though traffic only really started to pick up yesterday, after a <a href="http://www.metronews.ca/halifax/local/article/201622">positive article</a> in the daily news). This site, a trip planner for the Halifax Regional Municipality, was the cumulation of about 6 months of part time work on my part, between contracts for my awesome company, <a href="http://navarra.ca">Navarra</a>.</p>
-
-<p>I&#8217;m debating on whether or not to start a seperate blog for hbus. At the moment I&#8217;m leaning towards no: my thinking is that most people don&#8217;t care about the inner workings of a site like hbus. They just want to figure out how to get from point A to B. Those who do care can read the rest of what I (and my part time co-conspirator, <a href="http://cpirate.livejournal.com">Peter McCurdy</a>) have to say.</p>
-
-<p>The most glaring limitation in hbus right now is that its route coverage is woefully limited. Trips on the main Halifax peninsula are generally planned pretty effectively. If you&#8217;re travelling to a suburban area like Bayer&#8217;s Lake or Burnside, not so much (unless you&#8217;re lucky enough to be starting/ending near a bus timepoint). What is to be done?</p>
-
-<p>A frequent suggestion I get from more technically minded folks is that I should &#8220;crowd source&#8221; the missing information. This basically implies creating a wikipedia-like architecture such that people could contribute their favourite stops, routes, etc.</p>
-
-<p>It&#8217;s a tempting idea. Such sites as <a href="http://openstreetmap.org">OpenStreetMap</a> show that this approach can be very effective for gathering large amount of geographical data. I&#8217;m frankly not convinced it&#8217;s the right approach here though. The fact is that <a href="http://halifax.ca/metrotransit">Metro Transit</a> MUST have a complete set of stops, route schedules, and route plans internally. There&#8217;s no way they could plan their operations halfway effectively otherwise. Why should I burden the public with the task of recreating something which has already been done?</p>
-
-<p>I may be crazy, but I think the best avenue for the moment is to try to convince Metro Transit that it would be worthwhile to make this information public. I paid for the generation of the information with my tax dollars, why shouldn&#8217;t I be able to make use of it? The preferred format for this information is <a href="http://code.google.com/p/googletransitdatafeed/">Google Transit Data Feed</a>, but I could make use of information in just about any representation (Arc GIS, etc.). Just give me what you have, and I&#8217;ll take of the rest. <a href="http://code.google.com/p/googletransitdatafeed/wiki/PublicFeeds">Over 20</a> of the most successful transit agencies in North America (many of them much bigger than Metro Transit) have opened up their information to the public, with only positive results.</p>
-
-<p>The most obvious use of this information is a trip planner and, yes, I know every agency and their dog has (or will have) one of these. But maybe someone has a cool idea on how to make a trip planner easier to use (compare <a href="http://hbus.ca">hbus.ca</a> with <a href="www.stm.info/azimuts/index.htm">Tous Azimuts</a>). Or what about <a href="http://www.walkscore.com/transit-map.php">transit maps</a> that help people figure out where to live? Or iPhone and Blackberry applications? Or cool <a href="http://myttc.ca/screensaver">screensavers</a>? Or or or. The possibilities are truly endless once the data is out there. Come on Metro Transit, you have nothing to lose and the eternal love of your ridership to gain.</p>
 
 </article>
 

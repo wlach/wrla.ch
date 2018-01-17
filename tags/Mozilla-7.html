@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <title>Posts tagged 'Mozilla' (page 7)</title>
     <meta name="description" content="Posts tagged 'Mozilla' (page 7)">
-    <meta name="author"      content="William Lachance">
+    <meta name="author"      content="The Unknown Author">
     <meta name="keywords"    content="Mozilla">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/tags/Mozilla-7.html">
+    <link rel="canonical" href="http://www.example.com/tags/Mozilla-7.html">
 
 
     <!-- CSS -->
@@ -175,7 +175,7 @@
 
 <li><a href="/tags/zen.html">zen</a></li>
 
-<li><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a></li>
+<li><a href="/tags/Île-Sans-Fil.html">Île Sans Fil</a></li>
               </ul>
             </li>
             <li>
@@ -196,6 +196,50 @@
           <h1>Posts tagged <em>Mozilla</em></h1>
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2012/05/launching-random-web-browsers-on-android/'>Launching random web browsers on Android</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 4th, 2012</p>
+  </header>
+
+<p>Ok, this is somewhat mundane, but I&#8217;ve already had to do it twice (and helped someone do something similar on #mobile), so I figured I might as well blog about it for posterity.</p>
+
+<p>For various automation tasks (notably the <a href="http://wrla.ch/eideticker/dashboard/">Eideticker dashboard</a> and the <a href="http://mrcote.info/phonedash/#/rawfennecstartup">cross-browser startup tests</a>), we need to be able to launch an Android browser on the command line (via adb shell or our own custom SUTAgent). This is a bit of a black art, but you can find references on how to do this on stackoverflow and other places. The magic incantation is:</p>
+
+<pre><code>am start -a android.intent.action.VIEW -n &amp;lt;application/intent&amp;gt; -d &amp;lt;url&amp;gt;</code></pre>
+
+<p>So, for example, to launch Fennec, you&#8217;d run this on the Android command prompt:</p>
+
+<pre><code>am start -a android.intent.action.VIEW -n org.mozilla.fennec/.App -d http://mygreatsite.info</code></pre>
+
+<p>Ok, easy enough, but what if we want to launch a new browser that we just downloaded (e.g. Google Chrome)? Where do we get the application and intent names?</p>
+
+<p>The short answer is that you need to reach into the apk and dig. 😉 There&#8217;s probably many ways of doing this, but here&#8217;s what I do (which has the distinct advantage of not needing to compile, download or run weird java applications):</p>
+
+<ol>
+ <li>
+  <p>Copy the apk onto your machine (the apk should be in /data/app: if you have a rooted phone, you should be able to copy that off to your machine).</p></li>
+ <li>
+  <p>Extract <em>AndroidManifest.xml</em> from the apk (it&#8217;s just a .zip) and run <a href="http://android-random.googlecode.com/svn/trunk/axml2xml/axml2xml.pl">axml2xml.pl</a> on it.</p></li>
+ <li>
+  <p>Examine the resultant xml file and look for the <strong></strong> tag. It should have a property called <strong></strong> which is the package name. For example:</p></li></ol>
+
+<p>We can see pretty clearly that the application name in this case is <strong>com.android.chrome</strong> (you can also get this by running ps when using the application)</p>
+
+<ol>
+ <li>Finally, look for a tag called <strong></strong> with an <strong></strong> tag with <strong></strong> as the <strong>android-name</strong> property. Scan up for the overarching <strong>activity</strong> tag, whose <strong>android-name</strong> property. This is the activity name. For example:</li></ol>
+
+<p>Likewise here we see that the activity name we want is <strong>.Main</strong> (which Android explicitly expands out to <strong>com.android.chrome.Main</strong>)</p>
+
+<p>Armed with this information, you should now have enough information to launch the application. Furthering the example above, here&#8217;s how to start Chrome on Android via adb&#8217;s shell:</p>
+
+<pre><code>am start -a android.intent.action.VIEW -n com.android.chrome/.Main -d http://mygreatsite.info</code></pre>
+
+<p>Hope this helps someone, somewhere.</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2012/04/eideticker-with-less-eideticker/'>Eideticker with less eideticker</a></h2>
@@ -454,28 +498,6 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 <p>After:</p>
 
 <video src="/files/eideticker/almostnocheckerboarding.webm" width="600px" controls="controls"></video>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2011/12/year-end-eideticker-update/'>Year end Eideticker update</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Dec 23rd, 2011</p>
-  </header>
-
-<p>Just before I leave for some Christmas vacation, it&#8217;s time for another update on the state of <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">Eideticker</a>. Since I last blogged about the software, I&#8217;ve been working on the following three areas:</p>
-
-<ol>
- <li>Coming up with better algorithm (green screen / red screen) for both determining the area of the capture as well as the start/end of the capture. The harness was already flood filling the area with these colours at the beginning/end of the capture, but now we&#8217;re actually using this information. The code&#8217;s a little hacky, but it seems to work well enough for the test cases I&#8217;ve been using so far.</li>
- <li>As a demonstration, I wrote up a quick test that demonstrates checkerboarding on mobile Fennec, and wrote up a quick bit of analysis code to detect this pattern and give an overall measure of how much this test &#8220;checkerboards&#8221; (i.e. has regions that are not fully painted when the user scrolls). As I understand this is an area that our mobile team is currently working on this problem quite a bit, it will be interesting to watch the numbers given by this test and see if things improve.</li>
- <li>It&#8217;s a minor thing, but you can now view a complete webm movie of the captured movie right from the web interface.</li></ol>
-
-<p>Here&#8217;s a quick demonstration video that shows all the above in action. As before, you might want to watch this full screen:</p>
-
-<video src="/files/eideticker/eideticker-2011-12-21.webm" width="600px" controls="controls"></video>
-
-<p>Happy holidays!</p>
 
 </article>
 
