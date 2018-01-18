@@ -3,13 +3,13 @@
   <head>
 
     <meta charset="utf-8">
-    <title>Untitled Site (page 12)</title>
-    <meta name="description" content="Untitled Site (page 12)">
-    <meta name="author"      content="The Unknown Author">
-    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Docker, Montreal, Coffee, Life, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Counting, Android, ateam">
+    <title>William Lachance's Log (page 12)</title>
+    <meta name="description" content="William Lachance's Log (page 12)">
+    <meta name="author"      content="William Lachance">
+    <meta name="keywords"    content="GoFaster, Talos, Social Media, Android, iphone, Counting, Community, MSF, Buddhism, Music, Performance, Transit to Go, Toronto, Web, Orangutan, Business, Ebola, Meditation, Profiling, ateam, Usability, hbus, zen, Free Software, WifiDog, FirefoxOS, Infraherder, Python, Food, Transit, Eideticker, Pandaboard, Cats, GNOME, Release Engineering, Video, Treeherder, Psychology, email, Coffee, Mission Control, Time, Meta, all, Life, Responsiveness, Open Data, SQL, Taskcluster, mozregression, Perfherder, BIXI, Mozilla, Nixi, Environment, Philosophy, Data Visualization, Île Sans Fil, Montreal, Docker">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="http://www.example.com/index-12.html">
+    <link rel="canonical" href="https://wlach.github.io/index-12.html">
 
 
     <!-- CSS -->
@@ -175,7 +175,7 @@
 
 <li><a href="/tags/zen.html">zen</a></li>
 
-<li><a href="/tags/Île-Sans-Fil.html">Île Sans Fil</a></li>
+<li><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a></li>
               </ul>
             </li>
             <li>
@@ -197,25 +197,20 @@
 
           <article>
   <header>
-    <p><span class="tags"><a href="/tags/hbus.html">hbus</a>, <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
-    <h2><a href='/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/'>Oh, the lines! And some help for Edmonton.</a></h2>
+    <p><span class="tags"><a href="/tags/iphone.html">iphone</a>, <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
+    <h2><a href='/blog/2010/04/i-can-has-edmonton-transit-iphone-app/'>I can has Edmonton transit iPhone app?</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 10th, 2010</p>
   </header>
 
-<p><img src="/files/2010/04/linked_map1.jpg" alt="Map with new link nodes" title="Map with new link nodes" width="320" height="242" class="aligncenter size-full wp-image-118" /></p>
+<p><img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /></p>
 
-<p>A productive day on the transit development front. Finished up a few big features related to hbus.ca and Transit to Go:</p>
-
-<ul>
- <li>Sped up the graph and database generation by an order of magnitude. Not too exciting from a user perspective, but I should now be able to iterate the codebase much faster.</li>
- <li>Better transit stop / street graph linking: No more does libroutez simply try to find the closest street level vertice to link to when merging transit stops with street information&#8211; we now actually create _new_ street level vertices as needed and link to those. Upshot? Slightly better directions and prettier polylines. When I first thought up the algorithm a month ago, I thought I was totally brilliant, only to later find out that Andrew Byrd had done something almost identical a few months earlier for <a href="http://github.com/andrewbyrd/graphserver">graphserver</a>. Ah well, at least it&#8217;s implemented.</li>
- <li>I <a href="http://gist.github.com/361848">coded up a script</a> to automatically generate synthetic headsigns for GTFS feeds which don&#8217;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&#8217;t you do better than saying that all your buses go in the &#8220;1&#8221; direction? There&#8217;s a reason why it&#8217;s a required field you know. Not only would it help me, but <a href="http://google.com/transit">Google Transit</a> would give better results for your city as well.</li></ul>
+<p>With <a href="http://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/">yesterday&#8217;s work</a> out of the way, there weren&#8217;t too many extra steps required before I got a basic version of Transit to Go running for Edmonton. There are definitely bugs and rough edges (the bus names could definitely be better described/formatted, and there&#8217;s some serious geocoder issues), but I think the heavy lifting is out of the way. I guess now would be a good time to open up an invitations to anyone in Edmonton with an iPhone to become part of our free private beta. We&#8217;d love to hear what you think! Just send an email to <a href="mailto:wrlach@gmail.com">wrlach@gmail.com</a>.</p>
 
 </article>
 
 <article>
   <header>
-    <p><span class="tags"><a href="/tags/Île-Sans-Fil.html">Île Sans Fil</a>, <a href="/tags/Usability.html">Usability</a>, <a href="/tags/WifiDog.html">WifiDog</a></span></p>
+    <p><span class="tags"><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a>, <a href="/tags/Usability.html">Usability</a>, <a href="/tags/WifiDog.html">WifiDog</a></span></p>
     <h2><a href='/blog/2010/03/fun-with-wifidog/'>Fun with WifiDog</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 23rd, 2010</p>
   </header>
