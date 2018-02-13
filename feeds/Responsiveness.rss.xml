@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Responsiveness'</title>
-  <description>William Lachance's Log: Posts tagged 'Responsiveness'</description>
-  <link>https://wlach.github.io/tags/Responsiveness.html</link>
+  <title>Untitled Site: Posts tagged 'Responsiveness'</title>
+  <description>Untitled Site: Posts tagged 'Responsiveness'</description>
+  <link>http://www.example.com/tags/Responsiveness.html</link>
   <lastBuildDate>Mon, 07 Oct 2013 04:00:00 UT</lastBuildDate>
   <pubDate>Mon, 07 Oct 2013 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>First Eideticker Responsiveness Tests</title>
-   <link>https://wlach.github.io/blog/2013/10/first-eideticker-responsiveness-tests/?utm_source=Responsiveness&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2013-10-first-eideticker-responsiveness-tests</guid>
+   <link>http://www.example.com/2013/10/first-eideticker-responsiveness-tests.html?utm_source=Responsiveness&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2013-10-first-eideticker-responsiveness-tests-html</guid>
    <pubDate>Mon, 07 Oct 2013 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;

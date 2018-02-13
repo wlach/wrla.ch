@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'GNOME'</title>
-  <description>William Lachance's Log: Posts tagged 'GNOME'</description>
-  <link>https://wlach.github.io/tags/GNOME.html</link>
+  <title>Untitled Site: Posts tagged 'GNOME'</title>
+  <description>Untitled Site: Posts tagged 'GNOME'</description>
+  <link>http://www.example.com/tags/GNOME.html</link>
   <lastBuildDate>Fri, 19 Apr 2013 04:00:00 UT</lastBuildDate>
   <pubDate>Fri, 19 Apr 2013 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>The need for a modern open source email client and Geary&amp;#8217;s fundraiser</title>
-   <link>https://wlach.github.io/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser/?utm_source=GNOME&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2013-04-the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser</guid>
+   <link>http://www.example.com/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser.html?utm_source=GNOME&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2013-04-the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser-html</guid>
    <pubDate>Fri, 19 Apr 2013 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;div class="figure"&gt;&lt;img src="http://www.yorba.org/images/igg/geary-2.png" alt="" /&gt;
@@ -21,8 +21,8 @@
 &lt;p&gt;The &lt;a href="http://yorba.org"&gt;Yorba&lt;/a&gt; non-profit recently started a &lt;a href="http://www.indiegogo.com/projects/geary-a-beautiful-modern-open-source-email-client"&gt;fundraiser&lt;/a&gt; to work on the next edition of Geary, an email client which I hope will fill the niche that I&amp;#8217;m talking about. It&amp;#8217;s pretty rough around the edges still, but even at this early stage the conversation view is beautiful and more or less exactly what I want. The example of Shotwell (their photo management application) suggests that they know a thing or two about creating robust and useable software, not a common thing in this day and age. In any case, their pitch was compelling enough for me to donate a few dollars to the cause. If you care about having a great email experience that is completely under your control (and not that of an advertising or product company with their own agenda), then maybe you could too?&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Icon metaphor fail</title>
-   <link>https://wlach.github.io/blog/2009/08/icon-metaphor-fail/?utm_source=GNOME&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2009-08-icon-metaphor-fail</guid>
+   <link>http://www.example.com/2009/08/icon-metaphor-fail.html?utm_source=GNOME&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2009-08-icon-metaphor-fail-html</guid>
    <pubDate>Fri, 21 Aug 2009 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Started to use a new piece of hardware at the Navarra office today, which resulted in the following gem being added to the GNOME notification area. Would anyone care to guess what the following icon is supposed to represent?

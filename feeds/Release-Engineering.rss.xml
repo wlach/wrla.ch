@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Release Engineering'</title>
-  <description>William Lachance's Log: Posts tagged 'Release Engineering'</description>
-  <link>https://wlach.github.io/tags/Release-Engineering.html</link>
+  <title>Untitled Site: Posts tagged 'Release Engineering'</title>
+  <description>Untitled Site: Posts tagged 'Release Engineering'</description>
+  <link>http://www.example.com/tags/Release-Engineering.html</link>
   <lastBuildDate>Thu, 19 Apr 2012 04:00:00 UT</lastBuildDate>
   <pubDate>Thu, 19 Apr 2012 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>GoFaster dashboard back online</title>
-   <link>https://wlach.github.io/blog/2012/04/gofaster-dashboard-back-online/?utm_source=Release-Engineering&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2012-04-gofaster-dashboard-back-online</guid>
+   <link>http://www.example.com/2012/04/gofaster-dashboard-back-online.html?utm_source=Release-Engineering&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2012-04-gofaster-dashboard-back-online-html</guid>
    <pubDate>Thu, 19 Apr 2012 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Build times for mozilla-central are a major factor in developer productivity. Faster build times mean more people using try (reducing breakage) and more fine-grained regression ranges (reducing the impact of breakages). As a side benefit, it allows us to avoid buying and maintaining more hardware (or put new hardware to better use). About a half-year ago, we set up a project called BuildFaster to try to bring these times down, setting the ambitious goal of getting build times (from checkin to tests done) down to 2 hours. We didn&amp;#8217;t quite succeed, though we did make some major strides. As part of this project, we also developed a dashboard to track our progress and narrow down the major bottlenecks which were keeping up our build times.&lt;/p&gt;

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Île Sans Fil'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Île-Sans-Fil.atom.xml" />
- <link href="https://wlach.github.io/tags/Île-Sans-Fil.html" />
- <id>urn:https-wlach-github-io:-tags-Île-Sans-Fil-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Île Sans Fil'</title>
+ <link rel="self" href="http://www.example.com/feeds/Île-Sans-Fil.atom.xml" />
+ <link href="http://www.example.com/tags/Île-Sans-Fil.html" />
+ <id>urn:http-www-example-com:-tags-Île-Sans-Fil-html</id>
  <updated>2010-03-23T04:00:00Z</updated>
  <entry>
   <title type="text">Fun with WifiDog</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2010/03/fun-with-wifidog/?utm_source=Île-Sans-Fil&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2010-03-fun-with-wifidog</id>
+  <link rel="alternate" href="http://www.example.com/2010/03/fun-with-wifidog.html?utm_source=Île-Sans-Fil&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2010-03-fun-with-wifidog-html</id>
   <published>2010-03-23T04:00:00Z</published>
   <updated>2010-03-23T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Because I don&amp;#8217;t have enough spare time projects (&lt;em&gt;this is a joke&lt;/em&gt;), I decided to take on the task of adding a must-requested special iPhone/iPod-touch friendly view for the &lt;a href="http://dev.wifidog.org/"&gt;WifiDog&lt;/a&gt; authentication server (used by the infamous &lt;a href="http://www.ilesansfil.org/"&gt;Île Sans Fil&lt;/a&gt;) after being inspired by the WifiDog camp held a few weeks ago at Station C. I finally finally finished up a prototype today. It&amp;#8217;s a bit of a hack, but a relatively clean one&amp;#8211; hopefully some version of it can be integrated into trunk, and users with mobile devices will have a better experience when they&amp;#8217;re on the go in Montr&amp;eacute;al (or any other area with a community-oriented wifidog deployment: I hear there&amp;#8217;s lots).&lt;/p&gt;
 

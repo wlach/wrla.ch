@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Video'</title>
-  <description>William Lachance's Log: Posts tagged 'Video'</description>
-  <link>https://wlach.github.io/tags/Video.html</link>
+  <title>Untitled Site: Posts tagged 'Video'</title>
+  <description>Untitled Site: Posts tagged 'Video'</description>
+  <link>http://www.example.com/tags/Video.html</link>
   <lastBuildDate>Mon, 07 May 2012 04:00:00 UT</lastBuildDate>
   <pubDate>Mon, 07 May 2012 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Ghetto retroscope with ffmpeg and the &amp;lt;video&amp;gt; tag</title>
-   <link>https://wlach.github.io/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/?utm_source=Video&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2012-05-ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag</guid>
+   <link>http://www.example.com/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag.html?utm_source=Video&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2012-05-ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag-html</guid>
    <pubDate>Mon, 07 May 2012 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;So yesterday we had a small get-together at my place, which gave me the opportunity to try something I&amp;#8217;d been meaning to do for a while: build my own retroscope.&lt;/p&gt;

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'BIXI'</title>
-  <description>William Lachance's Log: Posts tagged 'BIXI'</description>
-  <link>https://wlach.github.io/tags/BIXI.html</link>
+  <title>Untitled Site: Posts tagged 'BIXI'</title>
+  <description>Untitled Site: Posts tagged 'BIXI'</description>
+  <link>http://www.example.com/tags/BIXI.html</link>
   <lastBuildDate>Sat, 09 Jan 2016 04:21:13 UT</lastBuildDate>
   <pubDate>Sat, 09 Jan 2016 04:21:13 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>NIXI is moving too</title>
-   <link>https://wlach.github.io/blog/2016/01/nixi-is-moving-too/?utm_source=BIXI&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-01-nixi-is-moving-too</guid>
+   <link>http://www.example.com/2016/01/nixi-is-moving-too.html?utm_source=BIXI&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2016-01-nixi-is-moving-too-html</guid>
    <pubDate>Sat, 09 Jan 2016 04:21:13 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;As my blog goes to github pages, so do my other side projects. I just moved nixi, my bikestation finder project, to github pages. Its new location:&lt;/p&gt;
@@ -28,8 +28,8 @@
 &lt;p&gt;I still think nixi is worlds more usable than most bikesharing maps, even if it&amp;rsquo;s not an actively maintained project of mine any more. Here&amp;rsquo;s hoping it lasts many more years in its new incarnation.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>NIXI Update</title>
-   <link>https://wlach.github.io/blog/2013/08/nixi-update/?utm_source=BIXI&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2013-08-nixi-update</guid>
+   <link>http://www.example.com/2013/08/nixi-update.html?utm_source=BIXI&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2013-08-nixi-update-html</guid>
    <pubDate>Sun, 25 Aug 2013 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;I&amp;#8217;ve been working on a new, mobile friendly version of &lt;a href="http://nixi.ca/"&gt;Nixi&lt;/a&gt; on-and-off for the past year and a bit. I&amp;#8217;m not sure when it&amp;#8217;s ever going to be finished, so I thought I might as well post the work-in-progress, which has these noteworthy improvements:&lt;/p&gt;
@@ -44,8 +44,8 @@
 &lt;p&gt;&lt;a href="/files/2013/08/nixi-screenshot.png"&gt; &lt;img src="/files/2013/08/nixi-screenshot-1024x672.png" alt="nixi screenshot" width="640" height="420" class="alignnone size-large wp-image-927" srcset="/files/2013/08/nixi-screenshot-300x196.png 300w, /files/2013/08/nixi-screenshot-1024x672.png 1024w, /files/2013/08/nixi-screenshot.png 1266w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Updates on my ridiculous pet projects</title>
-   <link>https://wlach.github.io/blog/2011/09/updates-on-my-ridiculous-pet-projects/?utm_source=BIXI&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-09-updates-on-my-ridiculous-pet-projects</guid>
+   <link>http://www.example.com/2011/09/updates-on-my-ridiculous-pet-projects.html?utm_source=BIXI&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-09-updates-on-my-ridiculous-pet-projects-html</guid>
    <pubDate>Thu, 29 Sep 2011 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;ol&gt;
@@ -59,8 +59,8 @@
   &lt;p&gt;I have a lettuce plant growing on my new balcony. It&amp;#8217;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/html&gt;</description></item>
   <item>
    <title>A better BIXI web site</title>
-   <link>https://wlach.github.io/blog/2011/06/a-better-bixi-web-site/?utm_source=BIXI&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-06-a-better-bixi-web-site</guid>
+   <link>http://www.example.com/2011/06/a-better-bixi-web-site.html?utm_source=BIXI&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-06-a-better-bixi-web-site-html</guid>
    <pubDate>Fri, 10 Jun 2011 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;There&amp;#8217;s much to like about the BIXI bike-sharing system in Montr&amp;eacute;al: it&amp;#8217;s affordable ($78 for a year of biking), accessible and fun to use. There&amp;#8217;s absolutely no doubt in my mind that it&amp;#8217;s made cycling more of a main stream activity here in Montreal, which benefits everyone (even drivers indirectly gain from less congested streets).&lt;/p&gt;

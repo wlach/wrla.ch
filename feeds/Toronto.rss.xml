@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Toronto'</title>
-  <description>William Lachance's Log: Posts tagged 'Toronto'</description>
-  <link>https://wlach.github.io/tags/Toronto.html</link>
+  <title>Untitled Site: Posts tagged 'Toronto'</title>
+  <description>Untitled Site: Posts tagged 'Toronto'</description>
+  <link>http://www.example.com/tags/Toronto.html</link>
   <lastBuildDate>Sat, 12 Jul 2014 04:00:00 UT</lastBuildDate>
   <pubDate>Sat, 12 Jul 2014 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>New city, new cellphone provider</title>
-   <link>https://wlach.github.io/blog/2014/07/new-city-new-cellphone-provider/?utm_source=Toronto&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2014-07-new-city-new-cellphone-provider</guid>
+   <link>http://www.example.com/2014/07/new-city-new-cellphone-provider.html?utm_source=Toronto&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2014-07-new-city-new-cellphone-provider-html</guid>
    <pubDate>Sat, 12 Jul 2014 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Rogers, my previous cell phone provider, is ridiculous.&lt;/p&gt;

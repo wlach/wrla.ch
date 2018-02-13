@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Taskcluster'</title>
-  <description>William Lachance's Log: Posts tagged 'Taskcluster'</description>
-  <link>https://wlach.github.io/tags/Taskcluster.html</link>
+  <title>Untitled Site: Posts tagged 'Taskcluster'</title>
+  <description>Untitled Site: Posts tagged 'Taskcluster'</description>
+  <link>http://www.example.com/tags/Taskcluster.html</link>
   <lastBuildDate>Wed, 05 Apr 2017 20:14:35 UT</lastBuildDate>
   <pubDate>Wed, 05 Apr 2017 20:14:35 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Easier reproduction of intermittent test failures in automation</title>
-   <link>https://wlach.github.io/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/?utm_source=Taskcluster&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2017-04-easier-reproduction-of-intermittent-test-failures-in-automation</guid>
+   <link>http://www.example.com/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation.html?utm_source=Taskcluster&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2017-04-easier-reproduction-of-intermittent-test-failures-in-automation-html</guid>
    <pubDate>Wed, 05 Apr 2017 20:14:35 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;As part of the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell"&gt;Stockwell project&lt;/a&gt;, I&amp;rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&amp;rsquo;s often very difficult to reproduce an intermittent failure we see in Treeherder locally since the environment is so different, but historically it has been a big hassle to get access to the machines we use in automation for various reasons.&lt;/p&gt;

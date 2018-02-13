@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Transit'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Transit.atom.xml" />
- <link href="https://wlach.github.io/tags/Transit.html" />
- <id>urn:https-wlach-github-io:-tags-Transit-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Transit'</title>
+ <link rel="self" href="http://www.example.com/feeds/Transit.atom.xml" />
+ <link href="http://www.example.com/tags/Transit.html" />
+ <id>urn:http-www-example-com:-tags-Transit-html</id>
  <updated>2011-12-14T05:00:00Z</updated>
  <entry>
   <title type="text">An API for AMT data</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/12/an-api-for-amt-data/?utm_source=Transit&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-12-an-api-for-amt-data</id>
+  <link rel="alternate" href="http://www.example.com/2011/12/an-api-for-amt-data.html?utm_source=Transit&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-12-an-api-for-amt-data-html</id>
   <published>2011-12-14T05:00:00Z</published>
   <updated>2011-12-14T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;The &lt;a href="http://www.amt.qc.ca"&gt;AMT&lt;/a&gt; released their &lt;a href="http://t.co/AofpyI4E"&gt;GTFS schedule information&lt;/a&gt; to the public earlier this week, which is awesome. Not coincidentally, Montreal is going to have a &lt;a href="http://transportationcamp.org/montreal/"&gt;Transportation Camp&lt;/a&gt; tomorrow, wherein people will hack on transportation software and discuss open data issues.&lt;/p&gt;
 

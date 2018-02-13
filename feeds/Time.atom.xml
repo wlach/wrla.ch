@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Time'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Time.atom.xml" />
- <link href="https://wlach.github.io/tags/Time.html" />
- <id>urn:https-wlach-github-io:-tags-Time-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Time'</title>
+ <link rel="self" href="http://www.example.com/feeds/Time.atom.xml" />
+ <link href="http://www.example.com/tags/Time.html" />
+ <id>urn:http-www-example-com:-tags-Time-html</id>
  <updated>2013-07-08T04:00:00Z</updated>
  <entry>
   <title type="text">Simple command-line ntp client for Android and FirefoxOS</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/?utm_source=Time&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2013-07-simple-command-line-ntp-client-for-android-and-firefoxos</id>
+  <link rel="alternate" href="http://www.example.com/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos.html?utm_source=Time&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2013-07-simple-command-line-ntp-client-for-android-and-firefoxos-html</id>
   <published>2013-07-08T04:00:00Z</published>
   <updated>2013-07-08T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Today I did a quick port of Larry Doolittle&amp;#8217;s &lt;a href="http://doolittle.icarus.com/ntpclient/"&gt;ntpclient program&lt;/a&gt; to Android and FirefoxOS. Basically this lets you easily synchronize your device&amp;#8217;s time to that of a central server. Yes, there&amp;#8217;s lots and lots of Android &amp;#8220;applications&amp;#8221; which let you do this, but I wanted to be able to do this from the command line because that&amp;#8217;s how I roll. If you&amp;#8217;re interested, source and instructions are here:&lt;/p&gt;
 

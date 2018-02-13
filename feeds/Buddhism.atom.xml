@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Buddhism'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Buddhism.atom.xml" />
- <link href="https://wlach.github.io/tags/Buddhism.html" />
- <id>urn:https-wlach-github-io:-tags-Buddhism-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Buddhism'</title>
+ <link rel="self" href="http://www.example.com/feeds/Buddhism.atom.xml" />
+ <link href="http://www.example.com/tags/Buddhism.html" />
+ <id>urn:http-www-example-com:-tags-Buddhism-html</id>
  <updated>2014-08-14T04:00:00Z</updated>
  <entry>
   <title type="text">A new meditation app</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/08/a-new-meditation-app/?utm_source=Buddhism&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-08-a-new-meditation-app</id>
+  <link rel="alternate" href="http://www.example.com/2014/08/a-new-meditation-app.html?utm_source=Buddhism&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2014-08-a-new-meditation-app-html</id>
   <published>2014-08-14T04:00:00Z</published>
   <updated>2014-08-14T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;I had some time on my hands two weekends ago and was feeling a bit of an itch to build something, so I decided to do a project I&amp;#8217;ve had in the back of my head for a while: a meditation timer.&lt;/p&gt;
 
@@ -43,24 +43,24 @@
 &lt;p&gt;&lt;sup&gt;&lt;a href="http://wrla.ch/blog/category/meditation/"&gt;1&lt;/a&gt;&lt;/sup&gt; Note that there isn&amp;#8217;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock"&gt;requestWakeLock&lt;/a&gt; API to make sure that doesn&amp;#8217;t happen. I filed &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113"&gt;a bug&lt;/a&gt; to get this implemented on Firefox for Android.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">The highest form</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/03/the-highest-form/?utm_source=Buddhism&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-03-the-highest-form</id>
+  <link rel="alternate" href="http://www.example.com/2014/03/the-highest-form.html?utm_source=Buddhism&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2014-03-the-highest-form-html</id>
   <published>2014-03-02T05:00:00Z</published>
   <updated>2014-03-02T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;&lt;a href="/files/2014/03/friedrich_shikatanza.jpg"&gt;&lt;img src="/files/2014/03/friedrich_shikatanza.jpg" alt="friedrich_shikatanza" width="1024" height="768" class="alignnone size-full wp-image-1000" srcset="/files/2014/03/friedrich_shikatanza-300x225.jpg 300w, /files/2014/03/friedrich_shikatanza.jpg 1024w" sizes="(max-width: 1024px) 100vw, 1024px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;He sits on the edge of my couch, stoic. At rest, yet alert for anything to happen at any moment. Whether that be a mouse running across the room (fat chance here) or me getting up to go into the kitchen. I took this picture just after zazen (meditating) &amp;#8212; I struggle and struggle and yet right beside me sits a creature that constantly practices in the highest form (shikantaza, &amp;#8220;just sitting&amp;#8221;) without even trying. An example for me to follow?&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Meditative practice followup</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/11/meditative-practice-followup/?utm_source=Buddhism&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2013-11-meditative-practice-followup</id>
+  <link rel="alternate" href="http://www.example.com/2013/11/meditative-practice-followup.html?utm_source=Buddhism&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2013-11-meditative-practice-followup-html</id>
   <published>2013-11-13T05:00:00Z</published>
   <updated>2013-11-13T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;A few months ago, I started blogging a bit about my fledgling Buddhist meditation practice, and then abruptly stopped. I thought I&amp;#8217;d write just a few words about why I didn&amp;#8217;t continue.&lt;/p&gt;
 
@@ -77,12 +77,12 @@
 &lt;p&gt;All this is not to say that I&amp;#8217;m not happy to discuss my experiences one on one with anyone who&amp;#8217;s interested. If you&amp;#8217;re curious, by all means feel free to contact me &amp;#8212; though I suspect you&amp;#8217;d probably do better reaching out to a dedicated teacher who has more experience in these matters than I. If you can&amp;#8217;t find one, I would again recommend &lt;a href="http://www.amazon.ca/Mindfulness-Plain-English-Anniversary-Edition/dp/0861719069"&gt;Mindfulness in Plain English&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Further meditative practice</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/04/further-meditative-practice/?utm_source=Buddhism&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2013-04-further-meditative-practice</id>
+  <link rel="alternate" href="http://www.example.com/2013/04/further-meditative-practice.html?utm_source=Buddhism&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2013-04-further-meditative-practice-html</id>
   <published>2013-04-28T04:00:00Z</published>
   <updated>2013-04-28T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;center&gt;&lt;a href="/files/2013/04/biodome.jpg"&gt;&lt;img src="/files/2013/04/biodome-768x1024.jpg" alt="biodome" width="426" height="568" class="alignnone size-large wp-image-905" srcset="/files/2013/04/biodome-225x300.jpg 225w, /files/2013/04/biodome-768x1024.jpg 768w, /files/2013/04/biodome.jpg 1024w" sizes="(max-width: 426px) 100vw, 426px" /&gt;&lt;/a&gt;&lt;/center&gt;
 
@@ -99,12 +99,12 @@
 &lt;p&gt;Or so I&amp;#8217;m told by the book. Up to now, I haven&amp;#8217;t enjoyed any longlasting effects from meditation aside from (possibly?) a bit more mental clarity in my day-to-day tasks. But I&amp;#8217;ve found the practice to be extremely interesting both from the point of view of understanding my own thought, as well as being rather relaxing in and of itself. So while I&amp;#8217;m curious as to what comes next, I am happy enough with things as they are in the present. I&amp;#8217;m planning to continue to meditate (20&amp;ndash;30 minutes a day, 6 days a week), but also delve a bit deeper into the details and history of Zen and Vipasanna. More updates as appropriate.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">A visit to the Montreal Zen Center</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/03/a-visit-to-the-montreal-zen-center/?utm_source=Buddhism&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2013-03-a-visit-to-the-montreal-zen-center</id>
+  <link rel="alternate" href="http://www.example.com/2013/03/a-visit-to-the-montreal-zen-center.html?utm_source=Buddhism&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2013-03-a-visit-to-the-montreal-zen-center-html</id>
   <published>2013-03-24T04:00:00Z</published>
   <updated>2013-03-24T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;center&gt;&lt;a href="/files/2013/03/zencenter.jpg"&gt;&lt;img src="/files/2013/03/zencenter.jpg" alt="The Road to the Montreal Zen Center" width="640" height="853" class="alignnone size-full wp-image-871" srcset="/files/2013/03/zencenter-225x300.jpg 225w, /files/2013/03/zencenter.jpg 640w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/center&gt;
 

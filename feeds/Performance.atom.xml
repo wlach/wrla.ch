@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Performance'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Performance.atom.xml" />
- <link href="https://wlach.github.io/tags/Performance.html" />
- <id>urn:https-wlach-github-io:-tags-Performance-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Performance'</title>
+ <link rel="self" href="http://www.example.com/feeds/Performance.atom.xml" />
+ <link href="http://www.example.com/tags/Performance.html" />
+ <id>urn:http-www-example-com:-tags-Performance-html</id>
  <updated>2016-10-31T15:40:00Z</updated>
  <entry>
   <title type="text">Slow Treeherder, Fast Treeherder</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2016/10/slow-treeherder-fast-treeherder/?utm_source=Performance&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2016-10-slow-treeherder-fast-treeherder</id>
+  <link rel="alternate" href="http://www.example.com/2016/10/slow-treeherder-fast-treeherder.html?utm_source=Performance&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2016-10-slow-treeherder-fast-treeherder-html</id>
   <published>2016-10-31T15:40:00Z</published>
   <updated>2016-10-31T15:40:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Just wanted to talk about some recent performance improvements we&amp;rsquo;ve made recently to &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Treeherder"&gt;Treeherder&lt;/a&gt;:&lt;/p&gt;
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'ateam'</title>
-  <description>William Lachance's Log: Posts tagged 'ateam'</description>
-  <link>https://wlach.github.io/tags/ateam.html</link>
+  <title>Untitled Site: Posts tagged 'ateam'</title>
+  <description>Untitled Site: Posts tagged 'ateam'</description>
+  <link>http://www.example.com/tags/ateam.html</link>
   <lastBuildDate>Wed, 11 Jun 2014 04:00:00 UT</lastBuildDate>
   <pubDate>Wed, 11 Jun 2014 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Managing test manifests: ManifestDestiny -&gt; manifestparser</title>
-   <link>https://wlach.github.io/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser/?utm_source=ateam&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2014-06-managing-test-manifests-manifestdestiny-manifestparser</guid>
+   <link>http://www.example.com/2014/06/managing-test-manifests-manifestdestiny-manifestparser.html?utm_source=ateam&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2014-06-managing-test-manifests-manifestdestiny-manifestparser-html</guid>
    <pubDate>Wed, 11 Jun 2014 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Just wanted to make a quick announcement that &lt;a href="https://pypi.python.org/pypi/ManifestDestiny"&gt;ManifestDestiny&lt;/a&gt;, the python package we use internally here at Mozilla for declaratively managing lists of tests in &lt;a href="https://developer.mozilla.org/en/docs/Mochitest"&gt;Mochitest&lt;/a&gt; and other places, has been renamed to &lt;a href="https://pypi.python.org/pypi/manifestparser"&gt;manifestparser&lt;/a&gt;. We kept the versioning the same (0.6), so the only thing you should need to change in your python package dependencies is a quick substitution of &amp;#8220;ManifestDestiny&amp;#8221; with &amp;#8220;manifestparser&amp;#8221;. We will keep ManifestDestiny around indefinitely on pypi, but only to make sure old stuff doesn&amp;#8217;t break. New versions of the software will only be released under the name &amp;#8220;manifestparser&amp;#8221;.&lt;/p&gt;
@@ -22,8 +22,8 @@
 &lt;p&gt;Happy manifest parsing!&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Documentation for mozdevice</title>
-   <link>https://wlach.github.io/blog/2013/03/documentation-for-mozdevice/?utm_source=ateam&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2013-03-documentation-for-mozdevice</guid>
+   <link>http://www.example.com/2013/03/documentation-for-mozdevice.html?utm_source=ateam&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2013-03-documentation-for-mozdevice-html</guid>
    <pubDate>Mon, 11 Mar 2013 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Just wanted to give a quick heads up that as part of the ateam&amp;#8217;s ongoing effort to improve the documentation of our automated testing infrastructure, we now have &lt;a href="https://mozbase.readthedocs.org/en/latest/mozdevice.html"&gt;online documentation&lt;/a&gt; for mozdevice, the python library we use for interacting with Android- and FirefoxOS-based devices in automated testing.&lt;/p&gt;

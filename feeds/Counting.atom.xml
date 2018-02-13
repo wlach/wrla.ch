@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Counting'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Counting.atom.xml" />
- <link href="https://wlach.github.io/tags/Counting.html" />
- <id>urn:https-wlach-github-io:-tags-Counting-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Counting'</title>
+ <link rel="self" href="http://www.example.com/feeds/Counting.atom.xml" />
+ <link href="http://www.example.com/tags/Counting.html" />
+ <id>urn:http-www-example-com:-tags-Counting-html</id>
  <updated>2017-07-08T14:25:33Z</updated>
  <entry>
   <title type="text">The vastness</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/07/the-vastness/?utm_source=Counting&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2017-07-the-vastness</id>
+  <link rel="alternate" href="http://www.example.com/2017/07/the-vastness.html?utm_source=Counting&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2017-07-the-vastness-html</id>
   <published>2017-07-08T14:25:33Z</published>
   <updated>2017-07-08T14:25:33Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Had a good all hands with the rest of Mozilla in San Francisco (at least those able and willing to attend due to the current political situation in the U.S.). I stayed a few extra days to hang out with some of my friends who had moved to S.F. On Sunday we went to Muir Woods, where I took this picture:&lt;/p&gt;
 

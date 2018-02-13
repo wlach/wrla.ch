@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Pandaboard'</title>
-  <description>William Lachance's Log: Posts tagged 'Pandaboard'</description>
-  <link>https://wlach.github.io/tags/Pandaboard.html</link>
+  <title>Untitled Site: Posts tagged 'Pandaboard'</title>
+  <description>Untitled Site: Posts tagged 'Pandaboard'</description>
+  <link>http://www.example.com/tags/Pandaboard.html</link>
   <lastBuildDate>Fri, 10 Feb 2012 05:00:00 UT</lastBuildDate>
   <pubDate>Fri, 10 Feb 2012 05:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Playing with pandas</title>
-   <link>https://wlach.github.io/blog/2012/02/playing-with-pandas/?utm_source=Pandaboard&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2012-02-playing-with-pandas</guid>
+   <link>http://www.example.com/2012/02/playing-with-pandas.html?utm_source=Pandaboard&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2012-02-playing-with-pandas-html</guid>
    <pubDate>Fri, 10 Feb 2012 05:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;For the last few days I&amp;#8217;ve been experimenting with getting a Pandaboard running Android 4.0, continuing the work that Clint Talbert &lt;a href="http://cmtalbert.wordpress.com/2011/10/12/pandaboard-status/"&gt;started in the fall&lt;/a&gt; to get these boards for use as a replacement for the Tegra in Mozilla&amp;#8217;s android automation. The first objective is to get a reproducible build going, after that we&amp;#8217;ll try to get some of our custom tools (&lt;a href="https://wiki.mozilla.org/Mobile/Fennec_Unittests/Remote_Testing"&gt;SUTAgent&lt;/a&gt; &amp;#38; friends) installed by default.&lt;/p&gt;

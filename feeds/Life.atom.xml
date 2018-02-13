@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Life'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Life.atom.xml" />
- <link href="https://wlach.github.io/tags/Life.html" />
- <id>urn:https-wlach-github-io:-tags-Life-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Life'</title>
+ <link rel="self" href="http://www.example.com/feeds/Life.atom.xml" />
+ <link href="http://www.example.com/tags/Life.html" />
+ <id>urn:http-www-example-com:-tags-Life-html</id>
  <updated>2011-11-01T04:00:00Z</updated>
  <entry>
   <title type="text">Weirdest (and saddest) unsolicited email ever</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/11/weirdest-and-saddest-unsolicited-email-ever/?utm_source=Life&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-11-weirdest-and-saddest-unsolicited-email-ever</id>
+  <link rel="alternate" href="http://www.example.com/2011/11/weirdest-and-saddest-unsolicited-email-ever.html?utm_source=Life&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-11-weirdest-and-saddest-unsolicited-email-ever-html</id>
   <published>2011-11-01T04:00:00Z</published>
   <updated>2011-11-01T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Got this exceedingly strange e-mail yesterday. It&amp;#8217;s almost a bit tragic. Anyone else seen gotten this?&lt;/p&gt;
 
@@ -28,12 +28,12 @@
   &lt;br /&gt;XXXXXX&lt;/p&gt;&lt;/blockquote&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Changes!</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/09/changes/?utm_source=Life&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-09-changes</id>
+  <link rel="alternate" href="http://www.example.com/2011/09/changes.html?utm_source=Life&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-09-changes-html</id>
   <published>2011-09-01T04:00:00Z</published>
   <updated>2011-09-01T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;A bit quiet here for the last few months. What&amp;#8217;s been happening?&lt;/p&gt;
 
@@ -47,12 +47,12 @@
 &lt;p&gt;In short, life has been treating me really well! More updates soon.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Changes</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2009/12/changes/?utm_source=Life&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2009-12-changes</id>
+  <link rel="alternate" href="http://www.example.com/2009/12/changes.html?utm_source=Life&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2009-12-changes-html</id>
   <published>2009-12-15T05:00:00Z</published>
   <updated>2009-12-15T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt;&lt;a href="http://www.flickr.com/photos/wlach/3815025020/" title="photo sharing"&gt;&lt;img src="http://farm3.static.flickr.com/2559/3815025020_abf7b8b50c_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt;
  &lt;br /&gt; 

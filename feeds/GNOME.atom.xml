@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'GNOME'</title>
- <link rel="self" href="https://wlach.github.io/feeds/GNOME.atom.xml" />
- <link href="https://wlach.github.io/tags/GNOME.html" />
- <id>urn:https-wlach-github-io:-tags-GNOME-html</id>
+ <title type="text">Untitled Site: Posts tagged 'GNOME'</title>
+ <link rel="self" href="http://www.example.com/feeds/GNOME.atom.xml" />
+ <link href="http://www.example.com/tags/GNOME.html" />
+ <id>urn:http-www-example-com:-tags-GNOME-html</id>
  <updated>2013-04-19T04:00:00Z</updated>
  <entry>
   <title type="text">The need for a modern open source email client and Geary&amp;#8217;s fundraiser</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser/?utm_source=GNOME&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2013-04-the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser</id>
+  <link rel="alternate" href="http://www.example.com/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser.html?utm_source=GNOME&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2013-04-the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser-html</id>
   <published>2013-04-19T04:00:00Z</published>
   <updated>2013-04-19T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;div class="figure"&gt;&lt;img src="http://www.yorba.org/images/igg/geary-2.png" alt="" /&gt;
  &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
@@ -22,12 +22,12 @@
 &lt;p&gt;The &lt;a href="http://yorba.org"&gt;Yorba&lt;/a&gt; non-profit recently started a &lt;a href="http://www.indiegogo.com/projects/geary-a-beautiful-modern-open-source-email-client"&gt;fundraiser&lt;/a&gt; to work on the next edition of Geary, an email client which I hope will fill the niche that I&amp;#8217;m talking about. It&amp;#8217;s pretty rough around the edges still, but even at this early stage the conversation view is beautiful and more or less exactly what I want. The example of Shotwell (their photo management application) suggests that they know a thing or two about creating robust and useable software, not a common thing in this day and age. In any case, their pitch was compelling enough for me to donate a few dollars to the cause. If you care about having a great email experience that is completely under your control (and not that of an advertising or product company with their own agenda), then maybe you could too?&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Icon metaphor fail</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2009/08/icon-metaphor-fail/?utm_source=GNOME&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2009-08-icon-metaphor-fail</id>
+  <link rel="alternate" href="http://www.example.com/2009/08/icon-metaphor-fail.html?utm_source=GNOME&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2009-08-icon-metaphor-fail-html</id>
   <published>2009-08-21T04:00:00Z</published>
   <updated>2009-08-21T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Started to use a new piece of hardware at the Navarra office today, which resulted in the following gem being added to the GNOME notification area. Would anyone care to guess what the following icon is supposed to represent?
  &lt;figure id="attachment_54" style="width: 277px" class="wp-caption alignleft"&gt;&lt;img src="/files/2009/08/dock-icon-fail.jpg" alt="Image of crazy status icon in notification area" title="dock-icon-fail" width="277" height="35" class="size-full wp-image-54" /&gt;

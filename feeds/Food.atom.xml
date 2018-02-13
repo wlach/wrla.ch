@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Food'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Food.atom.xml" />
- <link href="https://wlach.github.io/tags/Food.html" />
- <id>urn:https-wlach-github-io:-tags-Food-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Food'</title>
+ <link rel="self" href="http://www.example.com/feeds/Food.atom.xml" />
+ <link href="http://www.example.com/tags/Food.html" />
+ <id>urn:http-www-example-com:-tags-Food-html</id>
  <updated>2010-11-19T05:00:00Z</updated>
  <entry>
   <title type="text">Ginger Tea and Channa Masala</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2010/11/ginger-tea-and-channa-masala/?utm_source=Food&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2010-11-ginger-tea-and-channa-masala</id>
+  <link rel="alternate" href="http://www.example.com/2010/11/ginger-tea-and-channa-masala.html?utm_source=Food&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2010-11-ginger-tea-and-channa-masala-html</id>
   <published>2010-11-19T05:00:00Z</published>
   <updated>2010-11-19T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt;&lt;a href="http://www.flickr.com/photos/wlach/5189171392/" title="photo sharing"&gt;&lt;img src="http://farm5.static.flickr.com/4021/5189171392_233fef17d9_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt;
  &lt;br /&gt; 

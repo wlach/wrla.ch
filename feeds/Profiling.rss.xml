@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Profiling'</title>
-  <description>William Lachance's Log: Posts tagged 'Profiling'</description>
-  <link>https://wlach.github.io/tags/Profiling.html</link>
+  <title>Untitled Site: Posts tagged 'Profiling'</title>
+  <description>Untitled Site: Posts tagged 'Profiling'</description>
+  <link>http://www.example.com/tags/Profiling.html</link>
   <lastBuildDate>Tue, 25 Sep 2012 04:00:00 UT</lastBuildDate>
   <pubDate>Tue, 25 Sep 2012 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Say hello to frof</title>
-   <link>https://wlach.github.io/blog/2012/09/say-hello-to-frof/?utm_source=Profiling&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2012-09-say-hello-to-frof</guid>
+   <link>http://www.example.com/2012/09/say-hello-to-frof.html?utm_source=Profiling&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2012-09-say-hello-to-frof-html</guid>
    <pubDate>Tue, 25 Sep 2012 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Inspired by the work I&amp;#8217;d been doing with Benoit Girard to &lt;a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/"&gt;integrate the Firefox Profiler with Eideticker&lt;/a&gt;, I decided to create an easy-to-use python script to help with gathering profiles on Fennec, which I call &lt;a href="https://github.com/wlach/frof"&gt;frof&lt;/a&gt;.&lt;/p&gt;

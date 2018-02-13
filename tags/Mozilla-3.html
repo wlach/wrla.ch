@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <title>Posts tagged 'Mozilla' (page 3)</title>
     <meta name="description" content="Posts tagged 'Mozilla' (page 3)">
-    <meta name="author"      content="William Lachance">
+    <meta name="author"      content="The Unknown Author">
     <meta name="keywords"    content="Mozilla">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/tags/Mozilla-3.html">
+    <link rel="canonical" href="http://www.example.com/tags/Mozilla-3.html">
 
 
     <!-- CSS -->
@@ -175,7 +175,7 @@
 
 <li><a href="/tags/zen.html">zen</a></li>
 
-<li><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a></li>
+<li><a href="/tags/Île-Sans-Fil.html">Île Sans Fil</a></li>
               </ul>
             </li>
             <li>
@@ -197,8 +197,55 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
+    <h2><a href='/2015/11/perfherder-onward.html'>Perfherder: Onward!</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 4th, 2015</p>
+  </header>
+
+<p>In addition to the <a href="http://wrla.ch/blog/2015/10/the-new-old-perfherder-data-model/">database refactoring</a> I mentioned a few weeks ago, some cool stuff has been going into <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a> lately.</p>
+
+<p><strong>Tracking installer size</strong></p>
+
+<p>Perfherder is now tracking the size of the Firefox installer for the various platforms we support (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1149164">bug 1149164</a>). I originally only intended to track Android .APK size (on request from the mobile team), but installer sizes for other platforms came along for the ride. I don&#8217;t think anyone will complain.</p>
+
+<p><a href="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM.png"><img src="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-300x181.png" alt="Screen Shot 2015-11-03 at 5.28.48 PM" width="300" height="181" class="alignnone size-medium wp-image-1274" srcset="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-300x181.png 300w, /files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-1024x618.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+
+<p><a href="https://treeherder.mozilla.org/perf.html#/graphs?series=[mozilla-inbound,4eb0cde5431ee9aeb5eb14512ddb3da6d4702cf0,1]&amp;#038;series=[mozilla-inbound,80cac7ef44b76864458627c574af1a18a425f338,1]&amp;#038;series=[mozilla-inbound,0060252bdfb7632df5877b7594b4d16f1b5ca4c9,1]">link</a></p>
+
+<p>Just as exciting to me as the feature itself is how it&#8217;s implemented: I added a log parser to treeherder which just picks up a line called &#8220;PERFHERDER_DATA&#8221; in the logs with specially formatted JSON data, and then automatically stores whatever metrics are in there in the database (platform, options, etc. are automatically determined). For example, on Linux:</p>
+
+<pre><code>PERFHERDER_DATA: {"framework": {"name": "build_metrics"}, "suites": [{"subtests": [{"name": "libxul.so", "value": 99030741}], "name": "installer size", "value": 55555785}]}</code></pre>
+
+<p>This should make it super easy for people to add their own metrics to Perfherder for build and test jobs. We&#8217;ll have to be somewhat careful about how we do this (we don&#8217;t want to add thousands of new series with irrelevant / inconsistent data) but I think there&#8217;s lots of potential here to be able to track things we care about on a per-commit basis. Maybe build times (?).</p>
+
+<p><strong>More compare view improvements</strong></p>
+
+<p>I added filtering to the Perfherder compare view and added back links to the graphs view. Filtering should make it easier to highlight particular problematic tests in bug reports, etc. The graphs links shouldn&#8217;t really be necessary, but unfortunately are due to the unreliability of our data &#8212; sometimes you can only see if a particular difference between two revisions is worth paying attention to in the context of the numbers over the last several weeks.</p>
+
+<p><a href="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM.png"><img src="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-300x157.png" alt="Screen Shot 2015-11-03 at 5.37.02 PM" width="300" height="157" class="alignnone size-medium wp-image-1275" srcset="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-300x157.png 300w, /files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-1024x536.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+
+<p><strong>Miscellaneous</strong></p>
+
+<p>Even after the <a href="http://wrla.ch/blog/2015/09/perfherder-summer-of-contribution-thoughts/">summer of contribution</a> has ended, Mike Ling continues to do great work. Looking at the commit log over the past few weeks, he&#8217;s been responsible for the following fixes and improvements:</p>
+
+<ul>
+ <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1218825">Bug 1218825</a>: Can zoom in on perfherder graphs by selecting the main view</li>
+ <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1207309">Bug 1207309</a>: Disable &#8216;&lt;&rsquo; button in test chooser if no test selected</li>
+ <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1210503">Bug 1210503</a> &#8211; Include non-summary tests in main comparison view</li>
+ <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1153956">Bug 1153956</a> &#8211; Persist the selected revision in the url on perfherder (based on earlier work by Akhilesh Pillai)</li></ul>
+
+<p><strong>Next up</strong></p>
+
+<p>My main goal for this quarter is to create a fully functional interface for actually sheriffing performance regressions, to replace <a href="http://alertmanager.allizom.org:8080/alerts.html">alertmanager</a>. Work on this has been going well. More soon.</p>
+
+<p><a href="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png"><img src="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png" alt="Screen Shot 2015-11-04 at 10.41.26 AM" width="300" height="176" class="alignnone size-medium wp-image-1280" srcset="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png 300w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-1024x600.png 1024w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png 1126w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a>, <a href="/tags/SQL.html">SQL</a></span></p>
-    <h2><a href='/blog/2015/10/the-new-old-perfherder-data-model/'>The new old Perfherder data model</a></h2>
+    <h2><a href='/2015/10/the-new-old-perfherder-data-model.html'>The new old Perfherder data model</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 23rd, 2015</p>
   </header>
 
@@ -258,7 +305,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Community.html">Community</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/09/perfherder-summer-of-contribution-thoughts/'>Perfherder summer of contribution thoughts</a></h2>
+    <h2><a href='/2015/09/perfherder-summer-of-contribution-thoughts.html'>Perfherder summer of contribution thoughts</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 29th, 2015</p>
   </header>
 
@@ -305,7 +352,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/08/more-perfherder-updates/'>More Perfherder updates</a></h2>
+    <h2><a href='/2015/08/more-perfherder-updates.html'>More Perfherder updates</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 7th, 2015</p>
   </header>
 
@@ -393,7 +440,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/07/perfherder-update/'>Perfherder update</a></h2>
+    <h2><a href='/2015/07/perfherder-update.html'>Perfherder update</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 14th, 2015</p>
   </header>
 
@@ -437,7 +484,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Python.html">Python</a></span></p>
-    <h2><a href='/blog/2015/04/pycon-2015/'>PyCon 2015</a></h2>
+    <h2><a href='/2015/04/pycon-2015.html'>PyCon 2015</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 23rd, 2015</p>
   </header>
 
@@ -465,7 +512,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/03/perfherder-update-summary-series-drilldown/'>Perfherder update: Summary series drilldown</a></h2>
+    <h2><a href='/2015/03/perfherder-update-summary-series-drilldown.html'>Perfherder update: Summary series drilldown</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 27th, 2015</p>
   </header>
 
@@ -492,7 +539,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/'>Measuring e10s vs. non-e10s performance with Perfherder</a></h2>
+    <h2><a href='/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder.html'>Measuring e10s vs. non-e10s performance with Perfherder</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 18th, 2015</p>
   </header>
 
@@ -512,7 +559,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
-    <h2><a href='/blog/2015/01/mozregression-updates/'>mozregression updates</a></h2>
+    <h2><a href='/2015/01/mozregression-updates.html'>mozregression updates</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 27th, 2015</p>
   </header>
 
@@ -535,7 +582,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Web.html">Web</a></span></p>
-    <h2><a href='/blog/2014/09/using-flexbox-in-web-applications/'>Using Flexbox in web applications</a></h2>
+    <h2><a href='/2014/09/using-flexbox-in-web-applications.html'>Using Flexbox in web applications</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 29th, 2014</p>
   </header>
 
@@ -551,25 +598,6 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <p>Flexbox has pretty much put an end to these problems for me. There&#8217;s no longer any need to &#8220;give up and use tables&#8221; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&#8217;re so great. I think we&#8217;re pretty close to Flexbox being supported across all the major browsers, so it&#8217;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.</p>
 
 <p>To try and spread the word, I wrote up <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications">a howto article on using flexbox for web applications on MDN</a>, covering some of the common use cases I mention above. If you&#8217;ve been curious about flexbox but unsure how to use it, please have a look.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
-    <h2><a href='/blog/2014/09/mozregression-0-24/'>mozregression 0.24</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 15th, 2014</p>
-  </header>
-
-<p>I just released <a href="http://mozilla.github.io/mozregression/">mozregression</a> 0.24. This would be a good time to note some of the user-visible fixes / additions that have gone in recently:</p>
-
-<ol>
- <li>
-  <p>Thanks to Sam Garrett, you can now specify a different branch other than inbound to get finer grained regression ranges from. E.g. if you&#8217;re pretty sure a regression occurred on fx-team, you can do something like:   <code>mozregression --inbound-branch fx-team -g 2014-09-13 -b 2014-09-14</code></p></li>
- <li>Fixed a bug where we could get an incorrect regression range (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1059856">bug 1059856</a>). Unfortunately the root cause of the bug is still open (it&#8217;s a bit tricky to match mozilla-central commits to that of other branches) but I think this most recent fix should make things work in 99.9% of cases. Let me know if I&#8217;m wrong.</li>
- <li>Thanks to Julien Pagès, we now download the inbound build metadata in parallel, which speeds up inbound bisection quite significantly</li></ol>
-
-<p>If you know a bit of python, contributing to mozregression is a great way to have a high impact on Mozilla. Many platform developers use this project in their day-to-day work, but there&#8217;s still <a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;#038;product=Testing">lots of room for improvement</a>.</p>
 
 </article>
 

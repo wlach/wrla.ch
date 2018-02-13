@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Video'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Video.atom.xml" />
- <link href="https://wlach.github.io/tags/Video.html" />
- <id>urn:https-wlach-github-io:-tags-Video-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Video'</title>
+ <link rel="self" href="http://www.example.com/feeds/Video.atom.xml" />
+ <link href="http://www.example.com/tags/Video.html" />
+ <id>urn:http-www-example-com:-tags-Video-html</id>
  <updated>2012-05-07T04:00:00Z</updated>
  <entry>
   <title type="text">Ghetto retroscope with ffmpeg and the &amp;lt;video&amp;gt; tag</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/?utm_source=Video&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2012-05-ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag</id>
+  <link rel="alternate" href="http://www.example.com/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag.html?utm_source=Video&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2012-05-ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag-html</id>
   <published>2012-05-07T04:00:00Z</published>
   <updated>2012-05-07T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;So yesterday we had a small get-together at my place, which gave me the opportunity to try something I&amp;#8217;d been meaning to do for a while: build my own retroscope.&lt;/p&gt;
 

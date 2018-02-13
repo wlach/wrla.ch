@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Talos'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Talos.atom.xml" />
- <link href="https://wlach.github.io/tags/Talos.html" />
- <id>urn:https-wlach-github-io:-tags-Talos-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Talos'</title>
+ <link rel="self" href="http://www.example.com/feeds/Talos.atom.xml" />
+ <link href="http://www.example.com/tags/Talos.html" />
+ <id>urn:http-www-example-com:-tags-Talos-html</id>
  <updated>2016-02-13T19:28:47Z</updated>
  <entry>
   <title type="text">Talos suites now visible from trychooser</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2016/02/talos-suites-now-visible-from-trychooser/?utm_source=Talos&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2016-02-talos-suites-now-visible-from-trychooser</id>
+  <link rel="alternate" href="http://www.example.com/2016/02/talos-suites-now-visible-from-trychooser.html?utm_source=Talos&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2016-02-talos-suites-now-visible-from-trychooser-html</id>
   <published>2016-02-13T19:28:47Z</published>
   <updated>2016-02-13T19:28:47Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;It&amp;rsquo;s a small thing, but I submitted a patch to &lt;a href="http://trychooser.pub.build.mozilla.org/"&gt;trychooser&lt;/a&gt; last week which adds a tooltip indicating the actual Talos tests that are run as part of the various jobs that you can schedule as part of a try push. It&amp;rsquo;s in production as of now:&lt;/p&gt;
 

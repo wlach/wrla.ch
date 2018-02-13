@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Open Data'</title>
-  <description>William Lachance's Log: Posts tagged 'Open Data'</description>
-  <link>https://wlach.github.io/tags/Open-Data.html</link>
+  <title>Untitled Site: Posts tagged 'Open Data'</title>
+  <description>Untitled Site: Posts tagged 'Open Data'</description>
+  <link>http://www.example.com/tags/Open-Data.html</link>
   <lastBuildDate>Wed, 14 Dec 2011 05:00:00 UT</lastBuildDate>
   <pubDate>Wed, 14 Dec 2011 05:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>An API for AMT data</title>
-   <link>https://wlach.github.io/blog/2011/12/an-api-for-amt-data/?utm_source=Open-Data&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-12-an-api-for-amt-data</guid>
+   <link>http://www.example.com/2011/12/an-api-for-amt-data.html?utm_source=Open-Data&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-12-an-api-for-amt-data-html</guid>
    <pubDate>Wed, 14 Dec 2011 05:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;The &lt;a href="http://www.amt.qc.ca"&gt;AMT&lt;/a&gt; released their &lt;a href="http://t.co/AofpyI4E"&gt;GTFS schedule information&lt;/a&gt; to the public earlier this week, which is awesome. Not coincidentally, Montreal is going to have a &lt;a href="http://transportationcamp.org/montreal/"&gt;Transportation Camp&lt;/a&gt; tomorrow, wherein people will hack on transportation software and discuss open data issues.&lt;/p&gt;
@@ -30,8 +30,8 @@
 &lt;p&gt;&lt;a href="http://amt.wrla.ch/blog/api/v1/place/45.49640,%20-73.57567/upcoming_stoptimes?distance=1000"&gt;http://amt.wrla.ch/blog/api/v1/place/45.49640,%20-73.57567/upcoming_stoptimes?distance=1000&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Updates on my ridiculous pet projects</title>
-   <link>https://wlach.github.io/blog/2011/09/updates-on-my-ridiculous-pet-projects/?utm_source=Open-Data&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-09-updates-on-my-ridiculous-pet-projects</guid>
+   <link>http://www.example.com/2011/09/updates-on-my-ridiculous-pet-projects.html?utm_source=Open-Data&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-09-updates-on-my-ridiculous-pet-projects-html</guid>
    <pubDate>Thu, 29 Sep 2011 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;ol&gt;
@@ -45,8 +45,8 @@
   &lt;p&gt;I have a lettuce plant growing on my new balcony. It&amp;#8217;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Template for a map-based web app</title>
-   <link>https://wlach.github.io/blog/2011/06/template-for-a-map-based-web-app/?utm_source=Open-Data&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-06-template-for-a-map-based-web-app</guid>
+   <link>http://www.example.com/2011/06/template-for-a-map-based-web-app.html?utm_source=Open-Data&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-06-template-for-a-map-based-web-app-html</guid>
    <pubDate>Fri, 03 Jun 2011 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Finally got around doing something I&amp;#8217;d meaning to for a while, which is create a simple template for a web-based mapping application based on jQuery and some of my earlier work on &lt;a href="https://github.com/wlach/routez"&gt;routez&lt;/a&gt;. I&amp;#8217;m hoping this might be useful as a starter for a few open data applications!&lt;/p&gt;
@@ -56,8 +56,8 @@
 &lt;p&gt;&lt;a href="http://wlach.wrla.ch/blog/Map-Layout-Template/"&gt;Preview&lt;/a&gt; &lt;a href="https://github.com/wlach/Map-Layout-Template"&gt;Source&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Routez opensourced</title>
-   <link>https://wlach.github.io/blog/2011/04/routez-opensourced/?utm_source=Open-Data&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-04-routez-opensourced</guid>
+   <link>http://www.example.com/2011/04/routez-opensourced.html?utm_source=Open-Data&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-04-routez-opensourced-html</guid>
    <pubDate>Tue, 19 Apr 2011 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Just a quick note to say that I just opensourced the software behind &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt;, nicknamed &amp;#8220;Routez&amp;#8221; under the &lt;a href="http://www.affero.org/oagpl.html"&gt;Affero GPL&lt;/a&gt;. You can get the code on &lt;a href="http://github.com/wlach/routez"&gt;github&lt;/a&gt;.&lt;/p&gt;
@@ -84,8 +84,8 @@
 &lt;p&gt;Even with these problems, I figured it would be better to open up what I have for people to check out and play with. Have a look and let me know what you think!&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>D&amp;eacute;chets Montr&amp;eacute;al goes mobile</title>
-   <link>https://wlach.github.io/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile/?utm_source=Open-Data&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile</guid>
+   <link>http://www.example.com/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile.html?utm_source=Open-Data&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile-html</guid>
    <pubDate>Sat, 19 Feb 2011 05:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;A few weekends ago, there was a &lt;a href="http://montrealouvert.net/"&gt;Montr&amp;eacute;al Ouvert&lt;/a&gt; hackfest at the &lt;a href="http://notmanhouse.com"&gt;Notman House&lt;/a&gt;. I decided to take a bit of a break from my usual transit hacking and built up a mobile friendly interface to the wonderful &lt;a href="http://dechetsmontreal.ca/"&gt;D&amp;eacute;chets Montr&amp;eacute;al&lt;/a&gt;, which lets residents easily get information on their garbage collection schedule.&lt;/p&gt;

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Business'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Business.atom.xml" />
- <link href="https://wlach.github.io/tags/Business.html" />
- <id>urn:https-wlach-github-io:-tags-Business-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Business'</title>
+ <link rel="self" href="http://www.example.com/feeds/Business.atom.xml" />
+ <link href="http://www.example.com/tags/Business.html" />
+ <id>urn:http-www-example-com:-tags-Business-html</id>
  <updated>2011-11-18T05:00:00Z</updated>
  <entry>
   <title type="text">Hellofax rocks my world</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/11/hellofax-rocks-my-world/?utm_source=Business&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-11-hellofax-rocks-my-world</id>
+  <link rel="alternate" href="http://www.example.com/2011/11/hellofax-rocks-my-world.html?utm_source=Business&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-11-hellofax-rocks-my-world-html</id>
   <published>2011-11-18T05:00:00Z</published>
   <updated>2011-11-18T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;It&amp;#8217;s kind of rare for me to pimp out products and services on my blog, but I&amp;#8217;m going to do so just this once.&lt;/p&gt;
 

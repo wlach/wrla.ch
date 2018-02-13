@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'SQL'</title>
-  <description>William Lachance's Log: Posts tagged 'SQL'</description>
-  <link>https://wlach.github.io/tags/SQL.html</link>
+  <title>Untitled Site: Posts tagged 'SQL'</title>
+  <description>Untitled Site: Posts tagged 'SQL'</description>
+  <link>http://www.example.com/tags/SQL.html</link>
   <lastBuildDate>Fri, 23 Oct 2015 04:00:00 UT</lastBuildDate>
   <pubDate>Fri, 23 Oct 2015 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>The new old Perfherder data model</title>
-   <link>https://wlach.github.io/blog/2015/10/the-new-old-perfherder-data-model/?utm_source=SQL&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-10-the-new-old-perfherder-data-model</guid>
+   <link>http://www.example.com/2015/10/the-new-old-perfherder-data-model.html?utm_source=SQL&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2015-10-the-new-old-perfherder-data-model-html</guid>
    <pubDate>Fri, 23 Oct 2015 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;I spent a good chunk of time last quarter redesigning how &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; stores its data internally. Here are some notes on this change, for posterity.&lt;/p&gt;

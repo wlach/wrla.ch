@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Docker'</title>
-  <description>William Lachance's Log: Posts tagged 'Docker'</description>
-  <link>https://wlach.github.io/tags/Docker.html</link>
+  <title>Untitled Site: Posts tagged 'Docker'</title>
+  <description>Untitled Site: Posts tagged 'Docker'</description>
+  <link>http://www.example.com/tags/Docker.html</link>
   <lastBuildDate>Fri, 02 Jun 2017 20:04:38 UT</lastBuildDate>
   <pubDate>Fri, 02 Jun 2017 20:04:38 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Using Docker to run automated tests</title>
-   <link>https://wlach.github.io/blog/2017/06/using-docker-to-run-automated-tests/?utm_source=Docker&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2017-06-using-docker-to-run-automated-tests</guid>
+   <link>http://www.example.com/2017/06/using-docker-to-run-automated-tests.html?utm_source=Docker&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2017-06-using-docker-to-run-automated-tests-html</guid>
    <pubDate>Fri, 02 Jun 2017 20:04:38 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;A couple months ago, I joined the Mozilla Data Platform team, to work on our &lt;a href="https://wiki.mozilla.org/Telemetry"&gt;Telemetry&lt;/a&gt; and automated data collection services. This has been an interesting transition for me, and a natural jumping off point from my work on &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder"&gt;Perfherder&lt;/a&gt;. Now, instead of manipulating mere 10s of gigabytes worth of fairly regular data, I&amp;rsquo;m working with 100s of terrabytes of noisy data with a much larger number of dimensions. :P It&amp;rsquo;s been interesting so far.&lt;/p&gt;

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Talos'</title>
-  <description>William Lachance's Log: Posts tagged 'Talos'</description>
-  <link>https://wlach.github.io/tags/Talos.html</link>
+  <title>Untitled Site: Posts tagged 'Talos'</title>
+  <description>Untitled Site: Posts tagged 'Talos'</description>
+  <link>http://www.example.com/tags/Talos.html</link>
   <lastBuildDate>Sat, 13 Feb 2016 19:28:47 UT</lastBuildDate>
   <pubDate>Sat, 13 Feb 2016 19:28:47 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Talos suites now visible from trychooser</title>
-   <link>https://wlach.github.io/blog/2016/02/talos-suites-now-visible-from-trychooser/?utm_source=Talos&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-02-talos-suites-now-visible-from-trychooser</guid>
+   <link>http://www.example.com/2016/02/talos-suites-now-visible-from-trychooser.html?utm_source=Talos&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2016-02-talos-suites-now-visible-from-trychooser-html</guid>
    <pubDate>Sat, 13 Feb 2016 19:28:47 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;It&amp;rsquo;s a small thing, but I submitted a patch to &lt;a href="http://trychooser.pub.build.mozilla.org/"&gt;trychooser&lt;/a&gt; last week which adds a tooltip indicating the actual Talos tests that are run as part of the various jobs that you can schedule as part of a try push. It&amp;rsquo;s in production as of now:&lt;/p&gt;

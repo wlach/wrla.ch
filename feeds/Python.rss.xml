@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Python'</title>
-  <description>William Lachance's Log: Posts tagged 'Python'</description>
-  <link>https://wlach.github.io/tags/Python.html</link>
+  <title>Untitled Site: Posts tagged 'Python'</title>
+  <description>Untitled Site: Posts tagged 'Python'</description>
+  <link>http://www.example.com/tags/Python.html</link>
   <lastBuildDate>Thu, 23 Apr 2015 04:00:00 UT</lastBuildDate>
   <pubDate>Thu, 23 Apr 2015 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>PyCon 2015</title>
-   <link>https://wlach.github.io/blog/2015/04/pycon-2015/?utm_source=Python&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-04-pycon-2015</guid>
+   <link>http://www.example.com/2015/04/pycon-2015.html?utm_source=Python&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2015-04-pycon-2015-html</guid>
    <pubDate>Thu, 23 Apr 2015 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;So I went to PyCon 2015. While I didn&amp;#8217;t leave quite as inspired as I did in 2014 (&lt;a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/"&gt;when I discovered iPython&lt;/a&gt;), it was a great experience and I learned a ton. Once again, I was incredibly impressed with the organization of the conference and the diversity and quality of the speakers.&lt;/p&gt;
@@ -33,8 +33,8 @@
 &lt;p&gt;I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>mozregression: New maintainer, issues tracked in bugzilla</title>
-   <link>https://wlach.github.io/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/?utm_source=Python&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2014-05-mozregression-new-maintainer-issues-tracked-in-bugzilla</guid>
+   <link>http://www.example.com/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla.html?utm_source=Python&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2014-05-mozregression-new-maintainer-issues-tracked-in-bugzilla-html</guid>
    <pubDate>Thu, 08 May 2014 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Just wanted to give some quick updates on &lt;a href="http://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt;, your favorite regression-finding tool for Firefox:&lt;/p&gt;
@@ -47,8 +47,8 @@
 &lt;p&gt;If you&amp;#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &amp;#8212; as I&amp;#8217;ve found out over the last few months, people &lt;em&gt;all over&lt;/em&gt; the Mozilla organization (managers, developers, QA &amp;#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>PyCon 2014 impressions: ipython notebook is the future &amp;#038; more</title>
-   <link>https://wlach.github.io/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/?utm_source=Python&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2014-04-pycon-2014-impressions-ipython-notebook-is-the-future-038-more</guid>
+   <link>http://www.example.com/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more.html?utm_source=Python&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2014-04-pycon-2014-impressions-ipython-notebook-is-the-future-038-more-html</guid>
    <pubDate>Tue, 22 Apr 2014 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;This year&amp;#8217;s PyCon US (&lt;a href="http://python.org"&gt;Python&lt;/a&gt; Conference) was in my city of residence (Montr&amp;eacute;al) so I took the opportunity to go and see what was up in the world of the language I use the most at Mozilla. It was pretty great!&lt;/p&gt;
@@ -81,8 +81,8 @@
  &lt;li&gt;&lt;a href="http://pyvideo.org/video/2658/analyzing-rap-lyrics-with-python"&gt;Analyzing Rap Lyrics with Python&lt;/a&gt; &amp;#8211; Another data analysis talk, this one about a subject I knew almost nothing about. The best part of it (for me anyway) was learning how the speaker (Julie Lavoie) narrowed her focus in her research to the exact aspects of the problem that would let her answer the question she was interested in (&amp;#8220;Can we automatically find out which rap lyrics are the most sexist?&amp;#8221;) as opposed to interesting problems (&amp;#8220;how can I design the most general scraping library possible?&amp;#8221;) that don&amp;#8217;t answer the question. In my opinion, this ability to focus is one of the key things that seperates successful projects from unsuccessful ones.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Catching problems early with python</title>
-   <link>https://wlach.github.io/blog/2012/10/catching-problems-early-with-python/?utm_source=Python&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2012-10-catching-problems-early-with-python</guid>
+   <link>http://www.example.com/2012/10/catching-problems-early-with-python.html?utm_source=Python&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2012-10-catching-problems-early-with-python-html</guid>
    <pubDate>Mon, 15 Oct 2012 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Just a few quick notes on how to avoid a class of errors I&amp;#8217;ve been seeing in Mozilla&amp;#8217;s automation over the last year. Since python interprets code dynamically, it&amp;#8217;s pretty easy for problems like undefined variables to slip through, especially if they&amp;#8217;re in a codepath that isn&amp;#8217;t frequently tested. The most recent example I found was in some cleanup-after-error code for remote mochitest/reftest, which tried to call &amp;#8220;self.cleanup&amp;#8221; from a standalone method.&lt;/p&gt;

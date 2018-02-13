@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Infraherder'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Infraherder.atom.xml" />
- <link href="https://wlach.github.io/tags/Infraherder.html" />
- <id>urn:https-wlach-github-io:-tags-Infraherder-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Infraherder'</title>
+ <link rel="self" href="http://www.example.com/feeds/Infraherder.atom.xml" />
+ <link href="http://www.example.com/tags/Infraherder.html" />
+ <id>urn:http-www-example-com:-tags-Infraherder-html</id>
  <updated>2016-08-17T20:18:12Z</updated>
  <entry>
   <title type="text">Herding Automation Infrastructure</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2016/08/herding-automation-infrastructure/?utm_source=Infraherder&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2016-08-herding-automation-infrastructure</id>
+  <link rel="alternate" href="http://www.example.com/2016/08/herding-automation-infrastructure.html?utm_source=Infraherder&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2016-08-herding-automation-infrastructure-html</id>
   <published>2016-08-17T20:18:12Z</published>
   <updated>2016-08-17T20:18:12Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;For every commit to Firefox, we run a battery of builds and automated tests on the resulting source tree to make sure that the result still works and meets our correctness and performance quality criteria. This is expensive: every new push to our repository implies hundreds of hours of machine time. However, automated quality control is essential to ensure that the product that we&amp;rsquo;re shipping to users is something that we can be proud of.&lt;/p&gt;
 

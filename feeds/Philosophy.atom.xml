@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Philosophy'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Philosophy.atom.xml" />
- <link href="https://wlach.github.io/tags/Philosophy.html" />
- <id>urn:https-wlach-github-io:-tags-Philosophy-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Philosophy'</title>
+ <link rel="self" href="http://www.example.com/feeds/Philosophy.atom.xml" />
+ <link href="http://www.example.com/tags/Philosophy.html" />
+ <id>urn:http-www-example-com:-tags-Philosophy-html</id>
  <updated>2013-09-25T04:00:00Z</updated>
  <entry>
   <title type="text">Early morning questions</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/09/early-morning-questions/?utm_source=Philosophy&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2013-09-early-morning-questions</id>
+  <link rel="alternate" href="http://www.example.com/2013/09/early-morning-questions.html?utm_source=Philosophy&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2013-09-early-morning-questions-html</id>
   <published>2013-09-25T04:00:00Z</published>
   <updated>2013-09-25T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Last night while I was lying in bed the mystery of my being here, present, again occurred to me. Pondered that a bit upon waking up. Let me formulate two mysteries that, as far as I know, no one has given really satisfactory answers to:&lt;/p&gt;
 

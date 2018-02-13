@@ -4,13 +4,38 @@
   <title>Untitled Site: Posts tagged 'Mission Control'</title>
   <description>Untitled Site: Posts tagged 'Mission Control'</description>
   <link>http://www.example.com/tags/Mission-Control.html</link>
-  <lastBuildDate>Wed, 06 Dec 2017 22:16:23 UT</lastBuildDate>
-  <pubDate>Wed, 06 Dec 2017 22:16:23 UT</pubDate>
+  <lastBuildDate>Mon, 12 Feb 2018 21:06:40 UT</lastBuildDate>
+  <pubDate>Mon, 12 Feb 2018 21:06:40 UT</pubDate>
   <ttl>1800</ttl>
   <item>
+   <title>Derived versus direct</title>
+   <link>http://www.example.com/2018/02/derived-versus-direct.html?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2018-02-derived-versus-direct-html</guid>
+   <pubDate>Mon, 12 Feb 2018 21:06:40 UT</pubDate>
+   <description>&lt;html&gt;
+&lt;p&gt;To attempt to make complex phenomena more understandable, we often use derived measures when representing Telemetry data at Mozilla. For error rates for example, we often measure things in terms of &amp;ldquo;X per khours of use&amp;rdquo; (where X might be &amp;ldquo;main crashes&amp;rdquo;, &amp;ldquo;appearance of the slow script dialogue&amp;rdquo;). I.e. instead of showing a raw &lt;em&gt;count&lt;/em&gt; of errors we show a rate. Normally this is a good thing: it allows the user to easily compare two things which might have different raw numbers for whatever reason but where you&amp;rsquo;d normally expect the ratio to be similar. For example, we see that although the &lt;em&gt;uptake&lt;/em&gt; of the newly-released Firefox 58.0.2 is a bit slower than 58.0.1, the overall crash rate (as sampled every 5 minutes) is more or less the same after about a day has rolled around:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2018/02/main_crashes_normalized.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the other hand, looking at raw counts doesn&amp;rsquo;t really give you much of a hint on how to interpret the results. Depending on the scale of the graph, the actual rates could actually resolve to being vastly different:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2018/02/main_crashes_raw.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ok, so this simple tool (using a ratio) is useful. Yay! Unfortunately, there is one case where using this technique can lead to a very deceptive visualization: when the number of samples is really small, a few outliers can give a really false impression of what&amp;rsquo;s really happening. Take this graph of what the crash rate looked like &lt;em&gt;just after&lt;/em&gt; Firefox 58.0 was released:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2018/02/relative_small_crash_counts.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;10 to 100 errors per 1000 hours, say it isn&amp;rsquo;t so? But wait, how many errors do we have absolutely? Hovering over a representative point in the graph with the normalization (use of a ratio) turned off:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2018/02/absolute_small_crash_counts.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&amp;rsquo;t (and shouldn&amp;rsquo;t) draw any kind of conclusion whatsoever.&lt;/p&gt;
+
+&lt;p&gt;Ok, so that&amp;rsquo;s just science 101: don&amp;rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &amp;mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.&lt;/p&gt;&lt;/html&gt;</description></item>
+  <item>
    <title>Maintaining metricsgraphics</title>
-   <link>http://www.example.com/blog/2017/12/maintaining-metricsgraphics/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-blog-2017-12-maintaining-metricsgraphics</guid>
+   <link>http://www.example.com/2017/12/maintaining-metricsgraphics.html?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2017-12-maintaining-metricsgraphics-html</guid>
    <pubDate>Wed, 06 Dec 2017 22:16:23 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Just a quick announcement that I&amp;rsquo;ve taken it upon myself to assume some maintership duties of the popular &lt;a href="https://github.com/mozilla/metrics-graphics"&gt;MetricsGraphics&lt;/a&gt; library and have released a &lt;a href="https://www.npmjs.com/package/metrics-graphics"&gt;new version&lt;/a&gt; with some bug fixes (2.12.0). We use this package pretty extensively at Mozilla for visualizing telemetry and other time series data, but its original authors (Hamilton Ulmer and Ali Almossawi) have mostly moved on to other things so there was a bit of a gap in getting fixes and improvements in that I hope to fill.&lt;/p&gt;
@@ -20,8 +45,8 @@
 &lt;p&gt;Note that this emphatically does &lt;em&gt;not&lt;/em&gt; mean I am promising to respond to every issue/question/pull request made against the project. Like my work with mozregression and perfherder, my maintenance work is being done on a best-effort basis to support Mozilla and the larger open source community. I&amp;rsquo;ll help people out where I can, but there are only so many working hours in a day and I need to spend most of those pushing my team&amp;rsquo;s immediate projects and deliverables forward! In particular, when it comes to getting pull requests merged, small, self-contained and logical changes with good commit messages will take priority.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Better or worse: by what measure?</title>
-   <link>http://www.example.com/blog/2017/10/better-or-worse-by-what-measure/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-blog-2017-10-better-or-worse-by-what-measure</guid>
+   <link>http://www.example.com/2017/10/better-or-worse-by-what-measure.html?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2017-10-better-or-worse-by-what-measure-html</guid>
    <pubDate>Thu, 26 Oct 2017 20:58:20 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Ok, after a series of posts extolling the virtues of my current project, it&amp;rsquo;s time to take a more critical look at some of its current limitations, and what we might do about them. In my &lt;a href="/blog/2017/10/mission-control/"&gt;introductory post&lt;/a&gt;, I talked about how Mission Control can let us know how &amp;ldquo;crashy&amp;rdquo; a new release is, within a short interval of it being released. I also alluded to the fact that things appear considerably worse when something first goes out, though I didn&amp;rsquo;t go into a lot of detail about how and why that happens.&lt;/p&gt;
@@ -70,8 +95,8 @@
 &lt;p&gt;Shout out to &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; for reviewing this post and providing feedback and additions.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Mission Control: Ready for contributions</title>
-   <link>http://www.example.com/blog/2017/10/mission-control-ready-for-contributions/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-blog-2017-10-mission-control-ready-for-contributions</guid>
+   <link>http://www.example.com/2017/10/mission-control-ready-for-contributions.html?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2017-10-mission-control-ready-for-contributions-html</guid>
    <pubDate>Fri, 20 Oct 2017 18:33:19 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;One of the great design decisions that was made for &lt;a href="https://treeherder.mozilla.org"&gt;Treeherder&lt;/a&gt; was a strict seperation of the client and server portions of the codebase. While its backend was moderately complicated to get up and running (especially into a state that looked at all like what we were running in production), you could get its web frontend running (pointed against the production data) just by starting up a simple node.js server. This dramatically lowered the barrier to entry, for Mozilla employees and casual contributors alike.&lt;/p&gt;
@@ -83,8 +108,8 @@
 &lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Mission Control</title>
-   <link>http://www.example.com/blog/2017/10/mission-control/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-blog-2017-10-mission-control</guid>
+   <link>http://www.example.com/2017/10/mission-control.html?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2017-10-mission-control-html</guid>
    <pubDate>Fri, 06 Oct 2017 19:05:37 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Time for an overdue post on the mission control project that I&amp;rsquo;ve been working on for the past few quarters, since I transitioned to the data platform team.&lt;/p&gt;

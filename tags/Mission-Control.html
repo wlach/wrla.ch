@@ -197,8 +197,37 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
+    <h2><a href='/2018/02/derived-versus-direct.html'>Derived versus direct</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 12th, 2018</p>
+  </header>
+
+<p>To attempt to make complex phenomena more understandable, we often use derived measures when representing Telemetry data at Mozilla. For error rates for example, we often measure things in terms of &ldquo;X per khours of use&rdquo; (where X might be &ldquo;main crashes&rdquo;, &ldquo;appearance of the slow script dialogue&rdquo;). I.e. instead of showing a raw <em>count</em> of errors we show a rate. Normally this is a good thing: it allows the user to easily compare two things which might have different raw numbers for whatever reason but where you&rsquo;d normally expect the ratio to be similar. For example, we see that although the <em>uptake</em> of the newly-released Firefox 58.0.2 is a bit slower than 58.0.1, the overall crash rate (as sampled every 5 minutes) is more or less the same after about a day has rolled around:</p>
+
+<p><img srcset="/files/2018/02/main_crashes_normalized.png" /></p>
+
+<p>On the other hand, looking at raw counts doesn&rsquo;t really give you much of a hint on how to interpret the results. Depending on the scale of the graph, the actual rates could actually resolve to being vastly different:</p>
+
+<p><img srcset="/files/2018/02/main_crashes_raw.png" /></p>
+
+<p>Ok, so this simple tool (using a ratio) is useful. Yay! Unfortunately, there is one case where using this technique can lead to a very deceptive visualization: when the number of samples is really small, a few outliers can give a really false impression of what&rsquo;s really happening. Take this graph of what the crash rate looked like <em>just after</em> Firefox 58.0 was released:</p>
+
+<p><img srcset="/files/2018/02/relative_small_crash_counts.png" /></p>
+
+<p>10 to 100 errors per 1000 hours, say it isn&rsquo;t so? But wait, how many errors do we have absolutely? Hovering over a representative point in the graph with the normalization (use of a ratio) turned off:</p>
+
+<p><img srcset="/files/2018/02/absolute_small_crash_counts.png" /></p>
+
+<p>We&rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&rsquo;t (and shouldn&rsquo;t) draw any kind of conclusion whatsoever.</p>
+
+<p>Ok, so that&rsquo;s just science 101: don&rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2017/12/maintaining-metricsgraphics/'>Maintaining metricsgraphics</a></h2>
+    <h2><a href='/2017/12/maintaining-metricsgraphics.html'>Maintaining metricsgraphics</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Dec 6th, 2017</p>
   </header>
 
@@ -213,7 +242,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2017/10/better-or-worse-by-what-measure/'>Better or worse: by what measure?</a></h2>
+    <h2><a href='/2017/10/better-or-worse-by-what-measure.html'>Better or worse: by what measure?</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 26th, 2017</p>
   </header>
 
@@ -267,7 +296,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2017/10/mission-control-ready-for-contributions/'>Mission Control: Ready for contributions</a></h2>
+    <h2><a href='/2017/10/mission-control-ready-for-contributions.html'>Mission Control: Ready for contributions</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 20th, 2017</p>
   </header>
 
@@ -284,7 +313,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2017/10/mission-control/'>Mission Control</a></h2>
+    <h2><a href='/2017/10/mission-control.html'>Mission Control</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 6th, 2017</p>
   </header>
 

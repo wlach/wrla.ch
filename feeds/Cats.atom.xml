@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Cats'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Cats.atom.xml" />
- <link href="https://wlach.github.io/tags/Cats.html" />
- <id>urn:https-wlach-github-io:-tags-Cats-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Cats'</title>
+ <link rel="self" href="http://www.example.com/feeds/Cats.atom.xml" />
+ <link href="http://www.example.com/tags/Cats.html" />
+ <id>urn:http-www-example-com:-tags-Cats-html</id>
  <updated>2014-03-02T05:00:00Z</updated>
  <entry>
   <title type="text">The highest form</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/03/the-highest-form/?utm_source=Cats&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-03-the-highest-form</id>
+  <link rel="alternate" href="http://www.example.com/2014/03/the-highest-form.html?utm_source=Cats&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2014-03-the-highest-form-html</id>
   <published>2014-03-02T05:00:00Z</published>
   <updated>2014-03-02T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;&lt;a href="/files/2014/03/friedrich_shikatanza.jpg"&gt;&lt;img src="/files/2014/03/friedrich_shikatanza.jpg" alt="friedrich_shikatanza" width="1024" height="768" class="alignnone size-full wp-image-1000" srcset="/files/2014/03/friedrich_shikatanza-300x225.jpg 300w, /files/2014/03/friedrich_shikatanza.jpg 1024w" sizes="(max-width: 1024px) 100vw, 1024px" /&gt;&lt;/a&gt;&lt;/p&gt;
 

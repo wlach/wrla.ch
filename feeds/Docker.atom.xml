@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Docker'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Docker.atom.xml" />
- <link href="https://wlach.github.io/tags/Docker.html" />
- <id>urn:https-wlach-github-io:-tags-Docker-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Docker'</title>
+ <link rel="self" href="http://www.example.com/feeds/Docker.atom.xml" />
+ <link href="http://www.example.com/tags/Docker.html" />
+ <id>urn:http-www-example-com:-tags-Docker-html</id>
  <updated>2017-06-02T20:04:38Z</updated>
  <entry>
   <title type="text">Using Docker to run automated tests</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/06/using-docker-to-run-automated-tests/?utm_source=Docker&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2017-06-using-docker-to-run-automated-tests</id>
+  <link rel="alternate" href="http://www.example.com/2017/06/using-docker-to-run-automated-tests.html?utm_source=Docker&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2017-06-using-docker-to-run-automated-tests-html</id>
   <published>2017-06-02T20:04:38Z</published>
   <updated>2017-06-02T20:04:38Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;A couple months ago, I joined the Mozilla Data Platform team, to work on our &lt;a href="https://wiki.mozilla.org/Telemetry"&gt;Telemetry&lt;/a&gt; and automated data collection services. This has been an interesting transition for me, and a natural jumping off point from my work on &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder"&gt;Perfherder&lt;/a&gt;. Now, instead of manipulating mere 10s of gigabytes worth of fairly regular data, I&amp;rsquo;m working with 100s of terrabytes of noisy data with a much larger number of dimensions. :P It&amp;rsquo;s been interesting so far.&lt;/p&gt;
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Business'</title>
-  <description>William Lachance's Log: Posts tagged 'Business'</description>
-  <link>https://wlach.github.io/tags/Business.html</link>
+  <title>Untitled Site: Posts tagged 'Business'</title>
+  <description>Untitled Site: Posts tagged 'Business'</description>
+  <link>http://www.example.com/tags/Business.html</link>
   <lastBuildDate>Fri, 18 Nov 2011 05:00:00 UT</lastBuildDate>
   <pubDate>Fri, 18 Nov 2011 05:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Hellofax rocks my world</title>
-   <link>https://wlach.github.io/blog/2011/11/hellofax-rocks-my-world/?utm_source=Business&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-11-hellofax-rocks-my-world</guid>
+   <link>http://www.example.com/2011/11/hellofax-rocks-my-world.html?utm_source=Business&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-11-hellofax-rocks-my-world-html</guid>
    <pubDate>Fri, 18 Nov 2011 05:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;It&amp;#8217;s kind of rare for me to pimp out products and services on my blog, but I&amp;#8217;m going to do so just this once.&lt;/p&gt;

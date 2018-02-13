@@ -3,13 +3,13 @@
   <head>
 
     <meta charset="utf-8">
-    <title>William Lachance's Log (page 8)</title>
-    <meta name="description" content="William Lachance's Log (page 8)">
-    <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="GoFaster, Talos, Social Media, Android, iphone, Counting, Community, MSF, Buddhism, Music, Performance, Transit to Go, Toronto, Web, Orangutan, Business, Ebola, Meditation, Profiling, ateam, Usability, hbus, zen, Free Software, WifiDog, FirefoxOS, Infraherder, Python, Food, Transit, Eideticker, Pandaboard, Cats, GNOME, Release Engineering, Video, Treeherder, Psychology, email, Coffee, Mission Control, Time, Meta, all, Life, Responsiveness, Open Data, SQL, Taskcluster, mozregression, Perfherder, BIXI, Mozilla, Nixi, Environment, Philosophy, Data Visualization, Île Sans Fil, Montreal, Docker">
+    <title>Untitled Site (page 8)</title>
+    <meta name="description" content="Untitled Site (page 8)">
+    <meta name="author"      content="The Unknown Author">
+    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Docker, Montreal, Coffee, Life, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Counting, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/index-8.html">
+    <link rel="canonical" href="http://www.example.com/index-8.html">
 
 
     <!-- CSS -->
@@ -175,7 +175,7 @@
 
 <li><a href="/tags/zen.html">zen</a></li>
 
-<li><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a></li>
+<li><a href="/tags/Île-Sans-Fil.html">Île Sans Fil</a></li>
               </ul>
             </li>
             <li>
@@ -197,8 +197,60 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Python.html">Python</a></span></p>
+    <h2><a href='/2012/10/catching-problems-early-with-python.html'>Catching problems early with python</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 15th, 2012</p>
+  </header>
+
+<p>Just a few quick notes on how to avoid a class of errors I&#8217;ve been seeing in Mozilla&#8217;s automation over the last year. Since python interprets code dynamically, it&#8217;s pretty easy for problems like undefined variables to slip through, especially if they&#8217;re in a codepath that isn&#8217;t frequently tested. The most recent example I found was in some cleanup-after-error code for remote mochitest/reftest, which tried to call &#8220;self.cleanup&#8221; from a standalone method.</p>
+
+<pre><code>def main():
+      ...
+      try:
+        dm.recordLogcat()
+        retVal = mochitest.runTests(options)
+        logcat = dm.getLogcat()
+      except:
+        print "TEST-UNEXPECTED-FAIL | %s | Exception caught while running tests." % sys.exc_info()[1]
+        mochitest.stopWebServer(options)
+        mochitest.stopWebSocketServer(options)
+        try:
+            self.cleanup(None, options)
+        except:
+            pass
+</code></pre>
+
+<p><a href="http://hg.mozilla.org/mozilla-central/file/942ed5747b63/testing/mochitest/runtestsremote.py#l481">testing/mochitest/runtestsremote.py</a></p>
+
+<p>We&#8217;re calling cleanup as if it were a class variable, but we&#8217;re not inside any class! It&#8217;s easy to see what will happen if you try to run some similar code from the python console:</p>
+
+<pre><code>&gt;&gt;&gt; self.cleanup()
+Traceback (most recent call last):
+  File "&amp;lt;stdin&gt;", line 1, in &amp;lt;module&gt;
+NameError: name 'self' is not defined</code></pre>
+
+<p>However, because we&#8217;re in a blanket try&#8230;except, we will never see an error. The cleanup code will never be called, instead the exception is immediately caught and subsequently ignored. Probably not the end of the world in this case (there are other parts of our mobile automation which will perform the same cleanup later), but it&#8217;s easy to imagine where this would be a more serious problem.</p>
+
+<p>There&#8217;s two very easy ways to help stop errors like this before they hit our code:</p>
+
+<ol>
+ <li>
+  <p>Try to avoid using a blanket try&#8230;except. In addition to catching legitimate problems which we want to ignore (in the remote case for example, devicemanager exceptions), it also catches (and thus obscures) things like syntax, name, or type errors. Instead, try just catching the specific exception you&#8217;re looking for. For example, we might rewrite the case above as:</p>``` try:</li></ol>
+
+<p> mochitest.cleanup(None, options) except devicemanager.DMError:  print &ldquo;WARNING: Device error while cleaning up&rdquo; <code>2. pyflakes, pyflakes, pyflakes. [Pyflakes][2] is a fantastic tool for analyzing your python code for common problems. It&amp;#8217;s kind of analagous to [jslint][3], for those of you familiar with that. Here&amp;#8217;s what happens when we run pyflakes against the offending code:</code> wlach@eideticker:~/src/mozilla-central$ pyflakes testing/mochitest/runtestsremote.py  testing/mochitest/runtestsremote.py:7: &lsquo;time&rsquo; imported but unused testing/mochitest/runtestsremote.py:481: undefined name &lsquo;self&rsquo; testing/mochitest/runtestsremote.py:500: undefined name &lsquo;self&rsquo; ```</p>
+
+<pre><code>I&amp;#8217;ve found pyflakes to be an indispensable part of my workflow. I generally run it after making any substantial change to a python file, and certainly before pushing anything to be consumed by others.</code></pre>
+
+<p>Ultimately there&#8217;s no substitute for actually thoroughly testing your code, no matter what language you&#8217;re using. But using the right techniques and tools can certainly make your life easier.</p>
+
+<p>[ for those wondering, a fix for the issue mentioned in this post is part of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=801652">bug 801652</a> ]</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Profiling.html">Profiling</a></span></p>
-    <h2><a href='/blog/2012/09/say-hello-to-frof/'>Say hello to frof</a></h2>
+    <h2><a href='/2012/09/say-hello-to-frof.html'>Say hello to frof</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 25th, 2012</p>
   </header>
 
@@ -222,7 +274,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/'>More Eideticker happenings: Profiling and startup testing</a></h2>
+    <h2><a href='/2012/09/more-eideticker-happenings-profiling-and-startup-testing.html'>More Eideticker happenings: Profiling and startup testing</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 13th, 2012</p>
   </header>
 
@@ -258,7 +310,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/'>Oh hai, I upergaded yer Eideticker</a></h2>
+    <h2><a href='/2012/09/oh-hai-i-upergaded-yer-eideticker.html'>Oh hai, I upergaded yer Eideticker</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 5th, 2012</p>
   </header>
 
@@ -279,7 +331,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Orangutan.html">Orangutan</a></span></p>
-    <h2><a href='/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans/'>The evolution of simulating events in Eideticker: from monkeys to orangutans</a></h2>
+    <h2><a href='/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans.html'>The evolution of simulating events in Eideticker: from monkeys to orangutans</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 10th, 2012</p>
   </header>
 
@@ -300,7 +352,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/'>Mobile Firefox: Measuring How a Browser Feels</a></h2>
+    <h2><a href='/2012/06/mobile-firefox-measuring-how-a-browser-feels.html'>Mobile Firefox: Measuring How a Browser Feels</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 26th, 2012</p>
   </header>
 
@@ -391,7 +443,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod/'>Mass code relicensing with facebook&#8217;s codemod</a></h2>
+    <h2><a href='/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod.html'>Mass code relicensing with facebook&#8217;s codemod</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 7th, 2012</p>
   </header>
 
@@ -410,7 +462,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Video.html">Video</a></span></p>
-    <h2><a href='/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/'>Ghetto retroscope with ffmpeg and the &lt;video&gt; tag</a></h2>
+    <h2><a href='/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag.html'>Ghetto retroscope with ffmpeg and the &lt;video&gt; tag</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 7th, 2012</p>
   </header>
 
@@ -437,7 +489,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/05/launching-random-web-browsers-on-android/'>Launching random web browsers on Android</a></h2>
+    <h2><a href='/2012/05/launching-random-web-browsers-on-android.html'>Launching random web browsers on Android</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 4th, 2012</p>
   </header>
 
@@ -481,7 +533,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/04/eideticker-with-less-eideticker/'>Eideticker with less eideticker</a></h2>
+    <h2><a href='/2012/04/eideticker-with-less-eideticker.html'>Eideticker with less eideticker</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 24th, 2012</p>
   </header>
 
@@ -520,25 +572,6 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <p>While the results aren&#8217;t identical (we measure number of frames differently inside Fennec than we do with Eideticker, for one thing), they do seem roughly correlated. So go forth, benchmark and tweak! 😉</p>
 
 <p>P.S. If you&#8217;ve been following mobile automation, you might be asking why I don&#8217;t just suggest running Talos and Robocop on your workstation. Can&#8217;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&#8217;re much more involved to set up and use at the moment. Arguably they shouldn&#8217;t be, and this is something we (<a href="https://wiki.mozilla.org/Auto-tools/">Mozilla tools &amp; automation</a>) need to work on. We&#8217;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/GoFaster.html">GoFaster</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Release-Engineering.html">Release Engineering</a></span></p>
-    <h2><a href='/blog/2012/04/gofaster-dashboard-back-online/'>GoFaster dashboard back online</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 19th, 2012</p>
-  </header>
-
-<p>Build times for mozilla-central are a major factor in developer productivity. Faster build times mean more people using try (reducing breakage) and more fine-grained regression ranges (reducing the impact of breakages). As a side benefit, it allows us to avoid buying and maintaining more hardware (or put new hardware to better use). About a half-year ago, we set up a project called BuildFaster to try to bring these times down, setting the ambitious goal of getting build times (from checkin to tests done) down to 2 hours. We didn&#8217;t quite succeed, though we did make some major strides. As part of this project, we also developed a dashboard to track our progress and narrow down the major bottlenecks which were keeping up our build times.</p>
-
-<p>Unfortunately, this dashboard went down earlier this year with the rest of Brasstacks and we hadn&#8217;t had the chance to bring it back up. I&#8217;m pleased to announce that thanks to Jonathan Griffin, it&#8217;s finally <a href="http://brasstacks.mozilla.com/gofaster/#/">back online</a>.</p>
-
-<p>While no one is actively working on build performance at the moment (at least to my knowledge), it&#8217;s still useful to keep track of build times to make sure that we don&#8217;t regress. Anecdotally, it has seemed to me that the time needed to get results from try has been pretty stable over the last while, and this is borne out by the results:</p>
-
-<p><a href="http://wrla.ch/blog/2012/04/gofaster-dashboard-back-online/gofaster-dashboard-update-2012/" rel="attachment wp-att-529"><img src="/files/2012/04/gofaster-dashboard-update-2012.png" alt="" title="gofaster-dashboard-update-2012" width="628" height="508" class="alignnone size-full wp-image-529" srcset="/files/2012/04/gofaster-dashboard-update-2012-300x242.png 300w, /files/2012/04/gofaster-dashboard-update-2012.png 628w" sizes="(max-width: 628px) 100vw, 628px" /></a></p>
-
-<p>As the cliche goes: no news is good news.</p>
 
 </article>
 

@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <title>Posts tagged 'Mozilla' (page 2)</title>
     <meta name="description" content="Posts tagged 'Mozilla' (page 2)">
-    <meta name="author"      content="William Lachance">
+    <meta name="author"      content="The Unknown Author">
     <meta name="keywords"    content="Mozilla">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/tags/Mozilla-2.html">
+    <link rel="canonical" href="http://www.example.com/tags/Mozilla-2.html">
 
 
     <!-- CSS -->
@@ -175,7 +175,7 @@
 
 <li><a href="/tags/zen.html">zen</a></li>
 
-<li><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a></li>
+<li><a href="/tags/Île-Sans-Fil.html">Île Sans Fil</a></li>
               </ul>
             </li>
             <li>
@@ -197,8 +197,55 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a>, <a href="/tags/Taskcluster.html">Taskcluster</a></span></p>
+    <h2><a href='/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation.html'>Easier reproduction of intermittent test failures in automation</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 5th, 2017</p>
+  </header>
+
+<p>As part of the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell">Stockwell project</a>, I&rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&rsquo;s often very difficult to reproduce an intermittent failure we see in Treeherder locally since the environment is so different, but historically it has been a big hassle to get access to the machines we use in automation for various reasons.</p>
+
+<p>One option that rolled out last year was the so-called one-click loaner, which enabled developers to sign out an virtual machine instance identical to the ones used to run unit tests (at least if the tests are running on Taskcluster, which is increasingly often the case), then execute their particular case with whatever extra debugging options they would find useful. This is a big step forward, but it&rsquo;s still quite a bit of hassle, since it requires a bunch of manual work on the part of the developer to interact with the instance.</p>
+
+<p>What if we could <em>just</em> re-run the particular test an arbitrary number of times with whatever options we wanted, simply by clicking on a few buttons on Treeherder? I&rsquo;ve been exploring this for the first few months of 2017 and I&rsquo;ve come up with a prototype which I think is ready for people to start playing with.</p>
+
+<p>The user interface to this is pretty straightforward. Just find a job you want to retrigger in Treeherder:</p>
+
+<p><img src="/files/2017/04/treeherder-selected-mochitest.png" /></p>
+
+<p>Then select the &rsquo;&hellip;&rsquo; option in the panel below and press &ldquo;Custom Action&hellip;&rdquo;:</p>
+
+<p><img src="/files/2017/04/treeherder-taskcluster-options.png" /></p>
+
+<p>You should get a small piece of JSON to edit, which corresponds to the configuration for the retriggered job:</p>
+
+<p><img src="/files/2017/04/treeherder-custom-action.png" /></p>
+
+<p>The main field to edit is &ldquo;path&rdquo;. You should set this to the name of the test you want to try retriggering. For example <code>dom/animation/test/css-transitions/test_animation-ready.html</code>. You can also set custom Firefox preferences and environment variables, to turn on different types of debugging.</p>
+
+<p>Unfortunately as usual with a new feature at Mozilla, there are a bunch of limitations and caveats:</p>
+
+<ul>
+ <li>This depends on functionality that&rsquo;s only in Taskcluster, so  buildbot jobs are exempt.</li>
+ <li>No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which hopefully isn&rsquo;t that far off).</li>
+ <li>Browser chrome tests failing in mysterious ways if run repeatedly  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347654">bug 1347654</a>)</li>
+ <li>Only reftest and mochitest are currently supported. XPCShell  support is blocked by the lack of support in its harness for  running a job repeatedly (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347696">bug 1347696</a>).  Web Platform Tests need the requisite support in mozharness for  just setting up the tests without running them &mdash; the same issue  that prevents us from debugging such tests with a one-click loaner  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348833">bug 1348833</a>).</li></ul>
+
+<p>Aside from fixing the above limitations, the following features would also be really nifty to have:</p>
+
+<ul>
+ <li>Ability to trigger a custom job as part of a try push (i.e.  not needing to retrigger off an existing job)</li>
+ <li>Run these jobs under rr, and provide a way to login and  interactively debug when the problem is actually reproduced.</li></ul>
+
+<p>I am actually in the process of moving to another team @ Mozilla (more on that in another post), so I probably won&rsquo;t have a ton of time to work on the above &mdash; but I&rsquo;d be happy to help anyone who&rsquo;s interested in developing this idea further.</p>
+
+<p>A special shout out to the <a href="https://wiki.mozilla.org/TaskCluster">Taskcluster</a> team for helping me with the development of this feature: in particular the action task implementation from <a href="https://jonasfj.dk/">Jonas Finnemann Jensen</a> that made it possible to develop this feature in the first place.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a></span></p>
-    <h2><a href='/blog/2017/02/cancel-all-the-things/'>Cancel all the things</a></h2>
+    <h2><a href='/2017/02/cancel-all-the-things.html'>Cancel all the things</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 7th, 2017</p>
   </header>
 
@@ -215,7 +262,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a></span></p>
-    <h2><a href='/blog/2016/11/training-an-autoclassifier/'>Training an autoclassifier</a></h2>
+    <h2><a href='/2016/11/training-an-autoclassifier.html'>Training an autoclassifier</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 28th, 2016</p>
   </header>
 
@@ -246,7 +293,7 @@
 5</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
+      <pre><span></span><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
   <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_step</span> <span class="k">as</span> <span class="n">tls</span> <span class="k">on</span> <span class="n">tls</span><span class="p">.</span><span class="n">job_id</span> <span class="o">=</span> <span class="n">bjm</span><span class="p">.</span><span class="n">job_id</span>
   <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_error</span> <span class="k">as</span> <span class="n">tle</span> <span class="k">on</span> <span class="n">tle</span><span class="p">.</span><span class="n">step_id</span> <span class="o">=</span> <span class="n">tls</span><span class="p">.</span><span class="n">id</span>
   <span class="k">where</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&gt;</span> <span class="s1">&#39;2016-10-31&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&lt;</span> <span class="s1">&#39;2016-11-24&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">user_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span>
@@ -279,7 +326,7 @@
 14</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="p">{</span>
+      <pre><span></span><span class="p">{</span>
 <span class="nt">"bug_number"</span><span class="p">:</span> <span class="mi">1202623</span><span class="p">,</span>
 <span class="nt">"lines"</span><span class="p">:</span> <span class="p">[</span>
   <span class="s2">"browser_private_clicktoplay.js Test timed out -"</span><span class="p">,</span>
@@ -347,42 +394,42 @@
 36</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="kn">import</span> <span class="nn">os</span>
+      <pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
 
 
-<span class="n">training_set</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s">&#39;training&#39;</span><span class="p">)</span>
+<span class="n">training_set</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s1">&#39;training&#39;</span><span class="p">)</span>
 <span class="n">count_vect</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
 <span class="n">X_train_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">training_set</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="n">tfidf_transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
 <span class="n">X_train_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_counts</span><span class="p">)</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">&#39;hinge&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">,</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;hinge&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span>
                     <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_tfidf</span><span class="p">,</span> <span class="n">training_set</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 
 <span class="n">num_correct</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">num_missed</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">for</span> <span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fnames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s">&#39;testing/&#39;</span><span class="p">):</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fnames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;testing/&#39;</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">fnames</span><span class="p">:</span>
         <span class="n">bugnum</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">subdir</span><span class="p">)</span>
         <span class="k">print</span> <span class="n">bugnum</span><span class="p">,</span> <span class="n">fnames</span>
         <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">fnames</span><span class="p">:</span>
             <span class="n">doc</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">fname</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
-                <span class="k">print</span> <span class="s">"--&gt; (skipping, empty)"</span>
+                <span class="k">print</span> <span class="s2">"--&gt; (skipping, empty)"</span>
             <span class="n">X_new_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">doc</span><span class="p">])</span>
             <span class="n">X_new_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_new_counts</span><span class="p">)</span>
             <span class="n">predicted_bugnum</span> <span class="o">=</span> <span class="n">training_set</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new_tfidf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
             <span class="k">if</span> <span class="n">bugnum</span> <span class="o">==</span> <span class="n">predicted_bugnum</span><span class="p">:</span>
                 <span class="n">num_correct</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">print</span> <span class="s">"--&gt; correct"</span>
+                <span class="k">print</span> <span class="s2">"--&gt; correct"</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">num_missed</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">print</span> <span class="s">"--&gt; missed (</span><span class="si">%s</span><span class="s">)"</span> <span class="o">%</span> <span class="n">predicted_bugnum</span>
-<span class="k">print</span> <span class="s">"Correct: </span><span class="si">%s</span><span class="s"> Missed: </span><span class="si">%s</span><span class="s"> Ratio: </span><span class="si">%s</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">num_correct</span><span class="p">,</span> <span class="n">num_missed</span><span class="p">,</span> <span class="n">num_correct</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num_correct</span> <span class="o">+</span> <span class="n">num_missed</span><span class="p">))</span>
+                <span class="k">print</span> <span class="s2">"--&gt; missed (</span><span class="si">%s</span><span class="s2">)"</span> <span class="o">%</span> <span class="n">predicted_bugnum</span>
+<span class="k">print</span> <span class="s2">"Correct: </span><span class="si">%s</span><span class="s2"> Missed: </span><span class="si">%s</span><span class="s2"> Ratio: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">num_correct</span><span class="p">,</span> <span class="n">num_missed</span><span class="p">,</span> <span class="n">num_correct</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num_correct</span> <span class="o">+</span> <span class="n">num_missed</span><span class="p">))</span>
 </pre></div>
 </td></tr></tbody></table>
 </div>
@@ -405,7 +452,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a>, <a href="/tags/Performance.html">Performance</a></span></p>
-    <h2><a href='/blog/2016/10/slow-treeherder-fast-treeherder/'>Slow Treeherder, Fast Treeherder</a></h2>
+    <h2><a href='/2016/10/slow-treeherder-fast-treeherder.html'>Slow Treeherder, Fast Treeherder</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 3131, 2016</p>
   </header>
 
@@ -429,7 +476,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Infraherder.html">Infraherder</a></span></p>
-    <h2><a href='/blog/2016/08/herding-automation-infrastructure/'>Herding Automation Infrastructure</a></h2>
+    <h2><a href='/2016/08/herding-automation-infrastructure.html'>Herding Automation Infrastructure</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 17th, 2016</p>
   </header>
 
@@ -480,7 +527,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-results/'>Perfherder Quarter of Contribution Summer 2016: Results</a></h2>
+    <h2><a href='/2016/08/perfherder-quarter-of-contribution-summer-2016-results.html'>Perfherder Quarter of Contribution Summer 2016: Results</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 10th, 2016</p>
   </header>
 
@@ -505,7 +552,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2016/05/quarter-of-contribution-june-july-2016-edition/'>Quarter of Contribution: June / July 2016 edition</a></h2>
+    <h2><a href='/2016/05/quarter-of-contribution-june-july-2016-edition.html'>Quarter of Contribution: June / July 2016 edition</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 27th, 2016</p>
   </header>
 
@@ -520,7 +567,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2016/03/are-we-fast-yet-and-perfherder/'>Are We Fast Yet and Perfherder</a></h2>
+    <h2><a href='/2016/03/are-we-fast-yet-and-perfherder.html'>Are We Fast Yet and Perfherder</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 30th, 2016</p>
   </header>
 
@@ -560,7 +607,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2016/03/platform-engineering-project-of-the-month-perfherder/'>Platform engineering project of the month: Perfherder</a></h2>
+    <h2><a href='/2016/03/platform-engineering-project-of-the-month-perfherder.html'>Platform engineering project of the month: Perfherder</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 14th, 2016</p>
   </header>
 
@@ -609,7 +656,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Talos.html">Talos</a></span></p>
-    <h2><a href='/blog/2016/02/talos-suites-now-visible-from-trychooser/'>Talos suites now visible from trychooser</a></h2>
+    <h2><a href='/2016/02/talos-suites-now-visible-from-trychooser.html'>Talos suites now visible from trychooser</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 13th, 2016</p>
   </header>
 
@@ -620,53 +667,6 @@
 <p>Previously, the only way to do this was to dig into the actual buildbot code, which was more than a little annoying.</p>
 
 <p>If you think your patch might have a good chance of regressing performance, please do run the <a href="https://wiki.mozilla.org/Buildbot/Talos/Tests">Talos tests</a> before you check in. It&rsquo;s much less work for all of us when these things are caught before integration and back outs are no fun for anyone. We really need better documentation for this stuff, but meanwhile if you need help with this, please ask in the #perf channel on irc.mozilla.org</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/11/perfherder-onward/'>Perfherder: Onward!</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 4th, 2015</p>
-  </header>
-
-<p>In addition to the <a href="http://wrla.ch/blog/2015/10/the-new-old-perfherder-data-model/">database refactoring</a> I mentioned a few weeks ago, some cool stuff has been going into <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a> lately.</p>
-
-<p><strong>Tracking installer size</strong></p>
-
-<p>Perfherder is now tracking the size of the Firefox installer for the various platforms we support (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1149164">bug 1149164</a>). I originally only intended to track Android .APK size (on request from the mobile team), but installer sizes for other platforms came along for the ride. I don&#8217;t think anyone will complain.</p>
-
-<p><a href="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM.png"><img src="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-300x181.png" alt="Screen Shot 2015-11-03 at 5.28.48 PM" width="300" height="181" class="alignnone size-medium wp-image-1274" srcset="/files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-300x181.png 300w, /files/2015/11/Screen-Shot-2015-11-03-at-5.28.48-PM-1024x618.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
-
-<p><a href="https://treeherder.mozilla.org/perf.html#/graphs?series=[mozilla-inbound,4eb0cde5431ee9aeb5eb14512ddb3da6d4702cf0,1]&amp;#038;series=[mozilla-inbound,80cac7ef44b76864458627c574af1a18a425f338,1]&amp;#038;series=[mozilla-inbound,0060252bdfb7632df5877b7594b4d16f1b5ca4c9,1]">link</a></p>
-
-<p>Just as exciting to me as the feature itself is how it&#8217;s implemented: I added a log parser to treeherder which just picks up a line called &#8220;PERFHERDER_DATA&#8221; in the logs with specially formatted JSON data, and then automatically stores whatever metrics are in there in the database (platform, options, etc. are automatically determined). For example, on Linux:</p>
-
-<pre><code>PERFHERDER_DATA: {"framework": {"name": "build_metrics"}, "suites": [{"subtests": [{"name": "libxul.so", "value": 99030741}], "name": "installer size", "value": 55555785}]}</code></pre>
-
-<p>This should make it super easy for people to add their own metrics to Perfherder for build and test jobs. We&#8217;ll have to be somewhat careful about how we do this (we don&#8217;t want to add thousands of new series with irrelevant / inconsistent data) but I think there&#8217;s lots of potential here to be able to track things we care about on a per-commit basis. Maybe build times (?).</p>
-
-<p><strong>More compare view improvements</strong></p>
-
-<p>I added filtering to the Perfherder compare view and added back links to the graphs view. Filtering should make it easier to highlight particular problematic tests in bug reports, etc. The graphs links shouldn&#8217;t really be necessary, but unfortunately are due to the unreliability of our data &#8212; sometimes you can only see if a particular difference between two revisions is worth paying attention to in the context of the numbers over the last several weeks.</p>
-
-<p><a href="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM.png"><img src="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-300x157.png" alt="Screen Shot 2015-11-03 at 5.37.02 PM" width="300" height="157" class="alignnone size-medium wp-image-1275" srcset="/files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-300x157.png 300w, /files/2015/11/Screen-Shot-2015-11-03-at-5.37.02-PM-1024x536.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
-
-<p><strong>Miscellaneous</strong></p>
-
-<p>Even after the <a href="http://wrla.ch/blog/2015/09/perfherder-summer-of-contribution-thoughts/">summer of contribution</a> has ended, Mike Ling continues to do great work. Looking at the commit log over the past few weeks, he&#8217;s been responsible for the following fixes and improvements:</p>
-
-<ul>
- <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1218825">Bug 1218825</a>: Can zoom in on perfherder graphs by selecting the main view</li>
- <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1207309">Bug 1207309</a>: Disable &#8216;&lt;&rsquo; button in test chooser if no test selected</li>
- <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1210503">Bug 1210503</a> &#8211; Include non-summary tests in main comparison view</li>
- <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1153956">Bug 1153956</a> &#8211; Persist the selected revision in the url on perfherder (based on earlier work by Akhilesh Pillai)</li></ul>
-
-<p><strong>Next up</strong></p>
-
-<p>My main goal for this quarter is to create a fully functional interface for actually sheriffing performance regressions, to replace <a href="http://alertmanager.allizom.org:8080/alerts.html">alertmanager</a>. Work on this has been going well. More soon.</p>
-
-<p><a href="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png"><img src="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png" alt="Screen Shot 2015-11-04 at 10.41.26 AM" width="300" height="176" class="alignnone size-medium wp-image-1280" srcset="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png 300w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-1024x600.png 1024w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png 1126w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
 
 </article>
 

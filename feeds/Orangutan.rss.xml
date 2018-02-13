@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Orangutan'</title>
-  <description>William Lachance's Log: Posts tagged 'Orangutan'</description>
-  <link>https://wlach.github.io/tags/Orangutan.html</link>
+  <title>Untitled Site: Posts tagged 'Orangutan'</title>
+  <description>Untitled Site: Posts tagged 'Orangutan'</description>
+  <link>http://www.example.com/tags/Orangutan.html</link>
   <lastBuildDate>Tue, 10 Jul 2012 04:00:00 UT</lastBuildDate>
   <pubDate>Tue, 10 Jul 2012 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>The evolution of simulating events in Eideticker: from monkeys to orangutans</title>
-   <link>https://wlach.github.io/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans/?utm_source=Orangutan&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2012-07-the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans</guid>
+   <link>http://www.example.com/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans.html?utm_source=Orangutan&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2012-07-the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans-html</guid>
    <pubDate>Tue, 10 Jul 2012 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;

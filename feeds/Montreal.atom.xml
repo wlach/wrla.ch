@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Montreal'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Montreal.atom.xml" />
- <link href="https://wlach.github.io/tags/Montreal.html" />
- <id>urn:https-wlach-github-io:-tags-Montreal-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Montreal'</title>
+ <link rel="self" href="http://www.example.com/feeds/Montreal.atom.xml" />
+ <link href="http://www.example.com/tags/Montreal.html" />
+ <id>urn:http-www-example-com:-tags-Montreal-html</id>
  <updated>2014-04-22T04:00:00Z</updated>
  <entry>
   <title type="text">PyCon 2014 impressions: ipython notebook is the future &amp;#038; more</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/?utm_source=Montreal&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-04-pycon-2014-impressions-ipython-notebook-is-the-future-038-more</id>
+  <link rel="alternate" href="http://www.example.com/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more.html?utm_source=Montreal&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2014-04-pycon-2014-impressions-ipython-notebook-is-the-future-038-more-html</id>
   <published>2014-04-22T04:00:00Z</published>
   <updated>2014-04-22T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;This year&amp;#8217;s PyCon US (&lt;a href="http://python.org"&gt;Python&lt;/a&gt; Conference) was in my city of residence (Montr&amp;eacute;al) so I took the opportunity to go and see what was up in the world of the language I use the most at Mozilla. It was pretty great!&lt;/p&gt;
 
@@ -44,12 +44,12 @@
  &lt;li&gt;&lt;a href="http://pyvideo.org/video/2658/analyzing-rap-lyrics-with-python"&gt;Analyzing Rap Lyrics with Python&lt;/a&gt; &amp;#8211; Another data analysis talk, this one about a subject I knew almost nothing about. The best part of it (for me anyway) was learning how the speaker (Julie Lavoie) narrowed her focus in her research to the exact aspects of the problem that would let her answer the question she was interested in (&amp;#8220;Can we automatically find out which rap lyrics are the most sexist?&amp;#8221;) as opposed to interesting problems (&amp;#8220;how can I design the most general scraping library possible?&amp;#8221;) that don&amp;#8217;t answer the question. In my opinion, this ability to focus is one of the key things that seperates successful projects from unsuccessful ones.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Updates on my ridiculous pet projects</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/09/updates-on-my-ridiculous-pet-projects/?utm_source=Montreal&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-09-updates-on-my-ridiculous-pet-projects</id>
+  <link rel="alternate" href="http://www.example.com/2011/09/updates-on-my-ridiculous-pet-projects.html?utm_source=Montreal&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-09-updates-on-my-ridiculous-pet-projects-html</id>
   <published>2011-09-29T04:00:00Z</published>
   <updated>2011-09-29T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;ol&gt;
  &lt;li&gt;
@@ -62,12 +62,12 @@
   &lt;p&gt;I have a lettuce plant growing on my new balcony. It&amp;#8217;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">A better BIXI web site</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/06/a-better-bixi-web-site/?utm_source=Montreal&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-06-a-better-bixi-web-site</id>
+  <link rel="alternate" href="http://www.example.com/2011/06/a-better-bixi-web-site.html?utm_source=Montreal&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-06-a-better-bixi-web-site-html</id>
   <published>2011-06-10T04:00:00Z</published>
   <updated>2011-06-10T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;There&amp;#8217;s much to like about the BIXI bike-sharing system in Montr&amp;eacute;al: it&amp;#8217;s affordable ($78 for a year of biking), accessible and fun to use. There&amp;#8217;s absolutely no doubt in my mind that it&amp;#8217;s made cycling more of a main stream activity here in Montreal, which benefits everyone (even drivers indirectly gain from less congested streets).&lt;/p&gt;
 
@@ -86,12 +86,12 @@
 &lt;p&gt;Note that the site uses a bunch of modern HTML5 features, so currently requires a modern browser like Firefox, Chrome, or Safari to display properly. I may or may not fix this. Other notable omissions include support for other cities with the BIXI system (Toronto, Ottawa, &amp;#8230;) and French localization. Patches welcome!&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">D&amp;eacute;chets Montr&amp;eacute;al goes mobile</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile/?utm_source=Montreal&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile</id>
+  <link rel="alternate" href="http://www.example.com/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile.html?utm_source=Montreal&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile-html</id>
   <published>2011-02-19T05:00:00Z</published>
   <updated>2011-02-19T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;A few weekends ago, there was a &lt;a href="http://montrealouvert.net/"&gt;Montr&amp;eacute;al Ouvert&lt;/a&gt; hackfest at the &lt;a href="http://notmanhouse.com"&gt;Notman House&lt;/a&gt;. I decided to take a bit of a break from my usual transit hacking and built up a mobile friendly interface to the wonderful &lt;a href="http://dechetsmontreal.ca/"&gt;D&amp;eacute;chets Montr&amp;eacute;al&lt;/a&gt;, which lets residents easily get information on their garbage collection schedule.&lt;/p&gt;
 

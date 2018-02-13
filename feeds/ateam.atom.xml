@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'ateam'</title>
- <link rel="self" href="https://wlach.github.io/feeds/ateam.atom.xml" />
- <link href="https://wlach.github.io/tags/ateam.html" />
- <id>urn:https-wlach-github-io:-tags-ateam-html</id>
+ <title type="text">Untitled Site: Posts tagged 'ateam'</title>
+ <link rel="self" href="http://www.example.com/feeds/ateam.atom.xml" />
+ <link href="http://www.example.com/tags/ateam.html" />
+ <id>urn:http-www-example-com:-tags-ateam-html</id>
  <updated>2014-06-11T04:00:00Z</updated>
  <entry>
   <title type="text">Managing test manifests: ManifestDestiny -&gt; manifestparser</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser/?utm_source=ateam&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-06-managing-test-manifests-manifestdestiny-manifestparser</id>
+  <link rel="alternate" href="http://www.example.com/2014/06/managing-test-manifests-manifestdestiny-manifestparser.html?utm_source=ateam&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2014-06-managing-test-manifests-manifestdestiny-manifestparser-html</id>
   <published>2014-06-11T04:00:00Z</published>
   <updated>2014-06-11T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Just wanted to make a quick announcement that &lt;a href="https://pypi.python.org/pypi/ManifestDestiny"&gt;ManifestDestiny&lt;/a&gt;, the python package we use internally here at Mozilla for declaratively managing lists of tests in &lt;a href="https://developer.mozilla.org/en/docs/Mochitest"&gt;Mochitest&lt;/a&gt; and other places, has been renamed to &lt;a href="https://pypi.python.org/pypi/manifestparser"&gt;manifestparser&lt;/a&gt;. We kept the versioning the same (0.6), so the only thing you should need to change in your python package dependencies is a quick substitution of &amp;#8220;ManifestDestiny&amp;#8221; with &amp;#8220;manifestparser&amp;#8221;. We will keep ManifestDestiny around indefinitely on pypi, but only to make sure old stuff doesn&amp;#8217;t break. New versions of the software will only be released under the name &amp;#8220;manifestparser&amp;#8221;.&lt;/p&gt;
 
@@ -23,12 +23,12 @@
 &lt;p&gt;Happy manifest parsing!&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Documentation for mozdevice</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/03/documentation-for-mozdevice/?utm_source=ateam&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2013-03-documentation-for-mozdevice</id>
+  <link rel="alternate" href="http://www.example.com/2013/03/documentation-for-mozdevice.html?utm_source=ateam&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2013-03-documentation-for-mozdevice-html</id>
   <published>2013-03-11T04:00:00Z</published>
   <updated>2013-03-11T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Just wanted to give a quick heads up that as part of the ateam&amp;#8217;s ongoing effort to improve the documentation of our automated testing infrastructure, we now have &lt;a href="https://mozbase.readthedocs.org/en/latest/mozdevice.html"&gt;online documentation&lt;/a&gt; for mozdevice, the python library we use for interacting with Android- and FirefoxOS-based devices in automated testing.&lt;/p&gt;
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Time'</title>
-  <description>William Lachance's Log: Posts tagged 'Time'</description>
-  <link>https://wlach.github.io/tags/Time.html</link>
+  <title>Untitled Site: Posts tagged 'Time'</title>
+  <description>Untitled Site: Posts tagged 'Time'</description>
+  <link>http://www.example.com/tags/Time.html</link>
   <lastBuildDate>Mon, 08 Jul 2013 04:00:00 UT</lastBuildDate>
   <pubDate>Mon, 08 Jul 2013 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Simple command-line ntp client for Android and FirefoxOS</title>
-   <link>https://wlach.github.io/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/?utm_source=Time&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2013-07-simple-command-line-ntp-client-for-android-and-firefoxos</guid>
+   <link>http://www.example.com/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos.html?utm_source=Time&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2013-07-simple-command-line-ntp-client-for-android-and-firefoxos-html</guid>
    <pubDate>Mon, 08 Jul 2013 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Today I did a quick port of Larry Doolittle&amp;#8217;s &lt;a href="http://doolittle.icarus.com/ntpclient/"&gt;ntpclient program&lt;/a&gt; to Android and FirefoxOS. Basically this lets you easily synchronize your device&amp;#8217;s time to that of a central server. Yes, there&amp;#8217;s lots and lots of Android &amp;#8220;applications&amp;#8221; which let you do this, but I wanted to be able to do this from the command line because that&amp;#8217;s how I roll. If you&amp;#8217;re interested, source and instructions are here:&lt;/p&gt;

@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Data Visualization'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Data-Visualization.atom.xml" />
- <link href="https://wlach.github.io/tags/Data-Visualization.html" />
- <id>urn:https-wlach-github-io:-tags-Data-Visualization-html</id>
- <updated>2017-10-26T20:58:20Z</updated>
+ <title type="text">Untitled Site: Posts tagged 'Data Visualization'</title>
+ <link rel="self" href="http://www.example.com/feeds/Data-Visualization.atom.xml" />
+ <link href="http://www.example.com/tags/Data-Visualization.html" />
+ <id>urn:http-www-example-com:-tags-Data-Visualization-html</id>
+ <updated>2018-02-12T21:06:40Z</updated>
+ <entry>
+  <title type="text">Derived versus direct</title>
+  <link rel="alternate" href="http://www.example.com/2018/02/derived-versus-direct.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2018-02-derived-versus-direct-html</id>
+  <published>2018-02-12T21:06:40Z</published>
+  <updated>2018-02-12T21:06:40Z</updated>
+  <author>
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;To attempt to make complex phenomena more understandable, we often use derived measures when representing Telemetry data at Mozilla. For error rates for example, we often measure things in terms of &amp;ldquo;X per khours of use&amp;rdquo; (where X might be &amp;ldquo;main crashes&amp;rdquo;, &amp;ldquo;appearance of the slow script dialogue&amp;rdquo;). I.e. instead of showing a raw &lt;em&gt;count&lt;/em&gt; of errors we show a rate. Normally this is a good thing: it allows the user to easily compare two things which might have different raw numbers for whatever reason but where you&amp;rsquo;d normally expect the ratio to be similar. For example, we see that although the &lt;em&gt;uptake&lt;/em&gt; of the newly-released Firefox 58.0.2 is a bit slower than 58.0.1, the overall crash rate (as sampled every 5 minutes) is more or less the same after about a day has rolled around:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2018/02/main_crashes_normalized.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the other hand, looking at raw counts doesn&amp;rsquo;t really give you much of a hint on how to interpret the results. Depending on the scale of the graph, the actual rates could actually resolve to being vastly different:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2018/02/main_crashes_raw.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ok, so this simple tool (using a ratio) is useful. Yay! Unfortunately, there is one case where using this technique can lead to a very deceptive visualization: when the number of samples is really small, a few outliers can give a really false impression of what&amp;rsquo;s really happening. Take this graph of what the crash rate looked like &lt;em&gt;just after&lt;/em&gt; Firefox 58.0 was released:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2018/02/relative_small_crash_counts.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;10 to 100 errors per 1000 hours, say it isn&amp;rsquo;t so? But wait, how many errors do we have absolutely? Hovering over a representative point in the graph with the normalization (use of a ratio) turned off:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2018/02/absolute_small_crash_counts.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&amp;rsquo;t (and shouldn&amp;rsquo;t) draw any kind of conclusion whatsoever.&lt;/p&gt;
+
+&lt;p&gt;Ok, so that&amp;rsquo;s just science 101: don&amp;rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &amp;mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Better or worse: by what measure?</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2017-10-better-or-worse-by-what-measure</id>
+  <link rel="alternate" href="http://www.example.com/2017/10/better-or-worse-by-what-measure.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2017-10-better-or-worse-by-what-measure-html</id>
   <published>2017-10-26T20:58:20Z</published>
   <updated>2017-10-26T20:58:20Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;Ok, after a series of posts extolling the virtues of my current project, it&amp;rsquo;s time to take a more critical look at some of its current limitations, and what we might do about them. In my &lt;a href="/blog/2017/10/mission-control/"&gt;introductory post&lt;/a&gt;, I talked about how Mission Control can let us know how &amp;ldquo;crashy&amp;rdquo; a new release is, within a short interval of it being released. I also alluded to the fact that things appear considerably worse when something first goes out, though I didn&amp;rsquo;t go into a lot of detail about how and why that happens.&lt;/p&gt;
 
 &lt;p&gt;It just so happens that a new point release (56.0.2) just went out, so it&amp;rsquo;s a perfect opportunity to revisit this issue. Let&amp;rsquo;s take a look at what the graphs are saying (each of the images is also a link to the dashboard where they were generated):&lt;/p&gt;
@@ -57,32 +85,32 @@
 
 &lt;p&gt;If this sounds interesting and you have some react/d3/data visualization skills (or would like to gain some), &lt;a href="/blog/2017/10/mission-control-ready-for-contributions/"&gt;learn about contributing to mission control&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Shout out to &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; for reviewing this post and providing feedback and additions.&lt;/p&gt;</content></entry>
+&lt;p&gt;Shout out to &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; for reviewing this post and providing feedback and additions.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Mission Control: Ready for contributions</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2017-10-mission-control-ready-for-contributions</id>
+  <link rel="alternate" href="http://www.example.com/2017/10/mission-control-ready-for-contributions.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2017-10-mission-control-ready-for-contributions-html</id>
   <published>2017-10-20T18:33:19Z</published>
   <updated>2017-10-20T18:33:19Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;One of the great design decisions that was made for &lt;a href="https://treeherder.mozilla.org"&gt;Treeherder&lt;/a&gt; was a strict seperation of the client and server portions of the codebase. While its backend was moderately complicated to get up and running (especially into a state that looked at all like what we were running in production), you could get its web frontend running (pointed against the production data) just by starting up a simple node.js server. This dramatically lowered the barrier to entry, for Mozilla employees and casual contributors alike.&lt;/p&gt;
 
 &lt;p&gt;I knew right from the beginning that I wanted to take the same approach with &lt;a href="https://wlach.github.io/blog/2017/10/mission-control/"&gt;Mission Control&lt;/a&gt;. While the full source of the project is available, unfortunately it isn&amp;rsquo;t presently possible to bring up the full stack with real data, as that requires privileged access to the athena/parquet error aggregates table. But since the UI is self-contained, it&amp;rsquo;s quite easy to bring up a development environment that allows you to freely browse the cached data which is stored server-side (essentially: &lt;code&gt;git clone https://github.com/mozilla/missioncontrol.git &amp;amp;&amp;amp; yarn install &amp;amp;&amp;amp; yarn start&lt;/code&gt;).&lt;/p&gt;
 
 &lt;p&gt;In my experience, the most interesting problems when it comes to projects like these center around the question of how to present extremely complex data in a way that is intuitive but not misleading. Probably 90% of that work happens in the frontend. In the past, I&amp;rsquo;ve had pretty good luck finding contributors for my projects (especially &lt;a href="/tags/Perfherder.html"&gt;Perfherder&lt;/a&gt;) by doing call-outs on this blog. So let it be known: If Mission Control sounds like an interesting project and you know &lt;a href="https://reactjs.org/"&gt;React&lt;/a&gt;/&lt;a href="http://redux.js.org/"&gt;Redux&lt;/a&gt;/&lt;a href="https://d3js.org/"&gt;D3&lt;/a&gt;/&lt;a href="https://www.metricsgraphicsjs.org/"&gt;MetricsGraphics&lt;/a&gt; (or want to learn), let&amp;rsquo;s work together!&lt;/p&gt;
 
-&lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;</content></entry>
+&lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Mission Control</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/10/mission-control?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2017-10-mission-control</id>
+  <link rel="alternate" href="http://www.example.com/2017/10/mission-control.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2017-10-mission-control-html</id>
   <published>2017-10-06T19:05:37Z</published>
   <updated>2017-10-06T19:05:37Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;Time for an overdue post on the mission control project that I&amp;rsquo;ve been working on for the past few quarters, since I transitioned to the data platform team.&lt;/p&gt;
 
 &lt;p&gt;One of the gaps in our data story when it comes to Firefox is being able to see how a new release is doing in the immediate hours after release. Tools like &lt;a href="https://crash-stats.mozilla.com/home/product/Firefox"&gt;crashstats&lt;/a&gt; and the &lt;a href="https://telemetry.mozilla.org/new-pipeline/evo.html"&gt;telemetry evolution dashboard&lt;/a&gt; are great, but it can take many hours (if not days) before you can reliably see that there is an issue in a metric that we care about (number of crashes, say). This is just too long &amp;mdash; such delays unnecessarily retard rolling out a release when it is safe (because there is a paranoia that there might be some lingering problem which we we&amp;rsquo;re waiting to see reported). And if, somehow, despite our abundant caution a problem &lt;em&gt;did&lt;/em&gt; slip through it would take us some time to recognize it and roll out a fix.&lt;/p&gt;
@@ -97,16 +125,16 @@
 
 &lt;p&gt;This particular screenshot shows the volume of content crashes (sampled every 5 minutes) over the last 48 hours on windows release. You&amp;rsquo;ll note that the later version (56.0) seems to be much crashier than earlier versions (55.0.3) which would seem to be a problem except that the populations are not directly comparable (since the profile of a user still on an older version of Firefox is rather different from that of one who has already upgraded). This is one of the still unsolved problems of this project: finding a reliable, automatable baseline of what an &amp;ldquo;acceptable result&amp;rdquo; for any particular measure might be.&lt;/p&gt;
 
-&lt;p&gt;Even still, the tool can still be useful for exploring a bunch of data quickly and it has been progressing rapidly over the last few weeks. And like almost everything Mozilla does, both the &lt;a href="https://github.com/mozilla/missioncontrol/"&gt;source&lt;/a&gt; and &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;dashboard&lt;/a&gt; are open to the public. I&amp;rsquo;m planning on flagging some easier bugs for newer contributors to work on in the next couple weeks, but in the meantime if you&amp;rsquo;re interested in this project and want to get involved, feel free to look us up on irc.mozilla.org #missioncontrol (I&amp;rsquo;m there as &amp;lsquo;wlach&amp;rsquo;).&lt;/p&gt;</content></entry>
+&lt;p&gt;Even still, the tool can still be useful for exploring a bunch of data quickly and it has been progressing rapidly over the last few weeks. And like almost everything Mozilla does, both the &lt;a href="https://github.com/mozilla/missioncontrol/"&gt;source&lt;/a&gt; and &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;dashboard&lt;/a&gt; are open to the public. I&amp;rsquo;m planning on flagging some easier bugs for newer contributors to work on in the next couple weeks, but in the meantime if you&amp;rsquo;re interested in this project and want to get involved, feel free to look us up on irc.mozilla.org #missioncontrol (I&amp;rsquo;m there as &amp;lsquo;wlach&amp;rsquo;).&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">More Perfherder  updates</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2015/08/more-perfherder-updates/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2015-08-more-perfherder-updates</id>
+  <link rel="alternate" href="http://www.example.com/2015/08/more-perfherder-updates.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2015-08-more-perfherder-updates-html</id>
   <published>2015-08-07T04:00:00Z</published>
   <updated>2015-08-07T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;Since my last update, we&amp;#8217;ve been trucking along with improvements to &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt;, the project for making Firefox performance sheriffing and analysis easier.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Compare visualization improvements&lt;/strong&gt;&lt;/p&gt;
@@ -184,16 +212,16 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
  &lt;li&gt;Figure out what&amp;#8217;s causing the same machines to produce qualitatively different result distributions and address that. This is of course the ideal solution, but it requires coordination with other parts of the organization who are likely quite busy and might be hard.&lt;/li&gt;
  &lt;li&gt;Figure out better ways of detecting and managing these sorts of case. I have noticed that the standard deviation inside the results when we have spurious regressions/improvements tends to be higher (see for example &lt;a href="https://treeherder.mozilla.org/perf.html#/compare?originalProject=mozilla-inbound&amp;amp;#038;originalRevision=4d0818791d07&amp;amp;#038;newProject=mozilla-inbound&amp;amp;#038;newRevision=5e130ad70aa7"&gt;this compare view&lt;/a&gt; for the aforementioned &amp;#8220;regression&amp;#8221;). Knowing what we do, maybe there&amp;#8217;s some statistical methods we can use to detect bad data?&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;For now, I&amp;#8217;m leaning towards (2). I don&amp;#8217;t think we&amp;#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;</content></entry>
+&lt;p&gt;For now, I&amp;#8217;m leaning towards (2). I don&amp;#8217;t think we&amp;#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">A virtual petri dish</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2015/04/a-virtual-petri-dish/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2015-04-a-virtual-petri-dish</id>
+  <link rel="alternate" href="http://www.example.com/2015/04/a-virtual-petri-dish.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2015-04-a-virtual-petri-dish-html</id>
   <published>2015-04-25T04:00:00Z</published>
   <updated>2015-04-25T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;Was feeling a bit restless today, so I decided to build something on a theme I&amp;#8217;d been thinking of since, oh gosh, I guess high school &amp;#8212; an ecosystem simulation.&lt;/p&gt;
 
 &lt;p&gt;My original concept for it had three different types of entities &amp;#8212; grass, rabbits, and foxes wandering around in a fixed environment. Each would eat the previous and try to reproduce. Both the rabbits and foxes need to continually eat to survive, otherwise they will die. The grass will just grow unprompted. I think I may have picked up the idea from elsewhere, but am not sure (it&amp;#8217;s been nearly 17 years after all).&lt;/p&gt;
@@ -210,16 +238,16 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;The math and programming behind the simulation is completely arbitrary and anything but rigorous. There are probably a bunch of bugs and unintended behaviors. This has all probably been done a million times before by people I&amp;#8217;ve never met and never will. I&amp;#8217;m ok with that.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: &lt;a href="https://github.com/wlach/ecoautomata"&gt;Source now on github&lt;/a&gt;, for those who want to play with it and submit pull requests.&lt;/p&gt;</content></entry>
+&lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: &lt;a href="https://github.com/wlach/ecoautomata"&gt;Source now on github&lt;/a&gt;, for those who want to play with it and submit pull requests.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Perfherder update: Summary series drilldown</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2015/03/perfherder-update-summary-series-drilldown/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2015-03-perfherder-update-summary-series-drilldown</id>
+  <link rel="alternate" href="http://www.example.com/2015/03/perfherder-update-summary-series-drilldown.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2015-03-perfherder-update-summary-series-drilldown-html</id>
   <published>2015-03-27T04:00:00Z</published>
   <updated>2015-03-27T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;Just wanted to give another quick Perfherder update. Since the &lt;a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/"&gt;last time&lt;/a&gt;, I&amp;#8217;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&amp;#8217;t possible with Graphserver and I&amp;#8217;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.&lt;/p&gt;
 
 &lt;p&gt;Let&amp;#8217;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354"&gt;bug 1128354&lt;/a&gt;. Using &lt;a href="https://mozillians.org/en-US/u/mishravikas/"&gt;Mishra Vikas&lt;/a&gt;&amp;#8216;s new &amp;#8220;highlight revision mode&amp;#8221; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:&lt;/p&gt;
@@ -236,16 +264,16 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;As is hopefully obvious, this confirms that the affected subtest continues to hold its higher value while another test just bounces around more or less in the range it was before.&lt;/p&gt;
 
-&lt;p&gt;Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at &lt;a href="http://treeherder.mozilla.org/perf.html"&gt;http://treeherder.mozilla.org/perf.html&lt;/a&gt;.&lt;/p&gt;</content></entry>
+&lt;p&gt;Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at &lt;a href="http://treeherder.mozilla.org/perf.html"&gt;http://treeherder.mozilla.org/perf.html&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">It&amp;#8217;s all about the entropy</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/03/it-8217-s-all-about-the-entropy/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-03-it-8217-s-all-about-the-entropy</id>
+  <link rel="alternate" href="http://www.example.com/2014/03/it-8217-s-all-about-the-entropy.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2014-03-it-8217-s-all-about-the-entropy-html</id>
   <published>2014-03-14T04:00:00Z</published>
   <updated>2014-03-14T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;So recently I&amp;#8217;ve been exploring new and different methods of measuring things that we care about on FirefoxOS &amp;#8212; like startup time or amount of &lt;a href="http://www.masonchang.com/blog/2014/3/2/wow-such-checkerboard"&gt;checkerboarding&lt;/a&gt;. With Android, where we have a mostly clean signal, these measurements were pretty straightforward. Want to measure startup times? Just capture a video of Firefox starting, then compare the frames pixel by pixel to see how much they differ. When the pixels aren&amp;#8217;t that different anymore, we&amp;#8217;re &amp;#8220;done&amp;#8221;. Likewise, to measure checkerboarding we just calculated the areas of the screen where things were not completely drawn yet, frame-by-frame.&lt;/p&gt;
@@ -309,16 +337,16 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;(note that there were some problems in the way the tests were being run before, so results before the 12th should not be considered valid)&lt;/p&gt;
 
-&lt;p&gt;So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&amp;#8217;s find them!&lt;/p&gt;</content></entry>
+&lt;p&gt;So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&amp;#8217;s find them!&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Automatically measuring startup / load time with Eideticker</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2013-10-automatically-measuring-startup-load-time-with-eideticker</id>
+  <link rel="alternate" href="http://www.example.com/2013/10/automatically-measuring-startup-load-time-with-eideticker.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2013-10-automatically-measuring-startup-load-time-with-eideticker-html</id>
   <published>2013-10-17T04:00:00Z</published>
   <updated>2013-10-17T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;So we&amp;#8217;ve been using Eideticker to automatically measure startup/pageload times for about a year now on Android, and more recently on FirefoxOS as well (albeit not automatically). This gives us nice and pretty graphs like this:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/files/2013/10/flot-startup-times-gn.png"&gt;&lt;img src="/files/2013/10/flot-startup-times-gn.png" alt="flot-startup-times-gn" width="620" height="568" class="alignnone size-full wp-image-986" srcset="/files/2013/10/flot-startup-times-gn-300x274.png 300w, /files/2013/10/flot-startup-times-gn.png 620w" sizes="(max-width: 620px) 100vw, 620px" /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -358,16 +386,16 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&amp;#8217;s not nearly as pronounced as before. In practice, I&amp;#8217;ve been able to get extremely consistent numbers with a reasonable &amp;#8220;threshold&amp;#8221; of &amp;#8220;0.05&amp;#8221;.&lt;/p&gt;
 
-&lt;p&gt;In Eideticker I&amp;#8217;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &amp;#8220;pixel differences&amp;#8221; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&amp;#8217;t count on light composition changing the same way for those cases. My initial thought was to use &lt;a href="http://en.wikipedia.org/wiki/Edge_detection"&gt;edge detection&lt;/a&gt; (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.&lt;/p&gt;</content></entry>
+&lt;p&gt;In Eideticker I&amp;#8217;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &amp;#8220;pixel differences&amp;#8221; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&amp;#8217;t count on light composition changing the same way for those cases. My initial thought was to use &lt;a href="http://en.wikipedia.org/wiki/Edge_detection"&gt;edge detection&lt;/a&gt; (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">NIXI Update</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/08/nixi-update/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2013-08-nixi-update</id>
+  <link rel="alternate" href="http://www.example.com/2013/08/nixi-update.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2013-08-nixi-update-html</id>
   <published>2013-08-25T04:00:00Z</published>
   <updated>2013-08-25T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;I&amp;#8217;ve been working on a new, mobile friendly version of &lt;a href="http://nixi.ca/"&gt;Nixi&lt;/a&gt; on-and-off for the past year and a bit. I&amp;#8217;m not sure when it&amp;#8217;s ever going to be finished, so I thought I might as well post the work-in-progress, which has these noteworthy improvements:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -377,16 +405,16 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;If you use &lt;a href="http://bixi.com"&gt;BIXI&lt;/a&gt; at all, check it out and let me know what you think!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="/files/2013/08/nixi-screenshot.png"&gt; &lt;img src="/files/2013/08/nixi-screenshot-1024x672.png" alt="nixi screenshot" width="640" height="420" class="alignnone size-large wp-image-927" srcset="/files/2013/08/nixi-screenshot-300x196.png 300w, /files/2013/08/nixi-screenshot-1024x672.png 1024w, /files/2013/08/nixi-screenshot.png 1266w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/p&gt;</content></entry>
+&lt;p&gt;&lt;a href="/files/2013/08/nixi-screenshot.png"&gt; &lt;img src="/files/2013/08/nixi-screenshot-1024x672.png" alt="nixi screenshot" width="640" height="420" class="alignnone size-large wp-image-927" srcset="/files/2013/08/nixi-screenshot-300x196.png 300w, /files/2013/08/nixi-screenshot-1024x672.png 1024w, /files/2013/08/nixi-screenshot.png 1266w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Measuring reduced checkerboarding in mobile Fennec</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2012/01/measuring-reduced-checkerboarding-in-mobile-fennec/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2012-01-measuring-reduced-checkerboarding-in-mobile-fennec</id>
+  <link rel="alternate" href="http://www.example.com/2012/01/measuring-reduced-checkerboarding-in-mobile-fennec.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2012-01-measuring-reduced-checkerboarding-in-mobile-fennec-html</id>
   <published>2012-01-03T05:00:00Z</published>
   <updated>2012-01-03T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;After my &lt;a href="http://wrla.ch/blog/2011/12/year-end-eideticker-update/"&gt;post&lt;/a&gt; on measuring checkerboarding in mobile Firefox, &lt;a href="http://cmtalbert.wordpress.com/"&gt;Clint Talbert&lt;/a&gt; (my fearless manager) suggested I run a before and after test to measure the improvement that just landed as part of &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=709152"&gt;bug 709512&lt;/a&gt;. After a bit of cleanup, I did so, measuring the delta between my build on December 20th and the latest version of Aurora. The difference is pretty remarkable: at least on the LG G2X that I&amp;#8217;ve been using for testing, we&amp;#8217;ve gone from checkerboarding between 10&amp;ndash;20% of the time and not checkerboarding almost at all (in between two runs of the test with the Aurora build, there is exactly one frame that checkerboards). All credit to &lt;a href="http://chrislord.net/blog"&gt;Chris Lord&lt;/a&gt; for that!&lt;/p&gt;
 
 &lt;p&gt;See the video evidence for yourself. Before:&lt;/p&gt;
@@ -395,16 +423,16 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;After:&lt;/p&gt;
 
-&lt;video src="/files/eideticker/almostnocheckerboarding.webm" width="600px" controls="controls"&gt;&lt;/video&gt;</content></entry>
+&lt;video src="/files/eideticker/almostnocheckerboarding.webm" width="600px" controls="controls"&gt;&lt;/video&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Year end Eideticker update</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/12/year-end-eideticker-update/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-12-year-end-eideticker-update</id>
+  <link rel="alternate" href="http://www.example.com/2011/12/year-end-eideticker-update.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-12-year-end-eideticker-update-html</id>
   <published>2011-12-23T05:00:00Z</published>
   <updated>2011-12-23T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;Just before I leave for some Christmas vacation, it&amp;#8217;s time for another update on the state of &lt;a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/"&gt;Eideticker&lt;/a&gt;. Since I last blogged about the software, I&amp;#8217;ve been working on the following three areas:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -416,16 +444,16 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;video src="/files/eideticker/eideticker-2011-12-21.webm" width="600px" controls="controls"&gt;&lt;/video&gt;
 
-&lt;p&gt;Happy holidays!&lt;/p&gt;</content></entry>
+&lt;p&gt;Happy holidays!&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Eideticker update</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/12/eideticker-update/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-12-eideticker-update</id>
+  <link rel="alternate" href="http://www.example.com/2011/12/eideticker-update.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-12-eideticker-update-html</id>
   <published>2011-12-08T05:00:00Z</published>
   <updated>2011-12-08T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;Since I last &lt;a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/"&gt;blogged&lt;/a&gt; about Eideticker, I&amp;#8217;ve made some good progress. Here&amp;#8217;s some highlights:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -450,16 +478,16 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;My current thinking is that a &lt;a href="http://pandaboard.org/"&gt;Panda Board&lt;/a&gt; running a Vanilla version of Android might be a good candidate for a permanently-connected device. It is capable of HDMI output, doesn&amp;#8217;t have unwanted the bells and whistles of a physical phone (e.g. a lock screen), and should be much reliable due to its physical networking. So far I haven&amp;#8217;t &lt;a href="http://ask.linaro.org/questions/361/hdmi-output-on-android-build"&gt;had much luck&lt;/a&gt; getting it the video output working with the Decklink capture card, but I&amp;#8217;ve only just started trying. Work will continue.&lt;/p&gt;
 
-&lt;p&gt;If I can somehow figure that out, and smooth out some of the rough edges with the web interface and capture API, I think the stage will be set for us all to do some pretty interesting stuff! Looking forward to it.&lt;/p&gt;</content></entry>
+&lt;p&gt;If I can somehow figure that out, and smooth out some of the rough edges with the web interface and capture API, I think the stage will be set for us all to do some pretty interesting stuff! Looking forward to it.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Measuring what the user sees</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/11/measuring-what-the-user-sees/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-11-measuring-what-the-user-sees</id>
+  <link rel="alternate" href="http://www.example.com/2011/11/measuring-what-the-user-sees.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-11-measuring-what-the-user-sees-html</id>
   <published>2011-11-11T05:00:00Z</published>
   <updated>2011-11-11T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;I&amp;#8217;ve been spending the last month or so at Mozilla prototyping a new project called &lt;a href="https://wiki.mozilla.org/Project_Eideticker"&gt;Eideticker&lt;/a&gt; which aims to use video capture data and image/frame analysis for performance measurement of &lt;a href="https://wiki.mozilla.org/Mobile/Fennec/Android"&gt;Firefox Mobile&lt;/a&gt;. It&amp;#8217;s still in quite a rough state, but it&amp;#8217;s now complete enough that I thought it would be worth spending a bit of time describing both its motivation and how it works.&lt;/p&gt;
 
 &lt;p&gt;First, a bit of an introduction. Up to now, our automated performance tools have used entirely synthetic benchmarks (how long til we get the onload event? how many ms since we last hit the main loop?) to gather performance information. As we&amp;#8217;ve found out, there&amp;#8217;s a lot you can measure with synthetic benchmarks. Tools like &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;Talos&lt;/a&gt; have proven themselves by catching performance regressions on a very regular basis.&lt;/p&gt;
@@ -505,32 +533,32 @@ Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;My goal is to make something that people will love, so please do let me know what you think. Nothing about this project is cast in stone and the last thing I want is to deliver a product that people don&amp;#8217;t actually want to use.&lt;/p&gt;
 
-&lt;p&gt;Equally, while Eideticker is being written primarily with the goal of making Mobile Firefox better (and in the slightly-less short term, desktop Firefox and &lt;a href="https://github.com/andreasgal/B2G"&gt;Boot to Gecko&lt;/a&gt;), much of it is broadly applicable to any user-facing mobile or desktop application. If you think some component of Eideticker might be interesting to your project and want to collaborate, feel free to get in touch.&lt;/p&gt;</content></entry>
+&lt;p&gt;Equally, while Eideticker is being written primarily with the goal of making Mobile Firefox better (and in the slightly-less short term, desktop Firefox and &lt;a href="https://github.com/andreasgal/B2G"&gt;Boot to Gecko&lt;/a&gt;), much of it is broadly applicable to any user-facing mobile or desktop application. If you think some component of Eideticker might be interesting to your project and want to collaborate, feel free to get in touch.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Faster, but not quite there yet&amp;#8230;</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/10/faster-but-not-quite-there-yet-8230/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-10-faster-but-not-quite-there-yet-8230</id>
+  <link rel="alternate" href="http://www.example.com/2011/10/faster-but-not-quite-there-yet-8230.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-10-faster-but-not-quite-there-yet-8230-html</id>
   <published>2011-10-25T04:00:00Z</published>
   <updated>2011-10-25T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;So as others have been posting about, we&amp;#8217;ve been making &lt;a href="http://atlee.ca/blog/2011/10/17/going-faster/"&gt;some headway&lt;/a&gt; on our progress on the GoFaster project. Unfortunately it seems like we&amp;#8217;re still some distance away from reaching our magic number of a 2 hour turnaround for each revision pushed.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/10/faster-but-not-quite-there-yet/gofaster-e2e-graph-oct25/" rel="attachment wp-att-312"&gt;&lt;img src="/files/2011/10/gofaster-e2e-graph-oct25.png" alt="" title="gofaster-e2e-graph-oct25" width="632" height="511" class="alignnone size-full wp-image-312" srcset="/files/2011/10/gofaster-e2e-graph-oct25-300x242.png 300w, /files/2011/10/gofaster-e2e-graph-oct25.png 632w" sizes="(max-width: 632px) 100vw, 632px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;It&amp;#8217;s a bit hard to see the exact number on the graph (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697277"&gt;someone should fix that&lt;/a&gt;), but we seem to teetering around an average of 3 hours at this point. Looking at our &lt;a href="http://brasstacks.mozilla.com/gofaster/#/buildcharts"&gt;build charts&lt;/a&gt;, it seems like the critical path has shifted in many cases from Windows to MacOS X. Is there something we can do to close the gap there? Or is there a more general fix which would lead to substantial savings? If you have any thoughts, or would like to help out, we&amp;#8217;re scheduled to have a &lt;a href="https://wiki.mozilla.org/ReleaseEngineering/BuildFaster/Meetings/2011-10-26"&gt;short meeting tomorrow&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Anyone is welcome to join, but note that we&amp;#8217;re practical, results-oriented people. Crazy ideas are fun, but we&amp;#8217;re most interested in proposals that have measurable data behind them and can be implemented in reasonable amounts of time.&lt;/p&gt;</content></entry>
+&lt;p&gt;Anyone is welcome to join, but note that we&amp;#8217;re practical, results-oriented people. Crazy ideas are fun, but we&amp;#8217;re most interested in proposals that have measurable data behind them and can be implemented in reasonable amounts of time.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">A better BIXI web site</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/06/a-better-bixi-web-site/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-06-a-better-bixi-web-site</id>
+  <link rel="alternate" href="http://www.example.com/2011/06/a-better-bixi-web-site.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-06-a-better-bixi-web-site-html</id>
   <published>2011-06-10T04:00:00Z</published>
   <updated>2011-06-10T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;There&amp;#8217;s much to like about the BIXI bike-sharing system in Montr&amp;eacute;al: it&amp;#8217;s affordable ($78 for a year of biking), accessible and fun to use. There&amp;#8217;s absolutely no doubt in my mind that it&amp;#8217;s made cycling more of a main stream activity here in Montreal, which benefits everyone (even drivers indirectly gain from less congested streets).&lt;/p&gt;
 
 &lt;p&gt;With the arrival of the first BIXI stations in NDG, I decided to subscribe to it this year even though I have a bike of my own. So far, it looks like I&amp;#8217;m going to easily use it enough to justify the cost. I still use my regular bike for my commute from NDG to the Plateau, but on the edges there&amp;#8217;s a ton of cases where it just makes sense to use something that I don&amp;#8217;t have to worry about locking up and returning home. Sometimes I only want to go one way (for weather or whatever other reason). Other times I want to take public transit for one leg of my trip (or day), but need/want to take a quick jaunt elsewhere once I&amp;#8217;m downtown.&lt;/p&gt;
@@ -545,34 +573,34 @@ Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/06/a-better-bixi-web-site/nixi_shot/" rel="attachment wp-att-269"&gt;&lt;img src="/files/2011/06/nixi_shot.png" alt="" title="nixi_shot" width="400" height="265" class="alignnone size-full wp-image-269" srcset="/files/2011/06/nixi_shot-300x198.png 300w, /files/2011/06/nixi_shot.png 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Note that the site uses a bunch of modern HTML5 features, so currently requires a modern browser like Firefox, Chrome, or Safari to display properly. I may or may not fix this. Other notable omissions include support for other cities with the BIXI system (Toronto, Ottawa, &amp;#8230;) and French localization. Patches welcome!&lt;/p&gt;</content></entry>
+&lt;p&gt;Note that the site uses a bunch of modern HTML5 features, so currently requires a modern browser like Firefox, Chrome, or Safari to display properly. I may or may not fix this. Other notable omissions include support for other cities with the BIXI system (Toronto, Ottawa, &amp;#8230;) and French localization. Patches welcome!&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Template for a map-based web app</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/06/template-for-a-map-based-web-app/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-06-template-for-a-map-based-web-app</id>
+  <link rel="alternate" href="http://www.example.com/2011/06/template-for-a-map-based-web-app.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-06-template-for-a-map-based-web-app-html</id>
   <published>2011-06-03T04:00:00Z</published>
   <updated>2011-06-03T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;Finally got around doing something I&amp;#8217;d meaning to for a while, which is create a simple template for a web-based mapping application based on jQuery and some of my earlier work on &lt;a href="https://github.com/wlach/routez"&gt;routez&lt;/a&gt;. I&amp;#8217;m hoping this might be useful as a starter for a few open data applications!&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/example-map-site-2/" rel="attachment wp-att-258"&gt;&lt;img src="/files/2011/06/example-map-site1.png" alt="" title="Example Map Site" width="400" height="303" class="alignnone size-full wp-image-258" srcset="/files/2011/06/example-map-site1-300x227.png 300w, /files/2011/06/example-map-site1.png 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="http://wlach.wrla.ch/blog/Map-Layout-Template/"&gt;Preview&lt;/a&gt; &lt;a href="https://github.com/wlach/Map-Layout-Template"&gt;Source&lt;/a&gt;&lt;/p&gt;</content></entry>
+&lt;p&gt;&lt;a href="http://wlach.wrla.ch/blog/Map-Layout-Template/"&gt;Preview&lt;/a&gt; &lt;a href="https://github.com/wlach/Map-Layout-Template"&gt;Source&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Adventures in processing with prender</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2010/03/adventures-in-processing-with-prender/?utm_source=Data-Visualization&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2010-03-adventures-in-processing-with-prender</id>
+  <link rel="alternate" href="http://www.example.com/2010/03/adventures-in-processing-with-prender.html?utm_source=Data-Visualization&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2010-03-adventures-in-processing-with-prender-html</id>
   <published>2010-03-07T05:00:00Z</published>
   <updated>2010-03-07T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
 &lt;p&gt;First, I&amp;#8217;m overdue in announcing &lt;a href="http://transittogo.mindsea.ca/"&gt;Transit to Go&lt;/a&gt; a.k.a. &amp;#8220;the iPhone transit map that&amp;#8217;s demonstrably more useful than a paper schedule&amp;#8221; a.k.a. &amp;#8220;your bus departure in 15 seconds or less, no matter where you are&amp;#8221;. I wrote up a &lt;a href="http://www.mindsea.com/blog/2010/03/transit-to-go-pulling-out-all-the-stops/"&gt;blog post&lt;/a&gt; about it for &lt;a href="http://www.mindsea.com"&gt;Mindsea&lt;/a&gt;&amp;#8216;s site, if you&amp;#8217;re interested in finding out more.&lt;/p&gt;
 
 &lt;p&gt;Second, all this transit excitement has made me start thinking about better routing and geometry algorithms again. I&amp;#8217;ve been experimenting a bit with Brandon Martin Anderson&amp;#8217;s &lt;a href="http://github.com/bmander/prender"&gt;prender&lt;/a&gt; framework, used by the infamous &lt;a href="http://bmander.github.com/graphserver/"&gt;Graphserver&lt;/a&gt;, and have been pretty happy with the results. It basically lets you do &lt;a href="http://processing.org"&gt;processing&lt;/a&gt; visualizations in python (i.e. no Java coding required). Here&amp;#8217;s a quick picture of it in action, rendering the Nova Scotian road network, as distributed by &lt;a href="http://geobase.ca"&gt;geobase&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src="/files/2010/03/nova_scotia.png" alt="Nova Scotia as rendered by prender" title="Nova Scotia as rendered by prender" width="400" height="220" class="alignnone size-full wp-image-95" /&gt;&lt;/p&gt;
 
-&lt;p&gt;The neat thing about this framework is that you can render quickly to an arbitrary level of detail, which should prove very useful when troubleshooting the behavior of some of the code I&amp;#8217;m working on. If anyone is interested in running the framework on MacOS X (like I was), &lt;a href="http://github.com/wlach/prender"&gt;my fork&lt;/a&gt; of the project has the appropriate patches.&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;The neat thing about this framework is that you can render quickly to an arbitrary level of detail, which should prove very useful when troubleshooting the behavior of some of the code I&amp;#8217;m working on. If anyone is interested in running the framework on MacOS X (like I was), &lt;a href="http://github.com/wlach/prender"&gt;my fork&lt;/a&gt; of the project has the appropriate patches.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>

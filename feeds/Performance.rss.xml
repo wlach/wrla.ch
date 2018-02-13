@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Performance'</title>
-  <description>William Lachance's Log: Posts tagged 'Performance'</description>
-  <link>https://wlach.github.io/tags/Performance.html</link>
+  <title>Untitled Site: Posts tagged 'Performance'</title>
+  <description>Untitled Site: Posts tagged 'Performance'</description>
+  <link>http://www.example.com/tags/Performance.html</link>
   <lastBuildDate>Mon, 31 Oct 2016 15:40:00 UT</lastBuildDate>
   <pubDate>Mon, 31 Oct 2016 15:40:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Slow Treeherder, Fast Treeherder</title>
-   <link>https://wlach.github.io/blog/2016/10/slow-treeherder-fast-treeherder/?utm_source=Performance&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-10-slow-treeherder-fast-treeherder</guid>
+   <link>http://www.example.com/2016/10/slow-treeherder-fast-treeherder.html?utm_source=Performance&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2016-10-slow-treeherder-fast-treeherder-html</guid>
    <pubDate>Mon, 31 Oct 2016 15:40:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Just wanted to talk about some recent performance improvements we&amp;rsquo;ve made recently to &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Treeherder"&gt;Treeherder&lt;/a&gt;:&lt;/p&gt;

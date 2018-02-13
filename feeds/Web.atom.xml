@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Web'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Web.atom.xml" />
- <link href="https://wlach.github.io/tags/Web.html" />
- <id>urn:https-wlach-github-io:-tags-Web-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Web'</title>
+ <link rel="self" href="http://www.example.com/feeds/Web.atom.xml" />
+ <link href="http://www.example.com/tags/Web.html" />
+ <id>urn:http-www-example-com:-tags-Web-html</id>
  <updated>2014-09-29T04:00:00Z</updated>
  <entry>
   <title type="text">Using Flexbox in web applications</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/09/using-flexbox-in-web-applications/?utm_source=Web&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-09-using-flexbox-in-web-applications</id>
+  <link rel="alternate" href="http://www.example.com/2014/09/using-flexbox-in-web-applications.html?utm_source=Web&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2014-09-using-flexbox-in-web-applications-html</id>
   <published>2014-09-29T04:00:00Z</published>
   <updated>2014-09-29T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Over last few months, I discovered the joy that is CSS Flexbox, which solves the &amp;#8220;how do I lay out this set of div&amp;#8217;s in horizontally or vertically&amp;#8221;. I&amp;#8217;ve used it in three projects so far:&lt;/p&gt;
 

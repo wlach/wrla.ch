@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'email'</title>
-  <description>William Lachance's Log: Posts tagged 'email'</description>
-  <link>https://wlach.github.io/tags/email.html</link>
+  <title>Untitled Site: Posts tagged 'email'</title>
+  <description>Untitled Site: Posts tagged 'email'</description>
+  <link>http://www.example.com/tags/email.html</link>
   <lastBuildDate>Fri, 19 Apr 2013 04:00:00 UT</lastBuildDate>
   <pubDate>Fri, 19 Apr 2013 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>The need for a modern open source email client and Geary&amp;#8217;s fundraiser</title>
-   <link>https://wlach.github.io/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser/?utm_source=email&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2013-04-the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser</guid>
+   <link>http://www.example.com/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser.html?utm_source=email&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2013-04-the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser-html</guid>
    <pubDate>Fri, 19 Apr 2013 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;div class="figure"&gt;&lt;img src="http://www.yorba.org/images/igg/geary-2.png" alt="" /&gt;

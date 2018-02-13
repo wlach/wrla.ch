@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Transit to Go'</title>
-  <description>William Lachance's Log: Posts tagged 'Transit to Go'</description>
-  <link>https://wlach.github.io/tags/Transit-to-Go.html</link>
+  <title>Untitled Site: Posts tagged 'Transit to Go'</title>
+  <description>Untitled Site: Posts tagged 'Transit to Go'</description>
+  <link>http://www.example.com/tags/Transit-to-Go.html</link>
   <lastBuildDate>Tue, 19 Apr 2011 04:00:00 UT</lastBuildDate>
   <pubDate>Tue, 19 Apr 2011 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Routez opensourced</title>
-   <link>https://wlach.github.io/blog/2011/04/routez-opensourced/?utm_source=Transit-to-Go&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-04-routez-opensourced</guid>
+   <link>http://www.example.com/2011/04/routez-opensourced.html?utm_source=Transit-to-Go&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-04-routez-opensourced-html</guid>
    <pubDate>Tue, 19 Apr 2011 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Just a quick note to say that I just opensourced the software behind &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt;, nicknamed &amp;#8220;Routez&amp;#8221; under the &lt;a href="http://www.affero.org/oagpl.html"&gt;Affero GPL&lt;/a&gt;. You can get the code on &lt;a href="http://github.com/wlach/routez"&gt;github&lt;/a&gt;.&lt;/p&gt;
@@ -37,8 +37,8 @@
 &lt;p&gt;Even with these problems, I figured it would be better to open up what I have for people to check out and play with. Have a look and let me know what you think!&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>I can has Edmonton transit iPhone app?</title>
-   <link>https://wlach.github.io/blog/2010/04/i-can-has-edmonton-transit-iphone-app/?utm_source=Transit-to-Go&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2010-04-i-can-has-edmonton-transit-iphone-app</guid>
+   <link>http://www.example.com/2010/04/i-can-has-edmonton-transit-iphone-app.html?utm_source=Transit-to-Go&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2010-04-i-can-has-edmonton-transit-iphone-app-html</guid>
    <pubDate>Sat, 10 Apr 2010 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;&lt;img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /&gt;&lt;/p&gt;
@@ -46,8 +46,8 @@
 &lt;p&gt;With &lt;a href="http://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/"&gt;yesterday&amp;#8217;s work&lt;/a&gt; out of the way, there weren&amp;#8217;t too many extra steps required before I got a basic version of Transit to Go running for Edmonton. There are definitely bugs and rough edges (the bus names could definitely be better described/formatted, and there&amp;#8217;s some serious geocoder issues), but I think the heavy lifting is out of the way. I guess now would be a good time to open up an invitations to anyone in Edmonton with an iPhone to become part of our free private beta. We&amp;#8217;d love to hear what you think! Just send an email to &lt;a href="mailto:wrlach@gmail.com"&gt;wrlach@gmail.com&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Oh, the lines! And some help for Edmonton.</title>
-   <link>https://wlach.github.io/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/?utm_source=Transit-to-Go&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2010-04-oh-the-lines-and-some-help-for-edmonton</guid>
+   <link>http://www.example.com/2010/04/oh-the-lines-and-some-help-for-edmonton.html?utm_source=Transit-to-Go&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2010-04-oh-the-lines-and-some-help-for-edmonton-html</guid>
    <pubDate>Sat, 10 Apr 2010 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;&lt;img src="/files/2010/04/linked_map1.jpg" alt="Map with new link nodes" title="Map with new link nodes" width="320" height="242" class="aligncenter size-full wp-image-118" /&gt;&lt;/p&gt;

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'iphone'</title>
-  <description>William Lachance's Log: Posts tagged 'iphone'</description>
-  <link>https://wlach.github.io/tags/iphone.html</link>
+  <title>Untitled Site: Posts tagged 'iphone'</title>
+  <description>Untitled Site: Posts tagged 'iphone'</description>
+  <link>http://www.example.com/tags/iphone.html</link>
   <lastBuildDate>Sat, 19 Feb 2011 05:00:00 UT</lastBuildDate>
   <pubDate>Sat, 19 Feb 2011 05:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>D&amp;eacute;chets Montr&amp;eacute;al goes mobile</title>
-   <link>https://wlach.github.io/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile/?utm_source=iphone&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile</guid>
+   <link>http://www.example.com/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile.html?utm_source=iphone&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile-html</guid>
    <pubDate>Sat, 19 Feb 2011 05:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;A few weekends ago, there was a &lt;a href="http://montrealouvert.net/"&gt;Montr&amp;eacute;al Ouvert&lt;/a&gt; hackfest at the &lt;a href="http://notmanhouse.com"&gt;Notman House&lt;/a&gt;. I decided to take a bit of a break from my usual transit hacking and built up a mobile friendly interface to the wonderful &lt;a href="http://dechetsmontreal.ca/"&gt;D&amp;eacute;chets Montr&amp;eacute;al&lt;/a&gt;, which lets residents easily get information on their garbage collection schedule.&lt;/p&gt;
@@ -30,8 +30,8 @@
 &lt;p&gt;Thanks muchly to Kent Mewhort, the brains behind D&amp;eacute;chets Montr&amp;eacute;al, for helping me incorporate my work into his Drupal-based site.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>I can has Edmonton transit iPhone app?</title>
-   <link>https://wlach.github.io/blog/2010/04/i-can-has-edmonton-transit-iphone-app/?utm_source=iphone&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2010-04-i-can-has-edmonton-transit-iphone-app</guid>
+   <link>http://www.example.com/2010/04/i-can-has-edmonton-transit-iphone-app.html?utm_source=iphone&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2010-04-i-can-has-edmonton-transit-iphone-app-html</guid>
    <pubDate>Sat, 10 Apr 2010 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;&lt;img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /&gt;&lt;/p&gt;

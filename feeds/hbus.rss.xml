@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'hbus'</title>
-  <description>William Lachance's Log: Posts tagged 'hbus'</description>
-  <link>https://wlach.github.io/tags/hbus.html</link>
+  <title>Untitled Site: Posts tagged 'hbus'</title>
+  <description>Untitled Site: Posts tagged 'hbus'</description>
+  <link>http://www.example.com/tags/hbus.html</link>
   <lastBuildDate>Thu, 29 Sep 2011 04:00:00 UT</lastBuildDate>
   <pubDate>Thu, 29 Sep 2011 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Updates on my ridiculous pet projects</title>
-   <link>https://wlach.github.io/blog/2011/09/updates-on-my-ridiculous-pet-projects/?utm_source=hbus&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-09-updates-on-my-ridiculous-pet-projects</guid>
+   <link>http://www.example.com/2011/09/updates-on-my-ridiculous-pet-projects.html?utm_source=hbus&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-09-updates-on-my-ridiculous-pet-projects-html</guid>
    <pubDate>Thu, 29 Sep 2011 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;ol&gt;
@@ -24,8 +24,8 @@
   &lt;p&gt;I have a lettuce plant growing on my new balcony. It&amp;#8217;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Routez opensourced</title>
-   <link>https://wlach.github.io/blog/2011/04/routez-opensourced/?utm_source=hbus&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-04-routez-opensourced</guid>
+   <link>http://www.example.com/2011/04/routez-opensourced.html?utm_source=hbus&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-04-routez-opensourced-html</guid>
    <pubDate>Tue, 19 Apr 2011 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Just a quick note to say that I just opensourced the software behind &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt;, nicknamed &amp;#8220;Routez&amp;#8221; under the &lt;a href="http://www.affero.org/oagpl.html"&gt;Affero GPL&lt;/a&gt;. You can get the code on &lt;a href="http://github.com/wlach/routez"&gt;github&lt;/a&gt;.&lt;/p&gt;
@@ -52,8 +52,8 @@
 &lt;p&gt;Even with these problems, I figured it would be better to open up what I have for people to check out and play with. Have a look and let me know what you think!&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Google Transit Halifax is down (but hbus and Transit to Go are still up)</title>
-   <link>https://wlach.github.io/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up/?utm_source=hbus&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2010-08-google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up</guid>
+   <link>http://www.example.com/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up.html?utm_source=hbus&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2010-08-google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up-html</guid>
    <pubDate>Sun, 29 Aug 2010 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Due to some schedule adjustments, it appears as if Metro Transit&amp;#8217;s Google Transit is &lt;a href="http://www.halifax.ca/googletransit/"&gt;temporarily out of service&lt;/a&gt; while they wait for Google to process their new transit feed.&lt;/p&gt;
@@ -65,8 +65,8 @@
  &lt;li&gt;&lt;a href="http://transittogo.mindsea.ca"&gt;Transit to Go&lt;/a&gt;    In other news, it appears as if Metro Transit has finally seen the light and made their transit information available to anyone who wants it. I would like to think that I might have had &lt;a href="http://www.thecoast.ca/halifax/beta-the-public-transit-day-tripper/Content?oid=1098826"&gt;something to do with this&lt;/a&gt;, but I honestly have no idea. Anyway, if you want to check it out, it&amp;#8217;s available &lt;a href="http://www.halifax.ca/GoogleTransit/developerdata.html"&gt;here&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</description></item>
   <item>
    <title>hbus is back</title>
-   <link>https://wlach.github.io/blog/2010/05/hbus-is-back/?utm_source=hbus&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2010-05-hbus-is-back</guid>
+   <link>http://www.example.com/2010/05/hbus-is-back.html?utm_source=hbus&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2010-05-hbus-is-back-html</guid>
    <pubDate>Mon, 24 May 2010 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;&lt;a href="http://hbus.ca"&gt;&lt;img src="/files/2010/05/hbus_shot1.png" alt="hbus_shot" title="hbus_shot" width="320" height="181" class="alignleft size-full wp-image-135" /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -74,8 +74,8 @@
 &lt;p&gt;After a month long hiatus, I finally had a chance to get &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt; back into a working state. The big difference is that we&amp;#8217;re now using the &lt;a href="http://www.mindsea.com/2010/03/03/transit-to-go-pulling-out-all-the-stops/"&gt;official HRM transit data&lt;/a&gt;. Lots more remains to be done to make this site competitive for 2010 (most of the recent work has been back-end infrastructure stuff), but at least it&amp;#8217;s usable again.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Oh, the lines! And some help for Edmonton.</title>
-   <link>https://wlach.github.io/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/?utm_source=hbus&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2010-04-oh-the-lines-and-some-help-for-edmonton</guid>
+   <link>http://www.example.com/2010/04/oh-the-lines-and-some-help-for-edmonton.html?utm_source=hbus&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2010-04-oh-the-lines-and-some-help-for-edmonton-html</guid>
    <pubDate>Sat, 10 Apr 2010 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;&lt;img src="/files/2010/04/linked_map1.jpg" alt="Map with new link nodes" title="Map with new link nodes" width="320" height="242" class="aligncenter size-full wp-image-118" /&gt;&lt;/p&gt;
@@ -88,8 +88,8 @@
  &lt;li&gt;I &lt;a href="http://gist.github.com/361848"&gt;coded up a script&lt;/a&gt; to automatically generate synthetic headsigns for GTFS feeds which don&amp;#8217;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&amp;#8217;t you do better than saying that all your buses go in the &amp;#8220;1&amp;#8221; direction? There&amp;#8217;s a reason why it&amp;#8217;s a required field you know. Not only would it help me, but &lt;a href="http://google.com/transit"&gt;Google Transit&lt;/a&gt; would give better results for your city as well.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Projects for 2010</title>
-   <link>https://wlach.github.io/blog/2010/01/projects-for-2010/?utm_source=hbus&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2010-01-projects-for-2010</guid>
+   <link>http://www.example.com/2010/01/projects-for-2010.html?utm_source=hbus&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2010-01-projects-for-2010-html</guid>
    <pubDate>Sat, 02 Jan 2010 05:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Hurrah, 2010 is upon us!&lt;/p&gt;
@@ -108,8 +108,8 @@
 &lt;p&gt;Thoughts? Would be particularly interested in hearing from people working on similar projects to neocoder and routez. Despite how it may some times appear, I don&amp;#8217;t have a NotInventedHere mentality: I&amp;#8217;ve done as an exhaustive survey of the field as I could before deciding to work on my own projects, and what I&amp;#8217;ve found just hasn&amp;#8217;t been the right fit for what I&amp;#8217;m trying to accomplish. However, the world&amp;#8217;s gotten so damn big that I&amp;#8217;m not sure if I&amp;#8217;m missing something&amp;#8230;&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Creating a google transit feed for fun and profit</title>
-   <link>https://wlach.github.io/blog/2009/04/creating-a-google-transit-feed-for-fun-and-profit/?utm_source=hbus&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2009-04-creating-a-google-transit-feed-for-fun-and-profit</guid>
+   <link>http://www.example.com/2009/04/creating-a-google-transit-feed-for-fun-and-profit.html?utm_source=hbus&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2009-04-creating-a-google-transit-feed-for-fun-and-profit-html</guid>
    <pubDate>Thu, 23 Apr 2009 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;People frequently ask me how I manage to collect and input the data that is used by hbus.ca, given Metro Transit&amp;#8217;s intransigence. The &amp;#8220;bike and GPS&amp;#8221; angle is well known &lt;a href="http://www.thecoast.ca/halifax/beta-the-public-transit-day-tripper/Content?oid=1098826"&gt;by now&lt;/a&gt;, but what about the rest of the process? How do I get the data into a format that hbus.ca can consume?&lt;/p&gt;
@@ -165,8 +165,8 @@ pdftotext -raw route60.pdf&amp;lt;br /&amp;gt;&lt;/code&gt;
  &lt;br /&gt;&lt;a href="http://wrla.ch/blog/2009/03/hbusca-and-thoughts-about-crowdsourcing/"&gt;rejected&lt;/a&gt; earlier.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>hbus.ca and thoughts about crowdsourcing</title>
-   <link>https://wlach.github.io/blog/2009/03/hbus-ca-and-thoughts-about-crowdsourcing/?utm_source=hbus&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2009-03-hbus-ca-and-thoughts-about-crowdsourcing</guid>
+   <link>http://www.example.com/2009/03/hbus-ca-and-thoughts-about-crowdsourcing.html?utm_source=hbus&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2009-03-hbus-ca-and-thoughts-about-crowdsourcing-html</guid>
    <pubDate>Wed, 25 Mar 2009 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;figure id="attachment_18" style="width: 410px" class="wp-caption alignleft"&gt;&lt;img src="/files/2009/03/hbus_mini.png" alt="hbus in action" title="hbus_mini" width="410" height="409" class="size-full wp-image-18" /&gt;

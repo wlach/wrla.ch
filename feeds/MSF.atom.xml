@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'MSF'</title>
- <link rel="self" href="https://wlach.github.io/feeds/MSF.atom.xml" />
- <link href="https://wlach.github.io/tags/MSF.html" />
- <id>urn:https-wlach-github-io:-tags-MSF-html</id>
+ <title type="text">Untitled Site: Posts tagged 'MSF'</title>
+ <link rel="self" href="http://www.example.com/feeds/MSF.atom.xml" />
+ <link href="http://www.example.com/tags/MSF.html" />
+ <id>urn:http-www-example-com:-tags-MSF-html</id>
  <updated>2014-10-20T04:00:00Z</updated>
  <entry>
   <title type="text">Ebola mini-campaign successful: $6212 for MSF</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf/?utm_source=MSF&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-10-ebola-mini-campaign-successful-6212-for-msf</id>
+  <link rel="alternate" href="http://www.example.com/2014/10/ebola-mini-campaign-successful-6212-for-msf.html?utm_source=MSF&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2014-10-ebola-mini-campaign-successful-6212-for-msf-html</id>
   <published>2014-10-20T04:00:00Z</published>
   <updated>2014-10-20T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Just a quick note that my campaign to raise funds for &lt;a href="http://msf.ca"&gt;MSF&lt;/a&gt; was successful. From friends and family, coworkers, and my extended network I managed to raise the sum of $3106. This was a bit above my maximum of $2500 that I said I would match, but what the hell:&lt;/p&gt;
 
@@ -25,12 +25,12 @@
 &lt;p&gt;Incidentally, I&amp;#8217;ve learned a bit more about Ebola over the past week, and I&amp;#8217;m fairly sure that we&amp;#8217;ll be ok here in Canada and the States given the fact that the virus isn&amp;#8217;t actually that contagious (and that we have reasonable facilities for treating it in a safe manner, major screwups in Dallas notwithstanding). Liberia and other parts of Africa are still very much worth worrying about though, so I still 100% that starting this campaign was the right thing for me to do as an individual. Actually wiping out the disease will likely require government-level resources and intervention. Still waiting for a more serious resource commitment from Canada (cautiously optimistic about what&amp;#8217;s happening with the States).&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Doing something about Ebola before it becomes a catostrophe</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe/?utm_source=MSF&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-10-doing-something-about-ebola-before-it-becomes-a-catostrophe</id>
+  <link rel="alternate" href="http://www.example.com/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe.html?utm_source=MSF&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2014-10-doing-something-about-ebola-before-it-becomes-a-catostrophe-html</id>
   <published>2014-10-12T04:00:00Z</published>
   <updated>2014-10-12T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;I&amp;#8217;ve been appalled at the (lack of) response to the Ebola epidemic in Africa. We&amp;#8217;re talking about a deadly disease which could infect &lt;a href="http://www.nytimes.com/2014/09/24/health/ebola-cases-could-reach-14-million-in-4-months-cdc-estimates.html"&gt;more than a million people&lt;/a&gt; by January 2015 and explode out of control&amp;#8230; but the response from our governments has been pitiful, ranging from &amp;#8220;inadequate&amp;#8221; in the case of the United States to &amp;#8220;pretty much nothing&amp;#8221; from Canada.&lt;/p&gt;
 

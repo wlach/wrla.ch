@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Android'</title>
-  <description>William Lachance's Log: Posts tagged 'Android'</description>
-  <link>https://wlach.github.io/tags/Android.html</link>
+  <title>Untitled Site: Posts tagged 'Android'</title>
+  <description>Untitled Site: Posts tagged 'Android'</description>
+  <link>http://www.example.com/tags/Android.html</link>
   <lastBuildDate>Fri, 27 Jun 2014 04:00:00 UT</lastBuildDate>
   <pubDate>Fri, 27 Jun 2014 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>End of Q2 Eideticker update: Flame tests, future plans</title>
-   <link>https://wlach.github.io/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans/?utm_source=Android&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2014-06-end-of-q2-eideticker-update-flame-tests-future-plans</guid>
+   <link>http://www.example.com/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans.html?utm_source=Android&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2014-06-end-of-q2-eideticker-update-flame-tests-future-plans-html</guid>
    <pubDate>Fri, 27 Jun 2014 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
@@ -32,8 +32,8 @@
 &lt;p&gt;The above isn&amp;#8217;t an exhaustive list: there&amp;#8217;s much more that we have in mind for the future that&amp;#8217;s not yet scheduled or defined well (e.g. get Eideticker reporting to Treeherder&amp;#8217;s new performance module). If you have any questions or feedback on anything outlined above I&amp;#8217;d love to hear it!&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Simple command-line ntp client for Android and FirefoxOS</title>
-   <link>https://wlach.github.io/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/?utm_source=Android&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2013-07-simple-command-line-ntp-client-for-android-and-firefoxos</guid>
+   <link>http://www.example.com/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos.html?utm_source=Android&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2013-07-simple-command-line-ntp-client-for-android-and-firefoxos-html</guid>
    <pubDate>Mon, 08 Jul 2013 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Today I did a quick port of Larry Doolittle&amp;#8217;s &lt;a href="http://doolittle.icarus.com/ntpclient/"&gt;ntpclient program&lt;/a&gt; to Android and FirefoxOS. Basically this lets you easily synchronize your device&amp;#8217;s time to that of a central server. Yes, there&amp;#8217;s lots and lots of Android &amp;#8220;applications&amp;#8221; which let you do this, but I wanted to be able to do this from the command line because that&amp;#8217;s how I roll. If you&amp;#8217;re interested, source and instructions are here:&lt;/p&gt;
@@ -45,8 +45,8 @@
 &lt;p&gt;Because an Eideticker test run involves two different machines (a host machine which controls the device and captures video of it in action, as well as the device itself), we need to use timestamps to really understand when and how events are being sent to the device. To do that reliably, we really need some easy way of synchronizing time between two machines (or at least accounting for the difference in their clocks, which amounts to about the same thing). NTP struck me as being the easiest, most standard way of doing this.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Eideticker: Limitations in cross-browser performance testing</title>
-   <link>https://wlach.github.io/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing/?utm_source=Android&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2013-03-eideticker-limitations-in-cross-browser-performance-testing</guid>
+   <link>http://www.example.com/2013/03/eideticker-limitations-in-cross-browser-performance-testing.html?utm_source=Android&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2013-03-eideticker-limitations-in-cross-browser-performance-testing-html</guid>
    <pubDate>Wed, 20 Mar 2013 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Last summer I &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;wrote a bit&lt;/a&gt; about using &lt;a href="https://wiki.mozilla.org/Project_Eideticker"&gt;Eideticker&lt;/a&gt; to measure the relative performance of Firefox for Android versus other browsers (Chrome, stock, etc.). At the time I was pretty optimistic about Eideticker&amp;#8217;s usefulness as a truly &amp;#8220;objective&amp;#8221; measure of user experience that would give us a more accurate view of how we compared against the competition than traditional benchmarking suites (which more often than not, measure things that a user will never see normally when browsing the web). Since then, there&amp;#8217;s been some things that I&amp;#8217;ve discovered, as well as some developments in terms of the &amp;#8220;state of the art&amp;#8221; in mobile browsing that have caused me to reconsider that view &amp;#8212; while I haven&amp;#8217;t given up entirely on this concept (and I&amp;#8217;m still very much convinced of eideticker&amp;#8217;s utility as an internal benchmarking tool), there&amp;#8217;s definitely some limitations in terms of what we can do that I&amp;#8217;m not sure how to overcome.&lt;/p&gt;
@@ -99,8 +99,8 @@
 &lt;p&gt;If anyone has any suggestions on what to do here, let me know as I&amp;#8217;m a bit stuck. There are other metrics we could still compare against (i.e. how smooth is the panning animation aka frames per second?) but these aren&amp;#8217;t nearly as interesting.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Documentation for mozdevice</title>
-   <link>https://wlach.github.io/blog/2013/03/documentation-for-mozdevice/?utm_source=Android&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2013-03-documentation-for-mozdevice</guid>
+   <link>http://www.example.com/2013/03/documentation-for-mozdevice.html?utm_source=Android&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2013-03-documentation-for-mozdevice-html</guid>
    <pubDate>Mon, 11 Mar 2013 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Just wanted to give a quick heads up that as part of the ateam&amp;#8217;s ongoing effort to improve the documentation of our automated testing infrastructure, we now have &lt;a href="https://mozbase.readthedocs.org/en/latest/mozdevice.html"&gt;online documentation&lt;/a&gt; for mozdevice, the python library we use for interacting with Android- and FirefoxOS-based devices in automated testing.&lt;/p&gt;
@@ -112,8 +112,8 @@
  &lt;li&gt;Thanks to Dustin Mitchell for the correction.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Using the dm utility to interact with Android or FirefoxOS devices</title>
-   <link>https://wlach.github.io/blog/2012/10/using-the-dm-utility-to-interact-with-android-or-firefoxos-devices/?utm_source=Android&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2012-10-using-the-dm-utility-to-interact-with-android-or-firefoxos-devices</guid>
+   <link>http://www.example.com/2012/10/using-the-dm-utility-to-interact-with-android-or-firefoxos-devices.html?utm_source=Android&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2012-10-using-the-dm-utility-to-interact-with-android-or-firefoxos-devices-html</guid>
    <pubDate>Thu, 18 Oct 2012 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;I promised a few people I&amp;#8217;d blog about this, so here you go.&lt;/p&gt;
@@ -148,8 +148,8 @@ dm --help&lt;/code&gt;&lt;/pre&gt;
 Happy command-lining!&lt;/code&gt;&lt;/pre&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Say hello to frof</title>
-   <link>https://wlach.github.io/blog/2012/09/say-hello-to-frof/?utm_source=Android&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2012-09-say-hello-to-frof</guid>
+   <link>http://www.example.com/2012/09/say-hello-to-frof.html?utm_source=Android&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2012-09-say-hello-to-frof-html</guid>
    <pubDate>Tue, 25 Sep 2012 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Inspired by the work I&amp;#8217;d been doing with Benoit Girard to &lt;a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/"&gt;integrate the Firefox Profiler with Eideticker&lt;/a&gt;, I decided to create an easy-to-use python script to help with gathering profiles on Fennec, which I call &lt;a href="https://github.com/wlach/frof"&gt;frof&lt;/a&gt;.&lt;/p&gt;
@@ -168,8 +168,8 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&amp;lt;br /&amp;gt
 &lt;p&gt;Oh well, it could be worse. My fervent hope is that frof will be helpful for both Fennec developers and QA. Let me know if you wind up using it!&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Launching random web browsers on Android</title>
-   <link>https://wlach.github.io/blog/2012/05/launching-random-web-browsers-on-android/?utm_source=Android&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2012-05-launching-random-web-browsers-on-android</guid>
+   <link>http://www.example.com/2012/05/launching-random-web-browsers-on-android.html?utm_source=Android&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2012-05-launching-random-web-browsers-on-android-html</guid>
    <pubDate>Fri, 04 May 2012 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Ok, this is somewhat mundane, but I&amp;#8217;ve already had to do it twice (and helped someone do something similar on #mobile), so I figured I might as well blog about it for posterity.&lt;/p&gt;
@@ -208,8 +208,8 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&amp;lt;br /&amp;gt
 &lt;p&gt;Hope this helps someone, somewhere.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>An even better way of taking screenshots on Android</title>
-   <link>https://wlach.github.io/blog/2012/04/an-even-better-way-of-taking-screenshots-on-android/?utm_source=Android&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2012-04-an-even-better-way-of-taking-screenshots-on-android</guid>
+   <link>http://www.example.com/2012/04/an-even-better-way-of-taking-screenshots-on-android.html?utm_source=Android&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2012-04-an-even-better-way-of-taking-screenshots-on-android-html</guid>
    <pubDate>Tue, 03 Apr 2012 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Just thought I&amp;#8217;d mention this because I found it handy.&lt;/p&gt;
@@ -239,8 +239,8 @@ monkeyrunner capture.py screenshot.png&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt
 &lt;p&gt;(credit to &lt;a href="http://stackoverflow.com/a/9311243/295132"&gt;this stackoverflow answer&lt;/a&gt; for the idea)&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Playing with pandas</title>
-   <link>https://wlach.github.io/blog/2012/02/playing-with-pandas/?utm_source=Android&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2012-02-playing-with-pandas</guid>
+   <link>http://www.example.com/2012/02/playing-with-pandas.html?utm_source=Android&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2012-02-playing-with-pandas-html</guid>
    <pubDate>Fri, 10 Feb 2012 05:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;For the last few days I&amp;#8217;ve been experimenting with getting a Pandaboard running Android 4.0, continuing the work that Clint Talbert &lt;a href="http://cmtalbert.wordpress.com/2011/10/12/pandaboard-status/"&gt;started in the fall&lt;/a&gt; to get these boards for use as a replacement for the Tegra in Mozilla&amp;#8217;s android automation. The first objective is to get a reproducible build going, after that we&amp;#8217;ll try to get some of our custom tools (&lt;a href="https://wiki.mozilla.org/Mobile/Fennec_Unittests/Remote_Testing"&gt;SUTAgent&lt;/a&gt; &amp;#38; friends) installed by default.&lt;/p&gt;

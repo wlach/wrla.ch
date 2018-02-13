@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Pandaboard'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Pandaboard.atom.xml" />
- <link href="https://wlach.github.io/tags/Pandaboard.html" />
- <id>urn:https-wlach-github-io:-tags-Pandaboard-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Pandaboard'</title>
+ <link rel="self" href="http://www.example.com/feeds/Pandaboard.atom.xml" />
+ <link href="http://www.example.com/tags/Pandaboard.html" />
+ <id>urn:http-www-example-com:-tags-Pandaboard-html</id>
  <updated>2012-02-10T05:00:00Z</updated>
  <entry>
   <title type="text">Playing with pandas</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2012/02/playing-with-pandas/?utm_source=Pandaboard&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2012-02-playing-with-pandas</id>
+  <link rel="alternate" href="http://www.example.com/2012/02/playing-with-pandas.html?utm_source=Pandaboard&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2012-02-playing-with-pandas-html</id>
   <published>2012-02-10T05:00:00Z</published>
   <updated>2012-02-10T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;For the last few days I&amp;#8217;ve been experimenting with getting a Pandaboard running Android 4.0, continuing the work that Clint Talbert &lt;a href="http://cmtalbert.wordpress.com/2011/10/12/pandaboard-status/"&gt;started in the fall&lt;/a&gt; to get these boards for use as a replacement for the Tegra in Mozilla&amp;#8217;s android automation. The first objective is to get a reproducible build going, after that we&amp;#8217;ll try to get some of our custom tools (&lt;a href="https://wiki.mozilla.org/Mobile/Fennec_Unittests/Remote_Testing"&gt;SUTAgent&lt;/a&gt; &amp;#38; friends) installed by default.&lt;/p&gt;
 

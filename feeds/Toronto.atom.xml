@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Toronto'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Toronto.atom.xml" />
- <link href="https://wlach.github.io/tags/Toronto.html" />
- <id>urn:https-wlach-github-io:-tags-Toronto-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Toronto'</title>
+ <link rel="self" href="http://www.example.com/feeds/Toronto.atom.xml" />
+ <link href="http://www.example.com/tags/Toronto.html" />
+ <id>urn:http-www-example-com:-tags-Toronto-html</id>
  <updated>2014-07-12T04:00:00Z</updated>
  <entry>
   <title type="text">New city, new cellphone provider</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/07/new-city-new-cellphone-provider/?utm_source=Toronto&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-07-new-city-new-cellphone-provider</id>
+  <link rel="alternate" href="http://www.example.com/2014/07/new-city-new-cellphone-provider.html?utm_source=Toronto&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2014-07-new-city-new-cellphone-provider-html</id>
   <published>2014-07-12T04:00:00Z</published>
   <updated>2014-07-12T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Rogers, my previous cell phone provider, is ridiculous.&lt;/p&gt;
 

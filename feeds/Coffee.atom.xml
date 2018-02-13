@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Coffee'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Coffee.atom.xml" />
- <link href="https://wlach.github.io/tags/Coffee.html" />
- <id>urn:https-wlach-github-io:-tags-Coffee-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Coffee'</title>
+ <link rel="self" href="http://www.example.com/feeds/Coffee.atom.xml" />
+ <link href="http://www.example.com/tags/Coffee.html" />
+ <id>urn:http-www-example-com:-tags-Coffee-html</id>
  <updated>2013-09-17T04:00:00Z</updated>
  <entry>
   <title type="text">How to make great coffee that doesn&amp;#8217;t generate 966 million pounds of waste a year</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/09/how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year/?utm_source=Coffee&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2013-09-how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year</id>
+  <link rel="alternate" href="http://www.example.com/2013/09/how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year.html?utm_source=Coffee&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2013-09-how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year-html</id>
   <published>2013-09-17T04:00:00Z</published>
   <updated>2013-09-17T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;I was kind of appalled today to see this:&lt;/p&gt;
 

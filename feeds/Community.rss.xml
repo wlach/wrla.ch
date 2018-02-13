@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Community'</title>
-  <description>William Lachance's Log: Posts tagged 'Community'</description>
-  <link>https://wlach.github.io/tags/Community.html</link>
+  <title>Untitled Site: Posts tagged 'Community'</title>
+  <description>Untitled Site: Posts tagged 'Community'</description>
+  <link>http://www.example.com/tags/Community.html</link>
   <lastBuildDate>Tue, 29 Sep 2015 04:00:00 UT</lastBuildDate>
   <pubDate>Tue, 29 Sep 2015 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Perfherder summer of contribution thoughts</title>
-   <link>https://wlach.github.io/blog/2015/09/perfherder-summer-of-contribution-thoughts/?utm_source=Community&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-09-perfherder-summer-of-contribution-thoughts</guid>
+   <link>http://www.example.com/2015/09/perfherder-summer-of-contribution-thoughts.html?utm_source=Community&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2015-09-perfherder-summer-of-contribution-thoughts-html</guid>
    <pubDate>Tue, 29 Sep 2015 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;A few months ago, Joel Maher &lt;a href="https://elvis314.wordpress.com/2015/05/18/a-team-contribution-opportunity-dashboard-hacker/"&gt;announced the Perfherder summer of contribution&lt;/a&gt;. We wrapped things up there a few weeks ago, so I guess it&amp;#8217;s about time I wrote up a bit about how things went.&lt;/p&gt;

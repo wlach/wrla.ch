@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Responsiveness'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Responsiveness.atom.xml" />
- <link href="https://wlach.github.io/tags/Responsiveness.html" />
- <id>urn:https-wlach-github-io:-tags-Responsiveness-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Responsiveness'</title>
+ <link rel="self" href="http://www.example.com/feeds/Responsiveness.atom.xml" />
+ <link href="http://www.example.com/tags/Responsiveness.html" />
+ <id>urn:http-www-example-com:-tags-Responsiveness-html</id>
  <updated>2013-10-07T04:00:00Z</updated>
  <entry>
   <title type="text">First Eideticker Responsiveness Tests</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/10/first-eideticker-responsiveness-tests/?utm_source=Responsiveness&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2013-10-first-eideticker-responsiveness-tests</id>
+  <link rel="alternate" href="http://www.example.com/2013/10/first-eideticker-responsiveness-tests.html?utm_source=Responsiveness&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2013-10-first-eideticker-responsiveness-tests-html</id>
   <published>2013-10-07T04:00:00Z</published>
   <updated>2013-10-07T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
 

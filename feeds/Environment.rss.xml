@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Environment'</title>
-  <description>William Lachance's Log: Posts tagged 'Environment'</description>
-  <link>https://wlach.github.io/tags/Environment.html</link>
+  <title>Untitled Site: Posts tagged 'Environment'</title>
+  <description>Untitled Site: Posts tagged 'Environment'</description>
+  <link>http://www.example.com/tags/Environment.html</link>
   <lastBuildDate>Tue, 17 Sep 2013 04:00:00 UT</lastBuildDate>
   <pubDate>Tue, 17 Sep 2013 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>How to make great coffee that doesn&amp;#8217;t generate 966 million pounds of waste a year</title>
-   <link>https://wlach.github.io/blog/2013/09/how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year/?utm_source=Environment&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2013-09-how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year</guid>
+   <link>http://www.example.com/2013/09/how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year.html?utm_source=Environment&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2013-09-how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year-html</guid>
    <pubDate>Tue, 17 Sep 2013 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;I was kind of appalled today to see this:&lt;/p&gt;

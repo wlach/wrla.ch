@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'iphone'</title>
- <link rel="self" href="https://wlach.github.io/feeds/iphone.atom.xml" />
- <link href="https://wlach.github.io/tags/iphone.html" />
- <id>urn:https-wlach-github-io:-tags-iphone-html</id>
+ <title type="text">Untitled Site: Posts tagged 'iphone'</title>
+ <link rel="self" href="http://www.example.com/feeds/iphone.atom.xml" />
+ <link href="http://www.example.com/tags/iphone.html" />
+ <id>urn:http-www-example-com:-tags-iphone-html</id>
  <updated>2011-02-19T05:00:00Z</updated>
  <entry>
   <title type="text">D&amp;eacute;chets Montr&amp;eacute;al goes mobile</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile/?utm_source=iphone&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile</id>
+  <link rel="alternate" href="http://www.example.com/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile.html?utm_source=iphone&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile-html</id>
   <published>2011-02-19T05:00:00Z</published>
   <updated>2011-02-19T05:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;A few weekends ago, there was a &lt;a href="http://montrealouvert.net/"&gt;Montr&amp;eacute;al Ouvert&lt;/a&gt; hackfest at the &lt;a href="http://notmanhouse.com"&gt;Notman House&lt;/a&gt;. I decided to take a bit of a break from my usual transit hacking and built up a mobile friendly interface to the wonderful &lt;a href="http://dechetsmontreal.ca/"&gt;D&amp;eacute;chets Montr&amp;eacute;al&lt;/a&gt;, which lets residents easily get information on their garbage collection schedule.&lt;/p&gt;
 
@@ -31,12 +31,12 @@
 &lt;p&gt;Thanks muchly to Kent Mewhort, the brains behind D&amp;eacute;chets Montr&amp;eacute;al, for helping me incorporate my work into his Drupal-based site.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">I can has Edmonton transit iPhone app?</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2010/04/i-can-has-edmonton-transit-iphone-app/?utm_source=iphone&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2010-04-i-can-has-edmonton-transit-iphone-app</id>
+  <link rel="alternate" href="http://www.example.com/2010/04/i-can-has-edmonton-transit-iphone-app.html?utm_source=iphone&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2010-04-i-can-has-edmonton-transit-iphone-app-html</id>
   <published>2010-04-10T04:00:00Z</published>
   <updated>2010-04-10T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;&lt;img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /&gt;&lt;/p&gt;
 

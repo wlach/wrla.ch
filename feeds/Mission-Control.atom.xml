@@ -4,11 +4,39 @@
  <link rel="self" href="http://www.example.com/feeds/Mission-Control.atom.xml" />
  <link href="http://www.example.com/tags/Mission-Control.html" />
  <id>urn:http-www-example-com:-tags-Mission-Control-html</id>
- <updated>2017-12-06T22:16:23Z</updated>
+ <updated>2018-02-12T21:06:40Z</updated>
+ <entry>
+  <title type="text">Derived versus direct</title>
+  <link rel="alternate" href="http://www.example.com/2018/02/derived-versus-direct.html?utm_source=Mission-Control&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2018-02-derived-versus-direct-html</id>
+  <published>2018-02-12T21:06:40Z</published>
+  <updated>2018-02-12T21:06:40Z</updated>
+  <author>
+   <name>The Unknown Author</name></author>
+  <content type="html">&lt;html&gt;
+&lt;p&gt;To attempt to make complex phenomena more understandable, we often use derived measures when representing Telemetry data at Mozilla. For error rates for example, we often measure things in terms of &amp;ldquo;X per khours of use&amp;rdquo; (where X might be &amp;ldquo;main crashes&amp;rdquo;, &amp;ldquo;appearance of the slow script dialogue&amp;rdquo;). I.e. instead of showing a raw &lt;em&gt;count&lt;/em&gt; of errors we show a rate. Normally this is a good thing: it allows the user to easily compare two things which might have different raw numbers for whatever reason but where you&amp;rsquo;d normally expect the ratio to be similar. For example, we see that although the &lt;em&gt;uptake&lt;/em&gt; of the newly-released Firefox 58.0.2 is a bit slower than 58.0.1, the overall crash rate (as sampled every 5 minutes) is more or less the same after about a day has rolled around:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2018/02/main_crashes_normalized.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;On the other hand, looking at raw counts doesn&amp;rsquo;t really give you much of a hint on how to interpret the results. Depending on the scale of the graph, the actual rates could actually resolve to being vastly different:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2018/02/main_crashes_raw.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ok, so this simple tool (using a ratio) is useful. Yay! Unfortunately, there is one case where using this technique can lead to a very deceptive visualization: when the number of samples is really small, a few outliers can give a really false impression of what&amp;rsquo;s really happening. Take this graph of what the crash rate looked like &lt;em&gt;just after&lt;/em&gt; Firefox 58.0 was released:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2018/02/relative_small_crash_counts.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;10 to 100 errors per 1000 hours, say it isn&amp;rsquo;t so? But wait, how many errors do we have absolutely? Hovering over a representative point in the graph with the normalization (use of a ratio) turned off:&lt;/p&gt;
+
+&lt;p&gt;&lt;img srcset="/files/2018/02/absolute_small_crash_counts.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;We&amp;rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&amp;rsquo;t (and shouldn&amp;rsquo;t) draw any kind of conclusion whatsoever.&lt;/p&gt;
+
+&lt;p&gt;Ok, so that&amp;rsquo;s just science 101: don&amp;rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &amp;mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Maintaining metricsgraphics</title>
-  <link rel="alternate" href="http://www.example.com/blog/2017/12/maintaining-metricsgraphics/?utm_source=Mission-Control&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-blog-2017-12-maintaining-metricsgraphics</id>
+  <link rel="alternate" href="http://www.example.com/2017/12/maintaining-metricsgraphics.html?utm_source=Mission-Control&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2017-12-maintaining-metricsgraphics-html</id>
   <published>2017-12-06T22:16:23Z</published>
   <updated>2017-12-06T22:16:23Z</updated>
   <author>
@@ -21,8 +49,8 @@
 &lt;p&gt;Note that this emphatically does &lt;em&gt;not&lt;/em&gt; mean I am promising to respond to every issue/question/pull request made against the project. Like my work with mozregression and perfherder, my maintenance work is being done on a best-effort basis to support Mozilla and the larger open source community. I&amp;rsquo;ll help people out where I can, but there are only so many working hours in a day and I need to spend most of those pushing my team&amp;rsquo;s immediate projects and deliverables forward! In particular, when it comes to getting pull requests merged, small, self-contained and logical changes with good commit messages will take priority.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Better or worse: by what measure?</title>
-  <link rel="alternate" href="http://www.example.com/blog/2017/10/better-or-worse-by-what-measure/?utm_source=Mission-Control&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-blog-2017-10-better-or-worse-by-what-measure</id>
+  <link rel="alternate" href="http://www.example.com/2017/10/better-or-worse-by-what-measure.html?utm_source=Mission-Control&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2017-10-better-or-worse-by-what-measure-html</id>
   <published>2017-10-26T20:58:20Z</published>
   <updated>2017-10-26T20:58:20Z</updated>
   <author>
@@ -74,8 +102,8 @@
 &lt;p&gt;Shout out to &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; for reviewing this post and providing feedback and additions.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Mission Control: Ready for contributions</title>
-  <link rel="alternate" href="http://www.example.com/blog/2017/10/mission-control-ready-for-contributions/?utm_source=Mission-Control&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-blog-2017-10-mission-control-ready-for-contributions</id>
+  <link rel="alternate" href="http://www.example.com/2017/10/mission-control-ready-for-contributions.html?utm_source=Mission-Control&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2017-10-mission-control-ready-for-contributions-html</id>
   <published>2017-10-20T18:33:19Z</published>
   <updated>2017-10-20T18:33:19Z</updated>
   <author>
@@ -90,8 +118,8 @@
 &lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;&lt;/html&gt;</content></entry>
  <entry>
   <title type="text">Mission Control</title>
-  <link rel="alternate" href="http://www.example.com/blog/2017/10/mission-control/?utm_source=Mission-Control&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-blog-2017-10-mission-control</id>
+  <link rel="alternate" href="http://www.example.com/2017/10/mission-control.html?utm_source=Mission-Control&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2017-10-mission-control-html</id>
   <published>2017-10-06T19:05:37Z</published>
   <updated>2017-10-06T19:05:37Z</updated>
   <author>

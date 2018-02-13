@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Infraherder'</title>
-  <description>William Lachance's Log: Posts tagged 'Infraherder'</description>
-  <link>https://wlach.github.io/tags/Infraherder.html</link>
+  <title>Untitled Site: Posts tagged 'Infraherder'</title>
+  <description>Untitled Site: Posts tagged 'Infraherder'</description>
+  <link>http://www.example.com/tags/Infraherder.html</link>
   <lastBuildDate>Wed, 17 Aug 2016 20:18:12 UT</lastBuildDate>
   <pubDate>Wed, 17 Aug 2016 20:18:12 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Herding Automation Infrastructure</title>
-   <link>https://wlach.github.io/blog/2016/08/herding-automation-infrastructure/?utm_source=Infraherder&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-08-herding-automation-infrastructure</guid>
+   <link>http://www.example.com/2016/08/herding-automation-infrastructure.html?utm_source=Infraherder&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2016-08-herding-automation-infrastructure-html</guid>
    <pubDate>Wed, 17 Aug 2016 20:18:12 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;For every commit to Firefox, we run a battery of builds and automated tests on the resulting source tree to make sure that the result still works and meets our correctness and performance quality criteria. This is expensive: every new push to our repository implies hundreds of hours of machine time. However, automated quality control is essential to ensure that the product that we&amp;rsquo;re shipping to users is something that we can be proud of.&lt;/p&gt;

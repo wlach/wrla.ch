@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Profiling'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Profiling.atom.xml" />
- <link href="https://wlach.github.io/tags/Profiling.html" />
- <id>urn:https-wlach-github-io:-tags-Profiling-html</id>
+ <title type="text">Untitled Site: Posts tagged 'Profiling'</title>
+ <link rel="self" href="http://www.example.com/feeds/Profiling.atom.xml" />
+ <link href="http://www.example.com/tags/Profiling.html" />
+ <id>urn:http-www-example-com:-tags-Profiling-html</id>
  <updated>2012-09-25T04:00:00Z</updated>
  <entry>
   <title type="text">Say hello to frof</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2012/09/say-hello-to-frof/?utm_source=Profiling&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2012-09-say-hello-to-frof</id>
+  <link rel="alternate" href="http://www.example.com/2012/09/say-hello-to-frof.html?utm_source=Profiling&amp;utm_medium=Atom" />
+  <id>urn:http-www-example-com:-2012-09-say-hello-to-frof-html</id>
   <published>2012-09-25T04:00:00Z</published>
   <updated>2012-09-25T04:00:00Z</updated>
   <author>
-   <name>William Lachance</name></author>
+   <name>The Unknown Author</name></author>
   <content type="html">&lt;html&gt;
 &lt;p&gt;Inspired by the work I&amp;#8217;d been doing with Benoit Girard to &lt;a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/"&gt;integrate the Firefox Profiler with Eideticker&lt;/a&gt;, I decided to create an easy-to-use python script to help with gathering profiles on Fennec, which I call &lt;a href="https://github.com/wlach/frof"&gt;frof&lt;/a&gt;.&lt;/p&gt;
 

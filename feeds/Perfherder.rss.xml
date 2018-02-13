@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Perfherder'</title>
-  <description>William Lachance's Log: Posts tagged 'Perfherder'</description>
-  <link>https://wlach.github.io/tags/Perfherder.html</link>
+  <title>Untitled Site: Posts tagged 'Perfherder'</title>
+  <description>Untitled Site: Posts tagged 'Perfherder'</description>
+  <link>http://www.example.com/tags/Perfherder.html</link>
   <lastBuildDate>Wed, 10 Aug 2016 20:37:05 UT</lastBuildDate>
   <pubDate>Wed, 10 Aug 2016 20:37:05 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Perfherder Quarter of Contribution Summer 2016: Results</title>
-   <link>https://wlach.github.io/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-results/?utm_source=Perfherder&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-08-perfherder-quarter-of-contribution-summer-2016-results</guid>
+   <link>http://www.example.com/2016/08/perfherder-quarter-of-contribution-summer-2016-results.html?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2016-08-perfherder-quarter-of-contribution-summer-2016-results-html</guid>
    <pubDate>Wed, 10 Aug 2016 20:37:05 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Following on the footsteps of Mike Ling&amp;rsquo;s &lt;a href="/blog/2015/09/perfherder-summer-of-contribution-thoughts/"&gt;amazing work&lt;/a&gt; on &lt;a href="https://wiki.mozilla.org/ngineeringProductivity‎/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; in 2015 (he&amp;rsquo;s gone on to do a GSOC project), I got two amazing contributors to continue working on the project for a few weeks this summer as part of our &lt;a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution"&gt;quarter of contribution&lt;/a&gt; program: Shruti Jasoria and Roy Chiang.&lt;/p&gt;
@@ -30,8 +30,8 @@
 &lt;p&gt;Thank you Shruti and Roy! You&amp;rsquo;ve helped to make sure Firefox (and Servo!) performance remains top-notch.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Are We Fast Yet and Perfherder</title>
-   <link>https://wlach.github.io/blog/2016/03/are-we-fast-yet-and-perfherder/?utm_source=Perfherder&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-03-are-we-fast-yet-and-perfherder</guid>
+   <link>http://www.example.com/2016/03/are-we-fast-yet-and-perfherder.html?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2016-03-are-we-fast-yet-and-perfherder-html</guid>
    <pubDate>Wed, 30 Mar 2016 15:42:39 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Historically at Mozilla, we&amp;rsquo;ve had a bunch of different systems running to benchmark Firefox&amp;rsquo;s performance. The two most broadly-scoped are &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;Talos&lt;/a&gt; (which runs as part of our build process, and emphasizes common real-world use cases, like page loading) and &lt;a href="https://arewefastyet.com/"&gt;Are We Fast Yet&lt;/a&gt; (which runs seperately, and emphasizes JavaScript performance and benchmarks).&lt;/p&gt;
@@ -66,8 +66,8 @@
  &lt;li&gt;Supporting comparative measurements between Firefox and other  browsers. This is an important task, but doesn&amp;rsquo;t really fit into the  model of Perfherder, which is intimately tied to the revision data  associated with Firefox. To do this would require detailed tracking  of Chrome on the same basis, and I don&amp;rsquo;t think that&amp;rsquo;s really a place  where we want to go. We should definitely monitor for general  trends, but I think that is best done with a seperate system.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Platform engineering project of the month: Perfherder</title>
-   <link>https://wlach.github.io/blog/2016/03/platform-engineering-project-of-the-month-perfherder/?utm_source=Perfherder&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2016-03-platform-engineering-project-of-the-month-perfherder</guid>
+   <link>http://www.example.com/2016/03/platform-engineering-project-of-the-month-perfherder.html?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2016-03-platform-engineering-project-of-the-month-perfherder-html</guid>
    <pubDate>Tue, 15 Mar 2016 00:10:57 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;&lt;em&gt;[ originally posted on &lt;a href="https://groups.google.com/d/msg/mozilla.dev.platform/itdfru6csSk/vfVP_WDXBgAJ"&gt;mozilla.dev.platform&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
@@ -111,8 +111,8 @@
 &lt;p&gt;&lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution"&gt;https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Perfherder: Onward!</title>
-   <link>https://wlach.github.io/blog/2015/11/perfherder-onward/?utm_source=Perfherder&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-11-perfherder-onward</guid>
+   <link>http://www.example.com/2015/11/perfherder-onward.html?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2015-11-perfherder-onward-html</guid>
    <pubDate>Wed, 04 Nov 2015 05:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;In addition to the &lt;a href="http://wrla.ch/blog/2015/10/the-new-old-perfherder-data-model/"&gt;database refactoring&lt;/a&gt; I mentioned a few weeks ago, some cool stuff has been going into &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; lately.&lt;/p&gt;
@@ -154,8 +154,8 @@
 &lt;p&gt;&lt;a href="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png"&gt;&lt;img src="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png" alt="Screen Shot 2015-11-04 at 10.41.26 AM" width="300" height="176" class="alignnone size-medium wp-image-1280" srcset="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png 300w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-1024x600.png 1024w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png 1126w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>The new old Perfherder data model</title>
-   <link>https://wlach.github.io/blog/2015/10/the-new-old-perfherder-data-model/?utm_source=Perfherder&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-10-the-new-old-perfherder-data-model</guid>
+   <link>http://www.example.com/2015/10/the-new-old-perfherder-data-model.html?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2015-10-the-new-old-perfherder-data-model-html</guid>
    <pubDate>Fri, 23 Oct 2015 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;I spent a good chunk of time last quarter redesigning how &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; stores its data internally. Here are some notes on this change, for posterity.&lt;/p&gt;
@@ -210,8 +210,8 @@
 &lt;p&gt;&lt;strong&gt;Lesson&lt;/strong&gt;: Sometimes using ancient technologies (SQL) in the most obvious way is the right thing to do. &lt;a href="http://c2.com/xp/DoTheSimplestThingThatCouldPossiblyWork.html"&gt;DoTheSimplestThingThatCouldPossiblyWork&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Perfherder summer of contribution thoughts</title>
-   <link>https://wlach.github.io/blog/2015/09/perfherder-summer-of-contribution-thoughts/?utm_source=Perfherder&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-09-perfherder-summer-of-contribution-thoughts</guid>
+   <link>http://www.example.com/2015/09/perfherder-summer-of-contribution-thoughts.html?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2015-09-perfherder-summer-of-contribution-thoughts-html</guid>
    <pubDate>Tue, 29 Sep 2015 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;A few months ago, Joel Maher &lt;a href="https://elvis314.wordpress.com/2015/05/18/a-team-contribution-opportunity-dashboard-hacker/"&gt;announced the Perfherder summer of contribution&lt;/a&gt;. We wrapped things up there a few weeks ago, so I guess it&amp;#8217;s about time I wrote up a bit about how things went.&lt;/p&gt;
@@ -253,8 +253,8 @@
 &lt;p&gt;&lt;em&gt;The only thing you need to do is bring your question to irc and ask. Do not hesitate to ask for help if you need it! All the people in here are nice and willing to help. Enjoy it!&lt;/em&gt;&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>More Perfherder  updates</title>
-   <link>https://wlach.github.io/blog/2015/08/more-perfherder-updates/?utm_source=Perfherder&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-08-more-perfherder-updates</guid>
+   <link>http://www.example.com/2015/08/more-perfherder-updates.html?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2015-08-more-perfherder-updates-html</guid>
    <pubDate>Fri, 07 Aug 2015 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Since my last update, we&amp;#8217;ve been trucking along with improvements to &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt;, the project for making Firefox performance sheriffing and analysis easier.&lt;/p&gt;
@@ -337,8 +337,8 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;For now, I&amp;#8217;m leaning towards (2). I don&amp;#8217;t think we&amp;#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Perfherder update</title>
-   <link>https://wlach.github.io/blog/2015/07/perfherder-update/?utm_source=Perfherder&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-07-perfherder-update</guid>
+   <link>http://www.example.com/2015/07/perfherder-update.html?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2015-07-perfherder-update-html</guid>
    <pubDate>Tue, 14 Jul 2015 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Haven&amp;#8217;t been doing enough blogging about &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; (our project to make Talos and other per-checkin performance data more useful) recently. Let&amp;#8217;s fix that. We&amp;#8217;ve been making some good progress, helped in part by a group of new contributors that joined us through an experimental &amp;#8220;&lt;a href="https://elvis314.wordpress.com/2015/06/09/please-welcome-the-dashboard-hacker-team/"&gt;summer of contribution&lt;/a&gt;&amp;#8221; program.&lt;/p&gt;
@@ -377,8 +377,8 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;[&lt;a href="http://nbviewer.ipython.org/url/wrla.ch/blog/wp-content/uploads/2015/07/perfherder-api.ipynb"&gt;original&lt;/a&gt;]&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Perfherder update: Summary series drilldown</title>
-   <link>https://wlach.github.io/blog/2015/03/perfherder-update-summary-series-drilldown/?utm_source=Perfherder&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-03-perfherder-update-summary-series-drilldown</guid>
+   <link>http://www.example.com/2015/03/perfherder-update-summary-series-drilldown.html?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2015-03-perfherder-update-summary-series-drilldown-html</guid>
    <pubDate>Fri, 27 Mar 2015 04:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;Just wanted to give another quick Perfherder update. Since the &lt;a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/"&gt;last time&lt;/a&gt;, I&amp;#8217;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&amp;#8217;t possible with Graphserver and I&amp;#8217;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.&lt;/p&gt;
@@ -400,8 +400,8 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at &lt;a href="http://treeherder.mozilla.org/perf.html"&gt;http://treeherder.mozilla.org/perf.html&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</description></item>
   <item>
    <title>Measuring e10s vs. non-e10s performance with Perfherder</title>
-   <link>https://wlach.github.io/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/?utm_source=Perfherder&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2015-02-measuring-e10s-vs-non-e10s-performance-with-perfherder</guid>
+   <link>http://www.example.com/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder.html?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2015-02-measuring-e10s-vs-non-e10s-performance-with-perfherder-html</guid>
    <pubDate>Wed, 18 Feb 2015 05:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;For the past few months I&amp;#8217;ve been working on a sub-project of Treeherder called Perfherder, which aims to provide a workflow that will let us more easily detect and manage performance regressions in our products (initially just those detected in &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;Talos&lt;/a&gt;, but there&amp;#8217;s room to expand on that later). This is a long term project and we&amp;#8217;re still sorting out the details of exactly how it will work, but I thought I&amp;#8217;d quickly announce a milestone.&lt;/p&gt;

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>William Lachance's Log: Posts tagged 'Transit'</title>
-  <description>William Lachance's Log: Posts tagged 'Transit'</description>
-  <link>https://wlach.github.io/tags/Transit.html</link>
+  <title>Untitled Site: Posts tagged 'Transit'</title>
+  <description>Untitled Site: Posts tagged 'Transit'</description>
+  <link>http://www.example.com/tags/Transit.html</link>
   <lastBuildDate>Wed, 14 Dec 2011 05:00:00 UT</lastBuildDate>
   <pubDate>Wed, 14 Dec 2011 05:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>An API for AMT data</title>
-   <link>https://wlach.github.io/blog/2011/12/an-api-for-amt-data/?utm_source=Transit&amp;utm_medium=RSS</link>
-   <guid>urn:https-wlach-github-io:-blog-2011-12-an-api-for-amt-data</guid>
+   <link>http://www.example.com/2011/12/an-api-for-amt-data.html?utm_source=Transit&amp;utm_medium=RSS</link>
+   <guid>urn:http-www-example-com:-2011-12-an-api-for-amt-data-html</guid>
    <pubDate>Wed, 14 Dec 2011 05:00:00 UT</pubDate>
    <description>&lt;html&gt;
 &lt;p&gt;The &lt;a href="http://www.amt.qc.ca"&gt;AMT&lt;/a&gt; released their &lt;a href="http://t.co/AofpyI4E"&gt;GTFS schedule information&lt;/a&gt; to the public earlier this week, which is awesome. Not coincidentally, Montreal is going to have a &lt;a href="http://transportationcamp.org/montreal/"&gt;Transportation Camp&lt;/a&gt; tomorrow, wherein people will hack on transportation software and discuss open data issues.&lt;/p&gt;
