@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">Untitled Site: Posts tagged 'Nixi'</title>
- <link rel="self" href="http://www.example.com/feeds/Nixi.atom.xml" />
- <link href="http://www.example.com/tags/Nixi.html" />
- <id>urn:http-www-example-com:-tags-Nixi-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'Nixi'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/Nixi.atom.xml" />
+ <link href="https://wlach.github.io/tags/Nixi.html" />
+ <id>urn:https-wlach-github-io:-tags-Nixi-html</id>
  <updated>2016-01-09T04:21:13Z</updated>
  <entry>
   <title type="text">NIXI is moving too</title>
-  <link rel="alternate" href="http://www.example.com/2016/01/nixi-is-moving-too.html?utm_source=Nixi&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2016-01-nixi-is-moving-too-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2016/01/nixi-is-moving-too?utm_source=Nixi&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2016-01-nixi-is-moving-too</id>
   <published>2016-01-09T04:21:13Z</published>
   <updated>2016-01-09T04:21:13Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;As my blog goes to github pages, so do my other side projects. I just moved nixi, my bikestation finder project, to github pages. Its new location:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wlach.github.io/nixi"&gt;http://wlach.github.io/nixi&lt;/a&gt;&lt;/p&gt;
@@ -26,16 +26,16 @@
  &lt;li&gt;Now using the &lt;a href="https://citybik.es"&gt;citybik.es&lt;/a&gt; API directly,  instead of proxing through an intermediary server. This was necessitated  by the switch to github pages, but I suspect this will be more reliable  than what we were doing before. Thanks citybik.es!&lt;/li&gt;
  &lt;li&gt;Removed all analytics and facebook integration. As with the domain, it didn&amp;rsquo;t  seem worth bringing over. Also, it&amp;rsquo;s nice to give people at least marginally  more privacy than they had before where possible.&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;I still think nixi is worlds more usable than most bikesharing maps, even if it&amp;rsquo;s not an actively maintained project of mine any more. Here&amp;rsquo;s hoping it lasts many more years in its new incarnation.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;I still think nixi is worlds more usable than most bikesharing maps, even if it&amp;rsquo;s not an actively maintained project of mine any more. Here&amp;rsquo;s hoping it lasts many more years in its new incarnation.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">NIXI Update</title>
-  <link rel="alternate" href="http://www.example.com/2013/08/nixi-update.html?utm_source=Nixi&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2013-08-nixi-update-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/08/nixi-update?utm_source=Nixi&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2013-08-nixi-update</id>
   <published>2013-08-25T04:00:00Z</published>
   <updated>2013-08-25T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;I&amp;#8217;ve been working on a new, mobile friendly version of &lt;a href="http://nixi.ca/"&gt;Nixi&lt;/a&gt; on-and-off for the past year and a bit. I&amp;#8217;m not sure when it&amp;#8217;s ever going to be finished, so I thought I might as well post the work-in-progress, which has these noteworthy improvements:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -45,4 +45,4 @@
 
 &lt;p&gt;If you use &lt;a href="http://bixi.com"&gt;BIXI&lt;/a&gt; at all, check it out and let me know what you think!&lt;/p&gt;
 
-&lt;p&gt;&lt;a href="/files/2013/08/nixi-screenshot.png"&gt; &lt;img src="/files/2013/08/nixi-screenshot-1024x672.png" alt="nixi screenshot" width="640" height="420" class="alignnone size-large wp-image-927" srcset="/files/2013/08/nixi-screenshot-300x196.png 300w, /files/2013/08/nixi-screenshot-1024x672.png 1024w, /files/2013/08/nixi-screenshot.png 1266w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;&lt;a href="/files/2013/08/nixi-screenshot.png"&gt; &lt;img src="/files/2013/08/nixi-screenshot-1024x672.png" alt="nixi screenshot" width="640" height="420" class="alignnone size-large wp-image-927" srcset="/files/2013/08/nixi-screenshot-300x196.png 300w, /files/2013/08/nixi-screenshot-1024x672.png 1024w, /files/2013/08/nixi-screenshot.png 1266w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/p&gt;</content></entry></feed>

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">Untitled Site: Posts tagged 'email'</title>
- <link rel="self" href="http://www.example.com/feeds/email.atom.xml" />
- <link href="http://www.example.com/tags/email.html" />
- <id>urn:http-www-example-com:-tags-email-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'email'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/email.atom.xml" />
+ <link href="https://wlach.github.io/tags/email.html" />
+ <id>urn:https-wlach-github-io:-tags-email-html</id>
  <updated>2013-04-19T04:00:00Z</updated>
  <entry>
   <title type="text">The need for a modern open source email client and Geary&amp;#8217;s fundraiser</title>
-  <link rel="alternate" href="http://www.example.com/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser.html?utm_source=email&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2013-04-the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser?utm_source=email&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2013-04-the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser</id>
   <published>2013-04-19T04:00:00Z</published>
   <updated>2013-04-19T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;div class="figure"&gt;&lt;img src="http://www.yorba.org/images/igg/geary-2.png" alt="" /&gt;
  &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
 
 &lt;p&gt;One of my frustrations with the Linux desktop is the lack of an email client that&amp;#8217;s in the same league as GMail or Apple&amp;#8217;s mail.app. &lt;a href="https://www.mozilla.org/EN/thunderbird"&gt;Thunderbird&lt;/a&gt; is ok as far as it goes (I use it for my day-to-day Mozilla correspondence) but I miss having a decent conversation view of email (yes, I tried the &lt;a href="https://addons.mozilla.org/en-us/thunderbird/addon/gmail-conversation-view/"&gt;conversation view extension&lt;/a&gt; &amp;#8212; while impressive in some ways, it ultimately didn&amp;#8217;t work particularly well for me) and the search functionality is rather slow and cumbersome. I&amp;#8217;d like to be optimistic about these problems being fixed at some point&amp;#8230; but after nearly 2 years of using the product without much visible improvement my expectation of that happening is rather low.&lt;/p&gt;
 
-&lt;p&gt;The &lt;a href="http://yorba.org"&gt;Yorba&lt;/a&gt; non-profit recently started a &lt;a href="http://www.indiegogo.com/projects/geary-a-beautiful-modern-open-source-email-client"&gt;fundraiser&lt;/a&gt; to work on the next edition of Geary, an email client which I hope will fill the niche that I&amp;#8217;m talking about. It&amp;#8217;s pretty rough around the edges still, but even at this early stage the conversation view is beautiful and more or less exactly what I want. The example of Shotwell (their photo management application) suggests that they know a thing or two about creating robust and useable software, not a common thing in this day and age. In any case, their pitch was compelling enough for me to donate a few dollars to the cause. If you care about having a great email experience that is completely under your control (and not that of an advertising or product company with their own agenda), then maybe you could too?&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;The &lt;a href="http://yorba.org"&gt;Yorba&lt;/a&gt; non-profit recently started a &lt;a href="http://www.indiegogo.com/projects/geary-a-beautiful-modern-open-source-email-client"&gt;fundraiser&lt;/a&gt; to work on the next edition of Geary, an email client which I hope will fill the niche that I&amp;#8217;m talking about. It&amp;#8217;s pretty rough around the edges still, but even at this early stage the conversation view is beautiful and more or less exactly what I want. The example of Shotwell (their photo management application) suggests that they know a thing or two about creating robust and useable software, not a common thing in this day and age. In any case, their pitch was compelling enough for me to donate a few dollars to the cause. If you care about having a great email experience that is completely under your control (and not that of an advertising or product company with their own agenda), then maybe you could too?&lt;/p&gt;</content></entry></feed>

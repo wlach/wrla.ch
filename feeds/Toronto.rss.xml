@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>Untitled Site: Posts tagged 'Toronto'</title>
-  <description>Untitled Site: Posts tagged 'Toronto'</description>
-  <link>http://www.example.com/tags/Toronto.html</link>
+  <title>William Lachance's Log: Posts tagged 'Toronto'</title>
+  <description>William Lachance's Log: Posts tagged 'Toronto'</description>
+  <link>https://wlach.github.io/tags/Toronto.html</link>
   <lastBuildDate>Sat, 12 Jul 2014 04:00:00 UT</lastBuildDate>
   <pubDate>Sat, 12 Jul 2014 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>New city, new cellphone provider</title>
-   <link>http://www.example.com/2014/07/new-city-new-cellphone-provider.html?utm_source=Toronto&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-2014-07-new-city-new-cellphone-provider-html</guid>
+   <link>https://wlach.github.io/blog/2014/07/new-city-new-cellphone-provider?utm_source=Toronto&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2014-07-new-city-new-cellphone-provider</guid>
    <pubDate>Sat, 12 Jul 2014 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Rogers, my previous cell phone provider, is ridiculous.&lt;/p&gt;
 
 &lt;p&gt;So for those of you who don&amp;#8217;t know, I just moved from Montreal to Toronto. There are very few people who call me these days, but some still do and keeping my old Montreal number subjects me to a bunch of long distance fees I didn&amp;#8217;t want to pay every time someone dials my number while I&amp;#8217;m here.&lt;/p&gt;
@@ -23,4 +24,4 @@
 
 &lt;p&gt;Did some shopping around&amp;#8211; unfortunately Wind (the best value) didn&amp;#8217;t seem to work with my Nexus 5, so I went with Virgin Mobile who looked like the next best option. Up and running in just half an hour, and will probably be paying no more than $50 a month now.&lt;/p&gt;
 
-&lt;p&gt;So what happened to the legendary Rogers customer retention department? How do they think they can get away charging these kinds of rates?&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;So what happened to the legendary Rogers customer retention department? How do they think they can get away charging these kinds of rates?&lt;/p&gt;</description></item></channel></rss>

@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">Untitled Site: Posts tagged 'Free Software'</title>
- <link rel="self" href="http://www.example.com/feeds/Free-Software.atom.xml" />
- <link href="http://www.example.com/tags/Free-Software.html" />
- <id>urn:http-www-example-com:-tags-Free-Software-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'Free Software'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/Free-Software.atom.xml" />
+ <link href="https://wlach.github.io/tags/Free-Software.html" />
+ <id>urn:https-wlach-github-io:-tags-Free-Software-html</id>
  <updated>2013-04-19T04:00:00Z</updated>
  <entry>
   <title type="text">The need for a modern open source email client and Geary&amp;#8217;s fundraiser</title>
-  <link rel="alternate" href="http://www.example.com/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser.html?utm_source=Free-Software&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2013-04-the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser?utm_source=Free-Software&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2013-04-the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser</id>
   <published>2013-04-19T04:00:00Z</published>
   <updated>2013-04-19T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;div class="figure"&gt;&lt;img src="http://www.yorba.org/images/igg/geary-2.png" alt="" /&gt;
  &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
 
 &lt;p&gt;One of my frustrations with the Linux desktop is the lack of an email client that&amp;#8217;s in the same league as GMail or Apple&amp;#8217;s mail.app. &lt;a href="https://www.mozilla.org/EN/thunderbird"&gt;Thunderbird&lt;/a&gt; is ok as far as it goes (I use it for my day-to-day Mozilla correspondence) but I miss having a decent conversation view of email (yes, I tried the &lt;a href="https://addons.mozilla.org/en-us/thunderbird/addon/gmail-conversation-view/"&gt;conversation view extension&lt;/a&gt; &amp;#8212; while impressive in some ways, it ultimately didn&amp;#8217;t work particularly well for me) and the search functionality is rather slow and cumbersome. I&amp;#8217;d like to be optimistic about these problems being fixed at some point&amp;#8230; but after nearly 2 years of using the product without much visible improvement my expectation of that happening is rather low.&lt;/p&gt;
 
-&lt;p&gt;The &lt;a href="http://yorba.org"&gt;Yorba&lt;/a&gt; non-profit recently started a &lt;a href="http://www.indiegogo.com/projects/geary-a-beautiful-modern-open-source-email-client"&gt;fundraiser&lt;/a&gt; to work on the next edition of Geary, an email client which I hope will fill the niche that I&amp;#8217;m talking about. It&amp;#8217;s pretty rough around the edges still, but even at this early stage the conversation view is beautiful and more or less exactly what I want. The example of Shotwell (their photo management application) suggests that they know a thing or two about creating robust and useable software, not a common thing in this day and age. In any case, their pitch was compelling enough for me to donate a few dollars to the cause. If you care about having a great email experience that is completely under your control (and not that of an advertising or product company with their own agenda), then maybe you could too?&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;The &lt;a href="http://yorba.org"&gt;Yorba&lt;/a&gt; non-profit recently started a &lt;a href="http://www.indiegogo.com/projects/geary-a-beautiful-modern-open-source-email-client"&gt;fundraiser&lt;/a&gt; to work on the next edition of Geary, an email client which I hope will fill the niche that I&amp;#8217;m talking about. It&amp;#8217;s pretty rough around the edges still, but even at this early stage the conversation view is beautiful and more or less exactly what I want. The example of Shotwell (their photo management application) suggests that they know a thing or two about creating robust and useable software, not a common thing in this day and age. In any case, their pitch was compelling enough for me to donate a few dollars to the cause. If you care about having a great email experience that is completely under your control (and not that of an advertising or product company with their own agenda), then maybe you could too?&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Measuring what the user sees</title>
-  <link rel="alternate" href="http://www.example.com/2011/11/measuring-what-the-user-sees.html?utm_source=Free-Software&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2011-11-measuring-what-the-user-sees-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2011/11/measuring-what-the-user-sees?utm_source=Free-Software&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2011-11-measuring-what-the-user-sees</id>
   <published>2011-11-11T05:00:00Z</published>
   <updated>2011-11-11T05:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;I&amp;#8217;ve been spending the last month or so at Mozilla prototyping a new project called &lt;a href="https://wiki.mozilla.org/Project_Eideticker"&gt;Eideticker&lt;/a&gt; which aims to use video capture data and image/frame analysis for performance measurement of &lt;a href="https://wiki.mozilla.org/Mobile/Fennec/Android"&gt;Firefox Mobile&lt;/a&gt;. It&amp;#8217;s still in quite a rough state, but it&amp;#8217;s now complete enough that I thought it would be worth spending a bit of time describing both its motivation and how it works.&lt;/p&gt;
 
 &lt;p&gt;First, a bit of an introduction. Up to now, our automated performance tools have used entirely synthetic benchmarks (how long til we get the onload event? how many ms since we last hit the main loop?) to gather performance information. As we&amp;#8217;ve found out, there&amp;#8217;s a lot you can measure with synthetic benchmarks. Tools like &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;Talos&lt;/a&gt; have proven themselves by catching performance regressions on a very regular basis.&lt;/p&gt;
@@ -74,16 +74,16 @@ Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;My goal is to make something that people will love, so please do let me know what you think. Nothing about this project is cast in stone and the last thing I want is to deliver a product that people don&amp;#8217;t actually want to use.&lt;/p&gt;
 
-&lt;p&gt;Equally, while Eideticker is being written primarily with the goal of making Mobile Firefox better (and in the slightly-less short term, desktop Firefox and &lt;a href="https://github.com/andreasgal/B2G"&gt;Boot to Gecko&lt;/a&gt;), much of it is broadly applicable to any user-facing mobile or desktop application. If you think some component of Eideticker might be interesting to your project and want to collaborate, feel free to get in touch.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;Equally, while Eideticker is being written primarily with the goal of making Mobile Firefox better (and in the slightly-less short term, desktop Firefox and &lt;a href="https://github.com/andreasgal/B2G"&gt;Boot to Gecko&lt;/a&gt;), much of it is broadly applicable to any user-facing mobile or desktop application. If you think some component of Eideticker might be interesting to your project and want to collaborate, feel free to get in touch.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Updates on my ridiculous pet projects</title>
-  <link rel="alternate" href="http://www.example.com/2011/09/updates-on-my-ridiculous-pet-projects.html?utm_source=Free-Software&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2011-09-updates-on-my-ridiculous-pet-projects-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2011/09/updates-on-my-ridiculous-pet-projects?utm_source=Free-Software&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2011-09-updates-on-my-ridiculous-pet-projects</id>
   <published>2011-09-29T04:00:00Z</published>
   <updated>2011-09-29T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;ol&gt;
  &lt;li&gt;
   &lt;p&gt;As you may or may not have noticed, &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt; has been down for the past few weeks. Halifax updated the data but I didn&amp;#8217;t have a chance to update it. Well, I finally did, and hbus is now up in its former glory (minus a small issue with stops named &amp;#8216;6016_merged_3300509&amp;#8217;: thanks Metro Transit, time to update &lt;a href="https://github.com/wlach/routez/blob/master/src/gtfs-hacks/update-halifax-gtfs.py"&gt;that script&lt;/a&gt; to massage your data again!) . I still wonder a bit about why I keep putting time into a site oriented around a city I haven&amp;#8217;t lived in for over 2 years now (especially when Google Maps arguably does a better job at most things than I do), but there you go!&lt;/p&gt;&lt;/li&gt;
@@ -92,16 +92,16 @@ Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
  &lt;li&gt;
   &lt;p&gt;Not really my project, but Stephane Guidoin put up an awesome site called &lt;a href="http://zonecone.ca"&gt;zonecone.ca&lt;/a&gt; which helps you find out about traffic obstacles that might delay your journey. It even has a nifty feature where you can create an account, specify a route you take regularly (say, your commute), and it&amp;#8217;ll automatically notify you if something pops up. As you may have guessed, I&amp;#8217;m not the biggest fan of automobiles, but this is still very cool. 😉 This site was originally based on &lt;a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/"&gt;the map layout template&lt;/a&gt; that I announced a few months ago.&lt;/p&gt;&lt;/li&gt;
  &lt;li&gt;
-  &lt;p&gt;I have a lettuce plant growing on my new balcony. It&amp;#8217;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/html&gt;</content></entry>
+  &lt;p&gt;I have a lettuce plant growing on my new balcony. It&amp;#8217;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</content></entry>
  <entry>
   <title type="text">Routez opensourced</title>
-  <link rel="alternate" href="http://www.example.com/2011/04/routez-opensourced.html?utm_source=Free-Software&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2011-04-routez-opensourced-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2011/04/routez-opensourced?utm_source=Free-Software&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2011-04-routez-opensourced</id>
   <published>2011-04-19T04:00:00Z</published>
   <updated>2011-04-19T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Just a quick note to say that I just opensourced the software behind &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt;, nicknamed &amp;#8220;Routez&amp;#8221; under the &lt;a href="http://www.affero.org/oagpl.html"&gt;Affero GPL&lt;/a&gt;. You can get the code on &lt;a href="http://github.com/wlach/routez"&gt;github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/04/routez-opensourced/hbus_shot_apr_2011/" rel="attachment wp-att-238"&gt;&lt;img src="/files/2011/04/hbus_shot_apr_2011.png" alt="" title="hbus_shot_apr_2011" width="300" height="225" class="aligncenter size-full wp-image-238" /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -123,16 +123,16 @@ Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
   &lt;br /&gt;&lt;/li&gt;
  &lt;li&gt;The trip planning software used in the backend, libroutez, is getting a bit long in the tooth and is quite finicky about what kind of data it will accept. I think the long-term solution to this is to switch to &lt;a href="http://graphserver.github.com/graphserver/"&gt;Graphserver&lt;/a&gt; (which is more mature and better supported), but some features would have to be added to it to support the kind of things that Routez needs (like a list of upcoming departures at a particular transit stop).&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;Even with these problems, I figured it would be better to open up what I have for people to check out and play with. Have a look and let me know what you think!&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;Even with these problems, I figured it would be better to open up what I have for people to check out and play with. Have a look and let me know what you think!&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">D&amp;eacute;chets Montr&amp;eacute;al goes mobile</title>
-  <link rel="alternate" href="http://www.example.com/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile.html?utm_source=Free-Software&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile?utm_source=Free-Software&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile</id>
   <published>2011-02-19T05:00:00Z</published>
   <updated>2011-02-19T05:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;A few weekends ago, there was a &lt;a href="http://montrealouvert.net/"&gt;Montr&amp;eacute;al Ouvert&lt;/a&gt; hackfest at the &lt;a href="http://notmanhouse.com"&gt;Notman House&lt;/a&gt;. I decided to take a bit of a break from my usual transit hacking and built up a mobile friendly interface to the wonderful &lt;a href="http://dechetsmontreal.ca/"&gt;D&amp;eacute;chets Montr&amp;eacute;al&lt;/a&gt;, which lets residents easily get information on their garbage collection schedule.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/?attachment_id=210" rel="attachment wp-att-210"&gt;&lt;img src="/files/2011/02/dechets-screenies.jpg" alt="" title="Dechets Montreal Screenshots" width="400" height="243" class="alignnone size-full wp-image-210" srcset="/files/2011/02/dechets-screenies-300x182.jpg 300w, /files/2011/02/dechets-screenies.jpg 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -147,16 +147,16 @@ Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
  &lt;li&gt;The iPhone&amp;#8217;s form interface will persist after pressing &amp;#8220;Search&amp;#8221; unless &lt;a href="http://www.em-motion.mobi/2010/05/01/iphone-ajax-form-submission/"&gt;you change the focus using an anchor element&lt;/a&gt;.&lt;/li&gt;
  &lt;li&gt;&lt;a href="http://jquery.com"&gt;jQuery&lt;/a&gt; is the best thing since sliced bread for dynamic web applications (ok, I actually knew this already but I just can&amp;#8217;t get over how great it is).&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;Thanks muchly to Kent Mewhort, the brains behind D&amp;eacute;chets Montr&amp;eacute;al, for helping me incorporate my work into his Drupal-based site.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;Thanks muchly to Kent Mewhort, the brains behind D&amp;eacute;chets Montr&amp;eacute;al, for helping me incorporate my work into his Drupal-based site.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Back to WordPerfect: libwpd 0.9.0</title>
-  <link rel="alternate" href="http://www.example.com/2010/11/back-to-wordperfect-libwpd-0-9-0.html?utm_source=Free-Software&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2010-11-back-to-wordperfect-libwpd-0-9-0-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2010/11/back-to-wordperfect-libwpd-0-9-0?utm_source=Free-Software&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2010-11-back-to-wordperfect-libwpd-0-9-0</id>
   <published>2010-11-17T05:00:00Z</published>
   <updated>2010-11-17T05:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Those who&amp;#8217;ve known me for a while have probably heard about my first major open source project, &lt;a href="http://libwpd.sourceforge.net"&gt;libwpd&lt;/a&gt;. In a nutshell, it&amp;#8217;s a parser for WordPerfect documents with the primary aim of converting them into something usable by the major opensource office programs out there. It&amp;#8217;s used by &lt;a href="http://libreoffice.org"&gt;LibreOffice&lt;/a&gt;, &lt;a href="http://openoffice.org"&gt;OpenOffice.org&lt;/a&gt;, &lt;a href="http://abisource.com"&gt;AbiWord&lt;/a&gt;, and &lt;a href="http://koffice.org"&gt;KOffice&lt;/a&gt;. WordPerfect isn&amp;#8217;t the most popular word processor out there, but there&amp;#8217;s still quite a number of legacy documents in that format, especially in the legal community (which was almost exclusively using WordPerfect until very recently).&lt;/p&gt;
 
 &lt;p&gt;This project goes way back: I started work on it with Marc Maurer way back in 2002 (just after I graduated from University). I put a rather ridiculous amount of unpaid work into it for a few years. WordPerfect&amp;#8217;s streaming document format is a bit esoteric to say the least, and figuring out how to map into the document model used by more modern software was a pretty interesting problem. I still remember spending sleepless nights trying to reliably convert WordPerfect&amp;#8217;s outlining into structured lists (I mostly succeeded).&lt;/p&gt;
@@ -187,4 +187,4 @@ Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;All this goodness should be available transparently whenever you import a WordPerfect file in an upcoming release of &lt;a href="http://libreoffice.org"&gt;LibreOffice&lt;/a&gt;. AbiWord and KOffice filters should come soon enough as well (the updates needed to support libwpd 0.9 are fairly minimal).&lt;/p&gt;
 
-&lt;p&gt;Integration with OpenOffice.org is another story. Without going into great amount of detail on the situation (see &lt;a href="http://arstechnica.com/open-source/news/2010/09/document-foundation-forks-openofficeorg-to-liberate-it-from-oracle.ars"&gt;this article&lt;/a&gt; on Ars Technica for the gory details if you&amp;#8217;re really interested), it&amp;#8217;s quite unlikely that OpenOffice.org WordPerfect support will advance unless (1) someone volunteers to do it and (2) Oracle drops their copyright assignment policy. The chances of these things happening seem rather low to me. My personal recommendation would be to switch to &lt;a href="http://libreoffice.org"&gt;LibreOffice&lt;/a&gt; as soon as the first production version is released. I expect it to rapidly overtake OpenOffice.org in functionality due to its more open participation model.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;Integration with OpenOffice.org is another story. Without going into great amount of detail on the situation (see &lt;a href="http://arstechnica.com/open-source/news/2010/09/document-foundation-forks-openofficeorg-to-liberate-it-from-oracle.ars"&gt;this article&lt;/a&gt; on Ars Technica for the gory details if you&amp;#8217;re really interested), it&amp;#8217;s quite unlikely that OpenOffice.org WordPerfect support will advance unless (1) someone volunteers to do it and (2) Oracle drops their copyright assignment policy. The chances of these things happening seem rather low to me. My personal recommendation would be to switch to &lt;a href="http://libreoffice.org"&gt;LibreOffice&lt;/a&gt; as soon as the first production version is released. I expect it to rapidly overtake OpenOffice.org in functionality due to its more open participation model.&lt;/p&gt;</content></entry></feed>

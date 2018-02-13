@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">Untitled Site: Posts tagged 'Infraherder'</title>
- <link rel="self" href="http://www.example.com/feeds/Infraherder.atom.xml" />
- <link href="http://www.example.com/tags/Infraherder.html" />
- <id>urn:http-www-example-com:-tags-Infraherder-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'Infraherder'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/Infraherder.atom.xml" />
+ <link href="https://wlach.github.io/tags/Infraherder.html" />
+ <id>urn:https-wlach-github-io:-tags-Infraherder-html</id>
  <updated>2016-08-17T20:18:12Z</updated>
  <entry>
   <title type="text">Herding Automation Infrastructure</title>
-  <link rel="alternate" href="http://www.example.com/2016/08/herding-automation-infrastructure.html?utm_source=Infraherder&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2016-08-herding-automation-infrastructure-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2016/08/herding-automation-infrastructure?utm_source=Infraherder&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2016-08-herding-automation-infrastructure</id>
   <published>2016-08-17T20:18:12Z</published>
   <updated>2016-08-17T20:18:12Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;For every commit to Firefox, we run a battery of builds and automated tests on the resulting source tree to make sure that the result still works and meets our correctness and performance quality criteria. This is expensive: every new push to our repository implies hundreds of hours of machine time. However, automated quality control is essential to ensure that the product that we&amp;rsquo;re shipping to users is something that we can be proud of.&lt;/p&gt;
 
 &lt;p&gt;But what about evaluating the quality of the product which does the building and testing? Who does that? And by what criteria would we say that our automation system is good or bad? Up to now, our procedures for this have been rather embarassingly adhoc. With some exceptions (such as &lt;a href="https://brasstacks.mozilla.com/orangefactor/"&gt;OrangeFactor&lt;/a&gt;), our QA process amounts to motivated engineers doing a one-off analysis of a particular piece of the system, filing a few bugs, then forgetting about it. Occasionally someone will propose turning build and test automation for a specific platform on or off in mozilla.dev.planning.&lt;/p&gt;
@@ -54,4 +54,4 @@
 
 &lt;h3 id="request-for-comments"&gt;Request for comments&lt;/h3&gt;
 
-&lt;p&gt;I&amp;rsquo;ve created &lt;a href="https://docs.google.com/document/d/1SrlJQQ3qWuM0tvruG6Lr59t3hJ4XRUoMIrIRQYvwu9A/edit?usp=sharing"&gt;an RFC&lt;/a&gt; for this project on Google Docs, as a sort of test case for a new process we&amp;rsquo;re thinking of using in Engineering Productivity for these sorts of projects. If you have any questions or comments, I&amp;rsquo;d love to hear them! My perspective on this vast problem space is limited, so I&amp;rsquo;m sure there are things that I&amp;rsquo;m missing.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;I&amp;rsquo;ve created &lt;a href="https://docs.google.com/document/d/1SrlJQQ3qWuM0tvruG6Lr59t3hJ4XRUoMIrIRQYvwu9A/edit?usp=sharing"&gt;an RFC&lt;/a&gt; for this project on Google Docs, as a sort of test case for a new process we&amp;rsquo;re thinking of using in Engineering Productivity for these sorts of projects. If you have any questions or comments, I&amp;rsquo;d love to hear them! My perspective on this vast problem space is limited, so I&amp;rsquo;m sure there are things that I&amp;rsquo;m missing.&lt;/p&gt;</content></entry></feed>

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>Untitled Site: Posts tagged 'Pandaboard'</title>
-  <description>Untitled Site: Posts tagged 'Pandaboard'</description>
-  <link>http://www.example.com/tags/Pandaboard.html</link>
+  <title>William Lachance's Log: Posts tagged 'Pandaboard'</title>
+  <description>William Lachance's Log: Posts tagged 'Pandaboard'</description>
+  <link>https://wlach.github.io/tags/Pandaboard.html</link>
   <lastBuildDate>Fri, 10 Feb 2012 05:00:00 UT</lastBuildDate>
   <pubDate>Fri, 10 Feb 2012 05:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Playing with pandas</title>
-   <link>http://www.example.com/2012/02/playing-with-pandas.html?utm_source=Pandaboard&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-2012-02-playing-with-pandas-html</guid>
+   <link>https://wlach.github.io/blog/2012/02/playing-with-pandas?utm_source=Pandaboard&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2012-02-playing-with-pandas</guid>
    <pubDate>Fri, 10 Feb 2012 05:00:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;For the last few days I&amp;#8217;ve been experimenting with getting a Pandaboard running Android 4.0, continuing the work that Clint Talbert &lt;a href="http://cmtalbert.wordpress.com/2011/10/12/pandaboard-status/"&gt;started in the fall&lt;/a&gt; to get these boards for use as a replacement for the Tegra in Mozilla&amp;#8217;s android automation. The first objective is to get a reproducible build going, after that we&amp;#8217;ll try to get some of our custom tools (&lt;a href="https://wiki.mozilla.org/Mobile/Fennec_Unittests/Remote_Testing"&gt;SUTAgent&lt;/a&gt; &amp;#38; friends) installed by default.&lt;/p&gt;
 
 &lt;p&gt;So far this has been&amp;#8230; interesting. Much as Clint did before, I thought I&amp;#8217;d document some of the notes on what I did in the hopes that they&amp;#8217;ll be helpful to other people trying to do similar things.&lt;/p&gt;
@@ -38,4 +39,4 @@
 
 &lt;p&gt;Also, while not strictly necessary to get something up and running, I recommend highly getting an HDMI monitor as well as a serialUSB adapter. The former is useful to see if your Android device actually successfully booted up, the latter is useful for debugging boot issues where you don&amp;#8217;t get that far (the serial console is always available from boot).&lt;/p&gt;
 
-&lt;p&gt;So, after painfully learning about the above caveats, I have managed to get things mostly working. I can see the ICS homescreen on my attached HDMI monitor and interact with it if I attach a USB mouse. The one gotcha is that both ethernet and WIFI networking are totally broken. Plugging in an ethernet cable or connecting to a WIFI network seems to result in the machine randomly rebooting, with the logs saying nothing useful. Both of these things are ostensibly supposed to be working according to the latest I&amp;#8217;ve read from Google so I&amp;#8217;m not exactly sure what&amp;#8217;s going on. Investigations will continue.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;So, after painfully learning about the above caveats, I have managed to get things mostly working. I can see the ICS homescreen on my attached HDMI monitor and interact with it if I attach a USB mouse. The one gotcha is that both ethernet and WIFI networking are totally broken. Plugging in an ethernet cable or connecting to a WIFI network seems to result in the machine randomly rebooting, with the logs saying nothing useful. Both of these things are ostensibly supposed to be working according to the latest I&amp;#8217;ve read from Google so I&amp;#8217;m not exactly sure what&amp;#8217;s going on. Investigations will continue.&lt;/p&gt;</description></item></channel></rss>

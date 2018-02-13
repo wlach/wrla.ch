@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>Untitled Site: Posts tagged 'Performance'</title>
-  <description>Untitled Site: Posts tagged 'Performance'</description>
-  <link>http://www.example.com/tags/Performance.html</link>
+  <title>William Lachance's Log: Posts tagged 'Performance'</title>
+  <description>William Lachance's Log: Posts tagged 'Performance'</description>
+  <link>https://wlach.github.io/tags/Performance.html</link>
   <lastBuildDate>Mon, 31 Oct 2016 15:40:00 UT</lastBuildDate>
   <pubDate>Mon, 31 Oct 2016 15:40:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Slow Treeherder, Fast Treeherder</title>
-   <link>http://www.example.com/2016/10/slow-treeherder-fast-treeherder.html?utm_source=Performance&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-2016-10-slow-treeherder-fast-treeherder-html</guid>
+   <link>https://wlach.github.io/blog/2016/10/slow-treeherder-fast-treeherder?utm_source=Performance&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-10-slow-treeherder-fast-treeherder</guid>
    <pubDate>Mon, 31 Oct 2016 15:40:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Just wanted to talk about some recent performance improvements we&amp;rsquo;ve made recently to &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Treeherder"&gt;Treeherder&lt;/a&gt;:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -26,4 +27,4 @@
 
 &lt;p&gt;The original is on the left. The newer, faster Treeherder is on the right. Pay particular attention to how much faster the job information populates.&lt;/p&gt;
 
-&lt;p&gt;Moral of the story? Optimization can be helpful, but it&amp;rsquo;s better if you can avoid doing the work altogether.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;Moral of the story? Optimization can be helpful, but it&amp;rsquo;s better if you can avoid doing the work altogether.&lt;/p&gt;</description></item></channel></rss>

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>Untitled Site: Posts tagged 'Profiling'</title>
-  <description>Untitled Site: Posts tagged 'Profiling'</description>
-  <link>http://www.example.com/tags/Profiling.html</link>
+  <title>William Lachance's Log: Posts tagged 'Profiling'</title>
+  <description>William Lachance's Log: Posts tagged 'Profiling'</description>
+  <link>https://wlach.github.io/tags/Profiling.html</link>
   <lastBuildDate>Tue, 25 Sep 2012 04:00:00 UT</lastBuildDate>
   <pubDate>Tue, 25 Sep 2012 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Say hello to frof</title>
-   <link>http://www.example.com/2012/09/say-hello-to-frof.html?utm_source=Profiling&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-2012-09-say-hello-to-frof-html</guid>
+   <link>https://wlach.github.io/blog/2012/09/say-hello-to-frof?utm_source=Profiling&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2012-09-say-hello-to-frof</guid>
    <pubDate>Tue, 25 Sep 2012 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Inspired by the work I&amp;#8217;d been doing with Benoit Girard to &lt;a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/"&gt;integrate the Firefox Profiler with Eideticker&lt;/a&gt;, I decided to create an easy-to-use python script to help with gathering profiles on Fennec, which I call &lt;a href="https://github.com/wlach/frof"&gt;frof&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;Frof pretty considerably reduces the amount of busywork you need to do to gather a profile. Instead of a rather complicated multi-step process to initialize fennec with the right parameters for profiling, downloading profiles, etc., you can just run the frof script like so:
@@ -26,4 +27,4 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&amp;lt;br /&amp;gt
 
 &lt;p&gt;Unfortunately in my case, the gecko profile didn&amp;#8217;t tell me much, aside from the fact that Gecko didn&amp;#8217;t seem to be the culprit (remember that on Android we also have lots of Java-based frontend code to contend with, which the profiler doesn&amp;#8217;t measure). I&amp;#8217;m going to stare more at the Java code and dig into the various high-level tools that Android provides for profiling performance and memory usage. My current hypothesis is that the problem is the screenshot code and the CSS transitions that leaflet generates when zooming. In the mean time, the only thing I have to show for my foray away from writing tools for Mozilla is &amp;#8230; yet another tool.&lt;/p&gt;
 
-&lt;p&gt;Oh well, it could be worse. My fervent hope is that frof will be helpful for both Fennec developers and QA. Let me know if you wind up using it!&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;Oh well, it could be worse. My fervent hope is that frof will be helpful for both Fennec developers and QA. Let me know if you wind up using it!&lt;/p&gt;</description></item></channel></rss>

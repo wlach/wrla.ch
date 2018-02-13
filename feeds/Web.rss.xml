@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>Untitled Site: Posts tagged 'Web'</title>
-  <description>Untitled Site: Posts tagged 'Web'</description>
-  <link>http://www.example.com/tags/Web.html</link>
+  <title>William Lachance's Log: Posts tagged 'Web'</title>
+  <description>William Lachance's Log: Posts tagged 'Web'</description>
+  <link>https://wlach.github.io/tags/Web.html</link>
   <lastBuildDate>Mon, 29 Sep 2014 04:00:00 UT</lastBuildDate>
   <pubDate>Mon, 29 Sep 2014 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Using Flexbox in web applications</title>
-   <link>http://www.example.com/2014/09/using-flexbox-in-web-applications.html?utm_source=Web&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-2014-09-using-flexbox-in-web-applications-html</guid>
+   <link>https://wlach.github.io/blog/2014/09/using-flexbox-in-web-applications?utm_source=Web&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2014-09-using-flexbox-in-web-applications</guid>
    <pubDate>Mon, 29 Sep 2014 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Over last few months, I discovered the joy that is CSS Flexbox, which solves the &amp;#8220;how do I lay out this set of div&amp;#8217;s in horizontally or vertically&amp;#8221;. I&amp;#8217;ve used it in three projects so far:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -24,4 +25,4 @@
 
 &lt;p&gt;Flexbox has pretty much put an end to these problems for me. There&amp;#8217;s no longer any need to &amp;#8220;give up and use tables&amp;#8221; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&amp;#8217;re so great. I think we&amp;#8217;re pretty close to Flexbox being supported across all the major browsers, so it&amp;#8217;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.&lt;/p&gt;
 
-&lt;p&gt;To try and spread the word, I wrote up &lt;a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications"&gt;a howto article on using flexbox for web applications on MDN&lt;/a&gt;, covering some of the common use cases I mention above. If you&amp;#8217;ve been curious about flexbox but unsure how to use it, please have a look.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;To try and spread the word, I wrote up &lt;a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications"&gt;a howto article on using flexbox for web applications on MDN&lt;/a&gt;, covering some of the common use cases I mention above. If you&amp;#8217;ve been curious about flexbox but unsure how to use it, please have a look.&lt;/p&gt;</description></item></channel></rss>

@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>Untitled Site: Posts tagged 'Docker'</title>
-  <description>Untitled Site: Posts tagged 'Docker'</description>
-  <link>http://www.example.com/tags/Docker.html</link>
+  <title>William Lachance's Log: Posts tagged 'Docker'</title>
+  <description>William Lachance's Log: Posts tagged 'Docker'</description>
+  <link>https://wlach.github.io/tags/Docker.html</link>
   <lastBuildDate>Fri, 02 Jun 2017 20:04:38 UT</lastBuildDate>
   <pubDate>Fri, 02 Jun 2017 20:04:38 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Using Docker to run automated tests</title>
-   <link>http://www.example.com/2017/06/using-docker-to-run-automated-tests.html?utm_source=Docker&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-2017-06-using-docker-to-run-automated-tests-html</guid>
+   <link>https://wlach.github.io/blog/2017/06/using-docker-to-run-automated-tests?utm_source=Docker&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-06-using-docker-to-run-automated-tests</guid>
    <pubDate>Fri, 02 Jun 2017 20:04:38 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;A couple months ago, I joined the Mozilla Data Platform team, to work on our &lt;a href="https://wiki.mozilla.org/Telemetry"&gt;Telemetry&lt;/a&gt; and automated data collection services. This has been an interesting transition for me, and a natural jumping off point from my work on &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder"&gt;Perfherder&lt;/a&gt;. Now, instead of manipulating mere 10s of gigabytes worth of fairly regular data, I&amp;rsquo;m working with 100s of terrabytes of noisy data with a much larger number of dimensions. :P It&amp;rsquo;s been interesting so far.&lt;/p&gt;
 
 &lt;p&gt;One of the first things I decided to work on was improving our unit testing story around a few of our primary packages for data analysis/etl: &lt;a href="https://github.com/mozilla/python_moztelemetry/"&gt;python_moztelemetry&lt;/a&gt; (a library we use for running custom spark jobs against Telemetry data) and &lt;a href="https://github.com/mozilla/telemetry-batch-view/"&gt;telemetry-batch-view&lt;/a&gt; (a set of scala jobs we run against the main telemetry data store to create a useful set of aggregations that are easily queried with tools like &lt;a href="https://redash.io/"&gt;redash&lt;/a&gt;).&lt;/p&gt;
@@ -28,4 +29,4 @@
  &lt;li&gt;If you need to download/install a piece of software when building the docker container, use the &lt;code&gt;RUN&lt;/code&gt; directive instead of &lt;code&gt;ADD&lt;/code&gt;. This will speed up rebuilding the container while you&amp;rsquo;re iterating on it (because you can take advantage of the Docker layers cache).&lt;/li&gt;
  &lt;li&gt;You almost certainly want to create a script (&lt;a href="https://github.com/mozilla/python_moztelemetry/blob/d2aa84bbac09465d38eeb0b5beb20edc7ddcc21b/runtests.sh"&gt;example&lt;/a&gt;) to streamline all the steps of running the tests: this will make running the tests easier for anyone wanting to contribute to your project and reduce the amount of documentation that you will have to write.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;The relevant files and documentation are in the repositories linked above.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;The relevant files and documentation are in the repositories linked above.&lt;/p&gt;</description></item></channel></rss>

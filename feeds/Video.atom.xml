@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">Untitled Site: Posts tagged 'Video'</title>
- <link rel="self" href="http://www.example.com/feeds/Video.atom.xml" />
- <link href="http://www.example.com/tags/Video.html" />
- <id>urn:http-www-example-com:-tags-Video-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'Video'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/Video.atom.xml" />
+ <link href="https://wlach.github.io/tags/Video.html" />
+ <id>urn:https-wlach-github-io:-tags-Video-html</id>
  <updated>2012-05-07T04:00:00Z</updated>
  <entry>
   <title type="text">Ghetto retroscope with ffmpeg and the &amp;lt;video&amp;gt; tag</title>
-  <link rel="alternate" href="http://www.example.com/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag.html?utm_source=Video&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2012-05-ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag?utm_source=Video&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2012-05-ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag</id>
   <published>2012-05-07T04:00:00Z</published>
   <updated>2012-05-07T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;So yesterday we had a small get-together at my place, which gave me the opportunity to try something I&amp;#8217;d been meaning to do for a while: build my own retroscope.&lt;/p&gt;
 
 &lt;p&gt;The idea is pretty simple: have a webcam record bits and pieces of a social event, then play them back on-the-spot a few minutes/hours later. I first heard about the concept from reading Nat Friedman&amp;#8217;s &lt;a href="http://nat.org/blog/2005/10/the-retroscope/"&gt;blog entry&lt;/a&gt; from 2005 &amp;#8212; if you read that, you see that he just hooked up a video camera to his TiVo. 7 years in the future, laptop webcams are ubiquitous and we have the awesome HTML5  tag, so I figured it would be easy to knock up something interesting in short order with zero custom hardware.&lt;/p&gt;
@@ -30,4 +30,4 @@
 
 &lt;p&gt;&lt;a href="https://github.com/wlach/retroscope"&gt;https://github.com/wlach/retroscope&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Enjoy!&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;Enjoy!&lt;/p&gt;</content></entry></feed>

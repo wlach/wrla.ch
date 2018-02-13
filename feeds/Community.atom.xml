@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">Untitled Site: Posts tagged 'Community'</title>
- <link rel="self" href="http://www.example.com/feeds/Community.atom.xml" />
- <link href="http://www.example.com/tags/Community.html" />
- <id>urn:http-www-example-com:-tags-Community-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'Community'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/Community.atom.xml" />
+ <link href="https://wlach.github.io/tags/Community.html" />
+ <id>urn:https-wlach-github-io:-tags-Community-html</id>
  <updated>2015-09-29T04:00:00Z</updated>
  <entry>
   <title type="text">Perfherder summer of contribution thoughts</title>
-  <link rel="alternate" href="http://www.example.com/2015/09/perfherder-summer-of-contribution-thoughts.html?utm_source=Community&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2015-09-perfherder-summer-of-contribution-thoughts-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2015/09/perfherder-summer-of-contribution-thoughts?utm_source=Community&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2015-09-perfherder-summer-of-contribution-thoughts</id>
   <published>2015-09-29T04:00:00Z</published>
   <updated>2015-09-29T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;A few months ago, Joel Maher &lt;a href="https://elvis314.wordpress.com/2015/05/18/a-team-contribution-opportunity-dashboard-hacker/"&gt;announced the Perfherder summer of contribution&lt;/a&gt;. We wrapped things up there a few weeks ago, so I guess it&amp;#8217;s about time I wrote up a bit about how things went.&lt;/p&gt;
 
 &lt;p&gt;As a reminder, the idea of summer of contribution was to give a set of contributors the opportunity to make a substantial contribution to a project we were working on (in this case, the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; performance sheriffing system). We would ask that they sign up to do 5&amp;ndash;10 hours of work a week for at least 8 weeks. In return, Joel and myself would make ourselves available as mentors to answer questions about the project whenever they ran into trouble.&lt;/p&gt;
@@ -50,4 +50,4 @@
 &lt;ol&gt;
  &lt;li&gt;What advice would give you to future ateam contributors?&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;&lt;em&gt;The only thing you need to do is bring your question to irc and ask. Do not hesitate to ask for help if you need it! All the people in here are nice and willing to help. Enjoy it!&lt;/em&gt;&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;&lt;em&gt;The only thing you need to do is bring your question to irc and ask. Do not hesitate to ask for help if you need it! All the people in here are nice and willing to help. Enjoy it!&lt;/em&gt;&lt;/p&gt;</content></entry></feed>

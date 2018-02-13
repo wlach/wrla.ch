@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">Untitled Site: Posts tagged 'Usability'</title>
- <link rel="self" href="http://www.example.com/feeds/Usability.atom.xml" />
- <link href="http://www.example.com/tags/Usability.html" />
- <id>urn:http-www-example-com:-tags-Usability-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'Usability'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/Usability.atom.xml" />
+ <link href="https://wlach.github.io/tags/Usability.html" />
+ <id>urn:https-wlach-github-io:-tags-Usability-html</id>
  <updated>2011-11-18T05:00:00Z</updated>
  <entry>
   <title type="text">Hellofax rocks my world</title>
-  <link rel="alternate" href="http://www.example.com/2011/11/hellofax-rocks-my-world.html?utm_source=Usability&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2011-11-hellofax-rocks-my-world-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2011/11/hellofax-rocks-my-world?utm_source=Usability&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2011-11-hellofax-rocks-my-world</id>
   <published>2011-11-18T05:00:00Z</published>
   <updated>2011-11-18T05:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;It&amp;#8217;s kind of rare for me to pimp out products and services on my blog, but I&amp;#8217;m going to do so just this once.&lt;/p&gt;
 
-&lt;p&gt;I really despise faxes, but occasionally I do have to send them in the course of some of the admin work I still do on the side for my old consulting company (address changes, etc.). If you&amp;#8217;re in a similar boat, you really owe it to yourself to check out &lt;a href="http://hellofax.com"&gt;hellofax.com&lt;/a&gt;. It&amp;#8217;s about three gazillion times better than any other similar service that I&amp;#8217;ve tried (which were all embarassingly bad: I&amp;#8217;d sooner just go to a copy shop) and has saved me hours and hours of time and frustration.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;I really despise faxes, but occasionally I do have to send them in the course of some of the admin work I still do on the side for my old consulting company (address changes, etc.). If you&amp;#8217;re in a similar boat, you really owe it to yourself to check out &lt;a href="http://hellofax.com"&gt;hellofax.com&lt;/a&gt;. It&amp;#8217;s about three gazillion times better than any other similar service that I&amp;#8217;ve tried (which were all embarassingly bad: I&amp;#8217;d sooner just go to a copy shop) and has saved me hours and hours of time and frustration.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">&amp;#8220;Developers can&amp;#8217;t do UI&amp;#8221;</title>
-  <link rel="alternate" href="http://www.example.com/2011/10/-8220-developers-can-8217-t-do-ui-8221.html?utm_source=Usability&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2011-10-8220-developers-can-8217-t-do-ui-8221-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2011/10/-8220-developers-can-8217-t-do-ui-8221?utm_source=Usability&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2011-10-8220-developers-can-8217-t-do-ui-8221</id>
   <published>2011-10-07T04:00:00Z</published>
   <updated>2011-10-07T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Despite making a dramatic shift from front-end development to &lt;a href="https://wiki.mozilla.org/Auto-tools"&gt;back-end stuff&lt;/a&gt; since I started at Mozilla a few months ago, I&amp;#8217;ve still had occasion to have to do a fair bit of user-facing code, even if an audience of other developers is a bit more limited than what I&amp;#8217;ve been used to. Since my mission is to make the rest of Mozilla more productive, it&amp;#8217;s worth putting a bit of time and intention into the user interface for my stuff. If I can reduce learning curves or streamline day-to-day workflows, that&amp;#8217;s a win for everyone since they can spend that much more time rocking at their jobs (whether that be release engineering, platform work, or whatever). This brings up a point that I&amp;#8217;ve had in the back of my mind for a while:&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Despite conventional wisdom, developers can design half-decent user interfaces (if they try)!&lt;/em&gt;&lt;/p&gt;
@@ -42,16 +42,16 @@
 
 &lt;p&gt;For example, one of the things that release engineering has found most useful in the GoFaster Dashboard has been the &lt;a href="http://brasstacks.mozilla.com/gofaster/#/buildcharts"&gt;build charts&lt;/a&gt;. Believe it or not, the idea for that view started out as this &lt;a href="http://people.mozilla.com/~wlachance/overall-build-and-test-area.png"&gt;useless piece of junk&lt;/a&gt; (I can say that because I created it). It was only after a good half hour back and forth on irc between myself, jgriffin, and jmaher (all of us backend/tool developers) that we came up with the view that inspired so much &lt;a href="http://jagriffin.wordpress.com/2011/09/06/gofaster-deeper-data-analysis/"&gt;good analysis&lt;/a&gt; on the project.&lt;/p&gt;
 
-&lt;p&gt;All this is not to say that usability experts and graphic designers don&amp;#8217;t have special skills that are worthy of respect. Indeed, if you&amp;#8217;re a designer and would like to get involved with our work, please &lt;a href="https://wiki.mozilla.org/Auto-tools#Want_to_Help.3F"&gt;join us&lt;/a&gt;, we&amp;#8217;d love your help. My only point is that on a project where a design resource isn&amp;#8217;t available, thinking explicitly about usability is still worthwhile. And even where you have a UX expert on staff, programmers can have useful feedback too. Good UI is everyone&amp;#8217;s responsibility!&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;All this is not to say that usability experts and graphic designers don&amp;#8217;t have special skills that are worthy of respect. Indeed, if you&amp;#8217;re a designer and would like to get involved with our work, please &lt;a href="https://wiki.mozilla.org/Auto-tools#Want_to_Help.3F"&gt;join us&lt;/a&gt;, we&amp;#8217;d love your help. My only point is that on a project where a design resource isn&amp;#8217;t available, thinking explicitly about usability is still worthwhile. And even where you have a UX expert on staff, programmers can have useful feedback too. Good UI is everyone&amp;#8217;s responsibility!&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">D&amp;eacute;chets Montr&amp;eacute;al goes mobile</title>
-  <link rel="alternate" href="http://www.example.com/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile.html?utm_source=Usability&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile?utm_source=Usability&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile</id>
   <published>2011-02-19T05:00:00Z</published>
   <updated>2011-02-19T05:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;A few weekends ago, there was a &lt;a href="http://montrealouvert.net/"&gt;Montr&amp;eacute;al Ouvert&lt;/a&gt; hackfest at the &lt;a href="http://notmanhouse.com"&gt;Notman House&lt;/a&gt;. I decided to take a bit of a break from my usual transit hacking and built up a mobile friendly interface to the wonderful &lt;a href="http://dechetsmontreal.ca/"&gt;D&amp;eacute;chets Montr&amp;eacute;al&lt;/a&gt;, which lets residents easily get information on their garbage collection schedule.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/?attachment_id=210" rel="attachment wp-att-210"&gt;&lt;img src="/files/2011/02/dechets-screenies.jpg" alt="" title="Dechets Montreal Screenshots" width="400" height="243" class="alignnone size-full wp-image-210" srcset="/files/2011/02/dechets-screenies-300x182.jpg 300w, /files/2011/02/dechets-screenies.jpg 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -66,30 +66,30 @@
  &lt;li&gt;The iPhone&amp;#8217;s form interface will persist after pressing &amp;#8220;Search&amp;#8221; unless &lt;a href="http://www.em-motion.mobi/2010/05/01/iphone-ajax-form-submission/"&gt;you change the focus using an anchor element&lt;/a&gt;.&lt;/li&gt;
  &lt;li&gt;&lt;a href="http://jquery.com"&gt;jQuery&lt;/a&gt; is the best thing since sliced bread for dynamic web applications (ok, I actually knew this already but I just can&amp;#8217;t get over how great it is).&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;Thanks muchly to Kent Mewhort, the brains behind D&amp;eacute;chets Montr&amp;eacute;al, for helping me incorporate my work into his Drupal-based site.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;Thanks muchly to Kent Mewhort, the brains behind D&amp;eacute;chets Montr&amp;eacute;al, for helping me incorporate my work into his Drupal-based site.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Fun with WifiDog</title>
-  <link rel="alternate" href="http://www.example.com/2010/03/fun-with-wifidog.html?utm_source=Usability&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2010-03-fun-with-wifidog-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2010/03/fun-with-wifidog?utm_source=Usability&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2010-03-fun-with-wifidog</id>
   <published>2010-03-23T04:00:00Z</published>
   <updated>2010-03-23T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Because I don&amp;#8217;t have enough spare time projects (&lt;em&gt;this is a joke&lt;/em&gt;), I decided to take on the task of adding a must-requested special iPhone/iPod-touch friendly view for the &lt;a href="http://dev.wifidog.org/"&gt;WifiDog&lt;/a&gt; authentication server (used by the infamous &lt;a href="http://www.ilesansfil.org/"&gt;Île Sans Fil&lt;/a&gt;) after being inspired by the WifiDog camp held a few weeks ago at Station C. I finally finally finished up a prototype today. It&amp;#8217;s a bit of a hack, but a relatively clean one&amp;#8211; hopefully some version of it can be integrated into trunk, and users with mobile devices will have a better experience when they&amp;#8217;re on the go in Montr&amp;eacute;al (or any other area with a community-oriented wifidog deployment: I hear there&amp;#8217;s lots).&lt;/p&gt;
 
 &lt;p&gt;&lt;img src="/files/2010/03/wifidog_iphone_2.jpg" alt="WifiDog on iPhone yo" title="WifiDog on iPhone yo" width="320" height="480" class="alignnone size-full wp-image-108" /&gt;&lt;/p&gt;
 
-&lt;p&gt;For those interested in grubby details, you can track the progress of this work on the &lt;a href="http://dev.wifidog.org/ticket/696"&gt;WifiDog ticket tracker&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;For those interested in grubby details, you can track the progress of this work on the &lt;a href="http://dev.wifidog.org/ticket/696"&gt;WifiDog ticket tracker&lt;/a&gt;.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Icon metaphor fail</title>
-  <link rel="alternate" href="http://www.example.com/2009/08/icon-metaphor-fail.html?utm_source=Usability&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2009-08-icon-metaphor-fail-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2009/08/icon-metaphor-fail?utm_source=Usability&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2009-08-icon-metaphor-fail</id>
   <published>2009-08-21T04:00:00Z</published>
   <updated>2009-08-21T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Started to use a new piece of hardware at the Navarra office today, which resulted in the following gem being added to the GNOME notification area. Would anyone care to guess what the following icon is supposed to represent?
  &lt;figure id="attachment_54" style="width: 277px" class="wp-caption alignleft"&gt;&lt;img src="/files/2009/08/dock-icon-fail.jpg" alt="Image of crazy status icon in notification area" title="dock-icon-fail" width="277" height="35" class="size-full wp-image-54" /&gt;
-  &lt;figcaption class="wp-caption-text"&gt;Image of crazy status icon in notification area&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+  &lt;figcaption class="wp-caption-text"&gt;Image of crazy status icon in notification area&lt;/figcaption&gt;&lt;/figure&gt;&lt;/p&gt;</content></entry></feed>

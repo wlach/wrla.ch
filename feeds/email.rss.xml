@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>Untitled Site: Posts tagged 'email'</title>
-  <description>Untitled Site: Posts tagged 'email'</description>
-  <link>http://www.example.com/tags/email.html</link>
+  <title>William Lachance's Log: Posts tagged 'email'</title>
+  <description>William Lachance's Log: Posts tagged 'email'</description>
+  <link>https://wlach.github.io/tags/email.html</link>
   <lastBuildDate>Fri, 19 Apr 2013 04:00:00 UT</lastBuildDate>
   <pubDate>Fri, 19 Apr 2013 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>The need for a modern open source email client and Geary&amp;#8217;s fundraiser</title>
-   <link>http://www.example.com/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser.html?utm_source=email&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-2013-04-the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser-html</guid>
+   <link>https://wlach.github.io/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser?utm_source=email&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2013-04-the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser</guid>
    <pubDate>Fri, 19 Apr 2013 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;div class="figure"&gt;&lt;img src="http://www.yorba.org/images/igg/geary-2.png" alt="" /&gt;
  &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
 
 &lt;p&gt;One of my frustrations with the Linux desktop is the lack of an email client that&amp;#8217;s in the same league as GMail or Apple&amp;#8217;s mail.app. &lt;a href="https://www.mozilla.org/EN/thunderbird"&gt;Thunderbird&lt;/a&gt; is ok as far as it goes (I use it for my day-to-day Mozilla correspondence) but I miss having a decent conversation view of email (yes, I tried the &lt;a href="https://addons.mozilla.org/en-us/thunderbird/addon/gmail-conversation-view/"&gt;conversation view extension&lt;/a&gt; &amp;#8212; while impressive in some ways, it ultimately didn&amp;#8217;t work particularly well for me) and the search functionality is rather slow and cumbersome. I&amp;#8217;d like to be optimistic about these problems being fixed at some point&amp;#8230; but after nearly 2 years of using the product without much visible improvement my expectation of that happening is rather low.&lt;/p&gt;
 
-&lt;p&gt;The &lt;a href="http://yorba.org"&gt;Yorba&lt;/a&gt; non-profit recently started a &lt;a href="http://www.indiegogo.com/projects/geary-a-beautiful-modern-open-source-email-client"&gt;fundraiser&lt;/a&gt; to work on the next edition of Geary, an email client which I hope will fill the niche that I&amp;#8217;m talking about. It&amp;#8217;s pretty rough around the edges still, but even at this early stage the conversation view is beautiful and more or less exactly what I want. The example of Shotwell (their photo management application) suggests that they know a thing or two about creating robust and useable software, not a common thing in this day and age. In any case, their pitch was compelling enough for me to donate a few dollars to the cause. If you care about having a great email experience that is completely under your control (and not that of an advertising or product company with their own agenda), then maybe you could too?&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;The &lt;a href="http://yorba.org"&gt;Yorba&lt;/a&gt; non-profit recently started a &lt;a href="http://www.indiegogo.com/projects/geary-a-beautiful-modern-open-source-email-client"&gt;fundraiser&lt;/a&gt; to work on the next edition of Geary, an email client which I hope will fill the niche that I&amp;#8217;m talking about. It&amp;#8217;s pretty rough around the edges still, but even at this early stage the conversation view is beautiful and more or less exactly what I want. The example of Shotwell (their photo management application) suggests that they know a thing or two about creating robust and useable software, not a common thing in this day and age. In any case, their pitch was compelling enough for me to donate a few dollars to the cause. If you care about having a great email experience that is completely under your control (and not that of an advertising or product company with their own agenda), then maybe you could too?&lt;/p&gt;</description></item></channel></rss>

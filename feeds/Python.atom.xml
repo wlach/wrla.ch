@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">Untitled Site: Posts tagged 'Python'</title>
- <link rel="self" href="http://www.example.com/feeds/Python.atom.xml" />
- <link href="http://www.example.com/tags/Python.html" />
- <id>urn:http-www-example-com:-tags-Python-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'Python'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/Python.atom.xml" />
+ <link href="https://wlach.github.io/tags/Python.html" />
+ <id>urn:https-wlach-github-io:-tags-Python-html</id>
  <updated>2015-04-23T04:00:00Z</updated>
  <entry>
   <title type="text">PyCon 2015</title>
-  <link rel="alternate" href="http://www.example.com/2015/04/pycon-2015.html?utm_source=Python&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2015-04-pycon-2015-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2015/04/pycon-2015?utm_source=Python&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2015-04-pycon-2015</id>
   <published>2015-04-23T04:00:00Z</published>
   <updated>2015-04-23T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;So I went to PyCon 2015. While I didn&amp;#8217;t leave quite as inspired as I did in 2014 (&lt;a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/"&gt;when I discovered iPython&lt;/a&gt;), it was a great experience and I learned a ton. Once again, I was incredibly impressed with the organization of the conference and the diversity and quality of the speakers.&lt;/p&gt;
 
 &lt;p&gt;Since Mozilla was nice enough to sponsor my attendance, I figured I should do another round up of notable talks that I went to.&lt;/p&gt;
@@ -31,16 +31,16 @@
  &lt;li&gt;The Ethical Consequences Of Our Collective Activities (Glyph): A talk on the ethical implications of how our software is used. I feel like this is an under-discussed topic &amp;#8212; how can we know that the results of our activity (programming) serves others and does not harm? &lt;a href="https://www.youtube.com/watch?v=uSbKjRRbjZs"&gt;video&lt;/a&gt;&lt;/li&gt;
  &lt;li&gt;How our engineering environments are killing diversity (and how we can fix it) (Kate Heddleston): This was a great talk on how to make the environments in which we develop more welcoming to under-represented groups (women, minorities, etc.). This is something I&amp;#8217;ve been thinking a bunch about lately, especially in the context of expanding the community of people working on our projects in Automation &amp;#38; Tools. The talk had some particularly useful advice (to me, anyway) on giving feedback. &lt;a href="https://www.youtube.com/watch?v=kNke_4WOWAU"&gt;video&lt;/a&gt; &lt;a href="https://speakerdeck.com/pycon2015/kate-heddleston-how-our-engineering-environments-are-killing-diversity-and-how-we-can-fix-it"&gt;slides&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression: New maintainer, issues tracked in bugzilla</title>
-  <link rel="alternate" href="http://www.example.com/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla.html?utm_source=Python&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2014-05-mozregression-new-maintainer-issues-tracked-in-bugzilla-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla?utm_source=Python&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2014-05-mozregression-new-maintainer-issues-tracked-in-bugzilla</id>
   <published>2014-05-08T04:00:00Z</published>
   <updated>2014-05-08T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Just wanted to give some quick updates on &lt;a href="http://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt;, your favorite regression-finding tool for Firefox:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -48,16 +48,16 @@
  &lt;li&gt;&lt;a href="http://blackrhino.io/"&gt;Sam Garrett&lt;/a&gt; has stepped up to be co-maintainer of the project with me. He&amp;#8217;s been doing a great job whacking out a bunch of bugs and keeping things running reliably, and it was time to give him some recognition and power to keep things moving forward.&lt;/li&gt;
  &lt;li&gt;On that note, I just released mozregression 0.17, which now shows the revision number when running a build (a request from the graphics team, bug &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1007238"&gt;1007238&lt;/a&gt;) and handles respins of nightly builds correctly (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1000422"&gt;bug 1000422&lt;/a&gt;). Both of these were fixed by Sam.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;If you&amp;#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &amp;#8212; as I&amp;#8217;ve found out over the last few months, people &lt;em&gt;all over&lt;/em&gt; the Mozilla organization (managers, developers, QA &amp;#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;If you&amp;#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &amp;#8212; as I&amp;#8217;ve found out over the last few months, people &lt;em&gt;all over&lt;/em&gt; the Mozilla organization (managers, developers, QA &amp;#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">PyCon 2014 impressions: ipython notebook is the future &amp;#038; more</title>
-  <link rel="alternate" href="http://www.example.com/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more.html?utm_source=Python&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2014-04-pycon-2014-impressions-ipython-notebook-is-the-future-038-more-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more?utm_source=Python&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2014-04-pycon-2014-impressions-ipython-notebook-is-the-future-038-more</id>
   <published>2014-04-22T04:00:00Z</published>
   <updated>2014-04-22T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;This year&amp;#8217;s PyCon US (&lt;a href="http://python.org"&gt;Python&lt;/a&gt; Conference) was in my city of residence (Montr&amp;eacute;al) so I took the opportunity to go and see what was up in the world of the language I use the most at Mozilla. It was pretty great!&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;ipython&lt;/strong&gt;&lt;/p&gt;
@@ -85,16 +85,16 @@
 &lt;ul&gt;
  &lt;li&gt;&lt;a href="http://pyvideo.org/video/2571/all-your-ducks-in-a-row-data-structures-in-the-s"&gt;All Your Ducks In A Row: Data Structures in the Standard Library and Beyond&lt;/a&gt; &amp;#8211; A useful talk by Brandon Rhoades on the implementation of basic data structures in Python, and how to select the ones to use for optimal performance. It turns out that lists aren&amp;#8217;t the best thing to use for long sequences of numerical data (who knew?)&lt;/li&gt;
  &lt;li&gt;&lt;a href="http://pyvideo.org/video/2627/fast-python-slow-python"&gt;Fast Python, Slow Python&lt;/a&gt; &amp;#8211; An interesting talk by Alex Gaynor about how to write decent performing pure-python code in a single-threaded context. Lots of intelligent stuff about producing robust code that matches your intention and data structures, and caution against doing fancy things in the name of being &amp;#8220;pythonic&amp;#8221; or &amp;#8220;general&amp;#8221;.&lt;/li&gt;
- &lt;li&gt;&lt;a href="http://pyvideo.org/video/2658/analyzing-rap-lyrics-with-python"&gt;Analyzing Rap Lyrics with Python&lt;/a&gt; &amp;#8211; Another data analysis talk, this one about a subject I knew almost nothing about. The best part of it (for me anyway) was learning how the speaker (Julie Lavoie) narrowed her focus in her research to the exact aspects of the problem that would let her answer the question she was interested in (&amp;#8220;Can we automatically find out which rap lyrics are the most sexist?&amp;#8221;) as opposed to interesting problems (&amp;#8220;how can I design the most general scraping library possible?&amp;#8221;) that don&amp;#8217;t answer the question. In my opinion, this ability to focus is one of the key things that seperates successful projects from unsuccessful ones.&lt;/li&gt;&lt;/ul&gt;&lt;/html&gt;</content></entry>
+ &lt;li&gt;&lt;a href="http://pyvideo.org/video/2658/analyzing-rap-lyrics-with-python"&gt;Analyzing Rap Lyrics with Python&lt;/a&gt; &amp;#8211; Another data analysis talk, this one about a subject I knew almost nothing about. The best part of it (for me anyway) was learning how the speaker (Julie Lavoie) narrowed her focus in her research to the exact aspects of the problem that would let her answer the question she was interested in (&amp;#8220;Can we automatically find out which rap lyrics are the most sexist?&amp;#8221;) as opposed to interesting problems (&amp;#8220;how can I design the most general scraping library possible?&amp;#8221;) that don&amp;#8217;t answer the question. In my opinion, this ability to focus is one of the key things that seperates successful projects from unsuccessful ones.&lt;/li&gt;&lt;/ul&gt;</content></entry>
  <entry>
   <title type="text">Catching problems early with python</title>
-  <link rel="alternate" href="http://www.example.com/2012/10/catching-problems-early-with-python.html?utm_source=Python&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2012-10-catching-problems-early-with-python-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2012/10/catching-problems-early-with-python?utm_source=Python&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2012-10-catching-problems-early-with-python</id>
   <published>2012-10-15T04:00:00Z</published>
   <updated>2012-10-15T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Just a few quick notes on how to avoid a class of errors I&amp;#8217;ve been seeing in Mozilla&amp;#8217;s automation over the last year. Since python interprets code dynamically, it&amp;#8217;s pretty easy for problems like undefined variables to slip through, especially if they&amp;#8217;re in a codepath that isn&amp;#8217;t frequently tested. The most recent example I found was in some cleanup-after-error code for remote mochitest/reftest, which tried to call &amp;#8220;self.cleanup&amp;#8221; from a standalone method.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def main():
@@ -136,4 +136,4 @@ NameError: name 'self' is not defined&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Ultimately there&amp;#8217;s no substitute for actually thoroughly testing your code, no matter what language you&amp;#8217;re using. But using the right techniques and tools can certainly make your life easier.&lt;/p&gt;
 
-&lt;p&gt;[ for those wondering, a fix for the issue mentioned in this post is part of &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=801652"&gt;bug 801652&lt;/a&gt; ]&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;[ for those wondering, a fix for the issue mentioned in this post is part of &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=801652"&gt;bug 801652&lt;/a&gt; ]&lt;/p&gt;</content></entry></feed>

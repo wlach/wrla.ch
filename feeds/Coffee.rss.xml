@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>Untitled Site: Posts tagged 'Coffee'</title>
-  <description>Untitled Site: Posts tagged 'Coffee'</description>
-  <link>http://www.example.com/tags/Coffee.html</link>
+  <title>William Lachance's Log: Posts tagged 'Coffee'</title>
+  <description>William Lachance's Log: Posts tagged 'Coffee'</description>
+  <link>https://wlach.github.io/tags/Coffee.html</link>
   <lastBuildDate>Tue, 17 Sep 2013 04:00:00 UT</lastBuildDate>
   <pubDate>Tue, 17 Sep 2013 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>How to make great coffee that doesn&amp;#8217;t generate 966 million pounds of waste a year</title>
-   <link>http://www.example.com/2013/09/how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year.html?utm_source=Coffee&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-2013-09-how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year-html</guid>
+   <link>https://wlach.github.io/blog/2013/09/how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year?utm_source=Coffee&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2013-09-how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year</guid>
    <pubDate>Tue, 17 Sep 2013 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;I was kind of appalled today to see this:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/files/2013/09/Story-of-Stuff-Picture.png"&gt;&lt;img src="/files/2013/09/Story-of-Stuff-Picture.png" alt="Story of Stuff Picture" width="720" height="720" class="alignnone size-full wp-image-936" srcset="/files/2013/09/Story-of-Stuff-Picture-150x150.png 150w, /files/2013/09/Story-of-Stuff-Picture-300x300.png 300w, /files/2013/09/Story-of-Stuff-Picture.png 720w" sizes="(max-width: 720px) 100vw, 720px" /&gt;&lt;/a&gt;&lt;/p&gt;
@@ -46,4 +47,4 @@
 
 &lt;p&gt;&amp;#8230; and then my numerous worms do the work of turning it into beautiful soil which I use in my &lt;a href="https://plus.google.com/photos/112599231040201259540/albums/5891369648488530945"&gt;balcony garden&lt;/a&gt; to grow tomotatos, kale, swiss chard, basil, and oregano.&lt;/p&gt;
 
-&lt;p&gt;What I want to emphasize most of all is that my ritual &lt;em&gt;takes very little time&lt;/em&gt;. Scraping out and cleaning my Bialetti in the worm compost bin takes around minute. Refilling it with water and coffee takes maybe 30 seconds. Yes, once a year I have to take the worm trailings out of my vermicompost bin. That takes longer (maybe 30 minutes to an hour) but it&amp;#8217;s a once a year thing and you avoid having to go to the store to buy fertilizer. Less waste. Way better coffee. Only a marginally more time spent. To me, this is a no-brainer.&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;What I want to emphasize most of all is that my ritual &lt;em&gt;takes very little time&lt;/em&gt;. Scraping out and cleaning my Bialetti in the worm compost bin takes around minute. Refilling it with water and coffee takes maybe 30 seconds. Yes, once a year I have to take the worm trailings out of my vermicompost bin. That takes longer (maybe 30 minutes to an hour) but it&amp;#8217;s a once a year thing and you avoid having to go to the store to buy fertilizer. Less waste. Way better coffee. Only a marginally more time spent. To me, this is a no-brainer.&lt;/p&gt;</description></item></channel></rss>

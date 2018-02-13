@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">Untitled Site: Posts tagged 'Life'</title>
- <link rel="self" href="http://www.example.com/feeds/Life.atom.xml" />
- <link href="http://www.example.com/tags/Life.html" />
- <id>urn:http-www-example-com:-tags-Life-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'Life'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/Life.atom.xml" />
+ <link href="https://wlach.github.io/tags/Life.html" />
+ <id>urn:https-wlach-github-io:-tags-Life-html</id>
  <updated>2011-11-01T04:00:00Z</updated>
  <entry>
   <title type="text">Weirdest (and saddest) unsolicited email ever</title>
-  <link rel="alternate" href="http://www.example.com/2011/11/weirdest-and-saddest-unsolicited-email-ever.html?utm_source=Life&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2011-11-weirdest-and-saddest-unsolicited-email-ever-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2011/11/weirdest-and-saddest-unsolicited-email-ever?utm_source=Life&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2011-11-weirdest-and-saddest-unsolicited-email-ever</id>
   <published>2011-11-01T04:00:00Z</published>
   <updated>2011-11-01T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Got this exceedingly strange e-mail yesterday. It&amp;#8217;s almost a bit tragic. Anyone else seen gotten this?&lt;/p&gt;
 
 &lt;p&gt;(BTW, the writing samples, which I won&amp;#8217;t link to, weren&amp;#8217;t half bad)&lt;/p&gt;
@@ -25,16 +25,16 @@
  &lt;p&gt;There is absolutely no charge for this and no strings attached; the only thing I would ask in return is that I&amp;#8217;m able to include a link to a site of my choosing within the article &amp;#8211; nothing shady or unethical, just one of the professional businesses I freelance for.&lt;/p&gt;
  &lt;p&gt;Do let me know if you&amp;#8217;re interested, and if so I can get something written for you over the course of the next few days. Needless to say, the offer is open to any other sites you might own as well as wrla.ch/blog. I appreciate you may not be interested in this kind of mutual back-scratching however, so if I don&amp;#8217;t hear from you, no offence taken and I won&amp;#8217;t trouble you again.&lt;/p&gt;
  &lt;p&gt;Very best,
-  &lt;br /&gt;XXXXXX&lt;/p&gt;&lt;/blockquote&gt;&lt;/html&gt;</content></entry>
+  &lt;br /&gt;XXXXXX&lt;/p&gt;&lt;/blockquote&gt;</content></entry>
  <entry>
   <title type="text">Changes!</title>
-  <link rel="alternate" href="http://www.example.com/2011/09/changes.html?utm_source=Life&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2011-09-changes-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2011/09/changes?utm_source=Life&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2011-09-changes</id>
   <published>2011-09-01T04:00:00Z</published>
   <updated>2011-09-01T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;A bit quiet here for the last few months. What&amp;#8217;s been happening?&lt;/p&gt;
 
 &lt;ol&gt;
@@ -44,16 +44,16 @@
   &lt;br /&gt;&lt;/li&gt;
  &lt;li&gt;I moved into a fantastic new apartment in an old victorian building near Vend&amp;ocirc;me metro.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;In short, life has been treating me really well! More updates soon.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;In short, life has been treating me really well! More updates soon.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Changes</title>
-  <link rel="alternate" href="http://www.example.com/2009/12/changes.html?utm_source=Life&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2009-12-changes-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2009/12/changes?utm_source=Life&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2009-12-changes</id>
   <published>2009-12-15T05:00:00Z</published>
   <updated>2009-12-15T05:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt;&lt;a href="http://www.flickr.com/photos/wlach/3815025020/" title="photo sharing"&gt;&lt;img src="http://farm3.static.flickr.com/2559/3815025020_abf7b8b50c_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt;
  &lt;br /&gt; 
  &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;
@@ -66,4 +66,4 @@
 
 &lt;p&gt;I&amp;#8217;m now back living in Montr&amp;eacute;al, which has been great. Very sad to leave Halifax and all the &lt;a href="http://thehubhalifax.ca"&gt;goings&lt;/a&gt; &lt;a href="http://apps4good.ca"&gt;on&lt;/a&gt;, but I&amp;#8217;ll be back to visit. And I&amp;#8217;m not done with &lt;a href="http://hbus.ca"&gt;disruptive transit-related apps&lt;/a&gt; for that city. Au contraire. More news on that soon.&lt;/p&gt;
 
-&lt;br clear="all" /&gt;&lt;/html&gt;</content></entry></feed>
+&lt;br clear="all" /&gt;</content></entry></feed>

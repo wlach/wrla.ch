@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">Untitled Site: Posts tagged 'zen'</title>
- <link rel="self" href="http://www.example.com/feeds/zen.atom.xml" />
- <link href="http://www.example.com/tags/zen.html" />
- <id>urn:http-www-example-com:-tags-zen-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'zen'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/zen.atom.xml" />
+ <link href="https://wlach.github.io/tags/zen.html" />
+ <id>urn:https-wlach-github-io:-tags-zen-html</id>
  <updated>2016-02-07T21:45:41Z</updated>
  <entry>
   <title type="text">Albert Low</title>
-  <link rel="alternate" href="http://www.example.com/2016/02/albert-low.html?utm_source=zen&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2016-02-albert-low-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2016/02/albert-low?utm_source=zen&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2016-02-albert-low</id>
   <published>2016-02-07T21:45:41Z</published>
   <updated>2016-02-07T21:45:41Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;I was saddened to find out last week that the person who introduced me to Zen practice three years ago, Albert Low, has passed away. Albert was the teacher of the &lt;a href="http://www.zenmontreal.ca/"&gt;Montreal Zen Center&lt;/a&gt;, which I was a member of for a brief period (6 months) in 2014 before I moved to Toronto and started practicing at &lt;a href="http://torontozen.org/"&gt;the center&lt;/a&gt; here.&lt;/p&gt;
 
-&lt;p&gt;Albert&amp;rsquo;s instruction was the gateway to a practice that has had a profound impact on my life. More than anything, he helped me understand Zen as something that one could incorporate directly into daily life. I will remain forever grateful.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;Albert&amp;rsquo;s instruction was the gateway to a practice that has had a profound impact on my life. More than anything, he helped me understand Zen as something that one could incorporate directly into daily life. I will remain forever grateful.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">A new meditation app</title>
-  <link rel="alternate" href="http://www.example.com/2014/08/a-new-meditation-app.html?utm_source=zen&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2014-08-a-new-meditation-app-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/08/a-new-meditation-app?utm_source=zen&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2014-08-a-new-meditation-app</id>
   <published>2014-08-14T04:00:00Z</published>
   <updated>2014-08-14T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;I had some time on my hands two weekends ago and was feeling a bit of an itch to build something, so I decided to do a project I&amp;#8217;ve had in the back of my head for a while: a meditation timer.&lt;/p&gt;
 
 &lt;p&gt;If you&amp;#8217;ve been following this log, you&amp;#8217;d know that &lt;a href="http://wrla.ch/blog/category/meditation/"&gt;meditation&lt;/a&gt; has been a pretty major interest of mine for the past year. The foundation of my practice is a daily round of seated meditation at home, where I have been attempting to follow the breath and generally try to connect with the world for a set period every day (usually varying between 10 and 30 minutes, depending on how much of a rush I&amp;#8217;m in).&lt;/p&gt;
@@ -52,28 +52,28 @@
 
 &lt;p&gt;Happy meditating!&lt;/p&gt;
 
-&lt;p&gt;&lt;sup&gt;&lt;a href="http://wrla.ch/blog/category/meditation/"&gt;1&lt;/a&gt;&lt;/sup&gt; Note that there isn&amp;#8217;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock"&gt;requestWakeLock&lt;/a&gt; API to make sure that doesn&amp;#8217;t happen. I filed &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113"&gt;a bug&lt;/a&gt; to get this implemented on Firefox for Android.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;&lt;sup&gt;&lt;a href="http://wrla.ch/blog/category/meditation/"&gt;1&lt;/a&gt;&lt;/sup&gt; Note that there isn&amp;#8217;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the &lt;a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock"&gt;requestWakeLock&lt;/a&gt; API to make sure that doesn&amp;#8217;t happen. I filed &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113"&gt;a bug&lt;/a&gt; to get this implemented on Firefox for Android.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">The highest form</title>
-  <link rel="alternate" href="http://www.example.com/2014/03/the-highest-form.html?utm_source=zen&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2014-03-the-highest-form-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/03/the-highest-form?utm_source=zen&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2014-03-the-highest-form</id>
   <published>2014-03-02T05:00:00Z</published>
   <updated>2014-03-02T05:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;&lt;a href="/files/2014/03/friedrich_shikatanza.jpg"&gt;&lt;img src="/files/2014/03/friedrich_shikatanza.jpg" alt="friedrich_shikatanza" width="1024" height="768" class="alignnone size-full wp-image-1000" srcset="/files/2014/03/friedrich_shikatanza-300x225.jpg 300w, /files/2014/03/friedrich_shikatanza.jpg 1024w" sizes="(max-width: 1024px) 100vw, 1024px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;He sits on the edge of my couch, stoic. At rest, yet alert for anything to happen at any moment. Whether that be a mouse running across the room (fat chance here) or me getting up to go into the kitchen. I took this picture just after zazen (meditating) &amp;#8212; I struggle and struggle and yet right beside me sits a creature that constantly practices in the highest form (shikantaza, &amp;#8220;just sitting&amp;#8221;) without even trying. An example for me to follow?&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;He sits on the edge of my couch, stoic. At rest, yet alert for anything to happen at any moment. Whether that be a mouse running across the room (fat chance here) or me getting up to go into the kitchen. I took this picture just after zazen (meditating) &amp;#8212; I struggle and struggle and yet right beside me sits a creature that constantly practices in the highest form (shikantaza, &amp;#8220;just sitting&amp;#8221;) without even trying. An example for me to follow?&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Meditative practice followup</title>
-  <link rel="alternate" href="http://www.example.com/2013/11/meditative-practice-followup.html?utm_source=zen&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2013-11-meditative-practice-followup-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/11/meditative-practice-followup?utm_source=zen&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2013-11-meditative-practice-followup</id>
   <published>2013-11-13T05:00:00Z</published>
   <updated>2013-11-13T05:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;A few months ago, I started blogging a bit about my fledgling Buddhist meditation practice, and then abruptly stopped. I thought I&amp;#8217;d write just a few words about why I didn&amp;#8217;t continue.&lt;/p&gt;
 
 &lt;p&gt;Over time, one of the things that I found most difficult about my practice was keeping it relatively pure. The whole point is to just sit and follow the breath with no extra motivation or hidden agenda. Given that, having it in the back of my mind to later try to explain my practice to a broad audience was at best a distraction. At worst, I worried that it might actually be hindering my progress.&lt;/p&gt;
@@ -86,16 +86,16 @@
 
 &lt;p&gt;Moreover, one of the things I&amp;#8217;ve realized over the last few months is that the way people process the world around the world is pretty differently. I&amp;#8217;m lucky enough to have a mind able to sit still for (average) 20 minutes a day. Not perfectly of course &amp;#8212; many times I feel like I&amp;#8217;m caught up with a million random thoughts for 90% of a session, but as I understand it that&amp;#8217;s just part of the process. At least I can sit still! I&amp;#8217;ve since learned that this isn&amp;#8217;t easy at all for other people (the urge to get up and do something else is overwhelming) and I really have no insight at present into what would make it easier for them (they had tried most of what I suggested to no avail). So I am a bit concerned that what I have to say would act more as a hindrance to the journey of others rather than a help.&lt;/p&gt;
 
-&lt;p&gt;All this is not to say that I&amp;#8217;m not happy to discuss my experiences one on one with anyone who&amp;#8217;s interested. If you&amp;#8217;re curious, by all means feel free to contact me &amp;#8212; though I suspect you&amp;#8217;d probably do better reaching out to a dedicated teacher who has more experience in these matters than I. If you can&amp;#8217;t find one, I would again recommend &lt;a href="http://www.amazon.ca/Mindfulness-Plain-English-Anniversary-Edition/dp/0861719069"&gt;Mindfulness in Plain English&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;All this is not to say that I&amp;#8217;m not happy to discuss my experiences one on one with anyone who&amp;#8217;s interested. If you&amp;#8217;re curious, by all means feel free to contact me &amp;#8212; though I suspect you&amp;#8217;d probably do better reaching out to a dedicated teacher who has more experience in these matters than I. If you can&amp;#8217;t find one, I would again recommend &lt;a href="http://www.amazon.ca/Mindfulness-Plain-English-Anniversary-Edition/dp/0861719069"&gt;Mindfulness in Plain English&lt;/a&gt;.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Further meditative practice</title>
-  <link rel="alternate" href="http://www.example.com/2013/04/further-meditative-practice.html?utm_source=zen&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2013-04-further-meditative-practice-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/04/further-meditative-practice?utm_source=zen&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2013-04-further-meditative-practice</id>
   <published>2013-04-28T04:00:00Z</published>
   <updated>2013-04-28T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;center&gt;&lt;a href="/files/2013/04/biodome.jpg"&gt;&lt;img src="/files/2013/04/biodome-768x1024.jpg" alt="biodome" width="426" height="568" class="alignnone size-large wp-image-905" srcset="/files/2013/04/biodome-225x300.jpg 225w, /files/2013/04/biodome-768x1024.jpg 768w, /files/2013/04/biodome.jpg 1024w" sizes="(max-width: 426px) 100vw, 426px" /&gt;&lt;/a&gt;&lt;/center&gt;
 
 &lt;p&gt;Okay, remember &lt;a href="http://wrla.ch/blog/2013/03/a-visit-to-the-montreal-zen-center/"&gt;last time&lt;/a&gt; when I said I was going to continue my &amp;#8220;sham of a human existence&amp;#8221; and not commit to a Zen practice? Well, I came back to the idea sooner than I thought: the experience was just too compelling for me not to do some further exploration. In some strange coincidence, Hacker News had a &lt;a href="https://news.ycombinator.com/item?id=5432713"&gt;great thread on meditation&lt;/a&gt; just after I wrote my last blog entry, where a few people recommended a book called &lt;a href="http://www.urbandharma.org/udharma4/mpe.html"&gt;Mindfulness in Plain English&lt;/a&gt;. I figured doing meditation at home didn&amp;#8217;t involve any kind of huge commitment (don&amp;#8217;t like it? just stop!), so I decided to order it online and give it a try.&lt;/p&gt;
@@ -108,16 +108,16 @@
 
 &lt;p&gt;Mindfulness, as far as I can gather, is simply non-judgemental awareness of what we are doing (and what we are supposed to be doing). Every time a distraction is noticed, felt, and understood, you&amp;#8217;ve just experienced some approximation of the end goal of the meditation. Like it is with other things (an exercise regimen, learning to play a musical instrument), every small victory should push you further and the path to where you want to go. With enough practice, it might just become part of your day-to-day experience.&lt;/p&gt;
 
-&lt;p&gt;Or so I&amp;#8217;m told by the book. Up to now, I haven&amp;#8217;t enjoyed any longlasting effects from meditation aside from (possibly?) a bit more mental clarity in my day-to-day tasks. But I&amp;#8217;ve found the practice to be extremely interesting both from the point of view of understanding my own thought, as well as being rather relaxing in and of itself. So while I&amp;#8217;m curious as to what comes next, I am happy enough with things as they are in the present. I&amp;#8217;m planning to continue to meditate (20&amp;ndash;30 minutes a day, 6 days a week), but also delve a bit deeper into the details and history of Zen and Vipasanna. More updates as appropriate.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;Or so I&amp;#8217;m told by the book. Up to now, I haven&amp;#8217;t enjoyed any longlasting effects from meditation aside from (possibly?) a bit more mental clarity in my day-to-day tasks. But I&amp;#8217;ve found the practice to be extremely interesting both from the point of view of understanding my own thought, as well as being rather relaxing in and of itself. So while I&amp;#8217;m curious as to what comes next, I am happy enough with things as they are in the present. I&amp;#8217;m planning to continue to meditate (20&amp;ndash;30 minutes a day, 6 days a week), but also delve a bit deeper into the details and history of Zen and Vipasanna. More updates as appropriate.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">A visit to the Montreal Zen Center</title>
-  <link rel="alternate" href="http://www.example.com/2013/03/a-visit-to-the-montreal-zen-center.html?utm_source=zen&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2013-03-a-visit-to-the-montreal-zen-center-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/03/a-visit-to-the-montreal-zen-center?utm_source=zen&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2013-03-a-visit-to-the-montreal-zen-center</id>
   <published>2013-03-24T04:00:00Z</published>
   <updated>2013-03-24T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;center&gt;&lt;a href="/files/2013/03/zencenter.jpg"&gt;&lt;img src="/files/2013/03/zencenter.jpg" alt="The Road to the Montreal Zen Center" width="640" height="853" class="alignnone size-full wp-image-871" srcset="/files/2013/03/zencenter-225x300.jpg 225w, /files/2013/03/zencenter.jpg 640w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/center&gt;
 
 &lt;p&gt;So for a bit of a departure from the usual technical content, a personal anecdote. I went to the Montreal Zen Center today for a &lt;a href="http://www.zenmontreal.ca/en/center/workshops.htm"&gt;workshop&lt;/a&gt;, which was a most illuminating experience. I&amp;#8217;d been pretty fascinated with the idea of zen for a while (see this &lt;a href="http://wlach.livejournal.com/8637.html"&gt;post of mine from 2006&lt;/a&gt;, for example) but was pretty stuck on how to put it into practice (aside from being sure it was something you had &lt;em&gt;to live&lt;/em&gt;). So, this was a step in that direction. After having gone to it, I wouldn&amp;#8217;t say I&amp;#8217;ve figured anything out (in fact I&amp;#8217;m more confused than ever), but I would say one thing with conviction: &lt;em&gt;this is the way to learn more&lt;/em&gt;.&lt;/p&gt;
@@ -128,4 +128,4 @@
 
 &lt;p&gt;And on that note, the meditation is austere and almost certainly less than you&amp;#8217;d expect. There is no prayer and very little ritual. Just a very minimal breath counting exercise conducted in a seated posture for 20 minutes, followed by a short walking exercise that lasts 5 minutes, then repeating the breath counting exercise for another 20 minutes. For its utter simplicity, I found it incredibly difficult. I imagine like anything with weeks, months, years of practice it (and the variations of it that experienced practitioners use where they meditate on &lt;a href="http://en.wikipedia.org/wiki/K%C5%8Dan"&gt;koans&lt;/a&gt;) it would become easier.&lt;/p&gt;
 
-&lt;p&gt;I&amp;#8217;m still giving thought on whether I want to take the next steps with them and begin a regular meditation practice. It sounds like really hard work (self meditation practice 6 days a week by yourself, plus regular visits to the zen center), which brings up the question: why do you want to do this? There&amp;#8217;s a weird contradiction between realizing that you as a self don&amp;#8217;t really exist and committing yourself radically to this kind of practice. The only thing I can call it would be a &amp;#8220;leap of faith&amp;#8221;. My current thinking is that I&amp;#8217;m not quite ready for that right now, but maybe in a while. For now I think I&amp;#8217;m pretty happy going to yoga a few times a week and living my sham of a human existence. 😉&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;I&amp;#8217;m still giving thought on whether I want to take the next steps with them and begin a regular meditation practice. It sounds like really hard work (self meditation practice 6 days a week by yourself, plus regular visits to the zen center), which brings up the question: why do you want to do this? There&amp;#8217;s a weird contradiction between realizing that you as a self don&amp;#8217;t really exist and committing yourself radically to this kind of practice. The only thing I can call it would be a &amp;#8220;leap of faith&amp;#8221;. My current thinking is that I&amp;#8217;m not quite ready for that right now, but maybe in a while. For now I think I&amp;#8217;m pretty happy going to yoga a few times a week and living my sham of a human existence. 😉&lt;/p&gt;</content></entry></feed>

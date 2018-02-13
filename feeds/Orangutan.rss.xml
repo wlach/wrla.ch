@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>Untitled Site: Posts tagged 'Orangutan'</title>
-  <description>Untitled Site: Posts tagged 'Orangutan'</description>
-  <link>http://www.example.com/tags/Orangutan.html</link>
+  <title>William Lachance's Log: Posts tagged 'Orangutan'</title>
+  <description>William Lachance's Log: Posts tagged 'Orangutan'</description>
+  <link>https://wlach.github.io/tags/Orangutan.html</link>
   <lastBuildDate>Tue, 10 Jul 2012 04:00:00 UT</lastBuildDate>
   <pubDate>Tue, 10 Jul 2012 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>The evolution of simulating events in Eideticker: from monkeys to orangutans</title>
-   <link>http://www.example.com/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans.html?utm_source=Orangutan&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-2012-07-the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans-html</guid>
+   <link>https://wlach.github.io/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans?utm_source=Orangutan&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2012-07-the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans</guid>
    <pubDate>Tue, 10 Jul 2012 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;I just merged a new approach I&amp;#8217;ve been using to simulate touch events into the master branch of Eideticker called &lt;a href="http://github.com/wlach/orangutan"&gt;Orangutan&lt;/a&gt;.&lt;/p&gt;
@@ -23,4 +24,4 @@
 
 &lt;p&gt;Unfortunately, I finally came up with a problem that I couldn&amp;#8217;t figure out how to fix: monkeyrunner doesn&amp;#8217;t attach precise timing information to the events it generates, which completely throws off Google Chrome for Android when you try to simulate a pan gesture. I&amp;#8217;ve tried just about every way of using the existing functionality (both the networked mode and the &amp;#8220;script&amp;#8221; mode), but nothing seemed to help. My conclusion is that the only way of continuing to use monkey would be to create a fix for the software itself, which implies forking and extending the entire Android Open Source Project. As noble a goal as that might be, doing that across all the major Android versions I want to support (2.2, 2.3, 4.0 and now 4.1) was more work than I felt like taking on (not to mention the question of how to deploy that work). I decided to build something entirely new which did not have this requirement.&lt;/p&gt;
 
-&lt;p&gt;Enter Orangutan. Unlike MonkeyRunner, Orangutan simply injects events directly into low-level the kernel device file that represents an Android device&amp;#8217;s touch screen. It&amp;#8217;s fast (written in native C), trivial to build, and seems to work seamlessly with any application I&amp;#8217;ve tried using it with (including Google Chrome for Android). Most interestingly for Mozilla, this interface is also present on Firefox OS (&lt;a href="https://wiki.mozilla.org/B2G"&gt;Boot to Gecko&lt;/a&gt;) based devices, so we should be able to use Orangutan there to support both Eideticker and any other testing framework which needs to test real-world user input test cases. Exciting times!&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;Enter Orangutan. Unlike MonkeyRunner, Orangutan simply injects events directly into low-level the kernel device file that represents an Android device&amp;#8217;s touch screen. It&amp;#8217;s fast (written in native C), trivial to build, and seems to work seamlessly with any application I&amp;#8217;ve tried using it with (including Google Chrome for Android). Most interestingly for Mozilla, this interface is also present on Firefox OS (&lt;a href="https://wiki.mozilla.org/B2G"&gt;Boot to Gecko&lt;/a&gt;) based devices, so we should be able to use Orangutan there to support both Eideticker and any other testing framework which needs to test real-world user input test cases. Exciting times!&lt;/p&gt;</description></item></channel></rss>

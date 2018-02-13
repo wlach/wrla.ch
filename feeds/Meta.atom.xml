@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">Untitled Site: Posts tagged 'Meta'</title>
- <link rel="self" href="http://www.example.com/feeds/Meta.atom.xml" />
- <link href="http://www.example.com/tags/Meta.html" />
- <id>urn:http-www-example-com:-tags-Meta-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'Meta'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/Meta.atom.xml" />
+ <link href="https://wlach.github.io/tags/Meta.html" />
+ <id>urn:https-wlach-github-io:-tags-Meta-html</id>
  <updated>2016-01-02T18:06:55Z</updated>
  <entry>
   <title type="text">New year, new blog</title>
-  <link rel="alternate" href="http://www.example.com/2016/01/new-year-new-blog.html?utm_source=Meta&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2016-01-new-year-new-blog-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2016/01/new-year-new-blog?utm_source=Meta&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2016-01-new-year-new-blog</id>
   <published>2016-01-02T18:06:55Z</published>
   <updated>2016-01-02T18:06:55Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;After thinking about doing it for longer than I&amp;rsquo;d like to admit, I finally bit the bullet and decided to migrate away from WordPress, towards a markdown-based blog generator (&lt;a href="https://github.com/greghendershott/frog"&gt;Frog&lt;/a&gt; in this case). All the content from the old blog is coming with me (thanks mostly to WordPress&amp;rsquo;s jekyll exporter plugin).&lt;/p&gt;
 
 &lt;p&gt;While WordPress is a pretty impressive piece of software, it isn&amp;rsquo;t the ideal platform for the sorts of things I want to express. It&amp;rsquo;s a reasonable tool for publishing straight longform essays, but my more interesting posts tend to also include images, code and examples, and sometimes &lt;a href="/blog/2014/03/it-8217-s-all-about-the-entropy/"&gt;even math&lt;/a&gt;. Making those look reasonable involved a bunch of manual effort and the end result wasn&amp;rsquo;t particularly great. I was particularly disappointed in its (lack of) support for inline code snippits.&lt;/p&gt;
@@ -32,32 +32,32 @@
 
 &lt;p&gt;So though I&amp;rsquo;ll be keeping around wrla.ch for a little bit to give people time to migrate their links (it doesn&amp;rsquo;t expire until the end of February 2016), it will also be going away. Please redirect your feed readers to &lt;a href="https://wlach.github.io"&gt;wlach.github.io&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Now, onto more interesting things!&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;Now, onto more interesting things!&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">A new domain</title>
-  <link rel="alternate" href="http://www.example.com/2012/02/a-new-domain.html?utm_source=Meta&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2012-02-a-new-domain-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2012/02/a-new-domain?utm_source=Meta&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2012-02-a-new-domain</id>
   <published>2012-02-06T05:00:00Z</published>
   <updated>2012-02-06T05:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;A few years ago, I fancied the idea of creating my own software consulting business. For some reason, I thought &amp;#8220;Masala Labs&amp;#8221; would be a cool and witty name for it (&amp;#8220;masala&amp;#8221; means spice mixture in Hindi, and who doesn&amp;#8217;t like spicy things?), so I registered the domain along with the associated small business paperwork in Nova Scotia. I only ever had one client, and it was only a few months before I wound up joining a few of my colleagues in founding &amp;#8220;The Navarra Group&amp;#8221; (which is also now defunct, a story I will perhaps tell at another time), so it never got very huge.&lt;/p&gt;
 
 &lt;p&gt;Anyway, I still had my own domain, and I wanted to move my blog from livejournal, which was beginning to jump the shark. The masalalabs domain was mine, so why not use it? I created a wordpress blog, pointed my DNS registration at it, and started writing. This worked well for a while (names don&amp;#8217;t really matter for random personal blogs), but lately I&amp;#8217;ve been wanting to start a new project and &amp;#8220;Masala Labs&amp;#8221; doesn&amp;#8217;t exactly seem like a winning banner for me to put it under.&lt;/p&gt;
 
 &lt;p&gt;So I&amp;#8217;ve decided it&amp;#8217;s time for a bit of a change. I just registered the swiss domain name &amp;#8216;wrla.ch&amp;#8217;, created a fancy new &lt;a href="http://wrla.ch"&gt;landing page&lt;/a&gt;, and made this blog its first &amp;#8220;sub site&amp;#8221;. More to come.&lt;/p&gt;
 
-&lt;p&gt;So, for all 20 of you who are subscribed to my doings, please update your links. For those of you using Google Reader / RSS, the new feed is at &lt;a href="http://wrla.ch/blog/feed/"&gt;this URL&lt;/a&gt;. All the old masalalabs links should at least &lt;strong&gt;work&lt;/strong&gt; until the domain expires in a few years, so there&amp;#8217;s no huge rush. Then again, you&amp;#8217;ll probably forget if you don&amp;#8217;t do it now (and thus be deprived of my endless ravings about checkerboarding on mobile Fennec on Android), so why wait?&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;So, for all 20 of you who are subscribed to my doings, please update your links. For those of you using Google Reader / RSS, the new feed is at &lt;a href="http://wrla.ch/blog/feed/"&gt;this URL&lt;/a&gt;. All the old masalalabs links should at least &lt;strong&gt;work&lt;/strong&gt; until the domain expires in a few years, so there&amp;#8217;s no huge rush. Then again, you&amp;#8217;ll probably forget if you don&amp;#8217;t do it now (and thus be deprived of my endless ravings about checkerboarding on mobile Fennec on Android), so why wait?&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Breaking news: Cat watches himself in TV</title>
-  <link rel="alternate" href="http://www.example.com/2009/03/breaking-news-cat-watches-himself-in-tv.html?utm_source=Meta&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2009-03-breaking-news-cat-watches-himself-in-tv-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2009/03/breaking-news-cat-watches-himself-in-tv?utm_source=Meta&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2009-03-breaking-news-cat-watches-himself-in-tv</id>
   <published>2009-03-06T05:00:00Z</published>
   <updated>2009-03-06T05:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt; &lt;a title="photo sharing" href="http://www.flickr.com/photos/wlach/3325846322/"&gt;&lt;img style="border: solid 2px #000000;" src="http://farm4.static.flickr.com/3577/3325846322_40e085d6d4_m.jpg" alt="" /&gt;&lt;/a&gt;   
  &lt;p&gt;
   &lt;br /&gt;&lt;a href="http://www.flickr.com/photos/wlach/3325846322/"&gt;Cat watching himself&lt;/a&gt;&lt;/p&gt;  
@@ -66,4 +66,4 @@
 
 &lt;p&gt;Been meaning to update this more, but I&amp;#8217;ve been rather busy. Quite a bit of excitement going on, though I haven&amp;#8217;t been making time to blog about it (I&amp;#8217;ve been more into the &lt;a href="http://twitter.com/wlach"&gt;twitter&lt;/a&gt; thing lately).&lt;/p&gt;
 
-&lt;p&gt;More soon.&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;More soon.&lt;/p&gt;</content></entry></feed>

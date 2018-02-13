@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>Untitled Site: Posts tagged 'Food'</title>
-  <description>Untitled Site: Posts tagged 'Food'</description>
-  <link>http://www.example.com/tags/Food.html</link>
+  <title>William Lachance's Log: Posts tagged 'Food'</title>
+  <description>William Lachance's Log: Posts tagged 'Food'</description>
+  <link>https://wlach.github.io/tags/Food.html</link>
   <lastBuildDate>Fri, 19 Nov 2010 05:00:00 UT</lastBuildDate>
   <pubDate>Fri, 19 Nov 2010 05:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Ginger Tea and Channa Masala</title>
-   <link>http://www.example.com/2010/11/ginger-tea-and-channa-masala.html?utm_source=Food&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-2010-11-ginger-tea-and-channa-masala-html</guid>
+   <link>https://wlach.github.io/blog/2010/11/ginger-tea-and-channa-masala?utm_source=Food&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2010-11-ginger-tea-and-channa-masala</guid>
    <pubDate>Fri, 19 Nov 2010 05:00:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;div style="float: right; margin-left: 10px; margin-bottom: 10px;"&gt;&lt;a href="http://www.flickr.com/photos/wlach/5189171392/" title="photo sharing"&gt;&lt;img src="http://farm5.static.flickr.com/4021/5189171392_233fef17d9_m.jpg" alt="" style="border: solid 2px #000000;" /&gt;&lt;/a&gt;
  &lt;br /&gt; 
  &lt;br /&gt; &lt;span style="font-size: 0.9em; margin-top: 0px;"&gt;
@@ -50,4 +51,4 @@
 
 &lt;p&gt;Put above ingredients into pot, at maximum heat. Bring to boil. Turn heat to low, let cook for 30 minutes or so. Consume. It&amp;#8217;s the best medicine for a cold that i know.&lt;/p&gt;
 
-&lt;br clear="all" /&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;br clear="all" /&gt;</description></item></channel></rss>

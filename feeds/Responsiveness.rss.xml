@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>Untitled Site: Posts tagged 'Responsiveness'</title>
-  <description>Untitled Site: Posts tagged 'Responsiveness'</description>
-  <link>http://www.example.com/tags/Responsiveness.html</link>
+  <title>William Lachance's Log: Posts tagged 'Responsiveness'</title>
+  <description>William Lachance's Log: Posts tagged 'Responsiveness'</description>
+  <link>https://wlach.github.io/tags/Responsiveness.html</link>
   <lastBuildDate>Mon, 07 Oct 2013 04:00:00 UT</lastBuildDate>
   <pubDate>Mon, 07 Oct 2013 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>First Eideticker Responsiveness Tests</title>
-   <link>http://www.example.com/2013/10/first-eideticker-responsiveness-tests.html?utm_source=Responsiveness&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-2013-10-first-eideticker-responsiveness-tests-html</guid>
+   <link>https://wlach.github.io/blog/2013/10/first-eideticker-responsiveness-tests?utm_source=Responsiveness&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2013-10-first-eideticker-responsiveness-tests</guid>
    <pubDate>Mon, 07 Oct 2013 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Time for another update on Eideticker. In the last quarter, I&amp;#8217;ve been working on two main items:&lt;/p&gt;
@@ -52,4 +53,4 @@
 
 &lt;p&gt;The results seem pretty highly variable at first because I was synchronizing time between the device and an external ntp server, rather than the host machine. I believe this is now fixed, hopefully giving us results that will indicate when regressions occur. As time goes by, we may want to craft some special eideticker tests for responsiveness specifically (e.g. a site where there is heavy javascript background processing).&lt;/p&gt;
 
-&lt;p&gt;&lt;sup&gt;&lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;em&gt;Incidentally, these &amp;#8220;frame difference&amp;#8221; graphs are also quite useful for understanding where and how application startup has regressed in Fennec &amp;#8212; try opening these two startup views side-by-side (before/after a large regression) and spot the difference: &lt;a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-20%29&amp;amp;#038;video=videos/video-1377070981.95.webm&amp;amp;#038;framediff=framediffs/framediff-1377070991.95.json"&gt;[1]&lt;/a&gt; and &lt;a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-23%29&amp;amp;#038;video=videos/video-1377330042.28.webm&amp;amp;#038;framediff=framediffs/framediff-1377330051.67.json"&gt;[2]&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;&lt;sup&gt;&lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;em&gt;Incidentally, these &amp;#8220;frame difference&amp;#8221; graphs are also quite useful for understanding where and how application startup has regressed in Fennec &amp;#8212; try opening these two startup views side-by-side (before/after a large regression) and spot the difference: &lt;a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-20%29&amp;amp;#038;video=videos/video-1377070981.95.webm&amp;amp;#038;framediff=framediffs/framediff-1377070991.95.json"&gt;[1]&lt;/a&gt; and &lt;a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-23%29&amp;amp;#038;video=videos/video-1377330042.28.webm&amp;amp;#038;framediff=framediffs/framediff-1377330051.67.json"&gt;[2]&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;</description></item></channel></rss>

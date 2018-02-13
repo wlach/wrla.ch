@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <rss version="2.0">
  <channel>
-  <title>Untitled Site: Posts tagged 'SQL'</title>
-  <description>Untitled Site: Posts tagged 'SQL'</description>
-  <link>http://www.example.com/tags/SQL.html</link>
+  <title>William Lachance's Log: Posts tagged 'SQL'</title>
+  <description>William Lachance's Log: Posts tagged 'SQL'</description>
+  <link>https://wlach.github.io/tags/SQL.html</link>
   <lastBuildDate>Fri, 23 Oct 2015 04:00:00 UT</lastBuildDate>
   <pubDate>Fri, 23 Oct 2015 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>The new old Perfherder data model</title>
-   <link>http://www.example.com/2015/10/the-new-old-perfherder-data-model.html?utm_source=SQL&amp;utm_medium=RSS</link>
-   <guid>urn:http-www-example-com:-2015-10-the-new-old-perfherder-data-model-html</guid>
+   <link>https://wlach.github.io/blog/2015/10/the-new-old-perfherder-data-model?utm_source=SQL&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-10-the-new-old-perfherder-data-model</guid>
    <pubDate>Fri, 23 Oct 2015 04:00:00 UT</pubDate>
-   <description>&lt;html&gt;
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;I spent a good chunk of time last quarter redesigning how &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; stores its data internally. Here are some notes on this change, for posterity.&lt;/p&gt;
 
 &lt;p&gt;Perfherder&amp;#8217;s data model is based around two concepts:&lt;/p&gt;
@@ -62,4 +63,4 @@
 
 &lt;p&gt;&lt;a href="/files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM.png"&gt;&lt;img src="/files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM-300x188.png" alt="Screen Shot 2015-10-23 at 1.55.09 PM" width="300" height="188" class="alignnone size-medium wp-image-1259" srcset="/files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM-300x188.png 300w, /files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM-1024x643.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Lesson&lt;/strong&gt;: Sometimes using ancient technologies (SQL) in the most obvious way is the right thing to do. &lt;a href="http://c2.com/xp/DoTheSimplestThingThatCouldPossiblyWork.html"&gt;DoTheSimplestThingThatCouldPossiblyWork&lt;/a&gt;&lt;/p&gt;&lt;/html&gt;</description></item></channel></rss>
+&lt;p&gt;&lt;strong&gt;Lesson&lt;/strong&gt;: Sometimes using ancient technologies (SQL) in the most obvious way is the right thing to do. &lt;a href="http://c2.com/xp/DoTheSimplestThingThatCouldPossiblyWork.html"&gt;DoTheSimplestThingThatCouldPossiblyWork&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

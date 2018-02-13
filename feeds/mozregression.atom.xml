@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">Untitled Site: Posts tagged 'mozregression'</title>
- <link rel="self" href="http://www.example.com/feeds/mozregression.atom.xml" />
- <link href="http://www.example.com/tags/mozregression.html" />
- <id>urn:http-www-example-com:-tags-mozregression-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'mozregression'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/mozregression.atom.xml" />
+ <link href="https://wlach.github.io/tags/mozregression.html" />
+ <id>urn:https-wlach-github-io:-tags-mozregression-html</id>
  <updated>2017-07-31T15:32:02Z</updated>
  <entry>
   <title type="text">mozregression's new mascot</title>
-  <link rel="alternate" href="http://www.example.com/2017/07/mozregression-s-new-mascot.html?utm_source=mozregression&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2017-07-mozregression-s-new-mascot-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/07/mozregression-s-new-mascot?utm_source=mozregression&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2017-07-mozregression-s-new-mascot</id>
   <published>2017-07-31T15:32:02Z</published>
   <updated>2017-07-31T15:32:02Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Spent a few hours this morning on a few housekeeping issues with &lt;a href="https://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt;. The web site was badly in need of an update (it was full of references to obsolete stuff like B2G and codefirefox.com) and the usual pile of fixes motivated a new release of the actual software. But most importantly, mozregression now has a proper application icon / logo, thanks to Victoria Wang!&lt;/p&gt;
 
 &lt;p&gt;&lt;img src="/files/2017/07/mozregressionicon3.png" /&gt;&lt;/p&gt;
 
-&lt;p&gt;One of the nice parts about working at Mozilla is the flexibility it offers to just hack on stuff that&amp;rsquo;s important, whether or not it&amp;rsquo;s part of your formal job description. Maintaining mozregression is pretty far outside my current set of responsibilities (or even interests), but I keep it going because it&amp;rsquo;s a key tool used by developers team here and no one else seems willing to take it over. Fortunately, tools like appveyor and pypi keep the time suckage to a mostly-reasonable level.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;One of the nice parts about working at Mozilla is the flexibility it offers to just hack on stuff that&amp;rsquo;s important, whether or not it&amp;rsquo;s part of your formal job description. Maintaining mozregression is pretty far outside my current set of responsibilities (or even interests), but I keep it going because it&amp;rsquo;s a key tool used by developers team here and no one else seems willing to take it over. Fortunately, tools like appveyor and pypi keep the time suckage to a mostly-reasonable level.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression updates</title>
-  <link rel="alternate" href="http://www.example.com/2015/01/mozregression-updates.html?utm_source=mozregression&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2015-01-mozregression-updates-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2015/01/mozregression-updates?utm_source=mozregression&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2015-01-mozregression-updates</id>
   <published>2015-01-27T05:00:00Z</published>
   <updated>2015-01-27T05:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Lots of movement in &lt;a href="http://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt; (a tool for automatically determining when a regression was introduced in Firefox by bisecting builds on ftp.mozilla.org) in the last few months. Here&amp;#8217;s some highlights:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -40,16 +40,16 @@
 
 &lt;p&gt;Also thanks to Julien, we have a &lt;a href="http://mozilla.github.io/mozregression/"&gt;spiffy new website&lt;/a&gt; which documents many of these features. If it&amp;#8217;s been a while, be sure to &lt;a href="http://mozilla.github.io/mozregression/install.html"&gt;update your copy of mozregression to the latest version&lt;/a&gt; and check out the site for documentation on how to use the new features described above!&lt;/p&gt;
 
-&lt;p&gt;Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&amp;#8217;s just that much more useful to Firefox contributors everywhere.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&amp;#8217;s just that much more useful to Firefox contributors everywhere.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression 0.24</title>
-  <link rel="alternate" href="http://www.example.com/2014/09/mozregression-0-24.html?utm_source=mozregression&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2014-09-mozregression-0-24-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/09/mozregression-0-24?utm_source=mozregression&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2014-09-mozregression-0-24</id>
   <published>2014-09-15T04:00:00Z</published>
   <updated>2014-09-15T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;I just released &lt;a href="http://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt; 0.24. This would be a good time to note some of the user-visible fixes / additions that have gone in recently:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -58,16 +58,16 @@
  &lt;li&gt;Fixed a bug where we could get an incorrect regression range (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1059856"&gt;bug 1059856&lt;/a&gt;). Unfortunately the root cause of the bug is still open (it&amp;#8217;s a bit tricky to match mozilla-central commits to that of other branches) but I think this most recent fix should make things work in 99.9% of cases. Let me know if I&amp;#8217;m wrong.&lt;/li&gt;
  &lt;li&gt;Thanks to Julien Pagès, we now download the inbound build metadata in parallel, which speeds up inbound bisection quite significantly&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;If you know a bit of python, contributing to mozregression is a great way to have a high impact on Mozilla. Many platform developers use this project in their day-to-day work, but there&amp;#8217;s still &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;lots of room for improvement&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;If you know a bit of python, contributing to mozregression is a great way to have a high impact on Mozilla. Many platform developers use this project in their day-to-day work, but there&amp;#8217;s still &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;lots of room for improvement&lt;/a&gt;.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression: New maintainer, issues tracked in bugzilla</title>
-  <link rel="alternate" href="http://www.example.com/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla.html?utm_source=mozregression&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2014-05-mozregression-new-maintainer-issues-tracked-in-bugzilla-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla?utm_source=mozregression&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2014-05-mozregression-new-maintainer-issues-tracked-in-bugzilla</id>
   <published>2014-05-08T04:00:00Z</published>
   <updated>2014-05-08T04:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Just wanted to give some quick updates on &lt;a href="http://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt;, your favorite regression-finding tool for Firefox:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -75,20 +75,20 @@
  &lt;li&gt;&lt;a href="http://blackrhino.io/"&gt;Sam Garrett&lt;/a&gt; has stepped up to be co-maintainer of the project with me. He&amp;#8217;s been doing a great job whacking out a bunch of bugs and keeping things running reliably, and it was time to give him some recognition and power to keep things moving forward.&lt;/li&gt;
  &lt;li&gt;On that note, I just released mozregression 0.17, which now shows the revision number when running a build (a request from the graphics team, bug &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1007238"&gt;1007238&lt;/a&gt;) and handles respins of nightly builds correctly (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1000422"&gt;bug 1000422&lt;/a&gt;). Both of these were fixed by Sam.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;If you&amp;#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &amp;#8212; as I&amp;#8217;ve found out over the last few months, people &lt;em&gt;all over&lt;/em&gt; the Mozilla organization (managers, developers, QA &amp;#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;/html&gt;</content></entry>
+&lt;p&gt;If you&amp;#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &amp;#8212; as I&amp;#8217;ve found out over the last few months, people &lt;em&gt;all over&lt;/em&gt; the Mozilla organization (managers, developers, QA &amp;#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression now supports inbound builds</title>
-  <link rel="alternate" href="http://www.example.com/2013/11/mozregression-now-supports-inbound-builds.html?utm_source=mozregression&amp;utm_medium=Atom" />
-  <id>urn:http-www-example-com:-2013-11-mozregression-now-supports-inbound-builds-html</id>
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/11/mozregression-now-supports-inbound-builds?utm_source=mozregression&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2013-11-mozregression-now-supports-inbound-builds</id>
   <published>2013-11-28T05:00:00Z</published>
   <updated>2013-11-28T05:00:00Z</updated>
   <author>
-   <name>The Unknown Author</name></author>
-  <content type="html">&lt;html&gt;
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Just wanted to send out a quick note that I recently added inbound support to &lt;a href="http://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt; for desktop builds of Firefox on Windows, Mac, and Linux.&lt;/p&gt;
 
 &lt;p&gt;For the uninitiated, mozregression is an automated tool that lets you bisect through builds of Firefox to find out when a problem was introduced. You give it the last known good date, the last known bad date and off it will go, automatically pulling down builds to test. After each iteration, it will ask you whether this build was good or bad, update the regression range accordingly, and then the cycle repeats until there are no more intermediate builds.&lt;/p&gt;
 
 &lt;p&gt;Previously, it would only use nightlies which meant a one day granularity &amp;#8212; this meant pretty wide regression ranges, made wider in the last year by the fact that so much more is now going into the tree over the course of the day. However, with inbound support (using the new inbound archive) we now have the potential to get a much tighter range, which should be super helpful for developers. Best of all, mozregression doesn&amp;#8217;t require any particularly advanced skills to use which means everyone in the Mozilla community can help out.&lt;/p&gt;
 
-&lt;p&gt;For anyone interested, there&amp;#8217;s quite a bit of scope to improve mozregression to make it do more things (FirefoxOS support, easier installation&amp;#8230;). Feel free to check out &lt;a href="http://github.com/mozilla/mozregression"&gt;the repository&lt;/a&gt;, the &lt;a href="https://github.com/mozilla/mozregression/issues?state=open"&gt;issues list&lt;/a&gt; (I just added &lt;a href="https://github.com/mozilla/mozregression/issues/76"&gt;an easy one&lt;/a&gt; which would make a great first bug) and ask questions on irc.mozilla.org#ateam!&lt;/p&gt;&lt;/html&gt;</content></entry></feed>
+&lt;p&gt;For anyone interested, there&amp;#8217;s quite a bit of scope to improve mozregression to make it do more things (FirefoxOS support, easier installation&amp;#8230;). Feel free to check out &lt;a href="http://github.com/mozilla/mozregression"&gt;the repository&lt;/a&gt;, the &lt;a href="https://github.com/mozilla/mozregression/issues?state=open"&gt;issues list&lt;/a&gt; (I just added &lt;a href="https://github.com/mozilla/mozregression/issues/76"&gt;an easy one&lt;/a&gt; which would make a great first bug) and ask questions on irc.mozilla.org#ateam!&lt;/p&gt;</content></entry></feed>
