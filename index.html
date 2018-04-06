@@ -197,6 +197,39 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
+    <h2><a href='/blog/2018/04/mission-control-update'>Mission Control update</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 6th, 2018</p>
+  </header>
+
+<p>Yep, still working on this project. We&rsquo;ve shifted gears somewhat from trying to identify problems in a time series of error aggregates to tracking somewhat longer term trends release over release, to fill the needs of the release management team at Mozilla. It&rsquo;s been a good change, I think. A bit of a tighter focus.</p>
+
+<p>The main motivator for this work is that the ADI (active daily install) numbers that crash stats used to provide as input to a similar service, <a href="https://arewestableyet.com">AreWeStableYet</a> (link requires Mozilla credentials), are going away and we need some kind of replacement. I&rsquo;ve been learning about this older system worked (this <a href="https://home.kairo.at/blog/2014-04/how_effective_is_the_stability_program">blog post</a> from KaiRo was helpful) and trying to develop a replacement which reproduces some of its useful characteristics while also taking advantage of some of the new features that are provided by the <a href="https://docs.telemetry.mozilla.org/datasets/streaming/error_aggregates/reference.html">error_aggregates</a> dataset and the mission control user interface.</p>
+
+<p>Some preliminary screenshots of what I&rsquo;ve been able to come up with:</p>
+
+<center><img style="width:400px" srcset="/files/2018/04/missioncontrol-main-view.png 2x" /> <img style="width:400px" srcset="/files/2018/04/missioncontrol-windows-release.png 2x" /></center>
+
+<p>One of the key things to keep in mind with this dashboard is that by default it shows an <em>adjusted</em> set of rates (defined as total number of events divided by total usage khours), which means we compare the latest release to the previous one within the same time interval.</p>
+
+<p>So if, say, the latest release is &ldquo;59&rdquo; and it&rsquo;s been out for two weeks, we will compare it against the previous release (&ldquo;58&rdquo;) in its first two weeks. As I&rsquo;ve said here before, things are <a href="/blog/2017/10/better-or-worse-by-what-measure">always crashier when they first go out</a>, and comparing a new release to one that has been out in the field for some time is not a fair comparison at all.</p>
+
+<p>This adjusted view of things is still not apples-to-apples: the causality of crashes and errors is so complex that there will always be differences between releases which are beyond our control or even understanding. Many crash reports, for example, have nothing to do with our product but with third party software and web sites beyond our control. That said, I feel like this adjusted rate is still good enough to tell us (broadly speaking) (1) whether our latest release / beta / nightly is ok (i.e. there is no major showstopper issue) and (2) whether our overall error rate is going up or down over several versions (if there is a continual increase in our crash rate, it might point to a problem in our release/qa process).</p>
+
+<p>Interestingly, the first things that we&rsquo;ve found with this system are not real problems with the product but data collection issues:</p>
+
+<ul>
+ <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1447161">we don&rsquo;t seem to be collecting counts of gmplugin crashes on Windows anymore via telemetry</a></li>
+ <li><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1413172#c8">the number of content_shutdown_crashes is greater than the number of content_crashes, even though the former is a superset of the latter</a></li></ul>
+
+<p>These problems aside, the indications are that there&rsquo;s been a steady increase in the quality of Firefox over the last few releases based on the main user facing error metric we care about (main crashes), so that&rsquo;s good. :)</p>
+
+<p>If you want to play with the system yourself, the <a href="https://data-missioncontrol.dev.mozaws.net/">development instance</a> is still up. We will probably look at making this thing &ldquo;official&rdquo; next quarter.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
     <h2><a href='/blog/2018/02/derived-versus-direct'>Derived versus direct</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 12th, 2018</p>
@@ -593,33 +626,6 @@
 <p><img src="/files/2017/07/mozregressionicon3.png" /></p>
 
 <p>One of the nice parts about working at Mozilla is the flexibility it offers to just hack on stuff that&rsquo;s important, whether or not it&rsquo;s part of your formal job description. Maintaining mozregression is pretty far outside my current set of responsibilities (or even interests), but I keep it going because it&rsquo;s a key tool used by developers team here and no one else seems willing to take it over. Fortunately, tools like appveyor and pypi keep the time suckage to a mostly-reasonable level.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2017/07/taking-over-an-npm-package-sanity-prevails'>Taking over an npm package: sanity prevails</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 13th, 2017</p>
-  </header>
-
-<p>Sometimes problems are easier to solve than expected.</p>
-
-<p>For the last few months I&rsquo;ve been working on the front end of a new project called <a href="https://github.com/mozilla/missioncontrol">Mission Control</a>, which aims to chart lots of interesting live information in something approximating realtime. Since this is a greenfield project, I thought it would make sense to use the currently-invogue framework at Mozilla (react) along with our standard visualization library, <a href="http://metricsgraphicsjs.org/">metricsgraphics</a>.</p>
-
-<p>Metricsgraphics is great, but its jquery-esque api is somewhat at odds with the react way. The obvious solution to this problem is to wrap its functionality in a react component, and a quick google search determined that several people have tried to do exactly that, the most popular one being one called (obviously) react-metrics-graphics. Unfortunately, it hadn&rsquo;t been updated in quite some time and some pull requests (including ones implementing features I needed for my project) weren&rsquo;t being responded to.</p>
-
-<p>I expected this to be pretty difficult to resolve: I had no interaction with the author (Carter Feldman) before but based on my past experiences in free software, I was expecting stonewalling, leaving me no choice but to fork the package and give it a new name, a rather unsatisfying end result.</p>
-
-<p>But, hey, let&rsquo;s keep an open mind on this. What does google say about unmaintained npm packages? Oh what&rsquo;s this? They actually have a <a href="https://docs.npmjs.com/misc/disputes">policy</a>?</p>
-
-<p>tl;dr: You email the maintainer (politely) and CC support@npmjs.org about your interest in helping maintain the software. If you&rsquo;re unable to come up with a resolution on your own, they will intervene.</p>
-
-<p>So I tried that. It turns out that Carter was really happy to hear that Mozilla was interested in taking over maintenance of this project, and not only gave me permission to start publishing newer versions to npm, but even transferred his repository over to Mozilla (so we could preserve issue and PR history). The project&rsquo;s new location is here:</p>
-
-<p><a href="https://github.com/mozilla/react-metrics-graphics">https://github.com/mozilla/react-metrics-graphics</a></p>
-
-<p>In hindsight, this is obviously the most reasonable outcome and I&rsquo;m not sure why I was expecting anything else. Is the node community just friendlier than other areas I&rsquo;ve worked in? Have community standards improved generally? In any case, thank you Carter for a great piece of software, hopefully it will thrive in its new home. :P</p>
 
 </article>
 

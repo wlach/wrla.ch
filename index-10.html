@@ -197,6 +197,28 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2011/12/year-end-eideticker-update'>Year end Eideticker update</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Dec 23rd, 2011</p>
+  </header>
+
+<p>Just before I leave for some Christmas vacation, it&#8217;s time for another update on the state of <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">Eideticker</a>. Since I last blogged about the software, I&#8217;ve been working on the following three areas:</p>
+
+<ol>
+ <li>Coming up with better algorithm (green screen / red screen) for both determining the area of the capture as well as the start/end of the capture. The harness was already flood filling the area with these colours at the beginning/end of the capture, but now we&#8217;re actually using this information. The code&#8217;s a little hacky, but it seems to work well enough for the test cases I&#8217;ve been using so far.</li>
+ <li>As a demonstration, I wrote up a quick test that demonstrates checkerboarding on mobile Fennec, and wrote up a quick bit of analysis code to detect this pattern and give an overall measure of how much this test &#8220;checkerboards&#8221; (i.e. has regions that are not fully painted when the user scrolls). As I understand this is an area that our mobile team is currently working on this problem quite a bit, it will be interesting to watch the numbers given by this test and see if things improve.</li>
+ <li>It&#8217;s a minor thing, but you can now view a complete webm movie of the captured movie right from the web interface.</li></ol>
+
+<p>Here&#8217;s a quick demonstration video that shows all the above in action. As before, you might want to watch this full screen:</p>
+
+<video src="/files/eideticker/eideticker-2011-12-21.webm" width="600px" controls="controls"></video>
+
+<p>Happy holidays!</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Open-Data.html">Open Data</a>, <a href="/tags/Transit.html">Transit</a></span></p>
     <h2><a href='/blog/2011/12/an-api-for-amt-data'>An API for AMT data</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Dec 14th, 2011</p>
@@ -429,25 +451,6 @@ Unique frames: 121/272&lt;br /&gt;</code></p>
 <p>For example, one of the things that release engineering has found most useful in the GoFaster Dashboard has been the <a href="http://brasstacks.mozilla.com/gofaster/#/buildcharts">build charts</a>. Believe it or not, the idea for that view started out as this <a href="http://people.mozilla.com/~wlachance/overall-build-and-test-area.png">useless piece of junk</a> (I can say that because I created it). It was only after a good half hour back and forth on irc between myself, jgriffin, and jmaher (all of us backend/tool developers) that we came up with the view that inspired so much <a href="http://jagriffin.wordpress.com/2011/09/06/gofaster-deeper-data-analysis/">good analysis</a> on the project.</p>
 
 <p>All this is not to say that usability experts and graphic designers don&#8217;t have special skills that are worthy of respect. Indeed, if you&#8217;re a designer and would like to get involved with our work, please <a href="https://wiki.mozilla.org/Auto-tools#Want_to_Help.3F">join us</a>, we&#8217;d love your help. My only point is that on a project where a design resource isn&#8217;t available, thinking explicitly about usability is still worthwhile. And even where you have a UX expert on staff, programmers can have useful feedback too. Good UI is everyone&#8217;s responsibility!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/BIXI.html">BIXI</a>, <a href="/tags/Free-Software.html">Free Software</a>, <a href="/tags/hbus.html">hbus</a>, <a href="/tags/Montreal.html">Montreal</a>, <a href="/tags/Open-Data.html">Open Data</a></span></p>
-    <h2><a href='/blog/2011/09/updates-on-my-ridiculous-pet-projects'>Updates on my ridiculous pet projects</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 29th, 2011</p>
-  </header>
-
-<ol>
- <li>
-  <p>As you may or may not have noticed, <a href="http://hbus.ca">hbus.ca</a> has been down for the past few weeks. Halifax updated the data but I didn&#8217;t have a chance to update it. Well, I finally did, and hbus is now up in its former glory (minus a small issue with stops named &#8216;6016_merged_3300509&#8217;: thanks Metro Transit, time to update <a href="https://github.com/wlach/routez/blob/master/src/gtfs-hacks/update-halifax-gtfs.py">that script</a> to massage your data again!) . I still wonder a bit about why I keep putting time into a site oriented around a city I haven&#8217;t lived in for over 2 years now (especially when Google Maps arguably does a better job at most things than I do), but there you go!</p></li>
- <li>
-  <p><a href="http://nixi.ca">NIXI</a> is still up and being useful to me, though I&#8217;m a little bit disappointed by its uptake from the rest of the world (the site gets like 5&ndash;12 unique views a day). What do I need to do for you guys? A mobile version? French localization? I just added support for Washington (Capital Bikeshare) and Boston (Hubway), maybe it&#8217;ll get some uptake there.</p></li>
- <li>
-  <p>Not really my project, but Stephane Guidoin put up an awesome site called <a href="http://zonecone.ca">zonecone.ca</a> which helps you find out about traffic obstacles that might delay your journey. It even has a nifty feature where you can create an account, specify a route you take regularly (say, your commute), and it&#8217;ll automatically notify you if something pops up. As you may have guessed, I&#8217;m not the biggest fan of automobiles, but this is still very cool. 😉 This site was originally based on <a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/">the map layout template</a> that I announced a few months ago.</p></li>
- <li>
-  <p>I have a lettuce plant growing on my new balcony. It&#8217;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!</p></li></ol>
 
 </article>
 

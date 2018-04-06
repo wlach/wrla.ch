@@ -197,6 +197,23 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Talos.html">Talos</a></span></p>
+    <h2><a href='/blog/2016/02/talos-suites-now-visible-from-trychooser'>Talos suites now visible from trychooser</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 13th, 2016</p>
+  </header>
+
+<p>It&rsquo;s a small thing, but I submitted a patch to <a href="http://trychooser.pub.build.mozilla.org/">trychooser</a> last week which adds a tooltip indicating the actual Talos tests that are run as part of the various jobs that you can schedule as part of a try push. It&rsquo;s in production as of now:</p>
+
+<video src="/files/2016/02/talos-trychooser.webm" controls="controls" autoplay="autoplay"></video>
+
+<p>Previously, the only way to do this was to dig into the actual buildbot code, which was more than a little annoying.</p>
+
+<p>If you think your patch might have a good chance of regressing performance, please do run the <a href="https://wiki.mozilla.org/Buildbot/Talos/Tests">Talos tests</a> before you check in. It&rsquo;s much less work for all of us when these things are caught before integration and back outs are no fun for anyone. We really need better documentation for this stuff, but meanwhile if you need help with this, please ask in the #perf channel on irc.mozilla.org</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
     <h2><a href='/blog/2015/11/perfherder-onward'>Perfherder: Onward!</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 4th, 2015</p>
@@ -576,28 +593,6 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <p>Also thanks to Julien, we have a <a href="http://mozilla.github.io/mozregression/">spiffy new website</a> which documents many of these features. If it&#8217;s been a while, be sure to <a href="http://mozilla.github.io/mozregression/install.html">update your copy of mozregression to the latest version</a> and check out the site for documentation on how to use the new features described above!</p>
 
 <p>Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&#8217;s just that much more useful to Firefox contributors everywhere.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Web.html">Web</a></span></p>
-    <h2><a href='/blog/2014/09/using-flexbox-in-web-applications'>Using Flexbox in web applications</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 29th, 2014</p>
-  </header>
-
-<p>Over last few months, I discovered the joy that is CSS Flexbox, which solves the &#8220;how do I lay out this set of div&#8217;s in horizontally or vertically&#8221;. I&#8217;ve used it in three projects so far:</p>
-
-<ul>
- <li>Centering the timer interface in my <a href="http://wrla.ch/blog/2014/08/a-new-meditation-app/">meditation app</a>, so that it scales nicely from a 320&#215;480 FirefoxOS device all the way up to a high definition monitor</li>
- <li>Laying out the chart / sidebar elements in the <a href="http://eideticker.mozilla.org">Eideticker dashboard</a> so that maximum horizontal space is used</li>
- <li>Fixing various problems in the <a href="http://treeherder.mozilla.org">Treeherder UI</a> on smaller screens (see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1043474">bug 1043474</a> and its dependent bugs)</li></ul>
-
-<p>When I talk to people about their troubles with CSS, layout comes up really high on the list. Historically, basic layout problems like a panel of vertical buttons have been ridiculously difficult, involving hacks involving floating divs and absolute positioning or <a href="http://layout.jquery-dev.com/">JavaScript layout libraries</a>. This is why people write articles entitled <a href="http://uxmag.com/articles/give-and-use-tables">&#8220;Give up and use tables&#8221;</a>.</p>
-
-<p>Flexbox has pretty much put an end to these problems for me. There&#8217;s no longer any need to &#8220;give up and use tables&#8221; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&#8217;re so great. I think we&#8217;re pretty close to Flexbox being supported across all the major browsers, so it&#8217;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.</p>
-
-<p>To try and spread the word, I wrote up <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications">a howto article on using flexbox for web applications on MDN</a>, covering some of the common use cases I mention above. If you&#8217;ve been curious about flexbox but unsure how to use it, please have a look.</p>
 
 </article>
 
