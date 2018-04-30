@@ -105,6 +105,7 @@ https://wlach.github.io/blog/2011/04/routez-opensourced
 https://wlach.github.io/blog/2012/05/launching-random-web-browsers-on-android
 https://wlach.github.io/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing
 https://wlach.github.io/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy
+https://wlach.github.io/blog/2018/04/metricsgraphics-movements
 https://wlach.github.io/blog/2012/09/oh-hai-i-upergaded-yer-eideticker
 https://wlach.github.io/blog/2013/09/early-morning-questions
 https://wlach.github.io/blog/2015/09/perfherder-summer-of-contribution-thoughts

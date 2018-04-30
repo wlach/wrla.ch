@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+ <title type="text">William Lachance's Log: Posts tagged 'Metrics Graphics'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/Metrics-Graphics.atom.xml" />
+ <link href="https://wlach.github.io/tags/Metrics-Graphics.html" />
+ <id>urn:https-wlach-github-io:-tags-Metrics-Graphics-html</id>
+ <updated>2018-04-30T15:20:32Z</updated>
+ <entry>
+  <title type="text">metricsgraphics movements</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2018/04/metricsgraphics-movements?utm_source=Metrics-Graphics&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2018-04-metricsgraphics-movements</id>
+  <published>2018-04-30T15:20:32Z</published>
+  <updated>2018-04-30T15:20:32Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;Just wanted to give a quick update on some things that have been happening with the &lt;a href="https://www.metricsgraphics.org"&gt;metrics graphics&lt;/a&gt; since I stepped up to help with maintainership a few months ago:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href="https://github.com/hamilton"&gt;Hamilton&lt;/a&gt;&amp;rsquo;s back as co-maintainer! This has been especially helpful  as he understands much of the historical context of metricsgraphics better than I do.&lt;/li&gt;
+ &lt;li&gt;We&amp;rsquo;ve merged in a large number of small fixes and improvements into the codebase,  thanks to myself and a number of other contributors. Special shout-out to Thomas  Champagne, who has contributed a &lt;a href="https://github.com/metricsgraphics/metrics-graphics/commits?author=thomaschampagne"&gt;large number of nifty new features&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;We moved the project from Mozilla to its &lt;a href="https://github.com/metricsgraphics/"&gt;own organization&lt;/a&gt; on  github. This feels like a much better way forward for a project which is supposed to be useful  far outside the bounds of Mozilla, and hopeful makes contributors feel more like the first-class  citizens of the project that they actually are.&lt;/li&gt;
+ &lt;li&gt;We have a GSOC intern! As part of the Mozilla GSOC, Yunhao Zheng is going to be working on  adding rich brushing/zooming support to Metrics Graphics, which should be quite useful for  visualizing complex data in projects like &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; (&lt;a href="https://docs.google.com/document/d/1_KIOJtemqlCBktDdfdjDuS4XhICeaKO3QhNRwbnnf-g/"&gt;Project outline&lt;/a&gt;, &lt;a href="https://summerofcode.withgoogle.com/projects/#5422620527296512"&gt;Yunhao&amp;rsquo;s proposal&lt;/a&gt;)&lt;/li&gt;&lt;/ul&gt;</content></entry></feed>

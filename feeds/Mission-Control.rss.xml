@@ -34,7 +34,7 @@
  &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1447161"&gt;we don&amp;rsquo;t seem to be collecting counts of gmplugin crashes on Windows anymore via telemetry&lt;/a&gt;&lt;/li&gt;
  &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1413172#c8"&gt;the number of content_shutdown_crashes is greater than the number of content_crashes, even though the former is a superset of the latter&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;These problems aside, the indications are that there&amp;rsquo;s been a steady increase in the quality of Firefox over the last few releases based on the main user facing error metric we care about (main crashes), so that&amp;rsquo;s good. :)&lt;/p&gt;
+&lt;p&gt;Data issues aside, the indications are that there&amp;rsquo;s been a steady increase in the quality of Firefox over the last few releases based on the main user facing error metric we&amp;rsquo;ve cared about in the past (main crashes), so that&amp;rsquo;s good. :)&lt;/p&gt;
 
 &lt;p&gt;If you want to play with the system yourself, the &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;development instance&lt;/a&gt; is still up. We will probably look at making this thing &amp;ldquo;official&amp;rdquo; next quarter.&lt;/p&gt;</description></item>
   <item>
