@@ -54,6 +54,7 @@ https://wlach.github.io/blog/2016/08/herding-automation-infrastructure
 https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure
 https://wlach.github.io/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla
 https://wlach.github.io/blog/2011/11/hellofax-rocks-my-world
+https://wlach.github.io/blog/2018/05/some-thoughts-on-opinion-polling-in-the-ontario-2018-election
 https://wlach.github.io/blog/2015/01/mozregression-updates
 https://wlach.github.io/blog/2010/03/adventures-in-processing-with-prender
 https://wlach.github.io/blog/2015/03/perfherder-update-summary-series-drilldown
