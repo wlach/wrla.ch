@@ -4,7 +4,35 @@
  <link rel="self" href="https://wlach.github.io/feeds/all.atom.xml" />
  <link href="https://wlach.github.io/index.html" />
  <id>urn:https-wlach-github-io:-index-html</id>
- <updated>2018-05-27T16:57:30Z</updated>
+ <updated>2018-06-05T21:50:32Z</updated>
+ <entry>
+  <title type="text">Mission Control 1.0</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2018/06/mission-control-1-0?utm_source=all&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2018-06-mission-control-1-0</id>
+  <published>2018-06-05T21:50:32Z</published>
+  <updated>2018-06-05T21:50:32Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;Just a quick announcement that the first &amp;ldquo;production-ready&amp;rdquo; version of Mission Control just went live yesterday, at this easy-to-remember URL:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://missioncontrol.telemetry.mozilla.org"&gt;https://missioncontrol.telemetry.mozilla.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;For those not yet familiar with the project, Mission Control aims to track release stability and quality across Firefox releases. It is similar in spirit to arewestableyet and other crash dashboards, with the following new and exciting properties:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Uses the full set of crash counts gathered via telemetry, rather than the arbitrary  sample that users decide to submit to crash-stats&lt;/li&gt;
+ &lt;li&gt;Results are available within minutes of ingestion by telemetry (although be warned  &lt;a href="/blog/2017/10/better-or-worse-by-what-measure/"&gt;initial results for a release always look bad&lt;/a&gt;)&lt;/li&gt;
+ &lt;li&gt;The denominator in our crash rate is usage hours, rather than the probably-incorrect  calculation of active-daily-installs used by  &lt;a href="https://arewestableyet.com"&gt;arewestableyet&lt;/a&gt; (not a knock on the people who  wrote that tool, there was nothing better available at the time)&lt;/li&gt;
+ &lt;li&gt;We have a detailed breakdown of the results by platform (rather than letting Windows  results dominate the overall rates due to its high volume of usage)&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;In general, my hope is that this tool will provide a more scientific and accurate idea of release stability and quality over time. There&amp;rsquo;s lots more to do, but I think this is a promising start. Much gratitude to &lt;a href="https://home.kairo.at/blog/2014-04/how_effective_is_the_stability_program"&gt;kairo&lt;/a&gt;, calixte, &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; and others who helped build my understanding of this area.&lt;/p&gt;
+
+&lt;p&gt;The dashboard itself an easier thing to show than talk about, so I recorded a quick demonstration of some of the dashboard&amp;rsquo;s capabilities and published it on air mozilla:&lt;/p&gt;
+
+&lt;iframe src="https://air.mozilla.org/mission-control-dashboard-intro/video/" width="896" height="524" frameborder="0" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;a href="https://air.mozilla.org/mission-control-dashboard-intro/"&gt;link&lt;/a&gt;&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Some thoughts on opinion polling in the Ontario 2018 election</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2018/05/some-thoughts-on-opinion-polling-in-the-ontario-2018-election?utm_source=all&amp;utm_medium=Atom" />
@@ -947,54 +975,4 @@
 
 &lt;p&gt;The original is on the left. The newer, faster Treeherder is on the right. Pay particular attention to how much faster the job information populates.&lt;/p&gt;
 
-&lt;p&gt;Moral of the story? Optimization can be helpful, but it&amp;rsquo;s better if you can avoid doing the work altogether.&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">Herding Automation Infrastructure</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2016/08/herding-automation-infrastructure?utm_source=all&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2016-08-herding-automation-infrastructure</id>
-  <published>2016-08-17T20:18:12Z</published>
-  <updated>2016-08-17T20:18:12Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;For every commit to Firefox, we run a battery of builds and automated tests on the resulting source tree to make sure that the result still works and meets our correctness and performance quality criteria. This is expensive: every new push to our repository implies hundreds of hours of machine time. However, automated quality control is essential to ensure that the product that we&amp;rsquo;re shipping to users is something that we can be proud of.&lt;/p&gt;
-
-&lt;p&gt;But what about evaluating the quality of the product which does the building and testing? Who does that? And by what criteria would we say that our automation system is good or bad? Up to now, our procedures for this have been rather embarassingly adhoc. With some exceptions (such as &lt;a href="https://brasstacks.mozilla.com/orangefactor/"&gt;OrangeFactor&lt;/a&gt;), our QA process amounts to motivated engineers doing a one-off analysis of a particular piece of the system, filing a few bugs, then forgetting about it. Occasionally someone will propose turning build and test automation for a specific platform on or off in mozilla.dev.planning.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;d like to suggest that the time has come to take a more systemic approach to this class of problem. We spend a lot of money on people and machines to maintain this infrastructure, and I think we need a more disciplined approach to make sure that we are getting good value for that investment.&lt;/p&gt;
-
-&lt;p&gt;As a starting point, I feel like we need to pay closer attention to the following characteristics of our automation:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;End-to-end times from push submission to full completion of all  build and test jobs: if this gets too long, it makes the lives  of all sorts of people painful &amp;mdash; tree closures become longer when  they happen (because it takes longer to either notice bustage or  find out that it&amp;rsquo;s fixed), developers have to wait longer for  try pushes (making them more likely to just push directly to an  integration branch, causing the former problem&amp;hellip;)&lt;/li&gt;
- &lt;li&gt;Number of machine hours consumed by the different types of test  jobs: our resources are large (relatively speaking), but not  unlimited. We need proper accounting of where we&amp;rsquo;re spending money  and time. In some cases, resources used to perform a task that  we don&amp;rsquo;t care that much about could be redeployed towards an  underresourced task that we do care about. A good example of this  was linux32 talos (performance tests) last year: when the question  was raised of why we were doing performance testing on this specific  platform (in addition to Linux64), no one could come up with a great  justification. So we turned the tests off and reconfigured the machines  to do Windows performance tests (where we were suffering from a severe  lack of capacity).&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;Over the past week, I&amp;rsquo;ve been prototyping a project I&amp;rsquo;ve been calling &amp;ldquo;Infraherder&amp;rdquo; which uses the data inside &lt;a href="https://treeherder.mozilla.org"&gt;Treeherder&lt;/a&gt;&amp;rsquo;s job database to try to answer these questions (and maybe some others that I haven&amp;rsquo;t thought of yet). You can see a hacky version of it on &lt;a href="http://wlach.github.io/treeherder/ui/infra.html#/last-finished"&gt;my github fork&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Why implement this in Treeherder you might ask? Two reasons. First, Treeherder already stores the job data in a historical archive that&amp;rsquo;s easy to query (using SQL). Using this directly makes sense over creating a new data store. Second, Treeherder provides a useful set of front-end components with which to build a UI with which to visualize this information. I actually did my initial prototyping inside an ipython notebook, but it quickly became obvious that for my results to be useful to others at Mozilla we needed some kind of real dashboard that people could dig into.&lt;/p&gt;
-
-&lt;p&gt;On the Treeherder team at Mozilla, we&amp;rsquo;ve found the &lt;a href="https://newrelic.com"&gt;New Relic&lt;/a&gt; software to be invaluable for diagnosing and fixing quality and performance problems for Treeherder itself, so I took some inspiration from it (unfortunately the problem space of our automation is not quite the same as that of a web application, so we can&amp;rsquo;t just use New Relic directly).&lt;/p&gt;
-
-&lt;p&gt;There are currently two views in the prototype, a &amp;ldquo;last finished&amp;rdquo; view and a &amp;ldquo;total&amp;rdquo; view. I&amp;rsquo;ll describe each of them in turn.&lt;/p&gt;
-
-&lt;h3 id="last-finished"&gt;Last finished&lt;/h3&gt;
-
-&lt;p&gt;This view shows the counts of which scheduled automation jobs were the &amp;ldquo;last&amp;rdquo; to finish. The hypothesis is that jobs that are frequently last indicate blockers to developer productivity, as they are the &amp;ldquo;long pole&amp;rdquo; in being able to determine if a push is good or bad.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src="/files/2016/08/infraherder-last-finished.png" width="500px" /&gt;&lt;/p&gt;
-
-&lt;p&gt;Right away from this view, you can see the mochitest devtools 9 test is often the last to finish on try, with Windows 7 mochitest debug a close second. Assuming that the reasons for this are not resource starvation (they don&amp;rsquo;t appear to be), we could probably get results into the hands of developers and sheriffs faster if we split these jobs into two seperate ones. I filed bugs &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1294489"&gt;1294489&lt;/a&gt; and &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1294706"&gt;1294706&lt;/a&gt; to address these issues.&lt;/p&gt;
-
-&lt;h3 id="total-time"&gt;Total Time&lt;/h3&gt;
-
-&lt;p&gt;This view just shows which jobs are taking up the most machine hours.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src="/files/2016/08/infraherder-total.png" width="500px" /&gt;&lt;/p&gt;
-
-&lt;p&gt;Probably unsurprisingly, it seems like it&amp;rsquo;s Android test jobs that are taking up most of the time here: these tests are running on multiple layers of emulation (AWS instances to emulate Linux hardware, then the already slow QEMU-based Android simulator) so are not expected to have fast runtime. I wonder if it might not be worth considering running these tests on faster instances and/or bare metal machines.&lt;/p&gt;
-
-&lt;p&gt;Linux32 debug tests seem to be another large consumer of resources. Market conditions make turning these tests off altogether a non-starter (see bug &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1255890"&gt;1255890&lt;/a&gt;), but how much value do we really derive from running the debug version of linux32 through automation (given that we&amp;rsquo;re already doing the same for 64-bit Linux)?&lt;/p&gt;
-
-&lt;h3 id="request-for-comments"&gt;Request for comments&lt;/h3&gt;
-
-&lt;p&gt;I&amp;rsquo;ve created &lt;a href="https://docs.google.com/document/d/1SrlJQQ3qWuM0tvruG6Lr59t3hJ4XRUoMIrIRQYvwu9A/edit?usp=sharing"&gt;an RFC&lt;/a&gt; for this project on Google Docs, as a sort of test case for a new process we&amp;rsquo;re thinking of using in Engineering Productivity for these sorts of projects. If you have any questions or comments, I&amp;rsquo;d love to hear them! My perspective on this vast problem space is limited, so I&amp;rsquo;m sure there are things that I&amp;rsquo;m missing.&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;Moral of the story? Optimization can be helpful, but it&amp;rsquo;s better if you can avoid doing the work altogether.&lt;/p&gt;</content></entry></feed>

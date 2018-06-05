@@ -64,6 +64,7 @@ https://wlach.github.io/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile
 https://wlach.github.io/blog/2011/10/faster-but-not-quite-there-yet-8230
 https://wlach.github.io/blog/2009/12/changes
 https://wlach.github.io/blog/2018/01/giving-and-receiving-help-at-mozilla
+https://wlach.github.io/blog/2018/06/mission-control-1-0
 https://wlach.github.io/blog/2012/02/playing-with-pandas
 https://wlach.github.io/blog/2015/11/perfherder-onward
 https://wlach.github.io/blog/2011/09/changes

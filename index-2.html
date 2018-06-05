@@ -203,6 +203,31 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
+    <h2><a href='/blog/2017/10/mission-control'>Mission Control</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 6th, 2017</p>
+  </header>
+
+<p>Time for an overdue post on the mission control project that I&rsquo;ve been working on for the past few quarters, since I transitioned to the data platform team.</p>
+
+<p>One of the gaps in our data story when it comes to Firefox is being able to see how a new release is doing in the immediate hours after release. Tools like <a href="https://crash-stats.mozilla.com/home/product/Firefox">crashstats</a> and the <a href="https://telemetry.mozilla.org/new-pipeline/evo.html">telemetry evolution dashboard</a> are great, but it can take many hours (if not days) before you can reliably see that there is an issue in a metric that we care about (number of crashes, say). This is just too long &mdash; such delays unnecessarily retard rolling out a release when it is safe (because there is a paranoia that there might be some lingering problem which we we&rsquo;re waiting to see reported). And if, somehow, despite our abundant caution a problem <em>did</em> slip through it would take us some time to recognize it and roll out a fix.</p>
+
+<p>Enter mission control. By hooking up a high-performance spark streaming job directly to our ingestion pipeline, we can now be able to detect within moments whether firefox is performing unacceptably within the field according to a particular measure.</p>
+
+<p>To make the volume of data manageable, we create a grouped data set with the raw count of the various measures (e.g. main crashes, content crashes, slow script dialog counts) along with each unique combination of dimensions (e.g. platform, channel, release).</p>
+
+<p>Of course, all this data is not so useful without a tool to visualize it, which is what I&rsquo;ve been spending the majority of my time on. The idea is to be able to go from a top level description of what&rsquo;s going on a particular channel (release for example) all the way down to a detailed view of how a measure has been performing over a time interval:</p>
+
+<p><img srcset="/files/2017/10/missioncontrol-ui.png 2x" /></p>
+
+<p>This particular screenshot shows the volume of content crashes (sampled every 5 minutes) over the last 48 hours on windows release. You&rsquo;ll note that the later version (56.0) seems to be much crashier than earlier versions (55.0.3) which would seem to be a problem except that the populations are not directly comparable (since the profile of a user still on an older version of Firefox is rather different from that of one who has already upgraded). This is one of the still unsolved problems of this project: finding a reliable, automatable baseline of what an &ldquo;acceptable result&rdquo; for any particular measure might be.</p>
+
+<p>Even still, the tool can still be useful for exploring a bunch of data quickly and it has been progressing rapidly over the last few weeks. And like almost everything Mozilla does, both the <a href="https://github.com/mozilla/missioncontrol/">source</a> and <a href="https://data-missioncontrol.dev.mozaws.net/">dashboard</a> are open to the public. I&rsquo;m planning on flagging some easier bugs for newer contributors to work on in the next couple weeks, but in the meantime if you&rsquo;re interested in this project and want to get involved, feel free to look us up on irc.mozilla.org #missioncontrol (I&rsquo;m there as &lsquo;wlach&rsquo;).</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2017/08/functional-is-the-future'>Functional is the future</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 28th, 2017</p>
@@ -752,57 +777,6 @@
 <p>The original is on the left. The newer, faster Treeherder is on the right. Pay particular attention to how much faster the job information populates.</p>
 
 <p>Moral of the story? Optimization can be helpful, but it&rsquo;s better if you can avoid doing the work altogether.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Infraherder.html">Infraherder</a></span></p>
-    <h2><a href='/blog/2016/08/herding-automation-infrastructure'>Herding Automation Infrastructure</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 17th, 2016</p>
-  </header>
-
-<p>For every commit to Firefox, we run a battery of builds and automated tests on the resulting source tree to make sure that the result still works and meets our correctness and performance quality criteria. This is expensive: every new push to our repository implies hundreds of hours of machine time. However, automated quality control is essential to ensure that the product that we&rsquo;re shipping to users is something that we can be proud of.</p>
-
-<p>But what about evaluating the quality of the product which does the building and testing? Who does that? And by what criteria would we say that our automation system is good or bad? Up to now, our procedures for this have been rather embarassingly adhoc. With some exceptions (such as <a href="https://brasstacks.mozilla.com/orangefactor/">OrangeFactor</a>), our QA process amounts to motivated engineers doing a one-off analysis of a particular piece of the system, filing a few bugs, then forgetting about it. Occasionally someone will propose turning build and test automation for a specific platform on or off in mozilla.dev.planning.</p>
-
-<p>I&rsquo;d like to suggest that the time has come to take a more systemic approach to this class of problem. We spend a lot of money on people and machines to maintain this infrastructure, and I think we need a more disciplined approach to make sure that we are getting good value for that investment.</p>
-
-<p>As a starting point, I feel like we need to pay closer attention to the following characteristics of our automation:</p>
-
-<ul>
- <li>End-to-end times from push submission to full completion of all  build and test jobs: if this gets too long, it makes the lives  of all sorts of people painful &mdash; tree closures become longer when  they happen (because it takes longer to either notice bustage or  find out that it&rsquo;s fixed), developers have to wait longer for  try pushes (making them more likely to just push directly to an  integration branch, causing the former problem&hellip;)</li>
- <li>Number of machine hours consumed by the different types of test  jobs: our resources are large (relatively speaking), but not  unlimited. We need proper accounting of where we&rsquo;re spending money  and time. In some cases, resources used to perform a task that  we don&rsquo;t care that much about could be redeployed towards an  underresourced task that we do care about. A good example of this  was linux32 talos (performance tests) last year: when the question  was raised of why we were doing performance testing on this specific  platform (in addition to Linux64), no one could come up with a great  justification. So we turned the tests off and reconfigured the machines  to do Windows performance tests (where we were suffering from a severe  lack of capacity).</li></ul>
-
-<p>Over the past week, I&rsquo;ve been prototyping a project I&rsquo;ve been calling &ldquo;Infraherder&rdquo; which uses the data inside <a href="https://treeherder.mozilla.org">Treeherder</a>&rsquo;s job database to try to answer these questions (and maybe some others that I haven&rsquo;t thought of yet). You can see a hacky version of it on <a href="http://wlach.github.io/treeherder/ui/infra.html#/last-finished">my github fork</a>.</p>
-
-<p>Why implement this in Treeherder you might ask? Two reasons. First, Treeherder already stores the job data in a historical archive that&rsquo;s easy to query (using SQL). Using this directly makes sense over creating a new data store. Second, Treeherder provides a useful set of front-end components with which to build a UI with which to visualize this information. I actually did my initial prototyping inside an ipython notebook, but it quickly became obvious that for my results to be useful to others at Mozilla we needed some kind of real dashboard that people could dig into.</p>
-
-<p>On the Treeherder team at Mozilla, we&rsquo;ve found the <a href="https://newrelic.com">New Relic</a> software to be invaluable for diagnosing and fixing quality and performance problems for Treeherder itself, so I took some inspiration from it (unfortunately the problem space of our automation is not quite the same as that of a web application, so we can&rsquo;t just use New Relic directly).</p>
-
-<p>There are currently two views in the prototype, a &ldquo;last finished&rdquo; view and a &ldquo;total&rdquo; view. I&rsquo;ll describe each of them in turn.</p>
-
-<h3 id="last-finished">Last finished</h3>
-
-<p>This view shows the counts of which scheduled automation jobs were the &ldquo;last&rdquo; to finish. The hypothesis is that jobs that are frequently last indicate blockers to developer productivity, as they are the &ldquo;long pole&rdquo; in being able to determine if a push is good or bad.</p>
-
-<p><img src="/files/2016/08/infraherder-last-finished.png" width="500px" /></p>
-
-<p>Right away from this view, you can see the mochitest devtools 9 test is often the last to finish on try, with Windows 7 mochitest debug a close second. Assuming that the reasons for this are not resource starvation (they don&rsquo;t appear to be), we could probably get results into the hands of developers and sheriffs faster if we split these jobs into two seperate ones. I filed bugs <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1294489">1294489</a> and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1294706">1294706</a> to address these issues.</p>
-
-<h3 id="total-time">Total Time</h3>
-
-<p>This view just shows which jobs are taking up the most machine hours.</p>
-
-<p><img src="/files/2016/08/infraherder-total.png" width="500px" /></p>
-
-<p>Probably unsurprisingly, it seems like it&rsquo;s Android test jobs that are taking up most of the time here: these tests are running on multiple layers of emulation (AWS instances to emulate Linux hardware, then the already slow QEMU-based Android simulator) so are not expected to have fast runtime. I wonder if it might not be worth considering running these tests on faster instances and/or bare metal machines.</p>
-
-<p>Linux32 debug tests seem to be another large consumer of resources. Market conditions make turning these tests off altogether a non-starter (see bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1255890">1255890</a>), but how much value do we really derive from running the debug version of linux32 through automation (given that we&rsquo;re already doing the same for 64-bit Linux)?</p>
-
-<h3 id="request-for-comments">Request for comments</h3>
-
-<p>I&rsquo;ve created <a href="https://docs.google.com/document/d/1SrlJQQ3qWuM0tvruG6Lr59t3hJ4XRUoMIrIRQYvwu9A/edit?usp=sharing">an RFC</a> for this project on Google Docs, as a sort of test case for a new process we&rsquo;re thinking of using in Engineering Productivity for these sorts of projects. If you have any questions or comments, I&rsquo;d love to hear them! My perspective on this vast problem space is limited, so I&rsquo;m sure there are things that I&rsquo;m missing.</p>
 
 </article>
 
