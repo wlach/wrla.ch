@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 7)</title>
     <meta name="description" content="William Lachance's Log (page 7)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Statistics, Montreal, Coffee, Life, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Counting, Polling, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Statistics, Montreal, Coffee, Life, Counting, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Data, Polling, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-7.html">
@@ -76,6 +76,8 @@
 <li><a href="/tags/Community.html">Community</a></li>
 
 <li><a href="/tags/Counting.html">Counting</a></li>
+
+<li><a href="/tags/Data.html">Data</a></li>
 
 <li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
 
@@ -202,6 +204,25 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Philosophy.html">Philosophy</a></span></p>
+    <h2><a href='/blog/2013/09/early-morning-questions'>Early morning questions</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 25th, 2013</p>
+  </header>
+
+<p>Last night while I was lying in bed the mystery of my being here, present, again occurred to me. Pondered that a bit upon waking up. Let me formulate two mysteries that, as far as I know, no one has given really satisfactory answers to:</p>
+
+<ol>
+ <li>Why does anything exist at all? And given that things do exist, why should they take the form that they do (planets, suns, nebulae, even life)?</li>
+ <li>What accounts for the &#8220;subjectivity&#8221; of experience? That is, why is life not only here, but (in humanity&#8217;s case at least, probably in the case of other higher-order life, and possibly all life) there is a *conscious* experience that goes on with our perceptions of the world? It does not seem necessary for (1), does it?</li></ol>
+
+<p>Perhaps the answer here is just that the way our minds (and hence anything we could form into thought or language) is based on descriptions of the world according to our perception. But (1) and (2) are in a sense, beyond this. I think in the case of (1) it is obvious why. In the case of (2) this might just be a limitation of our language/thought &#8212; certainly we can express that someone/something is conscious in a 3rd party sort of way (i.e. &#8220;she perceived red&#8221;), though this does not (as far as I can tell) express the <em>realness</em> of the experience. It&#8217;s a description, not the experience. To really understand experience from a 3rd person perspective (and hence why it exists?), you would need to go outside experience &#8212; but description <em>is part of</em> experience! The concept of being outside of it makes no sense.</p>
+
+<p>[ Maybe I am just restating <a href="http://en.wikipedia.org/wiki/Immanuel_Kant">Kant</a> here ]</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Coffee.html">Coffee</a>, <a href="/tags/Environment.html">Environment</a></span></p>
     <h2><a href='/blog/2013/09/how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year'>How to make great coffee that doesn&#8217;t generate 966 million pounds of waste a year</a></h2>
@@ -439,23 +460,6 @@
 <p>Unfortunately, while this is certainly a better user experience, it is not so easy to detect and measure. For Firefox, we&#8217;ve disabled this behaviour so that we see the old checkerboard pattern. This is useful for our internal measurements (we can see both if our drawing code as well as our heuristics about when to draw are getting better or worse over time) but it only works for us.</p>
 
 <p>If anyone has any suggestions on what to do here, let me know as I&#8217;m a bit stuck. There are other metrics we could still compare against (i.e. how smooth is the panning animation aka frames per second?) but these aren&#8217;t nearly as interesting.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/ateam.html">ateam</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2013/03/documentation-for-mozdevice'>Documentation for mozdevice</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 11th, 2013</p>
-  </header>
-
-<p>Just wanted to give a quick heads up that as part of the ateam&#8217;s ongoing effort to improve the documentation of our automated testing infrastructure, we now have <a href="https://mozbase.readthedocs.org/en/latest/mozdevice.html">online documentation</a> for mozdevice, the python library we use for interacting with Android- and FirefoxOS-based devices in automated testing.</p>
-
-<p>Mozdevice is used in pretty much every one of our testing frameworks that has mobile support, including mochitest, reftest, <a href="https://wiki.mozilla.org/Buildbot/Talos">talos</a>, <a href="https://github.com/mozilla/autophone">autophone</a>, and <a href="https://wiki.mozilla.org/Project_Eideticker">eideticker</a>. Additionally, mozdevice is used by release engineering to clean up, monitor, and otherwise manage 
- <strike>our hundred-odd</strike> the 1200*** tegra and panda development boards that we use in <a href="http://tbpl.mozilla.org">tbpl</a>. See <a href="https://hg.mozilla.org/build/tools/file/tip/sut_tools">sut_tools</a> (old, buildbot-based, what we currently use) and <a href="https://github.com/mozilla/mozpool">mozpool</a> (the new and shiny future).</p>
-
-<ul>
- <li>Thanks to Dustin Mitchell for the correction.</li></ul>
 
 </article>
 

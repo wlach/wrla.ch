@@ -6,7 +6,7 @@
     <title>William Lachance's Log</title>
     <meta name="description" content="William Lachance's Log">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Statistics, Montreal, Coffee, Life, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Counting, Polling, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Statistics, Montreal, Coffee, Life, Counting, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Data, Polling, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index.html">
@@ -76,6 +76,8 @@
 <li><a href="/tags/Community.html">Community</a></li>
 
 <li><a href="/tags/Counting.html">Counting</a></li>
+
+<li><a href="/tags/Data.html">Data</a></li>
 
 <li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
 
@@ -202,6 +204,37 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Data.html">Data</a>, <a href="/tags/Python.html">Python</a></span></p>
+    <h2><a href='/blog/2018/10/pydata-nyc-2018'>pydata nyc 2018</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 29th, 2018</p>
+  </header>
+
+<p>Went to <a href="https://pydata.org/nyc2018/">PyData NYC</a> a couple weeks ago, and figured I ought to write up my thoughts for the benefits of the others on my extended team. Why not publish as a blog post while I&rsquo;m at it?</p>
+
+<p>This is actually the first conference I&rsquo;d been to in my capacity as a &ldquo;data engineer&rdquo; at Mozilla, a team I joined about a year and a half ago after specializing in the same area on the (now-defunct) <a href="https://wiki.mozilla.org/EngineeringProductivity">a-team</a>. I&rsquo;ve felt a special affinity for the Python community, particularly its data science offshoots (pandas, numpy, and jupyter notebooks) so it was great to finally go to a conference that specializes in these topics.</p>
+
+<p>Overall, the conference was a bit of a mix between people talking about the status of their projects, theoretical talks on specific statistical approaches to data, general talks on how people are doing &ldquo;data science&rdquo; (I would say the largest majority of attendees at the conference were users of python data science tools, rather than developers), and case studies of how people are using python data science tools in their research or work. This being New York, many (probably the majority) were using data science tools in fields like quantitative finance, sales, marketing, and health care.</p>
+
+<p>As a side note, it was really satisfying to be able to tell Mozilla&rsquo;s story about how we collect and use data without violating the privacy of our users. This is becoming more and more of an issue (especailly in Europe with the GPDR) and it really makes me happy that we have a really positive story to tell, not a bunch of dirty secrets that we need to hide.</p>
+
+<p>In general I found the last two types of talks the most rewarding to go to: most of the work I do at Mozilla currently involves larger-scale data where, I&rsquo;m sad to say, Python is usually not (currently) an applicable tool, at least not by itself (though maybe <a href="https://iodide.io">iodide</a> will help change that! see below). And I don&rsquo;t usually find a 60 minute talk really enough time for me to be able to properly absorb new mathematical or statistical concepts, though I can sometimes get little tidbits of information from them that come in handy later.</p>
+
+<p>Some talks that made an impression on me:</p>
+
+<ul>
+ <li><a href="https://pydata.org/nyc2018/schedule/presentation/83/">Open source and quantitative finance</a>: Keynote  talk, was a great introduction to the paranoia of the world of quantitative finance.  I think the main message was that things are gradually moving to a (slightly less)  paranoid model where generally-useful modifications done to numerical/ml software as  part of a trading platform may now be upstreamed&hellip; but my main takeaway is that I&rsquo;m  really glad I&rsquo;m not working in that industry.</li>
+ <li><a href="https://pydata.org/nyc2018/schedule/presentation/9/">Words in Space</a>: Introduced  an interesting-soundingl library called <a href="http://www.scikit-yb.org/en/latest/">Yellow Brick</a> for visualizing the results  of machine learning models.</li>
+ <li><a href="https://pydata.org/nyc2018/schedule/presentation/2/">Creating a data-driven product culture</a>:  General talk on how to create a positive and useful data science culture at a company. I think  Mozilla already checks most of the boxes outlined in the talk.</li>
+ <li><a href="https://pydata.org/nyc2018/schedule/presentation/39/">What Data Scientists Really Do</a>: Quite entertaining talk on the future of &ldquo;data science&rdquo;,  by Hugo Bowne-Anderson (who also has a <a href="https://www.datacamp.com/community/podcast">podcast</a> which sounds cool). The most  interesting takeaway from the talk was the speculation that within 10 years the term  &ldquo;data scientist&rdquo; might have the same meaning as the word &ldquo;webmaster&rdquo; now. It&rsquo;s a  hyper-generalist job description which will almost inevitably be split into a number  of other more specialized roles.</li>
+ <li><a href="https://pydata.org/nyc2018/schedule/presentation/77/">Master Class: Bayesian Statistics</a>: This falls under the &ldquo;technical talk which I couldn&rsquo;t  grasp in 60 minutes&rdquo; category, but I think I finally do understand a little bit more  of what people mean when they say &ldquo;Bayesian Statistics&rdquo; now. It actually doesn&rsquo;t have much  to do with <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Baye&rsquo;s Theorem</a>, rather it seems to be more of a philosophical approach to  data analysis which acknowledges the limitations of human capacity to understand the  world and asks us to more explicitly state our assumptions when developing models (probably  over-simplifying here). I think I can get behind that &mdash; want to learn more. They  provided a <a href="https://betanalpha.github.io/workshops/pydata/">bunch of material</a> to work through,  which I&rsquo;ve been meaning to take a look at.</li>
+ <li><a href="https://pydata.org/nyc2018/schedule/presentation/30/">Data Science in Health Care: Beyond the Hype</a>:  Great presentations in how data science can be used to improve health care outcomes. Lots of relevant  insights that I think are also applicable to &ldquo;product health&rdquo; here at Mozilla. I  particularly liked the way the presenter framed requirements when deciding whether or not  to do a type of analysis: &ldquo;if i knew [information], i would do [intervention], which would  have [measurable outcome]&rdquo;</li></ul>
+
+<p>Of course, this post wouldn&rsquo;t be complete without a mention of <a href="http://droettboom.com/">Mike Droettboom</a>&rsquo;s <a href="https://pydata.org/nyc2018/schedule/presentation/3/">talk</a> on <a href="https://iodide.io">iodide</a>, a project I&rsquo;ve been spending some considerable cycles helping with over the last couple of quarters. I need to write some longer thoughts on iodide at some point in the near future, but in a nutshell it&rsquo;s a scientific notebook environment where the computational kernel lives entirely inside the browser. It was well received and we had a great followup session afterwards with people interested in using it for various things. Being able to show a python environment in the browser which &ldquo;just works&rdquo;, with no installation or other steps makes a <em>great</em> tech demo. I&rsquo;m really excited about the public launch of our server-based environment, which will hopefully be coming in the next couple of months.</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
     <h2><a href='/blog/2018/06/mission-control-1-0'>Mission Control 1.0</a></h2>
@@ -593,23 +626,6 @@
 <p>If this sounds interesting and you have some react/d3/data visualization skills (or would like to gain some), <a href="/blog/2017/10/mission-control-ready-for-contributions/">learn about contributing to mission control</a>.</p>
 
 <p>Shout out to <a href="https://chuttenblog.wordpress.com/">chutten</a> for reviewing this post and providing feedback and additions.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2017/10/mission-control-ready-for-contributions'>Mission Control: Ready for contributions</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 20th, 2017</p>
-  </header>
-
-<p>One of the great design decisions that was made for <a href="https://treeherder.mozilla.org">Treeherder</a> was a strict seperation of the client and server portions of the codebase. While its backend was moderately complicated to get up and running (especially into a state that looked at all like what we were running in production), you could get its web frontend running (pointed against the production data) just by starting up a simple node.js server. This dramatically lowered the barrier to entry, for Mozilla employees and casual contributors alike.</p>
-
-<p>I knew right from the beginning that I wanted to take the same approach with <a href="https://wlach.github.io/blog/2017/10/mission-control/">Mission Control</a>. While the full source of the project is available, unfortunately it isn&rsquo;t presently possible to bring up the full stack with real data, as that requires privileged access to the athena/parquet error aggregates table. But since the UI is self-contained, it&rsquo;s quite easy to bring up a development environment that allows you to freely browse the cached data which is stored server-side (essentially: <code>git clone https://github.com/mozilla/missioncontrol.git &amp;&amp; yarn install &amp;&amp; yarn start</code>).</p>
-
-<p>In my experience, the most interesting problems when it comes to projects like these center around the question of how to present extremely complex data in a way that is intuitive but not misleading. Probably 90% of that work happens in the frontend. In the past, I&rsquo;ve had pretty good luck finding contributors for my projects (especially <a href="/tags/Perfherder.html">Perfherder</a>) by doing call-outs on this blog. So let it be known: If Mission Control sounds like an interesting project and you know <a href="https://reactjs.org/">React</a>/<a href="http://redux.js.org/">Redux</a>/<a href="https://d3js.org/">D3</a>/<a href="https://www.metricsgraphicsjs.org/">MetricsGraphics</a> (or want to learn), let&rsquo;s work together!</p>
-
-<p>I&rsquo;ve created some <a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">good first bugs</a> to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on <a href="https://wiki.mozilla.org/IRC">irc.mozilla.org</a> #missioncontrol if you want to discuss further.</p>
 
 </article>
 

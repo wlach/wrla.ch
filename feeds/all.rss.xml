@@ -4,9 +4,37 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Tue, 05 Jun 2018 21:50:32 UT</lastBuildDate>
-  <pubDate>Tue, 05 Jun 2018 21:50:32 UT</pubDate>
+  <lastBuildDate>Mon, 29 Oct 2018 13:19:23 UT</lastBuildDate>
+  <pubDate>Mon, 29 Oct 2018 13:19:23 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>pydata nyc 2018</title>
+   <link>https://wlach.github.io/blog/2018/10/pydata-nyc-2018?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2018-10-pydata-nyc-2018</guid>
+   <pubDate>Mon, 29 Oct 2018 13:19:23 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;Went to &lt;a href="https://pydata.org/nyc2018/"&gt;PyData NYC&lt;/a&gt; a couple weeks ago, and figured I ought to write up my thoughts for the benefits of the others on my extended team. Why not publish as a blog post while I&amp;rsquo;m at it?&lt;/p&gt;
+
+&lt;p&gt;This is actually the first conference I&amp;rsquo;d been to in my capacity as a &amp;ldquo;data engineer&amp;rdquo; at Mozilla, a team I joined about a year and a half ago after specializing in the same area on the (now-defunct) &lt;a href="https://wiki.mozilla.org/EngineeringProductivity"&gt;a-team&lt;/a&gt;. I&amp;rsquo;ve felt a special affinity for the Python community, particularly its data science offshoots (pandas, numpy, and jupyter notebooks) so it was great to finally go to a conference that specializes in these topics.&lt;/p&gt;
+
+&lt;p&gt;Overall, the conference was a bit of a mix between people talking about the status of their projects, theoretical talks on specific statistical approaches to data, general talks on how people are doing &amp;ldquo;data science&amp;rdquo; (I would say the largest majority of attendees at the conference were users of python data science tools, rather than developers), and case studies of how people are using python data science tools in their research or work. This being New York, many (probably the majority) were using data science tools in fields like quantitative finance, sales, marketing, and health care.&lt;/p&gt;
+
+&lt;p&gt;As a side note, it was really satisfying to be able to tell Mozilla&amp;rsquo;s story about how we collect and use data without violating the privacy of our users. This is becoming more and more of an issue (especailly in Europe with the GPDR) and it really makes me happy that we have a really positive story to tell, not a bunch of dirty secrets that we need to hide.&lt;/p&gt;
+
+&lt;p&gt;In general I found the last two types of talks the most rewarding to go to: most of the work I do at Mozilla currently involves larger-scale data where, I&amp;rsquo;m sad to say, Python is usually not (currently) an applicable tool, at least not by itself (though maybe &lt;a href="https://iodide.io"&gt;iodide&lt;/a&gt; will help change that! see below). And I don&amp;rsquo;t usually find a 60 minute talk really enough time for me to be able to properly absorb new mathematical or statistical concepts, though I can sometimes get little tidbits of information from them that come in handy later.&lt;/p&gt;
+
+&lt;p&gt;Some talks that made an impression on me:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href="https://pydata.org/nyc2018/schedule/presentation/83/"&gt;Open source and quantitative finance&lt;/a&gt;: Keynote  talk, was a great introduction to the paranoia of the world of quantitative finance.  I think the main message was that things are gradually moving to a (slightly less)  paranoid model where generally-useful modifications done to numerical/ml software as  part of a trading platform may now be upstreamed&amp;hellip; but my main takeaway is that I&amp;rsquo;m  really glad I&amp;rsquo;m not working in that industry.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://pydata.org/nyc2018/schedule/presentation/9/"&gt;Words in Space&lt;/a&gt;: Introduced  an interesting-soundingl library called &lt;a href="http://www.scikit-yb.org/en/latest/"&gt;Yellow Brick&lt;/a&gt; for visualizing the results  of machine learning models.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://pydata.org/nyc2018/schedule/presentation/2/"&gt;Creating a data-driven product culture&lt;/a&gt;:  General talk on how to create a positive and useful data science culture at a company. I think  Mozilla already checks most of the boxes outlined in the talk.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://pydata.org/nyc2018/schedule/presentation/39/"&gt;What Data Scientists Really Do&lt;/a&gt;: Quite entertaining talk on the future of &amp;ldquo;data science&amp;rdquo;,  by Hugo Bowne-Anderson (who also has a &lt;a href="https://www.datacamp.com/community/podcast"&gt;podcast&lt;/a&gt; which sounds cool). The most  interesting takeaway from the talk was the speculation that within 10 years the term  &amp;ldquo;data scientist&amp;rdquo; might have the same meaning as the word &amp;ldquo;webmaster&amp;rdquo; now. It&amp;rsquo;s a  hyper-generalist job description which will almost inevitably be split into a number  of other more specialized roles.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://pydata.org/nyc2018/schedule/presentation/77/"&gt;Master Class: Bayesian Statistics&lt;/a&gt;: This falls under the &amp;ldquo;technical talk which I couldn&amp;rsquo;t  grasp in 60 minutes&amp;rdquo; category, but I think I finally do understand a little bit more  of what people mean when they say &amp;ldquo;Bayesian Statistics&amp;rdquo; now. It actually doesn&amp;rsquo;t have much  to do with &lt;a href="https://en.wikipedia.org/wiki/Bayes%27_theorem"&gt;Baye&amp;rsquo;s Theorem&lt;/a&gt;, rather it seems to be more of a philosophical approach to  data analysis which acknowledges the limitations of human capacity to understand the  world and asks us to more explicitly state our assumptions when developing models (probably  over-simplifying here). I think I can get behind that &amp;mdash; want to learn more. They  provided a &lt;a href="https://betanalpha.github.io/workshops/pydata/"&gt;bunch of material&lt;/a&gt; to work through,  which I&amp;rsquo;ve been meaning to take a look at.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://pydata.org/nyc2018/schedule/presentation/30/"&gt;Data Science in Health Care: Beyond the Hype&lt;/a&gt;:  Great presentations in how data science can be used to improve health care outcomes. Lots of relevant  insights that I think are also applicable to &amp;ldquo;product health&amp;rdquo; here at Mozilla. I  particularly liked the way the presenter framed requirements when deciding whether or not  to do a type of analysis: &amp;ldquo;if i knew [information], i would do [intervention], which would  have [measurable outcome]&amp;rdquo;&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;Of course, this post wouldn&amp;rsquo;t be complete without a mention of &lt;a href="http://droettboom.com/"&gt;Mike Droettboom&lt;/a&gt;&amp;rsquo;s &lt;a href="https://pydata.org/nyc2018/schedule/presentation/3/"&gt;talk&lt;/a&gt; on &lt;a href="https://iodide.io"&gt;iodide&lt;/a&gt;, a project I&amp;rsquo;ve been spending some considerable cycles helping with over the last couple of quarters. I need to write some longer thoughts on iodide at some point in the near future, but in a nutshell it&amp;rsquo;s a scientific notebook environment where the computational kernel lives entirely inside the browser. It was well received and we had a great followup session afterwards with people interested in using it for various things. Being able to show a python environment in the browser which &amp;ldquo;just works&amp;rdquo;, with no installation or other steps makes a &lt;em&gt;great&lt;/em&gt; tech demo. I&amp;rsquo;m really excited about the public launch of our server-based environment, which will hopefully be coming in the next couple of months.&lt;/p&gt;</description></item>
   <item>
    <title>Mission Control 1.0</title>
    <link>https://wlach.github.io/blog/2018/06/mission-control-1-0?utm_source=all&amp;utm_medium=RSS</link>
@@ -916,25 +944,4 @@
  &lt;li&gt;Have a confidence threshold for using the autoclassifier&amp;rsquo;s data. It seems likely to me that many of the cases above where we got the wrong were cases where the classifier itself wasn&amp;rsquo;t that confident in the result (vs. others). We can either present that in the user interface or avoid classifications for these cases altogether (and leave it up to a human being to make a decision on whether this is an intermittent).&lt;/li&gt;
  &lt;li&gt;Using the structured log data inside the database as input to a classifier. Structured log data here is much more regular and denser than the free text that we&amp;rsquo;re using. Even if it isn&amp;rsquo;t explicitly classified, we may well get better results by using it as our input data.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;If you&amp;rsquo;d like to experiment with the data and/or code, I&amp;rsquo;ve put it up on a &lt;a href="https://github.com/wlach/treeherder-classifier"&gt;github repository&lt;/a&gt;.&lt;/p&gt;</description></item>
-  <item>
-   <title>Slow Treeherder, Fast Treeherder</title>
-   <link>https://wlach.github.io/blog/2016/10/slow-treeherder-fast-treeherder?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-10-slow-treeherder-fast-treeherder</guid>
-   <pubDate>Mon, 31 Oct 2016 15:40:00 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;Just wanted to talk about some recent performance improvements we&amp;rsquo;ve made recently to &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Treeherder"&gt;Treeherder&lt;/a&gt;:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1311511"&gt;Bug 1311511&lt;/a&gt;: Changed the repository endpoint so we don&amp;rsquo;t do 40 redundant database  queries (this was generally innocuous, but could delay loading by  400ms if the database was under heavy load).&lt;/li&gt;
- &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1310016"&gt;Bug 1310016&lt;/a&gt;: Persisted database connections across requests (this  can save ~40&amp;ndash;50ms per request, of which there can be 5&amp;ndash;10  when loading a Treeherder page).&lt;/li&gt;
- &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1308782"&gt;Bug 1308782&lt;/a&gt;: &lt;em&gt;Don&amp;rsquo;t&lt;/em&gt; download job type and group information  from the server to get a &amp;ldquo;sorting order&amp;rdquo; for the job lists. This was  never necessary, but it&amp;rsquo;s gotten exponentially more painful as  people have added job types to Treeherder (job type information is  now around a megabyte of JSON these days). This saves 5&amp;ndash;10 seconds on a  typical page load.&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;There&amp;rsquo;s more to come, but with these changes Treeherder should be faster for everyone to load. It should be particularly noticeable on try pushes, where the last item was by far the largest bottleneck. Here&amp;rsquo;s a youtube video of the changes:&lt;/p&gt;
-
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/xNJGoZhA4Vs" frameborder="0" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
-
-&lt;p&gt;The original is on the left. The newer, faster Treeherder is on the right. Pay particular attention to how much faster the job information populates.&lt;/p&gt;
-
-&lt;p&gt;Moral of the story? Optimization can be helpful, but it&amp;rsquo;s better if you can avoid doing the work altogether.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;If you&amp;rsquo;d like to experiment with the data and/or code, I&amp;rsquo;ve put it up on a &lt;a href="https://github.com/wlach/treeherder-classifier"&gt;github repository&lt;/a&gt;.&lt;/p&gt;</description></item></channel></rss>

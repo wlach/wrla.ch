@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 6)</title>
     <meta name="description" content="William Lachance's Log (page 6)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Statistics, Montreal, Coffee, Life, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Counting, Polling, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Statistics, Montreal, Coffee, Life, Counting, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Community, Data, Polling, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-6.html">
@@ -76,6 +76,8 @@
 <li><a href="/tags/Community.html">Community</a></li>
 
 <li><a href="/tags/Counting.html">Counting</a></li>
+
+<li><a href="/tags/Data.html">Data</a></li>
 
 <li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
 
@@ -202,6 +204,24 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a>, <a href="/tags/Python.html">Python</a></span></p>
+    <h2><a href='/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla'>mozregression: New maintainer, issues tracked in bugzilla</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 8th, 2014</p>
+  </header>
+
+<p>Just wanted to give some quick updates on <a href="http://mozilla.github.io/mozregression/">mozregression</a>, your favorite regression-finding tool for Firefox:</p>
+
+<ol>
+ <li>I moved all issue tracking in mozregression to bugzilla from github issues. Github unfortunately doesn&#8217;t really scale to handle notifications sensibly when you&#8217;re part of a large organization like Mozilla, which meant many problems were flying past me unseen. <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Testing&amp;#038;component=mozregression">File your new bugs</a> in bugzilla, they&#8217;re now much more likely to be acted upon.</li>
+ <li><a href="http://blackrhino.io/">Sam Garrett</a> has stepped up to be co-maintainer of the project with me. He&#8217;s been doing a great job whacking out a bunch of bugs and keeping things running reliably, and it was time to give him some recognition and power to keep things moving forward.</li>
+ <li>On that note, I just released mozregression 0.17, which now shows the revision number when running a build (a request from the graphics team, bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1007238">1007238</a>) and handles respins of nightly builds correctly (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1000422">bug 1000422</a>). Both of these were fixed by Sam.</li></ol>
+
+<p>If you&#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &#8212; as I&#8217;ve found out over the last few months, people <em>all over</em> the Mozilla organization (managers, developers, QA &#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is <a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;#038;product=Testing">here</a>.</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Montreal.html">Montreal</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Python.html">Python</a></span></p>
     <h2><a href='/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more'>PyCon 2014 impressions: ipython notebook is the future &#38; more</a></h2>
@@ -510,25 +530,6 @@
 <p>The results seem pretty highly variable at first because I was synchronizing time between the device and an external ntp server, rather than the host machine. I believe this is now fixed, hopefully giving us results that will indicate when regressions occur. As time goes by, we may want to craft some special eideticker tests for responsiveness specifically (e.g. a site where there is heavy javascript background processing).</p>
 
 <p><sup><a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">1</a></sup> <em>Incidentally, these &#8220;frame difference&#8221; graphs are also quite useful for understanding where and how application startup has regressed in Fennec &#8212; try opening these two startup views side-by-side (before/after a large regression) and spot the difference: <a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-20%29&amp;#038;video=videos/video-1377070981.95.webm&amp;#038;framediff=framediffs/framediff-1377070991.95.json">[1]</a> and <a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-23%29&amp;#038;video=videos/video-1377330042.28.webm&amp;#038;framediff=framediffs/framediff-1377330051.67.json">[2]</a>)</em></p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Philosophy.html">Philosophy</a></span></p>
-    <h2><a href='/blog/2013/09/early-morning-questions'>Early morning questions</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 25th, 2013</p>
-  </header>
-
-<p>Last night while I was lying in bed the mystery of my being here, present, again occurred to me. Pondered that a bit upon waking up. Let me formulate two mysteries that, as far as I know, no one has given really satisfactory answers to:</p>
-
-<ol>
- <li>Why does anything exist at all? And given that things do exist, why should they take the form that they do (planets, suns, nebulae, even life)?</li>
- <li>What accounts for the &#8220;subjectivity&#8221; of experience? That is, why is life not only here, but (in humanity&#8217;s case at least, probably in the case of other higher-order life, and possibly all life) there is a *conscious* experience that goes on with our perceptions of the world? It does not seem necessary for (1), does it?</li></ol>
-
-<p>Perhaps the answer here is just that the way our minds (and hence anything we could form into thought or language) is based on descriptions of the world according to our perception. But (1) and (2) are in a sense, beyond this. I think in the case of (1) it is obvious why. In the case of (2) this might just be a limitation of our language/thought &#8212; certainly we can express that someone/something is conscious in a 3rd party sort of way (i.e. &#8220;she perceived red&#8221;), though this does not (as far as I can tell) express the <em>realness</em> of the experience. It&#8217;s a description, not the experience. To really understand experience from a 3rd person perspective (and hence why it exists?), you would need to go outside experience &#8212; but description <em>is part of</em> experience! The concept of being outside of it makes no sense.</p>
-
-<p>[ Maybe I am just restating <a href="http://en.wikipedia.org/wiki/Immanuel_Kant">Kant</a> here ]</p>
 
 </article>
 
