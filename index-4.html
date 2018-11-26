@@ -205,6 +205,35 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Meta.html">Meta</a></span></p>
+    <h2><a href='/blog/2016/01/new-year-new-blog'>New year, new blog</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 2nd, 2016</p>
+  </header>
+
+<p>After thinking about doing it for longer than I&rsquo;d like to admit, I finally bit the bullet and decided to migrate away from WordPress, towards a markdown-based blog generator (<a href="https://github.com/greghendershott/frog">Frog</a> in this case). All the content from the old blog is coming with me (thanks mostly to WordPress&rsquo;s jekyll exporter plugin).</p>
+
+<p>While WordPress is a pretty impressive piece of software, it isn&rsquo;t the ideal platform for the sorts of things I want to express. It&rsquo;s a reasonable tool for publishing straight longform essays, but my more interesting posts tend to also include images, code and examples, and sometimes <a href="/blog/2014/03/it-8217-s-all-about-the-entropy/">even math</a>. Making those look reasonable involved a bunch of manual effort and the end result wasn&rsquo;t particularly great. I was particularly disappointed in its (lack of) support for inline code snippits.</p>
+
+<p>Perhaps this set of problems is resolvable by installing the right set of plugins. Perhaps. But therein lies my second problem with WordPress: it&rsquo;s big, complex piece of software written in PHP, and I&rsquo;m frankly tired of figuring out how to (barely) make it do the things I need it to do, while half-worrying that the new fancy WPAwesome plugin I&rsquo;m installing is malware.</p>
+
+<p>As I&rsquo;ve grown older, I&rsquo;m increasingly realizing the limits to what I have the time (and energy) to accomplish. While &ldquo;Making WordPress do the things I want&rdquo; is something I <em>could</em> continue working on, it would come at the expense of other things that I find more rewarding, whether that be meditating, <a href="http://neuralnetworksanddeeplearning.com/">brushing up on deep learning</a>, or even just writing more stuff here. I don&rsquo;t expect this new blog to be maintenance free, but it should be an order of magnitude simpler using Frog, which is narrowly focused on my rather technical use case and specifically has great support for inline code, images, and math.</p>
+
+<p>Along the same lines, I&rsquo;m completely tired of maintaining the Linux server that my blog ran on. Registering domains and setting up my own HTTP server seemed like an interesting diversion in 2009, when cheap Linux VPSes were first starting to appear on the market. These days&hellip; well, not so much. It&rsquo;s a minor, though not completely trivial, expense ($10 USD/mo.) but more importantly it&rsquo;s a sink of my time to install security patches, make sure things are to up to date, etc. It feels like I&rsquo;m solving the same (boring) set of problems over and over, with no real payoff. Time to move on.</p>
+
+<p>Thus, this blog (along with my other hosted projects, like <a href="http://nixi.ca">NIXI</a> and <a href="meditation.wrla.ch">meditation</a>) will be moving to <a href="https://pages.github.com/">github pages</a>. Initially I had the worry that this move would mean that I wouldn&rsquo;t be &ldquo;in control of my own destiny&rdquo;, but on reflection I don&rsquo;t think that&rsquo;s true. The fact that my blog is basically a giant git repository should make switching hosting providers quite easy if Github becomes unsatisfactory for whatever reason.</p>
+
+<p>Indeed, even the custom domain (wrla.ch) seems unnecessary at this point. Although github pages does support them, I&rsquo;m just not seeing the value in keeping it around. What purpose does it <em>really</em> serve? All a custom personal domain really says to me is that the person had the time/money to register it. Is that something that someone in my position really needs to communicate? And if I don&rsquo;t need it, why continue with the unnecessary expense and hassle?</p>
+
+<p>Perhaps the only legitimate reason to keep the domain would be continuity for readers (i.e. there&rsquo;s a link or two in their browser history), but I don&rsquo;t think that&rsquo;s a big deal in my case. Yes, people might occasionally be thrown off and have to use Yahoo/Google to re-find something&hellip; but for the type of content I host, I don&rsquo;t think that will take too much collective time. In the grand stream of things, I&rsquo;m pretty small potatoes. Most of my traffic just comes through planet.mozilla.org, and that&rsquo;s easy to redirect automatically.</p>
+
+<p>So though I&rsquo;ll be keeping around wrla.ch for a little bit to give people time to migrate their links (it doesn&rsquo;t expire until the end of February 2016), it will also be going away. Please redirect your feed readers to <a href="https://wlach.github.io">wlach.github.io</a>.</p>
+
+<p>Now, onto more interesting things!</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
     <h2><a href='/blog/2015/11/perfherder-onward'>Perfherder: Onward!</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 4th, 2015</p>
@@ -588,29 +617,6 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
  <br /><a href="https://treeherder.mozilla.org/perf.html#/graphs?timerange=7776000&amp;#038;seriesList=[[%22mozilla-central%22,%22a78a233646c932ee1c56cf27da58b6aaa4eda2c3%22],[%22mozilla-central%22,%228e9323fd7fadb0623ec520a8ccaec2e733f3d501%22]]">[link]</a></p>
 
 <p>Green is e10s, red is non-e10s (the legend picture doesn&#8217;t reflect this because we have yet to deploy a fix to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1130554">bug 1130554</a>, but I promise I&#8217;m not lying). As you can see, the gap has been closing (in particular, something landed in mid-January that improved the e10s numbers quite a bit), but page load times are still measurably slower with this feature enabled.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
-    <h2><a href='/blog/2015/01/mozregression-updates'>mozregression updates</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 27th, 2015</p>
-  </header>
-
-<p>Lots of movement in <a href="http://mozilla.github.io/mozregression">mozregression</a> (a tool for automatically determining when a regression was introduced in Firefox by bisecting builds on ftp.mozilla.org) in the last few months. Here&#8217;s some highlights:</p>
-
-<ul>
- <li>Support for win64 nightly and inbound builds (Kapil Singh, Vaibhav Agarwal)</li>
- <li>Support for using an http cache to reduce time spent downloading builds (Sam Garrett)</li>
- <li>Way better logging and printing of remaining time to finish bisection (Julien Pagès)</li>
- <li>Much improved performance when bisecting inbound (Julien)</li>
- <li>Support for automatic determination on whether a build is good/bad via a custom script (Julien)</li>
- <li>Tons of bug fixes and other robustness improvements (me, Sam, Julien, others&#8230;)</li></ul>
-
-<p>Also thanks to Julien, we have a <a href="http://mozilla.github.io/mozregression/">spiffy new website</a> which documents many of these features. If it&#8217;s been a while, be sure to <a href="http://mozilla.github.io/mozregression/install.html">update your copy of mozregression to the latest version</a> and check out the site for documentation on how to use the new features described above!</p>
-
-<p>Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&#8217;s just that much more useful to Firefox contributors everywhere.</p>
 
 </article>
 

@@ -205,6 +205,33 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
+    <h2><a href='/blog/2015/03/perfherder-update-summary-series-drilldown'>Perfherder update: Summary series drilldown</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 27th, 2015</p>
+  </header>
+
+<p>Just wanted to give another quick Perfherder update. Since the <a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/">last time</a>, I&#8217;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&#8217;t possible with Graphserver and I&#8217;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.</p>
+
+<p>Let&#8217;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354">bug 1128354</a>. Using <a href="https://mozillians.org/en-US/u/mishravikas/">Mishra Vikas</a>&#8216;s new &#8220;highlight revision mode&#8221; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:</p>
+
+<p><a href="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png"><img src="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png" alt="Screen Shot 2015-03-27 at 3.18.28 PM" width="474" height="230" class="alignnone size-large wp-image-1184" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-300x146.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png 1167w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+
+<p>It does indeed look like things ticked up after this commit for the CART suite, but why? By clicking on the datapoint, you can open up a subtest summary view beneath the graph:</p>
+
+<p><a href="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png"><img src="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png" alt="Screen Shot 2015-03-27 at 2.35.25 PM" width="936" height="438" class="alignnone size-full wp-image-1175" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM-300x140.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png 936w" sizes="(max-width: 936px) 100vw, 936px" /></a></p>
+
+<p>We see here that it looks like the 3-customize-enter-css.all.TART entry ticked up a bunch. The related test 3-customize-enter-css.half.TART ticked up a bit too. The changes elsewhere look minimal. But is that a trend that holds across the data over time? We can add some of the relevant subtests to the overall graph view to get a closer look:</p>
+
+<p><a href="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM.png"><img src="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-1024x503.png" alt="Screen Shot 2015-03-27 at 2.36.49 PM" width="474" height="232" class="alignnone size-large wp-image-1176" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-300x147.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-1024x503.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM.png 1155w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+
+<p>As is hopefully obvious, this confirms that the affected subtest continues to hold its higher value while another test just bounces around more or less in the range it was before.</p>
+
+<p>Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at <a href="http://treeherder.mozilla.org/perf.html">http://treeherder.mozilla.org/perf.html</a>.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
     <h2><a href='/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder'>Measuring e10s vs. non-e10s performance with Perfherder</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 18th, 2015</p>
@@ -444,24 +471,6 @@ cd treeherder-ui/webapp&lt;br /&gt;
 <p>Here at <a href="https://wiki.mozilla.org/Auto-tools">Mozilla Tools &#38; Automation</a>, we&#8217;re most interested in creating software that everyone can feel good about depending on, so we agreed to rename it. When I raised this with my peers, there were no objections. I know these things are often the source of much drama in the free software world, but there&#8217;s really none to see here.</p>
 
 <p>Happy manifest parsing!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a>, <a href="/tags/Python.html">Python</a></span></p>
-    <h2><a href='/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla'>mozregression: New maintainer, issues tracked in bugzilla</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 8th, 2014</p>
-  </header>
-
-<p>Just wanted to give some quick updates on <a href="http://mozilla.github.io/mozregression/">mozregression</a>, your favorite regression-finding tool for Firefox:</p>
-
-<ol>
- <li>I moved all issue tracking in mozregression to bugzilla from github issues. Github unfortunately doesn&#8217;t really scale to handle notifications sensibly when you&#8217;re part of a large organization like Mozilla, which meant many problems were flying past me unseen. <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Testing&amp;#038;component=mozregression">File your new bugs</a> in bugzilla, they&#8217;re now much more likely to be acted upon.</li>
- <li><a href="http://blackrhino.io/">Sam Garrett</a> has stepped up to be co-maintainer of the project with me. He&#8217;s been doing a great job whacking out a bunch of bugs and keeping things running reliably, and it was time to give him some recognition and power to keep things moving forward.</li>
- <li>On that note, I just released mozregression 0.17, which now shows the revision number when running a build (a request from the graphics team, bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1007238">1007238</a>) and handles respins of nightly builds correctly (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1000422">bug 1000422</a>). Both of these were fixed by Sam.</li></ol>
-
-<p>If you&#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &#8212; as I&#8217;ve found out over the last few months, people <em>all over</em> the Mozilla organization (managers, developers, QA &#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is <a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;#038;product=Testing">here</a>.</p>
 
 </article>
 

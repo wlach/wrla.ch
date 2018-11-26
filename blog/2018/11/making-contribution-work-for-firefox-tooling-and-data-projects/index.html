@@ -3,14 +3,14 @@
   <head>
 
     <meta charset="utf-8">
-    <title>Posts tagged 'Community'</title>
-    <meta name="description" content="Posts tagged 'Community'">
+    <title>Making contribution work for Firefox tooling and data projects</title>
+    <meta name="description" content="One of my favorite parts about Mozilla is mentoring and working alongside third party contributors. Somewhat surprisingly since I work on internal tools, I've had a fair amount of luck finding people to help work on projects within my purview: mozregressi...">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Community">
+    <meta name="keywords"    content="Mozilla, Community">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/tags/Community.html">
-
+    <link rel="canonical" href="https://wlach.github.io/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects">
+    <link rel="next" href="/blog/2018/10/pydata-nyc-2018">
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
@@ -19,9 +19,9 @@
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
     <!-- Feeds -->
     <link rel="alternate" type="application/atom+xml"
-          href="/feeds/Community.atom.xml" title="Atom Feed">
+          href="/feeds/all.atom.xml" title="Atom Feed">
     <link rel="alternate" type="application/rss+xml"
-          href="/feeds/Community.rss.xml" title="RSS Feed">
+          href="/feeds/all.rss.xml" title="RSS Feed">
     <!-- JS -->
     <script type="text/javascript">
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -189,8 +189,8 @@
             <li>
               <a href="/About.html">About</a>
             </li> 
-            <li><a href="/feeds/Community.atom.xml">Atom</a></li>
-            <li><a href="/feeds/Community.rss.xml">RSS</a></li>
+            <li><a href="/feeds/all.atom.xml">Atom</a></li>
+            <li><a href="/feeds/all.rss.xml">RSS</a></li>
           </ul>
         </div>
       </div>
@@ -201,12 +201,12 @@
         <!-- Main column -->
         <div id="content" class="col-md-12">
 
-          <h1>Posts tagged <em>Community</em></h1>
+
 
           <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Community.html">Community</a></span></p>
-    <h2><a href='/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects'>Making contribution work for Firefox tooling and data projects</a></h2>
+    <h1>Making contribution work for Firefox tooling and data projects</h1>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 26th, 2018</p>
   </header>
 
@@ -237,56 +237,27 @@
 <p>As time goes by, you just continue this process. Depending on the contributor, they may start coming up with their own ideas for how a project might be improved or they might still want to follow your lead (or that of the team), but at the least I generally see an improvement in their self-directedness and confidence after a period of sustained contribution. In either case, the key to success remains the same: sustained and positive communication and sharing of goals and aspirations, making sure that both parties are getting something positive out of the experience. Where possible, I try to include contributors in team meetings. Where there&rsquo;s an especially close working relationship (e.g. <a href="https://summerofcode.withgoogle.com/archive/">Google Summer of Code</a>). I try to set up a weekly one on one. Regardless, I make reviewing code, answering questions, and providing suggestions on how to move forward a top priority (i.e. not something I&rsquo;ll leave for a few days). It&rsquo;s the least I can do if someone is willing to take time out to contribute to my project.</p>
 
 <p>If this seems similar to the best practices for how members of a team should onboard each other and work together, that&rsquo;s not really a coincidence. Obviously the relationship is a little different because we&rsquo;re not operating with a formal managerial structure and usually the work is unpaid. I try to bear that mind and make double sure that contributors are really getting some useful skills and habits that they can take with them to future jobs and other opportunities, while also emphasizing that their code contributions are their own, not Mozilla&rsquo;s. So far it seems to have worked out pretty well for all concerned, or at least I hope it has.</p>
+  <footer>
+    <hr/>
+    <script type="text/javascript">
+      var disqus_shortname = 'wlach';
+      (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <div id="disqus_thread"></div>
+    <ul class="pager">
 
+    <li class="next">
+      <a href="/blog/2018/10/pydata-nyc-2018"><em>pydata nyc 2018</em> &rarr;</a>
+    </li>
+    </ul>
+  </footer>
 </article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Community.html">Community</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/09/perfherder-summer-of-contribution-thoughts'>Perfherder summer of contribution thoughts</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 29th, 2015</p>
-  </header>
-
-<p>A few months ago, Joel Maher <a href="https://elvis314.wordpress.com/2015/05/18/a-team-contribution-opportunity-dashboard-hacker/">announced the Perfherder summer of contribution</a>. We wrapped things up there a few weeks ago, so I guess it&#8217;s about time I wrote up a bit about how things went.</p>
-
-<p>As a reminder, the idea of summer of contribution was to give a set of contributors the opportunity to make a substantial contribution to a project we were working on (in this case, the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a> performance sheriffing system). We would ask that they sign up to do 5&ndash;10 hours of work a week for at least 8 weeks. In return, Joel and myself would make ourselves available as mentors to answer questions about the project whenever they ran into trouble.</p>
-
-<p>To get things rolling, I split off a bunch of work that we felt would be reasonable to do by a contributor into bugs of varying difficulty levels (assigning them the bugzilla whiteboard tag <a href="https://bugzilla.mozilla.org/buglist.cgi?keywords=%20ateam-summer-of-contribution&amp;#038;keywords_type=allwords&amp;#038;list_id=12578272&amp;#038;resolution=---&amp;#038;resolution=FIXED&amp;#038;resolution=INVALID&amp;#038;resolution=WONTFIX&amp;#038;resolution=DUPLICATE&amp;#038;resolution=WORKSFORME&amp;#038;resolution=INCOMPLETE&amp;#038;resolution=SUPPORT&amp;#038;resolution=EXPIRED&amp;#038;resolution=MOVED&amp;#038;query_format=advanced&amp;#038;bug_status=UNCONFIRMED&amp;#038;bug_status=NEW&amp;#038;bug_status=ASSIGNED&amp;#038;bug_status=REOPENED&amp;#038;bug_status=RESOLVED&amp;#038;bug_status=VERIFIED&amp;#038;bug_status=CLOSED">ateam-summer-of-contribution</a>). When someone first expressed interest in working on the project, I&#8217;d assign them a relatively easy front end one, just to cover the basics of working with the project (checking out code, making a change, submitting a PR to github). If they made it through that, I&#8217;d go on to assign them slightly harder or more complex tasks which dealt with other parts of the codebase, the nature of which depended on what they wanted to learn more about. Perfherder essentially has two components: a data storage and analysis backend written in Python and Django, and a web-based frontend written in JS and Angular. There was (still is) lots to do on both, which gave contributors lots of choice.</p>
-
-<p>This system worked pretty well for attracting people. I think we got at least 5 people interested and contributing useful patches within the first couple of weeks. In general I think onboarding went well. Having good documentation for Perfherder / Treeherder on the wiki certainly helped. We had lots of the usual problems getting people familiar with git and submitting proper pull requests: we use a somewhat clumsy combination of bugzilla and github to manage treeherder issues (we &#8220;attach&#8221; PRs to bugs as plaintext), which can be a bit offputting to newcomers. But once they got past these issues, things went relatively smoothly.</p>
-
-<p>A few weeks in, I set up a fortnightly skype call for people to join and update status and ask questions. This proved to be quite useful: it let me and Joel articulate the higher-level vision for the project to people (which can be difficult to summarize in text) but more importantly it was also a great opportunity for people to ask questions and raise concerns about the project in a free-form, high-bandwidth environment. In general I&#8217;m not a big fan of meetings (especially status report meetings) but I think these were pretty useful. Being able to hear someone else&#8217;s voice definitely goes a long way to establishing trust that you just can&#8217;t get in the same way over email and irc.</p>
-
-<p>I think our biggest challenge was retention. Due to (understandable) time commitments and constraints only one person (Mike Ling) was really able to stick with it until the end. Still, I&#8217;m pretty happy with that success rate: if you stop and think about it, even a 10-hour a week time investment is a fair bit to ask. Some of the people who didn&#8217;t quite make it were quite awesome, I hope they come back some day.</p>
-
-<p>&#8212;</p>
-
-<p>On that note, a special thanks to Mike Ling for sticking with us this long (he&#8217;s still around and doing useful things long after the program ended). He&#8217;s done <a href="https://github.com/mozilla/treeherder/commits/master?author=MikeLing">some really fantastic work</a> inside Perfherder and the project is much better for it. I think my two favorite features that he wrote up are the improved test chooser which I talked about a few months ago and a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1134780">get related platform / branch</a> feature which is a big time saver when trying to determine when a performance regression was first introduced.</p>
-
-<p>I took the time to do a short email interview with him last week. Here&#8217;s what he had to say:</p>
-
-<ol>
- <li>Tell us a little bit about yourself. Where do you live? What is it you do when not contributing to Perfherder?</li></ol>
-
-<p><em>I&#8217;m a postgraduate student of NanChang HangKong university in China whose major is Internet of things. Actually,there are a lot of things I would like to do when I am AFK, play basketball, video game, reading books and listening music, just name it ; )</em></p>
-
-<ol>
- <li>How did you find out about the ateam summer of contribution program?</li></ol>
-
-<p><em>well, I remember when I still a new comer of treeherder, I totally don&#8217;t know how to start my contribution. So, I just go to treeherder irc and ask for advice. As I recall, emorley and jfrench talk with me and give me a lot of hits. Then Will (wlach) send me an Email about ateam summer of contribution and perfherder. He told me it&#8217;s a good opportunity to learn more about treeherder and how to work like a team! I almost jump out of bed (I receive that email just before get asleep) and reply with YES. Thank you Will!</em></p>
-
-<ol>
- <li>What did you find most challenging in the summer of contribution?</li></ol>
-
-<p><em>I think the most challenging thing is I not only need to know how to code but also need to know how treeherder actually work. It&#8217;s a awesome project and there are a ton of things I haven&#8217;t heard before (i.e T-test, regression). So I still have a long way to go before I familiar with it.</em></p>
-
-<ol>
- <li>What advice would give you to future ateam contributors?</li></ol>
-
-<p><em>The only thing you need to do is bring your question to irc and ask. Do not hesitate to ask for help if you need it! All the people in here are nice and willing to help. Enjoy it!</em></p>
-
-</article>
-
         </div>
       </div>
       <footer>

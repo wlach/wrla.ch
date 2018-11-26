@@ -5,6 +5,7 @@ https://wlach.github.io/blog/2013/09/how-to-make-great-coffee-that-doesn-8217-t-
 https://wlach.github.io/blog/2012/03/eideticker-dashboard-update
 https://wlach.github.io/blog/2015/10/the-new-old-perfherder-data-model
 https://wlach.github.io/blog/2015/04/a-virtual-petri-dish
+https://wlach.github.io/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects
 https://wlach.github.io/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard
 https://wlach.github.io/blog/2015/07/perfherder-update
 https://wlach.github.io/blog/2013/02/finding-a-camera-for-eideticker
