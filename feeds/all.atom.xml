@@ -4,7 +4,32 @@
  <link rel="self" href="https://wlach.github.io/feeds/all.atom.xml" />
  <link href="https://wlach.github.io/index.html" />
  <id>urn:https-wlach-github-io:-index-html</id>
- <updated>2018-11-26T16:13:46Z</updated>
+ <updated>2019-03-22T19:08:11Z</updated>
+ <entry>
+  <title type="text">New ideas, old buildings</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2019/03/new-ideas-old-buildings?utm_source=all&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2019-03-new-ideas-old-buildings</id>
+  <published>2019-03-22T19:08:11Z</published>
+  <updated>2019-03-22T19:08:11Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;Last week, Brendan Colloran &lt;a href="https://hacks.mozilla.org/2019/03/iodide-an-experimental-tool-for-scientific-communicatiodide-for-scientific-communication-exploration-on-the-web/"&gt;announced Iodide&lt;/a&gt;, a new take on scientific collaboration and reporting that I&amp;rsquo;ve been really happy to contribute to over the past year-and-a-bit. I&amp;rsquo;ve been describing it to people I meet as kind of "&lt;a href="https://glitch.com/"&gt;glitch&lt;/a&gt; meets &lt;a href="https://jupyter.org/"&gt;jupyter&lt;/a&gt; " but that doesn&amp;rsquo;t quite do it justice. I&amp;rsquo;d recommend reading Brendan&amp;rsquo;s blog post (and taking a look at our &lt;a href="https://alpha.iodide.io"&gt;demonstration site&lt;/a&gt;) to get the full picture.&lt;/p&gt;
+
+&lt;p&gt;One question that I&amp;rsquo;ve heard asked (including on Brendan&amp;rsquo;s post) is why we chose a rather conventional and old technology (&lt;a href="https://www.djangoproject.com/"&gt;Django&lt;/a&gt;) for the server backend. Certainly, Iodide has not been shy about building with relatively new or experimental technologies for other parts (e.g. Python on WebAssembly for the notebooks, React/Redux for the frontend). Why not complete the cycle by using a new-fangled JavaScript web server like, I don&amp;rsquo;t know, &lt;a href="https://nestjs.com/"&gt;NestJS&lt;/a&gt;? And while we&amp;rsquo;re at it, what&amp;rsquo;s with iodide&amp;rsquo;s ridiculous &lt;a href="https://en.wikipedia.org/wiki/Representational_state_transfer"&gt;REST API&lt;/a&gt;? Don&amp;rsquo;t you know &lt;a href="https://graphql.org/"&gt;GraphQL&lt;/a&gt; is the only legitimate way to expose your backend to the world in 2019?&lt;/p&gt;
+
+&lt;p&gt;The great urban theorist of the twentieth century, &lt;a href="https://en.wikipedia.org/wiki/Jane_Jacobs"&gt;Jane Jacobs&lt;/a&gt; has a quote I love:&lt;/p&gt;
+
+&lt;p&gt;
+ &lt;i&gt;“Old ideas can sometimes use new buildings. New ideas must use old buildings.”&lt;/i&gt;&lt;/p&gt;
+
+&lt;p&gt;Laura Thompson (an engineering director at Mozilla) has restated this wisdom in a software development context as &lt;a href="https://speakerdeck.com/lauraxt/build-exciting-things-with-boring-technologies"&gt;&amp;ldquo;Build exciting things with boring technologies&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It so happened that the server was not an area Iodide was focusing on for innovation (at least initially), so it made much, much more sense to use something proven and battle-tested for the server side deployment. I&amp;rsquo;d used Django for a number of projects at Mozilla before this one (&lt;a href="https://github.com/mozilla/treeherder"&gt;Treeherder/Perfherder&lt;/a&gt; and &lt;a href="https://github.com/mozilla/missioncontrol/"&gt;Mission Control&lt;/a&gt;) and have been wildly impressed by the project&amp;rsquo;s excellent &lt;a href="https://docs.djangoproject.com/"&gt;documentation&lt;/a&gt;, &lt;a href="https://docs.djangoproject.com/en/2.1/topics/db/"&gt;database access layer&lt;/a&gt;, and support for building a standardized API via the &lt;a href="https://www.django-rest-framework.org/"&gt;Django REST Framework&lt;/a&gt; add-on. Not to mention the fact that so much of Mozilla&amp;rsquo;s in-house ops and web development expertise is based around this framework (I could name off probably 5 or 6 internal business systems based around the Django stack, in addition to Treeherder), so deploying Iodide and getting help building it would be something of a known quantity.&lt;/p&gt;
+
+&lt;p&gt;Only slightly more than half a year since I began work on the iodide server, we now have both a publicly accessible site for others to experiment with &lt;em&gt;and&lt;/em&gt; an internal one for Mozilla&amp;rsquo;s business needs. It&amp;rsquo;s hard to say what would have happened had I chosen something more experimental to build Iodide&amp;rsquo;s server piece, but at the very least there would have been a substantial learning curve involved &amp;mdash; in addition to engineering effort to fill in the gaps where the new technology is not yet complete &amp;mdash; which would have meant less time to innovate where it really mattered. Django&amp;rsquo;s &lt;a href="https://docs.djangoproject.com/en/2.1/topics/migrations/"&gt;database migration system&lt;/a&gt;, for example, took years to come to fruition and I&amp;rsquo;m not aware of anything comparable in the world of JavaScript web frameworks.&lt;/p&gt;
+
+&lt;p&gt;As we move ahead, we may find places where applying new backend server technologies makes sense. Heck, maybe we&amp;rsquo;ll chose to rewrite the whole thing at some point. But to get to launch, chosing a bunch of boring, tested software for this portion of Iodide was (in my view) absolutely the right decision and I make no apologies for it.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Making contribution work for Firefox tooling and data projects</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects?utm_source=all&amp;utm_medium=Atom" />
@@ -813,20 +838,4 @@
 
 &lt;p&gt;I am actually in the process of moving to another team @ Mozilla (more on that in another post), so I probably won&amp;rsquo;t have a ton of time to work on the above &amp;mdash; but I&amp;rsquo;d be happy to help anyone who&amp;rsquo;s interested in developing this idea further.&lt;/p&gt;
 
-&lt;p&gt;A special shout out to the &lt;a href="https://wiki.mozilla.org/TaskCluster"&gt;Taskcluster&lt;/a&gt; team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to develop this feature in the first place.&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">Cancel all the things</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/02/cancel-all-the-things?utm_source=all&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2017-02-cancel-all-the-things</id>
-  <published>2017-02-07T18:36:09Z</published>
-  <updated>2017-02-07T18:36:09Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;I just added a feature to Treeherder which lets you cancel a set of jobs (say, from a botched try push) much more easily. I&amp;rsquo;m hopeful that this will be helpful in keeping our resource usage on try more under control.&lt;/p&gt;
-
-&lt;p&gt;It uses the &amp;ldquo;pinboard&amp;rdquo; feature of Treeherder which very few people are familiar with, so I made a very short video tutorial on how to make use of this feature and put it on the Joy of Automation channel:&lt;/p&gt;
-
-&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/ryzsy38yw5A" frameborder="0" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
-
-&lt;p&gt;Happy cancelling!&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;A special shout out to the &lt;a href="https://wiki.mozilla.org/TaskCluster"&gt;Taskcluster&lt;/a&gt; team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to develop this feature in the first place.&lt;/p&gt;</content></entry></feed>

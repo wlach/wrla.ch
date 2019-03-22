@@ -117,6 +117,7 @@ https://wlach.github.io/blog/2016/03/platform-engineering-project-of-the-month-p
 https://wlach.github.io/blog/2011/12/eideticker-update
 https://wlach.github.io/blog/2017/07/mozregression-s-new-mascot
 https://wlach.github.io/blog/2014/07/measuring-frames-per-second-and-animation-smoothness-with-eideticker
+https://wlach.github.io/blog/2019/03/new-ideas-old-buildings
 https://wlach.github.io/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser
 https://wlach.github.io/blog/2009/03/hbus-ca-and-thoughts-about-crowdsourcing
 https://wlach.github.io/blog/2017/12/maintaining-metricsgraphics
