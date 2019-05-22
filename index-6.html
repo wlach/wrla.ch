@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 6)</title>
     <meta name="description" content="William Lachance's Log (page 6)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Coffee, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Statistics, Montreal, Community, Life, Counting, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Iodide, Data, Polling, Android, ateam">
+    <meta name="keywords"    content="GoFaster, Talos, Social Media, Android, iphone, Bikes, Release Engineering, Community, Psychology, MSF, Buddhism, Music, Iodide, Performance, Transit to Go, Toronto, Polling, Orangutan, Business, Ebola, Metrics Graphics, Meditation, Profiling, Data, ateam, Usability, hbus, zen, Free Software, WifiDog, FirefoxOS, Infraherder, Python, Food, Transit, Eideticker, Counting, Cats, GNOME, Video, Treeherder, Nixi, email, Coffee, Web, Mission Control, Time, Statistics, all, Life, Responsiveness, Open Data, SQL, Taskcluster, mozregression, Perfherder, BIXI, Mozilla, Pandaboard, Environment, Meta, Philosophy, Data Visualization, Île Sans Fil, Montreal, Docker">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-6.html">
@@ -62,6 +62,8 @@
 <li><a href="/tags/Android.html">Android</a></li>
 
 <li><a href="/tags/ateam.html">ateam</a></li>
+
+<li><a href="/tags/Bikes.html">Bikes</a></li>
 
 <li><a href="/tags/BIXI.html">BIXI</a></li>
 
@@ -207,8 +209,61 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2014/07/measuring-frames-per-second-and-animation-smoothness-with-eideticker/'>Measuring frames per second and animation smoothness with Eideticker</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 7th, 2014</p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+
+<p>Just wanted to write up a few notes on using Eideticker to measure animation smoothness, since this is a topic that comes up pretty often and I wind up explaining these things repeatedly. 😉</p>
+
+<p>When rendering web content, we want the screen to update something like 60 times per second (typical refresh rate of an LCD screen) when an animation or other change is occurring. When this isn&#8217;t happening, there is often a user perception of jank (a.k.a. things not working as they should). Generally we express how well we measure up to this ideal by counting the number of &#8220;frames per second&#8221; that we&#8217;re producing. If you&#8217;re reading this, you&#8217;re probably already familiar with the concept in outline. If you want to know more, you can check out the <a href="http://en.wikipedia.org/wiki/Frame_rate">wikipedia article</a> which goes into more detail.</p>
+
+<p>At an internal level, this concept matches up conceptually with what Gecko is doing. The graphics pipeline produces frames inside graphics memory, which is then sent to the LCD display (whether it be connected to a laptop or a mobile phone) to be viewed. By instrumenting the code, we can see how often this is happening, and whether it is occurring at the right frequency to reach 60 fps. My understanding is that we have at least some code which does exactly this, though I&#8217;m not 100% up to date on how accurate it is.</p>
+
+<p>But even assuming the best internal system monitoring, Eideticker might still be useful because:</p>
+
+<ul>
+ <li>It is more &#8220;objective&#8221;. This is valuable not only for our internal purposes to validate other automation (sometimes internal instrumentation can be off due to a bug or whatever), but also to &#8220;prove&#8221; to partners that our software has the performance characteristics that we claim.</li>
+ <li>The visual artifacts it leaves behind can be valuable for inspection and debugging. i.e. <a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/">you can correlate videos with profiling information</a>.</li></ul>
+
+<p>Unfortunately, deriving this sort of information from a video capture is more complicated than you&#8217;d expect.</p>
+
+<p><strong>What does frames per second even mean?</strong></p>
+
+<p>Given a set of N frames captured from the device, the immediate solution when it comes to &#8220;frames per second&#8221; is to just compare frames against each other (e.g. by comparing the value of individual pixels) and then counting the ones that are different as &#8220;unique frames&#8221;. Divide the total number of unique frames by the length of the
+ <br />capture and&#8230; voila? Frames per second? Not quite.</p>
+
+<p>First off, there&#8217;s the inherent problem that sometimes the expected behaviour of a test is for the screen to be unchanging for a period of time. For example, at the very beginning of a capture (when we are waiting for the input event to be acknowledged) and at the end (when we are waiting for things to settle). Second, it&#8217;s also easy to imagine the display remaining static for a period of time in the middle of a capture (say in between gestures in a multi-part capture). In these cases, there will likely be no observable change on the screen and thus the number of frames counted will be artificially low, skewing the frames per second number down.</p>
+
+<p><strong>Measurement problems</strong></p>
+
+<p>Ok, so you might not consider that class of problem that big a deal. Maybe we could just not consider the frames at the beginning or end of the capture. And for pauses in the middle&#8230; as long as we get an absolute number at the end, we&#8217;re fine right? That&#8217;s at least enough to let us know that we&#8217;re getting better or worse, assuming that whatever we&#8217;re testing is behaving the same way between runs and we&#8217;re just trying to measure how many frames hit the screen.</p>
+
+<p>I might agree with you there, but there&#8217;s a further problems that are specific to measuring on-screen performance using a high-speed camera as we are currently with FirefoxOS.</p>
+
+<p>An LCD updates gradually, and not all at once. Remnants of previous frames will remain on screen long past their interval. Take for example these five frames (sampled at 120fps) from a capture of a pan down in the FirefoxOS Contacts application (<a href="/files/2014/07/movie.webm">movie</a>):</p>
+
+<p><a href="/files/2014/07/sidebyside.png"><img src="/files/2014/07/sidebyside-1024x263.png" alt="sidebyside" width="474" height="121" class="alignnone size-large wp-image-1074" srcset="/files/2014/07/sidebyside-300x77.png 300w, /files/2014/07/sidebyside-1024x263.png 1024w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
+
+<p>Note how if you look closely these 5 frames are actually the intersection of *three* seperate frames. One with &#8220;Adam Card&#8221; at the top, another with &#8220;Barbara Bloomquist&#8221; at the top, then another with &#8220;Barbara Bloomquist&#8221; even further up. Between each frame, artifacts of the previous one are clearly visible.</p>
+
+<p>Plausible sounding solutions:</p>
+
+<ul>
+ <li>Try to resolve the original images by distinguishing &#8220;new&#8221; content from ghosting artifacts. Sounds possible, but probably hard? I&#8217;ve tried a number of simplistic techniques (i.e. trying to find times when change is &#8220;peaking&#8221;), but nothing has really worked out very well.</li>
+ <li>Somehow reverse engineering the interface between the graphics chipset and the LCD panel, and writing some kind of custom hardware to &#8220;capture&#8221; the framebuffer as it is being sent from one to the other. Also sounds difficult.</li>
+ <li>Just forget about this problem altogether and only try to capture periods of time in the capture where the image has stayed static for a sustained period of time (i.e. for say 4&ndash;5 frames and up) and we&#8217;re pretty sure it&#8217;s jank.</li></ul>
+
+<p>Personally the last solution appeals to me the most, although it has the obvious disadvantage of being a &#8220;homebrew&#8221; metric that no one has ever heard of before, which might make it difficult to use to prove that performance is adequate &#8212; the numbers come with a long-winded explanation instead of being something that people immediately understand.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans'>End of Q2 Eideticker update: Flame tests, future plans</a></h2>
+    <h2><a href='/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans/'>End of Q2 Eideticker update: Flame tests, future plans</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 27th, 2014</p>
   </header>
 
@@ -235,7 +290,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/ateam.html">ateam</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser'>Managing test manifests: ManifestDestiny -&gt; manifestparser</a></h2>
+    <h2><a href='/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser/'>Managing test manifests: ManifestDestiny -&gt; manifestparser</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 11th, 2014</p>
   </header>
 
@@ -252,7 +307,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a>, <a href="/tags/Python.html">Python</a></span></p>
-    <h2><a href='/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla'>mozregression: New maintainer, issues tracked in bugzilla</a></h2>
+    <h2><a href='/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/'>mozregression: New maintainer, issues tracked in bugzilla</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 8th, 2014</p>
   </header>
 
@@ -270,7 +325,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Montreal.html">Montreal</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Python.html">Python</a></span></p>
-    <h2><a href='/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more'>PyCon 2014 impressions: ipython notebook is the future &#38; more</a></h2>
+    <h2><a href='/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/'>PyCon 2014 impressions: ipython notebook is the future &#38; more</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 22nd, 2014</p>
   </header>
 
@@ -308,7 +363,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/03/upcoming-travels-to-japan-and-taiwan'>Upcoming travels to Japan and Taiwan</a></h2>
+    <h2><a href='/blog/2014/03/upcoming-travels-to-japan-and-taiwan/'>Upcoming travels to Japan and Taiwan</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 16th, 2014</p>
   </header>
 
@@ -329,7 +384,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/03/it-8217-s-all-about-the-entropy'>It&#8217;s all about the entropy</a></h2>
+    <h2><a href='/blog/2014/03/it-8217-s-all-about-the-entropy/'>It&#8217;s all about the entropy</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 14th, 2014</p>
   </header>
 
@@ -403,7 +458,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/03/eideticker-for-firefoxos-becoming-more-useful'>Eideticker for FirefoxOS: Becoming more useful</a></h2>
+    <h2><a href='/blog/2014/03/eideticker-for-firefoxos-becoming-more-useful/'>Eideticker for FirefoxOS: Becoming more useful</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 9th, 2014</p>
   </header>
 
@@ -429,7 +484,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>, <a href="/tags/Cats.html">Cats</a>, <a href="/tags/Meditation.html">Meditation</a>, <a href="/tags/zen.html">zen</a></span></p>
-    <h2><a href='/blog/2014/03/the-highest-form'>The highest form</a></h2>
+    <h2><a href='/blog/2014/03/the-highest-form/'>The highest form</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 2nd, 2014</p>
   </header>
 
@@ -442,7 +497,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
-    <h2><a href='/blog/2013/11/mozregression-now-supports-inbound-builds'>mozregression now supports inbound builds</a></h2>
+    <h2><a href='/blog/2013/11/mozregression-now-supports-inbound-builds/'>mozregression now supports inbound builds</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 28th, 2013</p>
   </header>
 
@@ -453,29 +508,6 @@
 <p>Previously, it would only use nightlies which meant a one day granularity &#8212; this meant pretty wide regression ranges, made wider in the last year by the fact that so much more is now going into the tree over the course of the day. However, with inbound support (using the new inbound archive) we now have the potential to get a much tighter range, which should be super helpful for developers. Best of all, mozregression doesn&#8217;t require any particularly advanced skills to use which means everyone in the Mozilla community can help out.</p>
 
 <p>For anyone interested, there&#8217;s quite a bit of scope to improve mozregression to make it do more things (FirefoxOS support, easier installation&#8230;). Feel free to check out <a href="http://github.com/mozilla/mozregression">the repository</a>, the <a href="https://github.com/mozilla/mozregression/issues?state=open">issues list</a> (I just added <a href="https://github.com/mozilla/mozregression/issues/76">an easy one</a> which would make a great first bug) and ask questions on irc.mozilla.org#ateam!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>, <a href="/tags/Meditation.html">Meditation</a>, <a href="/tags/zen.html">zen</a></span></p>
-    <h2><a href='/blog/2013/11/meditative-practice-followup'>Meditative practice followup</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 13th, 2013</p>
-  </header>
-
-<p>A few months ago, I started blogging a bit about my fledgling Buddhist meditation practice, and then abruptly stopped. I thought I&#8217;d write just a few words about why I didn&#8217;t continue.</p>
-
-<p>Over time, one of the things that I found most difficult about my practice was keeping it relatively pure. The whole point is to just sit and follow the breath with no extra motivation or hidden agenda. Given that, having it in the back of my mind to later try to explain my practice to a broad audience was at best a distraction. At worst, I worried that it might actually be hindering my progress.</p>
-
-<p>After some thinking about it where my desire to explain this stuff came from, I determined that there was a root desire there to make the world conform to my expectations of what it *should* be. Which, if you stop and think about it, is just another form of greed. We often think of our desires as being about personal gratification (food, sex, cars, whatever) but that&#8217;s really too narrow a view &#8212; we&#8217;re social creatures, and our desires and aversions inevitably extend to the social sphere as well.</p>
-
-<p>I suppose that sounds rather judgemental or moralistic, but it&#8217;s really not intended that way. This is just the nature of human experience, and I am certainly not exempt from that. There is probably at least some element of this greed at the root of much of my writing, whether it be discussing <a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">my latest computational vision problem at work</a> or <a href="http://wrla.ch/blog/2013/09/how-to-make-great-coffee-that-doesnt-generate-966-million-pounds-of-waste-a-year/">how I think coffee should be brewed</a> &#8212; but at least in those cases articulating myself doesn&#8217;t interfere with the activity itself.</p>
-
-<p>A frequent misunderstanding of the practice of Buddhism is that it&#8217;s about eliminating desire. As I understand it, it&#8217;s not so much that, as it is about putting desires in proper perspective. To not be ruled by them. If I have a social purpose in the back of my head during the practice, well, that&#8217;s going to be a problem. It&#8217;ll be constantly in the background, subtly influencing what I process and how I process it (e.g. the thought &#8220;how am I going to describe <em>that</em>&#8220;). I have enough issues meditating without adding to them.</p>
-
-<p>Moreover, one of the things I&#8217;ve realized over the last few months is that the way people process the world around the world is pretty differently. I&#8217;m lucky enough to have a mind able to sit still for (average) 20 minutes a day. Not perfectly of course &#8212; many times I feel like I&#8217;m caught up with a million random thoughts for 90% of a session, but as I understand it that&#8217;s just part of the process. At least I can sit still! I&#8217;ve since learned that this isn&#8217;t easy at all for other people (the urge to get up and do something else is overwhelming) and I really have no insight at present into what would make it easier for them (they had tried most of what I suggested to no avail). So I am a bit concerned that what I have to say would act more as a hindrance to the journey of others rather than a help.</p>
-
-<p>All this is not to say that I&#8217;m not happy to discuss my experiences one on one with anyone who&#8217;s interested. If you&#8217;re curious, by all means feel free to contact me &#8212; though I suspect you&#8217;d probably do better reaching out to a dedicated teacher who has more experience in these matters than I. If you can&#8217;t find one, I would again recommend <a href="http://www.amazon.ca/Mindfulness-Plain-English-Anniversary-Edition/dp/0861719069">Mindfulness in Plain English</a>.</p>
 
 </article>
 

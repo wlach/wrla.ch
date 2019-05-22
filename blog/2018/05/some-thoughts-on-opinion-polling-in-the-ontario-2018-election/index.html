@@ -77,6 +77,8 @@
 
 <li><a href="/tags/Counting.html">Counting</a></li>
 
+<li><a href="/tags/Data.html">Data</a></li>
+
 <li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
 
 <li><a href="/tags/Docker.html">Docker</a></li>
@@ -102,6 +104,8 @@
 <li><a href="/tags/hbus.html">hbus</a></li>
 
 <li><a href="/tags/Infraherder.html">Infraherder</a></li>
+
+<li><a href="/tags/Iodide.html">Iodide</a></li>
 
 <li><a href="/tags/iphone.html">iphone</a></li>
 
@@ -245,16 +249,16 @@
 15</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span></span><span class="c1"># 100,000 random numbers between 0 and 1</span>
+      <pre><span class="c"># 100,000 random numbers between 0 and 1</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">full_population_size</span> <span class="o">=</span> <span class="mi">100000</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">full_sample</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">full_population_size</span><span class="p">)]</span>
 
-<span class="c1"># average over entire result</span>
+<span class="c"># average over entire result</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">sum</span><span class="p">(</span><span class="n">full_sample</span><span class="p">)</span> <span class="o">/</span> <span class="n">full_population_size</span>
 <span class="mf">0.501036568906331</span>
 
-<span class="c1"># pull out 100 randomly selected values from the full sample and</span>
-<span class="c1"># get their average</span>
+<span class="c"># pull out 100 randomly selected values from the full sample and</span>
+<span class="c"># get their average</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">random_subset_size</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">random_subset</span> <span class="o">=</span> <span class="p">[</span><span class="n">full_sample</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">100000</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span>
                      <span class="nb">range</span><span class="p">(</span><span class="n">random_subset_size</span><span class="p">)]]</span>
@@ -292,14 +296,14 @@
 14</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span></span><span class="c1"># if we take away approximately half the results with a value of</span>
-<span class="c1"># &gt;0.75, the population we are sampling from is reduced proportionally</span>
+      <pre><span class="c"># if we take away approximately half the results with a value of</span>
+<span class="c"># &gt;0.75, the population we are sampling from is reduced proportionally</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">full_sample_with_half75_removed</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">full_sample</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="mf">0.75</span> <span class="ow">or</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_sample_with_half75_removed</span><span class="p">)</span>
 <span class="mi">87607</span>
 
-<span class="c1"># the sampled value is then proportionally skewed downwards (because</span>
-<span class="c1"># a large percentage of the high values are no longer available)</span>
+<span class="c"># the sampled value is then proportionally skewed downwards (because</span>
+<span class="c"># a large percentage of the high values are no longer available)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">random_subset</span> <span class="o">=</span> <span class="p">[</span><span class="n">full_sample_with_half75_removed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>
                      <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">full_sample_with_half75_removed</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span>
                       <span class="nb">range</span><span class="p">(</span><span class="n">random_subset_size</span><span class="p">)]</span>
@@ -335,7 +339,7 @@
 13</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">skewed_averages</span> <span class="o">=</span> <span class="p">[]</span>
+      <pre><span class="o">&gt;&gt;&gt;</span> <span class="n">skewed_averages</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
 <span class="o">...</span>   <span class="n">full_sample_with_half75_removed</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">full_sample</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="mf">0.75</span> <span class="ow">or</span>
                                          <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">]</span>
