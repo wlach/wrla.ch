@@ -4,7 +4,42 @@
  <link rel="self" href="https://wlach.github.io/feeds/mozregression.atom.xml" />
  <link href="https://wlach.github.io/tags/mozregression.html" />
  <id>urn:https-wlach-github-io:-tags-mozregression-html</id>
- <updated>2017-07-31T15:32:02Z</updated>
+ <updated>2019-09-16T15:29:04Z</updated>
+ <entry>
+  <title type="text">mozregression update: python 3 edition</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2019/09/mozregression-update-python-3-edition?utm_source=mozregression&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2019-09-mozregression-update-python-3-edition</id>
+  <published>2019-09-16T15:29:04Z</published>
+  <updated>2019-09-16T15:29:04Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;For those who are still wondering, yup, I am still maintaining &lt;a href="https://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt;, though increasingly reluctantly. Given how important this project is to the development of Firefox (getting a regression window using mozregression is standard operating procedure whenever a new bug is reported in Firefox), it feels like this project is pretty vital, so I continue out of some sense of obligation &amp;mdash; but really, someone more interested in Mozilla&amp;rsquo;a build, automation and testing systems would be better suited to this task: over the past few years, my interests/focus have shifted away from this area to building up Mozilla&amp;rsquo;s data storage and visualization platform.&lt;/p&gt;
+
+&lt;p&gt;This post will describe some of the things that have happened in the last year and where I see the project going. My hope is to attract some new blood to add some needed features to the project and maybe take on some of the maintainership duties.&lt;/p&gt;
+
+&lt;h2 id="python-3"&gt;python 3&lt;/h2&gt;
+
+&lt;p&gt;The most important update is that, as of today, the command-line version of mozregression (v3.0.1) should work with python 3.5+. &lt;a href="https://python-modernize.readthedocs.io/en/latest/"&gt;modernize&lt;/a&gt; did most of the work for us, though there were some unit tests that needed updating: special thanks to &lt;a href="https://github.com/gloomy-ghost"&gt;@gloomy-ghost&lt;/a&gt; for helping with that.&lt;/p&gt;
+
+&lt;p&gt;For now, we will continue to support python 2.7 in parallel, mainly because the GUI has not yet been ported to python 3 (more on that later) and we have CI to make sure it doesn&amp;rsquo;t break.&lt;/p&gt;
+
+&lt;h2 id="other-updates"&gt;other updates&lt;/h2&gt;
+
+&lt;p&gt;The last year has mostly been one of maintenance. Thanks in particular to Ian Moody (:kwan) for his work throughout the year &amp;mdash; including patches to adapt mozregression support to our new updates policy and shippable builds (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1532412"&gt;bug 1532412&lt;/a&gt;), and Kartikaya Gupta (:kats) for adding support for bisecting the GeckoView example app (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1507225"&gt;bug 1507225&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h2 id="future-work"&gt;future work&lt;/h2&gt;
+
+&lt;p&gt;There are a bunch of things I see us wanting to add or change with mozregression over the next year or so. I might get to some of these if I have some spare cycles, but probably best not to count on it:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Port the mozregression GUI to Python 3 (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581633"&gt;bug  1581633&lt;/a&gt;) As mentioned  above, the command-line client works with python 3, but we have yet to port  the &lt;a href=""&gt;GUI&lt;/a&gt;. We should do that. This probably also entails porting the GUI to  use PyQT5 (which is pip-installable and thus much easier to integrate into a  CI process), see &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766"&gt;bug 1426766&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;Make self-contained GUI builds available for MacOS X (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1425105"&gt;bug  1425105&lt;/a&gt;) and Linux  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581643"&gt;bug 1581643&lt;/a&gt;).&lt;/li&gt;
+ &lt;li&gt;Improve our mechanism for producing a standalone version of the GUI in  general. We&amp;rsquo;ve used &lt;a href="https://github.com/anthony-tuininga/cx_Freeze"&gt;cx_Freeze&lt;/a&gt;  which mostly works ok, but has a number of problems (e.g. it pulls in a bunch of unnecessary dependencies, which  bloats the size of the installer). Upgrading the GUI to use python 3 may  alleviate some of these issues, but it might be worth considering other  options in this space, like Gregory Szorc&amp;rsquo;s &lt;a href="https://github.com/indygreg/PyOxidizer"&gt;pyoxidizer&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;Add some kind of telemetry to mozregression to measure usage of this tool  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581647"&gt;bug 1581647&lt;/a&gt;).  My anecdotal experience is that this tool is pretty invaluable for Firefox  development and QA, but this is not immediately apparent to Mozilla&amp;rsquo;s  leadership and it&amp;rsquo;s thus very difficult to convince people to spend their  cycles on maintaining and improving this tool. Field data may help change  that story.&lt;/li&gt;
+ &lt;li&gt;Supporting new Mozilla products which aren&amp;rsquo;t built (entirely) out of mozilla-central,  most especially Fenix (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1556042"&gt;bug 1556042&lt;/a&gt;)  and Firefox Reality (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1568488"&gt;bug 1568488&lt;/a&gt;).  This is probably rather involved (mozregression has a big pile of assumptions about how  the builds it pulls down are stored and organized) but that doesn&amp;rsquo;t mean that  this work isn&amp;rsquo;t necessary.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;If you&amp;rsquo;re interested in working on any of the above, please feel free to dive in on one of the above bugs. I can&amp;rsquo;t offer formal mentorship, but am happy to help out where I can.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression's new mascot</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2017/07/mozregression-s-new-mascot?utm_source=mozregression&amp;utm_medium=Atom" />

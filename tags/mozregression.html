@@ -210,6 +210,42 @@
           <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
+    <h2><a href='/blog/2019/09/mozregression-update-python-3-edition'>mozregression update: python 3 edition</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 16th, 2019</p>
+  </header>
+
+<p>For those who are still wondering, yup, I am still maintaining <a href="https://mozilla.github.io/mozregression/">mozregression</a>, though increasingly reluctantly. Given how important this project is to the development of Firefox (getting a regression window using mozregression is standard operating procedure whenever a new bug is reported in Firefox), it feels like this project is pretty vital, so I continue out of some sense of obligation &mdash; but really, someone more interested in Mozilla&rsquo;a build, automation and testing systems would be better suited to this task: over the past few years, my interests/focus have shifted away from this area to building up Mozilla&rsquo;s data storage and visualization platform.</p>
+
+<p>This post will describe some of the things that have happened in the last year and where I see the project going. My hope is to attract some new blood to add some needed features to the project and maybe take on some of the maintainership duties.</p>
+
+<h2 id="python-3">python 3</h2>
+
+<p>The most important update is that, as of today, the command-line version of mozregression (v3.0.1) should work with python 3.5+. <a href="https://python-modernize.readthedocs.io/en/latest/">modernize</a> did most of the work for us, though there were some unit tests that needed updating: special thanks to <a href="https://github.com/gloomy-ghost">@gloomy-ghost</a> for helping with that.</p>
+
+<p>For now, we will continue to support python 2.7 in parallel, mainly because the GUI has not yet been ported to python 3 (more on that later) and we have CI to make sure it doesn&rsquo;t break.</p>
+
+<h2 id="other-updates">other updates</h2>
+
+<p>The last year has mostly been one of maintenance. Thanks in particular to Ian Moody (:kwan) for his work throughout the year &mdash; including patches to adapt mozregression support to our new updates policy and shippable builds (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1532412">bug 1532412</a>), and Kartikaya Gupta (:kats) for adding support for bisecting the GeckoView example app (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1507225">bug 1507225</a>).</p>
+
+<h2 id="future-work">future work</h2>
+
+<p>There are a bunch of things I see us wanting to add or change with mozregression over the next year or so. I might get to some of these if I have some spare cycles, but probably best not to count on it:</p>
+
+<ul>
+ <li>Port the mozregression GUI to Python 3 (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581633">bug  1581633</a>) As mentioned  above, the command-line client works with python 3, but we have yet to port  the <a href="">GUI</a>. We should do that. This probably also entails porting the GUI to  use PyQT5 (which is pip-installable and thus much easier to integrate into a  CI process), see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766">bug 1426766</a>.</li>
+ <li>Make self-contained GUI builds available for MacOS X (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1425105">bug  1425105</a>) and Linux  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581643">bug 1581643</a>).</li>
+ <li>Improve our mechanism for producing a standalone version of the GUI in  general. We&rsquo;ve used <a href="https://github.com/anthony-tuininga/cx_Freeze">cx_Freeze</a>  which mostly works ok, but has a number of problems (e.g. it pulls in a bunch of unnecessary dependencies, which  bloats the size of the installer). Upgrading the GUI to use python 3 may  alleviate some of these issues, but it might be worth considering other  options in this space, like Gregory Szorc&rsquo;s <a href="https://github.com/indygreg/PyOxidizer">pyoxidizer</a>.</li>
+ <li>Add some kind of telemetry to mozregression to measure usage of this tool  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581647">bug 1581647</a>).  My anecdotal experience is that this tool is pretty invaluable for Firefox  development and QA, but this is not immediately apparent to Mozilla&rsquo;s  leadership and it&rsquo;s thus very difficult to convince people to spend their  cycles on maintaining and improving this tool. Field data may help change  that story.</li>
+ <li>Supporting new Mozilla products which aren&rsquo;t built (entirely) out of mozilla-central,  most especially Fenix (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1556042">bug 1556042</a>)  and Firefox Reality (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1568488">bug 1568488</a>).  This is probably rather involved (mozregression has a big pile of assumptions about how  the builds it pulls down are stored and organized) but that doesn&rsquo;t mean that  this work isn&rsquo;t necessary.</li></ul>
+
+<p>If you&rsquo;re interested in working on any of the above, please feel free to dive in on one of the above bugs. I can&rsquo;t offer formal mentorship, but am happy to help out where I can.</p>
+
+</article>
+
+<article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
     <h2><a href='/blog/2017/07/mozregression-s-new-mascot'>mozregression&rsquo;s new mascot</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 3131, 2017</p>
   </header>

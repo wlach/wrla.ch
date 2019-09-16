@@ -129,6 +129,7 @@ https://wlach.github.io/blog/2015/08/more-perfherder-updates
 https://wlach.github.io/blog/2011/10/-8220-developers-can-8217-t-do-ui-8221
 https://wlach.github.io/blog/2010/01/projects-for-2010
 https://wlach.github.io/blog/2013/03/follow-up-on-8220-finding-a-camera-for-eideticker-8221
+https://wlach.github.io/blog/2019/09/mozregression-update-python-3-edition
 https://wlach.github.io/blog/2013/05/proof-of-concept-eideticker-dashboard-for-firefoxos
 https://wlach.github.io/blog/2018/02/derived-versus-direct
 https://wlach.github.io/About.html
