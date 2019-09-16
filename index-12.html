@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 12)</title>
     <meta name="description" content="William Lachance's Log (page 12)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="GoFaster, Talos, Social Media, Android, iphone, Bikes, Release Engineering, Community, Psychology, MSF, Buddhism, Music, Iodide, Performance, Transit to Go, Toronto, Polling, Orangutan, Business, Ebola, Metrics Graphics, Meditation, Profiling, Data, ateam, Usability, hbus, zen, Free Software, WifiDog, FirefoxOS, Infraherder, Python, Food, Transit, Eideticker, Counting, Cats, GNOME, Video, Treeherder, Nixi, email, Coffee, Web, Mission Control, Time, Statistics, all, Life, Responsiveness, Open Data, SQL, Taskcluster, mozregression, Perfherder, BIXI, Mozilla, Pandaboard, Environment, Meta, Philosophy, Data Visualization, Île Sans Fil, Montreal, Docker">
+    <meta name="keywords"    content="Pandaboard, Coffee, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Bikes, Statistics, Montreal, Community, Life, Counting, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Iodide, Data, Polling, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-12.html">
@@ -209,8 +209,33 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/BIXI.html">BIXI</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Montreal.html">Montreal</a></span></p>
+    <h2><a href='/blog/2011/06/a-better-bixi-web-site'>A better BIXI web site</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 10th, 2011</p>
+  </header>
+
+<p>There&#8217;s much to like about the BIXI bike-sharing system in Montr&eacute;al: it&#8217;s affordable ($78 for a year of biking), accessible and fun to use. There&#8217;s absolutely no doubt in my mind that it&#8217;s made cycling more of a main stream activity here in Montreal, which benefits everyone (even drivers indirectly gain from less congested streets).</p>
+
+<p>With the arrival of the first BIXI stations in NDG, I decided to subscribe to it this year even though I have a bike of my own. So far, it looks like I&#8217;m going to easily use it enough to justify the cost. I still use my regular bike for my commute from NDG to the Plateau, but on the edges there&#8217;s a ton of cases where it just makes sense to use something that I don&#8217;t have to worry about locking up and returning home. Sometimes I only want to go one way (for weather or whatever other reason). Other times I want to take public transit for one leg of my trip (or day), but need/want to take a quick jaunt elsewhere once I&#8217;m downtown.</p>
+
+<p>I do have to say though, their new web site drives me <em>crazy</em>. I&#8217;ve thought prety deeply about the domain of creating user-friendly transit-focused web sites, so I think I can speak with some authority here.</p>
+
+<p><a href="http://wrla.ch/blog/2011/06/a-better-bixi-web-site/bixi_shot/" rel="attachment wp-att-268"><img src="/files/2011/06/bixi_shot.png" alt="" title="bixi_shot" width="400" height="265" class="alignnone size-full wp-image-268" srcset="/files/2011/06/bixi_shot-300x198.png 300w, /files/2011/06/bixi_shot.png 400w" sizes="(max-width: 400px) 100vw, 400px" /></a></p>
+
+<p>Leaving aside it&#8217;s value as a promotional tool for the service itself (not my area of expertise), the experience of trying to find a nearby station is complicated by a slow, multi-layered UI that requires repeated clicking and searching to find the nearest station that has bikes available. Why bother with this step when we can just display this information outright on the map? iPhone applications like <a href="http://sites.google.com/site/bixouiphone/">Bixou</a> have been doing this for years. It&#8217;s time we brought the same experience to the desktop.</p>
+
+<p>Thus, I present <a href="http://nixi.ca">nixi.ca</a>: a clean, useable interface to BIXI&#8217;s bike share system that presents the information you care about as effectively as possible, without all the clutter. I&#8217;ve already found it useful, and I hope you do too. Think you can do better? Fork the source on <a href="http://github.com/wlach/nixi">github</a> and submit your changes back to me! Minus some glue code to fetch station info server side, it&#8217;s entirely a client-side application written in HTML/JavaScript.</p>
+
+<p><a href="http://wrla.ch/blog/2011/06/a-better-bixi-web-site/nixi_shot/" rel="attachment wp-att-269"><img src="/files/2011/06/nixi_shot.png" alt="" title="nixi_shot" width="400" height="265" class="alignnone size-full wp-image-269" srcset="/files/2011/06/nixi_shot-300x198.png 300w, /files/2011/06/nixi_shot.png 400w" sizes="(max-width: 400px) 100vw, 400px" /></a></p>
+
+<p>Note that the site uses a bunch of modern HTML5 features, so currently requires a modern browser like Firefox, Chrome, or Safari to display properly. I may or may not fix this. Other notable omissions include support for other cities with the BIXI system (Toronto, Ottawa, &#8230;) and French localization. Patches welcome!</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Open-Data.html">Open Data</a></span></p>
-    <h2><a href='/blog/2011/06/template-for-a-map-based-web-app/'>Template for a map-based web app</a></h2>
+    <h2><a href='/blog/2011/06/template-for-a-map-based-web-app'>Template for a map-based web app</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 3rd, 2011</p>
   </header>
 
@@ -225,7 +250,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Free-Software.html">Free Software</a>, <a href="/tags/hbus.html">hbus</a>, <a href="/tags/Open-Data.html">Open Data</a>, <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
-    <h2><a href='/blog/2011/04/routez-opensourced/'>Routez opensourced</a></h2>
+    <h2><a href='/blog/2011/04/routez-opensourced'>Routez opensourced</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 19th, 2011</p>
   </header>
 
@@ -257,7 +282,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Free-Software.html">Free Software</a>, <a href="/tags/iphone.html">iphone</a>, <a href="/tags/Montreal.html">Montreal</a>, <a href="/tags/Open-Data.html">Open Data</a>, <a href="/tags/Usability.html">Usability</a></span></p>
-    <h2><a href='/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile/'>D&eacute;chets Montr&eacute;al goes mobile</a></h2>
+    <h2><a href='/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile'>D&eacute;chets Montr&eacute;al goes mobile</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 19th, 2011</p>
   </header>
 
@@ -282,7 +307,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Music.html">Music</a></span></p>
-    <h2><a href='/blog/2010/11/rice-038-barley-rae-spoon-at-casa-del-popolo/'>Rice &#38; Barley, Rae Spoon at Casa del Popolo</a></h2>
+    <h2><a href='/blog/2010/11/rice-038-barley-rae-spoon-at-casa-del-popolo'>Rice &#38; Barley, Rae Spoon at Casa del Popolo</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 29th, 2010</p>
   </header>
 
@@ -297,7 +322,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Food.html">Food</a></span></p>
-    <h2><a href='/blog/2010/11/ginger-tea-and-channa-masala/'>Ginger Tea and Channa Masala</a></h2>
+    <h2><a href='/blog/2010/11/ginger-tea-and-channa-masala'>Ginger Tea and Channa Masala</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 19th, 2010</p>
   </header>
 
@@ -345,7 +370,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Free-Software.html">Free Software</a></span></p>
-    <h2><a href='/blog/2010/11/back-to-wordperfect-libwpd-0-9-0/'>Back to WordPerfect: libwpd 0.9.0</a></h2>
+    <h2><a href='/blog/2010/11/back-to-wordperfect-libwpd-0-9-0'>Back to WordPerfect: libwpd 0.9.0</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 17th, 2010</p>
   </header>
 
@@ -386,7 +411,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/hbus.html">hbus</a></span></p>
-    <h2><a href='/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up/'>Google Transit Halifax is down (but hbus and Transit to Go are still up)</a></h2>
+    <h2><a href='/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up'>Google Transit Halifax is down (but hbus and Transit to Go are still up)</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 29th, 2010</p>
   </header>
 
@@ -403,7 +428,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/hbus.html">hbus</a></span></p>
-    <h2><a href='/blog/2010/05/hbus-is-back/'>hbus is back</a></h2>
+    <h2><a href='/blog/2010/05/hbus-is-back'>hbus is back</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 24th, 2010</p>
   </header>
 
@@ -415,26 +440,8 @@
 
 <article>
   <header>
-    <p><span class="tags"><a href="/tags/hbus.html">hbus</a>, <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
-    <h2><a href='/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/'>Oh, the lines! And some help for Edmonton.</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 10th, 2010</p>
-  </header>
-
-<p><img src="/files/2010/04/linked_map1.jpg" alt="Map with new link nodes" title="Map with new link nodes" width="320" height="242" class="aligncenter size-full wp-image-118" /></p>
-
-<p>A productive day on the transit development front. Finished up a few big features related to hbus.ca and Transit to Go:</p>
-
-<ul>
- <li>Sped up the graph and database generation by an order of magnitude. Not too exciting from a user perspective, but I should now be able to iterate the codebase much faster.</li>
- <li>Better transit stop / street graph linking: No more does libroutez simply try to find the closest street level vertice to link to when merging transit stops with street information&#8211; we now actually create _new_ street level vertices as needed and link to those. Upshot? Slightly better directions and prettier polylines. When I first thought up the algorithm a month ago, I thought I was totally brilliant, only to later find out that Andrew Byrd had done something almost identical a few months earlier for <a href="http://github.com/andrewbyrd/graphserver">graphserver</a>. Ah well, at least it&#8217;s implemented.</li>
- <li>I <a href="http://gist.github.com/361848">coded up a script</a> to automatically generate synthetic headsigns for GTFS feeds which don&#8217;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&#8217;t you do better than saying that all your buses go in the &#8220;1&#8221; direction? There&#8217;s a reason why it&#8217;s a required field you know. Not only would it help me, but <a href="http://google.com/transit">Google Transit</a> would give better results for your city as well.</li></ul>
-
-</article>
-
-<article>
-  <header>
     <p><span class="tags"><a href="/tags/iphone.html">iphone</a>, <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
-    <h2><a href='/blog/2010/04/i-can-has-edmonton-transit-iphone-app/'>I can has Edmonton transit iPhone app?</a></h2>
+    <h2><a href='/blog/2010/04/i-can-has-edmonton-transit-iphone-app'>I can has Edmonton transit iPhone app?</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 10th, 2010</p>
   </header>
 

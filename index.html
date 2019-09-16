@@ -6,7 +6,7 @@
     <title>William Lachance's Log</title>
     <meta name="description" content="William Lachance's Log">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="GoFaster, Talos, Social Media, Android, iphone, Bikes, Release Engineering, Community, Psychology, MSF, Buddhism, Music, Iodide, Performance, Transit to Go, Toronto, Polling, Orangutan, Business, Ebola, Metrics Graphics, Meditation, Profiling, Data, ateam, Usability, hbus, zen, Free Software, WifiDog, FirefoxOS, Infraherder, Python, Food, Transit, Eideticker, Counting, Cats, GNOME, Video, Treeherder, Nixi, email, Coffee, Web, Mission Control, Time, Statistics, all, Life, Responsiveness, Open Data, SQL, Taskcluster, mozregression, Perfherder, BIXI, Mozilla, Pandaboard, Environment, Meta, Philosophy, Data Visualization, Île Sans Fil, Montreal, Docker">
+    <meta name="keywords"    content="Pandaboard, Coffee, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Bikes, Statistics, Montreal, Community, Life, Counting, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Iodide, Data, Polling, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index.html">
@@ -209,6 +209,19 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2019/09/time-for-some-project-updates'>Time for some project updates</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 16th, 2019</p>
+  </header>
+
+<p>I&rsquo;ve been a bit bad about updating this blog over the past year or so, though this hasn&rsquo;t meant there haven&rsquo;t been things to talk about. For the next couple weeks, I&rsquo;m going to try to give some updates on the projects I have been spending time on in the past year, both old and new. I&rsquo;m going to begin with some of the less-loved things I&rsquo;ve been working on, partially in an attempt to motivate some forward-motion on things that I believe are rather important to Mozilla.</p>
+
+<p>More to come.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Bikes.html">Bikes</a></span></p>
     <h2><a href='/blog/2019/05/goodbye-noble-stead'>Goodbye, noble stead</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 21st, 2019</p>
@@ -218,7 +231,7 @@
 
 <p><img style="width:400px" srcset="/files/2019/05/wills_bike_1.jpg 2x" /></p>
 
-<p>Over the years, I&rsquo;ve probably sunk over two thousand dollars into repairs (as well as doing a fair number of work on it myself). An issue with the front wheel puncturing three tubes in succession finally convinced me that this was a losing battle, unless I wanted to put down a large sum into an overhaul. If I used it less I could probably justify some more minor repairs, but I think most of it (with the exception of the frame and headset) is on its last legs. Given the amount that I bicycle, it just seemed to make sense to get a new one, and see what a modern commuter has to offer. So I decided to cut my losses and buy a brand new bike at Urbane Cycling.</p>
+<p>Over the years, I&rsquo;ve probably sunk over two thousand dollars into repairs (as well as doing a fair number of work on it myself). An issue with the front wheel puncturing three tubes in succession finally convinced me that this was a losing battle, unless I wanted to put down a large sum into an overhaul. If I used it less I could probably justify some more minor repairs, but I think most of it (with the exception of the frame and headset) is on its last legs. Given the amount that I bicycle, it just seemed to make sense to get a new one, and see what a modern commuter has to offer. So I decided to cut my losses and buy a brand new one at Urbane Cycling.</p>
 
 <p>It was a hard decision to replace it, and harder still to give it away. I <em>loved</em> this old bike, far more than any inanimate thing that has been in my presence. I am grateful for the good care it took of me (I have not had a single major accident riding it), and the adventures it enabled me to have. I took this picture of it in the donation rack at Bikesauce, which is almost certainly the last I&rsquo;ll see of it:</p>
 
@@ -395,16 +408,16 @@
 15</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="c"># 100,000 random numbers between 0 and 1</span>
+      <pre><span></span><span class="c1"># 100,000 random numbers between 0 and 1</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">full_population_size</span> <span class="o">=</span> <span class="mi">100000</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">full_sample</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">full_population_size</span><span class="p">)]</span>
 
-<span class="c"># average over entire result</span>
+<span class="c1"># average over entire result</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">sum</span><span class="p">(</span><span class="n">full_sample</span><span class="p">)</span> <span class="o">/</span> <span class="n">full_population_size</span>
 <span class="mf">0.501036568906331</span>
 
-<span class="c"># pull out 100 randomly selected values from the full sample and</span>
-<span class="c"># get their average</span>
+<span class="c1"># pull out 100 randomly selected values from the full sample and</span>
+<span class="c1"># get their average</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">random_subset_size</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">random_subset</span> <span class="o">=</span> <span class="p">[</span><span class="n">full_sample</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">100000</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span>
                      <span class="nb">range</span><span class="p">(</span><span class="n">random_subset_size</span><span class="p">)]]</span>
@@ -442,14 +455,14 @@
 14</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="c"># if we take away approximately half the results with a value of</span>
-<span class="c"># &gt;0.75, the population we are sampling from is reduced proportionally</span>
+      <pre><span></span><span class="c1"># if we take away approximately half the results with a value of</span>
+<span class="c1"># &gt;0.75, the population we are sampling from is reduced proportionally</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">full_sample_with_half75_removed</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">full_sample</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="mf">0.75</span> <span class="ow">or</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_sample_with_half75_removed</span><span class="p">)</span>
 <span class="mi">87607</span>
 
-<span class="c"># the sampled value is then proportionally skewed downwards (because</span>
-<span class="c"># a large percentage of the high values are no longer available)</span>
+<span class="c1"># the sampled value is then proportionally skewed downwards (because</span>
+<span class="c1"># a large percentage of the high values are no longer available)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">random_subset</span> <span class="o">=</span> <span class="p">[</span><span class="n">full_sample_with_half75_removed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>
                      <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">full_sample_with_half75_removed</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span>
                       <span class="nb">range</span><span class="p">(</span><span class="n">random_subset_size</span><span class="p">)]</span>
@@ -485,7 +498,7 @@
 13</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="o">&gt;&gt;&gt;</span> <span class="n">skewed_averages</span> <span class="o">=</span> <span class="p">[]</span>
+      <pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">skewed_averages</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
 <span class="o">...</span>   <span class="n">full_sample_with_half75_removed</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">full_sample</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="mf">0.75</span> <span class="ow">or</span>
                                          <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">]</span>
@@ -592,32 +605,6 @@
 <p>We&rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&rsquo;t (and shouldn&rsquo;t) draw any kind of conclusion whatsoever.</p>
 
 <p>Ok, so that&rsquo;s just science 101: don&rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2018/01/giving-and-receiving-help-at-mozilla'>Giving and receiving help at Mozilla</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 17th, 2018</p>
-  </header>
-
-<p>This is going to sound corny, but helping people really is one of my favorite things at Mozilla, even with <a href="https://mozilla.github.io/mozregression/">projects I have mostly moved on from</a>. As someone who primarily works on internal tools, I love hearing about bugs in the software I maintain or questions on how to use it best.</p>
-
-<p>Given this, you might think that getting in touch with me via irc or slack is the fastest and best way to get your issue addressed. We certainly have a culture of using these instant-messaging applications at Mozilla for everything and anything. Unfortunately, I have found that being &ldquo;always on&rdquo; to respond to everything hasn&rsquo;t been positive for either my productivity or mental health. My personal situation aside, getting pinged on irc while I&rsquo;m out of the office often results in stuff getting lost &mdash; the person who asked me the question is often gone by the time I return and am able to answer.</p>
-
-<p>With that in mind, here&rsquo;s some notes on my preferred conversation style when making initial contact about an issue:</p>
-
-<ol>
- <li>Please don&rsquo;t send context-free pings on irc. It has been <a href="http://edunham.net/2017/10/05/saying_ping.html">explained elsewhere</a>  why this doesn&rsquo;t work that well, so I won&rsquo;t repeat the argument here.</li>
- <li>If you are at all suspicious that your issue might be a bug in some software  maintain, just <a href="https://bugzilla.mozilla.org/enter_bug.cgi">file a bug</a> and needinfo me. That puts us right on the path to documenting  the problem and getting to a resolution &mdash; even if something turns out to not  be a bug, if you&rsquo;re seeing an unexpected error it points to a usability issue.</li>
- <li>For everything else, email is best. I do check it quite frequently between  bursts of work (i.e. many times a day). I promise I won&rsquo;t leave you hanging  for days on end as long as I&rsquo;m not on vacation.</li></ol>
-
-<p>These aren&rsquo;t ironclad rules. If your question pertains to a project I&rsquo;m <em>actively</em> working on, it might make sense to ping me on irc first (preferably on a channel where other people are around who might also be able to help). If it&rsquo;s an actual <em>emergency</em>, then of course talk to me on irc straight away (or even call me on my phone) &mdash; if I don&rsquo;t respond, then fall back to filing bug or sending email. Use common sense.</p>
-
-<p>One of my new years resolutions is to also apply these rules to my communications with others at Mozilla as well, so if you see my violating it feel free to point me back at this post. Or just use this handy meme I created:</p>
-
-<center><img src="/files/2018/01/scale-of-asking.jpg" /></center>
 
 </article>
 

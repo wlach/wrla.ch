@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 3)</title>
     <meta name="description" content="William Lachance's Log (page 3)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="GoFaster, Talos, Social Media, Android, iphone, Bikes, Release Engineering, Community, Psychology, MSF, Buddhism, Music, Iodide, Performance, Transit to Go, Toronto, Polling, Orangutan, Business, Ebola, Metrics Graphics, Meditation, Profiling, Data, ateam, Usability, hbus, zen, Free Software, WifiDog, FirefoxOS, Infraherder, Python, Food, Transit, Eideticker, Counting, Cats, GNOME, Video, Treeherder, Nixi, email, Coffee, Web, Mission Control, Time, Statistics, all, Life, Responsiveness, Open Data, SQL, Taskcluster, mozregression, Perfherder, BIXI, Mozilla, Pandaboard, Environment, Meta, Philosophy, Data Visualization, Île Sans Fil, Montreal, Docker">
+    <meta name="keywords"    content="Pandaboard, Coffee, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Bikes, Statistics, Montreal, Community, Life, Counting, Music, Orangutan, Cats, GNOME, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, mozregression, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Iodide, Data, Polling, Android, ateam">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-3.html">
@@ -209,8 +209,34 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Docker.html">Docker</a></span></p>
+    <h2><a href='/blog/2017/06/using-docker-to-run-automated-tests'>Using Docker to run automated tests</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 2nd, 2017</p>
+  </header>
+
+<p>A couple months ago, I joined the Mozilla Data Platform team, to work on our <a href="https://wiki.mozilla.org/Telemetry">Telemetry</a> and automated data collection services. This has been an interesting transition for me, and a natural jumping off point from my work on <a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder">Perfherder</a>. Now, instead of manipulating mere 10s of gigabytes worth of fairly regular data, I&rsquo;m working with 100s of terrabytes of noisy data with a much larger number of dimensions. :P It&rsquo;s been interesting so far.</p>
+
+<p>One of the first things I decided to work on was improving our unit testing story around a few of our primary packages for data analysis/etl: <a href="https://github.com/mozilla/python_moztelemetry/">python_moztelemetry</a> (a library we use for running custom spark jobs against Telemetry data) and <a href="https://github.com/mozilla/telemetry-batch-view/">telemetry-batch-view</a> (a set of scala jobs we run against the main telemetry data store to create a useful set of aggregations that are easily queried with tools like <a href="https://redash.io/">redash</a>).</p>
+
+<p>It turns out that these tools interact with several larger / more involved pieces than I&rsquo;m used to dealing with (such as hbase and thrift). For continuous integration/automation, we already had a set of travis scripts to install and reproduce the environment needed to test these parts, but there was no straightforward way to do this locally. My third time through creating an Ubuntu virtual machine environment to reproduce this environment locally (long story), I figured it was finally time for me to investigate using something to automate that setup procedure and make it easier for new developers to get into these projects.</p>
+
+<p>I hadn&rsquo;t used it much before, but <a href="https://docker.com">Docker</a> seemed like a fairly obvious choice. Small, simple, and Linuxy? Sign me up.</p>
+
+<p>I&rsquo;m pretty happy with how things turned out, but there were a few caveats. Docker is more of a general purpose tool for building environments for running <em>things</em>, whether that be an apache webserver or a jabber messaging doohickey (whereas e.g. something like travis is basically a domain-specific language for creating and running automated tests). There were a few tricks I needed to employ to make the whole testing process smooth in both cases, which I&rsquo;ll document here for posterity:</p>
+
+<ol>
+ <li>You can <code>ADD</code> a set of files / directories to a docker environment inside your Dockerfile, but if you want your set of tests to pick up any changes made since the environment was created, you really should mount your testing directory inside the container using the <code>-v</code> option.</li>
+ <li>If you need to download/install a piece of software when building the docker container, use the <code>RUN</code> directive instead of <code>ADD</code>. This will speed up rebuilding the container while you&rsquo;re iterating on it (because you can take advantage of the Docker layers cache).</li>
+ <li>You almost certainly want to create a script (<a href="https://github.com/mozilla/python_moztelemetry/blob/d2aa84bbac09465d38eeb0b5beb20edc7ddcc21b/runtests.sh">example</a>) to streamline all the steps of running the tests: this will make running the tests easier for anyone wanting to contribute to your project and reduce the amount of documentation that you will have to write.</li></ol>
+
+<p>The relevant files and documentation are in the repositories linked above.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a>, <a href="/tags/Taskcluster.html">Taskcluster</a></span></p>
-    <h2><a href='/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/'>Easier reproduction of intermittent test failures in automation</a></h2>
+    <h2><a href='/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation'>Easier reproduction of intermittent test failures in automation</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 5th, 2017</p>
   </header>
 
@@ -257,7 +283,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a></span></p>
-    <h2><a href='/blog/2017/02/cancel-all-the-things/'>Cancel all the things</a></h2>
+    <h2><a href='/blog/2017/02/cancel-all-the-things'>Cancel all the things</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 7th, 2017</p>
   </header>
 
@@ -274,7 +300,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a></span></p>
-    <h2><a href='/blog/2016/11/training-an-autoclassifier/'>Training an autoclassifier</a></h2>
+    <h2><a href='/blog/2016/11/training-an-autoclassifier'>Training an autoclassifier</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 28th, 2016</p>
   </header>
 
@@ -305,7 +331,7 @@
 5</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
+      <pre><span></span><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
   <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_step</span> <span class="k">as</span> <span class="n">tls</span> <span class="k">on</span> <span class="n">tls</span><span class="p">.</span><span class="n">job_id</span> <span class="o">=</span> <span class="n">bjm</span><span class="p">.</span><span class="n">job_id</span>
   <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_error</span> <span class="k">as</span> <span class="n">tle</span> <span class="k">on</span> <span class="n">tle</span><span class="p">.</span><span class="n">step_id</span> <span class="o">=</span> <span class="n">tls</span><span class="p">.</span><span class="n">id</span>
   <span class="k">where</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&gt;</span> <span class="s1">&#39;2016-10-31&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&lt;</span> <span class="s1">&#39;2016-11-24&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">user_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span>
@@ -338,7 +364,7 @@
 14</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="p">{</span>
+      <pre><span></span><span class="p">{</span>
 <span class="nt">"bug_number"</span><span class="p">:</span> <span class="mi">1202623</span><span class="p">,</span>
 <span class="nt">"lines"</span><span class="p">:</span> <span class="p">[</span>
   <span class="s2">"browser_private_clicktoplay.js Test timed out -"</span><span class="p">,</span>
@@ -406,42 +432,42 @@
 36</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="kn">import</span> <span class="nn">os</span>
+      <pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
 
 
-<span class="n">training_set</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s">&#39;training&#39;</span><span class="p">)</span>
+<span class="n">training_set</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s1">&#39;training&#39;</span><span class="p">)</span>
 <span class="n">count_vect</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
 <span class="n">X_train_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">training_set</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="n">tfidf_transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
 <span class="n">X_train_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_counts</span><span class="p">)</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">&#39;hinge&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">,</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;hinge&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span>
                     <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_tfidf</span><span class="p">,</span> <span class="n">training_set</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 
 <span class="n">num_correct</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">num_missed</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">for</span> <span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fnames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s">&#39;testing/&#39;</span><span class="p">):</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fnames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;testing/&#39;</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">fnames</span><span class="p">:</span>
         <span class="n">bugnum</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">subdir</span><span class="p">)</span>
         <span class="k">print</span> <span class="n">bugnum</span><span class="p">,</span> <span class="n">fnames</span>
         <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">fnames</span><span class="p">:</span>
             <span class="n">doc</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">fname</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
-                <span class="k">print</span> <span class="s">"--&gt; (skipping, empty)"</span>
+                <span class="k">print</span> <span class="s2">"--&gt; (skipping, empty)"</span>
             <span class="n">X_new_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">doc</span><span class="p">])</span>
             <span class="n">X_new_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_new_counts</span><span class="p">)</span>
             <span class="n">predicted_bugnum</span> <span class="o">=</span> <span class="n">training_set</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new_tfidf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
             <span class="k">if</span> <span class="n">bugnum</span> <span class="o">==</span> <span class="n">predicted_bugnum</span><span class="p">:</span>
                 <span class="n">num_correct</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">print</span> <span class="s">"--&gt; correct"</span>
+                <span class="k">print</span> <span class="s2">"--&gt; correct"</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">num_missed</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">print</span> <span class="s">"--&gt; missed (</span><span class="si">%s</span><span class="s">)"</span> <span class="o">%</span> <span class="n">predicted_bugnum</span>
-<span class="k">print</span> <span class="s">"Correct: </span><span class="si">%s</span><span class="s"> Missed: </span><span class="si">%s</span><span class="s"> Ratio: </span><span class="si">%s</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">num_correct</span><span class="p">,</span> <span class="n">num_missed</span><span class="p">,</span> <span class="n">num_correct</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num_correct</span> <span class="o">+</span> <span class="n">num_missed</span><span class="p">))</span>
+                <span class="k">print</span> <span class="s2">"--&gt; missed (</span><span class="si">%s</span><span class="s2">)"</span> <span class="o">%</span> <span class="n">predicted_bugnum</span>
+<span class="k">print</span> <span class="s2">"Correct: </span><span class="si">%s</span><span class="s2"> Missed: </span><span class="si">%s</span><span class="s2"> Ratio: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">num_correct</span><span class="p">,</span> <span class="n">num_missed</span><span class="p">,</span> <span class="n">num_correct</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num_correct</span> <span class="o">+</span> <span class="n">num_missed</span><span class="p">))</span>
 </pre></div>
 </td></tr></tbody></table>
 </div>
@@ -464,7 +490,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a>, <a href="/tags/Performance.html">Performance</a></span></p>
-    <h2><a href='/blog/2016/10/slow-treeherder-fast-treeherder/'>Slow Treeherder, Fast Treeherder</a></h2>
+    <h2><a href='/blog/2016/10/slow-treeherder-fast-treeherder'>Slow Treeherder, Fast Treeherder</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 3131, 2016</p>
   </header>
 
@@ -488,7 +514,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Infraherder.html">Infraherder</a></span></p>
-    <h2><a href='/blog/2016/08/herding-automation-infrastructure/'>Herding Automation Infrastructure</a></h2>
+    <h2><a href='/blog/2016/08/herding-automation-infrastructure'>Herding Automation Infrastructure</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 17th, 2016</p>
   </header>
 
@@ -539,7 +565,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-results/'>Perfherder Quarter of Contribution Summer 2016: Results</a></h2>
+    <h2><a href='/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-results'>Perfherder Quarter of Contribution Summer 2016: Results</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 10th, 2016</p>
   </header>
 
@@ -564,7 +590,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2016/05/quarter-of-contribution-june-july-2016-edition/'>Quarter of Contribution: June / July 2016 edition</a></h2>
+    <h2><a href='/blog/2016/05/quarter-of-contribution-june-july-2016-edition'>Quarter of Contribution: June / July 2016 edition</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 27th, 2016</p>
   </header>
 
@@ -579,7 +605,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2016/03/are-we-fast-yet-and-perfherder/'>Are We Fast Yet and Perfherder</a></h2>
+    <h2><a href='/blog/2016/03/are-we-fast-yet-and-perfherder'>Are We Fast Yet and Perfherder</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 30th, 2016</p>
   </header>
 
@@ -619,7 +645,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2016/03/platform-engineering-project-of-the-month-perfherder/'>Platform engineering project of the month: Perfherder</a></h2>
+    <h2><a href='/blog/2016/03/platform-engineering-project-of-the-month-perfherder'>Platform engineering project of the month: Perfherder</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 14th, 2016</p>
   </header>
 
@@ -662,23 +688,6 @@
 <p>For more information on contributing to Perfherder, please see the contribution section of the above wiki page:</p>
 
 <p><a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution">https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution</a></p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Talos.html">Talos</a></span></p>
-    <h2><a href='/blog/2016/02/talos-suites-now-visible-from-trychooser/'>Talos suites now visible from trychooser</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 13th, 2016</p>
-  </header>
-
-<p>It&rsquo;s a small thing, but I submitted a patch to <a href="http://trychooser.pub.build.mozilla.org/">trychooser</a> last week which adds a tooltip indicating the actual Talos tests that are run as part of the various jobs that you can schedule as part of a try push. It&rsquo;s in production as of now:</p>
-
-<video src="/files/2016/02/talos-trychooser.webm" controls="controls" autoplay="autoplay"></video>
-
-<p>Previously, the only way to do this was to dig into the actual buildbot code, which was more than a little annoying.</p>
-
-<p>If you think your patch might have a good chance of regressing performance, please do run the <a href="https://wiki.mozilla.org/Buildbot/Talos/Tests">Talos tests</a> before you check in. It&rsquo;s much less work for all of us when these things are caught before integration and back outs are no fun for anyone. We really need better documentation for this stuff, but meanwhile if you need help with this, please ask in the #perf channel on irc.mozilla.org</p>
 
 </article>
 

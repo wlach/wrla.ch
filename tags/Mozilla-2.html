@@ -210,6 +210,23 @@
           <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
+    <h2><a href='/blog/2017/10/mission-control-ready-for-contributions'>Mission Control: Ready for contributions</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 20th, 2017</p>
+  </header>
+
+<p>One of the great design decisions that was made for <a href="https://treeherder.mozilla.org">Treeherder</a> was a strict seperation of the client and server portions of the codebase. While its backend was moderately complicated to get up and running (especially into a state that looked at all like what we were running in production), you could get its web frontend running (pointed against the production data) just by starting up a simple node.js server. This dramatically lowered the barrier to entry, for Mozilla employees and casual contributors alike.</p>
+
+<p>I knew right from the beginning that I wanted to take the same approach with <a href="https://wlach.github.io/blog/2017/10/mission-control/">Mission Control</a>. While the full source of the project is available, unfortunately it isn&rsquo;t presently possible to bring up the full stack with real data, as that requires privileged access to the athena/parquet error aggregates table. But since the UI is self-contained, it&rsquo;s quite easy to bring up a development environment that allows you to freely browse the cached data which is stored server-side (essentially: <code>git clone https://github.com/mozilla/missioncontrol.git &amp;&amp; yarn install &amp;&amp; yarn start</code>).</p>
+
+<p>In my experience, the most interesting problems when it comes to projects like these center around the question of how to present extremely complex data in a way that is intuitive but not misleading. Probably 90% of that work happens in the frontend. In the past, I&rsquo;ve had pretty good luck finding contributors for my projects (especially <a href="/tags/Perfherder.html">Perfherder</a>) by doing call-outs on this blog. So let it be known: If Mission Control sounds like an interesting project and you know <a href="https://reactjs.org/">React</a>/<a href="http://redux.js.org/">Redux</a>/<a href="https://d3js.org/">D3</a>/<a href="https://www.metricsgraphicsjs.org/">MetricsGraphics</a> (or want to learn), let&rsquo;s work together!</p>
+
+<p>I&rsquo;ve created some <a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">good first bugs</a> to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on <a href="https://wiki.mozilla.org/IRC">irc.mozilla.org</a> #missioncontrol if you want to discuss further.</p>
+
+</article>
+
+<article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
     <h2><a href='/blog/2017/10/mission-control'>Mission Control</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 6th, 2017</p>
   </header>
@@ -277,34 +294,34 @@
 28</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">channel_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;channel&#39;</span><span class="p">)</span>
-    <span class="n">platform_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;platform&#39;</span><span class="p">)</span>
-    <span class="n">measure_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;measure&#39;</span><span class="p">)</span>
-    <span class="n">interval</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;interval&#39;</span><span class="p">)</span>
+      <pre><span></span><span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">channel_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;channel&#39;</span><span class="p">)</span>
+    <span class="n">platform_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;platform&#39;</span><span class="p">)</span>
+    <span class="n">measure_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;measure&#39;</span><span class="p">)</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;interval&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">channel_name</span><span class="p">,</span> <span class="n">platform_name</span><span class="p">,</span> <span class="n">measure_name</span><span class="p">]):</span>
-        <span class="k">return</span> <span class="n">HttpResponseBadRequest</span><span class="p">(</span><span class="s">"All of channel, platform, measure required"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">HttpResponseBadRequest</span><span class="p">(</span><span class="s2">"All of channel, platform, measure required"</span><span class="p">)</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">get_measure_cache_key</span><span class="p">(</span><span class="n">platform_name</span><span class="p">,</span> <span class="n">channel_name</span><span class="p">,</span> <span class="n">measure_name</span><span class="p">))</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">HttpResponseNotFound</span><span class="p">(</span><span class="s">"Data not available for this measure combination"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">HttpResponseNotFound</span><span class="p">(</span><span class="s2">"Data not available for this measure combination"</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">interval</span><span class="p">:</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">min_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">interval</span><span class="p">))</span>
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">HttpResponseBadRequest</span><span class="p">(</span><span class="s">"Interval must be specified in seconds (as an integer)"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">HttpResponseBadRequest</span><span class="p">(</span><span class="s2">"Interval must be specified in seconds (as an integer)"</span><span class="p">)</span>
 
-        <span class="c"># Return any build data in the interval</span>
+        <span class="c1"># Return any build data in the interval</span>
         <span class="n">empty_buildids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
         <span class="k">for</span> <span class="p">(</span><span class="n">build_id</span><span class="p">,</span> <span class="n">build_data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">build_data</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">build_data</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_time</span><span class="p">]</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">build_data</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">]:</span>
+            <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_time</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]:</span>
                 <span class="n">empty_buildids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">build_id</span><span class="p">)</span>
 
-        <span class="c"># don&#39;t bother returning empty indexed data</span>
+        <span class="c1"># don&#39;t bother returning empty indexed data</span>
         <span class="k">for</span> <span class="n">empty_buildid</span> <span class="ow">in</span> <span class="n">empty_buildids</span><span class="p">:</span>
             <span class="k">del</span> <span class="n">data</span><span class="p">[</span><span class="n">empty_buildid</span><span class="p">]</span>
 
-    <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;measure_data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;measure_data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">})</span>
 </pre></div>
 </td></tr></tbody></table>
 </div>
@@ -323,7 +340,7 @@
 2</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="kn">from</span> <span class="nn">dateutil.tz</span> <span class="kn">import</span> <span class="n">tzutc</span>
+      <pre><span></span><span class="kn">from</span> <span class="nn">dateutil.tz</span> <span class="kn">import</span> <span class="n">tzutc</span>
 <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">mydatestamp</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(),</span> <span class="n">tz</span><span class="o">=</span><span class="n">tzutc</span><span class="p">())</span>
 </pre></div>
 </td></tr></tbody></table>
@@ -347,13 +364,13 @@
 8</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="k">for</span> <span class="p">(</span><span class="n">build_id</span><span class="p">,</span> <span class="n">build_data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="c"># add utc timezone info to each date, so django will serialize a</span>
-    <span class="c"># &#39;Z&#39; to the end of the string (and so javascript&#39;s date constructor</span>
-    <span class="c"># will know it&#39;s utc)</span>
-    <span class="n">build_data</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+      <pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">build_id</span><span class="p">,</span> <span class="n">build_data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="c1"># add utc timezone info to each date, so django will serialize a</span>
+    <span class="c1"># &#39;Z&#39; to the end of the string (and so javascript&#39;s date constructor</span>
+    <span class="c1"># will know it&#39;s utc)</span>
+    <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
         <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(),</span> <span class="n">tz</span><span class="o">=</span><span class="n">tzutc</span><span class="p">())]</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span>
-        <span class="n">d</span> <span class="ow">in</span> <span class="n">build_data</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_time</span>
+        <span class="n">d</span> <span class="ow">in</span> <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_time</span>
     <span class="p">]</span>
 </pre></div>
 </td></tr></tbody></table>
@@ -381,14 +398,14 @@
 8</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="k">def</span> <span class="nf">transform_and_filter_data</span><span class="p">(</span><span class="n">build_data</span><span class="p">):</span>
+      <pre><span></span><span class="k">def</span> <span class="nf">transform_and_filter_data</span><span class="p">(</span><span class="n">build_data</span><span class="p">):</span>
     <span class="n">new_build_data</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">build_data</span><span class="p">)</span>
-    <span class="n">new_build_data</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">new_build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
         <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(),</span> <span class="n">tz</span><span class="o">=</span><span class="n">tzutc</span><span class="p">())]</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span>
-        <span class="n">d</span> <span class="ow">in</span> <span class="n">build_data</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_time</span>
+        <span class="n">d</span> <span class="ow">in</span> <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_time</span>
     <span class="p">]</span>
     <span class="k">return</span> <span class="n">new_build_data</span>
-<span class="n">transformed_build_data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">transform_and_filter_data</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s">&#39;data&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">}</span>
+<span class="n">transformed_build_data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">transform_and_filter_data</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">}</span>
 </pre></div>
 </td></tr></tbody></table>
 </div>
@@ -410,13 +427,13 @@
 7</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="kd">let</span> <span class="nx">transformedBuildData</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">mapValues</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="p">(</span><span class="nx">buildData</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">({</span>
+      <pre><span></span><span class="kd">let</span> <span class="nx">transformedBuildData</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">mapValues</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="p">(</span><span class="nx">buildData</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span>
     <span class="p">...</span><span class="nx">buildData</span><span class="p">,</span>
     <span class="nx">data</span><span class="o">:</span> <span class="nx">buildData</span><span class="p">.</span><span class="nx">data</span>
-      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">datum</span> <span class="o">=&gt;</span> <span class="nx">datum</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">minTimestamp</span><span class="p">)</span>
-      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">datum</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="nx">tzcified</span><span class="p">(</span><span class="nx">datum</span><span class="p">[</span><span class="mi">0</span><span class="p">])].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">datum</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="nx">datum</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">minTimestamp</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">tzcified</span><span class="p">(</span><span class="nx">datum</span><span class="p">[</span><span class="mi">0</span><span class="p">])].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">datum</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
   <span class="p">})),</span>
-  <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">buildId</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">buildId</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
 </pre></div>
 </td></tr></tbody></table>
 </div>
@@ -443,7 +460,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2017/07/taking-over-an-npm-package-sanity-prevails/'>Taking over an npm package: sanity prevails</a></h2>
+    <h2><a href='/blog/2017/07/taking-over-an-npm-package-sanity-prevails'>Taking over an npm package: sanity prevails</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 13th, 2017</p>
   </header>
 
@@ -470,7 +487,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Docker.html">Docker</a></span></p>
-    <h2><a href='/blog/2017/06/using-docker-to-run-automated-tests/'>Using Docker to run automated tests</a></h2>
+    <h2><a href='/blog/2017/06/using-docker-to-run-automated-tests'>Using Docker to run automated tests</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 2nd, 2017</p>
   </header>
 
@@ -496,7 +513,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a>, <a href="/tags/Taskcluster.html">Taskcluster</a></span></p>
-    <h2><a href='/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/'>Easier reproduction of intermittent test failures in automation</a></h2>
+    <h2><a href='/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation'>Easier reproduction of intermittent test failures in automation</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 5th, 2017</p>
   </header>
 
@@ -543,7 +560,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a></span></p>
-    <h2><a href='/blog/2017/02/cancel-all-the-things/'>Cancel all the things</a></h2>
+    <h2><a href='/blog/2017/02/cancel-all-the-things'>Cancel all the things</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 7th, 2017</p>
   </header>
 
@@ -560,7 +577,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a></span></p>
-    <h2><a href='/blog/2016/11/training-an-autoclassifier/'>Training an autoclassifier</a></h2>
+    <h2><a href='/blog/2016/11/training-an-autoclassifier'>Training an autoclassifier</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 28th, 2016</p>
   </header>
 
@@ -591,7 +608,7 @@
 5</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
+      <pre><span></span><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
   <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_step</span> <span class="k">as</span> <span class="n">tls</span> <span class="k">on</span> <span class="n">tls</span><span class="p">.</span><span class="n">job_id</span> <span class="o">=</span> <span class="n">bjm</span><span class="p">.</span><span class="n">job_id</span>
   <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_error</span> <span class="k">as</span> <span class="n">tle</span> <span class="k">on</span> <span class="n">tle</span><span class="p">.</span><span class="n">step_id</span> <span class="o">=</span> <span class="n">tls</span><span class="p">.</span><span class="n">id</span>
   <span class="k">where</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&gt;</span> <span class="s1">&#39;2016-10-31&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&lt;</span> <span class="s1">&#39;2016-11-24&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">user_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span>
@@ -624,7 +641,7 @@
 14</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="p">{</span>
+      <pre><span></span><span class="p">{</span>
 <span class="nt">"bug_number"</span><span class="p">:</span> <span class="mi">1202623</span><span class="p">,</span>
 <span class="nt">"lines"</span><span class="p">:</span> <span class="p">[</span>
   <span class="s2">"browser_private_clicktoplay.js Test timed out -"</span><span class="p">,</span>
@@ -692,42 +709,42 @@
 36</pre></div></td>
     <td class="code">
      <div class="source">
-      <pre><span class="kn">import</span> <span class="nn">os</span>
+      <pre><span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
 <span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
 
 
-<span class="n">training_set</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s">&#39;training&#39;</span><span class="p">)</span>
+<span class="n">training_set</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s1">&#39;training&#39;</span><span class="p">)</span>
 <span class="n">count_vect</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
 <span class="n">X_train_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">training_set</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="n">tfidf_transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
 <span class="n">X_train_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_counts</span><span class="p">)</span>
-<span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s">&#39;hinge&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s">&#39;l2&#39;</span><span class="p">,</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;hinge&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span>
                     <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_tfidf</span><span class="p">,</span> <span class="n">training_set</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 
 <span class="n">num_correct</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">num_missed</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">for</span> <span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fnames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s">&#39;testing/&#39;</span><span class="p">):</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fnames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;testing/&#39;</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">fnames</span><span class="p">:</span>
         <span class="n">bugnum</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">subdir</span><span class="p">)</span>
         <span class="k">print</span> <span class="n">bugnum</span><span class="p">,</span> <span class="n">fnames</span>
         <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">fnames</span><span class="p">:</span>
             <span class="n">doc</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">fname</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
-                <span class="k">print</span> <span class="s">"--&gt; (skipping, empty)"</span>
+                <span class="k">print</span> <span class="s2">"--&gt; (skipping, empty)"</span>
             <span class="n">X_new_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">doc</span><span class="p">])</span>
             <span class="n">X_new_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_new_counts</span><span class="p">)</span>
             <span class="n">predicted_bugnum</span> <span class="o">=</span> <span class="n">training_set</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new_tfidf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
             <span class="k">if</span> <span class="n">bugnum</span> <span class="o">==</span> <span class="n">predicted_bugnum</span><span class="p">:</span>
                 <span class="n">num_correct</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">print</span> <span class="s">"--&gt; correct"</span>
+                <span class="k">print</span> <span class="s2">"--&gt; correct"</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">num_missed</span> <span class="o">+=</span> <span class="mi">1</span>
-                <span class="k">print</span> <span class="s">"--&gt; missed (</span><span class="si">%s</span><span class="s">)"</span> <span class="o">%</span> <span class="n">predicted_bugnum</span>
-<span class="k">print</span> <span class="s">"Correct: </span><span class="si">%s</span><span class="s"> Missed: </span><span class="si">%s</span><span class="s"> Ratio: </span><span class="si">%s</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">num_correct</span><span class="p">,</span> <span class="n">num_missed</span><span class="p">,</span> <span class="n">num_correct</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num_correct</span> <span class="o">+</span> <span class="n">num_missed</span><span class="p">))</span>
+                <span class="k">print</span> <span class="s2">"--&gt; missed (</span><span class="si">%s</span><span class="s2">)"</span> <span class="o">%</span> <span class="n">predicted_bugnum</span>
+<span class="k">print</span> <span class="s2">"Correct: </span><span class="si">%s</span><span class="s2"> Missed: </span><span class="si">%s</span><span class="s2"> Ratio: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">num_correct</span><span class="p">,</span> <span class="n">num_missed</span><span class="p">,</span> <span class="n">num_correct</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num_correct</span> <span class="o">+</span> <span class="n">num_missed</span><span class="p">))</span>
 </pre></div>
 </td></tr></tbody></table>
 </div>
@@ -750,7 +767,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Treeherder.html">Treeherder</a>, <a href="/tags/Performance.html">Performance</a></span></p>
-    <h2><a href='/blog/2016/10/slow-treeherder-fast-treeherder/'>Slow Treeherder, Fast Treeherder</a></h2>
+    <h2><a href='/blog/2016/10/slow-treeherder-fast-treeherder'>Slow Treeherder, Fast Treeherder</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 3131, 2016</p>
   </header>
 
@@ -768,57 +785,6 @@
 <p>The original is on the left. The newer, faster Treeherder is on the right. Pay particular attention to how much faster the job information populates.</p>
 
 <p>Moral of the story? Optimization can be helpful, but it&rsquo;s better if you can avoid doing the work altogether.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Infraherder.html">Infraherder</a></span></p>
-    <h2><a href='/blog/2016/08/herding-automation-infrastructure/'>Herding Automation Infrastructure</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 17th, 2016</p>
-  </header>
-
-<p>For every commit to Firefox, we run a battery of builds and automated tests on the resulting source tree to make sure that the result still works and meets our correctness and performance quality criteria. This is expensive: every new push to our repository implies hundreds of hours of machine time. However, automated quality control is essential to ensure that the product that we&rsquo;re shipping to users is something that we can be proud of.</p>
-
-<p>But what about evaluating the quality of the product which does the building and testing? Who does that? And by what criteria would we say that our automation system is good or bad? Up to now, our procedures for this have been rather embarassingly adhoc. With some exceptions (such as <a href="https://brasstacks.mozilla.com/orangefactor/">OrangeFactor</a>), our QA process amounts to motivated engineers doing a one-off analysis of a particular piece of the system, filing a few bugs, then forgetting about it. Occasionally someone will propose turning build and test automation for a specific platform on or off in mozilla.dev.planning.</p>
-
-<p>I&rsquo;d like to suggest that the time has come to take a more systemic approach to this class of problem. We spend a lot of money on people and machines to maintain this infrastructure, and I think we need a more disciplined approach to make sure that we are getting good value for that investment.</p>
-
-<p>As a starting point, I feel like we need to pay closer attention to the following characteristics of our automation:</p>
-
-<ul>
- <li>End-to-end times from push submission to full completion of all  build and test jobs: if this gets too long, it makes the lives  of all sorts of people painful &mdash; tree closures become longer when  they happen (because it takes longer to either notice bustage or  find out that it&rsquo;s fixed), developers have to wait longer for  try pushes (making them more likely to just push directly to an  integration branch, causing the former problem&hellip;)</li>
- <li>Number of machine hours consumed by the different types of test  jobs: our resources are large (relatively speaking), but not  unlimited. We need proper accounting of where we&rsquo;re spending money  and time. In some cases, resources used to perform a task that  we don&rsquo;t care that much about could be redeployed towards an  underresourced task that we do care about. A good example of this  was linux32 talos (performance tests) last year: when the question  was raised of why we were doing performance testing on this specific  platform (in addition to Linux64), no one could come up with a great  justification. So we turned the tests off and reconfigured the machines  to do Windows performance tests (where we were suffering from a severe  lack of capacity).</li></ul>
-
-<p>Over the past week, I&rsquo;ve been prototyping a project I&rsquo;ve been calling &ldquo;Infraherder&rdquo; which uses the data inside <a href="https://treeherder.mozilla.org">Treeherder</a>&rsquo;s job database to try to answer these questions (and maybe some others that I haven&rsquo;t thought of yet). You can see a hacky version of it on <a href="http://wlach.github.io/treeherder/ui/infra.html#/last-finished">my github fork</a>.</p>
-
-<p>Why implement this in Treeherder you might ask? Two reasons. First, Treeherder already stores the job data in a historical archive that&rsquo;s easy to query (using SQL). Using this directly makes sense over creating a new data store. Second, Treeherder provides a useful set of front-end components with which to build a UI with which to visualize this information. I actually did my initial prototyping inside an ipython notebook, but it quickly became obvious that for my results to be useful to others at Mozilla we needed some kind of real dashboard that people could dig into.</p>
-
-<p>On the Treeherder team at Mozilla, we&rsquo;ve found the <a href="https://newrelic.com">New Relic</a> software to be invaluable for diagnosing and fixing quality and performance problems for Treeherder itself, so I took some inspiration from it (unfortunately the problem space of our automation is not quite the same as that of a web application, so we can&rsquo;t just use New Relic directly).</p>
-
-<p>There are currently two views in the prototype, a &ldquo;last finished&rdquo; view and a &ldquo;total&rdquo; view. I&rsquo;ll describe each of them in turn.</p>
-
-<h3 id="last-finished">Last finished</h3>
-
-<p>This view shows the counts of which scheduled automation jobs were the &ldquo;last&rdquo; to finish. The hypothesis is that jobs that are frequently last indicate blockers to developer productivity, as they are the &ldquo;long pole&rdquo; in being able to determine if a push is good or bad.</p>
-
-<p><img src="/files/2016/08/infraherder-last-finished.png" width="500px" /></p>
-
-<p>Right away from this view, you can see the mochitest devtools 9 test is often the last to finish on try, with Windows 7 mochitest debug a close second. Assuming that the reasons for this are not resource starvation (they don&rsquo;t appear to be), we could probably get results into the hands of developers and sheriffs faster if we split these jobs into two seperate ones. I filed bugs <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1294489">1294489</a> and <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1294706">1294706</a> to address these issues.</p>
-
-<h3 id="total-time">Total Time</h3>
-
-<p>This view just shows which jobs are taking up the most machine hours.</p>
-
-<p><img src="/files/2016/08/infraherder-total.png" width="500px" /></p>
-
-<p>Probably unsurprisingly, it seems like it&rsquo;s Android test jobs that are taking up most of the time here: these tests are running on multiple layers of emulation (AWS instances to emulate Linux hardware, then the already slow QEMU-based Android simulator) so are not expected to have fast runtime. I wonder if it might not be worth considering running these tests on faster instances and/or bare metal machines.</p>
-
-<p>Linux32 debug tests seem to be another large consumer of resources. Market conditions make turning these tests off altogether a non-starter (see bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1255890">1255890</a>), but how much value do we really derive from running the debug version of linux32 through automation (given that we&rsquo;re already doing the same for 64-bit Linux)?</p>
-
-<h3 id="request-for-comments">Request for comments</h3>
-
-<p>I&rsquo;ve created <a href="https://docs.google.com/document/d/1SrlJQQ3qWuM0tvruG6Lr59t3hJ4XRUoMIrIRQYvwu9A/edit?usp=sharing">an RFC</a> for this project on Google Docs, as a sort of test case for a new process we&rsquo;re thinking of using in Engineering Productivity for these sorts of projects. If you have any questions or comments, I&rsquo;d love to hear them! My perspective on this vast problem space is limited, so I&rsquo;m sure there are things that I&rsquo;m missing.</p>
 
 </article>
 
