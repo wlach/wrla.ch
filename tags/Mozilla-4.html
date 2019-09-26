@@ -209,6 +209,53 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Community.html">Community</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
+    <h2><a href='/blog/2015/09/perfherder-summer-of-contribution-thoughts'>Perfherder summer of contribution thoughts</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 29th, 2015</p>
+  </header>
+
+<p>A few months ago, Joel Maher <a href="https://elvis314.wordpress.com/2015/05/18/a-team-contribution-opportunity-dashboard-hacker/">announced the Perfherder summer of contribution</a>. We wrapped things up there a few weeks ago, so I guess it&#8217;s about time I wrote up a bit about how things went.</p>
+
+<p>As a reminder, the idea of summer of contribution was to give a set of contributors the opportunity to make a substantial contribution to a project we were working on (in this case, the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a> performance sheriffing system). We would ask that they sign up to do 5&ndash;10 hours of work a week for at least 8 weeks. In return, Joel and myself would make ourselves available as mentors to answer questions about the project whenever they ran into trouble.</p>
+
+<p>To get things rolling, I split off a bunch of work that we felt would be reasonable to do by a contributor into bugs of varying difficulty levels (assigning them the bugzilla whiteboard tag <a href="https://bugzilla.mozilla.org/buglist.cgi?keywords=%20ateam-summer-of-contribution&amp;#038;keywords_type=allwords&amp;#038;list_id=12578272&amp;#038;resolution=---&amp;#038;resolution=FIXED&amp;#038;resolution=INVALID&amp;#038;resolution=WONTFIX&amp;#038;resolution=DUPLICATE&amp;#038;resolution=WORKSFORME&amp;#038;resolution=INCOMPLETE&amp;#038;resolution=SUPPORT&amp;#038;resolution=EXPIRED&amp;#038;resolution=MOVED&amp;#038;query_format=advanced&amp;#038;bug_status=UNCONFIRMED&amp;#038;bug_status=NEW&amp;#038;bug_status=ASSIGNED&amp;#038;bug_status=REOPENED&amp;#038;bug_status=RESOLVED&amp;#038;bug_status=VERIFIED&amp;#038;bug_status=CLOSED">ateam-summer-of-contribution</a>). When someone first expressed interest in working on the project, I&#8217;d assign them a relatively easy front end one, just to cover the basics of working with the project (checking out code, making a change, submitting a PR to github). If they made it through that, I&#8217;d go on to assign them slightly harder or more complex tasks which dealt with other parts of the codebase, the nature of which depended on what they wanted to learn more about. Perfherder essentially has two components: a data storage and analysis backend written in Python and Django, and a web-based frontend written in JS and Angular. There was (still is) lots to do on both, which gave contributors lots of choice.</p>
+
+<p>This system worked pretty well for attracting people. I think we got at least 5 people interested and contributing useful patches within the first couple of weeks. In general I think onboarding went well. Having good documentation for Perfherder / Treeherder on the wiki certainly helped. We had lots of the usual problems getting people familiar with git and submitting proper pull requests: we use a somewhat clumsy combination of bugzilla and github to manage treeherder issues (we &#8220;attach&#8221; PRs to bugs as plaintext), which can be a bit offputting to newcomers. But once they got past these issues, things went relatively smoothly.</p>
+
+<p>A few weeks in, I set up a fortnightly skype call for people to join and update status and ask questions. This proved to be quite useful: it let me and Joel articulate the higher-level vision for the project to people (which can be difficult to summarize in text) but more importantly it was also a great opportunity for people to ask questions and raise concerns about the project in a free-form, high-bandwidth environment. In general I&#8217;m not a big fan of meetings (especially status report meetings) but I think these were pretty useful. Being able to hear someone else&#8217;s voice definitely goes a long way to establishing trust that you just can&#8217;t get in the same way over email and irc.</p>
+
+<p>I think our biggest challenge was retention. Due to (understandable) time commitments and constraints only one person (Mike Ling) was really able to stick with it until the end. Still, I&#8217;m pretty happy with that success rate: if you stop and think about it, even a 10-hour a week time investment is a fair bit to ask. Some of the people who didn&#8217;t quite make it were quite awesome, I hope they come back some day.</p>
+
+<p>&#8212;</p>
+
+<p>On that note, a special thanks to Mike Ling for sticking with us this long (he&#8217;s still around and doing useful things long after the program ended). He&#8217;s done <a href="https://github.com/mozilla/treeherder/commits/master?author=MikeLing">some really fantastic work</a> inside Perfherder and the project is much better for it. I think my two favorite features that he wrote up are the improved test chooser which I talked about a few months ago and a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1134780">get related platform / branch</a> feature which is a big time saver when trying to determine when a performance regression was first introduced.</p>
+
+<p>I took the time to do a short email interview with him last week. Here&#8217;s what he had to say:</p>
+
+<ol>
+ <li>Tell us a little bit about yourself. Where do you live? What is it you do when not contributing to Perfherder?</li></ol>
+
+<p><em>I&#8217;m a postgraduate student of NanChang HangKong university in China whose major is Internet of things. Actually,there are a lot of things I would like to do when I am AFK, play basketball, video game, reading books and listening music, just name it ; )</em></p>
+
+<ol>
+ <li>How did you find out about the ateam summer of contribution program?</li></ol>
+
+<p><em>well, I remember when I still a new comer of treeherder, I totally don&#8217;t know how to start my contribution. So, I just go to treeherder irc and ask for advice. As I recall, emorley and jfrench talk with me and give me a lot of hits. Then Will (wlach) send me an Email about ateam summer of contribution and perfherder. He told me it&#8217;s a good opportunity to learn more about treeherder and how to work like a team! I almost jump out of bed (I receive that email just before get asleep) and reply with YES. Thank you Will!</em></p>
+
+<ol>
+ <li>What did you find most challenging in the summer of contribution?</li></ol>
+
+<p><em>I think the most challenging thing is I not only need to know how to code but also need to know how treeherder actually work. It&#8217;s a awesome project and there are a ton of things I haven&#8217;t heard before (i.e T-test, regression). So I still have a long way to go before I familiar with it.</em></p>
+
+<ol>
+ <li>What advice would give you to future ateam contributors?</li></ol>
+
+<p><em>The only thing you need to do is bring your question to irc and ask. Do not hesitate to ask for help if you need it! All the people in here are nice and willing to help. Enjoy it!</em></p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
     <h2><a href='/blog/2015/08/more-perfherder-updates'>More Perfherder updates</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 7th, 2015</p>
@@ -500,43 +547,6 @@ cd treeherder-ui/webapp
 <p><a href="https://wiki.mozilla.org/Auto-tools/Projects/Treeherder#Bugs_.26_Project_Tracking">https://wiki.mozilla.org/Auto-tools/Projects/Treeherder#Bugs_.26_Project_Tracking</a></p>
 
 <p>If nothing jumps out at you, please drop by irc.mozilla.org #treeherder and we can probably find something for you to work on. We&#8217;re most active during Pacific Time working hours.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Meditation.html">Meditation</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/zen.html">zen</a></span></p>
-    <h2><a href='/blog/2014/08/a-new-meditation-app'>A new meditation app</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 14th, 2014</p>
-  </header>
-
-<p>I had some time on my hands two weekends ago and was feeling a bit of an itch to build something, so I decided to do a project I&#8217;ve had in the back of my head for a while: a meditation timer.</p>
-
-<p>If you&#8217;ve been following this log, you&#8217;d know that <a href="http://wrla.ch/blog/category/meditation/">meditation</a> has been a pretty major interest of mine for the past year. The foundation of my practice is a daily round of seated meditation at home, where I have been attempting to follow the breath and generally try to connect with the world for a set period every day (usually varying between 10 and 30 minutes, depending on how much of a rush I&#8217;m in).</p>
-
-<p>Clock watching is rather distracting while sitting so having a tool to notify you when a certain amount of time has elapsed is quite useful. Writing a smartphone app to do this is an obvious idea, and indeed approximately a zillion of these things have been written for Android and iOS. Unfortunately, most are not very good. Really, I just want something that does this:</p>
-
-<ol>
- <li>Select a meditation length (somewhere between 10 and 40 minutes).</li>
- <li>Sound a bell after a short preparation to demarcate the beginning of meditation.</li>
- <li>While the meditation period is ongoing, do a countdown of the time remaining (not strictly required, but useful for peace of mind in case you&#8217;re wondering whether you&#8217;ve really only sat for 25 minutes).</li>
- <li>Sound a bell when the meditation ends.</li></ol>
-
-<p>Yes, meditation can get more complex than that. In Zen practice, for example, sometimes you have several periods of varying length, broken up with kinhin (walking meditation). However, that mostly happens in the context of a formal setting (e.g. <a href="http://en.wikipedia.org/wiki/Zendo">a Zendo</a>) where you leave your smartphone at the door. Trying to shoehorn all that into an app needlessly complicates what should be simple.</p>
-
-<p>Even worse are the apps which &#8220;chart&#8221; your progress or have other gimmicks to connect you to a virtual &#8220;community&#8221; of meditators. I have to say I find that kind of stuff really turns me off. Meditation should be about connecting with reality in a more fundamental way, not charting gamified statistics or interacting online. We already have way too much of that going on elsewhere in our lives without adding even more to it.</p>
-
-<p>So, you might ask why the alarm feature of most clock apps isn&#8217;t sufficient? Really, it is most of the time. A specialized app can make selecting the interval slightly more convenient and we can preselect an appropriate bell sound up front. It&#8217;s also nice to hear something to demarcate the start of a meditation session. But honestly I didn&#8217;t have much of a reason to write this other than the fact than I could. Outside of work, I&#8217;ve been in a bit of a creative rut lately and felt like I needed to build something, anything and put it out into the world (even if it&#8217;s tiny and only a very incremental improvement over what&#8217;s out there already). So here it is:</p>
-
-<p><a href="/files/2014/08/meditation-timer-screen.png"><img src="/files/2014/08/meditation-timer-screen.png" alt="meditation-timer-screen" width="320" height="483" class="alignnone size-full wp-image-1089" srcset="/files/2014/08/meditation-timer-screen-198x300.png 198w, /files/2014/08/meditation-timer-screen.png 320w" sizes="(max-width: 320px) 100vw, 320px" /></a></p>
-
-<p>The app was written entirely in HTML5 so it should work fine on pretty much any reasonably modern device, desktop or mobile. I tested it on my Nexus 5 (Chrome, Firefox for Android)<sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup>, FirefoxOS Flame, and on my laptop (Chrome, Firefox, Safari). It lives on a <a href="http://meditation.wrla.ch">subdomain of this site</a> or you can <a href="https://marketplace.firefox.com/app/meditation/">grab it from the Firefox Marketplace</a> if you&#8217;re using some variant of Firefox (OS). The source, such as it is, <a href="http://github.com/wlach/meditation">can be found</a> on github.</p>
-
-<p>I should acknowledge taking some design inspiration from the <a href="http://helloform.com/projects/mind/">Mind application</a> for iOS, which has a similarly minimalistic take on things. Check that out too if you have an iPhone or iPad!</p>
-
-<p>Happy meditating!</p>
-
-<p><sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup> Note that there isn&#8217;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock">requestWakeLock</a> API to make sure that doesn&#8217;t happen. I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113">a bug</a> to get this implemented on Firefox for Android.</p>
 
 </article>
 

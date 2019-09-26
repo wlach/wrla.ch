@@ -4,7 +4,19 @@
  <link rel="self" href="https://wlach.github.io/feeds/all.atom.xml" />
  <link href="https://wlach.github.io/index.html" />
  <id>urn:https-wlach-github-io:-index-html</id>
- <updated>2019-09-16T15:29:04Z</updated>
+ <updated>2019-09-26T20:33:54Z</updated>
+ <entry>
+  <title type="text">Metrics Graphics: Stepping back for a while</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2019/09/metrics-graphics-stepping-back-for-a-while?utm_source=all&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2019-09-metrics-graphics-stepping-back-for-a-while</id>
+  <published>2019-09-26T20:33:54Z</published>
+  <updated>2019-09-26T20:33:54Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;Just a note that I&amp;rsquo;ve decided to step back from &lt;a href="https://metricsgraphicsjs.org"&gt;metrics graphics&lt;/a&gt; maintenance for the time being, which means that the project is essentially unowned. This has sort of been the case for a while, but I figured I should probably make it official.&lt;/p&gt;
+
+&lt;p&gt;If you follow the link to the &lt;a href="https://github.com/metricsgraphics/metrics-graphics/"&gt;metrics graphics repository&lt;/a&gt;, you&amp;rsquo;ll note that the version has been bumped to &amp;ldquo;3.0-alpha3&amp;rdquo;. I was &lt;em&gt;this close&lt;/em&gt; to making one last new release this afternoon but decided I didn&amp;rsquo;t want to potentially break existing users who were fine using the last &amp;ldquo;official&amp;rdquo; version (v3.0 bumps the version of d3 used to &amp;ldquo;5&amp;rdquo;, among other breaking changes). I&amp;rsquo;d encourage people who want to continue using the library to make a fork and publish a copy under their user or organization name on npm.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression update: python 3 edition</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2019/09/mozregression-update-python-3-edition?utm_source=all&amp;utm_medium=Atom" />
@@ -794,30 +806,4 @@
 
 &lt;p&gt;&lt;img src="/files/2017/07/mozregressionicon3.png" /&gt;&lt;/p&gt;
 
-&lt;p&gt;One of the nice parts about working at Mozilla is the flexibility it offers to just hack on stuff that&amp;rsquo;s important, whether or not it&amp;rsquo;s part of your formal job description. Maintaining mozregression is pretty far outside my current set of responsibilities (or even interests), but I keep it going because it&amp;rsquo;s a key tool used by developers team here and no one else seems willing to take it over. Fortunately, tools like appveyor and pypi keep the time suckage to a mostly-reasonable level.&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">Taking over an npm package: sanity prevails</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/07/taking-over-an-npm-package-sanity-prevails?utm_source=all&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2017-07-taking-over-an-npm-package-sanity-prevails</id>
-  <published>2017-07-13T15:08:40Z</published>
-  <updated>2017-07-13T15:08:40Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;Sometimes problems are easier to solve than expected.&lt;/p&gt;
-
-&lt;p&gt;For the last few months I&amp;rsquo;ve been working on the front end of a new project called &lt;a href="https://github.com/mozilla/missioncontrol"&gt;Mission Control&lt;/a&gt;, which aims to chart lots of interesting live information in something approximating realtime. Since this is a greenfield project, I thought it would make sense to use the currently-invogue framework at Mozilla (react) along with our standard visualization library, &lt;a href="http://metricsgraphicsjs.org/"&gt;metricsgraphics&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Metricsgraphics is great, but its jquery-esque api is somewhat at odds with the react way. The obvious solution to this problem is to wrap its functionality in a react component, and a quick google search determined that several people have tried to do exactly that, the most popular one being one called (obviously) react-metrics-graphics. Unfortunately, it hadn&amp;rsquo;t been updated in quite some time and some pull requests (including ones implementing features I needed for my project) weren&amp;rsquo;t being responded to.&lt;/p&gt;
-
-&lt;p&gt;I expected this to be pretty difficult to resolve: I had no interaction with the author (Carter Feldman) before but based on my past experiences in free software, I was expecting stonewalling, leaving me no choice but to fork the package and give it a new name, a rather unsatisfying end result.&lt;/p&gt;
-
-&lt;p&gt;But, hey, let&amp;rsquo;s keep an open mind on this. What does google say about unmaintained npm packages? Oh what&amp;rsquo;s this? They actually have a &lt;a href="https://docs.npmjs.com/misc/disputes"&gt;policy&lt;/a&gt;?&lt;/p&gt;
-
-&lt;p&gt;tl;dr: You email the maintainer (politely) and CC support@npmjs.org about your interest in helping maintain the software. If you&amp;rsquo;re unable to come up with a resolution on your own, they will intervene.&lt;/p&gt;
-
-&lt;p&gt;So I tried that. It turns out that Carter was really happy to hear that Mozilla was interested in taking over maintenance of this project, and not only gave me permission to start publishing newer versions to npm, but even transferred his repository over to Mozilla (so we could preserve issue and PR history). The project&amp;rsquo;s new location is here:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://github.com/mozilla/react-metrics-graphics"&gt;https://github.com/mozilla/react-metrics-graphics&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;In hindsight, this is obviously the most reasonable outcome and I&amp;rsquo;m not sure why I was expecting anything else. Is the node community just friendlier than other areas I&amp;rsquo;ve worked in? Have community standards improved generally? In any case, thank you Carter for a great piece of software, hopefully it will thrive in its new home. :P&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;One of the nice parts about working at Mozilla is the flexibility it offers to just hack on stuff that&amp;rsquo;s important, whether or not it&amp;rsquo;s part of your formal job description. Maintaining mozregression is pretty far outside my current set of responsibilities (or even interests), but I keep it going because it&amp;rsquo;s a key tool used by developers team here and no one else seems willing to take it over. Fortunately, tools like appveyor and pypi keep the time suckage to a mostly-reasonable level.&lt;/p&gt;</content></entry></feed>

@@ -209,6 +209,43 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Meditation.html">Meditation</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/zen.html">zen</a></span></p>
+    <h2><a href='/blog/2014/08/a-new-meditation-app'>A new meditation app</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 14th, 2014</p>
+  </header>
+
+<p>I had some time on my hands two weekends ago and was feeling a bit of an itch to build something, so I decided to do a project I&#8217;ve had in the back of my head for a while: a meditation timer.</p>
+
+<p>If you&#8217;ve been following this log, you&#8217;d know that <a href="http://wrla.ch/blog/category/meditation/">meditation</a> has been a pretty major interest of mine for the past year. The foundation of my practice is a daily round of seated meditation at home, where I have been attempting to follow the breath and generally try to connect with the world for a set period every day (usually varying between 10 and 30 minutes, depending on how much of a rush I&#8217;m in).</p>
+
+<p>Clock watching is rather distracting while sitting so having a tool to notify you when a certain amount of time has elapsed is quite useful. Writing a smartphone app to do this is an obvious idea, and indeed approximately a zillion of these things have been written for Android and iOS. Unfortunately, most are not very good. Really, I just want something that does this:</p>
+
+<ol>
+ <li>Select a meditation length (somewhere between 10 and 40 minutes).</li>
+ <li>Sound a bell after a short preparation to demarcate the beginning of meditation.</li>
+ <li>While the meditation period is ongoing, do a countdown of the time remaining (not strictly required, but useful for peace of mind in case you&#8217;re wondering whether you&#8217;ve really only sat for 25 minutes).</li>
+ <li>Sound a bell when the meditation ends.</li></ol>
+
+<p>Yes, meditation can get more complex than that. In Zen practice, for example, sometimes you have several periods of varying length, broken up with kinhin (walking meditation). However, that mostly happens in the context of a formal setting (e.g. <a href="http://en.wikipedia.org/wiki/Zendo">a Zendo</a>) where you leave your smartphone at the door. Trying to shoehorn all that into an app needlessly complicates what should be simple.</p>
+
+<p>Even worse are the apps which &#8220;chart&#8221; your progress or have other gimmicks to connect you to a virtual &#8220;community&#8221; of meditators. I have to say I find that kind of stuff really turns me off. Meditation should be about connecting with reality in a more fundamental way, not charting gamified statistics or interacting online. We already have way too much of that going on elsewhere in our lives without adding even more to it.</p>
+
+<p>So, you might ask why the alarm feature of most clock apps isn&#8217;t sufficient? Really, it is most of the time. A specialized app can make selecting the interval slightly more convenient and we can preselect an appropriate bell sound up front. It&#8217;s also nice to hear something to demarcate the start of a meditation session. But honestly I didn&#8217;t have much of a reason to write this other than the fact than I could. Outside of work, I&#8217;ve been in a bit of a creative rut lately and felt like I needed to build something, anything and put it out into the world (even if it&#8217;s tiny and only a very incremental improvement over what&#8217;s out there already). So here it is:</p>
+
+<p><a href="/files/2014/08/meditation-timer-screen.png"><img src="/files/2014/08/meditation-timer-screen.png" alt="meditation-timer-screen" width="320" height="483" class="alignnone size-full wp-image-1089" srcset="/files/2014/08/meditation-timer-screen-198x300.png 198w, /files/2014/08/meditation-timer-screen.png 320w" sizes="(max-width: 320px) 100vw, 320px" /></a></p>
+
+<p>The app was written entirely in HTML5 so it should work fine on pretty much any reasonably modern device, desktop or mobile. I tested it on my Nexus 5 (Chrome, Firefox for Android)<sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup>, FirefoxOS Flame, and on my laptop (Chrome, Firefox, Safari). It lives on a <a href="http://meditation.wrla.ch">subdomain of this site</a> or you can <a href="https://marketplace.firefox.com/app/meditation/">grab it from the Firefox Marketplace</a> if you&#8217;re using some variant of Firefox (OS). The source, such as it is, <a href="http://github.com/wlach/meditation">can be found</a> on github.</p>
+
+<p>I should acknowledge taking some design inspiration from the <a href="http://helloform.com/projects/mind/">Mind application</a> for iOS, which has a similarly minimalistic take on things. Check that out too if you have an iPhone or iPad!</p>
+
+<p>Happy meditating!</p>
+
+<p><sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup> Note that there isn&#8217;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock">requestWakeLock</a> API to make sure that doesn&#8217;t happen. I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113">a bug</a> to get this implemented on Firefox for Android.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2014/07/measuring-frames-per-second-and-animation-smoothness-with-eideticker'>Measuring frames per second and animation smoothness with Eideticker</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 7th, 2014</p>
@@ -495,56 +532,6 @@
 <p>Previously, it would only use nightlies which meant a one day granularity &#8212; this meant pretty wide regression ranges, made wider in the last year by the fact that so much more is now going into the tree over the course of the day. However, with inbound support (using the new inbound archive) we now have the potential to get a much tighter range, which should be super helpful for developers. Best of all, mozregression doesn&#8217;t require any particularly advanced skills to use which means everyone in the Mozilla community can help out.</p>
 
 <p>For anyone interested, there&#8217;s quite a bit of scope to improve mozregression to make it do more things (FirefoxOS support, easier installation&#8230;). Feel free to check out <a href="http://github.com/mozilla/mozregression">the repository</a>, the <a href="https://github.com/mozilla/mozregression/issues?state=open">issues list</a> (I just added <a href="https://github.com/mozilla/mozregression/issues/76">an easy one</a> which would make a great first bug) and ask questions on irc.mozilla.org#ateam!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker'>Automatically measuring startup / load time with Eideticker</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 17th, 2013</p>
-  </header>
-
-<p>So we&#8217;ve been using Eideticker to automatically measure startup/pageload times for about a year now on Android, and more recently on FirefoxOS as well (albeit not automatically). This gives us nice and pretty graphs like this:</p>
-
-<p><a href="/files/2013/10/flot-startup-times-gn.png"><img src="/files/2013/10/flot-startup-times-gn.png" alt="flot-startup-times-gn" width="620" height="568" class="alignnone size-full wp-image-986" srcset="/files/2013/10/flot-startup-times-gn-300x274.png 300w, /files/2013/10/flot-startup-times-gn.png 620w" sizes="(max-width: 620px) 100vw, 620px" /></a></p>
-
-<p>Ok, so we&#8217;re generating numbers and graphing them. That&#8217;s great. But what&#8217;s really going on behind the scenes? I&#8217;m glad you asked. The story is a bit different depending on which platform you&#8217;re talking about.</p>
-
-<p><strong>Android</strong></p>
-
-<p>On Android we connect Eideticker to the device&#8217;s HDMI out, so we count on a nearly pixel-perfect signal. In practice, it isn&#8217;t quite, but it is within a few RGB values that we can easily filter for. This lets us come up with a pretty good mechanism for determining when a page load or app startup is finished: just compare frames, and say we&#8217;ve &#8220;stopped&#8221; when the pixel differences between frames are negligible (previously defined at 2048 pixels, now 4096 &#8212; see below). Eideticker&#8217;s new frame difference view lets us see how this works. Look at this graph of application startup:</p>
-
-<p><a href="/files/2013/10/frame-difference-android-startup.png"><img src="/files/2013/10/frame-difference-android-startup.png" alt="frame-difference-android-startup" width="803" height="514" class="alignnone size-full wp-image-973" srcset="/files/2013/10/frame-difference-android-startup-300x192.png 300w, /files/2013/10/frame-difference-android-startup.png 803w" sizes="(max-width: 803px) 100vw, 803px" /></a>
- <br /><a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe">[Link to original]</a></p>
-
-<p>What&#8217;s going on here? Well, we see some huge jumps in the beginning. This represents the animated transitions that Android makes as we transition from the SUTAgent application (don&#8217;t ask) to the beginnings of the FirefoxOS browser chrome. You&#8217;ll notice though that there&#8217;s some more changes that come in around the 3 second mark. This is when the site bookmarks are fully loaded. If you load the original page (link above) and swipe your mouse over the graph, you can see what&#8217;s going on for yourself.</p>
-
-<p>This approach is not completely without problems. It turns out that there is sometimes some minor churn in the display even when the app is for all intents and purposes started. For example, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=922770">sometimes the scrollbar fading out of view can result in a significantish pixel value change</a>, so I recently upped the threshold of pixels that are different from 2048 to 4096. We also recently encountered a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=926997">silly problem</a> with a random automation app displaying &#8220;toasts&#8221; which caused results to artificially spike. More tweaking may still be required. However, on the whole I&#8217;m pretty happy with this solution. It gives useful, undeniably objective results whose meaning is easy to understand.</p>
-
-<p><strong>FirefoxOS</strong></p>
-
-<p>So as mentioned previously, we use a camera on FirefoxOS to record output instead of HDMI output. Pretty unsurprisingly, this is much noisier. See this movie of the contacts app starting and note all the random lighting changes, for example:</p>
-
-<div style="width: 409px; " class="wp-video"><!--[if lt IE 9]><![endif]-->
- <video class="wp-video-shortcode" id="video-972-1" width="409" height="580" preload="metadata" controls="controls">
-  <source type="video/webm" src="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm?_=1" /> <a href="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm">/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm</a></video></div>
-
-<p>My experience has been that pixel differences can be so great between visually identical frames on an eideticker capture on these devices that it&#8217;s pretty much impossible to settle on when startup is done using the frame difference method. It&#8217;s of course possible to detect very large scale changes, but the small scale ones (like the contacts actually appearing in the example above) are very hard to distinguish from random differences in the amount of light absorbed by the camera sensor. Tricks like using median filtering (a.k.a. &#8220;blurring&#8221;) help a bit, but not much. Take a look at this graph, for example:</p>
-
-<p><a href="/files/2013/10/plotly-contacts-load-pixeldiff.png"><img src="/files/2013/10/plotly-contacts-load-pixeldiff.png" alt="plotly-contacts-load-pixeldiff" width="531" height="679" class="alignnone size-full wp-image-980" srcset="/files/2013/10/plotly-contacts-load-pixeldiff-234x300.png 234w, /files/2013/10/plotly-contacts-load-pixeldiff.png 531w" sizes="(max-width: 531px) 100vw, 531px" /></a>
- <br /><a href="https://plot.ly/~WilliamLachance/3">[Link to original]</a></p>
-
-<p>You&#8217;ll note that the pixel differences during &#8220;static&#8221; parts of the capture are highly variable. This is because the pixel difference depends heavily on how &#8220;bright&#8221; each frame is: parts of the capture which are black (e.g. a contacts icon with a black background) have a much lower difference between them than parts that are bright (e.g. the contacts screen fully loaded).</p>
-
-<p>After a day or so of experimenting and research, I settled on an approach which seems to work pretty reliably. Instead of comparing the frames directly, I measure the <a href="http://en.wikipedia.org/wiki/Entropy">entropy</a> of the <a href="http://en.wikipedia.org/wiki/Image_histogram">histogram</a> of colours used in each frame (essentially just an indication of brightness in this case, see <a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html">this article</a> for more on calculating it), then compare that of each frame with the average of the same measure over 5 previous frames (to account for the fact that two frames may be arbitrarily different, but that is unlikely that a sequence of frames will be). This seems to work much better than frame difference in this environment: although there are plenty of minute differences in light absorption in a capture from this camera, the overall color composition stays mostly the same. See this graph:</p>
-
-<p><a href="/files/2013/10/plotly-contacts-load-entropy.png"><img src="/files/2013/10/plotly-contacts-load-entropy.png" alt="plotly-contacts-load-entropy" width="546" height="674" class="alignnone size-full wp-image-979" srcset="/files/2013/10/plotly-contacts-load-entropy-243x300.png 243w, /files/2013/10/plotly-contacts-load-entropy.png 546w" sizes="(max-width: 546px) 100vw, 546px" /></a>
- <br /><a href="https://plot.ly/~WilliamLachance/5">[Link to original]</a></p>
-
-<p>If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&#8217;s not nearly as pronounced as before. In practice, I&#8217;ve been able to get extremely consistent numbers with a reasonable &#8220;threshold&#8221; of &#8220;0.05&#8221;.</p>
-
-<p>In Eideticker I&#8217;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &#8220;pixel differences&#8221; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&#8217;t count on light composition changing the same way for those cases. My initial thought was to use <a href="http://en.wikipedia.org/wiki/Edge_detection">edge detection</a> (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.</p>
 
 </article>
 

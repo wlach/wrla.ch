@@ -124,6 +124,7 @@ https://wlach.github.io/blog/2014/06/managing-test-manifests-manifestdestiny-man
 https://wlach.github.io/blog/2009/03/hbus-ca-and-thoughts-about-crowdsourcing
 https://wlach.github.io/blog/2017/12/maintaining-metricsgraphics
 https://wlach.github.io/blog/2013/11/meditative-practice-followup
+https://wlach.github.io/blog/2019/09/metrics-graphics-stepping-back-for-a-while
 https://wlach.github.io/blog/2016/02/albert-low
 https://wlach.github.io/blog/2015/08/more-perfherder-updates
 https://wlach.github.io/blog/2011/10/-8220-developers-can-8217-t-do-ui-8221

@@ -4,7 +4,19 @@
  <link rel="self" href="https://wlach.github.io/feeds/Metrics-Graphics.atom.xml" />
  <link href="https://wlach.github.io/tags/Metrics-Graphics.html" />
  <id>urn:https-wlach-github-io:-tags-Metrics-Graphics-html</id>
- <updated>2018-04-30T15:20:32Z</updated>
+ <updated>2019-09-26T20:33:54Z</updated>
+ <entry>
+  <title type="text">Metrics Graphics: Stepping back for a while</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2019/09/metrics-graphics-stepping-back-for-a-while?utm_source=Metrics-Graphics&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2019-09-metrics-graphics-stepping-back-for-a-while</id>
+  <published>2019-09-26T20:33:54Z</published>
+  <updated>2019-09-26T20:33:54Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;Just a note that I&amp;rsquo;ve decided to step back from &lt;a href="https://metricsgraphicsjs.org"&gt;metrics graphics&lt;/a&gt; maintenance for the time being, which means that the project is essentially unowned. This has sort of been the case for a while, but I figured I should probably make it official.&lt;/p&gt;
+
+&lt;p&gt;If you follow the link to the &lt;a href="https://github.com/metricsgraphics/metrics-graphics/"&gt;metrics graphics repository&lt;/a&gt;, you&amp;rsquo;ll note that the version has been bumped to &amp;ldquo;3.0-alpha3&amp;rdquo;. I was &lt;em&gt;this close&lt;/em&gt; to making one last new release this afternoon but decided I didn&amp;rsquo;t want to potentially break existing users who were fine using the last &amp;ldquo;official&amp;rdquo; version (v3.0 bumps the version of d3 used to &amp;ldquo;5&amp;rdquo;, among other breaking changes). I&amp;rsquo;d encourage people who want to continue using the library to make a fork and publish a copy under their user or organization name on npm.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">metricsgraphics movements</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2018/04/metricsgraphics-movements?utm_source=Metrics-Graphics&amp;utm_medium=Atom" />
