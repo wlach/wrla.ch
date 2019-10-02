@@ -1,14 +1,16 @@
 # About
 
- Hi! My name is William Lachance, though most people just call me "Will".
+Hi! My name is William Lachance, though most people just call me "Will".
 
-I'm a thirtysomething developer of software in Toronto, Ontario, Canada
-currently working for [Mozilla] in the [Engineering Productivity] group.
+I'm an (early, as of this writing) fortysomething developer of software in
+Toronto, Ontario, Canada currently working for [Mozilla] in the [Data Engineering]
+group (formerly in the now-defunct [Engineering Productivity] organization).
 
-I have an interest in machine learning and artificial intelligence, and try to
-find useful ways of applying research in these areas to problems faced by my
-employer. I am currently trying to figure out how to better identify and resolve
-performance regressions in the Firefox family of products.
+I've worked on a bunch of things over the course of my career here (big themes
+have been automation, browser performance, and stability), but a chief
+unifying principle is me trying to help people understand the world around them.
+I try to help people think critically about data and build both backend and
+frontend systems that help them do this.
 
 This blog is mostly work related, but occasionally I talk about other things.
 
@@ -19,14 +21,16 @@ Miscellaneous facts about Will:
 * Mostly vegetarian (sometimes eats mussels and oysters)
 * Often refers to self in third person
 
-Other places you can find me:
+I've closed down most of my traditional social media accounts, but there are
+a few places you can still find me:
 
-* [Twitter]
 * [flickr]
 * [github]
+* [linkedin]
 
 [Mozilla]: https://mozilla.org
+[Data Engineering]: https://wiki.mozilla.org/Telemetry
 [Engineering Productivity]: https://wiki.mozilla.org/EngineeringProductivity
-[Twitter]: https://twitter.com/wlach
 [flickr]: https://flickr.com/wlach
 [github]: https://github.com/wlach
+[linkedin]: https://www.linkedin.com/in/wrlach/
