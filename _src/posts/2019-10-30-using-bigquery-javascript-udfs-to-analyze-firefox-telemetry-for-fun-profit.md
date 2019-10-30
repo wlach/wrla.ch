@@ -7,7 +7,7 @@ systems from AWS to GCP. I've been helping out here and there with this
 effort, most recently porting a job we used to detect slow tab spinners in
 Firefox nightly, which produced a small dataset that feeds a [small adhoc
 dashboard](https://mikeconley.github.io/bug1310250/) which Mike Conley
-Maintains. This was a relatively small task as things go, but it highlighted
+maintains. This was a relatively small task as things go, but it highlighted
 some features and improvements which I think might be broadly interesting, so
 I decided to write up a small blog post about it.
 
@@ -24,9 +24,9 @@ dashboard used to be anything but trivial: while some common business/product
 questions could be answered by a quick query to
 [clients_daily](https://docs.telemetry.mozilla.org/datasets/batch_view/clients_daily/reference.html),
 getting engineering-specific metrics like this usually involved trawling
-through gigabytes of raw heka encoded blobs using a Spark and then extracting
+through gigabytes of raw heka encoded blobs using an Apache Spark cluster and then extracting
 the relevant information out of the telemetry probe histograms (in this case,
-FX_TAB_SWITCH_SPINNER_VISIBLE_MS and FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS)
+`FX_TAB_SWITCH_SPINNER_VISIBLE_MS` and `FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS`)
 contained therein.
 
 The code itself was rather complicated ([take a look, if you
@@ -36,7 +36,7 @@ cluster churning through this script daily, and it took on average about an
 hour and a half to run! I don't have the exact cost figures on hand (and am
 not sure if I'd be authorized to share them if I did), but based on a back of
 the envelope sketch, this one single script was probably costing us somewhere
-on the order of $10-$40 a day.
+on the order of $10-$40 a day (that works out to between $3650-$14600 a year).
 
 With our move to [BigQuery](https://cloud.google.com/bigquery/), things get a
 lot simpler! Thanks to the combined effort of my team and data operations[1],
