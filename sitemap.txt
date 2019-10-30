@@ -95,6 +95,7 @@ https://wlach.github.io/blog/2014/06/end-of-q2-eideticker-update-flame-tests-fut
 https://wlach.github.io/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last
 https://wlach.github.io/blog/2010/11/back-to-wordperfect-libwpd-0-9-0
 https://wlach.github.io/blog/2015/04/pycon-2015
+https://wlach.github.io/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit
 https://wlach.github.io/blog/2011/11/measuring-what-the-user-sees
 https://wlach.github.io/blog/2016/02/talos-suites-now-visible-from-trychooser
 https://wlach.github.io/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos

@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 10)</title>
     <meta name="description" content="William Lachance's Log (page 10)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Coffee, Counting, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Bikes, Statistics, Montreal, Community, Life, GNOME, Music, Orangutan, Cats, mozregression, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Iodide, Data, Polling, Android, ateam">
+    <meta name="keywords"    content="Pandaboard, Coffee, Counting, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Bikes, Statistics, Montreal, Community, Life, GNOME, Music, Orangutan, Cats, mozregression, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Iodide, Data, Polling, Android, ateam, Telemetry">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-10.html">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -208,6 +210,50 @@
 
 
           <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2012/05/launching-random-web-browsers-on-android'>Launching random web browsers on Android</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 4th, 2012</p>
+  </header>
+
+<p>Ok, this is somewhat mundane, but I&#8217;ve already had to do it twice (and helped someone do something similar on #mobile), so I figured I might as well blog about it for posterity.</p>
+
+<p>For various automation tasks (notably the <a href="http://wrla.ch/eideticker/dashboard/">Eideticker dashboard</a> and the <a href="http://mrcote.info/phonedash/#/rawfennecstartup">cross-browser startup tests</a>), we need to be able to launch an Android browser on the command line (via adb shell or our own custom SUTAgent). This is a bit of a black art, but you can find references on how to do this on stackoverflow and other places. The magic incantation is:</p>
+
+<pre><code>am start -a android.intent.action.VIEW -n &amp;lt;application/intent&amp;gt; -d &amp;lt;url&amp;gt;</code></pre>
+
+<p>So, for example, to launch Fennec, you&#8217;d run this on the Android command prompt:</p>
+
+<pre><code>am start -a android.intent.action.VIEW -n org.mozilla.fennec/.App -d http://mygreatsite.info</code></pre>
+
+<p>Ok, easy enough, but what if we want to launch a new browser that we just downloaded (e.g. Google Chrome)? Where do we get the application and intent names?</p>
+
+<p>The short answer is that you need to reach into the apk and dig. 😉 There&#8217;s probably many ways of doing this, but here&#8217;s what I do (which has the distinct advantage of not needing to compile, download or run weird java applications):</p>
+
+<ol>
+ <li>
+  <p>Copy the apk onto your machine (the apk should be in /data/app: if you have a rooted phone, you should be able to copy that off to your machine).</p></li>
+ <li>
+  <p>Extract <em>AndroidManifest.xml</em> from the apk (it&#8217;s just a .zip) and run <a href="http://android-random.googlecode.com/svn/trunk/axml2xml/axml2xml.pl">axml2xml.pl</a> on it.</p></li>
+ <li>
+  <p>Examine the resultant xml file and look for the <strong></strong> tag. It should have a property called <strong></strong> which is the package name. For example:</p></li></ol>
+
+<p>We can see pretty clearly that the application name in this case is <strong>com.android.chrome</strong> (you can also get this by running ps when using the application)</p>
+
+<ol>
+ <li>Finally, look for a tag called <strong></strong> with an <strong></strong> tag with <strong></strong> as the <strong>android-name</strong> property. Scan up for the overarching <strong>activity</strong> tag, whose <strong>android-name</strong> property. This is the activity name. For example:</li></ol>
+
+<p>Likewise here we see that the activity name we want is <strong>.Main</strong> (which Android explicitly expands out to <strong>com.android.chrome.Main</strong>)</p>
+
+<p>Armed with this information, you should now have enough information to launch the application. Furthering the example above, here&#8217;s how to start Chrome on Android via adb&#8217;s shell:</p>
+
+<pre><code>am start -a android.intent.action.VIEW -n com.android.chrome/.Main -d http://mygreatsite.info</code></pre>
+
+<p>Hope this helps someone, somewhere.</p>
+
+</article>
+
+<article>
   <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2012/04/eideticker-with-less-eideticker'>Eideticker with less eideticker</a></h2>
@@ -464,25 +510,6 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 <p>(by the way, this performance regression is filed as <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447">bug 719447</a>)</p>
 
 <p>I know there&#8217;s lots of great effort going into improving this situation, so I have hope that we&#8217;ll be doing much better on this metric in the coming days/weeks. The process for creating these videos/analyses is mostly automated at this point, so my plan is to create a small dashboard (ala <a href="http://arewefastyet.com">arewefastyet.com</a>) to measure these numbers over time on the latest nightlies. Stay tuned!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2012/01/measuring-reduced-checkerboarding-in-mobile-fennec'>Measuring reduced checkerboarding in mobile Fennec</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 3rd, 2012</p>
-  </header>
-
-<p>After my <a href="http://wrla.ch/blog/2011/12/year-end-eideticker-update/">post</a> on measuring checkerboarding in mobile Firefox, <a href="http://cmtalbert.wordpress.com/">Clint Talbert</a> (my fearless manager) suggested I run a before and after test to measure the improvement that just landed as part of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=709152">bug 709512</a>. After a bit of cleanup, I did so, measuring the delta between my build on December 20th and the latest version of Aurora. The difference is pretty remarkable: at least on the LG G2X that I&#8217;ve been using for testing, we&#8217;ve gone from checkerboarding between 10&ndash;20% of the time and not checkerboarding almost at all (in between two runs of the test with the Aurora build, there is exactly one frame that checkerboards). All credit to <a href="http://chrislord.net/blog">Chris Lord</a> for that!</p>
-
-<p>See the video evidence for yourself. Before:</p>
-
-<video src="/files/eideticker/lotsocheckerboarding.webm" width="600px" controls="controls"></video>
-
-<p>After:</p>
-
-<video src="/files/eideticker/almostnocheckerboarding.webm" width="600px" controls="controls"></video>
 
 </article>
 
