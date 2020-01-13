@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Montreal, Mozilla, Python">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more">
-    <link rel="next" href="/blog/2014/03/upcoming-travels-to-japan-and-taiwan">
-    <link rel="prev" href="/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla">
+    <link rel="canonical" href="https://wlach.github.io/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/">
+    <link rel="next" href="/blog/2014/03/upcoming-travels-to-japan-and-taiwan/">
+    <link rel="prev" href="/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -244,23 +246,34 @@
  <li><a href="http://pyvideo.org/video/2658/analyzing-rap-lyrics-with-python">Analyzing Rap Lyrics with Python</a> &#8211; Another data analysis talk, this one about a subject I knew almost nothing about. The best part of it (for me anyway) was learning how the speaker (Julie Lavoie) narrowed her focus in her research to the exact aspects of the problem that would let her answer the question she was interested in (&#8220;Can we automatically find out which rap lyrics are the most sexist?&#8221;) as opposed to interesting problems (&#8220;how can I design the most general scraping library possible?&#8221;) that don&#8217;t answer the question. In my opinion, this ability to focus is one of the key things that seperates successful projects from unsuccessful ones.</li></ul>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla">&larr; <em>mozregression: New maintainer, issues tracked in bugzilla</em></a>
+      <a href="/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/">&larr; <em>mozregression: New maintainer, issues tracked in bugzilla</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2014/03/upcoming-travels-to-japan-and-taiwan"><em>Upcoming travels to Japan and Taiwan</em> &rarr;</a>
+      <a href="/blog/2014/03/upcoming-travels-to-japan-and-taiwan/"><em>Upcoming travels to Japan and Taiwan</em> &rarr;</a>
     </li>
     </ul>
   </footer>

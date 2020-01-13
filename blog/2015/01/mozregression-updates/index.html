@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Mozilla, mozregression">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2015/01/mozregression-updates">
-    <link rel="next" href="/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf">
-    <link rel="prev" href="/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder">
+    <link rel="canonical" href="https://wlach.github.io/blog/2015/01/mozregression-updates/">
+    <link rel="next" href="/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf/">
+    <link rel="prev" href="/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -229,23 +231,34 @@
 <p>Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&#8217;s just that much more useful to Firefox contributors everywhere.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder">&larr; <em>Measuring e10s vs. non-e10s performance with Perfherder</em></a>
+      <a href="/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/">&larr; <em>Measuring e10s vs. non-e10s performance with Perfherder</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf"><em>Ebola mini-campaign successful: $6212 for MSF</em> &rarr;</a>
+      <a href="/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf/"><em>Ebola mini-campaign successful: $6212 for MSF</em> &rarr;</a>
     </li>
     </ul>
   </footer>

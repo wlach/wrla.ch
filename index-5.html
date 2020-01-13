@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 5)</title>
     <meta name="description" content="William Lachance's Log (page 5)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Coffee, Counting, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Bikes, Statistics, Montreal, Community, Life, GNOME, Music, Orangutan, Cats, mozregression, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Iodide, Data, Polling, Android, ateam, Telemetry">
+    <meta name="keywords"    content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, Community, Iodide, Life, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-5.html">
@@ -211,8 +211,55 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Community.html">Community</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
+    <h2><a href='/blog/2015/09/perfherder-summer-of-contribution-thoughts/'>Perfherder summer of contribution thoughts</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 29th, 2015</p>
+  </header>
+
+<p>A few months ago, Joel Maher <a href="https://elvis314.wordpress.com/2015/05/18/a-team-contribution-opportunity-dashboard-hacker/">announced the Perfherder summer of contribution</a>. We wrapped things up there a few weeks ago, so I guess it&#8217;s about time I wrote up a bit about how things went.</p>
+
+<p>As a reminder, the idea of summer of contribution was to give a set of contributors the opportunity to make a substantial contribution to a project we were working on (in this case, the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a> performance sheriffing system). We would ask that they sign up to do 5&ndash;10 hours of work a week for at least 8 weeks. In return, Joel and myself would make ourselves available as mentors to answer questions about the project whenever they ran into trouble.</p>
+
+<p>To get things rolling, I split off a bunch of work that we felt would be reasonable to do by a contributor into bugs of varying difficulty levels (assigning them the bugzilla whiteboard tag <a href="https://bugzilla.mozilla.org/buglist.cgi?keywords=%20ateam-summer-of-contribution&amp;#038;keywords_type=allwords&amp;#038;list_id=12578272&amp;#038;resolution=---&amp;#038;resolution=FIXED&amp;#038;resolution=INVALID&amp;#038;resolution=WONTFIX&amp;#038;resolution=DUPLICATE&amp;#038;resolution=WORKSFORME&amp;#038;resolution=INCOMPLETE&amp;#038;resolution=SUPPORT&amp;#038;resolution=EXPIRED&amp;#038;resolution=MOVED&amp;#038;query_format=advanced&amp;#038;bug_status=UNCONFIRMED&amp;#038;bug_status=NEW&amp;#038;bug_status=ASSIGNED&amp;#038;bug_status=REOPENED&amp;#038;bug_status=RESOLVED&amp;#038;bug_status=VERIFIED&amp;#038;bug_status=CLOSED">ateam-summer-of-contribution</a>). When someone first expressed interest in working on the project, I&#8217;d assign them a relatively easy front end one, just to cover the basics of working with the project (checking out code, making a change, submitting a PR to github). If they made it through that, I&#8217;d go on to assign them slightly harder or more complex tasks which dealt with other parts of the codebase, the nature of which depended on what they wanted to learn more about. Perfherder essentially has two components: a data storage and analysis backend written in Python and Django, and a web-based frontend written in JS and Angular. There was (still is) lots to do on both, which gave contributors lots of choice.</p>
+
+<p>This system worked pretty well for attracting people. I think we got at least 5 people interested and contributing useful patches within the first couple of weeks. In general I think onboarding went well. Having good documentation for Perfherder / Treeherder on the wiki certainly helped. We had lots of the usual problems getting people familiar with git and submitting proper pull requests: we use a somewhat clumsy combination of bugzilla and github to manage treeherder issues (we &#8220;attach&#8221; PRs to bugs as plaintext), which can be a bit offputting to newcomers. But once they got past these issues, things went relatively smoothly.</p>
+
+<p>A few weeks in, I set up a fortnightly skype call for people to join and update status and ask questions. This proved to be quite useful: it let me and Joel articulate the higher-level vision for the project to people (which can be difficult to summarize in text) but more importantly it was also a great opportunity for people to ask questions and raise concerns about the project in a free-form, high-bandwidth environment. In general I&#8217;m not a big fan of meetings (especially status report meetings) but I think these were pretty useful. Being able to hear someone else&#8217;s voice definitely goes a long way to establishing trust that you just can&#8217;t get in the same way over email and irc.</p>
+
+<p>I think our biggest challenge was retention. Due to (understandable) time commitments and constraints only one person (Mike Ling) was really able to stick with it until the end. Still, I&#8217;m pretty happy with that success rate: if you stop and think about it, even a 10-hour a week time investment is a fair bit to ask. Some of the people who didn&#8217;t quite make it were quite awesome, I hope they come back some day.</p>
+
+<p>&#8212;</p>
+
+<p>On that note, a special thanks to Mike Ling for sticking with us this long (he&#8217;s still around and doing useful things long after the program ended). He&#8217;s done <a href="https://github.com/mozilla/treeherder/commits/master?author=MikeLing">some really fantastic work</a> inside Perfherder and the project is much better for it. I think my two favorite features that he wrote up are the improved test chooser which I talked about a few months ago and a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1134780">get related platform / branch</a> feature which is a big time saver when trying to determine when a performance regression was first introduced.</p>
+
+<p>I took the time to do a short email interview with him last week. Here&#8217;s what he had to say:</p>
+
+<ol>
+ <li>Tell us a little bit about yourself. Where do you live? What is it you do when not contributing to Perfherder?</li></ol>
+
+<p><em>I&#8217;m a postgraduate student of NanChang HangKong university in China whose major is Internet of things. Actually,there are a lot of things I would like to do when I am AFK, play basketball, video game, reading books and listening music, just name it ; )</em></p>
+
+<ol>
+ <li>How did you find out about the ateam summer of contribution program?</li></ol>
+
+<p><em>well, I remember when I still a new comer of treeherder, I totally don&#8217;t know how to start my contribution. So, I just go to treeherder irc and ask for advice. As I recall, emorley and jfrench talk with me and give me a lot of hits. Then Will (wlach) send me an Email about ateam summer of contribution and perfherder. He told me it&#8217;s a good opportunity to learn more about treeherder and how to work like a team! I almost jump out of bed (I receive that email just before get asleep) and reply with YES. Thank you Will!</em></p>
+
+<ol>
+ <li>What did you find most challenging in the summer of contribution?</li></ol>
+
+<p><em>I think the most challenging thing is I not only need to know how to code but also need to know how treeherder actually work. It&#8217;s a awesome project and there are a ton of things I haven&#8217;t heard before (i.e T-test, regression). So I still have a long way to go before I familiar with it.</em></p>
+
+<ol>
+ <li>What advice would give you to future ateam contributors?</li></ol>
+
+<p><em>The only thing you need to do is bring your question to irc and ask. Do not hesitate to ask for help if you need it! All the people in here are nice and willing to help. Enjoy it!</em></p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/08/more-perfherder-updates'>More Perfherder updates</a></h2>
+    <h2><a href='/blog/2015/08/more-perfherder-updates/'>More Perfherder updates</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 7th, 2015</p>
   </header>
 
@@ -300,7 +347,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/07/perfherder-update'>Perfherder update</a></h2>
+    <h2><a href='/blog/2015/07/perfherder-update/'>Perfherder update</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 14th, 2015</p>
   </header>
 
@@ -344,7 +391,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a></span></p>
-    <h2><a href='/blog/2015/04/a-virtual-petri-dish'>A virtual petri dish</a></h2>
+    <h2><a href='/blog/2015/04/a-virtual-petri-dish/'>A virtual petri dish</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 25th, 2015</p>
   </header>
 
@@ -371,7 +418,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Python.html">Python</a></span></p>
-    <h2><a href='/blog/2015/04/pycon-2015'>PyCon 2015</a></h2>
+    <h2><a href='/blog/2015/04/pycon-2015/'>PyCon 2015</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 23rd, 2015</p>
   </header>
 
@@ -399,7 +446,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/03/perfherder-update-summary-series-drilldown'>Perfherder update: Summary series drilldown</a></h2>
+    <h2><a href='/blog/2015/03/perfherder-update-summary-series-drilldown/'>Perfherder update: Summary series drilldown</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 27th, 2015</p>
   </header>
 
@@ -426,7 +473,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder'>Measuring e10s vs. non-e10s performance with Perfherder</a></h2>
+    <h2><a href='/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/'>Measuring e10s vs. non-e10s performance with Perfherder</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 18th, 2015</p>
   </header>
 
@@ -446,7 +493,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
-    <h2><a href='/blog/2015/01/mozregression-updates'>mozregression updates</a></h2>
+    <h2><a href='/blog/2015/01/mozregression-updates/'>mozregression updates</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 27th, 2015</p>
   </header>
 
@@ -469,7 +516,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Ebola.html">Ebola</a>, <a href="/tags/MSF.html">MSF</a></span></p>
-    <h2><a href='/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf'>Ebola mini-campaign successful: $6212 for MSF</a></h2>
+    <h2><a href='/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf/'>Ebola mini-campaign successful: $6212 for MSF</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 20th, 2014</p>
   </header>
 
@@ -488,7 +535,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Ebola.html">Ebola</a>, <a href="/tags/MSF.html">MSF</a></span></p>
-    <h2><a href='/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe'>Doing something about Ebola before it becomes a catostrophe</a></h2>
+    <h2><a href='/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe/'>Doing something about Ebola before it becomes a catostrophe</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 12th, 2014</p>
   </header>
 
@@ -506,47 +553,25 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 </article>
 
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Web.html">Web</a></span></p>
-    <h2><a href='/blog/2014/09/using-flexbox-in-web-applications'>Using Flexbox in web applications</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 29th, 2014</p>
-  </header>
-
-<p>Over last few months, I discovered the joy that is CSS Flexbox, which solves the &#8220;how do I lay out this set of div&#8217;s in horizontally or vertically&#8221;. I&#8217;ve used it in three projects so far:</p>
-
-<ul>
- <li>Centering the timer interface in my <a href="http://wrla.ch/blog/2014/08/a-new-meditation-app/">meditation app</a>, so that it scales nicely from a 320&#215;480 FirefoxOS device all the way up to a high definition monitor</li>
- <li>Laying out the chart / sidebar elements in the <a href="http://eideticker.mozilla.org">Eideticker dashboard</a> so that maximum horizontal space is used</li>
- <li>Fixing various problems in the <a href="http://treeherder.mozilla.org">Treeherder UI</a> on smaller screens (see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1043474">bug 1043474</a> and its dependent bugs)</li></ul>
-
-<p>When I talk to people about their troubles with CSS, layout comes up really high on the list. Historically, basic layout problems like a panel of vertical buttons have been ridiculously difficult, involving hacks involving floating divs and absolute positioning or <a href="http://layout.jquery-dev.com/">JavaScript layout libraries</a>. This is why people write articles entitled <a href="http://uxmag.com/articles/give-and-use-tables">&#8220;Give up and use tables&#8221;</a>.</p>
-
-<p>Flexbox has pretty much put an end to these problems for me. There&#8217;s no longer any need to &#8220;give up and use tables&#8221; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&#8217;re so great. I think we&#8217;re pretty close to Flexbox being supported across all the major browsers, so it&#8217;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.</p>
-
-<p>To try and spread the word, I wrote up <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications">a howto article on using flexbox for web applications on MDN</a>, covering some of the common use cases I mention above. If you&#8217;ve been curious about flexbox but unsure how to use it, please have a look.</p>
-
-</article>
-
 <footer>
  <ul class="pagination">
-  <li><a href="/index-4.html">
+  <li class="page-item"><a class="page-link" href="/index-4.html">
     <quote>&larr;</quote></a></li>
-  <li><a href="/index.html">1</a></li>
-  <li><a href="/index-2.html">2</a></li>
-  <li><a href="/index-3.html">3</a></li>
-  <li><a href="/index-4.html">4</a></li>
-  <li class="active"><a href="/index-5.html">5</a></li>
-  <li><a href="/index-6.html">6</a></li>
-  <li><a href="/index-7.html">7</a></li>
-  <li><a href="/index-8.html">8</a></li>
-  <li><a href="/index-9.html">9</a></li>
-  <li><a href="/index-10.html">10</a></li>
-  <li><a href="/index-11.html">11</a></li>
-  <li><a href="/index-12.html">12</a></li>
-  <li><a href="/index-13.html">13</a></li>
-  <li><a href="/index-14.html">14</a></li>
-  <li><a href="/index-6.html">
+  <li class="page-item"><a class="page-link" href="/index.html">1</a></li>
+  <li class="page-item"><a class="page-link" href="/index-2.html">2</a></li>
+  <li class="page-item"><a class="page-link" href="/index-3.html">3</a></li>
+  <li class="page-item"><a class="page-link" href="/index-4.html">4</a></li>
+  <li class="page-item active"><a class="page-link" href="/index-5.html">5</a></li>
+  <li class="page-item"><a class="page-link" href="/index-6.html">6</a></li>
+  <li class="page-item"><a class="page-link" href="/index-7.html">7</a></li>
+  <li class="page-item"><a class="page-link" href="/index-8.html">8</a></li>
+  <li class="page-item"><a class="page-link" href="/index-9.html">9</a></li>
+  <li class="page-item"><a class="page-link" href="/index-10.html">10</a></li>
+  <li class="page-item"><a class="page-link" href="/index-11.html">11</a></li>
+  <li class="page-item"><a class="page-link" href="/index-12.html">12</a></li>
+  <li class="page-item"><a class="page-link" href="/index-13.html">13</a></li>
+  <li class="page-item"><a class="page-link" href="/index-14.html">14</a></li>
+  <li class="page-item"><a class="page-link" href="/index-6.html">
     <quote>&rarr;</quote></a></li></ul></footer>
         </div>
       </div>

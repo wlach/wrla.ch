@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Free Software">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2010/11/back-to-wordperfect-libwpd-0-9-0">
-    <link rel="next" href="/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up">
-    <link rel="prev" href="/blog/2010/11/ginger-tea-and-channa-masala">
+    <link rel="canonical" href="https://wlach.github.io/blog/2010/11/back-to-wordperfect-libwpd-0-9-0/">
+    <link rel="next" href="/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up/">
+    <link rel="prev" href="/blog/2010/11/ginger-tea-and-channa-masala/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -247,23 +249,34 @@
 <p>Integration with OpenOffice.org is another story. Without going into great amount of detail on the situation (see <a href="http://arstechnica.com/open-source/news/2010/09/document-foundation-forks-openofficeorg-to-liberate-it-from-oracle.ars">this article</a> on Ars Technica for the gory details if you&#8217;re really interested), it&#8217;s quite unlikely that OpenOffice.org WordPerfect support will advance unless (1) someone volunteers to do it and (2) Oracle drops their copyright assignment policy. The chances of these things happening seem rather low to me. My personal recommendation would be to switch to <a href="http://libreoffice.org">LibreOffice</a> as soon as the first production version is released. I expect it to rapidly overtake OpenOffice.org in functionality due to its more open participation model.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2010/11/ginger-tea-and-channa-masala">&larr; <em>Ginger Tea and Channa Masala</em></a>
+      <a href="/blog/2010/11/ginger-tea-and-channa-masala/">&larr; <em>Ginger Tea and Channa Masala</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up"><em>Google Transit Halifax is down (but hbus and Transit to Go are still up)</em> &rarr;</a>
+      <a href="/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up/"><em>Google Transit Halifax is down (but hbus and Transit to Go are still up)</em> &rarr;</a>
     </li>
     </ul>
   </footer>

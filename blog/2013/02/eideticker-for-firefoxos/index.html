@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Eideticker, FirefoxOS, Mozilla">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2013/02/eideticker-for-firefoxos">
-    <link rel="next" href="/blog/2012/10/using-the-dm-utility-to-interact-with-android-or-firefoxos-devices">
-    <link rel="prev" href="/blog/2013/02/finding-a-camera-for-eideticker">
+    <link rel="canonical" href="https://wlach.github.io/blog/2013/02/eideticker-for-firefoxos/">
+    <link rel="next" href="/blog/2012/10/using-the-dm-utility-to-interact-with-android-or-firefoxos-devices/">
+    <link rel="prev" href="/blog/2013/02/finding-a-camera-for-eideticker/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -254,23 +256,34 @@
 <p>So, the real question is whether or not the capture produced by the Elmo is amenable to the same analysis that we do on the raw HDMI output. At the very least, some of eideticker&#8217;s image analysis code will have to be adapted to handle a much &#8220;noisier&#8221; capture. As opposed to capturing the raw HDMI signal, we now have to deal with the real world and its irritating fluctuations in ambient light levels and all that the rest. I have no doubt it is *possible* to compensate for this (after all this is what the human eye/brain does all the time), but the question is how much work it will be. Can&#8217;t speak for anyone else at Mozilla, but I&#8217;m not sure if I really have the time to start a Ph.D-level research project in computational vision. 😉 I&#8217;m optimistic that won&#8217;t be necessary, but we&#8217;ll just have to wait and see.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2013/02/finding-a-camera-for-eideticker">&larr; <em>Finding a camera for Eideticker</em></a>
+      <a href="/blog/2013/02/finding-a-camera-for-eideticker/">&larr; <em>Finding a camera for Eideticker</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2012/10/using-the-dm-utility-to-interact-with-android-or-firefoxos-devices"><em>Using the dm utility to interact with Android or FirefoxOS devices</em> &rarr;</a>
+      <a href="/blog/2012/10/using-the-dm-utility-to-interact-with-android-or-firefoxos-devices/"><em>Using the dm utility to interact with Android or FirefoxOS devices</em> &rarr;</a>
     </li>
     </ul>
   </footer>

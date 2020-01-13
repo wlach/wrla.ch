@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Business, Usability">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2011/11/hellofax-rocks-my-world">
-    <link rel="next" href="/blog/2011/11/measuring-what-the-user-sees">
-    <link rel="prev" href="/blog/2011/11/a-planet-to-call-our-own">
+    <link rel="canonical" href="https://wlach.github.io/blog/2011/11/hellofax-rocks-my-world/">
+    <link rel="next" href="/blog/2011/11/measuring-what-the-user-sees/">
+    <link rel="prev" href="/blog/2011/11/a-planet-to-call-our-own/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -219,23 +221,34 @@
 <p>I really despise faxes, but occasionally I do have to send them in the course of some of the admin work I still do on the side for my old consulting company (address changes, etc.). If you&#8217;re in a similar boat, you really owe it to yourself to check out <a href="http://hellofax.com">hellofax.com</a>. It&#8217;s about three gazillion times better than any other similar service that I&#8217;ve tried (which were all embarassingly bad: I&#8217;d sooner just go to a copy shop) and has saved me hours and hours of time and frustration.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2011/11/a-planet-to-call-our-own">&larr; <em>A planet to call our own</em></a>
+      <a href="/blog/2011/11/a-planet-to-call-our-own/">&larr; <em>A planet to call our own</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2011/11/measuring-what-the-user-sees"><em>Measuring what the user sees</em> &rarr;</a>
+      <a href="/blog/2011/11/measuring-what-the-user-sees/"><em>Measuring what the user sees</em> &rarr;</a>
     </li>
     </ul>
   </footer>

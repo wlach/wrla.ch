@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Mozilla, Web">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2014/09/using-flexbox-in-web-applications">
-    <link rel="next" href="/blog/2014/09/mozregression-0-24">
-    <link rel="prev" href="/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe">
+    <link rel="canonical" href="https://wlach.github.io/blog/2014/09/using-flexbox-in-web-applications/">
+    <link rel="next" href="/blog/2014/09/mozregression-0-24/">
+    <link rel="prev" href="/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -228,23 +230,34 @@
 <p>To try and spread the word, I wrote up <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications">a howto article on using flexbox for web applications on MDN</a>, covering some of the common use cases I mention above. If you&#8217;ve been curious about flexbox but unsure how to use it, please have a look.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe">&larr; <em>Doing something about Ebola before it becomes a catostrophe</em></a>
+      <a href="/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe/">&larr; <em>Doing something about Ebola before it becomes a catostrophe</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2014/09/mozregression-0-24"><em>mozregression 0.24</em> &rarr;</a>
+      <a href="/blog/2014/09/mozregression-0-24/"><em>mozregression 0.24</em> &rarr;</a>
     </li>
     </ul>
   </footer>

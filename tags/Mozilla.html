@@ -212,7 +212,28 @@
           <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Telemetry.html">Telemetry</a></span></p>
-    <h2><a href='/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit'>Using BigQuery JavaScript UDFs to analyze Firefox telemetry for fun &amp; profit</a></h2>
+    <h2><a href='/blog/2020/01/conda-is-pretty-great/'>Conda is pretty great</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 13th, 2020</p>
+  </header>
+
+<p>Lately the data engineering team has been looking into productionizing (i.e. running in Airflow) a bunch of models that the data science team has been producing. This often involves languages and environments that are a bit outside of our comfort zone &mdash; for example, <a href="https://github.com/mozilla/missioncontrol-v2">the next version of Mission Control</a> relies on the <a href="https://mc-stan.org/users/interfaces/rstan">R-stan library</a> to produce a model of expected crash behaviour as Firefox is released.</p>
+
+<p>To make things as simple and deterministic as possible, we&rsquo;ve been building up Docker containers to run/execute this code along with their dependencies, which makes things nice and reproducible. My initial thought was to use just the language-native toolchains to build up my container for the above project, but quickly found a number of problems:</p>
+
+<ol>
+ <li>For local testing, Docker on Mac is <em>slow</em>: when doing a large number of statistical calculations (as above), you can count on your testing iterations taking 3 to 4 (or more) times longer.</li>
+ <li>On initial setup, the default R packaging strategy is to have the user of a package like R-stan recompile from source. This can take <em>forever</em> if you have a long list of dependencies with C-compiled extensions (pretty much a given if you&rsquo;re working in the data space): rebuilding my initial docker environment for missioncontrol-v2 took almost an hour. This isn&rsquo;t just a problem for local development: it also makes continuous integration using a service like Circle or Travis expensive and painful.</li></ol>
+
+<p>I had been vaguely aware of <a href="https://docs.conda.io/en/latest/">Conda</a> for a few years, but didn&rsquo;t really understand its value proposition until I started working on the above project: why bother with a heavyweight package manager when you already have Docker to virtualize things? The answer is that it solves both of the above problems: for local development, you can get something more-or-less identical to what you&rsquo;re running inside Docker with no performance penalty whatsoever. And for building the docker container itself, Conda&rsquo;s package repository contains pre-compiled versions of all the dependencies you&rsquo;d want to use for something like this (even somewhat esoteric libraries like R-stan are available on <a href="https://conda-forge.org/">conda-forge</a>), which brought my build cycle times down to less than 5 minutes.</p>
+
+<p>tl;dr: If you have a bunch of R / python code you want to run in a reproducible manner, consider Conda.</p>
+
+</article>
+
+<article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Telemetry.html">Telemetry</a></span></p>
+    <h2><a href='/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit/'>Using BigQuery JavaScript UDFs to analyze Firefox telemetry for fun &amp; profit</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 30th, 2019</p>
   </header>
 
@@ -285,7 +306,7 @@ group by build_id, client_id) group by build_id;</code></pre>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Metrics-Graphics.html">Metrics Graphics</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2019/09/metrics-graphics-stepping-back-for-a-while'>Metrics Graphics: Stepping back for a while</a></h2>
+    <h2><a href='/blog/2019/09/metrics-graphics-stepping-back-for-a-while/'>Metrics Graphics: Stepping back for a while</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 26th, 2019</p>
   </header>
 
@@ -298,7 +319,7 @@ group by build_id, client_id) group by build_id;</code></pre>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
-    <h2><a href='/blog/2019/09/mozregression-update-python-3-edition'>mozregression update: python 3 edition</a></h2>
+    <h2><a href='/blog/2019/09/mozregression-update-python-3-edition/'>mozregression update: python 3 edition</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 16th, 2019</p>
   </header>
 
@@ -334,7 +355,7 @@ group by build_id, client_id) group by build_id;</code></pre>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2019/09/time-for-some-project-updates'>Time for some project updates</a></h2>
+    <h2><a href='/blog/2019/09/time-for-some-project-updates/'>Time for some project updates</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 16th, 2019</p>
   </header>
 
@@ -347,7 +368,7 @@ group by build_id, client_id) group by build_id;</code></pre>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Iodide.html">Iodide</a></span></p>
-    <h2><a href='/blog/2019/03/new-ideas-old-buildings'>New ideas, old buildings</a></h2>
+    <h2><a href='/blog/2019/03/new-ideas-old-buildings/'>New ideas, old buildings</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 22nd, 2019</p>
   </header>
 
@@ -373,7 +394,7 @@ group by build_id, client_id) group by build_id;</code></pre>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Community.html">Community</a></span></p>
-    <h2><a href='/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects'>Making contribution work for Firefox tooling and data projects</a></h2>
+    <h2><a href='/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/'>Making contribution work for Firefox tooling and data projects</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 26th, 2018</p>
   </header>
 
@@ -410,7 +431,7 @@ group by build_id, client_id) group by build_id;</code></pre>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2018/06/mission-control-1-0'>Mission Control 1.0</a></h2>
+    <h2><a href='/blog/2018/06/mission-control-1-0/'>Mission Control 1.0</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 5th, 2018</p>
   </header>
 
@@ -439,7 +460,7 @@ group by build_id, client_id) group by build_id;</code></pre>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Metrics-Graphics.html">Metrics Graphics</a></span></p>
-    <h2><a href='/blog/2018/04/metricsgraphics-movements'>metricsgraphics movements</a></h2>
+    <h2><a href='/blog/2018/04/metricsgraphics-movements/'>metricsgraphics movements</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 30th, 2018</p>
   </header>
 
@@ -456,7 +477,7 @@ group by build_id, client_id) group by build_id;</code></pre>
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2018/04/mission-control-update'>Mission Control update</a></h2>
+    <h2><a href='/blog/2018/04/mission-control-update/'>Mission Control update</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 6th, 2018</p>
   </header>
 
@@ -486,49 +507,20 @@ group by build_id, client_id) group by build_id;</code></pre>
 
 </article>
 
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2018/02/derived-versus-direct'>Derived versus direct</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 12th, 2018</p>
-  </header>
-
-<p>To attempt to make complex phenomena more understandable, we often use derived measures when representing Telemetry data at Mozilla. For error rates for example, we often measure things in terms of &ldquo;X per khours of use&rdquo; (where X might be &ldquo;main crashes&rdquo;, &ldquo;appearance of the slow script dialogue&rdquo;). I.e. instead of showing a raw <em>count</em> of errors we show a rate. Normally this is a good thing: it allows the user to easily compare two things which might have different raw numbers for whatever reason but where you&rsquo;d normally expect the ratio to be similar. For example, we see that although the <em>uptake</em> of the newly-released Firefox 58.0.2 is a bit slower than 58.0.1, the overall crash rate (as sampled every 5 minutes) is more or less the same after about a day has rolled around:</p>
-
-<p><img srcset="/files/2018/02/main_crashes_normalized.png" /></p>
-
-<p>On the other hand, looking at raw counts doesn&rsquo;t really give you much of a hint on how to interpret the results. Depending on the scale of the graph, the actual rates could actually resolve to being vastly different:</p>
-
-<p><img srcset="/files/2018/02/main_crashes_raw.png" /></p>
-
-<p>Ok, so this simple tool (using a ratio) is useful. Yay! Unfortunately, there is one case where using this technique can lead to a very deceptive visualization: when the number of samples is really small, a few outliers can give a really false impression of what&rsquo;s really happening. Take this graph of what the crash rate looked like <em>just after</em> Firefox 58.0 was released:</p>
-
-<p><img srcset="/files/2018/02/relative_small_crash_counts.png" /></p>
-
-<p>10 to 100 errors per 1000 hours, say it isn&rsquo;t so? But wait, how many errors do we have absolutely? Hovering over a representative point in the graph with the normalization (use of a ratio) turned off:</p>
-
-<p><img srcset="/files/2018/02/absolute_small_crash_counts.png" /></p>
-
-<p>We&rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&rsquo;t (and shouldn&rsquo;t) draw any kind of conclusion whatsoever.</p>
-
-<p>Ok, so that&rsquo;s just science 101: don&rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.</p>
-
-</article>
-
 <footer>
  <ul class="pagination">
-  <li class="disabled"><a href="#">
+  <li class="page-item disabled"><a class="page-link" href="#">
     <quote>&larr;</quote></a></li>
-  <li class="active"><a href="/tags/Mozilla.html">1</a></li>
-  <li><a href="/tags/Mozilla-2.html">2</a></li>
-  <li><a href="/tags/Mozilla-3.html">3</a></li>
-  <li><a href="/tags/Mozilla-4.html">4</a></li>
-  <li><a href="/tags/Mozilla-5.html">5</a></li>
-  <li><a href="/tags/Mozilla-6.html">6</a></li>
-  <li><a href="/tags/Mozilla-7.html">7</a></li>
-  <li><a href="/tags/Mozilla-8.html">8</a></li>
-  <li><a href="/tags/Mozilla-9.html">9</a></li>
-  <li><a href="/tags/Mozilla-2.html">
+  <li class="page-item active"><a class="page-link" href="/tags/Mozilla.html">1</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-2.html">2</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-3.html">3</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-4.html">4</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-5.html">5</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-6.html">6</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-7.html">7</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-8.html">8</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-9.html">9</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-2.html">
     <quote>&rarr;</quote></a></li></ul></footer>
         </div>
       </div>

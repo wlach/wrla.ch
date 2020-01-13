@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Data, Python">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2018/10/pydata-nyc-2018">
-    <link rel="next" href="/blog/2018/06/mission-control-1-0">
-    <link rel="prev" href="/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects">
+    <link rel="canonical" href="https://wlach.github.io/blog/2018/10/pydata-nyc-2018/">
+    <link rel="next" href="/blog/2018/06/mission-control-1-0/">
+    <link rel="prev" href="/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -237,23 +239,34 @@
 <p>Of course, this post wouldn&rsquo;t be complete without a mention of <a href="http://droettboom.com/">Mike Droettboom</a>&rsquo;s <a href="https://pydata.org/nyc2018/schedule/presentation/3/">talk</a> on <a href="https://iodide.io">iodide</a>, a project I&rsquo;ve been spending some considerable cycles helping with over the last couple of quarters. I need to write some longer thoughts on iodide at some point in the near future, but in a nutshell it&rsquo;s a scientific notebook environment where the computational kernel lives entirely inside the browser. It was well received and we had a great followup session afterwards with people interested in using it for various things. Being able to show a python environment in the browser which &ldquo;just works&rdquo;, with no installation or other steps makes a <em>great</em> tech demo. I&rsquo;m really excited about the public launch of our server-based environment, which will hopefully be coming in the next couple of months.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects">&larr; <em>Making contribution work for Firefox tooling and data projects</em></a>
+      <a href="/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/">&larr; <em>Making contribution work for Firefox tooling and data projects</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2018/06/mission-control-1-0"><em>Mission Control 1.0</em> &rarr;</a>
+      <a href="/blog/2018/06/mission-control-1-0/"><em>Mission Control 1.0</em> &rarr;</a>
     </li>
     </ul>
   </footer>

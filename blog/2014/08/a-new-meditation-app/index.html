@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Buddhism, FirefoxOS, Meditation, Mozilla, zen">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2014/08/a-new-meditation-app">
-    <link rel="next" href="/blog/2014/07/new-city-new-cellphone-provider">
-    <link rel="prev" href="/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy">
+    <link rel="canonical" href="https://wlach.github.io/blog/2014/08/a-new-meditation-app/">
+    <link rel="next" href="/blog/2014/07/new-city-new-cellphone-provider/">
+    <link rel="prev" href="/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -243,23 +245,34 @@
 <p><sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup> Note that there isn&#8217;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock">requestWakeLock</a> API to make sure that doesn&#8217;t happen. I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113">a bug</a> to get this implemented on Firefox for Android.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy">&larr; <em>Hacking on the Treeherder front end: refreshingly easy</em></a>
+      <a href="/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/">&larr; <em>Hacking on the Treeherder front end: refreshingly easy</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2014/07/new-city-new-cellphone-provider"><em>New city, new cellphone provider</em> &rarr;</a>
+      <a href="/blog/2014/07/new-city-new-cellphone-provider/"><em>New city, new cellphone provider</em> &rarr;</a>
     </li>
     </ul>
   </footer>

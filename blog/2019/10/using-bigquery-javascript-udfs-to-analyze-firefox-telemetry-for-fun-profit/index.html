@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Mozilla, Telemetry">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit">
-    <link rel="next" href="/blog/2019/09/metrics-graphics-stepping-back-for-a-while">
-
+    <link rel="canonical" href="https://wlach.github.io/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit/">
+    <link rel="next" href="/blog/2019/09/metrics-graphics-stepping-back-for-a-while/">
+    <link rel="prev" href="/blog/2020/01/conda-is-pretty-great/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -281,21 +281,34 @@ group by build_id, client_id) group by build_id;</code></pre>
 <p>[1] I understand that Jeff Klukas, Frank Bertsch, Daniel Thorn, Anthony Miyaguchi, and Wesley Dawson are the principals involved - apologies if I&rsquo;m forgetting someone.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
-
+    <li class="previous">
+      <a href="/blog/2020/01/conda-is-pretty-great/">&larr; <em>Conda is pretty great</em></a>
+    </li>
     <li class="next">
-      <a href="/blog/2019/09/metrics-graphics-stepping-back-for-a-while"><em>Metrics Graphics: Stepping back for a while</em> &rarr;</a>
+      <a href="/blog/2019/09/metrics-graphics-stepping-back-for-a-while/"><em>Metrics Graphics: Stepping back for a while</em> &rarr;</a>
     </li>
     </ul>
   </footer>

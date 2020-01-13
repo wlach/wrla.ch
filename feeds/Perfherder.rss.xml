@@ -9,7 +9,7 @@
   <ttl>1800</ttl>
   <item>
    <title>Perfherder Quarter of Contribution Summer 2016: Results</title>
-   <link>https://wlach.github.io/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-results?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-results/?utm_source=Perfherder&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-08-perfherder-quarter-of-contribution-summer-2016-results</guid>
    <pubDate>Wed, 10 Aug 2016 20:37:05 UT</pubDate>
    <author>William Lachance</author>
@@ -31,7 +31,7 @@
 &lt;p&gt;Thank you Shruti and Roy! You&amp;rsquo;ve helped to make sure Firefox (and Servo!) performance remains top-notch.&lt;/p&gt;</description></item>
   <item>
    <title>Are We Fast Yet and Perfherder</title>
-   <link>https://wlach.github.io/blog/2016/03/are-we-fast-yet-and-perfherder?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2016/03/are-we-fast-yet-and-perfherder/?utm_source=Perfherder&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-03-are-we-fast-yet-and-perfherder</guid>
    <pubDate>Wed, 30 Mar 2016 15:42:39 UT</pubDate>
    <author>William Lachance</author>
@@ -68,7 +68,7 @@
  &lt;li&gt;Supporting comparative measurements between Firefox and other  browsers. This is an important task, but doesn&amp;rsquo;t really fit into the  model of Perfherder, which is intimately tied to the revision data  associated with Firefox. To do this would require detailed tracking  of Chrome on the same basis, and I don&amp;rsquo;t think that&amp;rsquo;s really a place  where we want to go. We should definitely monitor for general  trends, but I think that is best done with a seperate system.&lt;/li&gt;&lt;/ul&gt;</description></item>
   <item>
    <title>Platform engineering project of the month: Perfherder</title>
-   <link>https://wlach.github.io/blog/2016/03/platform-engineering-project-of-the-month-perfherder?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2016/03/platform-engineering-project-of-the-month-perfherder/?utm_source=Perfherder&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-03-platform-engineering-project-of-the-month-perfherder</guid>
    <pubDate>Tue, 15 Mar 2016 00:10:57 UT</pubDate>
    <author>William Lachance</author>
@@ -114,7 +114,7 @@
 &lt;p&gt;&lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution"&gt;https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution&lt;/a&gt;&lt;/p&gt;</description></item>
   <item>
    <title>Perfherder: Onward!</title>
-   <link>https://wlach.github.io/blog/2015/11/perfherder-onward?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2015/11/perfherder-onward/?utm_source=Perfherder&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-11-perfherder-onward</guid>
    <pubDate>Wed, 04 Nov 2015 05:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -158,7 +158,7 @@
 &lt;p&gt;&lt;a href="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png"&gt;&lt;img src="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png" alt="Screen Shot 2015-11-04 at 10.41.26 AM" width="300" height="176" class="alignnone size-medium wp-image-1280" srcset="/files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-300x176.png 300w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM-1024x600.png 1024w, /files/2015/11/Screen-Shot-2015-11-04-at-10.41.26-AM.png 1126w" sizes="(max-width: 300px) 100vw, 300px" /&gt;&lt;/a&gt;&lt;/p&gt;</description></item>
   <item>
    <title>The new old Perfherder data model</title>
-   <link>https://wlach.github.io/blog/2015/10/the-new-old-perfherder-data-model?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2015/10/the-new-old-perfherder-data-model/?utm_source=Perfherder&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-10-the-new-old-perfherder-data-model</guid>
    <pubDate>Fri, 23 Oct 2015 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -215,7 +215,7 @@
 &lt;p&gt;&lt;strong&gt;Lesson&lt;/strong&gt;: Sometimes using ancient technologies (SQL) in the most obvious way is the right thing to do. &lt;a href="http://c2.com/xp/DoTheSimplestThingThatCouldPossiblyWork.html"&gt;DoTheSimplestThingThatCouldPossiblyWork&lt;/a&gt;&lt;/p&gt;</description></item>
   <item>
    <title>Perfherder summer of contribution thoughts</title>
-   <link>https://wlach.github.io/blog/2015/09/perfherder-summer-of-contribution-thoughts?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2015/09/perfherder-summer-of-contribution-thoughts/?utm_source=Perfherder&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-09-perfherder-summer-of-contribution-thoughts</guid>
    <pubDate>Tue, 29 Sep 2015 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -259,7 +259,7 @@
 &lt;p&gt;&lt;em&gt;The only thing you need to do is bring your question to irc and ask. Do not hesitate to ask for help if you need it! All the people in here are nice and willing to help. Enjoy it!&lt;/em&gt;&lt;/p&gt;</description></item>
   <item>
    <title>More Perfherder  updates</title>
-   <link>https://wlach.github.io/blog/2015/08/more-perfherder-updates?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2015/08/more-perfherder-updates/?utm_source=Perfherder&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-08-more-perfherder-updates</guid>
    <pubDate>Fri, 07 Aug 2015 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -344,7 +344,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;For now, I&amp;#8217;m leaning towards (2). I don&amp;#8217;t think we&amp;#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;</description></item>
   <item>
    <title>Perfherder update</title>
-   <link>https://wlach.github.io/blog/2015/07/perfherder-update?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2015/07/perfherder-update/?utm_source=Perfherder&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-07-perfherder-update</guid>
    <pubDate>Tue, 14 Jul 2015 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -385,7 +385,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;[&lt;a href="http://nbviewer.ipython.org/url/wrla.ch/blog/wp-content/uploads/2015/07/perfherder-api.ipynb"&gt;original&lt;/a&gt;]&lt;/p&gt;</description></item>
   <item>
    <title>Perfherder update: Summary series drilldown</title>
-   <link>https://wlach.github.io/blog/2015/03/perfherder-update-summary-series-drilldown?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2015/03/perfherder-update-summary-series-drilldown/?utm_source=Perfherder&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-03-perfherder-update-summary-series-drilldown</guid>
    <pubDate>Fri, 27 Mar 2015 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -409,7 +409,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at &lt;a href="http://treeherder.mozilla.org/perf.html"&gt;http://treeherder.mozilla.org/perf.html&lt;/a&gt;.&lt;/p&gt;</description></item>
   <item>
    <title>Measuring e10s vs. non-e10s performance with Perfherder</title>
-   <link>https://wlach.github.io/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder?utm_source=Perfherder&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/?utm_source=Perfherder&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-02-measuring-e10s-vs-non-e10s-performance-with-perfherder</guid>
    <pubDate>Wed, 18 Feb 2015 05:00:00 UT</pubDate>
    <author>William Lachance</author>

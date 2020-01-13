@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Buddhism, zen">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2013/03/a-visit-to-the-montreal-zen-center">
-    <link rel="next" href="/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing">
-    <link rel="prev" href="/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser">
+    <link rel="canonical" href="https://wlach.github.io/blog/2013/03/a-visit-to-the-montreal-zen-center/">
+    <link rel="next" href="/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing/">
+    <link rel="prev" href="/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -227,23 +229,34 @@
 <p>I&#8217;m still giving thought on whether I want to take the next steps with them and begin a regular meditation practice. It sounds like really hard work (self meditation practice 6 days a week by yourself, plus regular visits to the zen center), which brings up the question: why do you want to do this? There&#8217;s a weird contradiction between realizing that you as a self don&#8217;t really exist and committing yourself radically to this kind of practice. The only thing I can call it would be a &#8220;leap of faith&#8221;. My current thinking is that I&#8217;m not quite ready for that right now, but maybe in a while. For now I think I&#8217;m pretty happy going to yoga a few times a week and living my sham of a human existence. 😉</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser">&larr; <em>The need for a modern open source email client and Geary&#8217;s fundraiser</em></a>
+      <a href="/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser/">&larr; <em>The need for a modern open source email client and Geary&#8217;s fundraiser</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing"><em>Eideticker: Limitations in cross-browser performance testing</em> &rarr;</a>
+      <a href="/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing/"><em>Eideticker: Limitations in cross-browser performance testing</em> &rarr;</a>
     </li>
     </ul>
   </footer>

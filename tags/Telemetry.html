@@ -212,7 +212,28 @@
           <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Telemetry.html">Telemetry</a></span></p>
-    <h2><a href='/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit'>Using BigQuery JavaScript UDFs to analyze Firefox telemetry for fun &amp; profit</a></h2>
+    <h2><a href='/blog/2020/01/conda-is-pretty-great/'>Conda is pretty great</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 13th, 2020</p>
+  </header>
+
+<p>Lately the data engineering team has been looking into productionizing (i.e. running in Airflow) a bunch of models that the data science team has been producing. This often involves languages and environments that are a bit outside of our comfort zone &mdash; for example, <a href="https://github.com/mozilla/missioncontrol-v2">the next version of Mission Control</a> relies on the <a href="https://mc-stan.org/users/interfaces/rstan">R-stan library</a> to produce a model of expected crash behaviour as Firefox is released.</p>
+
+<p>To make things as simple and deterministic as possible, we&rsquo;ve been building up Docker containers to run/execute this code along with their dependencies, which makes things nice and reproducible. My initial thought was to use just the language-native toolchains to build up my container for the above project, but quickly found a number of problems:</p>
+
+<ol>
+ <li>For local testing, Docker on Mac is <em>slow</em>: when doing a large number of statistical calculations (as above), you can count on your testing iterations taking 3 to 4 (or more) times longer.</li>
+ <li>On initial setup, the default R packaging strategy is to have the user of a package like R-stan recompile from source. This can take <em>forever</em> if you have a long list of dependencies with C-compiled extensions (pretty much a given if you&rsquo;re working in the data space): rebuilding my initial docker environment for missioncontrol-v2 took almost an hour. This isn&rsquo;t just a problem for local development: it also makes continuous integration using a service like Circle or Travis expensive and painful.</li></ol>
+
+<p>I had been vaguely aware of <a href="https://docs.conda.io/en/latest/">Conda</a> for a few years, but didn&rsquo;t really understand its value proposition until I started working on the above project: why bother with a heavyweight package manager when you already have Docker to virtualize things? The answer is that it solves both of the above problems: for local development, you can get something more-or-less identical to what you&rsquo;re running inside Docker with no performance penalty whatsoever. And for building the docker container itself, Conda&rsquo;s package repository contains pre-compiled versions of all the dependencies you&rsquo;d want to use for something like this (even somewhat esoteric libraries like R-stan are available on <a href="https://conda-forge.org/">conda-forge</a>), which brought my build cycle times down to less than 5 minutes.</p>
+
+<p>tl;dr: If you have a bunch of R / python code you want to run in a reproducible manner, consider Conda.</p>
+
+</article>
+
+<article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Telemetry.html">Telemetry</a></span></p>
+    <h2><a href='/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit/'>Using BigQuery JavaScript UDFs to analyze Firefox telemetry for fun &amp; profit</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 30th, 2019</p>
   </header>
 

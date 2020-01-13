@@ -9,7 +9,7 @@
   <ttl>1800</ttl>
   <item>
    <title>Derived versus direct</title>
-   <link>https://wlach.github.io/blog/2018/02/derived-versus-direct?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2018/02/derived-versus-direct/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2018-02-derived-versus-direct</guid>
    <pubDate>Mon, 12 Feb 2018 21:06:40 UT</pubDate>
    <author>William Lachance</author>
@@ -35,7 +35,7 @@
 &lt;p&gt;Ok, so that&amp;rsquo;s just science 101: don&amp;rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &amp;mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.&lt;/p&gt;</description></item>
   <item>
    <title>Better or worse: by what measure?</title>
-   <link>https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-better-or-worse-by-what-measure</guid>
    <pubDate>Thu, 26 Oct 2017 20:58:20 UT</pubDate>
    <author>William Lachance</author>
@@ -86,7 +86,7 @@
 &lt;p&gt;Shout out to &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; for reviewing this post and providing feedback and additions.&lt;/p&gt;</description></item>
   <item>
    <title>Mission Control: Ready for contributions</title>
-   <link>https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-mission-control-ready-for-contributions</guid>
    <pubDate>Fri, 20 Oct 2017 18:33:19 UT</pubDate>
    <author>William Lachance</author>
@@ -100,7 +100,7 @@
 &lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;</description></item>
   <item>
    <title>Mission Control</title>
-   <link>https://wlach.github.io/blog/2017/10/mission-control?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2017/10/mission-control/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-mission-control</guid>
    <pubDate>Fri, 06 Oct 2017 19:05:37 UT</pubDate>
    <author>William Lachance</author>
@@ -122,7 +122,7 @@
 &lt;p&gt;Even still, the tool can still be useful for exploring a bunch of data quickly and it has been progressing rapidly over the last few weeks. And like almost everything Mozilla does, both the &lt;a href="https://github.com/mozilla/missioncontrol/"&gt;source&lt;/a&gt; and &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;dashboard&lt;/a&gt; are open to the public. I&amp;rsquo;m planning on flagging some easier bugs for newer contributors to work on in the next couple weeks, but in the meantime if you&amp;rsquo;re interested in this project and want to get involved, feel free to look us up on irc.mozilla.org #missioncontrol (I&amp;rsquo;m there as &amp;lsquo;wlach&amp;rsquo;).&lt;/p&gt;</description></item>
   <item>
    <title>More Perfherder  updates</title>
-   <link>https://wlach.github.io/blog/2015/08/more-perfherder-updates?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2015/08/more-perfherder-updates/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-08-more-perfherder-updates</guid>
    <pubDate>Fri, 07 Aug 2015 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -207,7 +207,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;For now, I&amp;#8217;m leaning towards (2). I don&amp;#8217;t think we&amp;#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;</description></item>
   <item>
    <title>A virtual petri dish</title>
-   <link>https://wlach.github.io/blog/2015/04/a-virtual-petri-dish?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2015/04/a-virtual-petri-dish/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-04-a-virtual-petri-dish</guid>
    <pubDate>Sat, 25 Apr 2015 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -231,7 +231,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: &lt;a href="https://github.com/wlach/ecoautomata"&gt;Source now on github&lt;/a&gt;, for those who want to play with it and submit pull requests.&lt;/p&gt;</description></item>
   <item>
    <title>Perfherder update: Summary series drilldown</title>
-   <link>https://wlach.github.io/blog/2015/03/perfherder-update-summary-series-drilldown?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2015/03/perfherder-update-summary-series-drilldown/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-03-perfherder-update-summary-series-drilldown</guid>
    <pubDate>Fri, 27 Mar 2015 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -255,7 +255,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at &lt;a href="http://treeherder.mozilla.org/perf.html"&gt;http://treeherder.mozilla.org/perf.html&lt;/a&gt;.&lt;/p&gt;</description></item>
   <item>
    <title>It&amp;#8217;s all about the entropy</title>
-   <link>https://wlach.github.io/blog/2014/03/it-8217-s-all-about-the-entropy?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2014/03/it-8217-s-all-about-the-entropy/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2014-03-it-8217-s-all-about-the-entropy</guid>
    <pubDate>Fri, 14 Mar 2014 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -326,7 +326,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&amp;#8217;s find them!&lt;/p&gt;</description></item>
   <item>
    <title>Automatically measuring startup / load time with Eideticker</title>
-   <link>https://wlach.github.io/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2013-10-automatically-measuring-startup-load-time-with-eideticker</guid>
    <pubDate>Thu, 17 Oct 2013 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -373,7 +373,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;In Eideticker I&amp;#8217;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &amp;#8220;pixel differences&amp;#8221; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&amp;#8217;t count on light composition changing the same way for those cases. My initial thought was to use &lt;a href="http://en.wikipedia.org/wiki/Edge_detection"&gt;edge detection&lt;/a&gt; (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.&lt;/p&gt;</description></item>
   <item>
    <title>NIXI Update</title>
-   <link>https://wlach.github.io/blog/2013/08/nixi-update?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2013/08/nixi-update/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2013-08-nixi-update</guid>
    <pubDate>Sun, 25 Aug 2013 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -390,7 +390,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;&lt;a href="/files/2013/08/nixi-screenshot.png"&gt; &lt;img src="/files/2013/08/nixi-screenshot-1024x672.png" alt="nixi screenshot" width="640" height="420" class="alignnone size-large wp-image-927" srcset="/files/2013/08/nixi-screenshot-300x196.png 300w, /files/2013/08/nixi-screenshot-1024x672.png 1024w, /files/2013/08/nixi-screenshot.png 1266w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/p&gt;</description></item>
   <item>
    <title>Measuring reduced checkerboarding in mobile Fennec</title>
-   <link>https://wlach.github.io/blog/2012/01/measuring-reduced-checkerboarding-in-mobile-fennec?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2012/01/measuring-reduced-checkerboarding-in-mobile-fennec/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2012-01-measuring-reduced-checkerboarding-in-mobile-fennec</guid>
    <pubDate>Tue, 03 Jan 2012 05:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -406,7 +406,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;video src="/files/eideticker/almostnocheckerboarding.webm" width="600px" controls="controls"&gt;&lt;/video&gt;</description></item>
   <item>
    <title>Year end Eideticker update</title>
-   <link>https://wlach.github.io/blog/2011/12/year-end-eideticker-update?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2011/12/year-end-eideticker-update/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-12-year-end-eideticker-update</guid>
    <pubDate>Fri, 23 Dec 2011 05:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -425,7 +425,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;Happy holidays!&lt;/p&gt;</description></item>
   <item>
    <title>Eideticker update</title>
-   <link>https://wlach.github.io/blog/2011/12/eideticker-update?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2011/12/eideticker-update/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-12-eideticker-update</guid>
    <pubDate>Thu, 08 Dec 2011 05:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -457,7 +457,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;If I can somehow figure that out, and smooth out some of the rough edges with the web interface and capture API, I think the stage will be set for us all to do some pretty interesting stuff! Looking forward to it.&lt;/p&gt;</description></item>
   <item>
    <title>Measuring what the user sees</title>
-   <link>https://wlach.github.io/blog/2011/11/measuring-what-the-user-sees?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2011/11/measuring-what-the-user-sees/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-11-measuring-what-the-user-sees</guid>
    <pubDate>Fri, 11 Nov 2011 05:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -510,7 +510,7 @@ Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Equally, while Eideticker is being written primarily with the goal of making Mobile Firefox better (and in the slightly-less short term, desktop Firefox and &lt;a href="https://github.com/andreasgal/B2G"&gt;Boot to Gecko&lt;/a&gt;), much of it is broadly applicable to any user-facing mobile or desktop application. If you think some component of Eideticker might be interesting to your project and want to collaborate, feel free to get in touch.&lt;/p&gt;</description></item>
   <item>
    <title>Faster, but not quite there yet&amp;#8230;</title>
-   <link>https://wlach.github.io/blog/2011/10/faster-but-not-quite-there-yet-8230?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2011/10/faster-but-not-quite-there-yet-8230/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-10-faster-but-not-quite-there-yet-8230</guid>
    <pubDate>Tue, 25 Oct 2011 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -524,7 +524,7 @@ Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Anyone is welcome to join, but note that we&amp;#8217;re practical, results-oriented people. Crazy ideas are fun, but we&amp;#8217;re most interested in proposals that have measurable data behind them and can be implemented in reasonable amounts of time.&lt;/p&gt;</description></item>
   <item>
    <title>A better BIXI web site</title>
-   <link>https://wlach.github.io/blog/2011/06/a-better-bixi-web-site?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2011/06/a-better-bixi-web-site/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-06-a-better-bixi-web-site</guid>
    <pubDate>Fri, 10 Jun 2011 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -546,7 +546,7 @@ Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Note that the site uses a bunch of modern HTML5 features, so currently requires a modern browser like Firefox, Chrome, or Safari to display properly. I may or may not fix this. Other notable omissions include support for other cities with the BIXI system (Toronto, Ottawa, &amp;#8230;) and French localization. Patches welcome!&lt;/p&gt;</description></item>
   <item>
    <title>Template for a map-based web app</title>
-   <link>https://wlach.github.io/blog/2011/06/template-for-a-map-based-web-app?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2011/06/template-for-a-map-based-web-app/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-06-template-for-a-map-based-web-app</guid>
    <pubDate>Fri, 03 Jun 2011 04:00:00 UT</pubDate>
    <author>William Lachance</author>
@@ -558,7 +558,7 @@ Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href="http://wlach.wrla.ch/blog/Map-Layout-Template/"&gt;Preview&lt;/a&gt; &lt;a href="https://github.com/wlach/Map-Layout-Template"&gt;Source&lt;/a&gt;&lt;/p&gt;</description></item>
   <item>
    <title>Adventures in processing with prender</title>
-   <link>https://wlach.github.io/blog/2010/03/adventures-in-processing-with-prender?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2010/03/adventures-in-processing-with-prender/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2010-03-adventures-in-processing-with-prender</guid>
    <pubDate>Sun, 07 Mar 2010 05:00:00 UT</pubDate>
    <author>William Lachance</author>

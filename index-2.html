@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 2)</title>
     <meta name="description" content="William Lachance's Log (page 2)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Coffee, Counting, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Bikes, Statistics, Montreal, Community, Life, GNOME, Music, Orangutan, Cats, mozregression, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Iodide, Data, Polling, Android, ateam, Telemetry">
+    <meta name="keywords"    content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, Community, Iodide, Life, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-2.html">
@@ -211,8 +211,101 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Polling.html">Polling</a>, <a href="/tags/Statistics.html">Statistics</a></span></p>
+    <h2><a href='/blog/2018/05/some-thoughts-on-opinion-polling-in-the-ontario-2018-election/'>Some thoughts on opinion polling in the Ontario 2018 election</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 27th, 2018</p>
+  </header>
+
+<p>Like many, I&rsquo;ve been a bit worried about the Ontario election, and have been rather obsessively checking a site called the <a href="https://newsinteractives.cbc.ca/onvotes/poll-tracker/">Ontario Poll Tracker</a>.</p>
+
+<center><img style="width:400px" srcset="/files/2018/05/CBC-poll-tracker-main.png 2x" /></center>
+
+<p>It has nice and shiny graphs and uses authoritative language and purports to provide a scientific analysis which predicts the election. Despite this, it&rsquo;s my assertion that this kind of predictive modelling is nothing more than snake oil. I keep on reminding myself that I shouldn&rsquo;t take it too seriously, but haven&rsquo;t been too successful so far. This blog post is a reminder to myself on why I should stop reloading that site so much, but maybe it will be helpful to others as well. As a warning, it&rsquo;s not going to say anything particularly novel. If you have any kind of background in statistics at all, this is probably going to be quite boring.</p>
+
+<p>First, a story. Way back when I had just graduated from university in 2003, I worked briefly at an &ldquo;opinion research company&rdquo;, telephoning people for various opinion surveys. It was easily the worst job I ever had, horrible for both the people doing the calling and those who were being called.</p>
+
+<p>The work was mind-numbingly repetitive. Get assigned a poll. Telephone people using an autodialer, work through the script using the DOS-based software the call center was using where they would answer multiple-choice questions. Repeat as many times as you can over the course of an hour. The topics were varied, but roughly 50/50 political parties doing private polling and businesses trying to get marketing data. In either case, the questions were definitely of the &ldquo;lowest common denominator&rdquo; type question (i.e. &ldquo;Which products are you likely to buy in the next 12 months&rdquo;, &ldquo;If an election were held today, would you vote for party A, B, or C?&rdquo;)</p>
+
+<p>One of the few benefits of tedious jobs is that they give you time to think about things. In this case, one of my distinct experiential take aways as that the results that we were getting were incredibly unrepresentative.</p>
+
+<p>For a poll to be valid it is supposed to be &ldquo;reasonably&rdquo; reflective of the general population. Over the quantities that we&rsquo;re talking about, that means anywhere from hundreds of thousands to millions of people. If we were able to truly randomly sample a small number from this group, the results are likely to be &ldquo;representative of the whole&rdquo; (within some confidence interval). Let&rsquo;s write up a small python script to confirm this intuition:</p>
+
+<div class="brush: py">
+ <pre><code># 100,000 random numbers between 0 and 1
+&gt;&gt;&gt; full_population_size = 100000
+&gt;&gt;&gt; full_sample = [random.random() for i in range(full_population_size)]
+
+# average over entire result
+&gt;&gt;&gt; sum(full_sample) / full_population_size
+0.501036568906331
+
+# pull out 100 randomly selected values from the full sample and
+# get their average
+&gt;&gt;&gt; random_subset_size = 100
+&gt;&gt;&gt; random_subset = [full_sample[i] for i in [int(random.random()*100000) for j in
+                     range(random_subset_size)]]
+&gt;&gt;&gt; sum(random_subset) / random_subset_size
+0.4924555517866068</code></pre></div>
+
+<p>Only a small fraction of the total population, but a result within 1% of the true value. Expressing it this way makes random sampling almost like a tautology. You probably learned this in high school. Great right?</p>
+
+<p>Unfortunately, real life always comes in to disturb these assumptions, as it always does. You see, there were all sorts of factors that would affect who we would be talking to and thus get datapoints from. At that time, most of the population still had a land-line telephone but there were a wealth of other factors that meant that we weren&rsquo;t getting a truly randoms sample of data. Men (at least men under 60 or so) were much less likely to answer a telephone survey than women. For general opinion surveys, we were calling at a specific time of day when <em>most</em> people were likely to be available &mdash; but that certainly wouldn&rsquo;t apply to everyone. Some people would work night shifts, etc., etc. In our example above, this would be like taking out half the results over (say) 0.75 from our sample &mdash; the end result would tend to skew much lower than the true value.</p>
+
+<p>Just for fun, let&rsquo;s try doing that and see how it affects the results:</p>
+
+<div class="brush: py">
+ <pre><code># if we take away approximately half the results with a value of
+# &gt;0.75, the population we are sampling from is reduced proportionally
+&gt;&gt;&gt; full_sample_with_half75_removed = [v for v in full_sample if v &lt;= 0.75 or random.random() &lt; 0.5]
+&gt;&gt;&gt; len(full_sample_with_half75_removed)
+87607
+
+# the sampled value is then proportionally skewed downwards (because
+# a large percentage of the high values are no longer available)
+&gt;&gt;&gt; random_subset = [full_sample_with_half75_removed[i] for i in
+                     [int(random.random()*len(full_sample_with_half75_removed)) for j in
+                      range(random_subset_size)]
+                    ]
+&gt;&gt;&gt; sum(random_subset)/random_subset_size
+0.4585241853943395</code></pre></div>
+
+<p>To try and get around this problem, the opinion polling company would try to demographically restrict who we were surveying past a certain point, so that the overall sample of the poll would reasonably reflect the characteristics of the population. This probably helped, but there&rsquo;s only so much you can do here. For example, if you correct for the fact that men aged 20 to 60 are less likely to answer an opinion survey, your sample is going to now consist of those weird men who <em>do</em> answer opinion surveys. Who knows what effect that&rsquo;s going to have on your results?</p>
+
+<p>I want to be clear here: this is a methodological problem. Running more opinion polls doesn&rsquo;t help. Probably some samples will be more affected by errors than others, but the problem remains regardless. Actually, let&rsquo;s show this trivially for our small example:</p>
+
+<div class="brush: py">
+ <pre><code>&gt;&gt;&gt; skewed_averages = []
+&gt;&gt;&gt; for i in range(10):
+...   full_sample_with_half75_removed = [v for v in full_sample if v &lt;= 0.75 or
+                                         random.random() &lt; 0.5]
+...   random_subset = [full_sample_with_half75_removed[i] for i in
+          [int(random.random()*len(full_sample_with_half75_removed)) for j in
+           range(random_subset_size)]]
+...   skewed_averages += [sum(random_subset)/len(random_subset)]
+...
+&gt;&gt;&gt; skewed_averages
+[0.4585241853943395, 0.4271412530288919, 0.46414511969024697, 0.4360740890986547,
+ 0.4779021127791633, 0.38419133106708714, 0.48688298744651576, 0.41076028280889915,
+ 0.47975630795860363, 0.4381467970818846]</code></pre></div>
+
+<p>Each time we resampled from the main population and got a different result, but the end result was still one which was <em>far</em> off from what we know in this case was the true value (0.5). Sampling from bad data doesn&rsquo;t make up for these problems, it just gives you more bad results.</p>
+
+<p>Now, flash forward to 2018. Almost no one under 50 has a land-line anymore, people who have cell phones most often don&rsquo;t answer to unknown callers. And don&rsquo;t even get me started on how to find a representative set of people to participate in an &ldquo;online panel&rdquo;. What validity do polls have under these circumstances? I would say very little and probably more importantly we don&rsquo;t even have a clear idea of <em>how</em> our modern polls are skewed.</p>
+
+<p>There has been no shortage of thinking on how to correct for these problems but in my opinion it&rsquo;s all just speculative and largely invalid. You can&rsquo;t definitively solve the kind of uncertainty we&rsquo;re talking about here by coming up with &ldquo;just so&rdquo; stories about how you&rsquo;ve corrected for it. We might have some ideas about how our data is biased, but short of sampling the entire population and then seeing how our sampling method falls into that superset (which is impossible) there is no way of confirming that our efforts to correct for that bias were effective.</p>
+
+<p>With respect to the Ontario election which I alluded to above, the one thing that I am getting from the data is that support for the NDP (across the highly unrepresentative sample used in the polls) is increasing precipitously and that for the PC&rsquo;s is decreasing almost as sharply. That seems to be a real phenomenon. We don&rsquo;t know whether that crosses over to the general population but it doesn&rsquo;t seem unreasonable to think it does. Exactly how is another question, and I make no assertions there.</p>
+
+<center><img style="width:400px" srcset="/files/2018/05/CBC-poll-tracker-trend.png 2x" /></center>
+
+<p>tl;dr If you don&rsquo;t like the idea of <a href="https://www.theguardian.com/world/2018/apr/30/doug-ford-ontario-conservative-trump-comparison-canada">Doug Ford</a> in power, there is no reason to panic based on sites like the Ontario Poll Tracker. Spend your time doing something more productive, like convincing your friends and relatives to vote for someone who is not Conservative.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Metrics-Graphics.html">Metrics Graphics</a></span></p>
-    <h2><a href='/blog/2018/04/metricsgraphics-movements'>metricsgraphics movements</a></h2>
+    <h2><a href='/blog/2018/04/metricsgraphics-movements/'>metricsgraphics movements</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 30th, 2018</p>
   </header>
 
@@ -229,7 +322,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2018/04/mission-control-update'>Mission Control update</a></h2>
+    <h2><a href='/blog/2018/04/mission-control-update/'>Mission Control update</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 6th, 2018</p>
   </header>
 
@@ -262,7 +355,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2018/02/derived-versus-direct'>Derived versus direct</a></h2>
+    <h2><a href='/blog/2018/02/derived-versus-direct/'>Derived versus direct</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 12th, 2018</p>
   </header>
 
@@ -291,7 +384,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2018/01/giving-and-receiving-help-at-mozilla'>Giving and receiving help at Mozilla</a></h2>
+    <h2><a href='/blog/2018/01/giving-and-receiving-help-at-mozilla/'>Giving and receiving help at Mozilla</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 17th, 2018</p>
   </header>
 
@@ -317,7 +410,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Social-Media.html">Social Media</a>, <a href="/tags/Psychology.html">Psychology</a></span></p>
-    <h2><a href='/blog/2018/01/quitting-twitter'>Quitting Twitter</a></h2>
+    <h2><a href='/blog/2018/01/quitting-twitter/'>Quitting Twitter</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 13th, 2018</p>
   </header>
 
@@ -344,7 +437,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2017/12/maintaining-metricsgraphics'>Maintaining metricsgraphics</a></h2>
+    <h2><a href='/blog/2017/12/maintaining-metricsgraphics/'>Maintaining metricsgraphics</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Dec 6th, 2017</p>
   </header>
 
@@ -359,7 +452,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2017/10/better-or-worse-by-what-measure'>Better or worse: by what measure?</a></h2>
+    <h2><a href='/blog/2017/10/better-or-worse-by-what-measure/'>Better or worse: by what measure?</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 26th, 2017</p>
   </header>
 
@@ -413,7 +506,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2017/10/mission-control-ready-for-contributions'>Mission Control: Ready for contributions</a></h2>
+    <h2><a href='/blog/2017/10/mission-control-ready-for-contributions/'>Mission Control: Ready for contributions</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 20th, 2017</p>
   </header>
 
@@ -430,7 +523,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2017/10/mission-control'>Mission Control</a></h2>
+    <h2><a href='/blog/2017/10/mission-control/'>Mission Control</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 6th, 2017</p>
   </header>
 
@@ -452,218 +545,25 @@
 
 </article>
 
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2017/08/functional-is-the-future'>Functional is the future</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 28th, 2017</p>
-  </header>
-
-<p>Just spent well over an hour tracking down a silly bug in my code. For the <a href="https://github.com/mozilla/missioncontrol/">mission control</a> project, I wrote this very simple API method that returns a cached data structure to our front end:</p>
-
-<div class="brush: py">
- <table class="sourcetable">
-  <tbody>
-   <tr>
-    <td class="linenos">
-     <div class="linenodiv">
-      <pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28</pre></div></td>
-    <td class="code">
-     <div class="source">
-      <pre><span></span><span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">channel_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;channel&#39;</span><span class="p">)</span>
-    <span class="n">platform_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;platform&#39;</span><span class="p">)</span>
-    <span class="n">measure_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;measure&#39;</span><span class="p">)</span>
-    <span class="n">interval</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;interval&#39;</span><span class="p">)</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">channel_name</span><span class="p">,</span> <span class="n">platform_name</span><span class="p">,</span> <span class="n">measure_name</span><span class="p">]):</span>
-        <span class="k">return</span> <span class="n">HttpResponseBadRequest</span><span class="p">(</span><span class="s2">"All of channel, platform, measure required"</span><span class="p">)</span>
-    <span class="n">data</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">get_measure_cache_key</span><span class="p">(</span><span class="n">platform_name</span><span class="p">,</span> <span class="n">channel_name</span><span class="p">,</span> <span class="n">measure_name</span><span class="p">))</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">HttpResponseNotFound</span><span class="p">(</span><span class="s2">"Data not available for this measure combination"</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">interval</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">min_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">interval</span><span class="p">))</span>
-        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">HttpResponseBadRequest</span><span class="p">(</span><span class="s2">"Interval must be specified in seconds (as an integer)"</span><span class="p">)</span>
-
-        <span class="c1"># Return any build data in the interval</span>
-        <span class="n">empty_buildids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">build_id</span><span class="p">,</span> <span class="n">build_data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_time</span><span class="p">]</span>
-            <span class="k">if</span> <span class="ow">not</span> <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]:</span>
-                <span class="n">empty_buildids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">build_id</span><span class="p">)</span>
-
-        <span class="c1"># don&#39;t bother returning empty indexed data</span>
-        <span class="k">for</span> <span class="n">empty_buildid</span> <span class="ow">in</span> <span class="n">empty_buildids</span><span class="p">:</span>
-            <span class="k">del</span> <span class="n">data</span><span class="p">[</span><span class="n">empty_buildid</span><span class="p">]</span>
-
-    <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;measure_data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">})</span>
-</pre></div>
-</td></tr></tbody></table>
-</div>
-
-<p>As you can see, it takes 3 required parameters (channel, platform, and measure) and one optional one (interval), picks out the required data structure, filters it a bit, and returns it. This is <em>almost</em> what we wanted for the frontend, unfortunately the time zone information isn&rsquo;t quite what we want, since the strings that are returned don&rsquo;t tell the frontend that they&rsquo;re in UTC format &mdash; they need a &lsquo;Z&rsquo; appended to them for that.</p>
-
-<p>After a bit of digging, I found out that Django&rsquo;s <a href="https://github.com/django/django/blob/afc06b56256f78ab832ff8066ac6f34b7443de22/django/core/serializers/json.py#L76">json serializer</a> will only add the Z if the tzinfo structure is specified. So I figured out a simple pattern for adding that (using the dateutil library, which we are fortunately already using):</p>
-
-<div class="brush: py">
- <table class="sourcetable">
-  <tbody>
-   <tr>
-    <td class="linenos">
-     <div class="linenodiv">
-      <pre>1
-2</pre></div></td>
-    <td class="code">
-     <div class="source">
-      <pre><span></span><span class="kn">from</span> <span class="nn">dateutil.tz</span> <span class="kn">import</span> <span class="n">tzutc</span>
-<span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">mydatestamp</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(),</span> <span class="n">tz</span><span class="o">=</span><span class="n">tzutc</span><span class="p">())</span>
-</pre></div>
-</td></tr></tbody></table>
-</div>
-
-<p>I tested this quickly on the python console and it seemed to work great. But when I added the code to my function, the unit tests mysteriously failed. Can you see why?</p>
-
-<div class="brush: py">
- <table class="sourcetable">
-  <tbody>
-   <tr>
-    <td class="linenos">
-     <div class="linenodiv">
-      <pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td>
-    <td class="code">
-     <div class="source">
-      <pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">build_id</span><span class="p">,</span> <span class="n">build_data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="c1"># add utc timezone info to each date, so django will serialize a</span>
-    <span class="c1"># &#39;Z&#39; to the end of the string (and so javascript&#39;s date constructor</span>
-    <span class="c1"># will know it&#39;s utc)</span>
-    <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(),</span> <span class="n">tz</span><span class="o">=</span><span class="n">tzutc</span><span class="p">())]</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span>
-        <span class="n">d</span> <span class="ow">in</span> <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_time</span>
-    <span class="p">]</span>
-</pre></div>
-</td></tr></tbody></table>
-</div>
-
-<p>Trick question: there&rsquo;s actually nothing wrong with this code. But if you look at the block in context (see the top of the post), you see that it&rsquo;s only executed if <em>interval</em> is specified, which it isn&rsquo;t necessarily. The first case that my unit tests executed didn&rsquo;t specify interval, so fail they did. It wasn&rsquo;t immediately obvious to me why this was happening, so I went on a wild-goose chase of trying to figure out how the Django context might have been responsible for the unexpected output, before realizing my basic logic error.</p>
-
-<p>This was fairly easily corrected (my updated code applies the datetime-mapping unconditionally to set of optionally-filtered results) but perfectly illustrates my issue with idiomatic python: while the language itself has constructs like <code>map</code> and <code>reduce</code> that support the functional programming model, the language strongly steers you towards writing things in an imperative style that makes costly and annoying mistakes like this much easier to make. Yes, list and dictionary comprehensions are nice and compact but they start to break down in the more complex cases.</p>
-
-<p>As an experiment, I wrote up what this function might look like in a pure functional style with immutable data structures:</p>
-
-<div class="brush: py">
- <table class="sourcetable">
-  <tbody>
-   <tr>
-    <td class="linenos">
-     <div class="linenodiv">
-      <pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td>
-    <td class="code">
-     <div class="source">
-      <pre><span></span><span class="k">def</span> <span class="nf">transform_and_filter_data</span><span class="p">(</span><span class="n">build_data</span><span class="p">):</span>
-    <span class="n">new_build_data</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">build_data</span><span class="p">)</span>
-    <span class="n">new_build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(),</span> <span class="n">tz</span><span class="o">=</span><span class="n">tzutc</span><span class="p">())]</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span>
-        <span class="n">d</span> <span class="ow">in</span> <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_time</span>
-    <span class="p">]</span>
-    <span class="k">return</span> <span class="n">new_build_data</span>
-<span class="n">transformed_build_data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">transform_and_filter_data</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">}</span>
-</pre></div>
-</td></tr></tbody></table>
-</div>
-
-<p>A work of art it isn&rsquo;t &mdash; and definitely not &ldquo;pythonic&rdquo;. Compare this to a similar piece of code written in Javascript (ES6) with lodash (using a hypothetical <code>tzified</code> function):</p>
-
-<div class="brush: js">
- <table class="sourcetable">
-  <tbody>
-   <tr>
-    <td class="linenos">
-     <div class="linenodiv">
-      <pre>1
-2
-3
-4
-5
-6
-7</pre></div></td>
-    <td class="code">
-     <div class="source">
-      <pre><span></span><span class="kd">let</span> <span class="nx">transformedBuildData</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">mapValues</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="p">(</span><span class="nx">buildData</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span>
-    <span class="p">...</span><span class="nx">buildData</span><span class="p">,</span>
-    <span class="nx">data</span><span class="o">:</span> <span class="nx">buildData</span><span class="p">.</span><span class="nx">data</span>
-      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="nx">datum</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">minTimestamp</span><span class="p">)</span>
-      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">tzcified</span><span class="p">(</span><span class="nx">datum</span><span class="p">[</span><span class="mi">0</span><span class="p">])].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">datum</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
-  <span class="p">})),</span>
-  <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">buildId</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
-</pre></div>
-</td></tr></tbody></table>
-</div>
-
-<p>A little bit easier to understand, but more importantly (to me anyway) it comes across as idiomatic and natural in a way that the python version just doesn&rsquo;t. I&rsquo;ve been happily programming Python for the last 10 years, but it&rsquo;s increasingly feeling time to move on to greener pastures.</p>
-
-</article>
-
 <footer>
  <ul class="pagination">
-  <li><a href="/index.html">
+  <li class="page-item"><a class="page-link" href="/index.html">
     <quote>&larr;</quote></a></li>
-  <li><a href="/index.html">1</a></li>
-  <li class="active"><a href="/index-2.html">2</a></li>
-  <li><a href="/index-3.html">3</a></li>
-  <li><a href="/index-4.html">4</a></li>
-  <li><a href="/index-5.html">5</a></li>
-  <li><a href="/index-6.html">6</a></li>
-  <li><a href="/index-7.html">7</a></li>
-  <li><a href="/index-8.html">8</a></li>
-  <li><a href="/index-9.html">9</a></li>
-  <li><a href="/index-10.html">10</a></li>
-  <li><a href="/index-11.html">11</a></li>
-  <li><a href="/index-12.html">12</a></li>
-  <li><a href="/index-13.html">13</a></li>
-  <li><a href="/index-14.html">14</a></li>
-  <li><a href="/index-3.html">
+  <li class="page-item"><a class="page-link" href="/index.html">1</a></li>
+  <li class="page-item active"><a class="page-link" href="/index-2.html">2</a></li>
+  <li class="page-item"><a class="page-link" href="/index-3.html">3</a></li>
+  <li class="page-item"><a class="page-link" href="/index-4.html">4</a></li>
+  <li class="page-item"><a class="page-link" href="/index-5.html">5</a></li>
+  <li class="page-item"><a class="page-link" href="/index-6.html">6</a></li>
+  <li class="page-item"><a class="page-link" href="/index-7.html">7</a></li>
+  <li class="page-item"><a class="page-link" href="/index-8.html">8</a></li>
+  <li class="page-item"><a class="page-link" href="/index-9.html">9</a></li>
+  <li class="page-item"><a class="page-link" href="/index-10.html">10</a></li>
+  <li class="page-item"><a class="page-link" href="/index-11.html">11</a></li>
+  <li class="page-item"><a class="page-link" href="/index-12.html">12</a></li>
+  <li class="page-item"><a class="page-link" href="/index-13.html">13</a></li>
+  <li class="page-item"><a class="page-link" href="/index-14.html">14</a></li>
+  <li class="page-item"><a class="page-link" href="/index-3.html">
     <quote>&rarr;</quote></a></li></ul></footer>
         </div>
       </div>

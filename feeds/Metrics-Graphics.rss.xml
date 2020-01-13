@@ -9,7 +9,7 @@
   <ttl>1800</ttl>
   <item>
    <title>Metrics Graphics: Stepping back for a while</title>
-   <link>https://wlach.github.io/blog/2019/09/metrics-graphics-stepping-back-for-a-while?utm_source=Metrics-Graphics&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2019/09/metrics-graphics-stepping-back-for-a-while/?utm_source=Metrics-Graphics&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2019-09-metrics-graphics-stepping-back-for-a-while</guid>
    <pubDate>Thu, 26 Sep 2019 20:33:54 UT</pubDate>
    <author>William Lachance</author>
@@ -19,7 +19,7 @@
 &lt;p&gt;If you follow the link to the &lt;a href="https://github.com/metricsgraphics/metrics-graphics/"&gt;metrics graphics repository&lt;/a&gt;, you&amp;rsquo;ll note that the version has been bumped to &amp;ldquo;3.0-alpha3&amp;rdquo;. I was &lt;em&gt;this close&lt;/em&gt; to making one last new release this afternoon but decided I didn&amp;rsquo;t want to potentially break existing users who were fine using the last &amp;ldquo;official&amp;rdquo; version (v3.0 bumps the version of d3 used to &amp;ldquo;5&amp;rdquo;, among other breaking changes). I&amp;rsquo;d encourage people who want to continue using the library to make a fork and publish a copy under their user or organization name on npm.&lt;/p&gt;</description></item>
   <item>
    <title>metricsgraphics movements</title>
-   <link>https://wlach.github.io/blog/2018/04/metricsgraphics-movements?utm_source=Metrics-Graphics&amp;utm_medium=RSS</link>
+   <link>https://wlach.github.io/blog/2018/04/metricsgraphics-movements/?utm_source=Metrics-Graphics&amp;utm_medium=RSS</link>
    <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2018-04-metricsgraphics-movements</guid>
    <pubDate>Mon, 30 Apr 2018 15:20:32 UT</pubDate>
    <author>William Lachance</author>

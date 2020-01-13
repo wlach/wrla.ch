@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Eideticker, FirefoxOS, Mozilla">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last">
-    <link rel="next" href="/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser">
-    <link rel="prev" href="/blog/2013/04/further-meditative-practice">
+    <link rel="canonical" href="https://wlach.github.io/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last/">
+    <link rel="next" href="/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser/">
+    <link rel="prev" href="/blog/2013/04/further-meditative-practice/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -231,23 +233,34 @@
 <p>As an aside, I&#8217;ve been really impressed with both the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Marionette">Marionette</a> framework and the gaiatests python module that was written up for FirefoxOS. Writing the above test took just 5 minutes &#8212; and <a href="https://github.com/mozilla/eideticker/blob/master/src/tests/b2g/appscrolling/scroll.py">the code</a> is quite straightforward. Quite the pleasant change from my various efforts in Android automation.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2013/04/further-meditative-practice">&larr; <em>Further meditative practice</em></a>
+      <a href="/blog/2013/04/further-meditative-practice/">&larr; <em>Further meditative practice</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser"><em>The need for a modern open source email client and Geary&#8217;s fundraiser</em> &rarr;</a>
+      <a href="/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser/"><em>The need for a modern open source email client and Geary&#8217;s fundraiser</em> &rarr;</a>
     </li>
     </ul>
   </footer>

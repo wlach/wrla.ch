@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Mozilla, Community">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects">
-    <link rel="next" href="/blog/2018/10/pydata-nyc-2018">
-    <link rel="prev" href="/blog/2019/03/new-ideas-old-buildings">
+    <link rel="canonical" href="https://wlach.github.io/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/">
+    <link rel="next" href="/blog/2018/10/pydata-nyc-2018/">
+    <link rel="prev" href="/blog/2019/03/new-ideas-old-buildings/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -243,23 +245,34 @@
 <p>If this seems similar to the best practices for how members of a team should onboard each other and work together, that&rsquo;s not really a coincidence. Obviously the relationship is a little different because we&rsquo;re not operating with a formal managerial structure and usually the work is unpaid: I try to bear that mind and make double sure that contributors are really getting some useful skills and habits that they can take with them to future jobs and other opportunities, while also emphasizing that their code contributions are their own, not Mozilla&rsquo;s. So far it seems to have worked out pretty well for all concerned (me, Mozilla, and the contributors).</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2019/03/new-ideas-old-buildings">&larr; <em>New ideas, old buildings</em></a>
+      <a href="/blog/2019/03/new-ideas-old-buildings/">&larr; <em>New ideas, old buildings</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2018/10/pydata-nyc-2018"><em>pydata nyc 2018</em> &rarr;</a>
+      <a href="/blog/2018/10/pydata-nyc-2018/"><em>pydata nyc 2018</em> &rarr;</a>
     </li>
     </ul>
   </footer>

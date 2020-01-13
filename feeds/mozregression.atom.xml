@@ -7,7 +7,7 @@
  <updated>2019-09-16T15:29:04Z</updated>
  <entry>
   <title type="text">mozregression update: python 3 edition</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2019/09/mozregression-update-python-3-edition?utm_source=mozregression&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2019/09/mozregression-update-python-3-edition/?utm_source=mozregression&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2019-09-mozregression-update-python-3-edition</id>
   <published>2019-09-16T15:29:04Z</published>
   <updated>2019-09-16T15:29:04Z</updated>
@@ -42,7 +42,7 @@
 &lt;p&gt;If you&amp;rsquo;re interested in working on any of the above, please feel free to dive in on one of the above bugs. I can&amp;rsquo;t offer formal mentorship, but am happy to help out where I can.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression's new mascot</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/07/mozregression-s-new-mascot?utm_source=mozregression&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/07/mozregression-s-new-mascot/?utm_source=mozregression&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2017-07-mozregression-s-new-mascot</id>
   <published>2017-07-31T15:32:02Z</published>
   <updated>2017-07-31T15:32:02Z</updated>
@@ -56,7 +56,7 @@
 &lt;p&gt;One of the nice parts about working at Mozilla is the flexibility it offers to just hack on stuff that&amp;rsquo;s important, whether or not it&amp;rsquo;s part of your formal job description. Maintaining mozregression is pretty far outside my current set of responsibilities (or even interests), but I keep it going because it&amp;rsquo;s a key tool used by developers team here and no one else seems willing to take it over. Fortunately, tools like appveyor and pypi keep the time suckage to a mostly-reasonable level.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression updates</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2015/01/mozregression-updates?utm_source=mozregression&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2015/01/mozregression-updates/?utm_source=mozregression&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2015-01-mozregression-updates</id>
   <published>2015-01-27T05:00:00Z</published>
   <updated>2015-01-27T05:00:00Z</updated>
@@ -78,7 +78,7 @@
 &lt;p&gt;Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&amp;#8217;s just that much more useful to Firefox contributors everywhere.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression 0.24</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/09/mozregression-0-24?utm_source=mozregression&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/09/mozregression-0-24/?utm_source=mozregression&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2014-09-mozregression-0-24</id>
   <published>2014-09-15T04:00:00Z</published>
   <updated>2014-09-15T04:00:00Z</updated>
@@ -96,7 +96,7 @@
 &lt;p&gt;If you know a bit of python, contributing to mozregression is a great way to have a high impact on Mozilla. Many platform developers use this project in their day-to-day work, but there&amp;#8217;s still &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;lots of room for improvement&lt;/a&gt;.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression: New maintainer, issues tracked in bugzilla</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla?utm_source=mozregression&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/?utm_source=mozregression&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2014-05-mozregression-new-maintainer-issues-tracked-in-bugzilla</id>
   <published>2014-05-08T04:00:00Z</published>
   <updated>2014-05-08T04:00:00Z</updated>
@@ -113,7 +113,7 @@
 &lt;p&gt;If you&amp;#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &amp;#8212; as I&amp;#8217;ve found out over the last few months, people &lt;em&gt;all over&lt;/em&gt; the Mozilla organization (managers, developers, QA &amp;#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is &lt;a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;amp;#038;product=Testing"&gt;here&lt;/a&gt;.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression now supports inbound builds</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/11/mozregression-now-supports-inbound-builds?utm_source=mozregression&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/11/mozregression-now-supports-inbound-builds/?utm_source=mozregression&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2013-11-mozregression-now-supports-inbound-builds</id>
   <published>2013-11-28T05:00:00Z</published>
   <updated>2013-11-28T05:00:00Z</updated>

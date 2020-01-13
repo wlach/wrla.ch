@@ -4,10 +4,30 @@
  <link rel="self" href="https://wlach.github.io/feeds/Mozilla.atom.xml" />
  <link href="https://wlach.github.io/tags/Mozilla.html" />
  <id>urn:https-wlach-github-io:-tags-Mozilla-html</id>
- <updated>2019-10-30T15:11:17Z</updated>
+ <updated>2020-01-13T16:08:57Z</updated>
+ <entry>
+  <title type="text">Conda is pretty great</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2020/01/conda-is-pretty-great/?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2020-01-conda-is-pretty-great</id>
+  <published>2020-01-13T16:08:57Z</published>
+  <updated>2020-01-13T16:08:57Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;Lately the data engineering team has been looking into productionizing (i.e. running in Airflow) a bunch of models that the data science team has been producing. This often involves languages and environments that are a bit outside of our comfort zone &amp;mdash; for example, &lt;a href="https://github.com/mozilla/missioncontrol-v2"&gt;the next version of Mission Control&lt;/a&gt; relies on the &lt;a href="https://mc-stan.org/users/interfaces/rstan"&gt;R-stan library&lt;/a&gt; to produce a model of expected crash behaviour as Firefox is released.&lt;/p&gt;
+
+&lt;p&gt;To make things as simple and deterministic as possible, we&amp;rsquo;ve been building up Docker containers to run/execute this code along with their dependencies, which makes things nice and reproducible. My initial thought was to use just the language-native toolchains to build up my container for the above project, but quickly found a number of problems:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;For local testing, Docker on Mac is &lt;em&gt;slow&lt;/em&gt;: when doing a large number of statistical calculations (as above), you can count on your testing iterations taking 3 to 4 (or more) times longer.&lt;/li&gt;
+ &lt;li&gt;On initial setup, the default R packaging strategy is to have the user of a package like R-stan recompile from source. This can take &lt;em&gt;forever&lt;/em&gt; if you have a long list of dependencies with C-compiled extensions (pretty much a given if you&amp;rsquo;re working in the data space): rebuilding my initial docker environment for missioncontrol-v2 took almost an hour. This isn&amp;rsquo;t just a problem for local development: it also makes continuous integration using a service like Circle or Travis expensive and painful.&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;I had been vaguely aware of &lt;a href="https://docs.conda.io/en/latest/"&gt;Conda&lt;/a&gt; for a few years, but didn&amp;rsquo;t really understand its value proposition until I started working on the above project: why bother with a heavyweight package manager when you already have Docker to virtualize things? The answer is that it solves both of the above problems: for local development, you can get something more-or-less identical to what you&amp;rsquo;re running inside Docker with no performance penalty whatsoever. And for building the docker container itself, Conda&amp;rsquo;s package repository contains pre-compiled versions of all the dependencies you&amp;rsquo;d want to use for something like this (even somewhat esoteric libraries like R-stan are available on &lt;a href="https://conda-forge.org/"&gt;conda-forge&lt;/a&gt;), which brought my build cycle times down to less than 5 minutes.&lt;/p&gt;
+
+&lt;p&gt;tl;dr: If you have a bunch of R / python code you want to run in a reproducible manner, consider Conda.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Using BigQuery JavaScript UDFs to analyze Firefox telemetry for fun &amp; profit</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2019-10-using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit</id>
   <published>2019-10-30T15:11:17Z</published>
   <updated>2019-10-30T15:11:17Z</updated>
@@ -79,7 +99,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;[1] I understand that Jeff Klukas, Frank Bertsch, Daniel Thorn, Anthony Miyaguchi, and Wesley Dawson are the principals involved - apologies if I&amp;rsquo;m forgetting someone.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Metrics Graphics: Stepping back for a while</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2019/09/metrics-graphics-stepping-back-for-a-while?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2019/09/metrics-graphics-stepping-back-for-a-while/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2019-09-metrics-graphics-stepping-back-for-a-while</id>
   <published>2019-09-26T20:33:54Z</published>
   <updated>2019-09-26T20:33:54Z</updated>
@@ -91,7 +111,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you follow the link to the &lt;a href="https://github.com/metricsgraphics/metrics-graphics/"&gt;metrics graphics repository&lt;/a&gt;, you&amp;rsquo;ll note that the version has been bumped to &amp;ldquo;3.0-alpha3&amp;rdquo;. I was &lt;em&gt;this close&lt;/em&gt; to making one last new release this afternoon but decided I didn&amp;rsquo;t want to potentially break existing users who were fine using the last &amp;ldquo;official&amp;rdquo; version (v3.0 bumps the version of d3 used to &amp;ldquo;5&amp;rdquo;, among other breaking changes). I&amp;rsquo;d encourage people who want to continue using the library to make a fork and publish a copy under their user or organization name on npm.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression update: python 3 edition</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2019/09/mozregression-update-python-3-edition?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2019/09/mozregression-update-python-3-edition/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2019-09-mozregression-update-python-3-edition</id>
   <published>2019-09-16T15:29:04Z</published>
   <updated>2019-09-16T15:29:04Z</updated>
@@ -126,7 +146,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you&amp;rsquo;re interested in working on any of the above, please feel free to dive in on one of the above bugs. I can&amp;rsquo;t offer formal mentorship, but am happy to help out where I can.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Time for some project updates</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2019/09/time-for-some-project-updates?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2019/09/time-for-some-project-updates/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2019-09-time-for-some-project-updates</id>
   <published>2019-09-16T14:41:39Z</published>
   <updated>2019-09-16T14:41:39Z</updated>
@@ -138,7 +158,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;More to come.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">New ideas, old buildings</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2019/03/new-ideas-old-buildings?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2019/03/new-ideas-old-buildings/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2019-03-new-ideas-old-buildings</id>
   <published>2019-03-22T19:08:11Z</published>
   <updated>2019-03-22T19:08:11Z</updated>
@@ -163,7 +183,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;As we move ahead, we may find places where applying new backend server technologies makes sense. Heck, maybe we&amp;rsquo;ll chose to rewrite the whole thing at some point. But to get to launch, chosing a bunch of boring, tested software for this portion of Iodide was (in my view) absolutely the right decision and I make no apologies for it.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Making contribution work for Firefox tooling and data projects</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2018-11-making-contribution-work-for-firefox-tooling-and-data-projects</id>
   <published>2018-11-26T16:13:46Z</published>
   <updated>2018-11-26T16:13:46Z</updated>
@@ -199,7 +219,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If this seems similar to the best practices for how members of a team should onboard each other and work together, that&amp;rsquo;s not really a coincidence. Obviously the relationship is a little different because we&amp;rsquo;re not operating with a formal managerial structure and usually the work is unpaid: I try to bear that mind and make double sure that contributors are really getting some useful skills and habits that they can take with them to future jobs and other opportunities, while also emphasizing that their code contributions are their own, not Mozilla&amp;rsquo;s. So far it seems to have worked out pretty well for all concerned (me, Mozilla, and the contributors).&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Mission Control 1.0</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2018/06/mission-control-1-0?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2018/06/mission-control-1-0/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2018-06-mission-control-1-0</id>
   <published>2018-06-05T21:50:32Z</published>
   <updated>2018-06-05T21:50:32Z</updated>
@@ -227,7 +247,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;a href="https://air.mozilla.org/mission-control-dashboard-intro/"&gt;link&lt;/a&gt;&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">metricsgraphics movements</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2018/04/metricsgraphics-movements?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2018/04/metricsgraphics-movements/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2018-04-metricsgraphics-movements</id>
   <published>2018-04-30T15:20:32Z</published>
   <updated>2018-04-30T15:20:32Z</updated>
@@ -243,7 +263,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
  &lt;li&gt;We have a GSOC intern! As part of the Mozilla GSOC, Yunhao Zheng is going to be working on  adding rich brushing/zooming support to Metrics Graphics, which should be quite useful for  visualizing complex data in projects like &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; (&lt;a href="https://docs.google.com/document/d/1_KIOJtemqlCBktDdfdjDuS4XhICeaKO3QhNRwbnnf-g/"&gt;Project outline&lt;/a&gt;, &lt;a href="https://summerofcode.withgoogle.com/projects/#5422620527296512"&gt;Yunhao&amp;rsquo;s proposal&lt;/a&gt;)&lt;/li&gt;&lt;/ul&gt;</content></entry>
  <entry>
   <title type="text">Mission Control update</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2018/04/mission-control-update?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2018/04/mission-control-update/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2018-04-mission-control-update</id>
   <published>2018-04-06T18:46:43Z</published>
   <updated>2018-04-06T18:46:43Z</updated>
@@ -275,7 +295,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you want to play with the system yourself, the &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;development instance&lt;/a&gt; is still up. We will probably look at making this thing &amp;ldquo;official&amp;rdquo; next quarter.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Derived versus direct</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2018/02/derived-versus-direct?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2018/02/derived-versus-direct/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2018-02-derived-versus-direct</id>
   <published>2018-02-12T21:06:40Z</published>
   <updated>2018-02-12T21:06:40Z</updated>
@@ -303,7 +323,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Ok, so that&amp;rsquo;s just science 101: don&amp;rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &amp;mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Giving and receiving help at Mozilla</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2018/01/giving-and-receiving-help-at-mozilla?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2018/01/giving-and-receiving-help-at-mozilla/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2018-01-giving-and-receiving-help-at-mozilla</id>
   <published>2018-01-17T18:49:34Z</published>
   <updated>2018-01-17T18:49:34Z</updated>
@@ -328,7 +348,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;center&gt;&lt;img src="/files/2018/01/scale-of-asking.jpg" /&gt;&lt;/center&gt;</content></entry>
  <entry>
   <title type="text">Maintaining metricsgraphics</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/12/maintaining-metricsgraphics?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/12/maintaining-metricsgraphics/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2017-12-maintaining-metricsgraphics</id>
   <published>2017-12-06T22:16:23Z</published>
   <updated>2017-12-06T22:16:23Z</updated>
@@ -342,7 +362,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Note that this emphatically does &lt;em&gt;not&lt;/em&gt; mean I am promising to respond to every issue/question/pull request made against the project. Like my work with mozregression and perfherder, my maintenance work is being done on a best-effort basis to support Mozilla and the larger open source community. I&amp;rsquo;ll help people out where I can, but there are only so many working hours in a day and I need to spend most of those pushing my team&amp;rsquo;s immediate projects and deliverables forward! In particular, when it comes to getting pull requests merged, small, self-contained and logical changes with good commit messages will take priority.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Better or worse: by what measure?</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2017-10-better-or-worse-by-what-measure</id>
   <published>2017-10-26T20:58:20Z</published>
   <updated>2017-10-26T20:58:20Z</updated>
@@ -395,7 +415,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Shout out to &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; for reviewing this post and providing feedback and additions.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Mission Control: Ready for contributions</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2017-10-mission-control-ready-for-contributions</id>
   <published>2017-10-20T18:33:19Z</published>
   <updated>2017-10-20T18:33:19Z</updated>
@@ -411,7 +431,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Mission Control</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/10/mission-control?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/10/mission-control/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2017-10-mission-control</id>
   <published>2017-10-06T19:05:37Z</published>
   <updated>2017-10-06T19:05:37Z</updated>
@@ -435,7 +455,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Even still, the tool can still be useful for exploring a bunch of data quickly and it has been progressing rapidly over the last few weeks. And like almost everything Mozilla does, both the &lt;a href="https://github.com/mozilla/missioncontrol/"&gt;source&lt;/a&gt; and &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;dashboard&lt;/a&gt; are open to the public. I&amp;rsquo;m planning on flagging some easier bugs for newer contributors to work on in the next couple weeks, but in the meantime if you&amp;rsquo;re interested in this project and want to get involved, feel free to look us up on irc.mozilla.org #missioncontrol (I&amp;rsquo;m there as &amp;lsquo;wlach&amp;rsquo;).&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Functional is the future</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/08/functional-is-the-future?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/08/functional-is-the-future/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2017-08-functional-is-the-future</id>
   <published>2017-08-28T21:02:21Z</published>
   <updated>2017-08-28T21:02:21Z</updated>
@@ -445,122 +465,54 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Just spent well over an hour tracking down a silly bug in my code. For the &lt;a href="https://github.com/mozilla/missioncontrol/"&gt;mission control&lt;/a&gt; project, I wrote this very simple API method that returns a cached data structure to our front end:&lt;/p&gt;
 
 &lt;div class="brush: py"&gt;
- &lt;table class="sourcetable"&gt;
-  &lt;tbody&gt;
-   &lt;tr&gt;
-    &lt;td class="linenos"&gt;
-     &lt;div class="linenodiv"&gt;
-      &lt;pre&gt; 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
-    &lt;td class="code"&gt;
-     &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;measure&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;channel_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;channel&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;platform_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;platform&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;measure_name&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;measure&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;interval&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;request&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;GET&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;interval&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="nb"&gt;all&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;channel_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;platform_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;measure_name&lt;/span&gt;&lt;span class="p"&gt;]):&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseBadRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"All of channel, platform, measure required"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;cache&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;get_measure_cache_key&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;platform_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;channel_name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;measure_name&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseNotFound&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Data not available for this measure combination"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;interval&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="n"&gt;min_time&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;now&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timedelta&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;seconds&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;interval&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-        &lt;span class="k"&gt;except&lt;/span&gt; &lt;span class="ne"&gt;ValueError&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;HttpResponseBadRequest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"Interval must be specified in seconds (as an integer)"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+ &lt;pre&gt;&lt;code&gt;def measure(request):
+    channel_name = request.GET.get('channel')
+    platform_name = request.GET.get('platform')
+    measure_name = request.GET.get('measure')
+    interval = request.GET.get('interval')
+    if not all([channel_name, platform_name, measure_name]):
+        return HttpResponseBadRequest("All of channel, platform, measure required")
+    data = cache.get(get_measure_cache_key(platform_name, channel_name, measure_name))
+    if not data:
+        return HttpResponseNotFound("Data not available for this measure combination")
+    if interval:
+        try:
+            min_time = datetime.datetime.now() - datetime.timedelta(seconds=int(interval))
+        except ValueError:
+            return HttpResponseBadRequest("Interval must be specified in seconds (as an integer)")
 
-        &lt;span class="c1"&gt;# Return any build data in the interval&lt;/span&gt;
-        &lt;span class="n"&gt;empty_buildids&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-            &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;min_time&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-            &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]:&lt;/span&gt;
-                &lt;span class="n"&gt;empty_buildids&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        # Return any build data in the interval
+        empty_buildids = set()
+        for (build_id, build_data) in data.items():
+            build_data['data'] = [d for d in build_data['data'] if d[0] &amp;gt; min_time]
+            if not build_data['data']:
+                empty_buildids.add(build_id)
 
-        &lt;span class="c1"&gt;# don&amp;#39;t bother returning empty indexed data&lt;/span&gt;
-        &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;empty_buildid&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;empty_buildids&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-            &lt;span class="k"&gt;del&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;empty_buildid&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+        # don't bother returning empty indexed data
+        for empty_buildid in empty_buildids:
+            del data[empty_buildid]
 
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;JsonResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;measure_data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;})&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
+    return JsonResponse(data={'measure_data': data})&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;As you can see, it takes 3 required parameters (channel, platform, and measure) and one optional one (interval), picks out the required data structure, filters it a bit, and returns it. This is &lt;em&gt;almost&lt;/em&gt; what we wanted for the frontend, unfortunately the time zone information isn&amp;rsquo;t quite what we want, since the strings that are returned don&amp;rsquo;t tell the frontend that they&amp;rsquo;re in UTC format &amp;mdash; they need a &amp;lsquo;Z&amp;rsquo; appended to them for that.&lt;/p&gt;
 
 &lt;p&gt;After a bit of digging, I found out that Django&amp;rsquo;s &lt;a href="https://github.com/django/django/blob/afc06b56256f78ab832ff8066ac6f34b7443de22/django/core/serializers/json.py#L76"&gt;json serializer&lt;/a&gt; will only add the Z if the tzinfo structure is specified. So I figured out a simple pattern for adding that (using the dateutil library, which we are fortunately already using):&lt;/p&gt;
 
 &lt;div class="brush: py"&gt;
- &lt;table class="sourcetable"&gt;
-  &lt;tbody&gt;
-   &lt;tr&gt;
-    &lt;td class="linenos"&gt;
-     &lt;div class="linenodiv"&gt;
-      &lt;pre&gt;1
-2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
-    &lt;td class="code"&gt;
-     &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;dateutil.tz&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;tzutc&lt;/span&gt;
-&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromtimestamp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mydatestamp&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;tz&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tzutc&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
+ &lt;pre&gt;&lt;code&gt;from dateutil.tz import tzutc
+datetime.datetime.fromtimestamp(mydatestamp.timestamp(), tz=tzutc())&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;I tested this quickly on the python console and it seemed to work great. But when I added the code to my function, the unit tests mysteriously failed. Can you see why?&lt;/p&gt;
 
 &lt;div class="brush: py"&gt;
- &lt;table class="sourcetable"&gt;
-  &lt;tbody&gt;
-   &lt;tr&gt;
-    &lt;td class="linenos"&gt;
-     &lt;div class="linenodiv"&gt;
-      &lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
-    &lt;td class="code"&gt;
-     &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
-    &lt;span class="c1"&gt;# add utc timezone info to each date, so django will serialize a&lt;/span&gt;
-    &lt;span class="c1"&gt;# &amp;#39;Z&amp;#39; to the end of the string (and so javascript&amp;#39;s date constructor&lt;/span&gt;
-    &lt;span class="c1"&gt;# will know it&amp;#39;s utc)&lt;/span&gt;
-    &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromtimestamp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;tz&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tzutc&lt;/span&gt;&lt;span class="p"&gt;())]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt;
-        &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;min_time&lt;/span&gt;
-    &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
+ &lt;pre&gt;&lt;code&gt;for (build_id, build_data) in data.items():
+    # add utc timezone info to each date, so django will serialize a
+    # 'Z' to the end of the string (and so javascript's date constructor
+    # will know it's utc)
+    build_data['data'] = [
+        [datetime.datetime.fromtimestamp(d[0].timestamp(), tz=tzutc())] + d[1:] for
+        d in build_data['data'] if d[0] &amp;gt; min_time
+    ]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Trick question: there&amp;rsquo;s actually nothing wrong with this code. But if you look at the block in context (see the top of the post), you see that it&amp;rsquo;s only executed if &lt;em&gt;interval&lt;/em&gt; is specified, which it isn&amp;rsquo;t necessarily. The first case that my unit tests executed didn&amp;rsquo;t specify interval, so fail they did. It wasn&amp;rsquo;t immediately obvious to me why this was happening, so I went on a wild-goose chase of trying to figure out how the Django context might have been responsible for the unexpected output, before realizing my basic logic error.&lt;/p&gt;
 
@@ -569,65 +521,30 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;As an experiment, I wrote up what this function might look like in a pure functional style with immutable data structures:&lt;/p&gt;
 
 &lt;div class="brush: py"&gt;
- &lt;table class="sourcetable"&gt;
-  &lt;tbody&gt;
-   &lt;tr&gt;
-    &lt;td class="linenos"&gt;
-     &lt;div class="linenodiv"&gt;
-      &lt;pre&gt;1
-2
-3
-4
-5
-6
-7
-8&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
-    &lt;td class="code"&gt;
-     &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;transform_and_filter_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;new_build_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;new_build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-        &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromtimestamp&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;timestamp&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="n"&gt;tz&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;tzutc&lt;/span&gt;&lt;span class="p"&gt;())]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;:]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt;
-        &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;build_data&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;min_time&lt;/span&gt;
-    &lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new_build_data&lt;/span&gt;
-&lt;span class="n"&gt;transformed_build_data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;transform_and_filter_data&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;data&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
+ &lt;pre&gt;&lt;code&gt;def transform_and_filter_data(build_data):
+    new_build_data = copy.copy(build_data)
+    new_build_data['data'] = [
+        [datetime.datetime.fromtimestamp(d[0].timestamp(), tz=tzutc())] + d[1:] for
+        d in build_data['data'] if d[0] &amp;gt; min_time
+    ]
+    return new_build_data
+transformed_build_data = {k: v for k, v in {k: transform_and_filter_data(v) for k, v in data}.items() if len(v['data']) &amp;gt; 0}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;A work of art it isn&amp;rsquo;t &amp;mdash; and definitely not &amp;ldquo;pythonic&amp;rdquo;. Compare this to a similar piece of code written in Javascript (ES6) with lodash (using a hypothetical &lt;code&gt;tzified&lt;/code&gt; function):&lt;/p&gt;
 
 &lt;div class="brush: js"&gt;
- &lt;table class="sourcetable"&gt;
-  &lt;tbody&gt;
-   &lt;tr&gt;
-    &lt;td class="linenos"&gt;
-     &lt;div class="linenodiv"&gt;
-      &lt;pre&gt;1
-2
-3
-4
-5
-6
-7&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;
-    &lt;td class="code"&gt;
-     &lt;div class="source"&gt;
-      &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;let&lt;/span&gt; &lt;span class="nx"&gt;transformedBuildData&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;_&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;mapValues&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;buildData&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;({&lt;/span&gt;
-    &lt;span class="p"&gt;...&lt;/span&gt;&lt;span class="nx"&gt;buildData&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="nx"&gt;buildData&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;
-      &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;filter&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;datum&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;minTimestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-      &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nx"&gt;tzcified&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;])].&lt;/span&gt;&lt;span class="nx"&gt;concat&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;datum&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;slice&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
-  &lt;span class="p"&gt;})),&lt;/span&gt;
-  &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;buildId&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;=&amp;gt;&lt;/span&gt; &lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;data&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;length&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;
-&lt;/div&gt;
+ &lt;pre&gt;&lt;code&gt;let transformedBuildData = _.filter(_.mapValues(data, (buildData) =&amp;gt; ({
+    ...buildData,
+    data: buildData.data
+      .filter(datum =&amp;gt; datum[0] &amp;gt; minTimestamp)
+      .map(datum =&amp;gt; [tzcified(datum[0])].concat(datum.slice(1)))
+  })),
+  (data, buildId) =&amp;gt; data.data.length &amp;gt; 0);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;A little bit easier to understand, but more importantly (to me anyway) it comes across as idiomatic and natural in a way that the python version just doesn&amp;rsquo;t. I&amp;rsquo;ve been happily programming Python for the last 10 years, but it&amp;rsquo;s increasingly feeling time to move on to greener pastures.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression's new mascot</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/07/mozregression-s-new-mascot?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/07/mozregression-s-new-mascot/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2017-07-mozregression-s-new-mascot</id>
   <published>2017-07-31T15:32:02Z</published>
   <updated>2017-07-31T15:32:02Z</updated>
@@ -641,7 +558,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;One of the nice parts about working at Mozilla is the flexibility it offers to just hack on stuff that&amp;rsquo;s important, whether or not it&amp;rsquo;s part of your formal job description. Maintaining mozregression is pretty far outside my current set of responsibilities (or even interests), but I keep it going because it&amp;rsquo;s a key tool used by developers team here and no one else seems willing to take it over. Fortunately, tools like appveyor and pypi keep the time suckage to a mostly-reasonable level.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Taking over an npm package: sanity prevails</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/07/taking-over-an-npm-package-sanity-prevails?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/07/taking-over-an-npm-package-sanity-prevails/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2017-07-taking-over-an-npm-package-sanity-prevails</id>
   <published>2017-07-13T15:08:40Z</published>
   <updated>2017-07-13T15:08:40Z</updated>
@@ -667,7 +584,7 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;In hindsight, this is obviously the most reasonable outcome and I&amp;rsquo;m not sure why I was expecting anything else. Is the node community just friendlier than other areas I&amp;rsquo;ve worked in? Have community standards improved generally? In any case, thank you Carter for a great piece of software, hopefully it will thrive in its new home. :P&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Using Docker to run automated tests</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/06/using-docker-to-run-automated-tests?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2017/06/using-docker-to-run-automated-tests/?utm_source=Mozilla&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2017-06-using-docker-to-run-automated-tests</id>
   <published>2017-06-02T20:04:38Z</published>
   <updated>2017-06-02T20:04:38Z</updated>
@@ -689,50 +606,4 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
  &lt;li&gt;If you need to download/install a piece of software when building the docker container, use the &lt;code&gt;RUN&lt;/code&gt; directive instead of &lt;code&gt;ADD&lt;/code&gt;. This will speed up rebuilding the container while you&amp;rsquo;re iterating on it (because you can take advantage of the Docker layers cache).&lt;/li&gt;
  &lt;li&gt;You almost certainly want to create a script (&lt;a href="https://github.com/mozilla/python_moztelemetry/blob/d2aa84bbac09465d38eeb0b5beb20edc7ddcc21b/runtests.sh"&gt;example&lt;/a&gt;) to streamline all the steps of running the tests: this will make running the tests easier for anyone wanting to contribute to your project and reduce the amount of documentation that you will have to write.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;The relevant files and documentation are in the repositories linked above.&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">Easier reproduction of intermittent test failures in automation</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation?utm_source=Mozilla&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2017-04-easier-reproduction-of-intermittent-test-failures-in-automation</id>
-  <published>2017-04-05T20:14:35Z</published>
-  <updated>2017-04-05T20:14:35Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;As part of the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell"&gt;Stockwell project&lt;/a&gt;, I&amp;rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&amp;rsquo;s often very difficult to reproduce an intermittent failure we see in Treeherder locally since the environment is so different, but historically it has been a big hassle to get access to the machines we use in automation for various reasons.&lt;/p&gt;
-
-&lt;p&gt;One option that rolled out last year was the so-called one-click loaner, which enabled developers to sign out an virtual machine instance identical to the ones used to run unit tests (at least if the tests are running on Taskcluster, which is increasingly often the case), then execute their particular case with whatever extra debugging options they would find useful. This is a big step forward, but it&amp;rsquo;s still quite a bit of hassle, since it requires a bunch of manual work on the part of the developer to interact with the instance.&lt;/p&gt;
-
-&lt;p&gt;What if we could &lt;em&gt;just&lt;/em&gt; re-run the particular test an arbitrary number of times with whatever options we wanted, simply by clicking on a few buttons on Treeherder? I&amp;rsquo;ve been exploring this for the first few months of 2017 and I&amp;rsquo;ve come up with a prototype which I think is ready for people to start playing with.&lt;/p&gt;
-
-&lt;p&gt;The user interface to this is pretty straightforward. Just find a job you want to retrigger in Treeherder:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src="/files/2017/04/treeherder-selected-mochitest.png" /&gt;&lt;/p&gt;
-
-&lt;p&gt;Then select the &amp;rsquo;&amp;hellip;&amp;rsquo; option in the panel below and press &amp;ldquo;Custom Action&amp;hellip;&amp;rdquo;:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src="/files/2017/04/treeherder-taskcluster-options.png" /&gt;&lt;/p&gt;
-
-&lt;p&gt;You should get a small piece of JSON to edit, which corresponds to the configuration for the retriggered job:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src="/files/2017/04/treeherder-custom-action.png" /&gt;&lt;/p&gt;
-
-&lt;p&gt;The main field to edit is &amp;ldquo;path&amp;rdquo;. You should set this to the name of the test you want to try retriggering. For example &lt;code&gt;dom/animation/test/css-transitions/test_animation-ready.html&lt;/code&gt;. You can also set custom Firefox preferences and environment variables, to turn on different types of debugging.&lt;/p&gt;
-
-&lt;p&gt;Unfortunately as usual with a new feature at Mozilla, there are a bunch of limitations and caveats:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;This depends on functionality that&amp;rsquo;s only in Taskcluster, so  buildbot jobs are exempt.&lt;/li&gt;
- &lt;li&gt;No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which hopefully isn&amp;rsquo;t that far off).&lt;/li&gt;
- &lt;li&gt;Browser chrome tests failing in mysterious ways if run repeatedly  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347654"&gt;bug 1347654&lt;/a&gt;)&lt;/li&gt;
- &lt;li&gt;Only reftest and mochitest are currently supported. XPCShell  support is blocked by the lack of support in its harness for  running a job repeatedly (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347696"&gt;bug 1347696&lt;/a&gt;).  Web Platform Tests need the requisite support in mozharness for  just setting up the tests without running them &amp;mdash; the same issue  that prevents us from debugging such tests with a one-click loaner  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348833"&gt;bug 1348833&lt;/a&gt;).&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;Aside from fixing the above limitations, the following features would also be really nifty to have:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;Ability to trigger a custom job as part of a try push (i.e.  not needing to retrigger off an existing job)&lt;/li&gt;
- &lt;li&gt;Run these jobs under rr, and provide a way to login and  interactively debug when the problem is actually reproduced.&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;I am actually in the process of moving to another team @ Mozilla (more on that in another post), so I probably won&amp;rsquo;t have a ton of time to work on the above &amp;mdash; but I&amp;rsquo;d be happy to help anyone who&amp;rsquo;s interested in developing this idea further.&lt;/p&gt;
-
-&lt;p&gt;A special shout out to the &lt;a href="https://wiki.mozilla.org/TaskCluster"&gt;Taskcluster&lt;/a&gt; team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to develop this feature in the first place.&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;The relevant files and documentation are in the repositories linked above.&lt;/p&gt;</content></entry></feed>

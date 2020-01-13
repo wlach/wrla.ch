@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Meta">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2012/02/a-new-domain">
-    <link rel="next" href="/blog/2012/01/yet-more-checkerboarding-analysis">
-    <link rel="prev" href="/blog/2012/02/playing-with-pandas">
+    <link rel="canonical" href="https://wlach.github.io/blog/2012/02/a-new-domain/">
+    <link rel="next" href="/blog/2012/01/yet-more-checkerboarding-analysis/">
+    <link rel="prev" href="/blog/2012/02/playing-with-pandas/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -223,23 +225,34 @@
 <p>So, for all 20 of you who are subscribed to my doings, please update your links. For those of you using Google Reader / RSS, the new feed is at <a href="http://wrla.ch/blog/feed/">this URL</a>. All the old masalalabs links should at least <strong>work</strong> until the domain expires in a few years, so there&#8217;s no huge rush. Then again, you&#8217;ll probably forget if you don&#8217;t do it now (and thus be deprived of my endless ravings about checkerboarding on mobile Fennec on Android), so why wait?</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2012/02/playing-with-pandas">&larr; <em>Playing with pandas</em></a>
+      <a href="/blog/2012/02/playing-with-pandas/">&larr; <em>Playing with pandas</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2012/01/yet-more-checkerboarding-analysis"><em>Yet more checkerboarding analysis</em> &rarr;</a>
+      <a href="/blog/2012/01/yet-more-checkerboarding-analysis/"><em>Yet more checkerboarding analysis</em> &rarr;</a>
     </li>
     </ul>
   </footer>

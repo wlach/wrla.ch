@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 6)</title>
     <meta name="description" content="William Lachance's Log (page 6)">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Pandaboard, Coffee, Counting, Meditation, Infraherder, iphone, Mozilla, Ebola, Free Software, BIXI, Meta, zen, Business, GoFaster, Philosophy, Treeherder, email, SQL, MSF, hbus, Food, Release Engineering, Transit, Mission Control, FirefoxOS, Environment, Toronto, Bikes, Statistics, Montreal, Community, Life, GNOME, Music, Orangutan, Cats, mozregression, Performance, Python, Open Data, Buddhism, Usability, Talos, Metrics Graphics, Profiling, all, Video, Transit to Go, Île Sans Fil, Eideticker, WifiDog, Psychology, Responsiveness, Social Media, Perfherder, Docker, Data Visualization, Web, Nixi, Time, Taskcluster, Iodide, Data, Polling, Android, ateam, Telemetry">
+    <meta name="keywords"    content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, Community, Iodide, Life, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
     <link rel="canonical" href="https://wlach.github.io/index-6.html">
@@ -211,8 +211,30 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Web.html">Web</a></span></p>
+    <h2><a href='/blog/2014/09/using-flexbox-in-web-applications/'>Using Flexbox in web applications</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 29th, 2014</p>
+  </header>
+
+<p>Over last few months, I discovered the joy that is CSS Flexbox, which solves the &#8220;how do I lay out this set of div&#8217;s in horizontally or vertically&#8221;. I&#8217;ve used it in three projects so far:</p>
+
+<ul>
+ <li>Centering the timer interface in my <a href="http://wrla.ch/blog/2014/08/a-new-meditation-app/">meditation app</a>, so that it scales nicely from a 320&#215;480 FirefoxOS device all the way up to a high definition monitor</li>
+ <li>Laying out the chart / sidebar elements in the <a href="http://eideticker.mozilla.org">Eideticker dashboard</a> so that maximum horizontal space is used</li>
+ <li>Fixing various problems in the <a href="http://treeherder.mozilla.org">Treeherder UI</a> on smaller screens (see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1043474">bug 1043474</a> and its dependent bugs)</li></ul>
+
+<p>When I talk to people about their troubles with CSS, layout comes up really high on the list. Historically, basic layout problems like a panel of vertical buttons have been ridiculously difficult, involving hacks involving floating divs and absolute positioning or <a href="http://layout.jquery-dev.com/">JavaScript layout libraries</a>. This is why people write articles entitled <a href="http://uxmag.com/articles/give-and-use-tables">&#8220;Give up and use tables&#8221;</a>.</p>
+
+<p>Flexbox has pretty much put an end to these problems for me. There&#8217;s no longer any need to &#8220;give up and use tables&#8221; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&#8217;re so great. I think we&#8217;re pretty close to Flexbox being supported across all the major browsers, so it&#8217;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.</p>
+
+<p>To try and spread the word, I wrote up <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications">a howto article on using flexbox for web applications on MDN</a>, covering some of the common use cases I mention above. If you&#8217;ve been curious about flexbox but unsure how to use it, please have a look.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
-    <h2><a href='/blog/2014/09/mozregression-0-24'>mozregression 0.24</a></h2>
+    <h2><a href='/blog/2014/09/mozregression-0-24/'>mozregression 0.24</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 15th, 2014</p>
   </header>
 
@@ -231,7 +253,7 @@
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy'>Hacking on the Treeherder front end: refreshingly easy</a></h2>
+    <h2><a href='/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/'>Hacking on the Treeherder front end: refreshingly easy</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Sep 11th, 2014</p>
   </header>
 
@@ -256,7 +278,7 @@ cd treeherder-ui/webapp
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Meditation.html">Meditation</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/zen.html">zen</a></span></p>
-    <h2><a href='/blog/2014/08/a-new-meditation-app'>A new meditation app</a></h2>
+    <h2><a href='/blog/2014/08/a-new-meditation-app/'>A new meditation app</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Aug 14th, 2014</p>
   </header>
 
@@ -293,7 +315,7 @@ cd treeherder-ui/webapp
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Toronto.html">Toronto</a></span></p>
-    <h2><a href='/blog/2014/07/new-city-new-cellphone-provider'>New city, new cellphone provider</a></h2>
+    <h2><a href='/blog/2014/07/new-city-new-cellphone-provider/'>New city, new cellphone provider</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 12th, 2014</p>
   </header>
 
@@ -314,7 +336,7 @@ cd treeherder-ui/webapp
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/07/measuring-frames-per-second-and-animation-smoothness-with-eideticker'>Measuring frames per second and animation smoothness with Eideticker</a></h2>
+    <h2><a href='/blog/2014/07/measuring-frames-per-second-and-animation-smoothness-with-eideticker/'>Measuring frames per second and animation smoothness with Eideticker</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 7th, 2014</p>
   </header>
 
@@ -367,7 +389,7 @@ cd treeherder-ui/webapp
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans'>End of Q2 Eideticker update: Flame tests, future plans</a></h2>
+    <h2><a href='/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans/'>End of Q2 Eideticker update: Flame tests, future plans</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 27th, 2014</p>
   </header>
 
@@ -394,7 +416,7 @@ cd treeherder-ui/webapp
 <article>
   <header>
     <p><span class="tags"><a href="/tags/ateam.html">ateam</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser'>Managing test manifests: ManifestDestiny -&gt; manifestparser</a></h2>
+    <h2><a href='/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser/'>Managing test manifests: ManifestDestiny -&gt; manifestparser</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 11th, 2014</p>
   </header>
 
@@ -411,7 +433,7 @@ cd treeherder-ui/webapp
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a>, <a href="/tags/Python.html">Python</a></span></p>
-    <h2><a href='/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla'>mozregression: New maintainer, issues tracked in bugzilla</a></h2>
+    <h2><a href='/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/'>mozregression: New maintainer, issues tracked in bugzilla</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 8th, 2014</p>
   </header>
 
@@ -429,7 +451,7 @@ cd treeherder-ui/webapp
 <article>
   <header>
     <p><span class="tags"><a href="/tags/Montreal.html">Montreal</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Python.html">Python</a></span></p>
-    <h2><a href='/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more'>PyCon 2014 impressions: ipython notebook is the future &#38; more</a></h2>
+    <h2><a href='/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/'>PyCon 2014 impressions: ipython notebook is the future &#38; more</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 22nd, 2014</p>
   </header>
 
@@ -464,46 +486,25 @@ cd treeherder-ui/webapp
 
 </article>
 
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/03/upcoming-travels-to-japan-and-taiwan'>Upcoming travels to Japan and Taiwan</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 16th, 2014</p>
-  </header>
-
-<p>Just a quick note that I&#8217;ll shortly be travelling from the frozen land of Montreal, Canada to Japan and Taiwan over the next week, with no particular agenda other than to explore and meet people. If any Mozillians are interested in meeting up for food or drink, and discussion of <a href="https://wiki.mozilla.org/B2G/Performance">FirefoxOS performance</a>, <a href="https://wiki.mozilla.org/Project_Eideticker">Eideticker</a>, <a href="http://wrla.ch/blog/2014/03/its-all-about-the-entropy/">entropy</a> or anything else&#8230; feel free to contact me at <a href="mailto:wrlach@gmail.com">wrlach@gmail.com</a>.</p>
-
-<p>Exact itinerary:</p>
-
-<ul>
- <li>Thu Mar 20 &#8211; Sat Mar 22: Tokyo, Japan</li>
- <li>Sat Mar 22 &#8211; Tue Mar 25: Kyoto, Japan</li>
- <li>Tue Mar 25 &#8211; Thu Mar 27: Tokyo, Japan</li>
- <li>Thu Mar 27 &#8211; Sun Mar 30: Taipei, Taiwan</li></ul>
-
-<p>I will also be in Taipei the week of the March 31st, though I expect most of my time to be occupied with discussions/activities inside the Taipei office about FirefoxOS performance matters (the Firefox performance team is having a work week there, and I&#8217;m tagging along to talk about / hack on Eideticker and other automation stuff).</p>
-
-</article>
-
 <footer>
  <ul class="pagination">
-  <li><a href="/index-5.html">
+  <li class="page-item"><a class="page-link" href="/index-5.html">
     <quote>&larr;</quote></a></li>
-  <li><a href="/index.html">1</a></li>
-  <li><a href="/index-2.html">2</a></li>
-  <li><a href="/index-3.html">3</a></li>
-  <li><a href="/index-4.html">4</a></li>
-  <li><a href="/index-5.html">5</a></li>
-  <li class="active"><a href="/index-6.html">6</a></li>
-  <li><a href="/index-7.html">7</a></li>
-  <li><a href="/index-8.html">8</a></li>
-  <li><a href="/index-9.html">9</a></li>
-  <li><a href="/index-10.html">10</a></li>
-  <li><a href="/index-11.html">11</a></li>
-  <li><a href="/index-12.html">12</a></li>
-  <li><a href="/index-13.html">13</a></li>
-  <li><a href="/index-14.html">14</a></li>
-  <li><a href="/index-7.html">
+  <li class="page-item"><a class="page-link" href="/index.html">1</a></li>
+  <li class="page-item"><a class="page-link" href="/index-2.html">2</a></li>
+  <li class="page-item"><a class="page-link" href="/index-3.html">3</a></li>
+  <li class="page-item"><a class="page-link" href="/index-4.html">4</a></li>
+  <li class="page-item"><a class="page-link" href="/index-5.html">5</a></li>
+  <li class="page-item active"><a class="page-link" href="/index-6.html">6</a></li>
+  <li class="page-item"><a class="page-link" href="/index-7.html">7</a></li>
+  <li class="page-item"><a class="page-link" href="/index-8.html">8</a></li>
+  <li class="page-item"><a class="page-link" href="/index-9.html">9</a></li>
+  <li class="page-item"><a class="page-link" href="/index-10.html">10</a></li>
+  <li class="page-item"><a class="page-link" href="/index-11.html">11</a></li>
+  <li class="page-item"><a class="page-link" href="/index-12.html">12</a></li>
+  <li class="page-item"><a class="page-link" href="/index-13.html">13</a></li>
+  <li class="page-item"><a class="page-link" href="/index-14.html">14</a></li>
+  <li class="page-item"><a class="page-link" href="/index-7.html">
     <quote>&rarr;</quote></a></li></ul></footer>
         </div>
       </div>

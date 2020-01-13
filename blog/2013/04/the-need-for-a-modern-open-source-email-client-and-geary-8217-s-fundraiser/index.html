@@ -9,9 +9,9 @@
     <meta name="keywords"    content="email, Free Software, GNOME">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser">
-    <link rel="next" href="/blog/2013/03/a-visit-to-the-montreal-zen-center">
-    <link rel="prev" href="/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last">
+    <link rel="canonical" href="https://wlach.github.io/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser/">
+    <link rel="next" href="/blog/2013/03/a-visit-to-the-montreal-zen-center/">
+    <link rel="prev" href="/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -222,23 +224,34 @@
 <p>The <a href="http://yorba.org">Yorba</a> non-profit recently started a <a href="http://www.indiegogo.com/projects/geary-a-beautiful-modern-open-source-email-client">fundraiser</a> to work on the next edition of Geary, an email client which I hope will fill the niche that I&#8217;m talking about. It&#8217;s pretty rough around the edges still, but even at this early stage the conversation view is beautiful and more or less exactly what I want. The example of Shotwell (their photo management application) suggests that they know a thing or two about creating robust and useable software, not a common thing in this day and age. In any case, their pitch was compelling enough for me to donate a few dollars to the cause. If you care about having a great email experience that is completely under your control (and not that of an advertising or product company with their own agenda), then maybe you could too?</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last">&larr; <em>Actual useful FirefoxOS Eideticker results at last</em></a>
+      <a href="/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last/">&larr; <em>Actual useful FirefoxOS Eideticker results at last</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2013/03/a-visit-to-the-montreal-zen-center"><em>A visit to the Montreal Zen Center</em> &rarr;</a>
+      <a href="/blog/2013/03/a-visit-to-the-montreal-zen-center/"><em>A visit to the Montreal Zen Center</em> &rarr;</a>
     </li>
     </ul>
   </footer>

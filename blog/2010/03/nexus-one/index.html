@@ -9,9 +9,9 @@
     <meta name="keywords"    content="">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2010/03/nexus-one">
-    <link rel="next" href="/blog/2010/03/adventures-in-processing-with-prender">
-    <link rel="prev" href="/blog/2010/03/fun-with-wifidog">
+    <link rel="canonical" href="https://wlach.github.io/blog/2010/03/nexus-one/">
+    <link rel="next" href="/blog/2010/03/adventures-in-processing-with-prender/">
+    <link rel="prev" href="/blog/2010/03/fun-with-wifidog/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -219,23 +221,34 @@
 <p>I&#8217;ve been feeling less and less enthusiastic about the iPhone lately, in particular after the <a href="http://lwn.net/Articles/376793/">ridiculous lawsuit against HTC</a>. It&#8217;s no secret that we at <a href="http://navarra.ca">Navarra</a> have been doing quite a bit of work on that platform, as have my associates at <a href="http://mindsea.ca">Mindsea</a>. As long as there&#8217;s demand from our clients, that won&#8217;t change, but as an individual I&#8217;m feeling less and less enthusiastic about supporting a company that (through its actions) demonstrates hostility to the ideals of autonomy and innovation that I hold dear. Now that an attractive alternative is available on reasonable terms, I&#8217;m seriously considering switching horses in the not-too-distant future.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2010/03/fun-with-wifidog">&larr; <em>Fun with WifiDog</em></a>
+      <a href="/blog/2010/03/fun-with-wifidog/">&larr; <em>Fun with WifiDog</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2010/03/adventures-in-processing-with-prender"><em>Adventures in processing with prender</em> &rarr;</a>
+      <a href="/blog/2010/03/adventures-in-processing-with-prender/"><em>Adventures in processing with prender</em> &rarr;</a>
     </li>
     </ul>
   </footer>

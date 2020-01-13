@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Coffee, Environment">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2013/09/how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year">
-    <link rel="next" href="/blog/2013/08/nixi-update">
-    <link rel="prev" href="/blog/2013/09/early-morning-questions">
+    <link rel="canonical" href="https://wlach.github.io/blog/2013/09/how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year/">
+    <link rel="next" href="/blog/2013/08/nixi-update/">
+    <link rel="prev" href="/blog/2013/09/early-morning-questions/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -250,23 +252,34 @@
 <p>What I want to emphasize most of all is that my ritual <em>takes very little time</em>. Scraping out and cleaning my Bialetti in the worm compost bin takes around minute. Refilling it with water and coffee takes maybe 30 seconds. Yes, once a year I have to take the worm trailings out of my vermicompost bin. That takes longer (maybe 30 minutes to an hour) but it&#8217;s a once a year thing and you avoid having to go to the store to buy fertilizer. Less waste. Way better coffee. Only a marginally more time spent. To me, this is a no-brainer.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2013/09/early-morning-questions">&larr; <em>Early morning questions</em></a>
+      <a href="/blog/2013/09/early-morning-questions/">&larr; <em>Early morning questions</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2013/08/nixi-update"><em>NIXI Update</em> &rarr;</a>
+      <a href="/blog/2013/08/nixi-update/"><em>NIXI Update</em> &rarr;</a>
     </li>
     </ul>
   </footer>

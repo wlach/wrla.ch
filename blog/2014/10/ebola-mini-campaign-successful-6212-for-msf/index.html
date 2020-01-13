@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Ebola, MSF">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf">
-    <link rel="next" href="/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe">
-    <link rel="prev" href="/blog/2015/01/mozregression-updates">
+    <link rel="canonical" href="https://wlach.github.io/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf/">
+    <link rel="next" href="/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe/">
+    <link rel="prev" href="/blog/2015/01/mozregression-updates/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -225,23 +227,34 @@
 <p>Incidentally, I&#8217;ve learned a bit more about Ebola over the past week, and I&#8217;m fairly sure that we&#8217;ll be ok here in Canada and the States given the fact that the virus isn&#8217;t actually that contagious (and that we have reasonable facilities for treating it in a safe manner, major screwups in Dallas notwithstanding). Liberia and other parts of Africa are still very much worth worrying about though, so I still 100% that starting this campaign was the right thing for me to do as an individual. Actually wiping out the disease will likely require government-level resources and intervention. Still waiting for a more serious resource commitment from Canada (cautiously optimistic about what&#8217;s happening with the States).</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2015/01/mozregression-updates">&larr; <em>mozregression updates</em></a>
+      <a href="/blog/2015/01/mozregression-updates/">&larr; <em>mozregression updates</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe"><em>Doing something about Ebola before it becomes a catostrophe</em> &rarr;</a>
+      <a href="/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe/"><em>Doing something about Ebola before it becomes a catostrophe</em> &rarr;</a>
     </li>
     </ul>
   </footer>

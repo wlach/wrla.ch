@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Eideticker, FirefoxOS, Mozilla">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2013/02/finding-a-camera-for-eideticker">
-    <link rel="next" href="/blog/2013/02/eideticker-for-firefoxos">
-    <link rel="prev" href="/blog/2013/03/follow-up-on-8220-finding-a-camera-for-eideticker-8221">
+    <link rel="canonical" href="https://wlach.github.io/blog/2013/02/finding-a-camera-for-eideticker/">
+    <link rel="next" href="/blog/2013/02/eideticker-for-firefoxos/">
+    <link rel="prev" href="/blog/2013/03/follow-up-on-8220-finding-a-camera-for-eideticker-8221/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -246,23 +248,34 @@
 <p>Part of me wonders whether a custom solution wouldn&#8217;t work better. How complicated could it be to construct your own digital camera anyway? 😉 Hook up a fancy camera sensor to a <a href="http://pandaboard.org">pandaboard</a>, get it to output through the HDMI port, and then we&#8217;re set? Or better yet, maybe just get a fancy webcam like the <a href="http://en.wikipedia.org/wiki/PlayStation_Eye">Playstation Eye</a> and hook it up directly to a computer? That would eliminate the need for our expensive video capture card setup altogether.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2013/03/follow-up-on-8220-finding-a-camera-for-eideticker-8221">&larr; <em>Follow up on &#8220;Finding a Camera for Eideticker&#8221;</em></a>
+      <a href="/blog/2013/03/follow-up-on-8220-finding-a-camera-for-eideticker-8221/">&larr; <em>Follow up on &#8220;Finding a Camera for Eideticker&#8221;</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2013/02/eideticker-for-firefoxos"><em>Eideticker for FirefoxOS</em> &rarr;</a>
+      <a href="/blog/2013/02/eideticker-for-firefoxos/"><em>Eideticker for FirefoxOS</em> &rarr;</a>
     </li>
     </ul>
   </footer>

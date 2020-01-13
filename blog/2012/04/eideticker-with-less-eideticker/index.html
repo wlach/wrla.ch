@@ -9,9 +9,9 @@
     <meta name="keywords"    content="Eideticker, Mozilla">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2012/04/eideticker-with-less-eideticker">
-    <link rel="next" href="/blog/2012/04/gofaster-dashboard-back-online">
-    <link rel="prev" href="/blog/2012/05/launching-random-web-browsers-on-android">
+    <link rel="canonical" href="https://wlach.github.io/blog/2012/04/eideticker-with-less-eideticker/">
+    <link rel="next" href="/blog/2012/04/gofaster-dashboard-back-online/">
+    <link rel="prev" href="/blog/2012/05/launching-random-web-browsers-on-android/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -251,23 +253,34 @@
 <p>P.S. If you&#8217;ve been following mobile automation, you might be asking why I don&#8217;t just suggest running Talos and Robocop on your workstation. Can&#8217;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&#8217;re much more involved to set up and use at the moment. Arguably they shouldn&#8217;t be, and this is something we (<a href="https://wiki.mozilla.org/Auto-tools/">Mozilla tools &amp; automation</a>) need to work on. We&#8217;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2012/05/launching-random-web-browsers-on-android">&larr; <em>Launching random web browsers on Android</em></a>
+      <a href="/blog/2012/05/launching-random-web-browsers-on-android/">&larr; <em>Launching random web browsers on Android</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2012/04/gofaster-dashboard-back-online"><em>GoFaster dashboard back online</em> &rarr;</a>
+      <a href="/blog/2012/04/gofaster-dashboard-back-online/"><em>GoFaster dashboard back online</em> &rarr;</a>
     </li>
     </ul>
   </footer>

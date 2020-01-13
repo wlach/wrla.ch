@@ -7,7 +7,7 @@
  <updated>2014-07-07T04:00:00Z</updated>
  <entry>
   <title type="text">Measuring frames per second and animation smoothness with Eideticker</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/07/measuring-frames-per-second-and-animation-smoothness-with-eideticker?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/07/measuring-frames-per-second-and-animation-smoothness-with-eideticker/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2014-07-measuring-frames-per-second-and-animation-smoothness-with-eideticker</id>
   <published>2014-07-07T04:00:00Z</published>
   <updated>2014-07-07T04:00:00Z</updated>
@@ -59,7 +59,7 @@
 &lt;p&gt;Personally the last solution appeals to me the most, although it has the obvious disadvantage of being a &amp;#8220;homebrew&amp;#8221; metric that no one has ever heard of before, which might make it difficult to use to prove that performance is adequate &amp;#8212; the numbers come with a long-winded explanation instead of being something that people immediately understand.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">End of Q2 Eideticker update: Flame tests, future plans</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2014-06-end-of-q2-eideticker-update-flame-tests-future-plans</id>
   <published>2014-06-27T04:00:00Z</published>
   <updated>2014-06-27T04:00:00Z</updated>
@@ -85,7 +85,7 @@
 &lt;p&gt;The above isn&amp;#8217;t an exhaustive list: there&amp;#8217;s much more that we have in mind for the future that&amp;#8217;s not yet scheduled or defined well (e.g. get Eideticker reporting to Treeherder&amp;#8217;s new performance module). If you have any questions or feedback on anything outlined above I&amp;#8217;d love to hear it!&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">It&amp;#8217;s all about the entropy</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/03/it-8217-s-all-about-the-entropy?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/03/it-8217-s-all-about-the-entropy/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2014-03-it-8217-s-all-about-the-entropy</id>
   <published>2014-03-14T04:00:00Z</published>
   <updated>2014-03-14T04:00:00Z</updated>
@@ -158,7 +158,7 @@
 &lt;p&gt;So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&amp;#8217;s find them!&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Eideticker for FirefoxOS: Becoming more useful</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/03/eideticker-for-firefoxos-becoming-more-useful?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2014/03/eideticker-for-firefoxos-becoming-more-useful/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2014-03-eideticker-for-firefoxos-becoming-more-useful</id>
   <published>2014-03-09T05:00:00Z</published>
   <updated>2014-03-09T05:00:00Z</updated>
@@ -183,7 +183,7 @@
 &lt;p&gt;As it turns out, this view has also proven to be particularly useful when working with the new entropy measurements in Eideticker which I&amp;#8217;ve been using to measure checkerboarding (redraw delay) on FirefoxOS. More on that next week.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Automatically measuring startup / load time with Eideticker</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2013-10-automatically-measuring-startup-load-time-with-eideticker</id>
   <published>2013-10-17T04:00:00Z</published>
   <updated>2013-10-17T04:00:00Z</updated>
@@ -232,7 +232,7 @@
 &lt;p&gt;In Eideticker I&amp;#8217;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &amp;#8220;pixel differences&amp;#8221; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&amp;#8217;t count on light composition changing the same way for those cases. My initial thought was to use &lt;a href="http://en.wikipedia.org/wiki/Edge_detection"&gt;edge detection&lt;/a&gt; (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">First Eideticker Responsiveness Tests</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/10/first-eideticker-responsiveness-tests?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/10/first-eideticker-responsiveness-tests/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2013-10-first-eideticker-responsiveness-tests</id>
   <published>2013-10-07T04:00:00Z</published>
   <updated>2013-10-07T04:00:00Z</updated>
@@ -281,7 +281,7 @@
 &lt;p&gt;&lt;sup&gt;&lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;em&gt;Incidentally, these &amp;#8220;frame difference&amp;#8221; graphs are also quite useful for understanding where and how application startup has regressed in Fennec &amp;#8212; try opening these two startup views side-by-side (before/after a large regression) and spot the difference: &lt;a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-20%29&amp;amp;#038;video=videos/video-1377070981.95.webm&amp;amp;#038;framediff=framediffs/framediff-1377070991.95.json"&gt;[1]&lt;/a&gt; and &lt;a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-23%29&amp;amp;#038;video=videos/video-1377330042.28.webm&amp;amp;#038;framediff=framediffs/framediff-1377330051.67.json"&gt;[2]&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Simple command-line ntp client for Android and FirefoxOS</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2013-07-simple-command-line-ntp-client-for-android-and-firefoxos</id>
   <published>2013-07-08T04:00:00Z</published>
   <updated>2013-07-08T04:00:00Z</updated>
@@ -297,7 +297,7 @@
 &lt;p&gt;Because an Eideticker test run involves two different machines (a host machine which controls the device and captures video of it in action, as well as the device itself), we need to use timestamps to really understand when and how events are being sent to the device. To do that reliably, we really need some easy way of synchronizing time between two machines (or at least accounting for the difference in their clocks, which amounts to about the same thing). NTP struck me as being the easiest, most standard way of doing this.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Proof of concept Eideticker dashboard for FirefoxOS</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/05/proof-of-concept-eideticker-dashboard-for-firefoxos?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/05/proof-of-concept-eideticker-dashboard-for-firefoxos/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2013-05-proof-of-concept-eideticker-dashboard-for-firefoxos</id>
   <published>2013-05-06T04:00:00Z</published>
   <updated>2013-05-06T04:00:00Z</updated>
@@ -313,7 +313,7 @@
 &lt;p&gt;At this point, I am most interested in hearing from FirefoxOS developers on new tests that would be interesting and useful to track performance of the system on an ongoing basis. I&amp;#8217;d obviously prefer to focus on things which have been difficult to measure accurately through other means. My setup is rather fiddly right now, but hopefully soon we can get some useful numbers going on an ongoing basis, as we &lt;a href="http://eideticker.wrla.ch"&gt;do already&lt;/a&gt; for Firefox for Android.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Actual useful FirefoxOS Eideticker results at last</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2013-04-actual-useful-firefoxos-eideticker-results-at-last</id>
   <published>2013-04-22T04:00:00Z</published>
   <updated>2013-04-22T04:00:00Z</updated>
@@ -337,7 +337,7 @@
 &lt;p&gt;As an aside, I&amp;#8217;ve been really impressed with both the &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Marionette"&gt;Marionette&lt;/a&gt; framework and the gaiatests python module that was written up for FirefoxOS. Writing the above test took just 5 minutes &amp;#8212; and &lt;a href="https://github.com/mozilla/eideticker/blob/master/src/tests/b2g/appscrolling/scroll.py"&gt;the code&lt;/a&gt; is quite straightforward. Quite the pleasant change from my various efforts in Android automation.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Eideticker: Limitations in cross-browser performance testing</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2013-03-eideticker-limitations-in-cross-browser-performance-testing</id>
   <published>2013-03-20T04:00:00Z</published>
   <updated>2013-03-20T04:00:00Z</updated>
@@ -394,7 +394,7 @@
 &lt;p&gt;If anyone has any suggestions on what to do here, let me know as I&amp;#8217;m a bit stuck. There are other metrics we could still compare against (i.e. how smooth is the panning animation aka frames per second?) but these aren&amp;#8217;t nearly as interesting.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Follow up on &amp;#8220;Finding a Camera for Eideticker&amp;#8221;</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/03/follow-up-on-8220-finding-a-camera-for-eideticker-8221?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/03/follow-up-on-8220-finding-a-camera-for-eideticker-8221/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2013-03-follow-up-on-8220-finding-a-camera-for-eideticker-8221</id>
   <published>2013-03-08T05:00:00Z</published>
   <updated>2013-03-08T05:00:00Z</updated>
@@ -410,7 +410,7 @@
 &lt;p&gt;There seems to be some sort of issue with the white balance in that capture which is causing a flashing effect (I suspect this just involves flipping some kind of software setting&amp;#8230; still trying to grok their SDK), and we&amp;#8217;ll need to create some sort of enclosure for the setup so ambient light doesn&amp;#8217;t interfere with the capture&amp;#8230; but overall I&amp;#8217;m pretty optimistic about this baby. 60 frames per second, very high resolution (1280&amp;#215;960), no issues with HDMI (since it&amp;#8217;s just a USB camera), relatively inexpensive.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Finding a camera for Eideticker</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/02/finding-a-camera-for-eideticker?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/02/finding-a-camera-for-eideticker/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2013-02-finding-a-camera-for-eideticker</id>
   <published>2013-02-19T05:00:00Z</published>
   <updated>2013-02-19T05:00:00Z</updated>
@@ -449,7 +449,7 @@
 &lt;p&gt;Part of me wonders whether a custom solution wouldn&amp;#8217;t work better. How complicated could it be to construct your own digital camera anyway? 😉 Hook up a fancy camera sensor to a &lt;a href="http://pandaboard.org"&gt;pandaboard&lt;/a&gt;, get it to output through the HDMI port, and then we&amp;#8217;re set? Or better yet, maybe just get a fancy webcam like the &lt;a href="http://en.wikipedia.org/wiki/PlayStation_Eye"&gt;Playstation Eye&lt;/a&gt; and hook it up directly to a computer? That would eliminate the need for our expensive video capture card setup altogether.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Eideticker for FirefoxOS</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/02/eideticker-for-firefoxos?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2013/02/eideticker-for-firefoxos/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2013-02-eideticker-for-firefoxos</id>
   <published>2013-02-01T05:00:00Z</published>
   <updated>2013-02-01T05:00:00Z</updated>
@@ -496,7 +496,7 @@
 &lt;p&gt;So, the real question is whether or not the capture produced by the Elmo is amenable to the same analysis that we do on the raw HDMI output. At the very least, some of eideticker&amp;#8217;s image analysis code will have to be adapted to handle a much &amp;#8220;noisier&amp;#8221; capture. As opposed to capturing the raw HDMI signal, we now have to deal with the real world and its irritating fluctuations in ambient light levels and all that the rest. I have no doubt it is *possible* to compensate for this (after all this is what the human eye/brain does all the time), but the question is how much work it will be. Can&amp;#8217;t speak for anyone else at Mozilla, but I&amp;#8217;m not sure if I really have the time to start a Ph.D-level research project in computational vision. 😉 I&amp;#8217;m optimistic that won&amp;#8217;t be necessary, but we&amp;#8217;ll just have to wait and see.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">More Eideticker happenings: Profiling and startup testing</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2012-09-more-eideticker-happenings-profiling-and-startup-testing</id>
   <published>2012-09-13T04:00:00Z</published>
   <updated>2012-09-13T04:00:00Z</updated>
@@ -531,7 +531,7 @@
 &lt;p&gt;I&amp;#8217;ve already filed &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=791106"&gt;one bug&lt;/a&gt; based on the data gathered so far.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Oh hai, I upergaded yer Eideticker</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2012/09/oh-hai-i-upergaded-yer-eideticker?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2012-09-oh-hai-i-upergaded-yer-eideticker</id>
   <published>2012-09-05T04:00:00Z</published>
   <updated>2012-09-05T04:00:00Z</updated>
@@ -551,7 +551,7 @@
 &lt;p&gt;Note that some benchmarks for the Galaxy Nexus are still missing. This is a known problem and will be fixed soon.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">The evolution of simulating events in Eideticker: from monkeys to orangutans</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2012-07-the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans</id>
   <published>2012-07-10T04:00:00Z</published>
   <updated>2012-07-10T04:00:00Z</updated>
@@ -571,7 +571,7 @@
 &lt;p&gt;Enter Orangutan. Unlike MonkeyRunner, Orangutan simply injects events directly into low-level the kernel device file that represents an Android device&amp;#8217;s touch screen. It&amp;#8217;s fast (written in native C), trivial to build, and seems to work seamlessly with any application I&amp;#8217;ve tried using it with (including Google Chrome for Android). Most interestingly for Mozilla, this interface is also present on Firefox OS (&lt;a href="https://wiki.mozilla.org/B2G"&gt;Boot to Gecko&lt;/a&gt;) based devices, so we should be able to use Orangutan there to support both Eideticker and any other testing framework which needs to test real-world user input test cases. Exciting times!&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Mobile Firefox: Measuring How a Browser Feels</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2012-06-mobile-firefox-measuring-how-a-browser-feels</id>
   <published>2012-06-26T04:00:00Z</published>
   <updated>2012-06-26T04:00:00Z</updated>
@@ -661,7 +661,7 @@
 &lt;p&gt;&amp;nbsp;&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Eideticker with less eideticker</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2012/04/eideticker-with-less-eideticker?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2012/04/eideticker-with-less-eideticker/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2012-04-eideticker-with-less-eideticker</id>
   <published>2012-04-24T04:00:00Z</published>
   <updated>2012-04-24T04:00:00Z</updated>
@@ -705,7 +705,7 @@
 &lt;p&gt;P.S. If you&amp;#8217;ve been following mobile automation, you might be asking why I don&amp;#8217;t just suggest running Talos and Robocop on your workstation. Can&amp;#8217;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&amp;#8217;re much more involved to set up and use at the moment. Arguably they shouldn&amp;#8217;t be, and this is something we (&lt;a href="https://wiki.mozilla.org/Auto-tools/"&gt;Mozilla tools &amp;amp; automation&lt;/a&gt;) need to work on. We&amp;#8217;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Yet more adventures in mobile performance analysis</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2012/04/yet-more-adventures-in-mobile-performance-analysis?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2012/04/yet-more-adventures-in-mobile-performance-analysis/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2012-04-yet-more-adventures-in-mobile-performance-analysis</id>
   <published>2012-04-05T04:00:00Z</published>
   <updated>2012-04-05T04:00:00Z</updated>
@@ -728,7 +728,7 @@
 &lt;p&gt;(P.S. yes, I know I promised a comparison with Google Chrome for Android last time&amp;#8230; rest assured that&amp;#8217;s still coming soon!)&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Eideticker dashboard update</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2012/03/eideticker-dashboard-update?utm_source=Eideticker&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wlach.github.io/blog/2012/03/eideticker-dashboard-update/?utm_source=Eideticker&amp;utm_medium=Atom" />
   <id>urn:https-wlach-github-io:-blog-2012-03-eideticker-dashboard-update</id>
   <published>2012-03-22T04:00:00Z</published>
   <updated>2012-03-22T04:00:00Z</updated>

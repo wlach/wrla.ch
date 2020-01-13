@@ -9,9 +9,9 @@
     <meta name="keywords"    content="hbus">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2009/03/hbus-ca-and-thoughts-about-crowdsourcing">
-    <link rel="next" href="/blog/2009/03/breaking-news-cat-watches-himself-in-tv">
-    <link rel="prev" href="/blog/2009/04/creating-a-google-transit-feed-for-fun-and-profit">
+    <link rel="canonical" href="https://wlach.github.io/blog/2009/03/hbus-ca-and-thoughts-about-crowdsourcing/">
+    <link rel="next" href="/blog/2009/03/breaking-news-cat-watches-himself-in-tv/">
+    <link rel="prev" href="/blog/2009/04/creating-a-google-transit-feed-for-fun-and-profit/">
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/pygments.css">
@@ -167,6 +167,8 @@
 
 <li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
 
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
 <li><a href="/tags/Time.html">Time</a></li>
 
 <li><a href="/tags/Toronto.html">Toronto</a></li>
@@ -232,23 +234,34 @@
 <p>The most obvious use of this information is a trip planner and, yes, I know every agency and their dog has (or will have) one of these. But maybe someone has a cool idea on how to make a trip planner easier to use (compare <a href="http://hbus.ca">hbus.ca</a> with <a href="www.stm.info/azimuts/index.htm">Tous Azimuts</a>). Or what about <a href="http://www.walkscore.com/transit-map.php">transit maps</a> that help people figure out where to live? Or iPhone and Blackberry applications? Or cool <a href="http://myttc.ca/screensaver">screensavers</a>? Or or or. The possibilities are truly endless once the data is out there. Come on Metro Transit, you have nothing to lose and the eternal love of your ridership to gain.</p>
   <footer>
     <hr/>
+    <div id="disqus_thread"></div>
     <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
       var disqus_shortname = 'wlach';
       (function() {
           var dsq = document.createElement('script');
           dsq.type = 'text/javascript';
           dsq.async = true;
           dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
       })();
     </script>
-    <div id="disqus_thread"></div>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
     <ul class="pager">
     <li class="previous">
-      <a href="/blog/2009/04/creating-a-google-transit-feed-for-fun-and-profit">&larr; <em>Creating a google transit feed for fun and profit</em></a>
+      <a href="/blog/2009/04/creating-a-google-transit-feed-for-fun-and-profit/">&larr; <em>Creating a google transit feed for fun and profit</em></a>
     </li>
     <li class="next">
-      <a href="/blog/2009/03/breaking-news-cat-watches-himself-in-tv"><em>Breaking news: Cat watches himself in TV</em> &rarr;</a>
+      <a href="/blog/2009/03/breaking-news-cat-watches-himself-in-tv/"><em>Breaking news: Cat watches himself in TV</em> &rarr;</a>
     </li>
     </ul>
   </footer>
