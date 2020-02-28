@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0">
+ <channel>
+  <title>William Lachance's Log: Posts tagged 'Glean'</title>
+  <description>William Lachance's Log: Posts tagged 'Glean'</description>
+  <link>https://wlach.github.io/tags/Glean.html</link>
+  <lastBuildDate>Fri, 28 Feb 2020 15:50:58 UT</lastBuildDate>
+  <pubDate>Fri, 28 Feb 2020 15:50:58 UT</pubDate>
+  <ttl>1800</ttl>
+  <item>
+   <title>This week in Glean (special guest post): mozregression telemetry (part 1)</title>
+   <link>https://wlach.github.io/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/?utm_source=Glean&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-02-this-week-in-glean-special-guest-post-mozregression-telemetry-part-1</guid>
+   <pubDate>Fri, 28 Feb 2020 15:50:58 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;&lt;em&gt;(“This Week in Glean” is a series of blog posts that the Glean Team at Mozilla is using to try to communicate better about our work. They could be release notes, documentation, hopes, dreams, or whatever: so long as it is inspired by Glean. You can find &lt;a href="https://mozilla.github.io/glean/book/appendix/twig.html"&gt;an index of all TWiG posts online.&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This is a special guest post by non-Glean-team member William Lachance!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;As I &lt;a href="/blog/2019/09/mozregression-update-python-3-edition/"&gt;mentioned last time&lt;/a&gt; I talked about &lt;a href="https://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt;, I have been thinking about adding some telemetry to the system to better understand the usage of this tool, to justify some part of Mozilla spending some cycles maintaining and improving it (assuming my intuition that this tool is heavily used is confirmed).&lt;/p&gt;
+
+&lt;p&gt;Coincidentally, the Telemetry client team has been working on a new library for measuring these types of things in a principled way called &lt;a href="https://mozilla.github.io/glean/book/index.html"&gt;Glean&lt;/a&gt;, which even has python bindings! Using this has the potential in saving a lot of work: not only does Glean provide a framework for submitting data, our backend systems are automatically set up to process data submitted via into Glean into &lt;a href="https://cloud.google.com/bigquery"&gt;BigQuery&lt;/a&gt; tables, which can then easily be queried using tools like &lt;a href="https://docs.telemetry.mozilla.org/tools/stmo.html"&gt;sql.telemetry.mozilla.org&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I thought it might be useful to go through some of what I&amp;rsquo;ve been exploring, in case others at Mozilla are interested in instrumenting their pet internal tools or projects. If this effort is successful, I&amp;rsquo;ll distill these notes into a tutorial in the Glean documentation.&lt;/p&gt;
+
+&lt;h2 id="initial-steps-defining-pings-and-metrics"&gt;Initial steps: defining pings and metrics&lt;/h2&gt;
+
+&lt;p&gt;The initial step in setting up a Glean project of any type is to define explicitly the types of pings and metrics. You can look at a &amp;ldquo;ping&amp;rdquo; as being a small bucket of data submitted by a piece of software in the field. A &amp;ldquo;metric&amp;rdquo; is something we&amp;rsquo;re measuring and including in a ping.&lt;/p&gt;
+
+&lt;p&gt;Most of the Glean documentation focuses on browser-based use-cases where we might want to sample lots of different things on an ongoing basis, but for mozregression our needs are considerably simpler: we just want to know when someone &lt;em&gt;has&lt;/em&gt; used it along with a small number of non-personally identifiable characteristics of their usage, e.g. the mozregression version number and the name of the application they are bisecting.&lt;/p&gt;
+
+&lt;p&gt;Glean has &lt;a href="https://mozilla.github.io/glean/book/user/pings/events.html"&gt;the concept of event pings&lt;/a&gt;, but it seems like those are there more for a fine-grained view of what&amp;rsquo;s going on during an application&amp;rsquo;s use. So let&amp;rsquo;s define a new ping just for ourselves, giving it the unimaginative name &amp;ldquo;usage&amp;rdquo;. This goes in a file called &lt;code&gt;pings.yaml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class="brush: yaml"&gt;
+ &lt;pre&gt;&lt;code&gt;---
+$schema: moz://mozilla.org/schemas/glean/pings/1-0-0
+
+usage:
+  description: &amp;gt;
+    A ping to record usage of mozregression
+  include_client_id: true
+  notification_emails:
+    - wlachance@mozilla.com
+  bugs:
+    - http://bugzilla.mozilla.org/123456789/
+  data_reviews:
+    - http://example.com/path/to/data-review&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;We also need to define a list of things we want to measure. To start with, let&amp;rsquo;s just test with one piece of sample information: the app we&amp;rsquo;re bisecting (e.g. &amp;ldquo;Firefox&amp;rdquo; or &amp;ldquo;Gecko View Example&amp;rdquo;). This goes in a file called &lt;code&gt;metrics.yaml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class="brush: yaml"&gt;
+ &lt;pre&gt;&lt;code&gt;---
+$schema: moz://mozilla.org/schemas/glean/metrics/1-0-0
+
+usage:
+  app:
+    type: string
+    description: &amp;gt;
+      The name of the app being bisected
+    notification_emails: 
+      - wlachance@mozilla.com
+    bugs: 
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1581647
+    data_reviews: 
+      - http://example.com/path/to/data-review
+    expires: never
+    send_in_pings:
+      - usage&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code&gt;data_reviews&lt;/code&gt; sections in both of the above are obviously bogus, we will need to actually get data review before landing and using this code, to make sure that we&amp;rsquo;re in conformance with Mozilla&amp;rsquo;s &lt;a href="https://wiki.mozilla.org/Firefox/Data_Collection"&gt;data collection policies&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="testing-it-out"&gt;Testing it out&lt;/h2&gt;
+
+&lt;p&gt;But in the mean time, we can test our setup with the &lt;a href="https://docs.telemetry.mozilla.org/concepts/glean/debug_ping_view.html"&gt;Glean debug pings viewer&lt;/a&gt; by setting a special tag (&lt;code&gt;mozregression-test-tag&lt;/code&gt;) on our output. Here&amp;rsquo;s a small python script which does just that:&lt;/p&gt;
+
+&lt;div class="brush: py"&gt;
+ &lt;pre&gt;&lt;code&gt;from pathlib import Path
+from glean import Glean, Configuration
+from glean import (load_metrics,
+                   load_pings)
+
+mozregression_path = Path.home() / '.mozilla2' / 'mozregression'
+
+Glean.initialize(
+    application_id="mozregression",
+    application_version="0.1.1",
+    upload_enabled=True,
+    configuration=Configuration(
+      ping_tag="mozregression-test-tag"
+    ),
+    data_dir=mozregression_path / "data"
+)
+Glean.set_upload_enabled(True)
+
+pings = load_pings("pings.yaml")
+metrics = load_metrics("metrics.yaml")
+
+metrics.usage.app.set("reality")
+pings.usage.submit()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Running this script on my laptop, I see that a respectable JSON payload was delivered to and processed by our servers:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style="width:600px" src="/files/2020/02/glean-debug-ping-viewer.png" /&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see, we&amp;rsquo;re successfully processing both the &amp;ldquo;version&amp;rdquo; number of mozregression, some characteristics of the machine sending the information (my MacBook in this case), as well as our single measure. We also have a client id, which should tell us roughly how many distinct installations of mozregression are sending pings. This should be more than sufficient for an initial &amp;ldquo;mozregression usage dashboard&amp;rdquo;.&lt;/p&gt;
+
+&lt;h2 id="next-steps"&gt;Next steps&lt;/h2&gt;
+
+&lt;p&gt;There are a bunch of things I still need to work through before landing this inside mozregression itself. Notably, the Glean python bindings are python3-only, so we&amp;rsquo;ll need to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766"&gt;port the mozregression GUI to python 3&lt;/a&gt; before we can start measuring usage there. But I&amp;rsquo;m excited at how quickly this work is coming together: stay tuned for part 2 in a few weeks.&lt;/p&gt;</description></item></channel></rss>

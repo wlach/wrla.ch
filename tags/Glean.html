@@ -3,13 +3,13 @@
   <head>
 
     <meta charset="utf-8">
-    <title>Posts tagged 'Telemetry'</title>
-    <meta name="description" content="Posts tagged 'Telemetry'">
+    <title>Posts tagged 'Glean'</title>
+    <meta name="description" content="Posts tagged 'Glean'">
     <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Telemetry">
+    <meta name="keywords"    content="Glean">
     <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/tags/Telemetry.html">
+    <link rel="canonical" href="https://wlach.github.io/tags/Glean.html">
 
 
     <!-- CSS -->
@@ -19,9 +19,9 @@
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
     <!-- Feeds -->
     <link rel="alternate" type="application/atom+xml"
-          href="/feeds/Telemetry.atom.xml" title="Atom Feed">
+          href="/feeds/Glean.atom.xml" title="Atom Feed">
     <link rel="alternate" type="application/rss+xml"
-          href="/feeds/Telemetry.rss.xml" title="RSS Feed">
+          href="/feeds/Glean.rss.xml" title="RSS Feed">
     <!-- JS -->
     <script type="text/javascript">
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -197,8 +197,8 @@
             <li>
               <a href="/About.html">About</a>
             </li> 
-            <li><a href="/feeds/Telemetry.atom.xml">Atom</a></li>
-            <li><a href="/feeds/Telemetry.rss.xml">RSS</a></li>
+            <li><a href="/feeds/Glean.atom.xml">Atom</a></li>
+            <li><a href="/feeds/Glean.rss.xml">RSS</a></li>
           </ul>
         </div>
       </div>
@@ -209,7 +209,7 @@
         <!-- Main column -->
         <div id="content" class="col-md-12">
 
-          <h1>Posts tagged <em>Telemetry</em></h1>
+          <h1>Posts tagged <em>Glean</em></h1>
 
           <article>
   <header>
@@ -312,100 +312,6 @@ pings.usage.submit()</code></pre></div>
 <h2 id="next-steps">Next steps</h2>
 
 <p>There are a bunch of things I still need to work through before landing this inside mozregression itself. Notably, the Glean python bindings are python3-only, so we&rsquo;ll need to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766">port the mozregression GUI to python 3</a> before we can start measuring usage there. But I&rsquo;m excited at how quickly this work is coming together: stay tuned for part 2 in a few weeks.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Telemetry.html">Telemetry</a></span></p>
-    <h2><a href='/blog/2020/01/conda-is-pretty-great/'>Conda is pretty great</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 13th, 2020</p>
-  </header>
-
-<p>Lately the data engineering team has been looking into productionizing (i.e. running in Airflow) a bunch of models that the data science team has been producing. This often involves languages and environments that are a bit outside of our comfort zone &mdash; for example, <a href="https://github.com/mozilla/missioncontrol-v2">the next version of Mission Control</a> relies on the <a href="https://mc-stan.org/users/interfaces/rstan">R-stan library</a> to produce a model of expected crash behaviour as Firefox is released.</p>
-
-<p>To make things as simple and deterministic as possible, we&rsquo;ve been building up Docker containers to run/execute this code along with their dependencies, which makes things nice and reproducible. My initial thought was to use just the language-native toolchains to build up my container for the above project, but quickly found a number of problems:</p>
-
-<ol>
- <li>For local testing, Docker on Mac is <em>slow</em>: when doing a large number of statistical calculations (as above), you can count on your testing iterations taking 3 to 4 (or more) times longer.</li>
- <li>On initial setup, the default R packaging strategy is to have the user of a package like R-stan recompile from source. This can take <em>forever</em> if you have a long list of dependencies with C-compiled extensions (pretty much a given if you&rsquo;re working in the data space): rebuilding my initial docker environment for missioncontrol-v2 took almost an hour. This isn&rsquo;t just a problem for local development: it also makes continuous integration using a service like Circle or Travis expensive and painful.</li></ol>
-
-<p>I had been vaguely aware of <a href="https://docs.conda.io/en/latest/">Conda</a> for a few years, but didn&rsquo;t really understand its value proposition until I started working on the above project: why bother with a heavyweight package manager when you already have Docker to virtualize things? The answer is that it solves both of the above problems: for local development, you can get something more-or-less identical to what you&rsquo;re running inside Docker with no performance penalty whatsoever. And for building the docker container itself, Conda&rsquo;s package repository contains pre-compiled versions of all the dependencies you&rsquo;d want to use for something like this (even somewhat esoteric libraries like R-stan are available on <a href="https://conda-forge.org/">conda-forge</a>), which brought my build cycle times down to less than 5 minutes.</p>
-
-<p>tl;dr: If you have a bunch of R / python code you want to run in a reproducible manner, consider Conda.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Telemetry.html">Telemetry</a></span></p>
-    <h2><a href='/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit/'>Using BigQuery JavaScript UDFs to analyze Firefox telemetry for fun &amp; profit</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 30th, 2019</p>
-  </header>
-
-<p>For the last year, we&rsquo;ve been gradually migrating our backend Telemetry systems from AWS to GCP. I&rsquo;ve been helping out here and there with this effort, most recently porting a job we used to detect slow tab spinners in Firefox nightly, which produced a small dataset that feeds a <a href="https://mikeconley.github.io/bug1310250/">small adhoc dashboard</a> which Mike Conley maintains. This was a relatively small task as things go, but it highlighted some features and improvements which I think might be broadly interesting, so I decided to write up a small blog post about it.</p>
-
-<p>Essentially all this dashboard tells you is what percentage of the Firefox nightly population saw a tab spinner over the past 6 months. And of those that did see a tab spinner, what was the severity? Essentially we’re just trying to make sure that there are no major regressions of user experience (and also that efforts to improve things bore fruit):</p>
-
-<center><img style="width:600px" srcset="/files/2019/10/tab-spinner-dash.png" /></center>
-
-<p>Pretty simple stuff, but getting the data necessary to produce this kind of dashboard used to be anything but trivial: while some common business/product questions could be answered by a quick query to <a href="https://docs.telemetry.mozilla.org/datasets/batch_view/clients_daily/reference.html">clients_daily</a>, getting engineering-specific metrics like this usually involved trawling through gigabytes of raw heka encoded blobs using an Apache Spark cluster and then extracting the relevant information out of the telemetry probe histograms (in this case, <code>FX_TAB_SWITCH_SPINNER_VISIBLE_MS</code> and <code>FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS</code>) contained therein.</p>
-
-<p>The code itself was rather complicated (<a href="https://github.com/mozilla/python_mozetl/blob/58dce245ce8012b338e8b102a8c2c0f00601be60/mozetl/tab_spinner/tab_spinner.py">take a look, if you dare</a>) but even worse, running it could get <em>very expensive</em>. We had a 14 node cluster churning through this script daily, and it took on average about an hour and a half to run! I don&rsquo;t have the exact cost figures on hand (and am not sure if I&rsquo;d be authorized to share them if I did), but based on a back of the envelope sketch, this one single script was probably costing us somewhere on the order of $10-$40 a day (that works out to between $3650-$14600 a year).</p>
-
-<p>With our move to <a href="https://cloud.google.com/bigquery/">BigQuery</a>, things get a lot simpler! Thanks to the combined effort of my team and data operations[1], we now produce &ldquo;stable&rdquo; ping tables on a daily basis with <em>all</em> the relevant histogram data (stored as JSON blobs), queryable using relatively vanilla SQL. In this case, the data we care about is in <code>telemetry.main</code> (named after the main ping, appropriately enough). With the help of a small <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions">JavaScript UDF</a> function, all of this data can easily be extracted into a table inside a single SQL query scheduled by <a href="https://docs.telemetry.mozilla.org/tools/stmo.html">sql.telemetry.mozilla.org</a>.</p>
-
-<pre><code>CREATE TEMP FUNCTION
-  udf_js_json_extract_highest_long_spinner (input STRING)
-  RETURNS INT64
-  LANGUAGE js AS """
-    if (input == null) {
-      return 0;
-    }
-    var result = JSON.parse(input);
-    var valuesMap = result.values;
-    var highest = 0;
-    for (var key in valuesMap) {
-      var range = parseInt(key);
-      if (valuesMap[key]) {
-        highest = range &gt; 0 ? range : 1;
-      }
-    }
-    return highest;
-""";
-
-SELECT build_id,
-sum (case when highest &gt;= 64000 then 1 else 0 end) as v_64000ms_or_higher,
-sum (case when highest &gt;= 27856 and highest &lt; 64000 then 1 else 0 end) as v_27856ms_to_63999ms,
-sum (case when highest &gt;= 12124 and highest &lt; 27856 then 1 else 0 end) as v_12124ms_to_27855ms,
-sum (case when highest &gt;= 5277 and highest &lt; 12124 then 1 else 0 end) as v_5277ms_to_12123ms,
-sum (case when highest &gt;= 2297 and highest &lt; 5277 then 1 else 0 end) as v_2297ms_to_5276ms,
-sum (case when highest &gt;= 1000 and highest &lt; 2297 then 1 else 0 end) as v_1000ms_to_2296ms,
-sum (case when highest &gt; 0 and highest &lt; 50 then 1 else 0 end) as v_0ms_to_49ms,
-sum (case when highest &gt;= 50 and highest &lt; 100 then 1 else 0 end) as v_50ms_to_99ms,
-sum (case when highest &gt;= 100 and highest &lt; 200 then 1 else 0 end) as v_100ms_to_199ms,
-sum (case when highest &gt;= 200 and highest &lt; 400 then 1 else 0 end) as v_200ms_to_399ms,
-sum (case when highest &gt;= 400 and highest &lt; 800 then 1 else 0 end) as v_400ms_to_799ms,
-count(*) as count
-from
-(select build_id, client_id, max(greatest(highest_long, highest_short)) as highest
-from
-(SELECT
-    SUBSTR(application.build_id, 0, 8) as build_id,
-    client_id,
-    udf_js_json_extract_highest_long_spinner(payload.histograms.FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS) AS highest_long,
-    udf_js_json_extract_highest_long_spinner(payload.histograms.FX_TAB_SWITCH_SPINNER_VISIBLE_MS) as highest_short
-FROM telemetry.main
-WHERE
-    application.channel='nightly'
-    AND normalized_os='Windows'
-    AND application.build_id &gt; FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 2 QUARTER))
-    AND DATE(submission_timestamp) &gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 2 QUARTER))
-group by build_id, client_id) group by build_id;</code></pre>
-
-<p>In addition to being much simpler, this new job is also <em>way</em> cheaper. The last run of it scanned just over 1 TB of data, meaning it cost us just over $5. Not as cheap as I might like, but considerably less expensive than before: I&rsquo;ve also scheduled it to only run once every other day, since Mike tells me he doesn&rsquo;t need this data any more often than that.</p>
-
-<p>[1] I understand that Jeff Klukas, Frank Bertsch, Daniel Thorn, Anthony Miyaguchi, and Wesley Dawson are the principals involved - apologies if I&rsquo;m forgetting someone.</p>
 
 </article>
 
