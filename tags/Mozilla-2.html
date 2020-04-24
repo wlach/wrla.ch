@@ -213,6 +213,23 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Metrics-Graphics.html">Metrics Graphics</a></span></p>
+    <h2><a href='/blog/2018/04/metricsgraphics-movements/'>metricsgraphics movements</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 30th, 2018</p>
+  </header>
+
+<p>Just wanted to give a quick update on some things that have been happening with the <a href="https://www.metricsgraphics.org">metrics graphics</a> since I stepped up to help with maintainership a few months ago:</p>
+
+<ul>
+ <li><a href="https://github.com/hamilton">Hamilton</a>&rsquo;s back as co-maintainer! This has been especially helpful  as he understands much of the historical context of metricsgraphics better than I do.</li>
+ <li>We&rsquo;ve merged in a large number of small fixes and improvements into the codebase,  thanks to myself and a number of other contributors. Special shout-out to Thomas  Champagne, who has contributed a <a href="https://github.com/metricsgraphics/metrics-graphics/commits?author=thomaschampagne">large number of nifty new features</a>.</li>
+ <li>We moved the project from Mozilla to its <a href="https://github.com/metricsgraphics/">own organization</a> on  github. This feels like a much better way forward for a project which is supposed to be useful  far outside the bounds of Mozilla, and hopeful makes contributors feel more like the first-class  citizens of the project that they actually are.</li>
+ <li>We have a GSOC intern! As part of the Mozilla GSOC, Yunhao Zheng is going to be working on  adding rich brushing/zooming support to Metrics Graphics, which should be quite useful for  visualizing complex data in projects like <a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder">Perfherder</a> (<a href="https://docs.google.com/document/d/1_KIOJtemqlCBktDdfdjDuS4XhICeaKO3QhNRwbnnf-g/">Project outline</a>, <a href="https://summerofcode.withgoogle.com/projects/#5422620527296512">Yunhao&rsquo;s proposal</a>)</li></ul>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
     <h2><a href='/blog/2018/04/mission-control-update/'>Mission Control update</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 6th, 2018</p>
@@ -420,54 +437,66 @@
 <p>Just spent well over an hour tracking down a silly bug in my code. For the <a href="https://github.com/mozilla/missioncontrol/">mission control</a> project, I wrote this very simple API method that returns a cached data structure to our front end:</p>
 
 <div class="brush: py">
- <pre><code>def measure(request):
-    channel_name = request.GET.get('channel')
-    platform_name = request.GET.get('platform')
-    measure_name = request.GET.get('measure')
-    interval = request.GET.get('interval')
-    if not all([channel_name, platform_name, measure_name]):
-        return HttpResponseBadRequest("All of channel, platform, measure required")
-    data = cache.get(get_measure_cache_key(platform_name, channel_name, measure_name))
-    if not data:
-        return HttpResponseNotFound("Data not available for this measure combination")
-    if interval:
-        try:
-            min_time = datetime.datetime.now() - datetime.timedelta(seconds=int(interval))
-        except ValueError:
-            return HttpResponseBadRequest("Interval must be specified in seconds (as an integer)")
+ <div class="colorful">
+  <pre><span></span><span class="k">def</span> <span class="nf">measure</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">channel_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;channel&#39;</span><span class="p">)</span>
+    <span class="n">platform_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;platform&#39;</span><span class="p">)</span>
+    <span class="n">measure_name</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;measure&#39;</span><span class="p">)</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">GET</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;interval&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">channel_name</span><span class="p">,</span> <span class="n">platform_name</span><span class="p">,</span> <span class="n">measure_name</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="n">HttpResponseBadRequest</span><span class="p">(</span><span class="s2">"All of channel, platform, measure required"</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">get_measure_cache_key</span><span class="p">(</span><span class="n">platform_name</span><span class="p">,</span> <span class="n">channel_name</span><span class="p">,</span> <span class="n">measure_name</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">HttpResponseNotFound</span><span class="p">(</span><span class="s2">"Data not available for this measure combination"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">interval</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">min_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">interval</span><span class="p">))</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">HttpResponseBadRequest</span><span class="p">(</span><span class="s2">"Interval must be specified in seconds (as an integer)"</span><span class="p">)</span>
 
-        # Return any build data in the interval
-        empty_buildids = set()
-        for (build_id, build_data) in data.items():
-            build_data['data'] = [d for d in build_data['data'] if d[0] &gt; min_time]
-            if not build_data['data']:
-                empty_buildids.add(build_id)
+        <span class="c1"># Return any build data in the interval</span>
+        <span class="n">empty_buildids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">build_id</span><span class="p">,</span> <span class="n">build_data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_time</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]:</span>
+                <span class="n">empty_buildids</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">build_id</span><span class="p">)</span>
 
-        # don't bother returning empty indexed data
-        for empty_buildid in empty_buildids:
-            del data[empty_buildid]
+        <span class="c1"># don&#39;t bother returning empty indexed data</span>
+        <span class="k">for</span> <span class="n">empty_buildid</span> <span class="ow">in</span> <span class="n">empty_buildids</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">data</span><span class="p">[</span><span class="n">empty_buildid</span><span class="p">]</span>
 
-    return JsonResponse(data={'measure_data': data})</code></pre></div>
+    <span class="k">return</span> <span class="n">JsonResponse</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;measure_data&#39;</span><span class="p">:</span> <span class="n">data</span><span class="p">})</span>
+</pre></div>
+
+</div>
 
 <p>As you can see, it takes 3 required parameters (channel, platform, and measure) and one optional one (interval), picks out the required data structure, filters it a bit, and returns it. This is <em>almost</em> what we wanted for the frontend, unfortunately the time zone information isn&rsquo;t quite what we want, since the strings that are returned don&rsquo;t tell the frontend that they&rsquo;re in UTC format &mdash; they need a &lsquo;Z&rsquo; appended to them for that.</p>
 
 <p>After a bit of digging, I found out that Django&rsquo;s <a href="https://github.com/django/django/blob/afc06b56256f78ab832ff8066ac6f34b7443de22/django/core/serializers/json.py#L76">json serializer</a> will only add the Z if the tzinfo structure is specified. So I figured out a simple pattern for adding that (using the dateutil library, which we are fortunately already using):</p>
 
 <div class="brush: py">
- <pre><code>from dateutil.tz import tzutc
-datetime.datetime.fromtimestamp(mydatestamp.timestamp(), tz=tzutc())</code></pre></div>
+ <div class="colorful">
+  <pre><span></span><span class="kn">from</span> <span class="nn">dateutil.tz</span> <span class="kn">import</span> <span class="n">tzutc</span>
+<span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">mydatestamp</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(),</span> <span class="n">tz</span><span class="o">=</span><span class="n">tzutc</span><span class="p">())</span>
+</pre></div>
+
+</div>
 
 <p>I tested this quickly on the python console and it seemed to work great. But when I added the code to my function, the unit tests mysteriously failed. Can you see why?</p>
 
 <div class="brush: py">
- <pre><code>for (build_id, build_data) in data.items():
-    # add utc timezone info to each date, so django will serialize a
-    # 'Z' to the end of the string (and so javascript's date constructor
-    # will know it's utc)
-    build_data['data'] = [
-        [datetime.datetime.fromtimestamp(d[0].timestamp(), tz=tzutc())] + d[1:] for
-        d in build_data['data'] if d[0] &gt; min_time
-    ]</code></pre></div>
+ <div class="colorful">
+  <pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">build_id</span><span class="p">,</span> <span class="n">build_data</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="c1"># add utc timezone info to each date, so django will serialize a</span>
+    <span class="c1"># &#39;Z&#39; to the end of the string (and so javascript&#39;s date constructor</span>
+    <span class="c1"># will know it&#39;s utc)</span>
+    <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(),</span> <span class="n">tz</span><span class="o">=</span><span class="n">tzutc</span><span class="p">())]</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span>
+        <span class="n">d</span> <span class="ow">in</span> <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_time</span>
+    <span class="p">]</span>
+</pre></div>
+
+</div>
 
 <p>Trick question: there&rsquo;s actually nothing wrong with this code. But if you look at the block in context (see the top of the post), you see that it&rsquo;s only executed if <em>interval</em> is specified, which it isn&rsquo;t necessarily. The first case that my unit tests executed didn&rsquo;t specify interval, so fail they did. It wasn&rsquo;t immediately obvious to me why this was happening, so I went on a wild-goose chase of trying to figure out how the Django context might have been responsible for the unexpected output, before realizing my basic logic error.</p>
 
@@ -476,25 +505,33 @@ datetime.datetime.fromtimestamp(mydatestamp.timestamp(), tz=tzutc())</code></pre
 <p>As an experiment, I wrote up what this function might look like in a pure functional style with immutable data structures:</p>
 
 <div class="brush: py">
- <pre><code>def transform_and_filter_data(build_data):
-    new_build_data = copy.copy(build_data)
-    new_build_data['data'] = [
-        [datetime.datetime.fromtimestamp(d[0].timestamp(), tz=tzutc())] + d[1:] for
-        d in build_data['data'] if d[0] &gt; min_time
-    ]
-    return new_build_data
-transformed_build_data = {k: v for k, v in {k: transform_and_filter_data(v) for k, v in data}.items() if len(v['data']) &gt; 0}</code></pre></div>
+ <div class="colorful">
+  <pre><span></span><span class="k">def</span> <span class="nf">transform_and_filter_data</span><span class="p">(</span><span class="n">build_data</span><span class="p">):</span>
+    <span class="n">new_build_data</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">build_data</span><span class="p">)</span>
+    <span class="n">new_build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(),</span> <span class="n">tz</span><span class="o">=</span><span class="n">tzutc</span><span class="p">())]</span> <span class="o">+</span> <span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="k">for</span>
+        <span class="n">d</span> <span class="ow">in</span> <span class="n">build_data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">min_time</span>
+    <span class="p">]</span>
+    <span class="k">return</span> <span class="n">new_build_data</span>
+<span class="n">transformed_build_data</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">transform_and_filter_data</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">}</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">}</span>
+</pre></div>
+
+</div>
 
 <p>A work of art it isn&rsquo;t &mdash; and definitely not &ldquo;pythonic&rdquo;. Compare this to a similar piece of code written in Javascript (ES6) with lodash (using a hypothetical <code>tzified</code> function):</p>
 
 <div class="brush: js">
- <pre><code>let transformedBuildData = _.filter(_.mapValues(data, (buildData) =&gt; ({
-    ...buildData,
-    data: buildData.data
-      .filter(datum =&gt; datum[0] &gt; minTimestamp)
-      .map(datum =&gt; [tzcified(datum[0])].concat(datum.slice(1)))
-  })),
-  (data, buildId) =&gt; data.data.length &gt; 0);</code></pre></div>
+ <div class="colorful">
+  <pre><span></span><span class="kd">let</span> <span class="nx">transformedBuildData</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">mapValues</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="p">(</span><span class="nx">buildData</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span>
+    <span class="p">...</span><span class="nx">buildData</span><span class="p">,</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="nx">buildData</span><span class="p">.</span><span class="nx">data</span>
+      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="nx">datum</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">minTimestamp</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">tzcified</span><span class="p">(</span><span class="nx">datum</span><span class="p">[</span><span class="mi">0</span><span class="p">])].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">datum</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+  <span class="p">})),</span>
+  <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">buildId</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+</pre></div>
+
+</div>
 
 <p>A little bit easier to understand, but more importantly (to me anyway) it comes across as idiomatic and natural in a way that the python version just doesn&rsquo;t. I&rsquo;ve been happily programming Python for the last 10 years, but it&rsquo;s increasingly feeling time to move on to greener pastures.</p>
 
@@ -515,33 +552,6 @@ transformed_build_data = {k: v for k, v in {k: transform_and_filter_data(v) for 
 
 </article>
 
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2017/07/taking-over-an-npm-package-sanity-prevails/'>Taking over an npm package: sanity prevails</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 13th, 2017</p>
-  </header>
-
-<p>Sometimes problems are easier to solve than expected.</p>
-
-<p>For the last few months I&rsquo;ve been working on the front end of a new project called <a href="https://github.com/mozilla/missioncontrol">Mission Control</a>, which aims to chart lots of interesting live information in something approximating realtime. Since this is a greenfield project, I thought it would make sense to use the currently-invogue framework at Mozilla (react) along with our standard visualization library, <a href="http://metricsgraphicsjs.org/">metricsgraphics</a>.</p>
-
-<p>Metricsgraphics is great, but its jquery-esque api is somewhat at odds with the react way. The obvious solution to this problem is to wrap its functionality in a react component, and a quick google search determined that several people have tried to do exactly that, the most popular one being one called (obviously) react-metrics-graphics. Unfortunately, it hadn&rsquo;t been updated in quite some time and some pull requests (including ones implementing features I needed for my project) weren&rsquo;t being responded to.</p>
-
-<p>I expected this to be pretty difficult to resolve: I had no interaction with the author (Carter Feldman) before but based on my past experiences in free software, I was expecting stonewalling, leaving me no choice but to fork the package and give it a new name, a rather unsatisfying end result.</p>
-
-<p>But, hey, let&rsquo;s keep an open mind on this. What does google say about unmaintained npm packages? Oh what&rsquo;s this? They actually have a <a href="https://docs.npmjs.com/misc/disputes">policy</a>?</p>
-
-<p>tl;dr: You email the maintainer (politely) and CC support@npmjs.org about your interest in helping maintain the software. If you&rsquo;re unable to come up with a resolution on your own, they will intervene.</p>
-
-<p>So I tried that. It turns out that Carter was really happy to hear that Mozilla was interested in taking over maintenance of this project, and not only gave me permission to start publishing newer versions to npm, but even transferred his repository over to Mozilla (so we could preserve issue and PR history). The project&rsquo;s new location is here:</p>
-
-<p><a href="https://github.com/mozilla/react-metrics-graphics">https://github.com/mozilla/react-metrics-graphics</a></p>
-
-<p>In hindsight, this is obviously the most reasonable outcome and I&rsquo;m not sure why I was expecting anything else. Is the node community just friendlier than other areas I&rsquo;ve worked in? Have community standards improved generally? In any case, thank you Carter for a great piece of software, hopefully it will thrive in its new home. :P</p>
-
-</article>
-
 <footer>
  <ul class="pagination">
   <li class="page-item"><a class="page-link" href="/tags/Mozilla.html">
@@ -555,6 +565,7 @@ transformed_build_data = {k: v for k, v in {k: transform_and_filter_data(v) for 
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-7.html">7</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-8.html">8</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-9.html">9</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-10.html">10</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-3.html">
     <quote>&rarr;</quote></a></li></ul></footer>
         </div>

@@ -213,6 +213,25 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
+    <h2><a href='/blog/2020/04/mozregression-for-macos/'>mozregression for MacOS</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 24th, 2020</p>
+  </header>
+
+<p>Just a quick note that, as a side-effect of the work I mentioned a while ago to <a href="/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/">add telemetry to mozregression</a>, mozregression now has a graphical Mac client! It&rsquo;s a bit of a pain to install (since it&rsquo;s unsigned), but likely worlds easier for the average person to get going than the command-line version. Please feel free to <a href="https://mozilla.github.io/mozregression/install.html">point people to it</a> if you&rsquo;re looking to get a regression range for a MacOS-specific problem with Firefox.</p>
+
+<center><img style="width:600px" src="/files/2020/04/mozregression-gui-mac.png" /></center>
+
+<p>More details: The <a href="https://mozilla.github.io/glean/book/dev/python/index.html">Glean Python SDK</a>, which <a href="https://mozilla.github.io/mozregression/documentation/telemetry.html">mozregression now uses for telemetry</a>, requires Python 3. This provided the impetus to port the GUI itself to Python 3 and PySide2 (the modern incarnation of PyQt), which brought with it a much easier installation/development experience for the GUI on platforms like Mac and Linux.</p>
+
+<p>I haven&rsquo;t gotten around to producing GUI binaries for the Linux yet, but it should not be much work.</p>
+
+<p>Speaking of Glean, mozregression, and Telemetry, stay tuned for more updates on that soon. It&rsquo;s been an adventure!</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Telemetry.html">Telemetry</a>, <a href="/tags/Glean.html">Glean</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
     <h2><a href='/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/'>This week in Glean (special guest post): mozregression telemetry (part 1)</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 28th, 2020</p>
@@ -237,40 +256,48 @@
 <p>Glean has <a href="https://mozilla.github.io/glean/book/user/pings/events.html">the concept of event pings</a>, but it seems like those are there more for a fine-grained view of what&rsquo;s going on during an application&rsquo;s use. So let&rsquo;s define a new ping just for ourselves, giving it the unimaginative name &ldquo;usage&rdquo;. This goes in a file called <code>pings.yaml</code>:</p>
 
 <div class="brush: yaml">
- <pre><code>---
-$schema: moz://mozilla.org/schemas/glean/pings/1-0-0
+ <div class="colorful">
+  <pre><span></span><span class="nn">---</span>
+<span class="nt">$schema</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/pings/1-0-0</span>
 
-usage:
-  description: &gt;
-    A ping to record usage of mozregression
-  include_client_id: true
-  notification_emails:
-    - wlachance@mozilla.com
-  bugs:
-    - http://bugzilla.mozilla.org/123456789/
-  data_reviews:
-    - http://example.com/path/to/data-review</code></pre></div>
+<span class="nt">usage</span><span class="p">:</span>
+  <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
+    <span class="no">A ping to record usage of mozregression</span>
+  <span class="nt">include_client_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">notification_emails</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span>
+  <span class="nt">bugs</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://bugzilla.mozilla.org/123456789/</span>
+  <span class="nt">data_reviews</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span>
+</pre></div>
+
+</div>
 
 <p>We also need to define a list of things we want to measure. To start with, let&rsquo;s just test with one piece of sample information: the app we&rsquo;re bisecting (e.g. &ldquo;Firefox&rdquo; or &ldquo;Gecko View Example&rdquo;). This goes in a file called <code>metrics.yaml</code>:</p>
 
 <div class="brush: yaml">
- <pre><code>---
-$schema: moz://mozilla.org/schemas/glean/metrics/1-0-0
+ <div class="colorful">
+  <pre><span></span><span class="nn">---</span>
+<span class="nt">$schema</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/metrics/1-0-0</span>
 
-usage:
-  app:
-    type: string
-    description: &gt;
-      The name of the app being bisected
-    notification_emails: 
-      - wlachance@mozilla.com
-    bugs: 
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1581647
-    data_reviews: 
-      - http://example.com/path/to/data-review
-    expires: never
-    send_in_pings:
-      - usage</code></pre></div>
+<span class="nt">usage</span><span class="p">:</span>
+  <span class="nt">app</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
+      <span class="no">The name of the app being bisected</span>
+    <span class="nt">notification_emails</span><span class="p">:</span> 
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span>
+    <span class="nt">bugs</span><span class="p">:</span> 
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">https://bugzilla.mozilla.org/show_bug.cgi?id=1581647</span>
+    <span class="nt">data_reviews</span><span class="p">:</span> 
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span>
+    <span class="nt">expires</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">never</span>
+    <span class="nt">send_in_pings</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">usage</span>
+</pre></div>
+
+</div>
 
 <p>The <code>data_reviews</code> sections in both of the above are obviously bogus, we will need to actually get data review before landing and using this code, to make sure that we&rsquo;re in conformance with Mozilla&rsquo;s <a href="https://wiki.mozilla.org/Firefox/Data_Collection">data collection policies</a>.</p>
 
@@ -279,29 +306,33 @@ usage:
 <p>But in the mean time, we can test our setup with the <a href="https://docs.telemetry.mozilla.org/concepts/glean/debug_ping_view.html">Glean debug pings viewer</a> by setting a special tag (<code>mozregression-test-tag</code>) on our output. Here&rsquo;s a small python script which does just that:</p>
 
 <div class="brush: py">
- <pre><code>from pathlib import Path
-from glean import Glean, Configuration
-from glean import (load_metrics,
-                   load_pings)
+ <div class="colorful">
+  <pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">glean</span> <span class="kn">import</span> <span class="n">Glean</span><span class="p">,</span> <span class="n">Configuration</span>
+<span class="kn">from</span> <span class="nn">glean</span> <span class="kn">import</span> <span class="p">(</span><span class="n">load_metrics</span><span class="p">,</span>
+                   <span class="n">load_pings</span><span class="p">)</span>
 
-mozregression_path = Path.home() / '.mozilla2' / 'mozregression'
+<span class="n">mozregression_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;.mozilla2&#39;</span> <span class="o">/</span> <span class="s1">&#39;mozregression&#39;</span>
 
-Glean.initialize(
-    application_id="mozregression",
-    application_version="0.1.1",
-    upload_enabled=True,
-    configuration=Configuration(
-      ping_tag="mozregression-test-tag"
-    ),
-    data_dir=mozregression_path / "data"
-)
-Glean.set_upload_enabled(True)
+<span class="n">Glean</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span>
+    <span class="n">application_id</span><span class="o">=</span><span class="s2">"mozregression"</span><span class="p">,</span>
+    <span class="n">application_version</span><span class="o">=</span><span class="s2">"0.1.1"</span><span class="p">,</span>
+    <span class="n">upload_enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">configuration</span><span class="o">=</span><span class="n">Configuration</span><span class="p">(</span>
+      <span class="n">ping_tag</span><span class="o">=</span><span class="s2">"mozregression-test-tag"</span>
+    <span class="p">),</span>
+    <span class="n">data_dir</span><span class="o">=</span><span class="n">mozregression_path</span> <span class="o">/</span> <span class="s2">"data"</span>
+<span class="p">)</span>
+<span class="n">Glean</span><span class="o">.</span><span class="n">set_upload_enabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
-pings = load_pings("pings.yaml")
-metrics = load_metrics("metrics.yaml")
+<span class="n">pings</span> <span class="o">=</span> <span class="n">load_pings</span><span class="p">(</span><span class="s2">"pings.yaml"</span><span class="p">)</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">load_metrics</span><span class="p">(</span><span class="s2">"metrics.yaml"</span><span class="p">)</span>
 
-metrics.usage.app.set("reality")
-pings.usage.submit()</code></pre></div>
+<span class="n">metrics</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"reality"</span><span class="p">)</span>
+<span class="n">pings</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">submit</span><span class="p">()</span>
+</pre></div>
+
+</div>
 
 <p>Running this script on my laptop, I see that a respectable JSON payload was delivered to and processed by our servers:</p>
 
@@ -563,23 +594,6 @@ group by build_id, client_id) group by build_id;</code></pre>
 
 </article>
 
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Metrics-Graphics.html">Metrics Graphics</a></span></p>
-    <h2><a href='/blog/2018/04/metricsgraphics-movements/'>metricsgraphics movements</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 30th, 2018</p>
-  </header>
-
-<p>Just wanted to give a quick update on some things that have been happening with the <a href="https://www.metricsgraphics.org">metrics graphics</a> since I stepped up to help with maintainership a few months ago:</p>
-
-<ul>
- <li><a href="https://github.com/hamilton">Hamilton</a>&rsquo;s back as co-maintainer! This has been especially helpful  as he understands much of the historical context of metricsgraphics better than I do.</li>
- <li>We&rsquo;ve merged in a large number of small fixes and improvements into the codebase,  thanks to myself and a number of other contributors. Special shout-out to Thomas  Champagne, who has contributed a <a href="https://github.com/metricsgraphics/metrics-graphics/commits?author=thomaschampagne">large number of nifty new features</a>.</li>
- <li>We moved the project from Mozilla to its <a href="https://github.com/metricsgraphics/">own organization</a> on  github. This feels like a much better way forward for a project which is supposed to be useful  far outside the bounds of Mozilla, and hopeful makes contributors feel more like the first-class  citizens of the project that they actually are.</li>
- <li>We have a GSOC intern! As part of the Mozilla GSOC, Yunhao Zheng is going to be working on  adding rich brushing/zooming support to Metrics Graphics, which should be quite useful for  visualizing complex data in projects like <a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder">Perfherder</a> (<a href="https://docs.google.com/document/d/1_KIOJtemqlCBktDdfdjDuS4XhICeaKO3QhNRwbnnf-g/">Project outline</a>, <a href="https://summerofcode.withgoogle.com/projects/#5422620527296512">Yunhao&rsquo;s proposal</a>)</li></ul>
-
-</article>
-
 <footer>
  <ul class="pagination">
   <li class="page-item disabled"><a class="page-link" href="#">
@@ -593,6 +607,7 @@ group by build_id, client_id) group by build_id;</code></pre>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-7.html">7</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-8.html">8</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-9.html">9</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-10.html">10</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-2.html">
     <quote>&rarr;</quote></a></li></ul></footer>
         </div>

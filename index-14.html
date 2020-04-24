@@ -213,6 +213,21 @@
 
           <article>
   <header>
+    <p><span class="tags"></span></p>
+    <h2><a href='/blog/2010/02/it-8217-s-alive/'>It&#8217;s alive!</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 11th, 2010</p>
+  </header>
+
+<pre><code>&gt;&gt;&gt; import  neocoder
+&gt;&gt;&gt; g = neocoder.GeoCoder("greater-hrm2.db")
+&gt;&gt;&gt; g.get_latlng("14 Johnson, North Preston")
+SQL: select firstHouseNumber, lastHouseNumber, length, coords from road where name like 'Johnson' and firstHouseNumber &lt;= '14' and lastHouseNumber &gt;= '14' and placeName like 'North Preston' limit 1
+(44.73895263671875, -63.464725494384766)</code></pre>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/hbus.html">hbus</a></span></p>
     <h2><a href='/blog/2010/01/projects-for-2010/'>Projects for 2010</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 2nd, 2010</p>

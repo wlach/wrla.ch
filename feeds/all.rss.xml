@@ -4,9 +4,25 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Fri, 28 Feb 2020 15:50:58 UT</lastBuildDate>
-  <pubDate>Fri, 28 Feb 2020 15:50:58 UT</pubDate>
+  <lastBuildDate>Fri, 24 Apr 2020 14:59:04 UT</lastBuildDate>
+  <pubDate>Fri, 24 Apr 2020 14:59:04 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>mozregression for MacOS</title>
+   <link>https://wlach.github.io/blog/2020/04/mozregression-for-macos/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-04-mozregression-for-macos</guid>
+   <pubDate>Fri, 24 Apr 2020 14:59:04 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;Just a quick note that, as a side-effect of the work I mentioned a while ago to &lt;a href="/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/"&gt;add telemetry to mozregression&lt;/a&gt;, mozregression now has a graphical Mac client! It&amp;rsquo;s a bit of a pain to install (since it&amp;rsquo;s unsigned), but likely worlds easier for the average person to get going than the command-line version. Please feel free to &lt;a href="https://mozilla.github.io/mozregression/install.html"&gt;point people to it&lt;/a&gt; if you&amp;rsquo;re looking to get a regression range for a MacOS-specific problem with Firefox.&lt;/p&gt;
+
+&lt;center&gt;&lt;img style="width:600px" src="/files/2020/04/mozregression-gui-mac.png" /&gt;&lt;/center&gt;
+
+&lt;p&gt;More details: The &lt;a href="https://mozilla.github.io/glean/book/dev/python/index.html"&gt;Glean Python SDK&lt;/a&gt;, which &lt;a href="https://mozilla.github.io/mozregression/documentation/telemetry.html"&gt;mozregression now uses for telemetry&lt;/a&gt;, requires Python 3. This provided the impetus to port the GUI itself to Python 3 and PySide2 (the modern incarnation of PyQt), which brought with it a much easier installation/development experience for the GUI on platforms like Mac and Linux.&lt;/p&gt;
+
+&lt;p&gt;I haven&amp;rsquo;t gotten around to producing GUI binaries for the Linux yet, but it should not be much work.&lt;/p&gt;
+
+&lt;p&gt;Speaking of Glean, mozregression, and Telemetry, stay tuned for more updates on that soon. It&amp;rsquo;s been an adventure!&lt;/p&gt;</description></item>
   <item>
    <title>This week in Glean (special guest post): mozregression telemetry (part 1)</title>
    <link>https://wlach.github.io/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/?utm_source=all&amp;utm_medium=RSS</link>
@@ -33,40 +49,48 @@
 &lt;p&gt;Glean has &lt;a href="https://mozilla.github.io/glean/book/user/pings/events.html"&gt;the concept of event pings&lt;/a&gt;, but it seems like those are there more for a fine-grained view of what&amp;rsquo;s going on during an application&amp;rsquo;s use. So let&amp;rsquo;s define a new ping just for ourselves, giving it the unimaginative name &amp;ldquo;usage&amp;rdquo;. This goes in a file called &lt;code&gt;pings.yaml&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class="brush: yaml"&gt;
- &lt;pre&gt;&lt;code&gt;---
-$schema: moz://mozilla.org/schemas/glean/pings/1-0-0
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;span class="nt"&gt;$schema&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;moz://mozilla.org/schemas/glean/pings/1-0-0&lt;/span&gt;
 
-usage:
-  description: &amp;gt;
-    A ping to record usage of mozregression
-  include_client_id: true
-  notification_emails:
-    - wlachance@mozilla.com
-  bugs:
-    - http://bugzilla.mozilla.org/123456789/
-  data_reviews:
-    - http://example.com/path/to/data-review&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="nt"&gt;usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class="no"&gt;A ping to record usage of mozregression&lt;/span&gt;
+  &lt;span class="nt"&gt;include_client_id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
+  &lt;span class="nt"&gt;notification_emails&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;wlachance@mozilla.com&lt;/span&gt;
+  &lt;span class="nt"&gt;bugs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://bugzilla.mozilla.org/123456789/&lt;/span&gt;
+  &lt;span class="nt"&gt;data_reviews&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://example.com/path/to/data-review&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
 
 &lt;p&gt;We also need to define a list of things we want to measure. To start with, let&amp;rsquo;s just test with one piece of sample information: the app we&amp;rsquo;re bisecting (e.g. &amp;ldquo;Firefox&amp;rdquo; or &amp;ldquo;Gecko View Example&amp;rdquo;). This goes in a file called &lt;code&gt;metrics.yaml&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class="brush: yaml"&gt;
- &lt;pre&gt;&lt;code&gt;---
-$schema: moz://mozilla.org/schemas/glean/metrics/1-0-0
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
+&lt;span class="nt"&gt;$schema&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;moz://mozilla.org/schemas/glean/metrics/1-0-0&lt;/span&gt;
 
-usage:
-  app:
-    type: string
-    description: &amp;gt;
-      The name of the app being bisected
-    notification_emails: 
-      - wlachance@mozilla.com
-    bugs: 
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1581647
-    data_reviews: 
-      - http://example.com/path/to/data-review
-    expires: never
-    send_in_pings:
-      - usage&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="nt"&gt;usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+  &lt;span class="nt"&gt;app&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;string&lt;/span&gt;
+    &lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;&amp;gt;&lt;/span&gt;
+      &lt;span class="no"&gt;The name of the app being bisected&lt;/span&gt;
+    &lt;span class="nt"&gt;notification_emails&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
+      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;wlachance@mozilla.com&lt;/span&gt;
+    &lt;span class="nt"&gt;bugs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
+      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;https://bugzilla.mozilla.org/show_bug.cgi?id=1581647&lt;/span&gt;
+    &lt;span class="nt"&gt;data_reviews&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
+      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://example.com/path/to/data-review&lt;/span&gt;
+    &lt;span class="nt"&gt;expires&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;never&lt;/span&gt;
+    &lt;span class="nt"&gt;send_in_pings&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;usage&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
 
 &lt;p&gt;The &lt;code&gt;data_reviews&lt;/code&gt; sections in both of the above are obviously bogus, we will need to actually get data review before landing and using this code, to make sure that we&amp;rsquo;re in conformance with Mozilla&amp;rsquo;s &lt;a href="https://wiki.mozilla.org/Firefox/Data_Collection"&gt;data collection policies&lt;/a&gt;.&lt;/p&gt;
 
@@ -75,29 +99,33 @@ usage:
 &lt;p&gt;But in the mean time, we can test our setup with the &lt;a href="https://docs.telemetry.mozilla.org/concepts/glean/debug_ping_view.html"&gt;Glean debug pings viewer&lt;/a&gt; by setting a special tag (&lt;code&gt;mozregression-test-tag&lt;/code&gt;) on our output. Here&amp;rsquo;s a small python script which does just that:&lt;/p&gt;
 
 &lt;div class="brush: py"&gt;
- &lt;pre&gt;&lt;code&gt;from pathlib import Path
-from glean import Glean, Configuration
-from glean import (load_metrics,
-                   load_pings)
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pathlib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;glean&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Glean&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Configuration&lt;/span&gt;
+&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;glean&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;load_metrics&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                   &lt;span class="n"&gt;load_pings&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-mozregression_path = Path.home() / '.mozilla2' / 'mozregression'
+&lt;span class="n"&gt;mozregression_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.mozilla2&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;mozregression&amp;#39;&lt;/span&gt;
 
-Glean.initialize(
-    application_id="mozregression",
-    application_version="0.1.1",
-    upload_enabled=True,
-    configuration=Configuration(
-      ping_tag="mozregression-test-tag"
-    ),
-    data_dir=mozregression_path / "data"
-)
-Glean.set_upload_enabled(True)
+&lt;span class="n"&gt;Glean&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="n"&gt;application_id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"mozregression"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;application_version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"0.1.1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;upload_enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;configuration&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Configuration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+      &lt;span class="n"&gt;ping_tag&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"mozregression-test-tag"&lt;/span&gt;
+    &lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;mozregression_path&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="s2"&gt;"data"&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;Glean&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_upload_enabled&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-pings = load_pings("pings.yaml")
-metrics = load_metrics("metrics.yaml")
+&lt;span class="n"&gt;pings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load_pings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"pings.yaml"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;metrics&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load_metrics&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"metrics.yaml"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 
-metrics.usage.app.set("reality")
-pings.usage.submit()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"reality"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;pings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;submit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
 
 &lt;p&gt;Running this script on my laptop, I see that a respectable JSON payload was delivered to and processed by our servers:&lt;/p&gt;
 
@@ -400,21 +428,25 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;For a poll to be valid it is supposed to be &amp;ldquo;reasonably&amp;rdquo; reflective of the general population. Over the quantities that we&amp;rsquo;re talking about, that means anywhere from hundreds of thousands to millions of people. If we were able to truly randomly sample a small number from this group, the results are likely to be &amp;ldquo;representative of the whole&amp;rdquo; (within some confidence interval). Let&amp;rsquo;s write up a small python script to confirm this intuition:&lt;/p&gt;
 
 &lt;div class="brush: py"&gt;
- &lt;pre&gt;&lt;code&gt;# 100,000 random numbers between 0 and 1
-&amp;gt;&amp;gt;&amp;gt; full_population_size = 100000
-&amp;gt;&amp;gt;&amp;gt; full_sample = [random.random() for i in range(full_population_size)]
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# 100,000 random numbers between 0 and 1&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;full_population_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;100000&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;full_sample&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;full_population_size&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
 
-# average over entire result
-&amp;gt;&amp;gt;&amp;gt; sum(full_sample) / full_population_size
-0.501036568906331
+&lt;span class="c1"&gt;# average over entire result&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;full_sample&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;full_population_size&lt;/span&gt;
+&lt;span class="mf"&gt;0.501036568906331&lt;/span&gt;
 
-# pull out 100 randomly selected values from the full sample and
-# get their average
-&amp;gt;&amp;gt;&amp;gt; random_subset_size = 100
-&amp;gt;&amp;gt;&amp;gt; random_subset = [full_sample[i] for i in [int(random.random()*100000) for j in
-                     range(random_subset_size)]]
-&amp;gt;&amp;gt;&amp;gt; sum(random_subset) / random_subset_size
-0.4924555517866068&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="c1"&gt;# pull out 100 randomly selected values from the full sample and&lt;/span&gt;
+&lt;span class="c1"&gt;# get their average&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;random_subset_size&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;random_subset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;full_sample&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mi"&gt;100000&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt;
+                     &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random_subset_size&lt;/span&gt;&lt;span class="p"&gt;)]]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random_subset&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;random_subset_size&lt;/span&gt;
+&lt;span class="mf"&gt;0.4924555517866068&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
 
 &lt;p&gt;Only a small fraction of the total population, but a result within 1% of the true value. Expressing it this way makes random sampling almost like a tautology. You probably learned this in high school. Great right?&lt;/p&gt;
 
@@ -423,39 +455,47 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Just for fun, let&amp;rsquo;s try doing that and see how it affects the results:&lt;/p&gt;
 
 &lt;div class="brush: py"&gt;
- &lt;pre&gt;&lt;code&gt;# if we take away approximately half the results with a value of
-# &amp;gt;0.75, the population we are sampling from is reduced proportionally
-&amp;gt;&amp;gt;&amp;gt; full_sample_with_half75_removed = [v for v in full_sample if v &amp;lt;= 0.75 or random.random() &amp;lt; 0.5]
-&amp;gt;&amp;gt;&amp;gt; len(full_sample_with_half75_removed)
-87607
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# if we take away approximately half the results with a value of&lt;/span&gt;
+&lt;span class="c1"&gt;# &amp;gt;0.75, the population we are sampling from is reduced proportionally&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;full_sample_with_half75_removed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;full_sample&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="mf"&gt;0.75&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;full_sample_with_half75_removed&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="mi"&gt;87607&lt;/span&gt;
 
-# the sampled value is then proportionally skewed downwards (because
-# a large percentage of the high values are no longer available)
-&amp;gt;&amp;gt;&amp;gt; random_subset = [full_sample_with_half75_removed[i] for i in
-                     [int(random.random()*len(full_sample_with_half75_removed)) for j in
-                      range(random_subset_size)]
-                    ]
-&amp;gt;&amp;gt;&amp;gt; sum(random_subset)/random_subset_size
-0.4585241853943395&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class="c1"&gt;# the sampled value is then proportionally skewed downwards (because&lt;/span&gt;
+&lt;span class="c1"&gt;# a large percentage of the high values are no longer available)&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;random_subset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;full_sample_with_half75_removed&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt;
+                     &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;full_sample_with_half75_removed&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt;
+                      &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random_subset_size&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+                    &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random_subset&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;random_subset_size&lt;/span&gt;
+&lt;span class="mf"&gt;0.4585241853943395&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
 
 &lt;p&gt;To try and get around this problem, the opinion polling company would try to demographically restrict who we were surveying past a certain point, so that the overall sample of the poll would reasonably reflect the characteristics of the population. This probably helped, but there&amp;rsquo;s only so much you can do here. For example, if you correct for the fact that men aged 20 to 60 are less likely to answer an opinion survey, your sample is going to now consist of those weird men who &lt;em&gt;do&lt;/em&gt; answer opinion surveys. Who knows what effect that&amp;rsquo;s going to have on your results?&lt;/p&gt;
 
 &lt;p&gt;I want to be clear here: this is a methodological problem. Running more opinion polls doesn&amp;rsquo;t help. Probably some samples will be more affected by errors than others, but the problem remains regardless. Actually, let&amp;rsquo;s show this trivially for our small example:&lt;/p&gt;
 
 &lt;div class="brush: py"&gt;
- &lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; skewed_averages = []
-&amp;gt;&amp;gt;&amp;gt; for i in range(10):
-...   full_sample_with_half75_removed = [v for v in full_sample if v &amp;lt;= 0.75 or
-                                         random.random() &amp;lt; 0.5]
-...   random_subset = [full_sample_with_half75_removed[i] for i in
-          [int(random.random()*len(full_sample_with_half75_removed)) for j in
-           range(random_subset_size)]]
-...   skewed_averages += [sum(random_subset)/len(random_subset)]
-...
-&amp;gt;&amp;gt;&amp;gt; skewed_averages
-[0.4585241853943395, 0.4271412530288919, 0.46414511969024697, 0.4360740890986547,
- 0.4779021127791633, 0.38419133106708714, 0.48688298744651576, 0.41076028280889915,
- 0.47975630795860363, 0.4381467970818846]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;skewed_averages&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="n"&gt;full_sample_with_half75_removed&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;full_sample&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;=&lt;/span&gt; &lt;span class="mf"&gt;0.75&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt;
+                                         &lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mf"&gt;0.5&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="n"&gt;random_subset&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;full_sample_with_half75_removed&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt;
+          &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;random&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;full_sample_with_half75_removed&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt;
+           &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random_subset_size&lt;/span&gt;&lt;span class="p"&gt;)]]&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;   &lt;span class="n"&gt;skewed_averages&lt;/span&gt; &lt;span class="o"&gt;+=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random_subset&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;random_subset&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;skewed_averages&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mf"&gt;0.4585241853943395&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.4271412530288919&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.46414511969024697&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.4360740890986547&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mf"&gt;0.4779021127791633&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.38419133106708714&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.48688298744651576&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.41076028280889915&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+ &lt;span class="mf"&gt;0.47975630795860363&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mf"&gt;0.4381467970818846&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
 
 &lt;p&gt;Each time we resampled from the main population and got a different result, but the end result was still one which was &lt;em&gt;far&lt;/em&gt; off from what we know in this case was the true value (0.5). Sampling from bad data doesn&amp;rsquo;t make up for these problems, it just gives you more bad results.&lt;/p&gt;
 
@@ -647,18 +687,4 @@ group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;If this sounds interesting and you have some react/d3/data visualization skills (or would like to gain some), &lt;a href="/blog/2017/10/mission-control-ready-for-contributions/"&gt;learn about contributing to mission control&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Shout out to &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; for reviewing this post and providing feedback and additions.&lt;/p&gt;</description></item>
-  <item>
-   <title>Mission Control: Ready for contributions</title>
-   <link>https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-mission-control-ready-for-contributions</guid>
-   <pubDate>Fri, 20 Oct 2017 18:33:19 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;One of the great design decisions that was made for &lt;a href="https://treeherder.mozilla.org"&gt;Treeherder&lt;/a&gt; was a strict seperation of the client and server portions of the codebase. While its backend was moderately complicated to get up and running (especially into a state that looked at all like what we were running in production), you could get its web frontend running (pointed against the production data) just by starting up a simple node.js server. This dramatically lowered the barrier to entry, for Mozilla employees and casual contributors alike.&lt;/p&gt;
-
-&lt;p&gt;I knew right from the beginning that I wanted to take the same approach with &lt;a href="https://wlach.github.io/blog/2017/10/mission-control/"&gt;Mission Control&lt;/a&gt;. While the full source of the project is available, unfortunately it isn&amp;rsquo;t presently possible to bring up the full stack with real data, as that requires privileged access to the athena/parquet error aggregates table. But since the UI is self-contained, it&amp;rsquo;s quite easy to bring up a development environment that allows you to freely browse the cached data which is stored server-side (essentially: &lt;code&gt;git clone https://github.com/mozilla/missioncontrol.git &amp;amp;&amp;amp; yarn install &amp;amp;&amp;amp; yarn start&lt;/code&gt;).&lt;/p&gt;
-
-&lt;p&gt;In my experience, the most interesting problems when it comes to projects like these center around the question of how to present extremely complex data in a way that is intuitive but not misleading. Probably 90% of that work happens in the frontend. In the past, I&amp;rsquo;ve had pretty good luck finding contributors for my projects (especially &lt;a href="/tags/Perfherder.html"&gt;Perfherder&lt;/a&gt;) by doing call-outs on this blog. So let it be known: If Mission Control sounds like an interesting project and you know &lt;a href="https://reactjs.org/"&gt;React&lt;/a&gt;/&lt;a href="http://redux.js.org/"&gt;Redux&lt;/a&gt;/&lt;a href="https://d3js.org/"&gt;D3&lt;/a&gt;/&lt;a href="https://www.metricsgraphicsjs.org/"&gt;MetricsGraphics&lt;/a&gt; (or want to learn), let&amp;rsquo;s work together!&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;Shout out to &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; for reviewing this post and providing feedback and additions.&lt;/p&gt;</description></item></channel></rss>

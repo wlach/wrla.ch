@@ -213,6 +213,33 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2017/07/taking-over-an-npm-package-sanity-prevails/'>Taking over an npm package: sanity prevails</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jul 13th, 2017</p>
+  </header>
+
+<p>Sometimes problems are easier to solve than expected.</p>
+
+<p>For the last few months I&rsquo;ve been working on the front end of a new project called <a href="https://github.com/mozilla/missioncontrol">Mission Control</a>, which aims to chart lots of interesting live information in something approximating realtime. Since this is a greenfield project, I thought it would make sense to use the currently-invogue framework at Mozilla (react) along with our standard visualization library, <a href="http://metricsgraphicsjs.org/">metricsgraphics</a>.</p>
+
+<p>Metricsgraphics is great, but its jquery-esque api is somewhat at odds with the react way. The obvious solution to this problem is to wrap its functionality in a react component, and a quick google search determined that several people have tried to do exactly that, the most popular one being one called (obviously) react-metrics-graphics. Unfortunately, it hadn&rsquo;t been updated in quite some time and some pull requests (including ones implementing features I needed for my project) weren&rsquo;t being responded to.</p>
+
+<p>I expected this to be pretty difficult to resolve: I had no interaction with the author (Carter Feldman) before but based on my past experiences in free software, I was expecting stonewalling, leaving me no choice but to fork the package and give it a new name, a rather unsatisfying end result.</p>
+
+<p>But, hey, let&rsquo;s keep an open mind on this. What does google say about unmaintained npm packages? Oh what&rsquo;s this? They actually have a <a href="https://docs.npmjs.com/misc/disputes">policy</a>?</p>
+
+<p>tl;dr: You email the maintainer (politely) and CC support@npmjs.org about your interest in helping maintain the software. If you&rsquo;re unable to come up with a resolution on your own, they will intervene.</p>
+
+<p>So I tried that. It turns out that Carter was really happy to hear that Mozilla was interested in taking over maintenance of this project, and not only gave me permission to start publishing newer versions to npm, but even transferred his repository over to Mozilla (so we could preserve issue and PR history). The project&rsquo;s new location is here:</p>
+
+<p><a href="https://github.com/mozilla/react-metrics-graphics">https://github.com/mozilla/react-metrics-graphics</a></p>
+
+<p>In hindsight, this is obviously the most reasonable outcome and I&rsquo;m not sure why I was expecting anything else. Is the node community just friendlier than other areas I&rsquo;ve worked in? Have community standards improved generally? In any case, thank you Carter for a great piece of software, hopefully it will thrive in its new home. :P</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Docker.html">Docker</a></span></p>
     <h2><a href='/blog/2017/06/using-docker-to-run-automated-tests/'>Using Docker to run automated tests</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 2nd, 2017</p>
@@ -323,29 +350,37 @@
 <p>It&rsquo;s quite possible that this is a solvable problem, but I thought it might be an interesting exercise to see how far we could get training an autoclassifier with only the existing per-job classifications as training data. With some recent work I&rsquo;ve done on refactoring Treeherder&rsquo;s database, getting a complete set of per-job failure line information is only a small SQL query away:</p>
 
 <div class="brush: sql">
- <pre><code>select bjm.id, bjm.bug_id, tle.line from bug_job_map as bjm
-  left join text_log_step as tls on tls.job_id = bjm.job_id
-  left join text_log_error as tle on tle.step_id = tls.id
-  where bjm.created &gt; '2016-10-31' and bjm.created &lt; '2016-11-24' and bjm.user_id is not NULL and bjm.bug_id is not NULL
-  order by bjm.id, tle.step_id, tle.id;</code></pre></div>
+ <div class="colorful">
+  <pre><span></span><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
+  <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_step</span> <span class="k">as</span> <span class="n">tls</span> <span class="k">on</span> <span class="n">tls</span><span class="p">.</span><span class="n">job_id</span> <span class="o">=</span> <span class="n">bjm</span><span class="p">.</span><span class="n">job_id</span>
+  <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_error</span> <span class="k">as</span> <span class="n">tle</span> <span class="k">on</span> <span class="n">tle</span><span class="p">.</span><span class="n">step_id</span> <span class="o">=</span> <span class="n">tls</span><span class="p">.</span><span class="n">id</span>
+  <span class="k">where</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&gt;</span> <span class="s1">&#39;2016-10-31&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&lt;</span> <span class="s1">&#39;2016-11-24&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">user_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span>
+  <span class="k">order</span> <span class="k">by</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">step_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+</pre></div>
+
+</div>
 
 <p>Just to give some explanation of this query, the &ldquo;bug_job_map&rdquo; provides a list of bugs that have been applied to jobs. The &ldquo;text_log_step&rdquo; and &ldquo;text_log_error&rdquo; tables contain the actual errors that Treeherder has extracted from the textual logs (to explain the failure). From this raw list of mappings and errors, we can construct a data structure incorporating the job, the assigned bug and the textual errors inside it. For example:</p>
 
 <div class="brush: json">
- <pre><code>{
-"bug_number": 1202623,
-"lines": [
-  "browser_private_clicktoplay.js Test timed out -",
-  "browser_private_clicktoplay.js Found a tab after previous test timed out: http:/&lt;number&gt;&lt;number&gt;:&lt;number&gt;/browser/browser/base/content/test/plugins/plugin_test.html -",
-  "browser_private_clicktoplay.js Found a browser window after previous test timed out -",
-  "browser_private_clicktoplay.js A promise chain failed to handle a rejection:  - at chrome://mochikit/content/browser-test.js:&lt;number&gt; - TypeError: this.SimpleTest.isExpectingUncaughtException is not a function",
-  "browser_privatebrowsing_newtab_from_popup.js Test timed out -",
-  "browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -",
-  "browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -",
-  "browser_privatebrowsing_newtab_from_popup.js Found a browser window
-  after previous test timed out -"
-  ]
-}</code></pre></div>
+ <div class="colorful">
+  <pre><span></span><span class="p">{</span>
+<span class="nt">"bug_number"</span><span class="p">:</span> <span class="mi">1202623</span><span class="p">,</span>
+<span class="nt">"lines"</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">"browser_private_clicktoplay.js Test timed out -"</span><span class="p">,</span>
+  <span class="s2">"browser_private_clicktoplay.js Found a tab after previous test timed out: http:/&lt;number&gt;&lt;number&gt;:&lt;number&gt;/browser/browser/base/content/test/plugins/plugin_test.html -"</span><span class="p">,</span>
+  <span class="s2">"browser_private_clicktoplay.js Found a browser window after previous test timed out -"</span><span class="p">,</span>
+  <span class="s2">"browser_private_clicktoplay.js A promise chain failed to handle a rejection:  - at chrome://mochikit/content/browser-test.js:&lt;number&gt; - TypeError: this.SimpleTest.isExpectingUncaughtException is not a function"</span><span class="p">,</span>
+  <span class="s2">"browser_privatebrowsing_newtab_from_popup.js Test timed out -"</span><span class="p">,</span>
+  <span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span>
+  <span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span>
+  <span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window</span>
+<span class="s2">  after previous test timed out -"</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+</div>
 
 <p>Some quick google searching revealed that <a href="http://scikit-learn.org/">scikit-learn</a> is a popular tool for experimenting with text classifications. They even had a <a href="http://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html">tutorial</a> on classifying newsgroup posts which seemed tantalizingly close to what we needed to do here. In that example, they wanted to predict which newsgroup a post belonged to based on its content. In our case, we want to predict which existing bug a job failure should belong to based on its error lines.</p>
 
@@ -354,42 +389,46 @@
 <p>In any case, I built up a small little script to download a subset of the downloaded data (from November 1st to November 23rd), used it as training data for a classifier, then tested that against another subset of test failures between November 24th and 28th.</p>
 
 <div class="brush: py">
- <pre><code>import os
-from sklearn.datasets import load_files
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
-from sklearn.linear_model import SGDClassifier
+ <div class="colorful">
+  <pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_files</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfTransformer</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">SGDClassifier</span>
 
 
-training_set = load_files('training')
-count_vect = CountVectorizer()
-X_train_counts = count_vect.fit_transform(training_set.data)
-tfidf_transformer = TfidfTransformer()
-X_train_tfidf = tfidf_transformer.fit_transform(X_train_counts)
-clf = SGDClassifier(loss='hinge', penalty='l2',
-                    alpha=1e-3, n_iter=5, random_state=42).fit(X_train_tfidf, training_set.target)
+<span class="n">training_set</span> <span class="o">=</span> <span class="n">load_files</span><span class="p">(</span><span class="s1">&#39;training&#39;</span><span class="p">)</span>
+<span class="n">count_vect</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">()</span>
+<span class="n">X_train_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">training_set</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">tfidf_transformer</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span>
+<span class="n">X_train_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_counts</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SGDClassifier</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;hinge&#39;</span><span class="p">,</span> <span class="n">penalty</span><span class="o">=</span><span class="s1">&#39;l2&#39;</span><span class="p">,</span>
+                    <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_tfidf</span><span class="p">,</span> <span class="n">training_set</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
 
-num_correct = 0
-num_missed = 0
+<span class="n">num_correct</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">num_missed</span> <span class="o">=</span> <span class="mi">0</span>
 
-for (subdir, _, fnames) in os.walk('testing/'):
-    if fnames:
-        bugnum = os.path.basename(subdir)
-        print bugnum, fnames
-        for fname in fnames:
-            doc = open(os.path.join(subdir, fname)).read()
-            if not len(doc):
-                print "--&gt; (skipping, empty)"
-            X_new_counts = count_vect.transform([doc])
-            X_new_tfidf = tfidf_transformer.transform(X_new_counts)
-            predicted_bugnum = training_set.target_names[clf.predict(X_new_tfidf)[0]]
-            if bugnum == predicted_bugnum:
-                num_correct += 1
-                print "--&gt; correct"
-            else:
-                num_missed += 1
-                print "--&gt; missed (%s)" % predicted_bugnum
-print "Correct: %s Missed: %s Ratio: %s" % (num_correct, num_missed, num_correct / float(num_correct + num_missed))</code></pre></div>
+<span class="k">for</span> <span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fnames</span><span class="p">)</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="s1">&#39;testing/&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">fnames</span><span class="p">:</span>
+        <span class="n">bugnum</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">subdir</span><span class="p">)</span>
+        <span class="nb">print</span> <span class="n">bugnum</span><span class="p">,</span> <span class="n">fnames</span>
+        <span class="k">for</span> <span class="n">fname</span> <span class="ow">in</span> <span class="n">fnames</span><span class="p">:</span>
+            <span class="n">doc</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">subdir</span><span class="p">,</span> <span class="n">fname</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
+                <span class="nb">print</span> <span class="s2">"--&gt; (skipping, empty)"</span>
+            <span class="n">X_new_counts</span> <span class="o">=</span> <span class="n">count_vect</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">doc</span><span class="p">])</span>
+            <span class="n">X_new_tfidf</span> <span class="o">=</span> <span class="n">tfidf_transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_new_counts</span><span class="p">)</span>
+            <span class="n">predicted_bugnum</span> <span class="o">=</span> <span class="n">training_set</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new_tfidf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="k">if</span> <span class="n">bugnum</span> <span class="o">==</span> <span class="n">predicted_bugnum</span><span class="p">:</span>
+                <span class="n">num_correct</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="nb">print</span> <span class="s2">"--&gt; correct"</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">num_missed</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="nb">print</span> <span class="s2">"--&gt; missed (</span><span class="si">%s</span><span class="s2">)"</span> <span class="o">%</span> <span class="n">predicted_bugnum</span>
+<span class="nb">print</span> <span class="s2">"Correct: </span><span class="si">%s</span><span class="s2"> Missed: </span><span class="si">%s</span><span class="s2"> Ratio: </span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">num_correct</span><span class="p">,</span> <span class="n">num_missed</span><span class="p">,</span> <span class="n">num_correct</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">num_correct</span> <span class="o">+</span> <span class="n">num_missed</span><span class="p">))</span>
+</pre></div>
+
+</div>
 
 <p>With absolutely no tweaking whatsoever, I got an accuracy rate of 75% on the test data. That is, the algorithm chose the correct classification given the failure text 1312 times out of 1959. Not bad for a first attempt!</p>
 
@@ -561,55 +600,6 @@ print "Correct: %s Missed: %s Ratio: %s" % (num_correct, num_missed, num_correct
 
 </article>
 
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-    <h2><a href='/blog/2016/03/platform-engineering-project-of-the-month-perfherder/'>Platform engineering project of the month: Perfherder</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Mar 14th, 2016</p>
-  </header>
-
-<p><em>[ originally posted on <a href="https://groups.google.com/d/msg/mozilla.dev.platform/itdfru6csSk/vfVP_WDXBgAJ">mozilla.dev.platform</a> ]</em></p>
-
-<p>Hello from Platform Engineering Operations! Once a month we highlight one of our projects to help the Mozilla community discover a useful tool or an interesting contribution opportunity.</p>
-
-<p>This month’s project is Perfherder!</p>
-
-<h3 id="what-is-perfherder">What is Perfherder?</h3>
-
-<p>Perfherder is a generic system for visualizing and analyzing performance data produced by the many automated tests we run here at Mozilla (such as Talos, &ldquo;Are we fast yet?&rdquo; or &ldquo;Are we slim yet?&rdquo;). The chief goal of the project is to make sure that performance of Firefox gets better, not worse over time. It does this by:</p>
-
-<ul>
- <li>Tracking the performance generated by our automated tests, allowing  them to be visualized on a graph.</li>
- <li>Providing a sheriffing dashboard which allows for incoming  alerts of performance regressions to be annotated and triaged - bugs  can be filed based on a template and their resolution status can be  tracked.</li></ul>
-
-<p>In addition to its own user interface, Perfherder also provides an API on the backend that other people can use to build custom performance visualizations and dashboards. For example, the metrics group has been working on a set of release quality indices for performance based on Perfherder data:</p>
-
-<p><a href="https://metrics.mozilla.com/quality-indices/">https://metrics.mozilla.com/quality-indices/</a></p>
-
-<h3 id="how-it-works">How it works</h3>
-
-<p>Perfherder is part of Treeherder, building on that project&rsquo;s existing support for tracking revision and test job information. Like the rest of Treeherder, Perfherder&rsquo;s backend is written in Python, using the Django web framework. The user interface is written as an AngularJS application.</p>
-
-<h3 id="learning-more">Learning more</h3>
-
-<p>For more information on Perfherder than you ever wanted to know, please see the wiki page:</p>
-
-<p><a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder">https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder</a></p>
-
-<h3 id="can-i-contribute">Can I contribute?</h3>
-
-<p>Yes! We have had some fantastic contributions from the community to Perfherder, and are always looking for more. This is a great way to help developers make Firefox faster (or use less memory). The core of Perfherder is relatively small, so this is a great chance to learn either Django or Angular if you have a small amount of Python and/or JavaScript experience.</p>
-
-<p>We have set aside a set of bugs that are suitable for getting started here:</p>
-
-<p><a href="https://bugzilla.mozilla.org/buglist.cgi?list_id=12722722&amp;resolution=---&amp;status_whiteboard_type=allwordssubstr&amp;query_format=advanced&amp;status_whiteboard=perfherder-starter-bug">https://bugzilla.mozilla.org/buglist.cgi?list_id=12722722&amp;resolution=---&amp;status_whiteboard_type=allwordssubstr&amp;query_format=advanced&amp;status_whiteboard=perfherder-starter-bug</a></p>
-
-<p>For more information on contributing to Perfherder, please see the contribution section of the above wiki page:</p>
-
-<p><a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution">https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder#Contribution</a></p>
-
-</article>
-
 <footer>
  <ul class="pagination">
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-2.html">
@@ -623,6 +613,7 @@ print "Correct: %s Missed: %s Ratio: %s" % (num_correct, num_missed, num_correct
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-7.html">7</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-8.html">8</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-9.html">9</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-10.html">10</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-4.html">
     <quote>&rarr;</quote></a></li></ul></footer>
         </div>

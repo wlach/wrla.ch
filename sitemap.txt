@@ -80,6 +80,7 @@ https://wlach.github.io/blog/2015/01/mozregression-updates/
 https://wlach.github.io/blog/2017/07/the-vastness/
 https://wlach.github.io/blog/2014/03/it-8217-s-all-about-the-entropy/
 https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure/
+https://wlach.github.io/blog/2020/04/mozregression-for-macos/
 https://wlach.github.io/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/
 https://wlach.github.io/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans/
 https://wlach.github.io/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-results/
