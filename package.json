@@ -1,0 +1,23 @@
+{
+  "name": "wlach.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "css": "tailwindcss build css/style.css.in -o css/style.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wlach/wlach.github.io.git"
+  },
+  "author": "William Lachance <wlach@protonmail.com>",
+  "license": "CC-BY-4.0",
+  "bugs": {
+    "url": "https://github.com/wlach/wlach.github.io/issues"
+  },
+  "homepage": "https://github.com/wlach/wlach.github.io#readme",
+  "dependencies": {
+    "tailwindcss": "^1.4.6"
+  }
+}

@@ -1,96 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    @;{ The at-exp reader for a template treats this as a comment.
-        Also, notice the use template variables like @title,
-        @description etc. }
-    <meta charset="utf-8">
+    @;{ The at-exp reader for a template treats this as a comment. Also, notice
+    the use template variables like @title, @description etc. }
+    <meta charset="utf-8" />
     <title>@|title|</title>
-    <meta name="description" content="@|description|">
-    <meta name="author"      content="@|author|">
-    <meta name="keywords"    content="@|keywords|">
-    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
-    <link rel="icon"      href="@|uri-prefix|/favicon.ico">
-    <link rel="canonical" href="@|full-uri|">
-    @(when rel-next @list{<link rel="next" href="@|rel-next|">})
-    @(when rel-prev @list{<link rel="prev" href="@|rel-prev|">})
+    <meta name="description" content="@|description|" />
+    <meta name="author" content="@|author|" />
+    <meta name="keywords" content="@|keywords|" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="@|uri-prefix|/favicon.ico" />
+    <link rel="canonical" href="@|full-uri|" />
+    @(when rel-next @list{
+    <link rel="next" href="@|rel-next|" />
+    }) @(when rel-prev @list{
+    <link rel="prev" href="@|rel-prev|" />
+    })
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/pygments.css">
-    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/scribble.css">
-    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="@|uri-prefix|/css/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="@|uri-prefix|/css/pygments.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="@|uri-prefix|/css/scribble.css"
+    />
     <!-- Feeds -->
-    <link rel="alternate" type="application/atom+xml"
-          href="@|atom-feed-uri|" title="Atom Feed">
-    <link rel="alternate" type="application/rss+xml"
-          href="@|rss-feed-uri|" title="RSS Feed">
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="@|atom-feed-uri|"
+      title="Atom Feed"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="@|rss-feed-uri|"
+      title="RSS Feed"
+    />
     <!-- JS -->
     @google-universal-analytics["UA-xxxxx"]
   </head>
   <body>
-    <!-- A standard Twitter Bootstrap nav bar -->
-    <header class="navbar navbar-default navbar-inverse"
-            role="banner">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button"
-                  class="navbar-toggle"
-                  data-toggle="collapse"
-                  data-target=".our-nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="@|uri-prefix|/index.html" class="navbar-brand">William Lachance's Log</a>
+    <nav
+      class="flex items-center justify-between flex-wrap bg-gray-800 py-1 px-8"
+    >
+      <div class="flex items-center flex-shrink-0 text-gray-400 mr-6">
+        <div class="p-1">
+          <a href="@|uri-prefix|/index.html"
+            ><img
+              src="/img/wlach_icon.png"
+              width="32"
+              height="32"
+              class="p rounded"
+          /></a>
         </div>
-        <div class="collapse navbar-collapse our-nav-collapse"
-             role="navigation">
-          <ul class="nav navbar-nav">
-            @;{ We can define Racket functions to "DRY". Here's one to
-                emit HMTL for a nav item, adding class="active" iff
-                this page's @|uri-path| is the same as the nav link. }
-            @(define (ni uri label [a-attribs ""])
-              @list{
-                <li@(when (string-ci=? uri uri-path) " class=\"active\"")>
-                  <a href="@|uri|"@|a-attribs|>@|label|</a>
-                </li> })
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Tags <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="@|uri-prefix|/index.html">All Posts</a></li>
-                @|tags-list-items|
-              </ul>
-            </li>
-            @ni[(string-append uri-prefix "/About.html") "About"]
-            <li><a href="@|atom-feed-uri|">Atom</a></li>
-            <li><a href="@|rss-feed-uri|">RSS</a></li>
-          </ul>
+        <div class="p-1">
+          <a
+            href="@|uri-prefix|/index.html"
+            class="text-gray-200 font-semibold text-xl tracking-tight hover:text-white"
+            >wlach log</a
+          >
         </div>
       </div>
-    </header>
-    <div class="container">
-      <div class="row">
-        @;{ Remember that Twitter Bootstrap has a 12 cell model. The
-            col-md-N classes should add up to 12.  For instance 3
-            "col-md-4" divs, or 2 "col-md-6" divs. }
-        <!-- Main column -->
-        <div id="content" class="col-md-12">
-          @;{ Index pages for posts have @tag that's not #f }
-          @(when tag
-            @list{<h1>Posts tagged <em>@|tag|</em></h1>})
-          @;{ The main page contents are in @contents }
-          @|contents|
+      <div class="flex-grow lg:flex lg:items-center">
+        <div class="text-sm lg:flex-grow">
+          @(define (ni uri label [a-attribs ""])
+            @list{
+            <a
+              href="@|uri|"
+              class="mt-4 lg:inline-block lg:mt-0 hover:text-white mr-4 @(if (string-ci=? uri uri-path) "text-white" "text-gray-600")"
+            >
+              @|label|</a>})
+          @ni[(string-append uri-prefix "/About.html") "About"]
+          <a
+            class="mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-white mr-4"
+            href="@|atom-feed-uri|"
+            >Atom</a
+          >
+          <a
+            class="mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-white mr-4"
+            href="@|rss-feed-uri|"
+            >RSS</a
+          >
         </div>
       </div>
-      <footer>
-        <p>Site generated by <a href="https://github.com/greghendershott/frog">Frog</a>, 
-          using <a href="https://getbootstrap.com">Bootstrap</a>.</p>
-        <p>Post content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
-      </footer>
-    </div>
-    <!-- </body> JS -->
-    <script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
-    <script type="text/javascript" src="@|uri-prefix|/js/bootstrap.min.js"></script>
+    </nav>
+    <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
+      @;{ Index pages for posts have @tag that's not #f } @(when tag @list{
+      <p class="less-important">Showing posts tagged <em>@|tag|</em></p>
+      }) @;{ The main page contents are in @contents } @|contents|
+    </div>      
+    <footer class="container max-w-screen-md px-8 py-4 mx-auto less-important">
+      <p>Comments / thoughts? Feel free to send an email to wlach on protonmail.com or 
+        (for Mozilla-related stuff) reach me at <code>wlach</code> on <a href="https://wiki.mozilla.org/Matrix">Mozilla's instance of Matrix</a>.</p>    
+      <p>
+        Site generated by
+        <a href="https://github.com/greghendershott/frog">Frog</a>.
+        Post content is licensed under a
+        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+          >Creative Commons Attribution 4.0 Unported License</a
+        >.
+      </p>
+    </footer>
   </body>
 </html>

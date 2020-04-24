@@ -49,7 +49,7 @@ function, all of this data can easily be extracted into a table inside a
 single SQL query scheduled by
 [sql.telemetry.mozilla.org](https://docs.telemetry.mozilla.org/tools/stmo.html).
 
-```
+```sql
 CREATE TEMP FUNCTION
   udf_js_json_extract_highest_long_spinner (input STRING)
   RETURNS INT64

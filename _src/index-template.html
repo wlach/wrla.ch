@@ -1,15 +1,16 @@
 @(local-require (file "../_util/date-format.rkt"))
+@(local-require (file "../_util/tag-format.rkt"))
 
 <article>
   <header>
-    <p>@|tags|</p>
-    <h2><a href='@|uri-path|'>@|title|</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> @(pretty-date date-struct)</p>
+    <h2><a href="@|uri-path|">@|title|</a></h2>
+    <p class="index-date">@(pretty-date date-struct)</p>
+    <p>@(reformat-tags tags)</p>
   </header>
-  @|content-only|
-  @(when more?
-    @list{<footer>
-            <a href='@|uri-path|'>&hellip; more &hellip;</a>
-          </footer>})
+  @|content-only| @(when more? @list{
+  <footer>
+    <a href="@|uri-path|">&hellip; more &hellip;</a>
+  </footer>
+  })
+  <hr/>
 </article>
-

@@ -1,15 +1,12 @@
-@(local-require (file "../_util/date-format.rkt"))
+@(local-require (file "../_util/date-format.rkt")) 
+@(local-require (file "../_util/tag-format.rkt"))
 
 <article>
   <header>
-    <p>@|tags|</p>
     <h1>@|title|</h1>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> @(pretty-date date-struct)</p>
+    <p class="index-date">@(pretty-date date-struct)</p>
+    <p>@(reformat-tags tags)</p>
   </header>
   @|content|
-  <footer>
-    <hr/>
-    @disqus-comments["wlach"]
-    @older/newer-links[older-uri older-title newer-uri newer-title]
-  </footer>
+  <hr/>
 </article>
