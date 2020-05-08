@@ -213,6 +213,29 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
+    <h2><a href='/blog/2015/01/mozregression-updates/'>mozregression updates</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jan 27th, 2015</p>
+  </header>
+
+<p>Lots of movement in <a href="http://mozilla.github.io/mozregression">mozregression</a> (a tool for automatically determining when a regression was introduced in Firefox by bisecting builds on ftp.mozilla.org) in the last few months. Here&#8217;s some highlights:</p>
+
+<ul>
+ <li>Support for win64 nightly and inbound builds (Kapil Singh, Vaibhav Agarwal)</li>
+ <li>Support for using an http cache to reduce time spent downloading builds (Sam Garrett)</li>
+ <li>Way better logging and printing of remaining time to finish bisection (Julien Pagès)</li>
+ <li>Much improved performance when bisecting inbound (Julien)</li>
+ <li>Support for automatic determination on whether a build is good/bad via a custom script (Julien)</li>
+ <li>Tons of bug fixes and other robustness improvements (me, Sam, Julien, others&#8230;)</li></ul>
+
+<p>Also thanks to Julien, we have a <a href="http://mozilla.github.io/mozregression/">spiffy new website</a> which documents many of these features. If it&#8217;s been a while, be sure to <a href="http://mozilla.github.io/mozregression/install.html">update your copy of mozregression to the latest version</a> and check out the site for documentation on how to use the new features described above!</p>
+
+<p>Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&#8217;s just that much more useful to Firefox contributors everywhere.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Ebola.html">Ebola</a>, <a href="/tags/MSF.html">MSF</a></span></p>
     <h2><a href='/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf/'>Ebola mini-campaign successful: $6212 for MSF</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 20th, 2014</p>
@@ -452,23 +475,6 @@ cd treeherder-ui/webapp
  <li>Re-enable Eideticker for Android and run tests more frequently. Sadly we haven&#8217;t been consistently generating new Eideticker results for Android for the last quarter because of networking issues in the new Mountain View office, where the test rig for those live. One way or another, we want to fix this next quarter and hopefully run tests more frequently against mozilla-inbound (instead of just nightly builds)</li></ul>
 
 <p>The above isn&#8217;t an exhaustive list: there&#8217;s much more that we have in mind for the future that&#8217;s not yet scheduled or defined well (e.g. get Eideticker reporting to Treeherder&#8217;s new performance module). If you have any questions or feedback on anything outlined above I&#8217;d love to hear it!</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/ateam.html">ateam</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser/'>Managing test manifests: ManifestDestiny -&gt; manifestparser</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 11th, 2014</p>
-  </header>
-
-<p>Just wanted to make a quick announcement that <a href="https://pypi.python.org/pypi/ManifestDestiny">ManifestDestiny</a>, the python package we use internally here at Mozilla for declaratively managing lists of tests in <a href="https://developer.mozilla.org/en/docs/Mochitest">Mochitest</a> and other places, has been renamed to <a href="https://pypi.python.org/pypi/manifestparser">manifestparser</a>. We kept the versioning the same (0.6), so the only thing you should need to change in your python package dependencies is a quick substitution of &#8220;ManifestDestiny&#8221; with &#8220;manifestparser&#8221;. We will keep ManifestDestiny around indefinitely on pypi, but only to make sure old stuff doesn&#8217;t break. New versions of the software will only be released under the name &#8220;manifestparser&#8221;.</p>
-
-<p>Quick history lesson: &#8220;Manifest destiny&#8221; refers to a philosophy of exceptionalism and expansionism that was widely held by American settlers in the 19th century. The concept is considered offensive by some, as it was used to justify displacing and dispossessing Native Americans. Wikipedia&#8217;s <a href="http://en.wikipedia.org/wiki/Manifest_destiny">article</a> on the subject has a good summary if you want to learn more.</p>
-
-<p>Here at <a href="https://wiki.mozilla.org/Auto-tools">Mozilla Tools &#38; Automation</a>, we&#8217;re most interested in creating software that everyone can feel good about depending on, so we agreed to rename it. When I raised this with my peers, there were no objections. I know these things are often the source of much drama in the free software world, but there&#8217;s really none to see here.</p>
-
-<p>Happy manifest parsing!</p>
 
 </article>
 

@@ -213,6 +213,23 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/ateam.html">ateam</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser/'>Managing test manifests: ManifestDestiny -&gt; manifestparser</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 11th, 2014</p>
+  </header>
+
+<p>Just wanted to make a quick announcement that <a href="https://pypi.python.org/pypi/ManifestDestiny">ManifestDestiny</a>, the python package we use internally here at Mozilla for declaratively managing lists of tests in <a href="https://developer.mozilla.org/en/docs/Mochitest">Mochitest</a> and other places, has been renamed to <a href="https://pypi.python.org/pypi/manifestparser">manifestparser</a>. We kept the versioning the same (0.6), so the only thing you should need to change in your python package dependencies is a quick substitution of &#8220;ManifestDestiny&#8221; with &#8220;manifestparser&#8221;. We will keep ManifestDestiny around indefinitely on pypi, but only to make sure old stuff doesn&#8217;t break. New versions of the software will only be released under the name &#8220;manifestparser&#8221;.</p>
+
+<p>Quick history lesson: &#8220;Manifest destiny&#8221; refers to a philosophy of exceptionalism and expansionism that was widely held by American settlers in the 19th century. The concept is considered offensive by some, as it was used to justify displacing and dispossessing Native Americans. Wikipedia&#8217;s <a href="http://en.wikipedia.org/wiki/Manifest_destiny">article</a> on the subject has a good summary if you want to learn more.</p>
+
+<p>Here at <a href="https://wiki.mozilla.org/Auto-tools">Mozilla Tools &#38; Automation</a>, we&#8217;re most interested in creating software that everyone can feel good about depending on, so we agreed to rename it. When I raised this with my peers, there were no objections. I know these things are often the source of much drama in the free software world, but there&#8217;s really none to see here.</p>
+
+<p>Happy manifest parsing!</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a>, <a href="/tags/Python.html">Python</a></span></p>
     <h2><a href='/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/'>mozregression: New maintainer, issues tracked in bugzilla</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 8th, 2014</p>
@@ -488,56 +505,6 @@
 <p>If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&#8217;s not nearly as pronounced as before. In practice, I&#8217;ve been able to get extremely consistent numbers with a reasonable &#8220;threshold&#8221; of &#8220;0.05&#8221;.</p>
 
 <p>In Eideticker I&#8217;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &#8220;pixel differences&#8221; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&#8217;t count on light composition changing the same way for those cases. My initial thought was to use <a href="http://en.wikipedia.org/wiki/Edge_detection">edge detection</a> (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Responsiveness.html">Responsiveness</a></span></p>
-    <h2><a href='/blog/2013/10/first-eideticker-responsiveness-tests/'>First Eideticker Responsiveness Tests</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 7th, 2013</p>
-  </header>
-
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
-
-<p>Time for another update on Eideticker. In the last quarter, I&#8217;ve been working on two main items:</p>
-
-<ol>
- <li>Responsiveness tests (Android / FirefoxOS)</li>
- <li>Eideticker for FirefoxOS</li></ol>
-
-<p>The focus of this post is the responsiveness work. I&#8217;ll talk about Eideticker for FirefoxOS soon.</p>
-
-<p>So what do I mean by responsiveness? At a high-level, I mean how quickly one sees a response after performing an action on the device. For example, if I perform a swipe gesture to scroll the content down while browsing CNN.com, how long does it take after
- <br />I start the gesture for the content to <em>visibly</em> scroll down? If you break it down, there&#8217;s a multi-step process that happens behind the scenes after a user action like this:</p>
-
-<p><a href="/files/2013/10/input-events.png"><img src="/files/2013/10/input-events.png" alt="input-events" width="880" height="752" class="alignnone size-full wp-image-957" srcset="/files/2013/10/input-events-300x256.png 300w, /files/2013/10/input-events.png 880w" sizes="(max-width: 880px) 100vw, 880px" /></a></p>
-
-<p>If anywhere in the steps above, there is a significant delay, the user experience is likely to be bad. Usability research
- <br />suggests that any lag that is consistently above 100 milliseconds will lead the user to <a href="http://stackoverflow.com/questions/536300/what-is-the-shortest-perceivable-application-response-delay">perceive things as being laggy</a>. To keep our users happy, we need to do our bit to make sure that we respond quickly at all levels that we control (just the application layer on Android, but pretty much everything on FirefoxOS). Even if we can&#8217;t complete the work required on our end to completely respond to the user&#8217;s desire, we should at least display something to acknowledge that things have changed.</p>
-
-<p>But you can&#8217;t improve what you can&#8217;t measure. Fortunately, we have the means to do calculate of the time delta between <em>most</em> of the steps above. I learned from <a href="http://taras.glek.net/">Taras Glek</a> this weekend that it should be <a href="http://hackaday.com/2012/05/04/reaching-out-to-a-touch-screen-with-a-microcontroller/">possible to simulate</a> the actual capacitative touch event on a modern touch screen. We can recognize when the hardware event is available to be consumed by userspace by monitoring the `/dev/input` subsystem. And once the event reaches the application (the Android or FirefoxOS application) there&#8217;s no reason we can&#8217;t add instrumentation in all sorts of places to track the processing of both the event and the rendering of the response.</p>
-
-<p>My working hypothesis is that it&#8217;s application-level latency (i.e. the time between the application receiving the event and being able to act on it) that dominates, so that&#8217;s what I decided to measure. This is purely based on intuition and by no means proven, so we should test this (it would certainly be an interesting exercise!). However, even if it turns out that there are significant problems here, we still care about the other bits of the stack &#8212; there&#8217;s lots of potentially-latency-introducing churn there and the risk of regression in our own code is probably higher than it is elsewhere since it changes so much.</p>
-
-<p>Last year, I wrote up a tool called <a href="http://wrla.ch/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns/?utm_source=rss&amp;#038;utm_medium=rss&amp;#038;utm_campaign=the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns">Orangutan</a> that can directly inject input events into an input device on Android or FirefoxOS. It seemed like a fairly straightforward extension of the tool to output timestamps when these events were registered. It was. Then, by <a href="http://wrla.ch/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/">synchronizing the time</a> between the device and the machine doing the capturing, we can then correlate the input timestamps to events. To help visualize what&#8217;s going on, I generated this view:</p>
-
-<p><a href="/files/2013/10/taskjs-framediff-view.png"><img src="/files/2013/10/taskjs-framediff-view.png" alt="taskjs-framediff-view" width="583" height="418" class="alignnone size-full wp-image-962" srcset="/files/2013/10/taskjs-framediff-view-300x215.png 300w, /files/2013/10/taskjs-framediff-view.png 583w" sizes="(max-width: 583px) 100vw, 583px" /></a></p>
-
-<p><a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Scrolling%20on%20taskjs.org%20%282013-10-06%29&amp;#038;video=videos/video-1381129971.63.webm&amp;#038;framediff=framediffs/framediff-1381129990.79.json&amp;#038;actionlog=actionlogs/action-log-1381129990.79.json">[Link to original]</a></p>
-
-<p>The X axis in that graph represents time. The Y-axis represents the difference between the frame at that time with the previous one in number of pixels. The &#8220;red&#8221; represents periods in capture when events are ongoing (we use different colours only to
- <br />distinguish distinct events). <sup><a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">1</a></sup></p>
-
-<p>For a first pass at measuring responsiveness, I decided to measure the time between the first event being initiated and there being a significant frame difference (i.e. an observable response to the action). You can see some preliminary results on the eideticker dashboard:</p>
-
-<p><a href="/files/2013/10/taskjs-responsiveness.png"><img src="/files/2013/10/taskjs-responsiveness.png" alt="taskjs-responsiveness" width="637" height="540" class="alignnone size-full wp-image-956" srcset="/files/2013/10/taskjs-responsiveness-300x254.png 300w, /files/2013/10/taskjs-responsiveness.png 637w" sizes="(max-width: 637px) 100vw, 637px" /></a></p>
-
-<p><a href="http://eideticker.mozilla.org/#/samsung-gn/taskjs/timetoresponse">[Link to original]</a></p>
-
-<p>The results seem pretty highly variable at first because I was synchronizing time between the device and an external ntp server, rather than the host machine. I believe this is now fixed, hopefully giving us results that will indicate when regressions occur. As time goes by, we may want to craft some special eideticker tests for responsiveness specifically (e.g. a site where there is heavy javascript background processing).</p>
-
-<p><sup><a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">1</a></sup> <em>Incidentally, these &#8220;frame difference&#8221; graphs are also quite useful for understanding where and how application startup has regressed in Fennec &#8212; try opening these two startup views side-by-side (before/after a large regression) and spot the difference: <a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-20%29&amp;#038;video=videos/video-1377070981.95.webm&amp;#038;framediff=framediffs/framediff-1377070991.95.json">[1]</a> and <a href="http://eideticker.wrla.ch/framediff-view.html?title=Frame%20Difference%20Startup%20to%20about:home%20%28dirty%20profile%29%20%282013-08-23%29&amp;#038;video=videos/video-1377330042.28.webm&amp;#038;framediff=framediffs/framediff-1377330051.67.json">[2]</a>)</em></p>
 
 </article>
 

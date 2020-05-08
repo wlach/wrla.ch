@@ -214,6 +214,118 @@
           <article>
   <header>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Telemetry.html">Telemetry</a>, <a href="/tags/Glean.html">Glean</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
+    <h2><a href='/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/'>This Week in Glean: mozregression telemetry (part 2)</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 8th, 2020</p>
+  </header>
+
+<p><em>(“This Week in Glean” is a series of blog posts that the Glean Team at Mozilla is using to try to communicate better about our work. They could be release notes, documentation, hopes, dreams, or whatever: so long as it is inspired by Glean. You can find <a href="https://mozilla.github.io/glean/book/appendix/twig.html">an index of all TWiG posts online.</a>)</em></p>
+
+<p><em>This is a special guest post by non-Glean-team member William Lachance!</em></p>
+
+<p>This is a continuation of an exploration of adding Glean-based telemetry to a python application, in this case <a href="https://mozilla.github.io/mozregression">mozregression</a>, a tool for automatically finding the source of Firefox regressions (breakage).</p>
+
+<p>When we left off <a href="/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/">last time</a>, we had written some test scripts and verified that the data was visible in the debug viewer.</p>
+
+<h2 id="adding-telemetry-to-mozregression-itself">Adding Telemetry to mozregression itself</h2>
+
+<p>In many ways, this is pretty similar to what I did inside the sample application: the only significant difference is that these are shipped inside a Python application that is meant to be be installable via <a href="https://pypi.org/project/pip/">pip</a>. This means we need to specify the <code>pings.yaml</code> and <code>metrics.yaml</code> (located inside the <code>mozregression</code> subirectory) as package data inside <code>setup.py</code>:</p>
+
+<div class="brush: py">
+ <div class="source">
+  <pre><span></span><span class="n">setup</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">"mozregression"</span><span class="p">,</span>
+    <span class="o">...</span>
+    <span class="n">package_data</span><span class="o">=</span><span class="p">{</span><span class="s2">"mozregression"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"*.yaml"</span><span class="p">]},</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+
+</div>
+
+<p>There were also a number of Glean SDK enhancements which we determined were necessary. Most notably, Michael Droettboom added 32-bit Windows wheels to the Glean SDK, which we need to make building the <a href="https://mozilla.github.io/mozregression/quickstart.html#gui">mozregression GUI</a> on Windows possible. In addition, some minor changes needed to be made to Glean&rsquo;s behaviour for it to work correctly with a command-line tool like mozregression &mdash; for example, Glean used to assume that Telemetry would always be disabled via a GUI action so that it would send a deletion ping, but this would obviously not work in an application like mozregression where there is only a configuration file &mdash; so for this case, Glean needed to be modified to check if it had been disabled <em>between</em> runs.</p>
+
+<p>Many thanks to Mike (and others on the Glean team) for so patiently listening to my concerns and modifying Glean accordingly.</p>
+
+<h2 id="getting-data-review">Getting Data Review</h2>
+
+<p>At Mozilla, we don&rsquo;t just allow random engineers like myself to start collecting data in a product that we ship (even a semi-internal like mozregression). We have <a href="https://wiki.mozilla.org/Firefox/Data_Collection">a process</a>, overseen by Data Stewards to make sure the information we gather is actually answering important questions and doesn&rsquo;t unnecessarily collect personally identifiable information (e.g. email addresses).</p>
+
+<p>You can see the specifics of how this worked out in the case of mozregression in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581647#c9">bug 1581647</a>.</p>
+
+<h2 id="documentation">Documentation</h2>
+
+<p>Glean has some fantastic utilities for generating markdown-based documentation on what information is being collected, which I have made available on GitHub:</p>
+
+<p><a href="https://github.com/mozilla/mozregression/blob/master/docs/glean/metrics.md">https://github.com/mozilla/mozregression/blob/master/docs/glean/metrics.md</a></p>
+
+<p>The generation of this documentation is <a href="https://github.com/mozilla/mozregression/blob/3454e1eafe83f53a84cb6b10f46649320d5ed097/.travis.yml#L57">hooked up to mozregression&rsquo;s continuous integration</a>, so we can sure it&rsquo;s up to date.</p>
+
+<p>I also added <a href="https://mozilla.github.io/mozregression/documentation/telemetry.html">a quick note</a> to mozregression&rsquo;s web site describing the feature, along with (very importantly) instructions on how to turn it off.</p>
+
+<h2 id="enabling-data-ingestion">Enabling Data Ingestion</h2>
+
+<p>Once a Glean-based project has passed data review, getting our infrastructure to ingest it is pretty straightforward. Normally <a href="https://mozilla.github.io/glean/book/user/adding-glean-to-your-project.html#adding-metadata-about-your-project-to-the-pipeline">we would suggest just filing a bug</a> and let us (the data team) handle the details, but since I&rsquo;m <em>on</em> that team, I&rsquo;m going to go a (little bit) of detail into how the sausage is made.</p>
+
+<p>Behind the scenes, we have a collection of ETL (extract-transform-load) scripts in the <a href="https://github.com/mozilla/probe-scraper/">probe-scraper repository</a> which are responsible for parsing the ping and probe metadata files that I added to mozregression in the step above and then automatically creating BigQuery tables and updating our ingestion machinery to insert data passed to us there.</p>
+
+<p>There&rsquo;s quite a bit of complicated machinery being the scenes to make this all work, but since it&rsquo;s already in place, adding a new thing like this is relatively simple. The changeset I submitted as part of a <a href="https://github.com/mozilla/probe-scraper/pull/184">pull request</a> to probe-scraper was all of 9 lines long:</p>
+
+<div class="brush: diff">
+ <div class="source">
+  <pre><span></span><span class="gh">diff --git a/repositories.yaml b/repositories.yaml</span>
+<span class="gh">index dffcccf..6212e55 100644</span>
+<span class="gd">--- a/repositories.yaml</span>
+<span class="gi">+++ b/repositories.yaml</span>
+<span class="gu">@@ -239,3 +239,12 @@ firefox-android-release:</span>
+     - org.mozilla.components:browser-engine-gecko-beta
+     - org.mozilla.appservices:logins
+     - org.mozilla.components:support-migration
+<span class="gi">+mozregression:</span>
+<span class="gi">+  app_id: org-mozilla-mozregression</span>
+<span class="gi">+  notification_emails:</span>
+<span class="gi">+    - wlachance@mozilla.com</span>
+<span class="gi">+  url: &#39;https://github.com/mozilla/mozregression&#39;</span>
+<span class="gi">+  metrics_files:</span>
+<span class="gi">+    - &#39;mozregression/metrics.yaml&#39;</span>
+<span class="gi">+  ping_files:</span>
+<span class="gi">+    - &#39;mozregression/pings.yaml&#39;</span>
+</pre></div>
+
+</div>
+
+<h2 id="a-pretty-graph">A Pretty Graph</h2>
+
+<p>With the probe scraper change merged and deployed, we can now start querying! A number of tables are automatically created according to the schema outlined above: notably &ldquo;live&rdquo; and &ldquo;stable&rdquo; tables corresponding to the usage ping. Using <a href="https://docs.telemetry.mozilla.org/tools/stmo.html">sql.telemetry.mozilla.org</a> we can start exploring what&rsquo;s out there. Here&rsquo;s a quick query I wrote up:</p>
+
+<div class="brush: sql">
+ <div class="source">
+  <pre><span></span><span class="k">SELECT</span> <span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span> <span class="k">AS</span> <span class="nb">date</span><span class="p">,</span>
+       <span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_variant</span> <span class="k">AS</span> <span class="n">variant</span><span class="p">,</span>
+       <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">),</span>
+<span class="k">FROM</span> <span class="o">`</span><span class="n">moz</span><span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">data</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">prod</span><span class="o">`</span><span class="p">.</span><span class="n">org_mozilla_mozregression_stable</span><span class="p">.</span><span class="n">usage_v1</span>
+<span class="k">WHERE</span> <span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="s1">&#39;2020-04-14&#39;</span>
+  <span class="k">AND</span> <span class="n">client_info</span><span class="p">.</span><span class="n">app_display_version</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">&#39;%.dev%&#39;</span>
+<span class="k">GROUP</span> <span class="k">BY</span> <span class="nb">date</span><span class="p">,</span> <span class="n">variant</span><span class="p">;</span>
+</pre></div>
+
+</div>
+
+<p>&hellip; which generates a chart like this:</p>
+
+<div class="figure"><img src="/files/2020/05/mozregression-variant-usage.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>This chart represents the absolute volume of mozregression usage since April 14th 2020 (around the time when we first released a version of mozregression with Glean telemetry), grouped by mozregression &ldquo;variant&rdquo; (GUI, console, and mach) and date - you can see that (unsurprisingly?) the GUI has the highest usage. I&rsquo;ll talk about this more in an upcoming installment, speaking of&hellip;</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>We&rsquo;re not done yet! Next time, we&rsquo;ll look into making a public-facing dashboard demonstrating these results and making an aggregated version of the mozregression telemetry data publicly accessible to researchers and the general public. If we&rsquo;re lucky, there might even be a bit of <em>data science</em>. Stay tuned!</p>
+
+</article>
+
+<article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Telemetry.html">Telemetry</a>, <a href="/tags/Glean.html">Glean</a>, <a href="/tags/mozregression.html">mozregression</a></span></p>
     <h2><a href='/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/'>This week in Glean (special guest post): mozregression telemetry (part 1)</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Feb 28th, 2020</p>
   </header>

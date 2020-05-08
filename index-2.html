@@ -213,6 +213,43 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Community.html">Community</a></span></p>
+    <h2><a href='/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/'>Making contribution work for Firefox tooling and data projects</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 26th, 2018</p>
+  </header>
+
+<p>One of my favorite parts about Mozilla is mentoring and working alongside third party contributors. Somewhat surprisingly since I work on internal tools, I&rsquo;ve had a fair amount of luck finding people to help work on projects within my purview: <a href="https://mozilla.github.io/mozregression">mozregression</a>, <a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder">perfherder</a>, <a href="https://metricsgraphics.org">metrics graphics</a>, and others have all benefited from the contributions of people outside of Mozilla.</p>
+
+<p>In most cases (a notable exception being metrics graphics), these have been internal-tooling projects used by others to debug, develop, or otherwise understand the behaviour of Firefox. On the face of it, none of the things I work on are exactly &ldquo;high profile cutting edge stuff&rdquo; in the way, say, Firefox or the Rust Programming Language are. So why do they bother? The exact formula varies depending on contributor, but I think it usually comes down to some combination of these two things:</p>
+
+<ol>
+ <li>A desire to learn and demonstrate competence with industry standard  tooling (the python programming language, frontend web development, backend  databases, &ldquo;big data&rdquo; technologies like Parquet, &hellip;).</li>
+ <li>A desire to work with and gain recognition inside of a community of  like-minded people.</li></ol>
+
+<p>Pretty basic, obvious stuff &mdash; there is an appeal here to basic human desires like the need for security and a sense of belonging. Once someone&rsquo;s &ldquo;in the loop&rdquo;, so to speak, generally things take care of themselves. The real challenge, I&rsquo;ve found, is getting people from the &ldquo;I am potentially interested in doing something with Mozilla internal tools&rdquo; to the stage that they are confident and competent enough to work in a reasonably self-directed way. When I was on the A-Team, we classified this transition in terms of a <a href="https://ateam-bootcamp.readthedocs.io/en/latest/guide/curve.html">commitment curve</a>:</p>
+
+<p><img srcset="/files/2018/11/commitment-curve-visualization.png 2x" /></p>
+
+<p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1080119">prototype commitment curve graphic by Steven Brown</a></p>
+
+<p>The hardest part, in my experience, is the initial part of that curve. At this point, people are just dipping their toe in the water. Some may not have a ton of experience with software development yet. In other cases, my projects may just not be the right fit for them. But of course, sometimes there is a fit, or at least one could be developed! What I&rsquo;ve found most helpful is &ldquo;clearing a viable path&rdquo; forward for the right kind of contributor. That is, some kind of initial hypothesis of what a successful contribution experience would look like as a new person transitions from &ldquo;explorer&rdquo; stage in the chart above to &ldquo;associate&rdquo;.</p>
+
+<p>I don&rsquo;t exactly have a perfect template for what &ldquo;clearing a path&rdquo; looks like in every case. It depends quite a bit on the nature of the contributor. But there are some common themes that I&rsquo;ve found effective:</p>
+
+<p>First, provide good, concise documentation both on the project&rsquo;s purpose and vision and how to get started easily and keep it up to date. For projects with a front-end web component, I try to decouple the front end parts from the backend services so that people can <code>yarn install &amp;&amp; yarn start</code> <a href="/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/">their way to success</a>. Being able to <em>see</em> the project in action quickly (and not getting stuck on some mundane getting started step) is key in maintaining initial interest.</p>
+
+<p>Second, provide a set of good starter issues (sometimes called &ldquo;good first bugs&rdquo;) for people to work on. Generally these would be non-critical-path type issues that have straightforward instructions to resolve and fix. Again, the idea here is to give people a sense of quick progress and resolution, a &ldquo;yes I can actually do this&rdquo; sort of feeling. But be careful not to let a contributor get stuck here! These bugs take a disproportionate amount of effort to file and mentor compared to their actual value &mdash; the key is to progress the contributor to the next level once it&rsquo;s clear they can handle the basics involved in solving such an issue (checking out the source code, applying a fix, submitting a patch, etc). Otherwise you&rsquo;re going to feel frustrated and wonder why you&rsquo;re on an endless treadmill of writing up trivial bugs.</p>
+
+<p>Third, once a contributor has established themselves by fixing a few of these simple issues, I try to get to know them a little better. Send them an email, learn where they&rsquo;re from, invite them to chat on the project channel if they can. At the same time, this is an opportunity to craft a somewhat larger piece of work (a sort of mini-project) that they can do, tailored to the interests. For example, a new contributor on the Mission Control has recently been working on adding <a href="https://jestjs.io/">Jest</a> tests to the project &mdash; I provided some basic guidance of things to look at, but did not dictate exactly <em>how</em> to perform the task. They figured that out for themselves.</p>
+
+<p>As time goes by, you just continue this process. Depending on the contributor, they may start coming up with their own ideas for how a project might be improved or they might still want to follow your lead (or that of the team), but at the least I generally see an improvement in their self-directedness and confidence after a period of sustained contribution. In either case, the key to success remains the same: sustained and positive communication and sharing of goals and aspirations, making sure that both parties are getting something positive out of the experience. Where possible, I try to include contributors in team meetings. Where there&rsquo;s an especially close working relationship (e.g. <a href="https://summerofcode.withgoogle.com/archive/">Google Summer of Code</a>). I try to set up a weekly one on one. Regardless, I make reviewing code, answering questions, and providing suggestions on how to move forward a top priority (i.e. not something I&rsquo;ll leave for a few days). It&rsquo;s the least I can do if someone is willing to take time out to contribute to my project.</p>
+
+<p>If this seems similar to the best practices for how members of a team should onboard each other and work together, that&rsquo;s not really a coincidence. Obviously the relationship is a little different because we&rsquo;re not operating with a formal managerial structure and usually the work is unpaid: I try to bear that mind and make double sure that contributors are really getting some useful skills and habits that they can take with them to future jobs and other opportunities, while also emphasizing that their code contributions are their own, not Mozilla&rsquo;s. So far it seems to have worked out pretty well for all concerned (me, Mozilla, and the contributors).</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Data.html">Data</a>, <a href="/tags/Python.html">Python</a></span></p>
     <h2><a href='/blog/2018/10/pydata-nyc-2018/'>pydata nyc 2018</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 29th, 2018</p>
@@ -520,60 +557,6 @@
 <p>I don&rsquo;t yet claim to be an expert in this library (which is quite rich and complex), but I&rsquo;m sure I&rsquo;ll learn more as I go along. At least initially, I expect that the changes I make will be small and primarily targetted to filling the needs of the <a href="https://github.com/mozilla/missioncontrol">Mission Control</a> project.</p>
 
 <p>Note that this emphatically does <em>not</em> mean I am promising to respond to every issue/question/pull request made against the project. Like my work with mozregression and perfherder, my maintenance work is being done on a best-effort basis to support Mozilla and the larger open source community. I&rsquo;ll help people out where I can, but there are only so many working hours in a day and I need to spend most of those pushing my team&rsquo;s immediate projects and deliverables forward! In particular, when it comes to getting pull requests merged, small, self-contained and logical changes with good commit messages will take priority.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-    <h2><a href='/blog/2017/10/better-or-worse-by-what-measure/'>Better or worse: by what measure?</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 26th, 2017</p>
-  </header>
-
-<p>Ok, after a series of posts extolling the virtues of my current project, it&rsquo;s time to take a more critical look at some of its current limitations, and what we might do about them. In my <a href="/blog/2017/10/mission-control/">introductory post</a>, I talked about how Mission Control can let us know how &ldquo;crashy&rdquo; a new release is, within a short interval of it being released. I also alluded to the fact that things appear considerably worse when something first goes out, though I didn&rsquo;t go into a lot of detail about how and why that happens.</p>
-
-<p>It just so happens that a new point release (56.0.2) just went out, so it&rsquo;s a perfect opportunity to revisit this issue. Let&rsquo;s take a look at what the graphs are saying (each of the images is also a link to the dashboard where they were generated):</p>
-
-<p><a href="https://data-missioncontrol.dev.mozaws.net/#/release/windows/content_crashes?timeInterval=172740&amp;percentile=99&amp;normalized=1&amp;disabledVersions=&amp;versionGrouping=version&amp;startTime=1508990400"><img srcset="/files/2017/10/missioncontrol_windows_content_crashes_56.0.2.png 2x" /></a></p>
-
-<p>ZOMG! It looks like 56.0.2 is off the charts relative to the two previous releases (56.0 and 56.0.1). Is it time to sound the alarm? Mission control abort? Well, let&rsquo;s see what happens the last time we rolled something new out, say 56.0.1:</p>
-
-<p><a href="https://data-missioncontrol.dev.mozaws.net/#/release/windows/content_crashes?timeInterval=345540&amp;percentile=99&amp;normalized=1&amp;disabledVersions=&amp;versionGrouping=version&amp;startTime=1507435200"><img srcset="/files/2017/10/missioncontrol_windows_content_crashes_56.0.1.png 2x" /></a></p>
-
-<p>We see the exact same pattern. Hmm. How about 56.0?</p>
-
-<p><a href="https://data-missioncontrol.dev.mozaws.net/#/release/windows/content_crashes?timeInterval=431940&amp;percentile=99&amp;normalized=1&amp;disabledVersions=&amp;versionGrouping=version&amp;startTime=1506398400"><img srcset="/files/2017/10/missioncontrol_windows_content_crashes_56.png 2x" /></a></p>
-
-<p>Yep, same pattern here too (actually slightly worse).</p>
-
-<p>What could be going on? Let&rsquo;s start by reviewing what these time series graphs are based on. Each point on the graph represents the number of crashes reported by telemetry &ldquo;main&rdquo; pings corresponding to that channel/version/platform within a five minute interval, divided by the number of usage hours (how long users have had Firefox open) also reported in that interval. A main ping is submitted under <a href="https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/telemetry/data/main-ping.html">a few circumstances</a>:</p>
-
-<ul>
- <li>The user shuts down Firefox</li>
- <li>It’s been about 24 hours since the last time we sent a main ping.</li>
- <li>The user starts Firefox after Firefox failed to start properly</li>
- <li>The user changes something about Firefox’s environment (adds an addon, flips a user preference)</li></ul>
-
-<p>A high crash rate either means a larger number of crashes over the same number of usage hours, or a lower number of usage hours over the same number of crashes. There are several likely explanations for why we might see this type of crashy behaviour immediately after a new release:</p>
-
-<ul>
- <li>A Firefox update is applied after the user restarts their browser for any  reason, including their browser crash. Thus a user whose browser crashes a  lot (for any reason), is more prone to update to the latest version sooner  than a user that doesn’t crash as much.</li>
- <li>Inherently, any crash data submitted to telemetry after a new version is  released will have a low number of usage hours attached, because the  client would not have had a chance to use it much (because it&rsquo;s so new).</li></ul>
-
-<p>Assuming that we&rsquo;re reasonably satisfied with the above explanation, there&rsquo;s a few things we could try to do to correct for this situation when implementing an &ldquo;alerting&rdquo; system for mission control (the next item on my todo list for this project):</p>
-
-<ul>
- <li>Set &ldquo;error&rdquo; thresholds for each crash measure sufficiently high that  we don&rsquo;t consider these high initial values an error (i.e. only alert  if there is are 500 crashes per 1k hours).</li>
- <li>Only trigger an error threshold when some kind of minimum quantity of  usage hours has been observed (this has the disadvantage of potentially  obscuring a serious problem until a large percentage of the user population  is affected by it).</li>
- <li>Come up with some expected range of what we expect a value to be for  when a new version of firefox is first released and ratchet  that down as time goes on (according to some kind of model of our previous expectations).</li></ul>
-
-<p>The initial specification for this project called for just using raw thresholds for these measures (discounting usage hours), but I&rsquo;m becoming increasingly convinced that won&rsquo;t cut it. I&rsquo;m not a quality control expert, but 500 crashes for 1k hours of use sounds completely unacceptable if we&rsquo;re measuring things at all accurately (which I believe we are given a sufficient period of time). At the same time, generating 20&ndash;30 “alerts” every time a new release went out wouldn’t particularly helpful either. Once again, we’re going to have to do this the hard way&hellip;</p>
-
-<p>&mdash;</p>
-
-<p>If this sounds interesting and you have some react/d3/data visualization skills (or would like to gain some), <a href="/blog/2017/10/mission-control-ready-for-contributions/">learn about contributing to mission control</a>.</p>
-
-<p>Shout out to <a href="https://chuttenblog.wordpress.com/">chutten</a> for reviewing this post and providing feedback and additions.</p>
 
 </article>
 

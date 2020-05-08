@@ -13,6 +13,7 @@ https://wlach.github.io/blog/2018/10/pydata-nyc-2018/
 https://wlach.github.io/blog/2013/02/eideticker-for-firefoxos/
 https://wlach.github.io/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up/
 https://wlach.github.io/blog/2014/09/using-flexbox-in-web-applications/
+https://wlach.github.io/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/
 https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions/
 https://wlach.github.io/blog/2013/10/first-eideticker-responsiveness-tests/
 https://wlach.github.io/blog/2016/11/training-an-autoclassifier/
