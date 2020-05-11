@@ -213,6 +213,24 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/mozregression.html">mozregression</a>, <a href="/tags/Python.html">Python</a></span></p>
+    <h2><a href='/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/'>mozregression: New maintainer, issues tracked in bugzilla</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 8th, 2014</p>
+  </header>
+
+<p>Just wanted to give some quick updates on <a href="http://mozilla.github.io/mozregression/">mozregression</a>, your favorite regression-finding tool for Firefox:</p>
+
+<ol>
+ <li>I moved all issue tracking in mozregression to bugzilla from github issues. Github unfortunately doesn&#8217;t really scale to handle notifications sensibly when you&#8217;re part of a large organization like Mozilla, which meant many problems were flying past me unseen. <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Testing&amp;#038;component=mozregression">File your new bugs</a> in bugzilla, they&#8217;re now much more likely to be acted upon.</li>
+ <li><a href="http://blackrhino.io/">Sam Garrett</a> has stepped up to be co-maintainer of the project with me. He&#8217;s been doing a great job whacking out a bunch of bugs and keeping things running reliably, and it was time to give him some recognition and power to keep things moving forward.</li>
+ <li>On that note, I just released mozregression 0.17, which now shows the revision number when running a build (a request from the graphics team, bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1007238">1007238</a>) and handles respins of nightly builds correctly (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1000422">bug 1000422</a>). Both of these were fixed by Sam.</li></ol>
+
+<p>If you&#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &#8212; as I&#8217;ve found out over the last few months, people <em>all over</em> the Mozilla organization (managers, developers, QA &#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is <a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;#038;product=Testing">here</a>.</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/Montreal.html">Montreal</a>, <a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Python.html">Python</a></span></p>
     <h2><a href='/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/'>PyCon 2014 impressions: ipython notebook is the future &#38; more</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 22nd, 2014</p>
@@ -518,31 +536,6 @@
 <p>For those not already familiar with it, Eideticker is a benchmarking suite which captures live video data coming from a device and analyzes it to determine performance. This lets us get data which is more representative of actual user experience (as opposed to an oft artificial benchmark). For example, Eideticker measures contacts startup as taking anywhere between 3.5 seconds and 4.5 seconds, versus than the 0.5 to 1 seconds that the <a href="https://datazilla.mozilla.org/b2g/?branch=master&amp;#038;range=7&amp;#038;test=cold_load_time&amp;#038;app_list=contacts&amp;#038;app=contacts&amp;#038;gaia_rev=114bf216de0a19f7&amp;#038;gecko_rev=9c0de2afd22a8476">existing datazilla benchmarks</a> show. What accounts for the difference? If you step through an eideticker-captured video, you can see that even though <em>something</em> appears very quickly, not all the contacts are displayed until the 3.5 second mark. There is a gap between an app being reported as &#8220;loaded&#8221; and it being fully available for use, which we had not been measuring until now.</p>
 
 <p>At this point, I am most interested in hearing from FirefoxOS developers on new tests that would be interesting and useful to track performance of the system on an ongoing basis. I&#8217;d obviously prefer to focus on things which have been difficult to measure accurately through other means. My setup is rather fiddly right now, but hopefully soon we can get some useful numbers going on an ongoing basis, as we <a href="http://eideticker.wrla.ch">do already</a> for Firefox for Android.</p>
-
-</article>
-
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last/'>Actual useful FirefoxOS Eideticker results at last</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Apr 22nd, 2013</p>
-  </header>
-
-<p>Another update on getting <a href="http://wrla.ch/blog/2013/02/eideticker-for-firefoxos/">Eideticker working with FirefoxOS</a>. Once again this is sort of high-level, looking forward to writing something more in-depth soon now that we have the basics working.</p>
-
-<p>I finally got the last kinks out of the rig I was using to capture live video from FirefoxOS phones using the Point Grey devices last week. In order to make things reasonable I had to write some custom code to isolate the actual device screen from the rest of capture and a few other things. The setup looks interesting (reminds me a bit of something out of the War of the Worlds):</p>
-
-<p><a href="/files/2013/04/eideticker-pointgrey-mounted.jpg"><img src="/files/2013/04/eideticker-pointgrey-mounted.jpg" alt="eideticker-pointgrey-mounted" width="512" height="683" class="alignnone size-full wp-image-894" srcset="/files/2013/04/eideticker-pointgrey-mounted-224x300.jpg 224w, /files/2013/04/eideticker-pointgrey-mounted.jpg 512w" sizes="(max-width: 512px) 100vw, 512px" /></a></p>
-
-<p>Here&#8217;s some example video of a test I wrote up to measure the performance of contacts scrolling performance (measured at a very respectable 44 frames per second, in case you wondering):</p>
-
-<video src="/files/eideticker/contacts-scrolling-pointgrey.webm" controls="controls"></video>
-
-<p>Surprisingly enough, I didn&#8217;t wind up having to write up any code to compensate for a noisy image. Of course there&#8217;s a certain amount of variance in every frame depending on how much light is hitting the camera sensor at any particular moment, but apparently not enough to interfere with getting useful results in the tests I&#8217;ve been running.</p>
-
-<p>Likely next step: Create some kind of chassis for mounting both the camera and device on a permanent basis (instead of an adhoc one on my desk) so we can start running these sorts of tests on a daily basis, much like we currently do with Android on the <a href="http://eideticker.wrla.ch">Eideticker Dashboard</a>.</p>
-
-<p>As an aside, I&#8217;ve been really impressed with both the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Marionette">Marionette</a> framework and the gaiatests python module that was written up for FirefoxOS. Writing the above test took just 5 minutes &#8212; and <a href="https://github.com/mozilla/eideticker/blob/master/src/tests/b2g/appscrolling/scroll.py">the code</a> is quite straightforward. Quite the pleasant change from my various efforts in Android automation.</p>
 
 </article>
 

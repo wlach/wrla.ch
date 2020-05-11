@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>A principled reorganization of docs.telemetry.mozilla.org</title>
+    <meta name="description" content="(this post is aimed primarily at an internal audience, but I thought I'd go ahead and make it public as a blog post)  I've been thinking a bunch over the past few months about the Mozilla data organization's documentation story. We have a first class data...">
+    <meta name="author"      content="William Lachance">
+    <meta name="keywords"    content="Mozilla">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
+    <link rel="icon"      href="/favicon.ico">
+    <link rel="canonical" href="https://wlach.github.io/blog/2020/05/a-principled-reorganization-of-docs-telemetry-mozilla-org/">
+    <link rel="next" href="/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
+    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <!-- Feeds -->
+    <link rel="alternate" type="application/atom+xml"
+          href="/feeds/all.atom.xml" title="Atom Feed">
+    <link rel="alternate" type="application/rss+xml"
+          href="/feeds/all.rss.xml" title="RSS Feed">
+    <!-- JS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-xxxxx', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <!-- A standard Twitter Bootstrap nav bar -->
+    <header class="navbar navbar-default navbar-inverse"
+            role="banner">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button"
+                  class="navbar-toggle"
+                  data-toggle="collapse"
+                  data-target=".our-nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="/index.html" class="navbar-brand">William Lachance's Log</a>
+        </div>
+        <div class="collapse navbar-collapse our-nav-collapse"
+             role="navigation">
+          <ul class="nav navbar-nav">
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Tags <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/index.html">All Posts</a></li>
+
+<li><a href="/tags/Android.html">Android</a></li>
+
+<li><a href="/tags/ateam.html">ateam</a></li>
+
+<li><a href="/tags/Bikes.html">Bikes</a></li>
+
+<li><a href="/tags/BIXI.html">BIXI</a></li>
+
+<li><a href="/tags/Buddhism.html">Buddhism</a></li>
+
+<li><a href="/tags/Business.html">Business</a></li>
+
+<li><a href="/tags/Cats.html">Cats</a></li>
+
+<li><a href="/tags/Coffee.html">Coffee</a></li>
+
+<li><a href="/tags/Community.html">Community</a></li>
+
+<li><a href="/tags/Counting.html">Counting</a></li>
+
+<li><a href="/tags/Data.html">Data</a></li>
+
+<li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
+
+<li><a href="/tags/Docker.html">Docker</a></li>
+
+<li><a href="/tags/Ebola.html">Ebola</a></li>
+
+<li><a href="/tags/Eideticker.html">Eideticker</a></li>
+
+<li><a href="/tags/email.html">email</a></li>
+
+<li><a href="/tags/Environment.html">Environment</a></li>
+
+<li><a href="/tags/FirefoxOS.html">FirefoxOS</a></li>
+
+<li><a href="/tags/Food.html">Food</a></li>
+
+<li><a href="/tags/Free-Software.html">Free Software</a></li>
+
+<li><a href="/tags/Glean.html">Glean</a></li>
+
+<li><a href="/tags/GNOME.html">GNOME</a></li>
+
+<li><a href="/tags/GoFaster.html">GoFaster</a></li>
+
+<li><a href="/tags/hbus.html">hbus</a></li>
+
+<li><a href="/tags/Infraherder.html">Infraherder</a></li>
+
+<li><a href="/tags/Iodide.html">Iodide</a></li>
+
+<li><a href="/tags/iphone.html">iphone</a></li>
+
+<li><a href="/tags/Life.html">Life</a></li>
+
+<li><a href="/tags/Meditation.html">Meditation</a></li>
+
+<li><a href="/tags/Meta.html">Meta</a></li>
+
+<li><a href="/tags/Metrics-Graphics.html">Metrics Graphics</a></li>
+
+<li><a href="/tags/Mission-Control.html">Mission Control</a></li>
+
+<li><a href="/tags/Montreal.html">Montreal</a></li>
+
+<li><a href="/tags/Mozilla.html">Mozilla</a></li>
+
+<li><a href="/tags/mozregression.html">mozregression</a></li>
+
+<li><a href="/tags/MSF.html">MSF</a></li>
+
+<li><a href="/tags/Music.html">Music</a></li>
+
+<li><a href="/tags/Nixi.html">Nixi</a></li>
+
+<li><a href="/tags/Open-Data.html">Open Data</a></li>
+
+<li><a href="/tags/Orangutan.html">Orangutan</a></li>
+
+<li><a href="/tags/Pandaboard.html">Pandaboard</a></li>
+
+<li><a href="/tags/Perfherder.html">Perfherder</a></li>
+
+<li><a href="/tags/Performance.html">Performance</a></li>
+
+<li><a href="/tags/Philosophy.html">Philosophy</a></li>
+
+<li><a href="/tags/Polling.html">Polling</a></li>
+
+<li><a href="/tags/Profiling.html">Profiling</a></li>
+
+<li><a href="/tags/Psychology.html">Psychology</a></li>
+
+<li><a href="/tags/Python.html">Python</a></li>
+
+<li><a href="/tags/Release-Engineering.html">Release Engineering</a></li>
+
+<li><a href="/tags/Responsiveness.html">Responsiveness</a></li>
+
+<li><a href="/tags/Social-Media.html">Social Media</a></li>
+
+<li><a href="/tags/SQL.html">SQL</a></li>
+
+<li><a href="/tags/Statistics.html">Statistics</a></li>
+
+<li><a href="/tags/Talos.html">Talos</a></li>
+
+<li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
+
+<li><a href="/tags/Telemetry.html">Telemetry</a></li>
+
+<li><a href="/tags/Time.html">Time</a></li>
+
+<li><a href="/tags/Toronto.html">Toronto</a></li>
+
+<li><a href="/tags/Transit.html">Transit</a></li>
+
+<li><a href="/tags/Transit-to-Go.html">Transit to Go</a></li>
+
+<li><a href="/tags/Treeherder.html">Treeherder</a></li>
+
+<li><a href="/tags/Usability.html">Usability</a></li>
+
+<li><a href="/tags/Video.html">Video</a></li>
+
+<li><a href="/tags/Web.html">Web</a></li>
+
+<li><a href="/tags/WifiDog.html">WifiDog</a></li>
+
+<li><a href="/tags/zen.html">zen</a></li>
+
+<li><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/About.html">About</a>
+            </li> 
+            <li><a href="/feeds/all.atom.xml">Atom</a></li>
+            <li><a href="/feeds/all.rss.xml">RSS</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+
+        <!-- Main column -->
+        <div id="content" class="col-md-12">
+
+
+
+          <article>
+  <header>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h1>A principled reorganization of docs.telemetry.mozilla.org</h1>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 11th, 2020</p>
+  </header>
+
+<p>(this post is aimed primarily at an internal audience, but I thought I&rsquo;d go ahead and make it public as a blog post)</p>
+
+<p>I&rsquo;ve been thinking a bunch over the past few months about the Mozilla data organization&rsquo;s documentation story. We have a first class data platform here at Mozilla, but using it to answer questions, especially for newer employees, can be quite intimidating. As we continue our collective journey to becoming a modern data-driven organization, part of the formula for unlocking this promise is making the tools and platforms we create accessible to a broad internal audience.</p>
+
+<p>My data peers are a friendly group of people and we have historically been good at answering questions on forums like the #fx-metrics slack channel: we&rsquo;ll keep doing this. That said, our time is limited: we need a common resource for helping bring people up to speed on how to use the data platform to answer common questions.</p>
+
+<p>Our documentation site, <a href="https://docs.telemetry.mozilla.org">docs.telemetry.mozilla.org</a>, was meant to be this resource: however in the last couple of years an understanding of its purpose has been (at least partially) lost and it has become somewhat overgrown with content that isn&rsquo;t very relevant to those it&rsquo;s intended to help.</p>
+
+<p>This post&rsquo;s goal is to re-establish a mission for our documentation site &mdash; towards the end, some concrete proposals on what to change are also outlined.</p>
+
+<h2 id="setting-the-audience">Setting the audience</h2>
+
+<p>docs.telemetry.mozilla.org was and is meant to be a resource useful for <em>data practitioners</em> within Mozilla.</p>
+
+<p>Examples of different data practioners and their use cases:</p>
+
+<ul>
+ <li>A data scientist performing an experiment analysis</li>
+ <li>A data analyst producing a report on the effectiveness of a recent marketing campaign</li>
+ <li>A Firefox engineer trying to understand the performance characteristics of a new feature</li>
+ <li>A technical product manager trying to understand the characteristics of a particular user segment</li>
+ <li>A quality assurance engineer trying to understand the severity of a Firefox crash</li></ul>
+
+<p>There are a range of skills that these different groups bring to the table, but there are some common things we expect a data practitioner to have, whatever their formal job description:</p>
+
+<ul>
+ <li>At least some programming and analytical experience</li>
+ <li>Comfortable working with and understanding complex data systems with multiple levels of abstraction (for example: the relationship between the Firefox browser which produces Telemetry data and the backend system which processes it)</li>
+ <li>The time necessary to dig into details</li></ul>
+
+<p>This also <em>excludes</em> a few groups:</p>
+
+<ul>
+ <li>Senior leadership or executives: they are of course free to use docs.telemetry.mozilla.org if helpful, but it is expected that the type of analytical work covered by the documentation will normally be done by a data practitioner and that relevant concepts and background information will be explained <em>to them</em> (in the form of high-level dashboards, presentations, etc.).</li>
+ <li>Data Engineering: some of the material on docs.telemetry.mozilla.org may be incidentally useful to this internal audience, but explaining the full details of the data platform itself belongs elsewhere.</li></ul>
+
+<h2 id="what-do-these-users-need">What do these users need?</h2>
+
+<p>In general, a data practitioner is trying to answer a specific set of questions in the context of an exploration. There are a few things that they need:</p>
+
+<ul>
+ <li>A working knowledge of how to use the technological tools to answer the questions they might have: for example, how to create a SQL query counting the median value of a particular histogram for a particular usage segment.</li>
+ <li>A set of guidelines on best practices on how to measure specific things: for example, we want our people using our telemetry systems to use well-formulated practices for measuring things like &ldquo;Monthly Active Users&rdquo; rather than re-inventing such things themselves.</li></ul>
+
+<h2 id="what-serves-this-need">What serves this need?</h2>
+
+<p>A few years ago, Ryan Harter <a href="https://blog.harterrt.com/lit-review.html">did an extensive literature review</a> on writing documentation on technical subjects - the take away from this exploration is that the global consensus is that we should focus most of our attention on writing practical tutorials which enables our users to perform specific tasks in the service of the above objective.</p>
+
+<p>There is a proverb, allegedly attributed to Confucius which goes something like this:</p>
+
+<blockquote>
+ <p>&ldquo;I hear and I forget. I see and I remember. I do and I understand.&rdquo;</p></blockquote>
+
+<p>The understanding we want to build is how to use our data systems and tools to answer questions. Some knowledge of how our data platform works is no doubt necessary to accomplish this, but it is mostly functional knowledge we care about imparting to data practitioners: the best way to build this understanding is to guide users in performing tasks.</p>
+
+<p>This makes sense intuitively, but it is also borne out by the <em>data</em> that this is what our users are looking for. Looking through the top pages on Google Analytics, virtually all of them<sup><a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-1-definition" name="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-1-return">1</a></sup> refer either to a cookbook or howto guide:</p>
+
+<div class="figure"><img src="/files/2020/05/docs-tmo-ga.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>Happily, this allows us to significantly narrow our focus for docs.telemetry.mozilla.org. We no longer need to worry about:</p>
+
+<ul>
+ <li>Providing lists or summaries of data tools available inside Mozilla<sup><a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-2-definition" name="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-2-return">2</a></sup>: we can talk about tools only as needed in the context of tasks they want to accomplish. We may want to keep such a list handy elsewhere for some other reason (e.g. internal auditing purposes), but we can safely say that it belongs somewhere else, like the Mozilla wiki, mana, or the telemetry.mozilla.org portal.</li>
+ <li>Detailed reference on the technical details of the data platform implementation. Links to this kind of material can be surfaced inside the documentation where relevant, but it is expected that an implementation reference will normally be stored and presented within the context of the tools themselves (a good example would be <a href="https://mozilla.github.io/gcp-ingestion/">the existing documentation for GCP ingestion</a>).</li>
+ <li>Detailed reference on all data sets, ping types, or probes: hand-written documentation for this kind of information is difficult to keep up to date with manual processes<sup><a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-definition" name="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-return">3</a></sup> and is best generated automatically and browsed with tools like the <a href="https://probes.telemetry.mozilla.org/">probe dictionary</a>.</li>
+ <li>Detailed reference material on how to submit Telemetry. While an overview of how to <em>think about</em> submitting telemetry may be in scope (recall that we consider Firefox engineers a kind of data practitioner), the details are really a seperate topic that is better left to another resource which is closer to the implementation (for example, the <a href="https://firefox-source-docs.mozilla.org/">Firefox Source Documentation</a> or the <a href="https://mozilla.github.io/glean/book/index.html">Glean SDK reference</a>).</li></ul>
+
+<p>Scanning through the above, you&rsquo;ll see a common theme: avoid overly detailed reference material. The above is not to say that we should avoid background documentation altogether. For example, an understanding of how our data pipeline works is key to understanding how up-to-date a dashboard is expected to be. However, this type of documentation should be written bearing in mind the audience (focusing on what they need to know as data practitioners) and should be surfaced towards the end of the documentation as <em>supporting material</em>.</p>
+
+<p>As an exception, there is also a very small amount of reference documentation which we want to put at top-level because it is so important: for example the <a href="https://docs.telemetry.mozilla.org/metrics/index.html">standard metrics</a> page describes how we define &ldquo;MAU&rdquo; and &ldquo;DAU&rdquo;: these are measures that we want to standardize in the organization, and not have someone re-invent every time they produce an analysis or report. However, we should be very cautious about how much of this &ldquo;front facing&rdquo; material we include: if we overwhelm our audience with details right out of the gate, they are apt to ignore them.</p>
+
+<h2 id="concrete-actions">Concrete actions</h2>
+
+<ul>
+ <li>We should continue working on tutorials on how to perform common tasks: this includes not only the low-level guides that we currently have (e.g. BigQuery and SQL tutorials) but also information on how to effectively use our higher-level, more accessible tools like GLAM and GUD to answer questions.</li>
+ <li>Medium term, we should remove the per-dataset documentation and replace it with a graphical tool for browsing this type of information (perhaps <a href="https://cloud.google.com/data-catalog">Google Data Catalog</a>). Since this is likely to be a rather involved project, we can keep the existing documentation for now &mdash; but for new datasets, we should encourage their authors to write tutorials on how to use them effectively (assuming they are of broad general interest) instead of hand-creating schema definitions that are likely to go out of date quickly.</li>
+ <li>We should set clear expectations and guidelines of what does and doesn&rsquo;t belong on docs.telemetry.mozilla.org as part of a larger style guide. This style guide should be referenced somewhere prominent (perhaps as part of a <a href="https://help.github.com/en/github/building-a-strong-community/creating-a-pull-request-template-for-your-repository">pull request template</a>) so that historical knowledge of what this resource is for isn&rsquo;t lost.</li></ul>
+
+<h2 id="footnotes">Footnotes</h2>
+
+<div class="footnotes">
+ <ol>
+  <li id="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-1-definition" class="footnote-definition">
+   <p>For some reason which I cannot fathom, a broad (non-Mozilla) audience seems unusually interested in our SQL style guide.&nbsp;<a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-1-return">↩</a></p></li>
+  <li id="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-2-definition" class="footnote-definition">
+   <p>The current Firefox data documentation has a <a href="https://docs.telemetry.mozilla.org/tools/projects.html">project glossary</a> that is riddled with links to obsolete and unused projects.&nbsp;<a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-2-return">↩</a></p></li>
+  <li id="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-definition" class="footnote-definition">
+   <p>docs.telemetry.mozilla.org has a huge section devoted to derived datasets (20+), many of which are obsolete or not recommended. At the same time, we are missing explicit reference material for the most commonly used tables in BigQuery (e.g. <code>telemetry.main</code>).&nbsp;<a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-return">↩</a></p></li></ol></div>
+  <footer>
+    <hr/>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+      var disqus_config = function () {
+        this.page.identifier = undefined;
+        this.page.url = undefined;
+        this.page.title = undefined;
+        this.page.category_id = undefined;
+      };
+      var disqus_shortname = 'wlach';
+      (function() {
+          var dsq = document.createElement('script');
+          dsq.type = 'text/javascript';
+          dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          dsq.setAttribute('data-timestamp', +new Date());
+          (document.head || document.body).appendChild(dsq);
+      })();
+    </script>
+    <noscript>
+      Please enable JavaScript to view the
+      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+    <ul class="pager">
+
+    <li class="next">
+      <a href="/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/"><em>This Week in Glean: mozregression telemetry (part 2)</em> &rarr;</a>
+    </li>
+    </ul>
+  </footer>
+</article>
+        </div>
+      </div>
+      <footer>
+        <p>Site generated by <a href="https://github.com/greghendershott/frog">Frog</a>,
+          using <a href="https://getbootstrap.com">Bootstrap</a>.</p>
+        <p>Post content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
+      </footer>
+    </div>
+    <!-- </body> JS -->
+    <script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  </body>
+</html>

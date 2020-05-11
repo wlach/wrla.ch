@@ -213,6 +213,33 @@
 
           <article>
   <header>
+    <p><span class="tags"><a href="/tags/Android.html">Android</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h2><a href='/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans/'>End of Q2 Eideticker update: Flame tests, future plans</a></h2>
+    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 27th, 2014</p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+
+<p>Just wanted to give an update on where Eideticker is at the end of Q2 2014. The big news is that we&#8217;ve started to run startup tests against the Flame, the results of which are starting to appear on the dashboard:</p>
+
+<p><a href="/files/2014/06/eideticker-contacts-flame.png"><img src="/files/2014/06/eideticker-contacts-flame.png" alt="eideticker-contacts-flame" width="1002" height="664" class="alignnone size-full wp-image-1062" srcset="/files/2014/06/eideticker-contacts-flame-300x198.png 300w, /files/2014/06/eideticker-contacts-flame.png 1002w" sizes="(max-width: 1002px) 100vw, 1002px" /></a> <a href="http://eideticker.mozilla.org/b2g/#/flame/b2g-contacts-startup/timetostableframe">[link]</a></p>
+
+<p>It is expected that these tests will provide a useful complement to the <a href="https://datazilla.mozilla.org/b2g/?branch=master&amp;#038;device=flame&amp;#038;range=7&amp;#038;test=cold_load_time&amp;#038;app_list=browser,calendar,camera,clock,contacts,email%20FTU,fm_radio,gallery,marketplace,messages,music,phone,settings,template,usage,video&amp;#038;app=phone&amp;#038;gaia_rev=b8f36518696f3191&amp;#038;gecko_rev=c90b38c47a1d&amp;#038;plot=avg">existing startup tests</a> we&#8217;re running with b2gperf, in particular answering the &#8220;is this regression real?&#8221; question.</p>
+
+<p>Pending work for Q3:</p>
+
+<ul>
+ <li>Enable scrolling tests on the Flame. I got these working against the Hamachi <a href="http://wrla.ch/blog/2014/03/its-all-about-the-entropy/">a few months ago</a> but because of some weird input issue we&#8217;re seeing we can&#8217;t yet enable them on the Flame. This is being tracked in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1028824">bug 1028824</a>. If anyone has background on the behaviour of the touch screen driver for this device I would appreciate some help.</li>
+ <li>Enable tests for multiple branches on the Flame (currently we&#8217;re only doing master). This is pretty much ready to go (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1017834">bug 1017834</a>), just need to land it.</li>
+ <li>Annotate eideticker graphs with internal benchmark information. Eli Perelman of the FirefoxOS performance team has come up with a standard set of on-load events for the Gaia apps (app chrome loaded, app content loaded, &#8230;) that each app will generate, feeding into tools like b2gperf and test-perf. We want to show this information in Eideticker&#8217;s frame-by-frame analysis (<a href="http://eideticker.mozilla.org/b2g/detail.html?id=2b007f8cfd8b11e3923c10ddb19eacac#/framecannyentropies">example</a>) so we can verify that the app&#8217;s behaviour is consistent with what it is claimed. This is being tracked in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1018334">bug 1018334</a></li>
+ <li>Re-enable Eideticker for Android and run tests more frequently. Sadly we haven&#8217;t been consistently generating new Eideticker results for Android for the last quarter because of networking issues in the new Mountain View office, where the test rig for those live. One way or another, we want to fix this next quarter and hopefully run tests more frequently against mozilla-inbound (instead of just nightly builds)</li></ul>
+
+<p>The above isn&#8217;t an exhaustive list: there&#8217;s much more that we have in mind for the future that&#8217;s not yet scheduled or defined well (e.g. get Eideticker reporting to Treeherder&#8217;s new performance module). If you have any questions or feedback on anything outlined above I&#8217;d love to hear it!</p>
+
+</article>
+
+<article>
+  <header>
     <p><span class="tags"><a href="/tags/ateam.html">ateam</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
     <h2><a href='/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser/'>Managing test manifests: ManifestDestiny -&gt; manifestparser</a></h2>
     <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Jun 11th, 2014</p>
@@ -458,56 +485,6 @@
 
 </article>
 
-<article>
-  <header>
-    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>, <a href="/tags/Eideticker.html">Eideticker</a>, <a href="/tags/FirefoxOS.html">FirefoxOS</a>, <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-    <h2><a href='/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/'>Automatically measuring startup / load time with Eideticker</a></h2>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Oct 17th, 2013</p>
-  </header>
-
-<p>So we&#8217;ve been using Eideticker to automatically measure startup/pageload times for about a year now on Android, and more recently on FirefoxOS as well (albeit not automatically). This gives us nice and pretty graphs like this:</p>
-
-<p><a href="/files/2013/10/flot-startup-times-gn.png"><img src="/files/2013/10/flot-startup-times-gn.png" alt="flot-startup-times-gn" width="620" height="568" class="alignnone size-full wp-image-986" srcset="/files/2013/10/flot-startup-times-gn-300x274.png 300w, /files/2013/10/flot-startup-times-gn.png 620w" sizes="(max-width: 620px) 100vw, 620px" /></a></p>
-
-<p>Ok, so we&#8217;re generating numbers and graphing them. That&#8217;s great. But what&#8217;s really going on behind the scenes? I&#8217;m glad you asked. The story is a bit different depending on which platform you&#8217;re talking about.</p>
-
-<p><strong>Android</strong></p>
-
-<p>On Android we connect Eideticker to the device&#8217;s HDMI out, so we count on a nearly pixel-perfect signal. In practice, it isn&#8217;t quite, but it is within a few RGB values that we can easily filter for. This lets us come up with a pretty good mechanism for determining when a page load or app startup is finished: just compare frames, and say we&#8217;ve &#8220;stopped&#8221; when the pixel differences between frames are negligible (previously defined at 2048 pixels, now 4096 &#8212; see below). Eideticker&#8217;s new frame difference view lets us see how this works. Look at this graph of application startup:</p>
-
-<p><a href="/files/2013/10/frame-difference-android-startup.png"><img src="/files/2013/10/frame-difference-android-startup.png" alt="frame-difference-android-startup" width="803" height="514" class="alignnone size-full wp-image-973" srcset="/files/2013/10/frame-difference-android-startup-300x192.png 300w, /files/2013/10/frame-difference-android-startup.png 803w" sizes="(max-width: 803px) 100vw, 803px" /></a>
- <br /><a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe">[Link to original]</a></p>
-
-<p>What&#8217;s going on here? Well, we see some huge jumps in the beginning. This represents the animated transitions that Android makes as we transition from the SUTAgent application (don&#8217;t ask) to the beginnings of the FirefoxOS browser chrome. You&#8217;ll notice though that there&#8217;s some more changes that come in around the 3 second mark. This is when the site bookmarks are fully loaded. If you load the original page (link above) and swipe your mouse over the graph, you can see what&#8217;s going on for yourself.</p>
-
-<p>This approach is not completely without problems. It turns out that there is sometimes some minor churn in the display even when the app is for all intents and purposes started. For example, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=922770">sometimes the scrollbar fading out of view can result in a significantish pixel value change</a>, so I recently upped the threshold of pixels that are different from 2048 to 4096. We also recently encountered a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=926997">silly problem</a> with a random automation app displaying &#8220;toasts&#8221; which caused results to artificially spike. More tweaking may still be required. However, on the whole I&#8217;m pretty happy with this solution. It gives useful, undeniably objective results whose meaning is easy to understand.</p>
-
-<p><strong>FirefoxOS</strong></p>
-
-<p>So as mentioned previously, we use a camera on FirefoxOS to record output instead of HDMI output. Pretty unsurprisingly, this is much noisier. See this movie of the contacts app starting and note all the random lighting changes, for example:</p>
-
-<div style="width: 409px; " class="wp-video"><!--[if lt IE 9]><![endif]-->
- <video class="wp-video-shortcode" id="video-972-1" width="409" height="580" preload="metadata" controls="controls">
-  <source type="video/webm" src="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm?_=1" /> <a href="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm">/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm</a></video></div>
-
-<p>My experience has been that pixel differences can be so great between visually identical frames on an eideticker capture on these devices that it&#8217;s pretty much impossible to settle on when startup is done using the frame difference method. It&#8217;s of course possible to detect very large scale changes, but the small scale ones (like the contacts actually appearing in the example above) are very hard to distinguish from random differences in the amount of light absorbed by the camera sensor. Tricks like using median filtering (a.k.a. &#8220;blurring&#8221;) help a bit, but not much. Take a look at this graph, for example:</p>
-
-<p><a href="/files/2013/10/plotly-contacts-load-pixeldiff.png"><img src="/files/2013/10/plotly-contacts-load-pixeldiff.png" alt="plotly-contacts-load-pixeldiff" width="531" height="679" class="alignnone size-full wp-image-980" srcset="/files/2013/10/plotly-contacts-load-pixeldiff-234x300.png 234w, /files/2013/10/plotly-contacts-load-pixeldiff.png 531w" sizes="(max-width: 531px) 100vw, 531px" /></a>
- <br /><a href="https://plot.ly/~WilliamLachance/3">[Link to original]</a></p>
-
-<p>You&#8217;ll note that the pixel differences during &#8220;static&#8221; parts of the capture are highly variable. This is because the pixel difference depends heavily on how &#8220;bright&#8221; each frame is: parts of the capture which are black (e.g. a contacts icon with a black background) have a much lower difference between them than parts that are bright (e.g. the contacts screen fully loaded).</p>
-
-<p>After a day or so of experimenting and research, I settled on an approach which seems to work pretty reliably. Instead of comparing the frames directly, I measure the <a href="http://en.wikipedia.org/wiki/Entropy">entropy</a> of the <a href="http://en.wikipedia.org/wiki/Image_histogram">histogram</a> of colours used in each frame (essentially just an indication of brightness in this case, see <a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html">this article</a> for more on calculating it), then compare that of each frame with the average of the same measure over 5 previous frames (to account for the fact that two frames may be arbitrarily different, but that is unlikely that a sequence of frames will be). This seems to work much better than frame difference in this environment: although there are plenty of minute differences in light absorption in a capture from this camera, the overall color composition stays mostly the same. See this graph:</p>
-
-<p><a href="/files/2013/10/plotly-contacts-load-entropy.png"><img src="/files/2013/10/plotly-contacts-load-entropy.png" alt="plotly-contacts-load-entropy" width="546" height="674" class="alignnone size-full wp-image-979" srcset="/files/2013/10/plotly-contacts-load-entropy-243x300.png 243w, /files/2013/10/plotly-contacts-load-entropy.png 546w" sizes="(max-width: 546px) 100vw, 546px" /></a>
- <br /><a href="https://plot.ly/~WilliamLachance/5">[Link to original]</a></p>
-
-<p>If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&#8217;s not nearly as pronounced as before. In practice, I&#8217;ve been able to get extremely consistent numbers with a reasonable &#8220;threshold&#8221; of &#8220;0.05&#8221;.</p>
-
-<p>In Eideticker I&#8217;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &#8220;pixel differences&#8221; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&#8217;t count on light composition changing the same way for those cases. My initial thought was to use <a href="http://en.wikipedia.org/wiki/Edge_detection">edge detection</a> (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.</p>
-
-</article>
-
 <footer>
  <ul class="pagination">
   <li class="page-item"><a class="page-link" href="/index-6.html">
@@ -526,6 +503,7 @@
   <li class="page-item"><a class="page-link" href="/index-12.html">12</a></li>
   <li class="page-item"><a class="page-link" href="/index-13.html">13</a></li>
   <li class="page-item"><a class="page-link" href="/index-14.html">14</a></li>
+  <li class="page-item"><a class="page-link" href="/index-15.html">15</a></li>
   <li class="page-item"><a class="page-link" href="/index-8.html">
     <quote>&rarr;</quote></a></li></ul></footer>
         </div>

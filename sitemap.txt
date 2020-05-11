@@ -55,6 +55,7 @@ https://wlach.github.io/blog/2012/05/launching-random-web-browsers-on-android/
 https://wlach.github.io/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/
 https://wlach.github.io/blog/2013/08/nixi-update/
 https://wlach.github.io/blog/2015/10/the-new-old-perfherder-data-model/
+https://wlach.github.io/blog/2020/05/a-principled-reorganization-of-docs-telemetry-mozilla-org/
 https://wlach.github.io/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser/
 https://wlach.github.io/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/
 https://wlach.github.io/blog/2010/03/adventures-in-processing-with-prender/
