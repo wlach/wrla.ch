@@ -92,6 +92,20 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2020/05/the-humble-blog/">The humble blog</a></h2>
+    <p class="index-date">May 24th, 2020</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p>I&rsquo;ve been thinking a lot about markdown, presentation, dashboards, and other frontendy sorts of things lately, partly inspired by my work on <a href="https://iodide.io">Iodide</a> last year, partly inspired by my recent works on <a href="https://docs.telemetry.mozilla.org">docs.telemetry.mozilla.org</a>. I haven&rsquo;t fully formed my thoughts on this yet, but in general I think blogs (for some value of &ldquo;blog&rdquo;) are still a great way to communicate ideas and concepts to an interested audience.</p>
+
+<p>Like most organizations, Mozilla&rsquo;s gone down the path of Google Docs and Slack which makes me more than a little sad: it feels like good ideas disappear down the memory hole <em>super</em> quickly using these tools, not to mention the fact that they are closed-by-default (even to people inside Mozilla!). My view on &ldquo;open&rdquo; is a bit more nuanced than it used to be: I no longer think everything need be all-public, all-the-time&mdash; but I still think talking about and through our ideas (even if imperfectly formed) with a broad audience builds trust and leads to better outcomes.</p>
+
+<p>Is there some way we can blend some of these old school ideas (blogs, newsgroups, open discussion forums) with better technology and social practices? Let&rsquo;s find out.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2020/05/a-principled-reorganization-of-docs-telemetry-mozilla-org/">A principled reorganization of docs.telemetry.mozilla.org</a></h2>
     <p class="index-date">May 11th, 2020</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -586,31 +600,6 @@
 <p>I&rsquo;ve been a bit bad about updating this blog over the past year or so, though this hasn&rsquo;t meant there haven&rsquo;t been things to talk about. For the next couple weeks, I&rsquo;m going to try to give some updates on the projects I have been spending time on in the past year, both old and new. I&rsquo;m going to begin with some of the less-loved things I&rsquo;ve been working on, partially in an attempt to motivate some forward-motion on things that I believe are rather important to Mozilla.</p>
 
 <p>More to come.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2019/03/new-ideas-old-buildings/">New ideas, old buildings</a></h2>
-    <p class="index-date">Mar 22nd, 2019</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Iodide.html">Iodide</a></span></p>
-  </header>
-
-<p>Last week, Brendan Colloran <a href="https://hacks.mozilla.org/2019/03/iodide-an-experimental-tool-for-scientific-communicatiodide-for-scientific-communication-exploration-on-the-web/">announced Iodide</a>, a new take on scientific collaboration and reporting that I&rsquo;ve been really happy to contribute to over the past year-and-a-bit. I&rsquo;ve been describing it to people I meet as kind of "<a href="https://glitch.com/">glitch</a> meets <a href="https://jupyter.org/">jupyter</a> " but that doesn&rsquo;t quite do it justice. I&rsquo;d recommend reading Brendan&rsquo;s blog post (and taking a look at our <a href="https://alpha.iodide.io">demonstration site</a>) to get the full picture.</p>
-
-<p>One question that I&rsquo;ve heard asked (including on Brendan&rsquo;s post) is why we chose a rather conventional and old technology (<a href="https://www.djangoproject.com/">Django</a>) for the server backend. Certainly, Iodide has not been shy about building with relatively new or experimental technologies for other parts (e.g. Python on WebAssembly for the notebooks, React/Redux for the frontend). Why not complete the cycle by using a new-fangled JavaScript web server like, I don&rsquo;t know, <a href="https://nestjs.com/">NestJS</a>? And while we&rsquo;re at it, what&rsquo;s with iodide&rsquo;s ridiculous <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST API</a>? Don&rsquo;t you know <a href="https://graphql.org/">GraphQL</a> is the only legitimate way to expose your backend to the world in 2019?</p>
-
-<p>The great urban theorist of the twentieth century, <a href="https://en.wikipedia.org/wiki/Jane_Jacobs">Jane Jacobs</a> has a quote I love:</p>
-
-<p>
- <i>“Old ideas can sometimes use new buildings. New ideas must use old buildings.”</i></p>
-
-<p>Laura Thompson (an engineering director at Mozilla) has restated this wisdom in a software development context as <a href="https://speakerdeck.com/lauraxt/build-exciting-things-with-boring-technologies">&ldquo;Build exciting things with boring technologies&rdquo;</a>.</p>
-
-<p>It so happened that the server was not an area Iodide was focusing on for innovation (at least initially), so it made much, much more sense to use something proven and battle-tested for the server side deployment. I&rsquo;d used Django for a number of projects at Mozilla before this one (<a href="https://github.com/mozilla/treeherder">Treeherder/Perfherder</a> and <a href="https://github.com/mozilla/missioncontrol/">Mission Control</a>) and have been wildly impressed by the project&rsquo;s excellent <a href="https://docs.djangoproject.com/">documentation</a>, <a href="https://docs.djangoproject.com/en/2.1/topics/db/">database access layer</a>, and support for building a standardized API via the <a href="https://www.django-rest-framework.org/">Django REST Framework</a> add-on. Not to mention the fact that so much of Mozilla&rsquo;s in-house ops and web development expertise is based around this framework (I could name off probably 5 or 6 internal business systems based around the Django stack, in addition to Treeherder), so deploying Iodide and getting help building it would be something of a known quantity.</p>
-
-<p>Only slightly more than half a year since I began work on the iodide server, we now have both a publicly accessible site for others to experiment with <em>and</em> an internal one for Mozilla&rsquo;s business needs. It&rsquo;s hard to say what would have happened had I chosen something more experimental to build Iodide&rsquo;s server piece, but at the very least there would have been a substantial learning curve involved &mdash; in addition to engineering effort to fill in the gaps where the new technology is not yet complete &mdash; which would have meant less time to innovate where it really mattered. Django&rsquo;s <a href="https://docs.djangoproject.com/en/2.1/topics/migrations/">database migration system</a>, for example, took years to come to fruition and I&rsquo;m not aware of anything comparable in the world of JavaScript web frameworks.</p>
-
-<p>As we move ahead, we may find places where applying new backend server technologies makes sense. Heck, maybe we&rsquo;ll chose to rewrite the whole thing at some point. But to get to launch, chosing a bunch of boring, tested software for this portion of Iodide was (in my view) absolutely the right decision and I make no apologies for it.</p> 
   <hr/>
 </article>
 <footer>

@@ -92,6 +92,41 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/">More Eideticker happenings: Profiling and startup testing</a></h2>
+    <p class="index-date">Sep 13th, 2012</p>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+
+<p>Just wanted to give some updates on a few new Eideticker features which have landed in the past week.</p>
+
+<p><strong>Profiling support</strong></p>
+
+<p>While Eideticker is a great tool for observing the external behaviour of the mobile browser, it hasn&#8217;t been able to tell us much about what&#8217;s going on inside. If something&#8217;s slow, why is it slow? If it&#8217;s slower than it was the day before, what&#8217;s the cause? If it&#8217;s faster? What explains the deviations in test results from one run to the other?</p>
+
+<p>Thanks to <a href="http://benoitgirard.wordpress.com/">Benoit Girard</a> (+ a little bit of integration work from me), we can now start providing answers to these questions. Eideticker now has a mode that allows us to capture a <a href="https://developer.mozilla.org/en-US/docs/Performance/Profiling_with_the_Built-in_Profiler">sampling profile</a> of the application while the video capture is ongoing. From the dashboard, you can now get access said profile, just by clicking on a link.</p>
+
+<p><a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/dash-with-link-to-profile/" rel="attachment wp-att-737"><img src="/files/2012/09/dash-with-link-to-profile.png" alt="" title="Eideticker dashboard with link to profile" width="764" height="555" class="alignnone size-full wp-image-737" srcset="/files/2012/09/dash-with-link-to-profile-300x217.png 300w, /files/2012/09/dash-with-link-to-profile.png 764w" sizes="(max-width: 764px) 100vw, 764px" /></a>
+ <br /><a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/profiler-et-screenshot/" rel="attachment wp-att-740"><img src="/files/2012/09/profiler-et-screenshot.png" alt="" title="Profile of Eideticker Capture" width="852" height="425" class="alignnone size-full wp-image-740" srcset="/files/2012/09/profiler-et-screenshot-300x149.png 300w, /files/2012/09/profiler-et-screenshot.png 852w" sizes="(max-width: 852px) 100vw, 852px" /></a></p>
+
+<p>Note that the profile is not yet synchronized precisely to the videocapture (the profile works over the entire run of the browser), but Benoit is busily making that happen. That should hopefully land soon, in the mean time we still have some pretty useful data.</p>
+
+<p>To say I&#8217;m excited about this would be an understatement. I think it has the potential to open up a whole new world of understanding of why our mobile (and desktop, someday) browser performs the way it does.</p>
+
+<p><strong>Startup / pageload testing</strong></p>
+
+<p>Eideticker has had support for measuring startup and page load time for a few months now, but I hadn&#8217;t yet hooked it up to the dashboard. As of today, it now is. There&#8217;s a bunch of different angles that are interesting to measure here (new vs. old profiles, whether the browser has been launched since boot, launching web applications, loading about:home or loading a web page, &#8230;) which I&#8217;ll get to in due course. For now, we at least have a baseline of how long it takes to see the Firefox homescreen on a Galaxy Nexus:</p>
+
+<video width="400px" src="http://wrla.ch/eideticker/dashboard/videos/video-1347572002.11.webm" controls="controls"></video>
+
+<p>Of course, this is hooked up to the profiling support previously mentioned. Here&#8217;s <a href="http://people.mozilla.com/~bgirard/cleopatra/?zippedProfile=profiles/sps-profile-1347572285.4.zip&amp;#038;videoCapture=videos/video-1347572285.4.webm">an example profile</a>.</p>
+
+<p>I&#8217;ve already filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=791106">one bug</a> based on the data gathered so far.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/">Oh hai, I upergaded yer Eideticker</a></h2>
     <p class="index-date">Sep 5th, 2012</p>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -390,40 +425,6 @@
 <p>The results here actually aren&#8217;t as bad as I would have expected/remembered. There amount of checkerboarding after a zoom out is a bit annoying (I understand this a known issue with font caching, or something) but not too terrible. Still, any improvements that show up here will probably apply across a wide variety of sites, as the design patterns on the New York Times site are very common.</p>
 
 <p>(P.S. yes, I know I promised a comparison with Google Chrome for Android last time&#8230; rest assured that&#8217;s still coming soon!)</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2012/04/an-even-better-way-of-taking-screenshots-on-android/">An even better way of taking screenshots on Android</a></h2>
-    <p class="index-date">Apr 3rd, 2012</p>
-    <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>Just thought I&#8217;d mention this because I found it handy.</p>
-
-<p>A while back AaronMT <a href="http://aaronmt.com/?p=527">wrote up</a> some clever instructions on taking Android screenshots by dumping the contents of &#8216;/dev/fb0&#8217; and running ffmpeg on the results. This is useful, but you need to know the resolution of the device you have connected to pass the right arguments to ffmpeg. Wouldn&#8217;t it be better if you had just one script that would work for whatever device you had plugged in?</p>
-
-<p>In fact, there is a way to do this using the <a href="http://developer.android.com/guide/developing/tools/MonkeyRunner.html">monkeyrunner</a> utility. Intended mainly as a tool for synthesizing input on Android (more on that some other time), you can also easily get a capture of the Android screen with its python/jython API (assuming you have the Android SDK installed). Here&#8217;s a quick script which does the job:</p>
-
-<pre><code>from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice
-import os
-import sys
-
-if len(sys.argv) != 2:
-    print "Usage: %s &amp;lt;filename&gt;" % os.path.basename(sys.argv[0])
-    sys.exit(1)
-
-device = MonkeyRunner.waitForConnection()
-result = device.takeSnapshot()
-result.writeToFile(sys.argv[1], 'png')</code></pre>
-
-<p>Copy that into a file called capture.py (or whatever), then run it like so:
- <br /><code>&lt;br /&gt;
-monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
-
-<p>And you&#8217;re off to the races! Nice screenshot, no utilities or non-essential command line arguments required!</p>
-
-<p>(credit to <a href="http://stackoverflow.com/a/9311243/295132">this stackoverflow answer</a> for the idea)</p> 
   <hr/>
 </article>
 <footer>

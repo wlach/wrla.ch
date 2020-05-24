@@ -92,6 +92,18 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2016/02/albert-low/">Albert Low</a></h2>
+    <p class="index-date">Feb 7th, 2016</p>
+    <p><span class="tags"><a href="/tags/zen.html">zen</a></span></p>
+  </header>
+
+<p>I was saddened to find out last week that the person who introduced me to Zen practice three years ago, Albert Low, has passed away. Albert was the teacher of the <a href="http://www.zenmontreal.ca/">Montreal Zen Center</a>, which I was a member of for a brief period (6 months) in 2014 before I moved to Toronto and started practicing at <a href="http://torontozen.org/">the center</a> here.</p>
+
+<p>Albert&rsquo;s instruction was the gateway to a practice that has had a profound impact on my life. More than anything, he helped me understand Zen as something that one could incorporate directly into daily life. I will remain forever grateful.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2016/01/nixi-is-moving-too/">NIXI is moving too</a></h2>
     <p class="index-date">Jan 8th, 2016</p>
     <p><span class="tags"><a href="/tags/BIXI.html">BIXI</a>  <a href="/tags/Nixi.html">Nixi</a></span></p>
@@ -472,32 +484,6 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
  <li>How our engineering environments are killing diversity (and how we can fix it) (Kate Heddleston): This was a great talk on how to make the environments in which we develop more welcoming to under-represented groups (women, minorities, etc.). This is something I&#8217;ve been thinking a bunch about lately, especially in the context of expanding the community of people working on our projects in Automation &#38; Tools. The talk had some particularly useful advice (to me, anyway) on giving feedback. <a href="https://www.youtube.com/watch?v=kNke_4WOWAU">video</a> <a href="https://speakerdeck.com/pycon2015/kate-heddleston-how-our-engineering-environments-are-killing-diversity-and-how-we-can-fix-it">slides</a></li></ul>
 
 <p>I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2015/03/perfherder-update-summary-series-drilldown/">Perfherder update: Summary series drilldown</a></h2>
-    <p class="index-date">Mar 27th, 2015</p>
-    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-  </header>
-
-<p>Just wanted to give another quick Perfherder update. Since the <a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/">last time</a>, I&#8217;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&#8217;t possible with Graphserver and I&#8217;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.</p>
-
-<p>Let&#8217;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354">bug 1128354</a>. Using <a href="https://mozillians.org/en-US/u/mishravikas/">Mishra Vikas</a>&#8216;s new &#8220;highlight revision mode&#8221; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:</p>
-
-<p><a href="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png"><img src="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png" alt="Screen Shot 2015-03-27 at 3.18.28 PM" width="474" height="230" class="alignnone size-large wp-image-1184" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-300x146.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png 1167w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
-
-<p>It does indeed look like things ticked up after this commit for the CART suite, but why? By clicking on the datapoint, you can open up a subtest summary view beneath the graph:</p>
-
-<p><a href="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png"><img src="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png" alt="Screen Shot 2015-03-27 at 2.35.25 PM" width="936" height="438" class="alignnone size-full wp-image-1175" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM-300x140.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png 936w" sizes="(max-width: 936px) 100vw, 936px" /></a></p>
-
-<p>We see here that it looks like the 3-customize-enter-css.all.TART entry ticked up a bunch. The related test 3-customize-enter-css.half.TART ticked up a bit too. The changes elsewhere look minimal. But is that a trend that holds across the data over time? We can add some of the relevant subtests to the overall graph view to get a closer look:</p>
-
-<p><a href="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM.png"><img src="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-1024x503.png" alt="Screen Shot 2015-03-27 at 2.36.49 PM" width="474" height="232" class="alignnone size-large wp-image-1176" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-300x147.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM-1024x503.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM.png 1155w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
-
-<p>As is hopefully obvious, this confirms that the affected subtest continues to hold its higher value while another test just bounces around more or less in the range it was before.</p>
-
-<p>Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at <a href="http://treeherder.mozilla.org/perf.html">http://treeherder.mozilla.org/perf.html</a>.</p> 
   <hr/>
 </article>
 <footer>

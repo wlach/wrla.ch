@@ -4,9 +4,21 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Mon, 11 May 2020 15:44:45 UT</lastBuildDate>
-  <pubDate>Mon, 11 May 2020 15:44:45 UT</pubDate>
+  <lastBuildDate>Sun, 24 May 2020 18:01:24 UT</lastBuildDate>
+  <pubDate>Sun, 24 May 2020 18:01:24 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>The humble blog</title>
+   <link>https://wlach.github.io/blog/2020/05/the-humble-blog/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-05-the-humble-blog</guid>
+   <pubDate>Sun, 24 May 2020 18:01:24 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;I&amp;rsquo;ve been thinking a lot about markdown, presentation, dashboards, and other frontendy sorts of things lately, partly inspired by my work on &lt;a href="https://iodide.io"&gt;Iodide&lt;/a&gt; last year, partly inspired by my recent works on &lt;a href="https://docs.telemetry.mozilla.org"&gt;docs.telemetry.mozilla.org&lt;/a&gt;. I haven&amp;rsquo;t fully formed my thoughts on this yet, but in general I think blogs (for some value of &amp;ldquo;blog&amp;rdquo;) are still a great way to communicate ideas and concepts to an interested audience.&lt;/p&gt;
+
+&lt;p&gt;Like most organizations, Mozilla&amp;rsquo;s gone down the path of Google Docs and Slack which makes me more than a little sad: it feels like good ideas disappear down the memory hole &lt;em&gt;super&lt;/em&gt; quickly using these tools, not to mention the fact that they are closed-by-default (even to people inside Mozilla!). My view on &amp;ldquo;open&amp;rdquo; is a bit more nuanced than it used to be: I no longer think everything need be all-public, all-the-time&amp;mdash; but I still think talking about and through our ideas (even if imperfectly formed) with a broad audience builds trust and leads to better outcomes.&lt;/p&gt;
+
+&lt;p&gt;Is there some way we can blend some of these old school ideas (blogs, newsgroups, open discussion forums) with better technology and social practices? Let&amp;rsquo;s find out.&lt;/p&gt;</description></item>
   <item>
    <title>A principled reorganization of docs.telemetry.mozilla.org</title>
    <link>https://wlach.github.io/blog/2020/05/a-principled-reorganization-of-docs-telemetry-mozilla-org/?utm_source=all&amp;utm_medium=RSS</link>
@@ -810,28 +822,4 @@
 
 &lt;p&gt;One of my new years resolutions is to also apply these rules to my communications with others at Mozilla as well, so if you see my violating it feel free to point me back at this post. Or just use this handy meme I created:&lt;/p&gt;
 
-&lt;center&gt;&lt;img src="/files/2018/01/scale-of-asking.jpg" /&gt;&lt;/center&gt;</description></item>
-  <item>
-   <title>Quitting Twitter</title>
-   <link>https://wlach.github.io/blog/2018/01/quitting-twitter/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2018-01-quitting-twitter</guid>
-   <pubDate>Sat, 13 Jan 2018 20:09:44 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;(this post probably won&amp;rsquo;t make much sense unless you have been a user of Twitter since/during 2016&amp;ndash;2018)&lt;/p&gt;
-
-&lt;p&gt;Decided to kill my Twitter account today. Probably most people won&amp;rsquo;t miss my presence there as I haven&amp;rsquo;t actively posting on the site in quite some time, but I did check it quite frequently. I suspect it consumed (and I&amp;rsquo;m ashamed to admit this), at least an hour of my day on average. Twitter when I wake up, Twitter on the streetcar, Twitter every god damn empty moment.&lt;/p&gt;
-
-&lt;p&gt;Of all the large social media propertes, I find Twitter by far leads in the amount of negative sentiment it displays, especially in the last year or so. Donald Trump, #GamerGate, Brexit, Nazis, the list goes on. That&amp;rsquo;s probably why it is so uniquely capable of grabbing my attention in particular, there&amp;rsquo;s some dark part of me which gravitates towards exactly this type of content.&lt;/p&gt;
-
-&lt;p&gt;Now, due to the filter bubble effect, 99% of what &lt;em&gt;I&lt;/em&gt; see on that site is a negative &lt;em&gt;response&lt;/em&gt; to those things, but so what? The overwhelming of effect of my interaction with the site is simply to make me more more fearful and angry, nothing more. The very format of Twitter (brief bursts of performative text) doesn&amp;rsquo;t encourage any kind of intelligent or compassionate reaction to what you are seeing or reading. It would be one thing if the negative things I saw on Twitter motivated me to take a positive action of &lt;em&gt;any&lt;/em&gt; kind, but if the net effect of hearing bad news is just to make you feel bad, then what&amp;rsquo;s the point?&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m not much of a fan of Facebook either, but it has (less often than I would like, but sometimes) been a platform for facilitating worthwhile social and cultural interactions both on the site and off. I could probably count the number of similar exchanges I have had on Twitter on one hand &amp;mdash; overwhelmingly my experience with twitter is that engagement (posting) leads only to a regrettable salvo of petty bickering and &lt;a href="http://tirania.org/blog/archive/2011/Feb-17.html"&gt;well actuallys&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;So, let&amp;rsquo;s see what life on the other side of this site is like. The demons which pulled me to Twitter every day are no doubt still there&amp;hellip; but hopefully they&amp;rsquo;ll be easier to handle without the influence of a technology which amplifies their effect.&lt;/p&gt;
-
-&lt;p&gt;Further reading:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;&lt;a href="http://www.macdrifter.com/2017/11/fuck-twitter.html"&gt;Fuck Twitter&lt;/a&gt;&lt;/li&gt;
- &lt;li&gt;&lt;a href="http://www.businessinsider.com/jaron-lanier-interview-on-silicon-valley-culture-metoo-backlash-ai-and-the-future-2017-12"&gt;Jaron Lanier&lt;/a&gt; on negative sentiment in social media (among other interesting topics)&lt;/li&gt;&lt;/ul&gt;</description></item></channel></rss>
+&lt;center&gt;&lt;img src="/files/2018/01/scale-of-asking.jpg" /&gt;&lt;/center&gt;</description></item></channel></rss>

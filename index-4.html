@@ -92,6 +92,52 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/">Easier reproduction of intermittent test failures in automation</a></h2>
+    <p class="index-date">Apr 5th, 2017</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Treeherder.html">Treeherder</a>  <a href="/tags/Taskcluster.html">Taskcluster</a></span></p>
+  </header>
+
+<p>As part of the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell">Stockwell project</a>, I&rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&rsquo;s often very difficult to reproduce an intermittent failure we see in Treeherder locally since the environment is so different, but historically it has been a big hassle to get access to the machines we use in automation for various reasons.</p>
+
+<p>One option that rolled out last year was the so-called one-click loaner, which enabled developers to sign out an virtual machine instance identical to the ones used to run unit tests (at least if the tests are running on Taskcluster, which is increasingly often the case), then execute their particular case with whatever extra debugging options they would find useful. This is a big step forward, but it&rsquo;s still quite a bit of hassle, since it requires a bunch of manual work on the part of the developer to interact with the instance.</p>
+
+<p>What if we could <em>just</em> re-run the particular test an arbitrary number of times with whatever options we wanted, simply by clicking on a few buttons on Treeherder? I&rsquo;ve been exploring this for the first few months of 2017 and I&rsquo;ve come up with a prototype which I think is ready for people to start playing with.</p>
+
+<p>The user interface to this is pretty straightforward. Just find a job you want to retrigger in Treeherder:</p>
+
+<p><img src="/files/2017/04/treeherder-selected-mochitest.png" /></p>
+
+<p>Then select the &rsquo;&hellip;&rsquo; option in the panel below and press &ldquo;Custom Action&hellip;&rdquo;:</p>
+
+<p><img src="/files/2017/04/treeherder-taskcluster-options.png" /></p>
+
+<p>You should get a small piece of JSON to edit, which corresponds to the configuration for the retriggered job:</p>
+
+<p><img src="/files/2017/04/treeherder-custom-action.png" /></p>
+
+<p>The main field to edit is &ldquo;path&rdquo;. You should set this to the name of the test you want to try retriggering. For example <code>dom/animation/test/css-transitions/test_animation-ready.html</code>. You can also set custom Firefox preferences and environment variables, to turn on different types of debugging.</p>
+
+<p>Unfortunately as usual with a new feature at Mozilla, there are a bunch of limitations and caveats:</p>
+
+<ul>
+ <li>This depends on functionality that&rsquo;s only in Taskcluster, so  buildbot jobs are exempt.</li>
+ <li>No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which hopefully isn&rsquo;t that far off).</li>
+ <li>Browser chrome tests failing in mysterious ways if run repeatedly  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347654">bug 1347654</a>)</li>
+ <li>Only reftest and mochitest are currently supported. XPCShell  support is blocked by the lack of support in its harness for  running a job repeatedly (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347696">bug 1347696</a>).  Web Platform Tests need the requisite support in mozharness for  just setting up the tests without running them &mdash; the same issue  that prevents us from debugging such tests with a one-click loaner  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348833">bug 1348833</a>).</li></ul>
+
+<p>Aside from fixing the above limitations, the following features would also be really nifty to have:</p>
+
+<ul>
+ <li>Ability to trigger a custom job as part of a try push (i.e.  not needing to retrigger off an existing job)</li>
+ <li>Run these jobs under rr, and provide a way to login and  interactively debug when the problem is actually reproduced.</li></ul>
+
+<p>I am actually in the process of moving to another team @ Mozilla (more on that in another post), so I probably won&rsquo;t have a ton of time to work on the above &mdash; but I&rsquo;d be happy to help anyone who&rsquo;s interested in developing this idea further.</p>
+
+<p>A special shout out to the <a href="https://wiki.mozilla.org/TaskCluster">Taskcluster</a> team for helping me with the development of this feature: in particular the action task implementation from <a href="https://jonasfj.dk/">Jonas Finnemann Jensen</a> that made it possible to develop this feature in the first place.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2017/02/cancel-all-the-things/">Cancel all the things</a></h2>
     <p class="index-date">Feb 7th, 2017</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Treeherder.html">Treeherder</a></span></p>
@@ -434,18 +480,6 @@
 <p>Previously, the only way to do this was to dig into the actual buildbot code, which was more than a little annoying.</p>
 
 <p>If you think your patch might have a good chance of regressing performance, please do run the <a href="https://wiki.mozilla.org/Buildbot/Talos/Tests">Talos tests</a> before you check in. It&rsquo;s much less work for all of us when these things are caught before integration and back outs are no fun for anyone. We really need better documentation for this stuff, but meanwhile if you need help with this, please ask in the #perf channel on irc.mozilla.org</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2016/02/albert-low/">Albert Low</a></h2>
-    <p class="index-date">Feb 7th, 2016</p>
-    <p><span class="tags"><a href="/tags/zen.html">zen</a></span></p>
-  </header>
-
-<p>I was saddened to find out last week that the person who introduced me to Zen practice three years ago, Albert Low, has passed away. Albert was the teacher of the <a href="http://www.zenmontreal.ca/">Montreal Zen Center</a>, which I was a member of for a brief period (6 months) in 2014 before I moved to Toronto and started practicing at <a href="http://torontozen.org/">the center</a> here.</p>
-
-<p>Albert&rsquo;s instruction was the gateway to a practice that has had a profound impact on my life. More than anything, he helped me understand Zen as something that one could incorporate directly into daily life. I will remain forever grateful.</p> 
   <hr/>
 </article>
 <footer>
