@@ -85,6 +85,10 @@ article > h2 {
   @apply mb-4;
 }
 
+article > hr {
+    @apply pt-4;
+}
+
 ul {
     @apply list-disc list-outside;
     padding-left: 40px;
