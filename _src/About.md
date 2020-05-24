@@ -1,5 +1,3 @@
-# About
-
 Hi! My name is William Lachance, though most people just call me "Will".
 
 I'm an (early, as of this writing) fortysomething developer of software in
@@ -7,30 +5,33 @@ Toronto, Ontario, Canada currently working for [Mozilla] in the [Data Engineerin
 group (formerly in the now-defunct [Engineering Productivity] organization).
 
 I've worked on a bunch of things over the course of my career here (big themes
-have been automation, browser performance, and stability), but a chief
-unifying principle is me trying to help people understand the world around them.
-I try to help people think critically about data and build both backend and
-frontend systems that help them do this.
+have been automation, browser performance, and stability), but the unifying principle 
+is me trying to help people understand the world around them. I try to help people 
+think critically about data and build computational systems that help them do this.
 
-This blog is mostly work related, but occasionally I talk about other things.
+More broadly, I am interested in open systems, accountability, and helping people
+achieve their potential.
 
-Miscellaneous facts about Will:
+Other random facts:
 
-* Practices hot yoga and zazen meditation
-* Rides a bicycle most of the time, even in the Canadian winter
-* Mostly vegetarian (sometimes eats mussels and oysters)
-* Often refers to self in third person
+* I am a nominal Zen Buddhist. I practice at the [Toronto Zen Centre].
+* I try to live simply: I use a bicycle for most forms of local transportation and try
+  to limit my longer-distance travel to what's strictly necessary.
+* I am *mostly* vegetarian (sometimes I eat mussels, oysters and other invertebrates)
 
 I've closed down most of my traditional social media accounts, but there are
 a few places you can still find me:
 
-* [flickr]
+* [instagram] (infrequently)
+* [dreamwidth] (for more personal stuff, also infrequent)
 * [github]
 * [linkedin]
 
 [Mozilla]: https://mozilla.org
 [Data Engineering]: https://wiki.mozilla.org/Telemetry
 [Engineering Productivity]: https://wiki.mozilla.org/EngineeringProductivity
-[flickr]: https://flickr.com/wlach
+[Toronto Zen Centre]: https://torontozen.org/
+[instagram]: https://instagram.com/wlach
+[dreamwidth]: https://wlach.dreamwidth.org
 [github]: https://github.com/wlach
 [linkedin]: https://www.linkedin.com/in/wrlach/
