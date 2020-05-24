@@ -125,7 +125,7 @@
 &lt;p&gt;In many ways, this is pretty similar to what I did inside the sample application: the only significant difference is that these are shipped inside a Python application that is meant to be be installable via &lt;a href="https://pypi.org/project/pip/"&gt;pip&lt;/a&gt;. This means we need to specify the &lt;code&gt;pings.yaml&lt;/code&gt; and &lt;code&gt;metrics.yaml&lt;/code&gt; (located inside the &lt;code&gt;mozregression&lt;/code&gt; subirectory) as package data inside &lt;code&gt;setup.py&lt;/code&gt;:&lt;/p&gt;
 
 &lt;div class="brush: py"&gt;
- &lt;div class="source"&gt;
+ &lt;div class="colorful"&gt;
   &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
     &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"mozregression"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
     &lt;span class="o"&gt;...&lt;/span&gt;
@@ -165,7 +165,7 @@
 &lt;p&gt;There&amp;rsquo;s quite a bit of complicated machinery being the scenes to make this all work, but since it&amp;rsquo;s already in place, adding a new thing like this is relatively simple. The changeset I submitted as part of a &lt;a href="https://github.com/mozilla/probe-scraper/pull/184"&gt;pull request&lt;/a&gt; to probe-scraper was all of 9 lines long:&lt;/p&gt;
 
 &lt;div class="brush: diff"&gt;
- &lt;div class="source"&gt;
+ &lt;div class="colorful"&gt;
   &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gh"&gt;diff --git a/repositories.yaml b/repositories.yaml&lt;/span&gt;
 &lt;span class="gh"&gt;index dffcccf..6212e55 100644&lt;/span&gt;
 &lt;span class="gd"&gt;--- a/repositories.yaml&lt;/span&gt;
@@ -192,7 +192,7 @@
 &lt;p&gt;With the probe scraper change merged and deployed, we can now start querying! A number of tables are automatically created according to the schema outlined above: notably &amp;ldquo;live&amp;rdquo; and &amp;ldquo;stable&amp;rdquo; tables corresponding to the usage ping. Using &lt;a href="https://docs.telemetry.mozilla.org/tools/stmo.html"&gt;sql.telemetry.mozilla.org&lt;/a&gt; we can start exploring what&amp;rsquo;s out there. Here&amp;rsquo;s a quick query I wrote up:&lt;/p&gt;
 
 &lt;div class="brush: sql"&gt;
- &lt;div class="source"&gt;
+ &lt;div class="colorful"&gt;
   &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="nb"&gt;date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
        &lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_variant&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;variant&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
        &lt;span class="k"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
@@ -388,53 +388,58 @@
 
 &lt;p&gt;With our move to &lt;a href="https://cloud.google.com/bigquery/"&gt;BigQuery&lt;/a&gt;, things get a lot simpler! Thanks to the combined effort of my team and data operations[1], we now produce &amp;ldquo;stable&amp;rdquo; ping tables on a daily basis with &lt;em&gt;all&lt;/em&gt; the relevant histogram data (stored as JSON blobs), queryable using relatively vanilla SQL. In this case, the data we care about is in &lt;code&gt;telemetry.main&lt;/code&gt; (named after the main ping, appropriately enough). With the help of a small &lt;a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions"&gt;JavaScript UDF&lt;/a&gt; function, all of this data can easily be extracted into a table inside a single SQL query scheduled by &lt;a href="https://docs.telemetry.mozilla.org/tools/stmo.html"&gt;sql.telemetry.mozilla.org&lt;/a&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;CREATE TEMP FUNCTION
-  udf_js_json_extract_highest_long_spinner (input STRING)
-  RETURNS INT64
-  LANGUAGE js AS """
-    if (input == null) {
-      return 0;
-    }
-    var result = JSON.parse(input);
-    var valuesMap = result.values;
-    var highest = 0;
-    for (var key in valuesMap) {
-      var range = parseInt(key);
-      if (valuesMap[key]) {
-        highest = range &amp;gt; 0 ? range : 1;
-      }
-    }
-    return highest;
-""";
+&lt;div class="brush: sql"&gt;
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="n"&gt;TEMP&lt;/span&gt; &lt;span class="k"&gt;FUNCTION&lt;/span&gt;
+  &lt;span class="n"&gt;udf_js_json_extract_highest_long_spinner&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;input&lt;/span&gt; &lt;span class="n"&gt;STRING&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;RETURNS&lt;/span&gt; &lt;span class="n"&gt;INT64&lt;/span&gt;
+  &lt;span class="k"&gt;LANGUAGE&lt;/span&gt; &lt;span class="n"&gt;js&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="ss"&gt;"""&lt;/span&gt;
+&lt;span class="ss"&gt;    if (input == null) {&lt;/span&gt;
+&lt;span class="ss"&gt;      return 0;&lt;/span&gt;
+&lt;span class="ss"&gt;    }&lt;/span&gt;
+&lt;span class="ss"&gt;    var result = JSON.parse(input);&lt;/span&gt;
+&lt;span class="ss"&gt;    var valuesMap = result.values;&lt;/span&gt;
+&lt;span class="ss"&gt;    var highest = 0;&lt;/span&gt;
+&lt;span class="ss"&gt;    for (var key in valuesMap) {&lt;/span&gt;
+&lt;span class="ss"&gt;      var range = parseInt(key);&lt;/span&gt;
+&lt;span class="ss"&gt;      if (valuesMap[key]) {&lt;/span&gt;
+&lt;span class="ss"&gt;        highest = range &amp;gt; 0 ? range : 1;&lt;/span&gt;
+&lt;span class="ss"&gt;      }&lt;/span&gt;
+&lt;span class="ss"&gt;    }&lt;/span&gt;
+&lt;span class="ss"&gt;    return highest;&lt;/span&gt;
+&lt;span class="ss"&gt;"""&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
 
-SELECT build_id,
-sum (case when highest &amp;gt;= 64000 then 1 else 0 end) as v_64000ms_or_higher,
-sum (case when highest &amp;gt;= 27856 and highest &amp;lt; 64000 then 1 else 0 end) as v_27856ms_to_63999ms,
-sum (case when highest &amp;gt;= 12124 and highest &amp;lt; 27856 then 1 else 0 end) as v_12124ms_to_27855ms,
-sum (case when highest &amp;gt;= 5277 and highest &amp;lt; 12124 then 1 else 0 end) as v_5277ms_to_12123ms,
-sum (case when highest &amp;gt;= 2297 and highest &amp;lt; 5277 then 1 else 0 end) as v_2297ms_to_5276ms,
-sum (case when highest &amp;gt;= 1000 and highest &amp;lt; 2297 then 1 else 0 end) as v_1000ms_to_2296ms,
-sum (case when highest &amp;gt; 0 and highest &amp;lt; 50 then 1 else 0 end) as v_0ms_to_49ms,
-sum (case when highest &amp;gt;= 50 and highest &amp;lt; 100 then 1 else 0 end) as v_50ms_to_99ms,
-sum (case when highest &amp;gt;= 100 and highest &amp;lt; 200 then 1 else 0 end) as v_100ms_to_199ms,
-sum (case when highest &amp;gt;= 200 and highest &amp;lt; 400 then 1 else 0 end) as v_200ms_to_399ms,
-sum (case when highest &amp;gt;= 400 and highest &amp;lt; 800 then 1 else 0 end) as v_400ms_to_799ms,
-count(*) as count
-from
-(select build_id, client_id, max(greatest(highest_long, highest_short)) as highest
-from
-(SELECT
-    SUBSTR(application.build_id, 0, 8) as build_id,
-    client_id,
-    udf_js_json_extract_highest_long_spinner(payload.histograms.FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS) AS highest_long,
-    udf_js_json_extract_highest_long_spinner(payload.histograms.FX_TAB_SWITCH_SPINNER_VISIBLE_MS) as highest_short
-FROM telemetry.main
-WHERE
-    application.channel='nightly'
-    AND normalized_os='Windows'
-    AND application.build_id &amp;gt; FORMAT_DATE("%Y%m%d", DATE_SUB(CURRENT_DATE(), INTERVAL 2 QUARTER))
-    AND DATE(submission_timestamp) &amp;gt;= DATE_SUB(CURRENT_DATE(), INTERVAL 2 QUARTER))
-group by build_id, client_id) group by build_id;&lt;/code&gt;&lt;/pre&gt;
+&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;64000&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_64000ms_or_higher&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;27856&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;64000&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_27856ms_to_63999ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;12124&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;27856&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_12124ms_to_27855ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;5277&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;12124&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_5277ms_to_12123ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;2297&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;5277&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_2297ms_to_5276ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;2297&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_1000ms_to_2296ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_0ms_to_49ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_50ms_to_99ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_100ms_to_199ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_200ms_to_399ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;800&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_400ms_to_799ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="k"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="k"&gt;count&lt;/span&gt;
+&lt;span class="k"&gt;from&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;client_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;greatest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;highest_long&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;highest_short&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt;
+&lt;span class="k"&gt;from&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;
+    &lt;span class="n"&gt;SUBSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;client_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;udf_js_json_extract_highest_long_spinner&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;payload&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;histograms&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;highest_long&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="n"&gt;udf_js_json_extract_highest_long_spinner&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;payload&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;histograms&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FX_TAB_SWITCH_SPINNER_VISIBLE_MS&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;highest_short&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;telemetry&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt;
+    &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;channel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;nightly&amp;#39;&lt;/span&gt;
+    &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;normalized_os&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Windows&amp;#39;&lt;/span&gt;
+    &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;build_id&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;FORMAT_DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;"%Y%m%d"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;DATE_SUB&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;CURRENT_DATE&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="nb"&gt;INTERVAL&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;QUARTER&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;DATE_SUB&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;CURRENT_DATE&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="nb"&gt;INTERVAL&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;QUARTER&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="k"&gt;group&lt;/span&gt; &lt;span class="k"&gt;by&lt;/span&gt; &lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;client_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;group&lt;/span&gt; &lt;span class="k"&gt;by&lt;/span&gt; &lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
 
 &lt;p&gt;In addition to being much simpler, this new job is also &lt;em&gt;way&lt;/em&gt; cheaper. The last run of it scanned just over 1 TB of data, meaning it cost us just over $5. Not as cheap as I might like, but considerably less expensive than before: I&amp;rsquo;ve also scheduled it to only run once every other day, since Mike tells me he doesn&amp;rsquo;t need this data any more often than that.&lt;/p&gt;
 

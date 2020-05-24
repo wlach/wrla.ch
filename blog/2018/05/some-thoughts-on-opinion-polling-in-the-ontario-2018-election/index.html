@@ -2,26 +2,40 @@
 <html lang="en">
   <head>
 
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Some thoughts on opinion polling in the Ontario 2018 election</title>
-    <meta name="description" content="Like many, I've been a bit worried about the Ontario election, and have been rather obsessively checking a site called the Ontario Poll Tracker.  It has nice and shiny graphs and uses authoritative language and purports to provide a scientific analysis wh...">
-    <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Polling, Statistics">
-    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
-    <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2018/05/some-thoughts-on-opinion-polling-in-the-ontario-2018-election/">
-    <link rel="next" href="/blog/2018/04/metricsgraphics-movements/">
-    <link rel="prev" href="/blog/2018/06/mission-control-1-0/">
+    <meta name="description" content="Like many, I've been a bit worried about the Ontario election, and have been rather obsessively checking a site called the Ontario Poll Tracker.  It has nice and shiny graphs and uses authoritative language and purports to provide a scientific analysis wh..." />
+    <meta name="author" content="William Lachance" />
+    <meta name="keywords" content="Polling, Statistics" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href="https://wlach.github.io/blog/2018/05/some-thoughts-on-opinion-polling-in-the-ontario-2018-election/" />
+    <link rel="next" href="/blog/2018/04/metricsgraphics-movements/" /> <link rel="prev" href="/blog/2018/06/mission-control-1-0/" />
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
-    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
-    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/pygments.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/scribble.css"
+    />
     <!-- Feeds -->
-    <link rel="alternate" type="application/atom+xml"
-          href="/feeds/all.atom.xml" title="Atom Feed">
-    <link rel="alternate" type="application/rss+xml"
-          href="/feeds/all.rss.xml" title="RSS Feed">
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feeds/all.atom.xml"
+      title="Atom Feed"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="/feeds/all.rss.xml"
+      title="RSS Feed"
+    />
     <!-- JS -->
     <script type="text/javascript">
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -34,186 +48,53 @@
     </script>
   </head>
   <body>
-    <!-- A standard Twitter Bootstrap nav bar -->
-    <header class="navbar navbar-default navbar-inverse"
-            role="banner">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button"
-                  class="navbar-toggle"
-                  data-toggle="collapse"
-                  data-target=".our-nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="/index.html" class="navbar-brand">William Lachance's Log</a>
+    <nav
+      class="flex items-center justify-between flex-wrap bg-gray-800 py-1 px-8"
+    >
+      <div class="flex items-center flex-shrink-0 text-gray-400 mr-6">
+        <div class="p-1">
+          <a href="/index.html"
+            ><img
+              src="/img/wlach_icon.png"
+              width="32"
+              height="32"
+              class="p rounded"
+          /></a>
         </div>
-        <div class="collapse navbar-collapse our-nav-collapse"
-             role="navigation">
-          <ul class="nav navbar-nav">
-
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Tags <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="/index.html">All Posts</a></li>
-
-<li><a href="/tags/Android.html">Android</a></li>
-
-<li><a href="/tags/ateam.html">ateam</a></li>
-
-<li><a href="/tags/Bikes.html">Bikes</a></li>
-
-<li><a href="/tags/BIXI.html">BIXI</a></li>
-
-<li><a href="/tags/Buddhism.html">Buddhism</a></li>
-
-<li><a href="/tags/Business.html">Business</a></li>
-
-<li><a href="/tags/Cats.html">Cats</a></li>
-
-<li><a href="/tags/Coffee.html">Coffee</a></li>
-
-<li><a href="/tags/Community.html">Community</a></li>
-
-<li><a href="/tags/Counting.html">Counting</a></li>
-
-<li><a href="/tags/Data.html">Data</a></li>
-
-<li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
-
-<li><a href="/tags/Docker.html">Docker</a></li>
-
-<li><a href="/tags/Ebola.html">Ebola</a></li>
-
-<li><a href="/tags/Eideticker.html">Eideticker</a></li>
-
-<li><a href="/tags/email.html">email</a></li>
-
-<li><a href="/tags/Environment.html">Environment</a></li>
-
-<li><a href="/tags/FirefoxOS.html">FirefoxOS</a></li>
-
-<li><a href="/tags/Food.html">Food</a></li>
-
-<li><a href="/tags/Free-Software.html">Free Software</a></li>
-
-<li><a href="/tags/GNOME.html">GNOME</a></li>
-
-<li><a href="/tags/GoFaster.html">GoFaster</a></li>
-
-<li><a href="/tags/hbus.html">hbus</a></li>
-
-<li><a href="/tags/Infraherder.html">Infraherder</a></li>
-
-<li><a href="/tags/Iodide.html">Iodide</a></li>
-
-<li><a href="/tags/iphone.html">iphone</a></li>
-
-<li><a href="/tags/Life.html">Life</a></li>
-
-<li><a href="/tags/Meditation.html">Meditation</a></li>
-
-<li><a href="/tags/Meta.html">Meta</a></li>
-
-<li><a href="/tags/Metrics-Graphics.html">Metrics Graphics</a></li>
-
-<li><a href="/tags/Mission-Control.html">Mission Control</a></li>
-
-<li><a href="/tags/Montreal.html">Montreal</a></li>
-
-<li><a href="/tags/Mozilla.html">Mozilla</a></li>
-
-<li><a href="/tags/mozregression.html">mozregression</a></li>
-
-<li><a href="/tags/MSF.html">MSF</a></li>
-
-<li><a href="/tags/Music.html">Music</a></li>
-
-<li><a href="/tags/Nixi.html">Nixi</a></li>
-
-<li><a href="/tags/Open-Data.html">Open Data</a></li>
-
-<li><a href="/tags/Orangutan.html">Orangutan</a></li>
-
-<li><a href="/tags/Pandaboard.html">Pandaboard</a></li>
-
-<li><a href="/tags/Perfherder.html">Perfherder</a></li>
-
-<li><a href="/tags/Performance.html">Performance</a></li>
-
-<li><a href="/tags/Philosophy.html">Philosophy</a></li>
-
-<li><a href="/tags/Polling.html">Polling</a></li>
-
-<li><a href="/tags/Profiling.html">Profiling</a></li>
-
-<li><a href="/tags/Psychology.html">Psychology</a></li>
-
-<li><a href="/tags/Python.html">Python</a></li>
-
-<li><a href="/tags/Release-Engineering.html">Release Engineering</a></li>
-
-<li><a href="/tags/Responsiveness.html">Responsiveness</a></li>
-
-<li><a href="/tags/Social-Media.html">Social Media</a></li>
-
-<li><a href="/tags/SQL.html">SQL</a></li>
-
-<li><a href="/tags/Statistics.html">Statistics</a></li>
-
-<li><a href="/tags/Talos.html">Talos</a></li>
-
-<li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
-
-<li><a href="/tags/Telemetry.html">Telemetry</a></li>
-
-<li><a href="/tags/Time.html">Time</a></li>
-
-<li><a href="/tags/Toronto.html">Toronto</a></li>
-
-<li><a href="/tags/Transit.html">Transit</a></li>
-
-<li><a href="/tags/Transit-to-Go.html">Transit to Go</a></li>
-
-<li><a href="/tags/Treeherder.html">Treeherder</a></li>
-
-<li><a href="/tags/Usability.html">Usability</a></li>
-
-<li><a href="/tags/Video.html">Video</a></li>
-
-<li><a href="/tags/Web.html">Web</a></li>
-
-<li><a href="/tags/WifiDog.html">WifiDog</a></li>
-
-<li><a href="/tags/zen.html">zen</a></li>
-
-<li><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="/About.html">About</a>
-            </li> 
-            <li><a href="/feeds/all.atom.xml">Atom</a></li>
-            <li><a href="/feeds/all.rss.xml">RSS</a></li>
-          </ul>
+        <div class="p-1">
+          <a
+            href="/index.html"
+            class="text-gray-200 font-semibold text-xl tracking-tight hover:text-white"
+            >wlach log</a
+          >
         </div>
       </div>
-    </header>
-    <div class="container">
-      <div class="row">
-
-        <!-- Main column -->
-        <div id="content" class="col-md-12">
-
-
-
-          <article>
+      <div class="flex-grow lg:flex lg:items-center">
+        <div class="text-sm lg:flex-grow">
+          <a
+            href="/About.html"
+            class="mt-4 lg:inline-block lg:mt-0 hover:text-white mr-4 text-gray-600"
+          >
+            About</a>
+          <a
+            class="mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-white mr-4"
+            href="/feeds/all.atom.xml"
+            >Atom</a
+          >
+          <a
+            class="mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-white mr-4"
+            href="/feeds/all.rss.xml"
+            >RSS</a
+          >
+        </div>
+      </div>
+    </nav>
+    <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
+         <article>
   <header>
-    <p><span class="tags"><a href="/tags/Polling.html">Polling</a>, <a href="/tags/Statistics.html">Statistics</a></span></p>
     <h1>Some thoughts on opinion polling in the Ontario 2018 election</h1>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> May 27th, 2018</p>
+    <p class="index-date">May 27th, 2018</p>
+    <p><span class="tags"><a href="/tags/Polling.html">Polling</a>  <a href="/tags/Statistics.html">Statistics</a></span></p>
   </header>
 
 <p>Like many, I&rsquo;ve been a bit worried about the Ontario election, and have been rather obsessively checking a site called the <a href="https://newsinteractives.cbc.ca/onvotes/poll-tracker/">Ontario Poll Tracker</a>.</p>
@@ -231,21 +112,25 @@
 <p>For a poll to be valid it is supposed to be &ldquo;reasonably&rdquo; reflective of the general population. Over the quantities that we&rsquo;re talking about, that means anywhere from hundreds of thousands to millions of people. If we were able to truly randomly sample a small number from this group, the results are likely to be &ldquo;representative of the whole&rdquo; (within some confidence interval). Let&rsquo;s write up a small python script to confirm this intuition:</p>
 
 <div class="brush: py">
- <pre><code># 100,000 random numbers between 0 and 1
-&gt;&gt;&gt; full_population_size = 100000
-&gt;&gt;&gt; full_sample = [random.random() for i in range(full_population_size)]
+ <div class="colorful">
+  <pre><span></span><span class="c1"># 100,000 random numbers between 0 and 1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">full_population_size</span> <span class="o">=</span> <span class="mi">100000</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">full_sample</span> <span class="o">=</span> <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">full_population_size</span><span class="p">)]</span>
 
-# average over entire result
-&gt;&gt;&gt; sum(full_sample) / full_population_size
-0.501036568906331
+<span class="c1"># average over entire result</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">sum</span><span class="p">(</span><span class="n">full_sample</span><span class="p">)</span> <span class="o">/</span> <span class="n">full_population_size</span>
+<span class="mf">0.501036568906331</span>
 
-# pull out 100 randomly selected values from the full sample and
-# get their average
-&gt;&gt;&gt; random_subset_size = 100
-&gt;&gt;&gt; random_subset = [full_sample[i] for i in [int(random.random()*100000) for j in
-                     range(random_subset_size)]]
-&gt;&gt;&gt; sum(random_subset) / random_subset_size
-0.4924555517866068</code></pre></div>
+<span class="c1"># pull out 100 randomly selected values from the full sample and</span>
+<span class="c1"># get their average</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">random_subset_size</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">random_subset</span> <span class="o">=</span> <span class="p">[</span><span class="n">full_sample</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="mi">100000</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span>
+                     <span class="nb">range</span><span class="p">(</span><span class="n">random_subset_size</span><span class="p">)]]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">sum</span><span class="p">(</span><span class="n">random_subset</span><span class="p">)</span> <span class="o">/</span> <span class="n">random_subset_size</span>
+<span class="mf">0.4924555517866068</span>
+</pre></div>
+
+</div>
 
 <p>Only a small fraction of the total population, but a result within 1% of the true value. Expressing it this way makes random sampling almost like a tautology. You probably learned this in high school. Great right?</p>
 
@@ -254,39 +139,47 @@
 <p>Just for fun, let&rsquo;s try doing that and see how it affects the results:</p>
 
 <div class="brush: py">
- <pre><code># if we take away approximately half the results with a value of
-# &gt;0.75, the population we are sampling from is reduced proportionally
-&gt;&gt;&gt; full_sample_with_half75_removed = [v for v in full_sample if v &lt;= 0.75 or random.random() &lt; 0.5]
-&gt;&gt;&gt; len(full_sample_with_half75_removed)
-87607
+ <div class="colorful">
+  <pre><span></span><span class="c1"># if we take away approximately half the results with a value of</span>
+<span class="c1"># &gt;0.75, the population we are sampling from is reduced proportionally</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">full_sample_with_half75_removed</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">full_sample</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="mf">0.75</span> <span class="ow">or</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_sample_with_half75_removed</span><span class="p">)</span>
+<span class="mi">87607</span>
 
-# the sampled value is then proportionally skewed downwards (because
-# a large percentage of the high values are no longer available)
-&gt;&gt;&gt; random_subset = [full_sample_with_half75_removed[i] for i in
-                     [int(random.random()*len(full_sample_with_half75_removed)) for j in
-                      range(random_subset_size)]
-                    ]
-&gt;&gt;&gt; sum(random_subset)/random_subset_size
-0.4585241853943395</code></pre></div>
+<span class="c1"># the sampled value is then proportionally skewed downwards (because</span>
+<span class="c1"># a large percentage of the high values are no longer available)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">random_subset</span> <span class="o">=</span> <span class="p">[</span><span class="n">full_sample_with_half75_removed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>
+                     <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">full_sample_with_half75_removed</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span>
+                      <span class="nb">range</span><span class="p">(</span><span class="n">random_subset_size</span><span class="p">)]</span>
+                    <span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">sum</span><span class="p">(</span><span class="n">random_subset</span><span class="p">)</span><span class="o">/</span><span class="n">random_subset_size</span>
+<span class="mf">0.4585241853943395</span>
+</pre></div>
+
+</div>
 
 <p>To try and get around this problem, the opinion polling company would try to demographically restrict who we were surveying past a certain point, so that the overall sample of the poll would reasonably reflect the characteristics of the population. This probably helped, but there&rsquo;s only so much you can do here. For example, if you correct for the fact that men aged 20 to 60 are less likely to answer an opinion survey, your sample is going to now consist of those weird men who <em>do</em> answer opinion surveys. Who knows what effect that&rsquo;s going to have on your results?</p>
 
 <p>I want to be clear here: this is a methodological problem. Running more opinion polls doesn&rsquo;t help. Probably some samples will be more affected by errors than others, but the problem remains regardless. Actually, let&rsquo;s show this trivially for our small example:</p>
 
 <div class="brush: py">
- <pre><code>&gt;&gt;&gt; skewed_averages = []
-&gt;&gt;&gt; for i in range(10):
-...   full_sample_with_half75_removed = [v for v in full_sample if v &lt;= 0.75 or
-                                         random.random() &lt; 0.5]
-...   random_subset = [full_sample_with_half75_removed[i] for i in
-          [int(random.random()*len(full_sample_with_half75_removed)) for j in
-           range(random_subset_size)]]
-...   skewed_averages += [sum(random_subset)/len(random_subset)]
-...
-&gt;&gt;&gt; skewed_averages
-[0.4585241853943395, 0.4271412530288919, 0.46414511969024697, 0.4360740890986547,
- 0.4779021127791633, 0.38419133106708714, 0.48688298744651576, 0.41076028280889915,
- 0.47975630795860363, 0.4381467970818846]</code></pre></div>
+ <div class="colorful">
+  <pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">skewed_averages</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="o">...</span>   <span class="n">full_sample_with_half75_removed</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">full_sample</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;=</span> <span class="mf">0.75</span> <span class="ow">or</span>
+                                         <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="o">...</span>   <span class="n">random_subset</span> <span class="o">=</span> <span class="p">[</span><span class="n">full_sample_with_half75_removed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span>
+          <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">full_sample_with_half75_removed</span><span class="p">))</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span>
+           <span class="nb">range</span><span class="p">(</span><span class="n">random_subset_size</span><span class="p">)]]</span>
+<span class="o">...</span>   <span class="n">skewed_averages</span> <span class="o">+=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">random_subset</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">random_subset</span><span class="p">)]</span>
+<span class="o">...</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">skewed_averages</span>
+<span class="p">[</span><span class="mf">0.4585241853943395</span><span class="p">,</span> <span class="mf">0.4271412530288919</span><span class="p">,</span> <span class="mf">0.46414511969024697</span><span class="p">,</span> <span class="mf">0.4360740890986547</span><span class="p">,</span>
+ <span class="mf">0.4779021127791633</span><span class="p">,</span> <span class="mf">0.38419133106708714</span><span class="p">,</span> <span class="mf">0.48688298744651576</span><span class="p">,</span> <span class="mf">0.41076028280889915</span><span class="p">,</span>
+ <span class="mf">0.47975630795860363</span><span class="p">,</span> <span class="mf">0.4381467970818846</span><span class="p">]</span>
+</pre></div>
+
+</div>
 
 <p>Each time we resampled from the main population and got a different result, but the end result was still one which was <em>far</em> off from what we know in this case was the true value (0.5). Sampling from bad data doesn&rsquo;t make up for these problems, it just gives you more bad results.</p>
 
@@ -299,50 +192,20 @@
 <center><img style="width:400px" srcset="/files/2018/05/CBC-poll-tracker-trend.png 2x" /></center>
 
 <p>tl;dr If you don&rsquo;t like the idea of <a href="https://www.theguardian.com/world/2018/apr/30/doug-ford-ontario-conservative-trump-comparison-canada">Doug Ford</a> in power, there is no reason to panic based on sites like the Ontario Poll Tracker. Spend your time doing something more productive, like convincing your friends and relatives to vote for someone who is not Conservative.</p>
-  <footer>
-    <hr/>
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-      var disqus_config = function () {
-        this.page.identifier = undefined;
-        this.page.url = undefined;
-        this.page.title = undefined;
-        this.page.category_id = undefined;
-      };
-      var disqus_shortname = 'wlach';
-      (function() {
-          var dsq = document.createElement('script');
-          dsq.type = 'text/javascript';
-          dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          dsq.setAttribute('data-timestamp', +new Date());
-          (document.head || document.body).appendChild(dsq);
-      })();
-    </script>
-    <noscript>
-      Please enable JavaScript to view the
-      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-    </noscript>
-    <ul class="pager">
-    <li class="previous">
-      <a href="/blog/2018/06/mission-control-1-0/">&larr; <em>Mission Control 1.0</em></a>
-    </li>
-    <li class="next">
-      <a href="/blog/2018/04/metricsgraphics-movements/"><em>metricsgraphics movements</em> &rarr;</a>
-    </li>
-    </ul>
-  </footer>
+  <hr/>
 </article>
-        </div>
-      </div>
-      <footer>
-        <p>Site generated by <a href="https://github.com/greghendershott/frog">Frog</a>,
-          using <a href="https://getbootstrap.com">Bootstrap</a>.</p>
-        <p>Post content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
-      </footer>
     </div>
-    <!-- </body> JS -->
-    <script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <footer class="container max-w-screen-md px-8 py-4 mx-auto less-important">
+      <p>Comments / thoughts? Feel free to send an email to wlach on protonmail.com or
+        (for Mozilla-related stuff) reach me at <code>wlach</code> on <a href="https://wiki.mozilla.org/Matrix">Mozilla's instance of Matrix</a>.</p>
+      <p>
+        Site generated by
+        <a href="https://github.com/greghendershott/frog">Frog</a>.
+        Post content is licensed under a
+        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+          >Creative Commons Attribution 4.0 Unported License</a
+        >.
+      </p>
+    </footer>
   </body>
 </html>

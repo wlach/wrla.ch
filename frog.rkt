@@ -30,7 +30,7 @@
   (~> xs
       (syntax-highlight #:python-executable "python3"
                         #:line-numbers? #f
-                        #:css-class "source")
+                        #:css-class "colorful")
       (auto-embed-tweets #:parents? #t)
       (add-racket-doc-links #:code? #t #:prose? #t)))
 

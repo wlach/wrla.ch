@@ -2,26 +2,40 @@
 <html lang="en">
   <head>
 
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Making contribution work for Firefox tooling and data projects</title>
-    <meta name="description" content="One of my favorite parts about Mozilla is mentoring and working alongside third party contributors. Somewhat surprisingly since I work on internal tools, I've had a fair amount of luck finding people to help work on projects within my purview: mozregressi...">
-    <meta name="author"      content="William Lachance">
-    <meta name="keywords"    content="Mozilla, Community">
-    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
-    <link rel="icon"      href="/favicon.ico">
-    <link rel="canonical" href="https://wlach.github.io/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/">
-    <link rel="next" href="/blog/2018/10/pydata-nyc-2018/">
-    <link rel="prev" href="/blog/2019/03/new-ideas-old-buildings/">
+    <meta name="description" content="One of my favorite parts about Mozilla is mentoring and working alongside third party contributors. Somewhat surprisingly since I work on internal tools, I've had a fair amount of luck finding people to help work on projects within my purview: mozregressi..." />
+    <meta name="author" content="William Lachance" />
+    <meta name="keywords" content="Mozilla, Community" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href="https://wlach.github.io/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/" />
+    <link rel="next" href="/blog/2018/10/pydata-nyc-2018/" /> <link rel="prev" href="/blog/2019/03/new-ideas-old-buildings/" />
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/pygments.css">
-    <link rel="stylesheet" type="text/css" href="/css/scribble.css">
-    <link rel="stylesheet" type="text/css" href="/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/pygments.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/scribble.css"
+    />
     <!-- Feeds -->
-    <link rel="alternate" type="application/atom+xml"
-          href="/feeds/all.atom.xml" title="Atom Feed">
-    <link rel="alternate" type="application/rss+xml"
-          href="/feeds/all.rss.xml" title="RSS Feed">
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feeds/all.atom.xml"
+      title="Atom Feed"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="/feeds/all.rss.xml"
+      title="RSS Feed"
+    />
     <!-- JS -->
     <script type="text/javascript">
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -34,186 +48,53 @@
     </script>
   </head>
   <body>
-    <!-- A standard Twitter Bootstrap nav bar -->
-    <header class="navbar navbar-default navbar-inverse"
-            role="banner">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button"
-                  class="navbar-toggle"
-                  data-toggle="collapse"
-                  data-target=".our-nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="/index.html" class="navbar-brand">William Lachance's Log</a>
+    <nav
+      class="flex items-center justify-between flex-wrap bg-gray-800 py-1 px-8"
+    >
+      <div class="flex items-center flex-shrink-0 text-gray-400 mr-6">
+        <div class="p-1">
+          <a href="/index.html"
+            ><img
+              src="/img/wlach_icon.png"
+              width="32"
+              height="32"
+              class="p rounded"
+          /></a>
         </div>
-        <div class="collapse navbar-collapse our-nav-collapse"
-             role="navigation">
-          <ul class="nav navbar-nav">
-
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Tags <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="/index.html">All Posts</a></li>
-
-<li><a href="/tags/Android.html">Android</a></li>
-
-<li><a href="/tags/ateam.html">ateam</a></li>
-
-<li><a href="/tags/Bikes.html">Bikes</a></li>
-
-<li><a href="/tags/BIXI.html">BIXI</a></li>
-
-<li><a href="/tags/Buddhism.html">Buddhism</a></li>
-
-<li><a href="/tags/Business.html">Business</a></li>
-
-<li><a href="/tags/Cats.html">Cats</a></li>
-
-<li><a href="/tags/Coffee.html">Coffee</a></li>
-
-<li><a href="/tags/Community.html">Community</a></li>
-
-<li><a href="/tags/Counting.html">Counting</a></li>
-
-<li><a href="/tags/Data.html">Data</a></li>
-
-<li><a href="/tags/Data-Visualization.html">Data Visualization</a></li>
-
-<li><a href="/tags/Docker.html">Docker</a></li>
-
-<li><a href="/tags/Ebola.html">Ebola</a></li>
-
-<li><a href="/tags/Eideticker.html">Eideticker</a></li>
-
-<li><a href="/tags/email.html">email</a></li>
-
-<li><a href="/tags/Environment.html">Environment</a></li>
-
-<li><a href="/tags/FirefoxOS.html">FirefoxOS</a></li>
-
-<li><a href="/tags/Food.html">Food</a></li>
-
-<li><a href="/tags/Free-Software.html">Free Software</a></li>
-
-<li><a href="/tags/GNOME.html">GNOME</a></li>
-
-<li><a href="/tags/GoFaster.html">GoFaster</a></li>
-
-<li><a href="/tags/hbus.html">hbus</a></li>
-
-<li><a href="/tags/Infraherder.html">Infraherder</a></li>
-
-<li><a href="/tags/Iodide.html">Iodide</a></li>
-
-<li><a href="/tags/iphone.html">iphone</a></li>
-
-<li><a href="/tags/Life.html">Life</a></li>
-
-<li><a href="/tags/Meditation.html">Meditation</a></li>
-
-<li><a href="/tags/Meta.html">Meta</a></li>
-
-<li><a href="/tags/Metrics-Graphics.html">Metrics Graphics</a></li>
-
-<li><a href="/tags/Mission-Control.html">Mission Control</a></li>
-
-<li><a href="/tags/Montreal.html">Montreal</a></li>
-
-<li><a href="/tags/Mozilla.html">Mozilla</a></li>
-
-<li><a href="/tags/mozregression.html">mozregression</a></li>
-
-<li><a href="/tags/MSF.html">MSF</a></li>
-
-<li><a href="/tags/Music.html">Music</a></li>
-
-<li><a href="/tags/Nixi.html">Nixi</a></li>
-
-<li><a href="/tags/Open-Data.html">Open Data</a></li>
-
-<li><a href="/tags/Orangutan.html">Orangutan</a></li>
-
-<li><a href="/tags/Pandaboard.html">Pandaboard</a></li>
-
-<li><a href="/tags/Perfherder.html">Perfherder</a></li>
-
-<li><a href="/tags/Performance.html">Performance</a></li>
-
-<li><a href="/tags/Philosophy.html">Philosophy</a></li>
-
-<li><a href="/tags/Polling.html">Polling</a></li>
-
-<li><a href="/tags/Profiling.html">Profiling</a></li>
-
-<li><a href="/tags/Psychology.html">Psychology</a></li>
-
-<li><a href="/tags/Python.html">Python</a></li>
-
-<li><a href="/tags/Release-Engineering.html">Release Engineering</a></li>
-
-<li><a href="/tags/Responsiveness.html">Responsiveness</a></li>
-
-<li><a href="/tags/Social-Media.html">Social Media</a></li>
-
-<li><a href="/tags/SQL.html">SQL</a></li>
-
-<li><a href="/tags/Statistics.html">Statistics</a></li>
-
-<li><a href="/tags/Talos.html">Talos</a></li>
-
-<li><a href="/tags/Taskcluster.html">Taskcluster</a></li>
-
-<li><a href="/tags/Telemetry.html">Telemetry</a></li>
-
-<li><a href="/tags/Time.html">Time</a></li>
-
-<li><a href="/tags/Toronto.html">Toronto</a></li>
-
-<li><a href="/tags/Transit.html">Transit</a></li>
-
-<li><a href="/tags/Transit-to-Go.html">Transit to Go</a></li>
-
-<li><a href="/tags/Treeherder.html">Treeherder</a></li>
-
-<li><a href="/tags/Usability.html">Usability</a></li>
-
-<li><a href="/tags/Video.html">Video</a></li>
-
-<li><a href="/tags/Web.html">Web</a></li>
-
-<li><a href="/tags/WifiDog.html">WifiDog</a></li>
-
-<li><a href="/tags/zen.html">zen</a></li>
-
-<li><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="/About.html">About</a>
-            </li> 
-            <li><a href="/feeds/all.atom.xml">Atom</a></li>
-            <li><a href="/feeds/all.rss.xml">RSS</a></li>
-          </ul>
+        <div class="p-1">
+          <a
+            href="/index.html"
+            class="text-gray-200 font-semibold text-xl tracking-tight hover:text-white"
+            >wlach log</a
+          >
         </div>
       </div>
-    </header>
-    <div class="container">
-      <div class="row">
-
-        <!-- Main column -->
-        <div id="content" class="col-md-12">
-
-
-
-          <article>
+      <div class="flex-grow lg:flex lg:items-center">
+        <div class="text-sm lg:flex-grow">
+          <a
+            href="/About.html"
+            class="mt-4 lg:inline-block lg:mt-0 hover:text-white mr-4 text-gray-600"
+          >
+            About</a>
+          <a
+            class="mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-white mr-4"
+            href="/feeds/all.atom.xml"
+            >Atom</a
+          >
+          <a
+            class="mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-white mr-4"
+            href="/feeds/all.rss.xml"
+            >RSS</a
+          >
+        </div>
+      </div>
+    </nav>
+    <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
+         <article>
   <header>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>, <a href="/tags/Community.html">Community</a></span></p>
     <h1>Making contribution work for Firefox tooling and data projects</h1>
-    <p class='index-date'><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Nov 26th, 2018</p>
+    <p class="index-date">Nov 26th, 2018</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Community.html">Community</a></span></p>
   </header>
 
 <p>One of my favorite parts about Mozilla is mentoring and working alongside third party contributors. Somewhat surprisingly since I work on internal tools, I&rsquo;ve had a fair amount of luck finding people to help work on projects within my purview: <a href="https://mozilla.github.io/mozregression">mozregression</a>, <a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder">perfherder</a>, <a href="https://metricsgraphics.org">metrics graphics</a>, and others have all benefited from the contributions of people outside of Mozilla.</p>
@@ -243,50 +124,20 @@
 <p>As time goes by, you just continue this process. Depending on the contributor, they may start coming up with their own ideas for how a project might be improved or they might still want to follow your lead (or that of the team), but at the least I generally see an improvement in their self-directedness and confidence after a period of sustained contribution. In either case, the key to success remains the same: sustained and positive communication and sharing of goals and aspirations, making sure that both parties are getting something positive out of the experience. Where possible, I try to include contributors in team meetings. Where there&rsquo;s an especially close working relationship (e.g. <a href="https://summerofcode.withgoogle.com/archive/">Google Summer of Code</a>). I try to set up a weekly one on one. Regardless, I make reviewing code, answering questions, and providing suggestions on how to move forward a top priority (i.e. not something I&rsquo;ll leave for a few days). It&rsquo;s the least I can do if someone is willing to take time out to contribute to my project.</p>
 
 <p>If this seems similar to the best practices for how members of a team should onboard each other and work together, that&rsquo;s not really a coincidence. Obviously the relationship is a little different because we&rsquo;re not operating with a formal managerial structure and usually the work is unpaid: I try to bear that mind and make double sure that contributors are really getting some useful skills and habits that they can take with them to future jobs and other opportunities, while also emphasizing that their code contributions are their own, not Mozilla&rsquo;s. So far it seems to have worked out pretty well for all concerned (me, Mozilla, and the contributors).</p>
-  <footer>
-    <hr/>
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-      var disqus_config = function () {
-        this.page.identifier = undefined;
-        this.page.url = undefined;
-        this.page.title = undefined;
-        this.page.category_id = undefined;
-      };
-      var disqus_shortname = 'wlach';
-      (function() {
-          var dsq = document.createElement('script');
-          dsq.type = 'text/javascript';
-          dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          dsq.setAttribute('data-timestamp', +new Date());
-          (document.head || document.body).appendChild(dsq);
-      })();
-    </script>
-    <noscript>
-      Please enable JavaScript to view the
-      <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-    </noscript>
-    <ul class="pager">
-    <li class="previous">
-      <a href="/blog/2019/03/new-ideas-old-buildings/">&larr; <em>New ideas, old buildings</em></a>
-    </li>
-    <li class="next">
-      <a href="/blog/2018/10/pydata-nyc-2018/"><em>pydata nyc 2018</em> &rarr;</a>
-    </li>
-    </ul>
-  </footer>
+  <hr/>
 </article>
-        </div>
-      </div>
-      <footer>
-        <p>Site generated by <a href="https://github.com/greghendershott/frog">Frog</a>,
-          using <a href="https://getbootstrap.com">Bootstrap</a>.</p>
-        <p>Post content is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.
-      </footer>
     </div>
-    <!-- </body> JS -->
-    <script type="text/javascript" src="//code.jquery.com/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <footer class="container max-w-screen-md px-8 py-4 mx-auto less-important">
+      <p>Comments / thoughts? Feel free to send an email to wlach on protonmail.com or
+        (for Mozilla-related stuff) reach me at <code>wlach</code> on <a href="https://wiki.mozilla.org/Matrix">Mozilla's instance of Matrix</a>.</p>
+      <p>
+        Site generated by
+        <a href="https://github.com/greghendershott/frog">Frog</a>.
+        Post content is licensed under a
+        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+          >Creative Commons Attribution 4.0 Unported License</a
+        >.
+      </p>
+    </footer>
   </body>
 </html>
