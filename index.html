@@ -92,6 +92,43 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2020/06/mozregression-gui-now-available-for-linux/">mozregression GUI: now available for Linux</a></h2>
+    <p class="index-date">Jun 29th, 2020</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
+  </header>
+
+<p>Thanks to <a href="https://github.com/AnAverageHuman">@AnAverageHuman</a>, <a href="https://mozilla.github.io/mozregression">mozregression</a> once again has an easy to use and install GUI version for Linux! This used to work a few years ago, but got broken with some changes in the mozregression-python2 era and didn&rsquo;t get resolved until now:</p>
+
+<div class="figure"><img src="/files/2020/06/mozregression-on-linux.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>This is an area where using telemetry in mozregression can help us measure the impact of a change like this: although Windows still dominates in terms of marketshare, Linux is very widely used by contributors &mdash; of the usage of mozregression in the past 2 months, fully 30% of the sessions were on Linux (and it is possible we were undercounting that due to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1646402">bug 1646402</a>):</p>
+
+<div class="figure"><img src="/files/2020/06/mozregression-usage-share-by-os.png" alt="" />
+ <p class="caption"></p></div>
+
+<p><a href="https://sql.telemetry.mozilla.org/queries/72363/source">link to query</a> (internal-only)</p>
+
+<p>It will be interesting to watch the usage numbers for Linux evolve over the next few months. In particular, I&rsquo;m curious to see what percentage of users on that platform prefer a GUI.</p>
+
+<h2 id="appendix-reducing-mozregression-guis-massive-size">Appendix: reducing mozregression-GUI&rsquo;s massive size</h2>
+
+<p>One thing that&rsquo;s bothered me a bunch lately is that the mozregression GUI&rsquo;s size is <em>massive</em> and this is even more apparent on Linux, where the initial distribution of the GUI came in at over 120 megabytes! Why so big? There were a few reasons:</p>
+
+<ol>
+ <li><a href="https://pypi.org/project/PySide2/">PySide2</a> (the GUI library we use) is very large (10s of megabytes), and <a href="https://www.pyinstaller.org/">PyInstaller</a> packages <em>all of it</em> by default into your application distribution.</li>
+ <li>The binary/rust portions of the <a href="https://pypi.org/project/glean-sdk/">Glean Python SDK</a> were been built with debugging information included (basically as a carry-over when it was a pre-alpha product), which made it 38 megabytes big (!) on Linux.</li>
+ <li>On Linux at least, a large number of other system libraries are packaged into the distribution.</li></ol>
+
+<p>A few aspects of this were under our control: Ian Moody (:Kwan) and myself crafted a script to manually remove unneeded PySide2 libraries as part of the packaging process. The Glean team was awesome-as-always and quickly rebuilt Glean without debugging information (this was basically an oversight). Finally, I managed to shave off a few more megabytes by reverting the Linux build to an earlier version of Ubuntu (Xenial), which is something I had been meaning to do anyway.</p>
+
+<p>Even after doing all of these things, the end result is still a little underwhelming: the mozregression GUI distribution on Linux is still 79.5 megabytes big. There are probably other things we could do, but we&rsquo;re definitely entering the land of diminishing returns.</p>
+
+<p>Honestly, my main takeaway is just not to build an application like this in Python unless you absolutely have to (e.g. you&rsquo;re building an application which needs system-level access). The web is a pretty wonderful medium for creating graphical applications these days, and by using it you sidestep these type of installation issues.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2020/05/the-humble-blog/">The humble blog</a></h2>
     <p class="index-date">May 24th, 2020</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -588,18 +625,6 @@
  <li>Supporting new Mozilla products which aren&rsquo;t built (entirely) out of mozilla-central,  most especially Fenix (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1556042">bug 1556042</a>)  and Firefox Reality (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1568488">bug 1568488</a>).  This is probably rather involved (mozregression has a big pile of assumptions about how  the builds it pulls down are stored and organized) but that doesn&rsquo;t mean that  this work isn&rsquo;t necessary.</li></ul>
 
 <p>If you&rsquo;re interested in working on any of the above, please feel free to dive in on one of the above bugs. I can&rsquo;t offer formal mentorship, but am happy to help out where I can.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2019/09/time-for-some-project-updates/">Time for some project updates</a></h2>
-    <p class="index-date">Sep 16th, 2019</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>I&rsquo;ve been a bit bad about updating this blog over the past year or so, though this hasn&rsquo;t meant there haven&rsquo;t been things to talk about. For the next couple weeks, I&rsquo;m going to try to give some updates on the projects I have been spending time on in the past year, both old and new. I&rsquo;m going to begin with some of the less-loved things I&rsquo;ve been working on, partially in an attempt to motivate some forward-motion on things that I believe are rather important to Mozilla.</p>
-
-<p>More to come.</p> 
   <hr/>
 </article>
 <footer>

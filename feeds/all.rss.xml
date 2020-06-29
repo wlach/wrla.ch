@@ -4,9 +4,44 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wlach.github.io/index.html</link>
-  <lastBuildDate>Sun, 24 May 2020 18:01:24 UT</lastBuildDate>
-  <pubDate>Sun, 24 May 2020 18:01:24 UT</pubDate>
+  <lastBuildDate>Mon, 29 Jun 2020 20:39:06 UT</lastBuildDate>
+  <pubDate>Mon, 29 Jun 2020 20:39:06 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>mozregression GUI: now available for Linux</title>
+   <link>https://wlach.github.io/blog/2020/06/mozregression-gui-now-available-for-linux/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-06-mozregression-gui-now-available-for-linux</guid>
+   <pubDate>Mon, 29 Jun 2020 20:39:06 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;Thanks to &lt;a href="https://github.com/AnAverageHuman"&gt;@AnAverageHuman&lt;/a&gt;, &lt;a href="https://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt; once again has an easy to use and install GUI version for Linux! This used to work a few years ago, but got broken with some changes in the mozregression-python2 era and didn&amp;rsquo;t get resolved until now:&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2020/06/mozregression-on-linux.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;This is an area where using telemetry in mozregression can help us measure the impact of a change like this: although Windows still dominates in terms of marketshare, Linux is very widely used by contributors &amp;mdash; of the usage of mozregression in the past 2 months, fully 30% of the sessions were on Linux (and it is possible we were undercounting that due to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1646402"&gt;bug 1646402&lt;/a&gt;):&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2020/06/mozregression-usage-share-by-os.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href="https://sql.telemetry.mozilla.org/queries/72363/source"&gt;link to query&lt;/a&gt; (internal-only)&lt;/p&gt;
+
+&lt;p&gt;It will be interesting to watch the usage numbers for Linux evolve over the next few months. In particular, I&amp;rsquo;m curious to see what percentage of users on that platform prefer a GUI.&lt;/p&gt;
+
+&lt;h2 id="appendix-reducing-mozregression-guis-massive-size"&gt;Appendix: reducing mozregression-GUI&amp;rsquo;s massive size&lt;/h2&gt;
+
+&lt;p&gt;One thing that&amp;rsquo;s bothered me a bunch lately is that the mozregression GUI&amp;rsquo;s size is &lt;em&gt;massive&lt;/em&gt; and this is even more apparent on Linux, where the initial distribution of the GUI came in at over 120 megabytes! Why so big? There were a few reasons:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;&lt;a href="https://pypi.org/project/PySide2/"&gt;PySide2&lt;/a&gt; (the GUI library we use) is very large (10s of megabytes), and &lt;a href="https://www.pyinstaller.org/"&gt;PyInstaller&lt;/a&gt; packages &lt;em&gt;all of it&lt;/em&gt; by default into your application distribution.&lt;/li&gt;
+ &lt;li&gt;The binary/rust portions of the &lt;a href="https://pypi.org/project/glean-sdk/"&gt;Glean Python SDK&lt;/a&gt; were been built with debugging information included (basically as a carry-over when it was a pre-alpha product), which made it 38 megabytes big (!) on Linux.&lt;/li&gt;
+ &lt;li&gt;On Linux at least, a large number of other system libraries are packaged into the distribution.&lt;/li&gt;&lt;/ol&gt;
+
+&lt;p&gt;A few aspects of this were under our control: Ian Moody (:Kwan) and myself crafted a script to manually remove unneeded PySide2 libraries as part of the packaging process. The Glean team was awesome-as-always and quickly rebuilt Glean without debugging information (this was basically an oversight). Finally, I managed to shave off a few more megabytes by reverting the Linux build to an earlier version of Ubuntu (Xenial), which is something I had been meaning to do anyway.&lt;/p&gt;
+
+&lt;p&gt;Even after doing all of these things, the end result is still a little underwhelming: the mozregression GUI distribution on Linux is still 79.5 megabytes big. There are probably other things we could do, but we&amp;rsquo;re definitely entering the land of diminishing returns.&lt;/p&gt;
+
+&lt;p&gt;Honestly, my main takeaway is just not to build an application like this in Python unless you absolutely have to (e.g. you&amp;rsquo;re building an application which needs system-level access). The web is a pretty wonderful medium for creating graphical applications these days, and by using it you sidestep these type of installation issues.&lt;/p&gt;</description></item>
   <item>
    <title>The humble blog</title>
    <link>https://wlach.github.io/blog/2020/05/the-humble-blog/?utm_source=all&amp;utm_medium=RSS</link>
@@ -799,27 +834,4 @@
 
 &lt;p&gt;We&amp;rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&amp;rsquo;t (and shouldn&amp;rsquo;t) draw any kind of conclusion whatsoever.&lt;/p&gt;
 
-&lt;p&gt;Ok, so that&amp;rsquo;s just science 101: don&amp;rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &amp;mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.&lt;/p&gt;</description></item>
-  <item>
-   <title>Giving and receiving help at Mozilla</title>
-   <link>https://wlach.github.io/blog/2018/01/giving-and-receiving-help-at-mozilla/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2018-01-giving-and-receiving-help-at-mozilla</guid>
-   <pubDate>Wed, 17 Jan 2018 18:49:34 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;This is going to sound corny, but helping people really is one of my favorite things at Mozilla, even with &lt;a href="https://mozilla.github.io/mozregression/"&gt;projects I have mostly moved on from&lt;/a&gt;. As someone who primarily works on internal tools, I love hearing about bugs in the software I maintain or questions on how to use it best.&lt;/p&gt;
-
-&lt;p&gt;Given this, you might think that getting in touch with me via irc or slack is the fastest and best way to get your issue addressed. We certainly have a culture of using these instant-messaging applications at Mozilla for everything and anything. Unfortunately, I have found that being &amp;ldquo;always on&amp;rdquo; to respond to everything hasn&amp;rsquo;t been positive for either my productivity or mental health. My personal situation aside, getting pinged on irc while I&amp;rsquo;m out of the office often results in stuff getting lost &amp;mdash; the person who asked me the question is often gone by the time I return and am able to answer.&lt;/p&gt;
-
-&lt;p&gt;With that in mind, here&amp;rsquo;s some notes on my preferred conversation style when making initial contact about an issue:&lt;/p&gt;
-
-&lt;ol&gt;
- &lt;li&gt;Please don&amp;rsquo;t send context-free pings on irc. It has been &lt;a href="http://edunham.net/2017/10/05/saying_ping.html"&gt;explained elsewhere&lt;/a&gt;  why this doesn&amp;rsquo;t work that well, so I won&amp;rsquo;t repeat the argument here.&lt;/li&gt;
- &lt;li&gt;If you are at all suspicious that your issue might be a bug in some software  maintain, just &lt;a href="https://bugzilla.mozilla.org/enter_bug.cgi"&gt;file a bug&lt;/a&gt; and needinfo me. That puts us right on the path to documenting  the problem and getting to a resolution &amp;mdash; even if something turns out to not  be a bug, if you&amp;rsquo;re seeing an unexpected error it points to a usability issue.&lt;/li&gt;
- &lt;li&gt;For everything else, email is best. I do check it quite frequently between  bursts of work (i.e. many times a day). I promise I won&amp;rsquo;t leave you hanging  for days on end as long as I&amp;rsquo;m not on vacation.&lt;/li&gt;&lt;/ol&gt;
-
-&lt;p&gt;These aren&amp;rsquo;t ironclad rules. If your question pertains to a project I&amp;rsquo;m &lt;em&gt;actively&lt;/em&gt; working on, it might make sense to ping me on irc first (preferably on a channel where other people are around who might also be able to help). If it&amp;rsquo;s an actual &lt;em&gt;emergency&lt;/em&gt;, then of course talk to me on irc straight away (or even call me on my phone) &amp;mdash; if I don&amp;rsquo;t respond, then fall back to filing bug or sending email. Use common sense.&lt;/p&gt;
-
-&lt;p&gt;One of my new years resolutions is to also apply these rules to my communications with others at Mozilla as well, so if you see my violating it feel free to point me back at this post. Or just use this handy meme I created:&lt;/p&gt;
-
-&lt;center&gt;&lt;img src="/files/2018/01/scale-of-asking.jpg" /&gt;&lt;/center&gt;</description></item></channel></rss>
+&lt;p&gt;Ok, so that&amp;rsquo;s just science 101: don&amp;rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &amp;mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.&lt;/p&gt;</description></item></channel></rss>

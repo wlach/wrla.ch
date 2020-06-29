@@ -64,6 +64,7 @@ https://wlach.github.io/blog/2009/07/iphone-hackathon-4-charity-halifax-edition/
 https://wlach.github.io/blog/2011/09/updates-on-my-ridiculous-pet-projects/
 https://wlach.github.io/blog/2015/11/perfherder-onward/
 https://wlach.github.io/blog/2018/02/derived-versus-direct/
+https://wlach.github.io/blog/2020/06/mozregression-gui-now-available-for-linux/
 https://wlach.github.io/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/
 https://wlach.github.io/blog/2010/02/it-8217-s-alive/
 https://wlach.github.io/blog/2014/03/upcoming-travels-to-japan-and-taiwan/
