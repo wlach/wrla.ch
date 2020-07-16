@@ -1,0 +1,25 @@
+graph TB
+    subgraph application
+    fenix(Fenix)
+    end
+    subgraph pings
+    baseline_ping(Baseline)
+    metrics_ping(Metrics)
+    migration_ping(Migration)
+    moar_pings(...)
+    end
+    subgraph metrics
+    logins_store_unlock_count
+    metrics_has_open_tabs
+    migration_open_tabs_detected
+    migration_search_any_failures
+    dotdotdot(...)
+    end
+    fenix-->baseline_ping
+    fenix-->metrics_ping
+    fenix-->migration_ping
+    fenix-->moar_pings
+    metrics_ping-->logins_store_unlock_count
+    metrics_ping-->metrics_has_open_tabs
+    migration_ping-->migration_open_tabs_detected
+    migration_ping-->migration_search_any_failures

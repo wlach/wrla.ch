@@ -92,6 +92,42 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2014/08/a-new-meditation-app/">A new meditation app</a></h2>
+    <p class="index-date">Aug 14th, 2014</p>
+    <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Meditation.html">Meditation</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/zen.html">zen</a></span></p>
+  </header>
+
+<p>I had some time on my hands two weekends ago and was feeling a bit of an itch to build something, so I decided to do a project I&#8217;ve had in the back of my head for a while: a meditation timer.</p>
+
+<p>If you&#8217;ve been following this log, you&#8217;d know that <a href="http://wrla.ch/blog/category/meditation/">meditation</a> has been a pretty major interest of mine for the past year. The foundation of my practice is a daily round of seated meditation at home, where I have been attempting to follow the breath and generally try to connect with the world for a set period every day (usually varying between 10 and 30 minutes, depending on how much of a rush I&#8217;m in).</p>
+
+<p>Clock watching is rather distracting while sitting so having a tool to notify you when a certain amount of time has elapsed is quite useful. Writing a smartphone app to do this is an obvious idea, and indeed approximately a zillion of these things have been written for Android and iOS. Unfortunately, most are not very good. Really, I just want something that does this:</p>
+
+<ol>
+ <li>Select a meditation length (somewhere between 10 and 40 minutes).</li>
+ <li>Sound a bell after a short preparation to demarcate the beginning of meditation.</li>
+ <li>While the meditation period is ongoing, do a countdown of the time remaining (not strictly required, but useful for peace of mind in case you&#8217;re wondering whether you&#8217;ve really only sat for 25 minutes).</li>
+ <li>Sound a bell when the meditation ends.</li></ol>
+
+<p>Yes, meditation can get more complex than that. In Zen practice, for example, sometimes you have several periods of varying length, broken up with kinhin (walking meditation). However, that mostly happens in the context of a formal setting (e.g. <a href="http://en.wikipedia.org/wiki/Zendo">a Zendo</a>) where you leave your smartphone at the door. Trying to shoehorn all that into an app needlessly complicates what should be simple.</p>
+
+<p>Even worse are the apps which &#8220;chart&#8221; your progress or have other gimmicks to connect you to a virtual &#8220;community&#8221; of meditators. I have to say I find that kind of stuff really turns me off. Meditation should be about connecting with reality in a more fundamental way, not charting gamified statistics or interacting online. We already have way too much of that going on elsewhere in our lives without adding even more to it.</p>
+
+<p>So, you might ask why the alarm feature of most clock apps isn&#8217;t sufficient? Really, it is most of the time. A specialized app can make selecting the interval slightly more convenient and we can preselect an appropriate bell sound up front. It&#8217;s also nice to hear something to demarcate the start of a meditation session. But honestly I didn&#8217;t have much of a reason to write this other than the fact than I could. Outside of work, I&#8217;ve been in a bit of a creative rut lately and felt like I needed to build something, anything and put it out into the world (even if it&#8217;s tiny and only a very incremental improvement over what&#8217;s out there already). So here it is:</p>
+
+<p><a href="/files/2014/08/meditation-timer-screen.png"><img src="/files/2014/08/meditation-timer-screen.png" alt="meditation-timer-screen" width="320" height="483" class="alignnone size-full wp-image-1089" srcset="/files/2014/08/meditation-timer-screen-198x300.png 198w, /files/2014/08/meditation-timer-screen.png 320w" sizes="(max-width: 320px) 100vw, 320px" /></a></p>
+
+<p>The app was written entirely in HTML5 so it should work fine on pretty much any reasonably modern device, desktop or mobile. I tested it on my Nexus 5 (Chrome, Firefox for Android)<sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup>, FirefoxOS Flame, and on my laptop (Chrome, Firefox, Safari). It lives on a <a href="http://meditation.wrla.ch">subdomain of this site</a> or you can <a href="https://marketplace.firefox.com/app/meditation/">grab it from the Firefox Marketplace</a> if you&#8217;re using some variant of Firefox (OS). The source, such as it is, <a href="http://github.com/wlach/meditation">can be found</a> on github.</p>
+
+<p>I should acknowledge taking some design inspiration from the <a href="http://helloform.com/projects/mind/">Mind application</a> for iOS, which has a similarly minimalistic take on things. Check that out too if you have an iPhone or iPad!</p>
+
+<p>Happy meditating!</p>
+
+<p><sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup> Note that there isn&#8217;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock">requestWakeLock</a> API to make sure that doesn&#8217;t happen. I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113">a bug</a> to get this implemented on Firefox for Android.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2014/07/new-city-new-cellphone-provider/">New city, new cellphone provider</a></h2>
     <p class="index-date">Jul 12th, 2014</p>
     <p><span class="tags"><a href="/tags/Toronto.html">Toronto</a></span></p>
@@ -374,18 +410,6 @@
 <p>(apologies for the low quality of the video &#8212; should be fixed with <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=980479">this bug</a> next week)</p>
 
 <p>As it turns out, this view has also proven to be particularly useful when working with the new entropy measurements in Eideticker which I&#8217;ve been using to measure checkerboarding (redraw delay) on FirefoxOS. More on that next week.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2014/03/the-highest-form/">The highest form</a></h2>
-    <p class="index-date">Mar 2nd, 2014</p>
-    <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>  <a href="/tags/Cats.html">Cats</a>  <a href="/tags/Meditation.html">Meditation</a>  <a href="/tags/zen.html">zen</a></span></p>
-  </header>
-
-<p><a href="/files/2014/03/friedrich_shikatanza.jpg"><img src="/files/2014/03/friedrich_shikatanza.jpg" alt="friedrich_shikatanza" width="1024" height="768" class="alignnone size-full wp-image-1000" srcset="/files/2014/03/friedrich_shikatanza-300x225.jpg 300w, /files/2014/03/friedrich_shikatanza.jpg 1024w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></p>
-
-<p>He sits on the edge of my couch, stoic. At rest, yet alert for anything to happen at any moment. Whether that be a mouse running across the room (fat chance here) or me getting up to go into the kitchen. I took this picture just after zazen (meditating) &#8212; I struggle and struggle and yet right beside me sits a creature that constantly practices in the highest form (shikantaza, &#8220;just sitting&#8221;) without even trying. An example for me to follow?</p> 
   <hr/>
 </article>
 <footer>
