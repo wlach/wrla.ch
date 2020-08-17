@@ -4,7 +4,59 @@
  <link rel="self" href="https://wlach.github.io/feeds/all.atom.xml" />
  <link href="https://wlach.github.io/index.html" />
  <id>urn:https-wlach-github-io:-index-html</id>
- <updated>2020-07-16T18:42:44Z</updated>
+ <updated>2020-08-17T19:01:57Z</updated>
+ <entry>
+  <title type="text">mozregression and older builds</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2020/08/mozregression-and-older-builds/?utm_source=all&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2020-08-mozregression-and-older-builds</id>
+  <published>2020-08-17T19:01:57Z</published>
+  <updated>2020-08-17T19:01:57Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;Periodically the discussion comes up about pruning away old stored Firefox build artifacts in S3. Each build is tens of megabytes, multiply that by the number of platforms we support and the set of revisions we churn through on a daily basis, and pretty soon you&amp;rsquo;re talking about real money.&lt;/p&gt;
+
+&lt;p&gt;This came up recently in a discussion about &lt;a href="https://groups.google.com/g/mozilla.dev.platform/c/0OV_M3b-cMM/m/kkknfFdECgAJ"&gt;removing the legacy taskcluster deployment&lt;/a&gt; &amp;mdash; what do we actually lose by cutting back our archive of integration builds? The main reason to keep them around is to facilitate bisection testing with &lt;a href="https://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt;, to find out when a bug was introduced. Up to now, discussions about this have been a bit hand-wavey: we do keep logs about who&amp;rsquo;s accessing old builds, but it&amp;rsquo;s never been clear whether it was mozregression accessing them or something else.&lt;/p&gt;
+
+&lt;p&gt;Happily, now that &lt;a href="/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/"&gt;mozregression has some telemetry&lt;/a&gt;, it&amp;rsquo;s a little easier to get some answers on what people are actually doing. This query gets the distribution of build ages (launched or bisected) over the past 6 months, at a month long granularity.&lt;sup&gt;&lt;a href="#2020-08-17-mozregression-and-older-builds-footnote-1-definition" name="2020-08-17-mozregression-and-older-builds-footnote-1-return"&gt;1&lt;/a&gt;&lt;/sup&gt; Ages are relative to the date mozregression was launched: for example, if someone asked for a build from May 2019 in June 2020, the number would be &amp;ldquo;13&amp;rdquo;.&lt;/p&gt;
+
+&lt;div class="brush: sql"&gt;
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_app&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_build_type&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;build_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="n"&gt;DATE_DIFF&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="k"&gt;IF&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PARSE_DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%Y-%m-%d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="n"&gt;PARSE_DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%Y-%m-%d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_launch_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))),&lt;/span&gt; &lt;span class="k"&gt;MONTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;build_age&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="n"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fx&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org_mozilla_mozregression&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;usage&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;DATE_SUB&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;CURRENT_DATE&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="nb"&gt;INTERVAL&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="k"&gt;MONTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;client_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app_display_version&lt;/span&gt; &lt;span class="k"&gt;NOT&lt;/span&gt; &lt;span class="k"&gt;LIKE&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;%dev%&amp;#39;&lt;/span&gt;
+  &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_build_type&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+       &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_launch_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;I ran this query on sql.telemetry.mozilla.org and generated a box plot, broken down by product and build type:&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2020/08/mozregression-build-age-box-plot.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href="https://sql.telemetry.mozilla.org/queries/73968#184980"&gt;link&lt;/a&gt; (requires Mozilla LDAP)&lt;/p&gt;
+
+&lt;p&gt;Unsurprisingly, Firefox shippable builds are the number one thing people try to bisect. Let&amp;rsquo;s take a little bit of a closer look at what&amp;rsquo;s going on there:&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2020/08/mozregression-build-age-box-plot-detail.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;The median value is 1, which indicates that most people are bisecting builds within one month of the day in which mozregression was run. And the &lt;a href="https://www.statisticshowto.com/upper-and-lower-fences/"&gt;upper fence&lt;/a&gt; result is 6, suggesting that most of the time people are looking at a regression range that is within a 6 month range. However, looking more closely at the data points themselves (the little points in the chart above), there are a considerable number of outliers where a range greater than 20 months was asked for.&lt;/p&gt;
+
+&lt;p&gt;&amp;hellip; which brings up to the question that we want to answer. Given that getting old builds isn&amp;rsquo;t that common (which we sort of knew already, based on the access patterns in the S3 logs), what is the impact of the times that we do? And it&amp;rsquo;s here where I have to throw up my hands and say &amp;ldquo;I don&amp;rsquo;t know&amp;rdquo; and suggest that we go back to empirical observation and user research.&lt;/p&gt;
+
+&lt;p&gt;You can go back to the thread I linked above, and see that core Firefox/Gecko developers find the ability to get a precise regression range for older revisions valuable. One thing that&amp;rsquo;s worth mentioning is that mozregression isn&amp;rsquo;t run that often, compared to a product that we ship: on the order of 50 to 100 times per a day. But when it comes to internal tooling, a small amount of use might have a big impact: if a mozregression invocation a developer a few hours (or more), that&amp;rsquo;s a real benefit to Firefox and Mozilla. The same argument might apply here, where a small number of bisections on older builds might have a disproportionate impact on the quality of the product.&lt;/p&gt;
+
+&lt;div class="footnotes"&gt;
+ &lt;ol&gt;
+  &lt;li id="2020-08-17-mozregression-and-older-builds-footnote-1-definition" class="footnote-definition"&gt;
+   &lt;p&gt;I only added the telemetry to capture this information &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1651401"&gt;relatively recently&lt;/a&gt;, so we&amp;rsquo;re actually only looking at about a month of data in this post. We&amp;rsquo;ll have more complete results later this year.&amp;nbsp;&lt;a href="#2020-08-17-mozregression-and-older-builds-footnote-1-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</content></entry>
  <entry>
   <title type="text">Mozilla Telemetry in 2020: From "Just Firefox" to a "Galaxy of Data"</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2020/07/mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data/?utm_source=all&amp;utm_medium=Atom" />
@@ -906,36 +958,4 @@
  &lt;li&gt;&lt;a href="https://github.com/hamilton"&gt;Hamilton&lt;/a&gt;&amp;rsquo;s back as co-maintainer! This has been especially helpful  as he understands much of the historical context of metricsgraphics better than I do.&lt;/li&gt;
  &lt;li&gt;We&amp;rsquo;ve merged in a large number of small fixes and improvements into the codebase,  thanks to myself and a number of other contributors. Special shout-out to Thomas  Champagne, who has contributed a &lt;a href="https://github.com/metricsgraphics/metrics-graphics/commits?author=thomaschampagne"&gt;large number of nifty new features&lt;/a&gt;.&lt;/li&gt;
  &lt;li&gt;We moved the project from Mozilla to its &lt;a href="https://github.com/metricsgraphics/"&gt;own organization&lt;/a&gt; on  github. This feels like a much better way forward for a project which is supposed to be useful  far outside the bounds of Mozilla, and hopeful makes contributors feel more like the first-class  citizens of the project that they actually are.&lt;/li&gt;
- &lt;li&gt;We have a GSOC intern! As part of the Mozilla GSOC, Yunhao Zheng is going to be working on  adding rich brushing/zooming support to Metrics Graphics, which should be quite useful for  visualizing complex data in projects like &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; (&lt;a href="https://docs.google.com/document/d/1_KIOJtemqlCBktDdfdjDuS4XhICeaKO3QhNRwbnnf-g/"&gt;Project outline&lt;/a&gt;, &lt;a href="https://summerofcode.withgoogle.com/projects/#5422620527296512"&gt;Yunhao&amp;rsquo;s proposal&lt;/a&gt;)&lt;/li&gt;&lt;/ul&gt;</content></entry>
- <entry>
-  <title type="text">Mission Control update</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2018/04/mission-control-update/?utm_source=all&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2018-04-mission-control-update</id>
-  <published>2018-04-06T18:46:43Z</published>
-  <updated>2018-04-06T18:46:43Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;Yep, still working on this project. We&amp;rsquo;ve shifted gears somewhat from trying to identify problems in a time series of error aggregates to tracking somewhat longer term trends release over release, to fill the needs of the release management team at Mozilla. It&amp;rsquo;s been a good change, I think. A bit of a tighter focus.&lt;/p&gt;
-
-&lt;p&gt;The main motivator for this work is that the ADI (active daily install) numbers that crash stats used to provide as input to a similar service, &lt;a href="https://arewestableyet.com"&gt;AreWeStableYet&lt;/a&gt; (link requires Mozilla credentials), are going away and we need some kind of replacement. I&amp;rsquo;ve been learning about this older system worked (this &lt;a href="https://home.kairo.at/blog/2014-04/how_effective_is_the_stability_program"&gt;blog post&lt;/a&gt; from KaiRo was helpful) and trying to develop a replacement which reproduces some of its useful characteristics while also taking advantage of some of the new features that are provided by the &lt;a href="https://docs.telemetry.mozilla.org/datasets/streaming/error_aggregates/reference.html"&gt;error_aggregates&lt;/a&gt; dataset and the mission control user interface.&lt;/p&gt;
-
-&lt;p&gt;Some preliminary screenshots of what I&amp;rsquo;ve been able to come up with:&lt;/p&gt;
-
-&lt;center&gt;&lt;img style="width:400px" srcset="/files/2018/04/missioncontrol-main-view.png 2x" /&gt; &lt;img style="width:400px" srcset="/files/2018/04/missioncontrol-windows-release.png 2x" /&gt;&lt;/center&gt;
-
-&lt;p&gt;One of the key things to keep in mind with this dashboard is that by default it shows an &lt;em&gt;adjusted&lt;/em&gt; set of rates (defined as total number of events divided by total usage khours), which means we compare the latest release to the previous one within the same time interval.&lt;/p&gt;
-
-&lt;p&gt;So if, say, the latest release is &amp;ldquo;59&amp;rdquo; and it&amp;rsquo;s been out for two weeks, we will compare it against the previous release (&amp;ldquo;58&amp;rdquo;) in its first two weeks. As I&amp;rsquo;ve said here before, things are &lt;a href="/blog/2017/10/better-or-worse-by-what-measure"&gt;always crashier when they first go out&lt;/a&gt;, and comparing a new release to one that has been out in the field for some time is not a fair comparison at all.&lt;/p&gt;
-
-&lt;p&gt;This adjusted view of things is still not apples-to-apples: the causality of crashes and errors is so complex that there will always be differences between releases which are beyond our control or even understanding. Many crash reports, for example, have nothing to do with our product but with third party software and web sites beyond our control. That said, I feel like this adjusted rate is still good enough to tell us (broadly speaking) (1) whether our latest release / beta / nightly is ok (i.e. there is no major showstopper issue) and (2) whether our overall error rate is going up or down over several versions (if there is a continual increase in our crash rate, it might point to a problem in our release/qa process).&lt;/p&gt;
-
-&lt;p&gt;Interestingly, the first things that we&amp;rsquo;ve found with this system are not real problems with the product but data collection issues:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1447161"&gt;we don&amp;rsquo;t seem to be collecting counts of gmplugin crashes on Windows anymore via telemetry&lt;/a&gt;&lt;/li&gt;
- &lt;li&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1413172#c8"&gt;the number of content_shutdown_crashes is greater than the number of content_crashes, even though the former is a superset of the latter&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;Data issues aside, the indications are that there&amp;rsquo;s been a steady increase in the quality of Firefox over the last few releases based on the main user facing error metric we&amp;rsquo;ve cared about in the past (main crashes), so that&amp;rsquo;s good. :)&lt;/p&gt;
-
-&lt;p&gt;If you want to play with the system yourself, the &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;development instance&lt;/a&gt; is still up. We will probably look at making this thing &amp;ldquo;official&amp;rdquo; next quarter.&lt;/p&gt;</content></entry></feed>
+ &lt;li&gt;We have a GSOC intern! As part of the Mozilla GSOC, Yunhao Zheng is going to be working on  adding rich brushing/zooming support to Metrics Graphics, which should be quite useful for  visualizing complex data in projects like &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder"&gt;Perfherder&lt;/a&gt; (&lt;a href="https://docs.google.com/document/d/1_KIOJtemqlCBktDdfdjDuS4XhICeaKO3QhNRwbnnf-g/"&gt;Project outline&lt;/a&gt;, &lt;a href="https://summerofcode.withgoogle.com/projects/#5422620527296512"&gt;Yunhao&amp;rsquo;s proposal&lt;/a&gt;)&lt;/li&gt;&lt;/ul&gt;</content></entry></feed>

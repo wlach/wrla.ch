@@ -76,6 +76,7 @@ https://wlach.github.io/blog/2012/04/eideticker-with-less-eideticker/
 https://wlach.github.io/blog/2012/10/using-the-dm-utility-to-interact-with-android-or-firefoxos-devices/
 https://wlach.github.io/blog/2012/04/gofaster-dashboard-back-online/
 https://wlach.github.io/blog/2019/09/time-for-some-project-updates/
+https://wlach.github.io/blog/2020/08/mozregression-and-older-builds/
 https://wlach.github.io/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/
 https://wlach.github.io/blog/2013/03/a-visit-to-the-montreal-zen-center/
 https://wlach.github.io/blog/2017/02/cancel-all-the-things/

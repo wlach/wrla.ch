@@ -6,7 +6,7 @@
     <title>William Lachance's Log</title>
     <meta name="description" content="William Lachance's Log" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, Community, Iodide, Life, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, Community, Iodide, Life, telemetry, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wlach.github.io/index.html" />
@@ -91,6 +91,58 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2020/08/mozregression-and-older-builds/">mozregression and older builds</a></h2>
+    <p class="index-date">Aug 17th, 2020</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a>  <a href="/tags/telemetry.html">telemetry</a></span></p>
+  </header>
+
+<p>Periodically the discussion comes up about pruning away old stored Firefox build artifacts in S3. Each build is tens of megabytes, multiply that by the number of platforms we support and the set of revisions we churn through on a daily basis, and pretty soon you&rsquo;re talking about real money.</p>
+
+<p>This came up recently in a discussion about <a href="https://groups.google.com/g/mozilla.dev.platform/c/0OV_M3b-cMM/m/kkknfFdECgAJ">removing the legacy taskcluster deployment</a> &mdash; what do we actually lose by cutting back our archive of integration builds? The main reason to keep them around is to facilitate bisection testing with <a href="https://mozilla.github.io/mozregression/">mozregression</a>, to find out when a bug was introduced. Up to now, discussions about this have been a bit hand-wavey: we do keep logs about who&rsquo;s accessing old builds, but it&rsquo;s never been clear whether it was mozregression accessing them or something else.</p>
+
+<p>Happily, now that <a href="/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/">mozregression has some telemetry</a>, it&rsquo;s a little easier to get some answers on what people are actually doing. This query gets the distribution of build ages (launched or bisected) over the past 6 months, at a month long granularity.<sup><a href="#2020-08-17-mozregression-and-older-builds-footnote-1-definition" name="2020-08-17-mozregression-and-older-builds-footnote-1-return">1</a></sup> Ages are relative to the date mozregression was launched: for example, if someone asked for a build from May 2019 in June 2020, the number would be &ldquo;13&rdquo;.</p>
+
+<div class="brush: sql">
+ <div class="colorful">
+  <pre><span></span><span class="k">SELECT</span> <span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_app</span> <span class="k">AS</span> <span class="n">app</span><span class="p">,</span>
+       <span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_build_type</span> <span class="k">AS</span> <span class="n">build_type</span><span class="p">,</span>
+       <span class="n">DATE_DIFF</span><span class="p">(</span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">),</span> <span class="k">IF</span><span class="p">(</span><span class="k">LENGTH</span><span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="n">usage_bad_date</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">PARSE_DATE</span><span class="p">(</span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">,</span> <span class="n">substr</span><span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="n">usage_bad_date</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">PARSE_DATE</span><span class="p">(</span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">,</span> <span class="n">substr</span><span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="n">usage_launch_date</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))),</span> <span class="k">MONTH</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">AS</span> <span class="n">build_age</span>
+<span class="k">FROM</span> <span class="o">`</span><span class="n">moz</span><span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">data</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">prod</span><span class="o">`</span><span class="p">.</span><span class="n">org_mozilla_mozregression</span><span class="p">.</span><span class="k">usage</span>
+<span class="k">WHERE</span> <span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span> <span class="nb">INTERVAL</span> <span class="mi">6</span> <span class="k">MONTH</span><span class="p">)</span>
+  <span class="k">AND</span> <span class="n">client_info</span><span class="p">.</span><span class="n">app_display_version</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">&#39;%dev%&#39;</span>
+  <span class="k">AND</span> <span class="k">LENGTH</span><span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_build_type</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+  <span class="k">AND</span> <span class="p">(</span><span class="k">LENGTH</span><span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="n">usage_bad_date</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+       <span class="k">OR</span> <span class="k">LENGTH</span><span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="n">usage_launch_date</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+
+<p>I ran this query on sql.telemetry.mozilla.org and generated a box plot, broken down by product and build type:</p>
+
+<div class="figure"><img src="/files/2020/08/mozregression-build-age-box-plot.png" alt="" />
+ <p class="caption"></p></div>
+
+<p><a href="https://sql.telemetry.mozilla.org/queries/73968#184980">link</a> (requires Mozilla LDAP)</p>
+
+<p>Unsurprisingly, Firefox shippable builds are the number one thing people try to bisect. Let&rsquo;s take a little bit of a closer look at what&rsquo;s going on there:</p>
+
+<div class="figure"><img src="/files/2020/08/mozregression-build-age-box-plot-detail.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>The median value is 1, which indicates that most people are bisecting builds within one month of the day in which mozregression was run. And the <a href="https://www.statisticshowto.com/upper-and-lower-fences/">upper fence</a> result is 6, suggesting that most of the time people are looking at a regression range that is within a 6 month range. However, looking more closely at the data points themselves (the little points in the chart above), there are a considerable number of outliers where a range greater than 20 months was asked for.</p>
+
+<p>&hellip; which brings up to the question that we want to answer. Given that getting old builds isn&rsquo;t that common (which we sort of knew already, based on the access patterns in the S3 logs), what is the impact of the times that we do? And it&rsquo;s here where I have to throw up my hands and say &ldquo;I don&rsquo;t know&rdquo; and suggest that we go back to empirical observation and user research.</p>
+
+<p>You can go back to the thread I linked above, and see that core Firefox/Gecko developers find the ability to get a precise regression range for older revisions valuable. One thing that&rsquo;s worth mentioning is that mozregression isn&rsquo;t run that often, compared to a product that we ship: on the order of 50 to 100 times per a day. But when it comes to internal tooling, a small amount of use might have a big impact: if a mozregression invocation a developer a few hours (or more), that&rsquo;s a real benefit to Firefox and Mozilla. The same argument might apply here, where a small number of bisections on older builds might have a disproportionate impact on the quality of the product.</p>
+
+<div class="footnotes">
+ <ol>
+  <li id="2020-08-17-mozregression-and-older-builds-footnote-1-definition" class="footnote-definition">
+   <p>I only added the telemetry to capture this information <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1651401">relatively recently</a>, so we&rsquo;re actually only looking at about a month of data in this post. We&rsquo;ll have more complete results later this year.&nbsp;<a href="#2020-08-17-mozregression-and-older-builds-footnote-1-return">↩</a></p></li></ol></div> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2020/07/mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data/">Mozilla Telemetry in 2020: From &ldquo;Just Firefox&rdquo; to a &ldquo;Galaxy of Data&rdquo;</a></h2>
     <p class="index-date">Jul 16th, 2020</p>
@@ -672,18 +724,6 @@
 <p>In addition to being much simpler, this new job is also <em>way</em> cheaper. The last run of it scanned just over 1 TB of data, meaning it cost us just over $5. Not as cheap as I might like, but considerably less expensive than before: I&rsquo;ve also scheduled it to only run once every other day, since Mike tells me he doesn&rsquo;t need this data any more often than that.</p>
 
 <p>[1] I understand that Jeff Klukas, Frank Bertsch, Daniel Thorn, Anthony Miyaguchi, and Wesley Dawson are the principals involved - apologies if I&rsquo;m forgetting someone.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2019/09/metrics-graphics-stepping-back-for-a-while/">Metrics Graphics: Stepping back for a while</a></h2>
-    <p class="index-date">Sep 26th, 2019</p>
-    <p><span class="tags"><a href="/tags/Metrics-Graphics.html">Metrics Graphics</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>Just a note that I&rsquo;ve decided to step back from <a href="https://metricsgraphicsjs.org">metrics graphics</a> maintenance for the time being, which means that the project is essentially unowned. This has sort of been the case for a while, but I figured I should probably make it official.</p>
-
-<p>If you follow the link to the <a href="https://github.com/metricsgraphics/metrics-graphics/">metrics graphics repository</a>, you&rsquo;ll note that the version has been bumped to &ldquo;3.0-alpha3&rdquo;. I was <em>this close</em> to making one last new release this afternoon but decided I didn&rsquo;t want to potentially break existing users who were fine using the last &ldquo;official&rdquo; version (v3.0 bumps the version of d3 used to &ldquo;5&rdquo;, among other breaking changes). I&rsquo;d encourage people who want to continue using the library to make a fork and publish a copy under their user or organization name on npm.</p> 
   <hr/>
 </article>
 <footer>

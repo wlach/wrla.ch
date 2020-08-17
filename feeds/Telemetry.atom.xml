@@ -1,424 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Telemetry'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Telemetry.atom.xml" />
- <link href="https://wlach.github.io/tags/Telemetry.html" />
- <id>urn:https-wlach-github-io:-tags-Telemetry-html</id>
- <updated>2020-07-16T18:42:44Z</updated>
+ <title type="text">William Lachance's Log: Posts tagged 'telemetry'</title>
+ <link rel="self" href="https://wlach.github.io/feeds/telemetry.atom.xml" />
+ <link href="https://wlach.github.io/tags/telemetry.html" />
+ <id>urn:https-wlach-github-io:-tags-telemetry-html</id>
+ <updated>2020-08-17T19:01:57Z</updated>
  <entry>
-  <title type="text">Mozilla Telemetry in 2020: From "Just Firefox" to a "Galaxy of Data"</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2020/07/mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data/?utm_source=Telemetry&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2020-07-mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data</id>
-  <published>2020-07-16T18:42:44Z</published>
-  <updated>2020-07-16T18:42:44Z</updated>
+  <title type="text">mozregression and older builds</title>
+  <link rel="alternate" href="https://wlach.github.io/blog/2020/08/mozregression-and-older-builds/?utm_source=telemetry&amp;utm_medium=Atom" />
+  <id>urn:https-wlach-github-io:-blog-2020-08-mozregression-and-older-builds</id>
+  <published>2020-08-17T19:01:57Z</published>
+  <updated>2020-08-17T19:01:57Z</updated>
   <author>
    <name>William Lachance</name></author>
   <content type="html">
-&lt;p&gt;&lt;em&gt;(“This Week in Glean” is a series of blog posts that the Glean Team at Mozilla is using to try to communicate better about our work. They could be release notes, documentation, hopes, dreams, or whatever: so long as it is inspired by Glean. You can find &lt;a href="https://mozilla.github.io/glean/book/appendix/twig.html"&gt;an index of all TWiG posts online.&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Periodically the discussion comes up about pruning away old stored Firefox build artifacts in S3. Each build is tens of megabytes, multiply that by the number of platforms we support and the set of revisions we churn through on a daily basis, and pretty soon you&amp;rsquo;re talking about real money.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;This is a special guest post by non-Glean-team member William Lachance!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;This came up recently in a discussion about &lt;a href="https://groups.google.com/g/mozilla.dev.platform/c/0OV_M3b-cMM/m/kkknfFdECgAJ"&gt;removing the legacy taskcluster deployment&lt;/a&gt; &amp;mdash; what do we actually lose by cutting back our archive of integration builds? The main reason to keep them around is to facilitate bisection testing with &lt;a href="https://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt;, to find out when a bug was introduced. Up to now, discussions about this have been a bit hand-wavey: we do keep logs about who&amp;rsquo;s accessing old builds, but it&amp;rsquo;s never been clear whether it was mozregression accessing them or something else.&lt;/p&gt;
 
-&lt;p&gt;In the last year or so, there&amp;rsquo;s been a significant shift in the way we (Data Engineering) think about application-submitted data @ Mozilla, but although we have a new application-based SDK based on these principles (&lt;a href="https://mozilla.github.io/glean/book/index.html"&gt;the Glean SDK&lt;/a&gt;), most of our &lt;a href="https://telemetry.mozilla.org"&gt;data tools&lt;/a&gt; and &lt;a href="https://docs.telemetry.mozilla.org"&gt;documentation&lt;/a&gt; have not yet been updated to reflect this new state of affairs.&lt;/p&gt;
+&lt;p&gt;Happily, now that &lt;a href="/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/"&gt;mozregression has some telemetry&lt;/a&gt;, it&amp;rsquo;s a little easier to get some answers on what people are actually doing. This query gets the distribution of build ages (launched or bisected) over the past 6 months, at a month long granularity.&lt;sup&gt;&lt;a href="#2020-08-17-mozregression-and-older-builds-footnote-1-definition" name="2020-08-17-mozregression-and-older-builds-footnote-1-return"&gt;1&lt;/a&gt;&lt;/sup&gt; Ages are relative to the date mozregression was launched: for example, if someone asked for a build from May 2019 in June 2020, the number would be &amp;ldquo;13&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;Much of this story is known &lt;em&gt;inside&lt;/em&gt; Mozilla Data Engineering, but I thought it might be worth jotting them down into a blog post as a point of reference for people outside the immediate team. Knowing this may provide some context for some our activities and efforts over the next year or two, at least until our tools, documentation, and tribal knowledge evolve.&lt;/p&gt;
+&lt;div class="brush: sql"&gt;
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_app&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_build_type&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;build_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+       &lt;span class="n"&gt;DATE_DIFF&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="k"&gt;IF&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PARSE_DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%Y-%m-%d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="n"&gt;PARSE_DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%Y-%m-%d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_launch_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))),&lt;/span&gt; &lt;span class="k"&gt;MONTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;build_age&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="n"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fx&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org_mozilla_mozregression&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;usage&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;DATE_SUB&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;CURRENT_DATE&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="nb"&gt;INTERVAL&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="k"&gt;MONTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;client_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app_display_version&lt;/span&gt; &lt;span class="k"&gt;NOT&lt;/span&gt; &lt;span class="k"&gt;LIKE&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;%dev%&amp;#39;&lt;/span&gt;
+  &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_build_type&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+  &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
+       &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_launch_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;In sum, the key differences are:&lt;/p&gt;
+&lt;/div&gt;
 
-&lt;ul&gt;
- &lt;li&gt;Instead of just one application we care about, there are many.&lt;/li&gt;
- &lt;li&gt;Instead of just caring about (mostly&lt;sup&gt;&lt;a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-1-definition" name="2020-07-16-mozilla-telemetry-in-2020-footnote-1-return"&gt;1&lt;/a&gt;&lt;/sup&gt;) one type of ping (the Firefox &lt;em&gt;main&lt;/em&gt; ping), an individual application may submit &lt;em&gt;many different&lt;/em&gt; types of pings in the course of their use.&lt;/li&gt;
- &lt;li&gt;Instead of having both probes (histogram, scalar, or other data type) &lt;em&gt;and&lt;/em&gt; bespoke parametric values in a JSON schema like the &lt;a href="https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/environment.html"&gt;telemetry environment&lt;/a&gt;, there are now only &lt;em&gt;metric types&lt;/em&gt; which are explicitly defined as part of each ping.&lt;/li&gt;&lt;/ul&gt;
+&lt;p&gt;I ran this query on sql.telemetry.mozilla.org and generated a box plot, broken down by product and build type:&lt;/p&gt;
 
-&lt;p&gt;The new world is pretty exciting and freeing, but there is some new domain complexity that we need to figure out how to navigate. I&amp;rsquo;ll discuss that in my last section.&lt;/p&gt;
-
-&lt;h2 id="the-old-world-firefox-is-king"&gt;The Old World: Firefox is king&lt;/h2&gt;
-
-&lt;p&gt;Up until roughly mid&amp;ndash;2019, Firefox was the centre of Mozilla&amp;rsquo;s data world (with the occasional nod to Firefox for Android, which uses the same source repository). The Data Platform (often called &amp;ldquo;Telemetry&amp;rdquo;) was explicitly designed to cater to the needs of Firefox Developers (and to a lesser extent, product/program managers) and a set of bespoke tooling was built on top of our data pipeline architecture - &lt;a href="https://ravitillo.wordpress.com/2017/01/23/an-overview-of-mozillas-data-pipeline/"&gt;this blog post from 2017 describes much of it&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In outline, the model is simple: on the client side, assuming a given user had not turned off Telemetry, during the course of a day&amp;rsquo;s operation Firefox would keep track of various measures, called &amp;ldquo;probes&amp;rdquo;. At the end of that duration, it would submit a JSON-encoded &amp;ldquo;main ping&amp;rdquo; to our servers with the probe information and &lt;a href="https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/97bac7acaaa5cb328d7f0f7348f3ddaaae657eda/schemas/telemetry/main/main.4.schema.json"&gt;a bunch of other mostly hand-specified junk&lt;/a&gt;, which would then find its way to a &amp;ldquo;data lake&amp;rdquo; (read: an Amazon S3 bucket). On top of this, we provided a &lt;a href="https://github.com/mozilla/python_moztelemetry/"&gt;python API&lt;/a&gt; (built on top of &lt;a href="https://spark.apache.org/docs/latest/api/python/index.html"&gt;PySpark&lt;/a&gt;) which enabled people inside Mozilla to query all submitted pings across our usage population.&lt;/p&gt;
-
-&lt;p&gt;The only type of low-level object that was hard to keep track of was the list of probes: Firefox is a complex piece of software and there are &lt;em&gt;many&lt;/em&gt; aspects of it we wanted to instrument to validate performance and quality of the product - especially on the more-experimental Nightly and Beta channels. To solve this problem, a &lt;a href="https://probes.telemetry.mozilla.org/"&gt;probe dictionary&lt;/a&gt; was created to help developers find measures that corresponded to the product area that they were interested in.&lt;/p&gt;
-
-&lt;p&gt;On a higher-level, accessing this type of data using the python API quickly became slow and frustrating: the aggregation of years of Firefox ping data was hundreds of terabytes big, and even taking advantage of PySpark&amp;rsquo;s impressive capabilities, querying the data across any reasonably large timescale was slow and expensive. Here, the solution was to create derived datasets which enabled fast(er) access to pings and other derived measures, document them on docs.telemetry.mozilla.org, and then allow access to them through tools like &lt;a href="https://docs.telemetry.mozilla.org/tools/stmo.html"&gt;sql.telemetry.mozilla.org&lt;/a&gt; or the &lt;a href="https://telemetry.mozilla.org/new-pipeline/dist.html"&gt;Measurement Dashboard&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id="the-new-world-more-of-everything"&gt;The New World: More of everything&lt;/h2&gt;
-
-&lt;p&gt;Even in the old world, other products that submitted telemetry &lt;em&gt;existed&lt;/em&gt; (e.g. Firefox for Android, Firefox for iOS, the venerable FirefoxOS) but I would not call them first-class citizens. Most of our documentation treated them as (at best) weird edge cases. At the time of this writing, you can see this distinction clearly on docs.telemetry.mozilla.org where there is one (fairly detailed) tutorial called &amp;ldquo;Choosing a Desktop Dataset&amp;rdquo; while essentially all other products are lumped into &amp;ldquo;Choosing a Mobile Dataset&amp;rdquo;.&lt;/p&gt;
-
-&lt;div class="figure"&gt;&lt;img src="/files/2020/07/docs-tmo-pic.png" alt="" /&gt;
+&lt;div class="figure"&gt;&lt;img src="/files/2020/08/mozregression-build-age-box-plot.png" alt="" /&gt;
  &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
 
-&lt;p&gt;While the new universe of mobile products are probably the most notable addition to our list of things we want to keep track of, they&amp;rsquo;re only one piece of the puzzle. Really we&amp;rsquo;re interested in measuring &lt;em&gt;all the things&lt;/em&gt; (in accordance with our &lt;a href="https://www.mozilla.org/en-US/about/policy/lean-data/"&gt;lean data practices&lt;/a&gt;, of course) including tools we use to &lt;em&gt;build our products&lt;/em&gt; like &lt;a href="https://wiki.mozilla.org/MozPhab"&gt;mozphab&lt;/a&gt; and &lt;a href="https://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://sql.telemetry.mozilla.org/queries/73968#184980"&gt;link&lt;/a&gt; (requires Mozilla LDAP)&lt;/p&gt;
 
-&lt;p&gt;In expanding our scope, we&amp;rsquo;ve found that mobile (and other products) have different requirements that influence what data we would want to send and when. For example, sending one blob of JSON multiple times per day might make sense for performance metrics on a desktop product (which is usually on a fast, unmetered network) but is much less acceptable on mobile (where every byte counts). For this reason, it makes sense to have &lt;em&gt;different ping types&lt;/em&gt; for the same product, not just one. For example, Fenix (the new Firefox for Android) sends a tiny baseline ping&lt;sup&gt;&lt;a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-2-definition" name="2020-07-16-mozilla-telemetry-in-2020-footnote-2-return"&gt;2&lt;/a&gt;&lt;/sup&gt; on every run to (roughly) measure daily active users and a larger metrics ping sent on a (roughly) daily interval to measure (for example) a distribution of page load times.&lt;/p&gt;
+&lt;p&gt;Unsurprisingly, Firefox shippable builds are the number one thing people try to bisect. Let&amp;rsquo;s take a little bit of a closer look at what&amp;rsquo;s going on there:&lt;/p&gt;
 
-&lt;p&gt;Finally, we found that naively collecting certain types of data as raw histograms or inside the schema didn&amp;rsquo;t always work well. For example, encoding session lengths as plain integers &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1514392"&gt;would often produce weird results in the case of clock skew&lt;/a&gt;. For this reason, we decided to &lt;a href="https://mozilla.github.io/glean/book/user/metrics/index.html"&gt;standardize on a set of well-defined metrics&lt;/a&gt; using Glean, which tries to minimize footguns. We explicitly no longer allow clients to submit arbitrary JSON or values as part of a telemetry ping: if you have a use case not covered by the existing metrics, &lt;a href="https://wiki.mozilla.org/Glean/Adding_or_changing_Glean_metric_types"&gt;make a case for it and add it to the list&lt;/a&gt;!&lt;/p&gt;
-
-&lt;p&gt;To illustrate this, let&amp;rsquo;s take a (subset) of what we might be looking at in terms of what the Fenix application sends:&lt;/p&gt;
-
-&lt;div class="figure"&gt;&lt;img src="/files/2020/07/fenix-pings-diagram.png" alt="" /&gt;
+&lt;div class="figure"&gt;&lt;img src="/files/2020/08/mozregression-build-age-box-plot-detail.png" alt="" /&gt;
  &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;a href="/files/2020/07/fenix-pings-diagram.mmd"&gt;mermaid source&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The median value is 1, which indicates that most people are bisecting builds within one month of the day in which mozregression was run. And the &lt;a href="https://www.statisticshowto.com/upper-and-lower-fences/"&gt;upper fence&lt;/a&gt; result is 6, suggesting that most of the time people are looking at a regression range that is within a 6 month range. However, looking more closely at the data points themselves (the little points in the chart above), there are a considerable number of outliers where a range greater than 20 months was asked for.&lt;/p&gt;
 
-&lt;p&gt;At the top level we segment based on the &amp;ldquo;application&amp;rdquo; (just Fenix in this example). Just below that, there are the pings that this application might submit (I listed three: the baseline and metrics pings described above, along with a &amp;ldquo;migration&amp;rdquo; ping, which tracks metrics when a user migrates from Fennec to Fenix). And below &lt;em&gt;that&lt;/em&gt; there are different types of metrics included in the pings: I listed a few that came out of a quick scan of the Fenix BigQuery tables using my &lt;a href="https://mozilla-schema-dictionary.netlify.app/#!/tables/org_mozilla_fenix.metrics"&gt;prototype schema dictionary&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&amp;hellip; which brings up to the question that we want to answer. Given that getting old builds isn&amp;rsquo;t that common (which we sort of knew already, based on the access patterns in the S3 logs), what is the impact of the times that we do? And it&amp;rsquo;s here where I have to throw up my hands and say &amp;ldquo;I don&amp;rsquo;t know&amp;rdquo; and suggest that we go back to empirical observation and user research.&lt;/p&gt;
 
-&lt;p&gt;This is actually only the surface-level: at the time of this writing, Fenix has no fewer than 12 different ping types and &lt;em&gt;many&lt;/em&gt; different metrics inside each of them.&lt;sup&gt;&lt;a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-3-definition" name="2020-07-16-mozilla-telemetry-in-2020-footnote-3-return"&gt;3&lt;/a&gt;&lt;/sup&gt; On a client level, the new Glean SDK provides easy-to-use primitives to help developers collect this type of information in a principled, privacy-preserving way: for example, &lt;a href="https://github.com/mozilla/data-review"&gt;data review&lt;/a&gt; is built into every metric type. But what about after it hits our ingestion endpoints?&lt;/p&gt;
-
-&lt;p&gt;Hand-crafting schemas, data ingestion pipelines, and individualized ETL scripts for such a large matrix of applications, ping types, and measurements would quickly become intractable. Instead, we (Mozilla Data Engineering) refactored our data pipeline to parse out the information from the Glean schemas and then create tables in our BigQuery datastore corresponding to what&amp;rsquo;s in them - this has proceeded as an extension to our (now somewhat misnamed) &lt;a href="https://github.com/mozilla/probe-scraper"&gt;probe-scraper&lt;/a&gt; tool.&lt;/p&gt;
-
-&lt;p&gt;You can then query this data directly (see &lt;a href="https://docs.telemetry.mozilla.org/concepts/glean/accessing_glean_data.html"&gt;accessing glean data&lt;/a&gt;) or build up a derived dataset using our SQL-based ETL system, &lt;a href="https://github.com/mozilla/bigquery-etl/"&gt;BigQuery-ETL&lt;/a&gt;. This part of the equation has been working fairly well, I&amp;rsquo;d say: we now have a diverse set of products producing Glean telemetry and submitting it to our servers, and the amount of manual effort required to add each application was minimal (aside from adding new capabilities to the platform as we went along).&lt;/p&gt;
-
-&lt;p&gt;What hasn&amp;rsquo;t quite kept pace is our tooling to make navigating and using this new collection of data tractable.&lt;/p&gt;
-
-&lt;h2 id="what-could-bring-this-all-together"&gt;What could bring this all together?&lt;/h2&gt;
-
-&lt;p&gt;As mentioned before, this new world is quite powerful and gives Mozilla a bunch of new capabilities but it isn&amp;rsquo;t yet well documented and we lack the tools to easily connect the dots from &amp;ldquo;I have a product question&amp;rdquo; to &amp;ldquo;I know how to write an SQL query / Spark Job to answer it&amp;rdquo; or (better yet) &amp;ldquo;this product dashboard will answer it&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;Up until now, our defacto answer has been some combination of &amp;ldquo;Use the probe dictionary / telemetry.mozilla.org&amp;rdquo; and/or &amp;ldquo;refer to docs.telemetry.mozilla.org&amp;rdquo;. I submit that we&amp;rsquo;re at the point where these approaches break down: as mentioned above, there are many more types of data we now need to care about than just &amp;ldquo;probes&amp;rdquo; (or &amp;ldquo;metrics&amp;rdquo;, in Glean-parlance). When we just cared about the main ping, we could write dataset documentation for its recommended access point (&lt;a href="https://docs.telemetry.mozilla.org/datasets/batch_view/main_summary/reference.html"&gt;main_summary&lt;/a&gt;) and the raw number of derived datasets was managable. But in this new world, where we have &lt;em&gt;N&lt;/em&gt; applications times &lt;em&gt;M&lt;/em&gt; ping types, the number of canonical ping tables are now so many that documenting them all on docs.telemetry.mozilla.org no longer makes sense.&lt;/p&gt;
-
-&lt;p&gt;A few months ago, I thought that &lt;a href="https://cloud.google.com/data-catalog"&gt;Google&amp;rsquo;s Data Catalog&lt;/a&gt; (billed as offering &amp;ldquo;a unified view of all your datasets&amp;rdquo;) might provide a solution, but on further examination it only solves part of the problem: it provides only a view on your BigQuery tables and it isn&amp;rsquo;t designed to provide detailed information on the domain objects we care about (products, pings, measures, and tools). You can map some of the properties from these objects onto the tables (e.g. adding a probe&amp;rsquo;s description field to the column representing it in the BigQuery table), but Data Calalog&amp;rsquo;s interface to surfacing and filtering through this information is rather slow and clumsy and requires detailed knowledge of how these higher level concepts relate to BigQuery primitives.&lt;/p&gt;
-
-&lt;p&gt;Instead, what I think we need is a &lt;em&gt;new system&lt;/em&gt; which allows a data practitioner (Data Scientist, Firefox Engineer, Data Engineer, Product Manager, whoever) to visualize the relevant set of domain objects relevant to their product/feature of interest &lt;em&gt;quickly&lt;/em&gt; then map them to specific BigQuery tables and other resources (e.g. visualizations using tools like &lt;a href="https://github.com/mozilla/glam"&gt;GLAM&lt;/a&gt;) which allow people to quickly answer questions so we can make better products. Basically, I am thinking of some combination of:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;The existing probe dictionary (derived from existing product metadata)&lt;/li&gt;
- &lt;li&gt;A new &amp;ldquo;application&amp;rdquo; dictionary (derived from some simple to-be-defined application metadata description)&lt;/li&gt;
- &lt;li&gt;A new &amp;ldquo;ping&amp;rdquo; dictionary (derived from existing product metadata)&lt;/li&gt;
- &lt;li&gt;A BigQuery schema dictionary (I wrote up a &lt;a href="https://mozilla-schema-dictionary.netlify.app/"&gt;prototype of this a couple weeks ago&lt;/a&gt;) to map between these higher-level objects and what&amp;rsquo;s in our low-level data store&lt;/li&gt;
- &lt;li&gt;Documentation for derived datasets generated by BigQuery-ETL (ideally stored alongside the ETL code itself, so it&amp;rsquo;s easy to keep up to date)&lt;/li&gt;
- &lt;li&gt;A data tool dictionary describing how to easily &lt;em&gt;access&lt;/em&gt; the above data in various ways (e.g. SQL query, dashboard plot, etc.)&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;This might sound ambitious, but it&amp;rsquo;s basically just a system for collecting and visualizing various types of documentation&amp;mdash; something we have proven we know how to do. And I think a product like this could be incredibly empowering, not only for the internal audience at Mozilla but also the &lt;em&gt;external&lt;/em&gt; audience who wants to support us but has valid concerns about what we&amp;rsquo;re collecting and why: since this system is based entirely on systems which are already open (inside GitHub or Mercurial repositories), there is no reason we can&amp;rsquo;t make it available to the public.&lt;/p&gt;
+&lt;p&gt;You can go back to the thread I linked above, and see that core Firefox/Gecko developers find the ability to get a precise regression range for older revisions valuable. One thing that&amp;rsquo;s worth mentioning is that mozregression isn&amp;rsquo;t run that often, compared to a product that we ship: on the order of 50 to 100 times per a day. But when it comes to internal tooling, a small amount of use might have a big impact: if a mozregression invocation a developer a few hours (or more), that&amp;rsquo;s a real benefit to Firefox and Mozilla. The same argument might apply here, where a small number of bisections on older builds might have a disproportionate impact on the quality of the product.&lt;/p&gt;
 
 &lt;div class="footnotes"&gt;
  &lt;ol&gt;
-  &lt;li id="2020-07-16-mozilla-telemetry-in-2020-footnote-1-definition" class="footnote-definition"&gt;
-   &lt;p&gt;Technically, &lt;a href="https://docs.telemetry.mozilla.org/datasets/pings.html"&gt;there are various other types of pings&lt;/a&gt; submitted by Firefox, but the main ping is the one 99% of people care about.&amp;nbsp;&lt;a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-1-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-  &lt;li id="2020-07-16-mozilla-telemetry-in-2020-footnote-2-definition" class="footnote-definition"&gt;
-   &lt;p&gt;This is actually a capability that the Glean SDK provides, so other products (e.g. Lockwise, Firefox for iOS) also benefit from this capability.&amp;nbsp;&lt;a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-2-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-  &lt;li id="2020-07-16-mozilla-telemetry-in-2020-footnote-3-definition" class="footnote-definition"&gt;
-   &lt;p&gt;The scope of this data collection comes from the fact that Fenix is a &lt;em&gt;very&lt;/em&gt; large and complex application. rather than a desire to collect everything just because we can&amp;mdash; smaller efforts like mozregression collect a &lt;a href="https://mozilla.github.io/mozregression/documentation/telemetry.html"&gt;much more limited set of data&lt;/a&gt;.&amp;nbsp;&lt;a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-3-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</content></entry>
- <entry>
-  <title type="text">This Week in Glean: mozregression telemetry (part 2)</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/?utm_source=Telemetry&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2020-05-this-week-in-glean-mozregression-telemetry-part-2</id>
-  <published>2020-05-08T14:32:40Z</published>
-  <updated>2020-05-08T14:32:40Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;&lt;em&gt;(“This Week in Glean” is a series of blog posts that the Glean Team at Mozilla is using to try to communicate better about our work. They could be release notes, documentation, hopes, dreams, or whatever: so long as it is inspired by Glean. You can find &lt;a href="https://mozilla.github.io/glean/book/appendix/twig.html"&gt;an index of all TWiG posts online.&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;This is a special guest post by non-Glean-team member William Lachance!&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;This is a continuation of an exploration of adding Glean-based telemetry to a python application, in this case &lt;a href="https://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt;, a tool for automatically finding the source of Firefox regressions (breakage).&lt;/p&gt;
-
-&lt;p&gt;When we left off &lt;a href="/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/"&gt;last time&lt;/a&gt;, we had written some test scripts and verified that the data was visible in the debug viewer.&lt;/p&gt;
-
-&lt;h2 id="adding-telemetry-to-mozregression-itself"&gt;Adding Telemetry to mozregression itself&lt;/h2&gt;
-
-&lt;p&gt;In many ways, this is pretty similar to what I did inside the sample application: the only significant difference is that these are shipped inside a Python application that is meant to be be installable via &lt;a href="https://pypi.org/project/pip/"&gt;pip&lt;/a&gt;. This means we need to specify the &lt;code&gt;pings.yaml&lt;/code&gt; and &lt;code&gt;metrics.yaml&lt;/code&gt; (located inside the &lt;code&gt;mozregression&lt;/code&gt; subirectory) as package data inside &lt;code&gt;setup.py&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class="brush: py"&gt;
- &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;setup&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"mozregression"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="o"&gt;...&lt;/span&gt;
-    &lt;span class="n"&gt;package_data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;"mozregression"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;"*.yaml"&lt;/span&gt;&lt;span class="p"&gt;]},&lt;/span&gt;
-    &lt;span class="o"&gt;...&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;There were also a number of Glean SDK enhancements which we determined were necessary. Most notably, Michael Droettboom added 32-bit Windows wheels to the Glean SDK, which we need to make building the &lt;a href="https://mozilla.github.io/mozregression/quickstart.html#gui"&gt;mozregression GUI&lt;/a&gt; on Windows possible. In addition, some minor changes needed to be made to Glean&amp;rsquo;s behaviour for it to work correctly with a command-line tool like mozregression &amp;mdash; for example, Glean used to assume that Telemetry would always be disabled via a GUI action so that it would send a deletion ping, but this would obviously not work in an application like mozregression where there is only a configuration file &amp;mdash; so for this case, Glean needed to be modified to check if it had been disabled &lt;em&gt;between&lt;/em&gt; runs.&lt;/p&gt;
-
-&lt;p&gt;Many thanks to Mike (and others on the Glean team) for so patiently listening to my concerns and modifying Glean accordingly.&lt;/p&gt;
-
-&lt;h2 id="getting-data-review"&gt;Getting Data Review&lt;/h2&gt;
-
-&lt;p&gt;At Mozilla, we don&amp;rsquo;t just allow random engineers like myself to start collecting data in a product that we ship (even a semi-internal like mozregression). We have &lt;a href="https://wiki.mozilla.org/Firefox/Data_Collection"&gt;a process&lt;/a&gt;, overseen by Data Stewards to make sure the information we gather is actually answering important questions and doesn&amp;rsquo;t unnecessarily collect personally identifiable information (e.g. email addresses).&lt;/p&gt;
-
-&lt;p&gt;You can see the specifics of how this worked out in the case of mozregression in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581647#c9"&gt;bug 1581647&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id="documentation"&gt;Documentation&lt;/h2&gt;
-
-&lt;p&gt;Glean has some fantastic utilities for generating markdown-based documentation on what information is being collected, which I have made available on GitHub:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://github.com/mozilla/mozregression/blob/master/docs/glean/metrics.md"&gt;https://github.com/mozilla/mozregression/blob/master/docs/glean/metrics.md&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The generation of this documentation is &lt;a href="https://github.com/mozilla/mozregression/blob/3454e1eafe83f53a84cb6b10f46649320d5ed097/.travis.yml#L57"&gt;hooked up to mozregression&amp;rsquo;s continuous integration&lt;/a&gt;, so we can sure it&amp;rsquo;s up to date.&lt;/p&gt;
-
-&lt;p&gt;I also added &lt;a href="https://mozilla.github.io/mozregression/documentation/telemetry.html"&gt;a quick note&lt;/a&gt; to mozregression&amp;rsquo;s web site describing the feature, along with (very importantly) instructions on how to turn it off.&lt;/p&gt;
-
-&lt;h2 id="enabling-data-ingestion"&gt;Enabling Data Ingestion&lt;/h2&gt;
-
-&lt;p&gt;Once a Glean-based project has passed data review, getting our infrastructure to ingest it is pretty straightforward. Normally &lt;a href="https://mozilla.github.io/glean/book/user/adding-glean-to-your-project.html#adding-metadata-about-your-project-to-the-pipeline"&gt;we would suggest just filing a bug&lt;/a&gt; and let us (the data team) handle the details, but since I&amp;rsquo;m &lt;em&gt;on&lt;/em&gt; that team, I&amp;rsquo;m going to go a (little bit) of detail into how the sausage is made.&lt;/p&gt;
-
-&lt;p&gt;Behind the scenes, we have a collection of ETL (extract-transform-load) scripts in the &lt;a href="https://github.com/mozilla/probe-scraper/"&gt;probe-scraper repository&lt;/a&gt; which are responsible for parsing the ping and probe metadata files that I added to mozregression in the step above and then automatically creating BigQuery tables and updating our ingestion machinery to insert data passed to us there.&lt;/p&gt;
-
-&lt;p&gt;There&amp;rsquo;s quite a bit of complicated machinery being the scenes to make this all work, but since it&amp;rsquo;s already in place, adding a new thing like this is relatively simple. The changeset I submitted as part of a &lt;a href="https://github.com/mozilla/probe-scraper/pull/184"&gt;pull request&lt;/a&gt; to probe-scraper was all of 9 lines long:&lt;/p&gt;
-
-&lt;div class="brush: diff"&gt;
- &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gh"&gt;diff --git a/repositories.yaml b/repositories.yaml&lt;/span&gt;
-&lt;span class="gh"&gt;index dffcccf..6212e55 100644&lt;/span&gt;
-&lt;span class="gd"&gt;--- a/repositories.yaml&lt;/span&gt;
-&lt;span class="gi"&gt;+++ b/repositories.yaml&lt;/span&gt;
-&lt;span class="gu"&gt;@@ -239,3 +239,12 @@ firefox-android-release:&lt;/span&gt;
-     - org.mozilla.components:browser-engine-gecko-beta
-     - org.mozilla.appservices:logins
-     - org.mozilla.components:support-migration
-&lt;span class="gi"&gt;+mozregression:&lt;/span&gt;
-&lt;span class="gi"&gt;+  app_id: org-mozilla-mozregression&lt;/span&gt;
-&lt;span class="gi"&gt;+  notification_emails:&lt;/span&gt;
-&lt;span class="gi"&gt;+    - wlachance@mozilla.com&lt;/span&gt;
-&lt;span class="gi"&gt;+  url: &amp;#39;https://github.com/mozilla/mozregression&amp;#39;&lt;/span&gt;
-&lt;span class="gi"&gt;+  metrics_files:&lt;/span&gt;
-&lt;span class="gi"&gt;+    - &amp;#39;mozregression/metrics.yaml&amp;#39;&lt;/span&gt;
-&lt;span class="gi"&gt;+  ping_files:&lt;/span&gt;
-&lt;span class="gi"&gt;+    - &amp;#39;mozregression/pings.yaml&amp;#39;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;h2 id="a-pretty-graph"&gt;A Pretty Graph&lt;/h2&gt;
-
-&lt;p&gt;With the probe scraper change merged and deployed, we can now start querying! A number of tables are automatically created according to the schema outlined above: notably &amp;ldquo;live&amp;rdquo; and &amp;ldquo;stable&amp;rdquo; tables corresponding to the usage ping. Using &lt;a href="https://docs.telemetry.mozilla.org/tools/stmo.html"&gt;sql.telemetry.mozilla.org&lt;/a&gt; we can start exploring what&amp;rsquo;s out there. Here&amp;rsquo;s a quick query I wrote up:&lt;/p&gt;
-
-&lt;div class="brush: sql"&gt;
- &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="nb"&gt;date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-       &lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_variant&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;variant&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-       &lt;span class="k"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="n"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fx&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org_mozilla_mozregression_stable&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_v1&lt;/span&gt;
-&lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2020-04-14&amp;#39;&lt;/span&gt;
-  &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;client_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app_display_version&lt;/span&gt; &lt;span class="k"&gt;NOT&lt;/span&gt; &lt;span class="k"&gt;LIKE&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;%.dev%&amp;#39;&lt;/span&gt;
-&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="nb"&gt;date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;variant&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;&amp;hellip; which generates a chart like this:&lt;/p&gt;
-
-&lt;div class="figure"&gt;&lt;img src="/files/2020/05/mozregression-variant-usage.png" alt="" /&gt;
- &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
-
-&lt;p&gt;This chart represents the absolute volume of mozregression usage since April 14th 2020 (around the time when we first released a version of mozregression with Glean telemetry), grouped by mozregression &amp;ldquo;variant&amp;rdquo; (GUI, console, and mach) and date - you can see that (unsurprisingly?) the GUI has the highest usage. I&amp;rsquo;ll talk about this more in an upcoming installment, speaking of&amp;hellip;&lt;/p&gt;
-
-&lt;h2 id="next-steps"&gt;Next Steps&lt;/h2&gt;
-
-&lt;p&gt;We&amp;rsquo;re not done yet! Next time, we&amp;rsquo;ll look into making a public-facing dashboard demonstrating these results and making an aggregated version of the mozregression telemetry data publicly accessible to researchers and the general public. If we&amp;rsquo;re lucky, there might even be a bit of &lt;em&gt;data science&lt;/em&gt;. Stay tuned!&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">This week in Glean (special guest post): mozregression telemetry (part 1)</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/?utm_source=Telemetry&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2020-02-this-week-in-glean-special-guest-post-mozregression-telemetry-part-1</id>
-  <published>2020-02-28T15:50:58Z</published>
-  <updated>2020-02-28T15:50:58Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;&lt;em&gt;(“This Week in Glean” is a series of blog posts that the Glean Team at Mozilla is using to try to communicate better about our work. They could be release notes, documentation, hopes, dreams, or whatever: so long as it is inspired by Glean. You can find &lt;a href="https://mozilla.github.io/glean/book/appendix/twig.html"&gt;an index of all TWiG posts online.&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;This is a special guest post by non-Glean-team member William Lachance!&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;As I &lt;a href="/blog/2019/09/mozregression-update-python-3-edition/"&gt;mentioned last time&lt;/a&gt; I talked about &lt;a href="https://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt;, I have been thinking about adding some telemetry to the system to better understand the usage of this tool, to justify some part of Mozilla spending some cycles maintaining and improving it (assuming my intuition that this tool is heavily used is confirmed).&lt;/p&gt;
-
-&lt;p&gt;Coincidentally, the Telemetry client team has been working on a new library for measuring these types of things in a principled way called &lt;a href="https://mozilla.github.io/glean/book/index.html"&gt;Glean&lt;/a&gt;, which even has python bindings! Using this has the potential in saving a lot of work: not only does Glean provide a framework for submitting data, our backend systems are automatically set up to process data submitted via into Glean into &lt;a href="https://cloud.google.com/bigquery"&gt;BigQuery&lt;/a&gt; tables, which can then easily be queried using tools like &lt;a href="https://docs.telemetry.mozilla.org/tools/stmo.html"&gt;sql.telemetry.mozilla.org&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I thought it might be useful to go through some of what I&amp;rsquo;ve been exploring, in case others at Mozilla are interested in instrumenting their pet internal tools or projects. If this effort is successful, I&amp;rsquo;ll distill these notes into a tutorial in the Glean documentation.&lt;/p&gt;
-
-&lt;h2 id="initial-steps-defining-pings-and-metrics"&gt;Initial steps: defining pings and metrics&lt;/h2&gt;
-
-&lt;p&gt;The initial step in setting up a Glean project of any type is to define explicitly the types of pings and metrics. You can look at a &amp;ldquo;ping&amp;rdquo; as being a small bucket of data submitted by a piece of software in the field. A &amp;ldquo;metric&amp;rdquo; is something we&amp;rsquo;re measuring and including in a ping.&lt;/p&gt;
-
-&lt;p&gt;Most of the Glean documentation focuses on browser-based use-cases where we might want to sample lots of different things on an ongoing basis, but for mozregression our needs are considerably simpler: we just want to know when someone &lt;em&gt;has&lt;/em&gt; used it along with a small number of non-personally identifiable characteristics of their usage, e.g. the mozregression version number and the name of the application they are bisecting.&lt;/p&gt;
-
-&lt;p&gt;Glean has &lt;a href="https://mozilla.github.io/glean/book/user/pings/events.html"&gt;the concept of event pings&lt;/a&gt;, but it seems like those are there more for a fine-grained view of what&amp;rsquo;s going on during an application&amp;rsquo;s use. So let&amp;rsquo;s define a new ping just for ourselves, giving it the unimaginative name &amp;ldquo;usage&amp;rdquo;. This goes in a file called &lt;code&gt;pings.yaml&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class="brush: yaml"&gt;
- &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
-&lt;span class="nt"&gt;$schema&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;moz://mozilla.org/schemas/glean/pings/1-0-0&lt;/span&gt;
-
-&lt;span class="nt"&gt;usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class="no"&gt;A ping to record usage of mozregression&lt;/span&gt;
-  &lt;span class="nt"&gt;include_client_id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
-  &lt;span class="nt"&gt;notification_emails&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;wlachance@mozilla.com&lt;/span&gt;
-  &lt;span class="nt"&gt;bugs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://bugzilla.mozilla.org/123456789/&lt;/span&gt;
-  &lt;span class="nt"&gt;data_reviews&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://example.com/path/to/data-review&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;We also need to define a list of things we want to measure. To start with, let&amp;rsquo;s just test with one piece of sample information: the app we&amp;rsquo;re bisecting (e.g. &amp;ldquo;Firefox&amp;rdquo; or &amp;ldquo;Gecko View Example&amp;rdquo;). This goes in a file called &lt;code&gt;metrics.yaml&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class="brush: yaml"&gt;
- &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
-&lt;span class="nt"&gt;$schema&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;moz://mozilla.org/schemas/glean/metrics/1-0-0&lt;/span&gt;
-
-&lt;span class="nt"&gt;usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="nt"&gt;app&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;string&lt;/span&gt;
-    &lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class="no"&gt;The name of the app being bisected&lt;/span&gt;
-    &lt;span class="nt"&gt;notification_emails&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
-      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;wlachance@mozilla.com&lt;/span&gt;
-    &lt;span class="nt"&gt;bugs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
-      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;https://bugzilla.mozilla.org/show_bug.cgi?id=1581647&lt;/span&gt;
-    &lt;span class="nt"&gt;data_reviews&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
-      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://example.com/path/to/data-review&lt;/span&gt;
-    &lt;span class="nt"&gt;expires&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;never&lt;/span&gt;
-    &lt;span class="nt"&gt;send_in_pings&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;usage&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;The &lt;code&gt;data_reviews&lt;/code&gt; sections in both of the above are obviously bogus, we will need to actually get data review before landing and using this code, to make sure that we&amp;rsquo;re in conformance with Mozilla&amp;rsquo;s &lt;a href="https://wiki.mozilla.org/Firefox/Data_Collection"&gt;data collection policies&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id="testing-it-out"&gt;Testing it out&lt;/h2&gt;
-
-&lt;p&gt;But in the mean time, we can test our setup with the &lt;a href="https://docs.telemetry.mozilla.org/concepts/glean/debug_ping_view.html"&gt;Glean debug pings viewer&lt;/a&gt; by setting a special tag (&lt;code&gt;mozregression-test-tag&lt;/code&gt;) on our output. Here&amp;rsquo;s a small python script which does just that:&lt;/p&gt;
-
-&lt;div class="brush: py"&gt;
- &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pathlib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;glean&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Glean&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Configuration&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;glean&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;load_metrics&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                   &lt;span class="n"&gt;load_pings&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;mozregression_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.mozilla2&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;mozregression&amp;#39;&lt;/span&gt;
-
-&lt;span class="n"&gt;Glean&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;application_id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"mozregression"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;application_version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"0.1.1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;upload_enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;configuration&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Configuration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-      &lt;span class="n"&gt;ping_tag&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"mozregression-test-tag"&lt;/span&gt;
-    &lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;mozregression_path&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="s2"&gt;"data"&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;Glean&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_upload_enabled&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;pings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load_pings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"pings.yaml"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;metrics&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load_metrics&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"metrics.yaml"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"reality"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;pings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;submit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Running this script on my laptop, I see that a respectable JSON payload was delivered to and processed by our servers:&lt;/p&gt;
-
-&lt;p&gt;&lt;img style="width:600px" src="/files/2020/02/glean-debug-ping-viewer.png" /&gt;&lt;/p&gt;
-
-&lt;p&gt;As you can see, we&amp;rsquo;re successfully processing both the &amp;ldquo;version&amp;rdquo; number of mozregression, some characteristics of the machine sending the information (my MacBook in this case), as well as our single measure. We also have a client id, which should tell us roughly how many distinct installations of mozregression are sending pings. This should be more than sufficient for an initial &amp;ldquo;mozregression usage dashboard&amp;rdquo;.&lt;/p&gt;
-
-&lt;h2 id="next-steps"&gt;Next steps&lt;/h2&gt;
-
-&lt;p&gt;There are a bunch of things I still need to work through before landing this inside mozregression itself. Notably, the Glean python bindings are python3-only, so we&amp;rsquo;ll need to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766"&gt;port the mozregression GUI to python 3&lt;/a&gt; before we can start measuring usage there. But I&amp;rsquo;m excited at how quickly this work is coming together: stay tuned for part 2 in a few weeks.&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">Conda is pretty great</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2020/01/conda-is-pretty-great/?utm_source=Telemetry&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2020-01-conda-is-pretty-great</id>
-  <published>2020-01-13T16:08:57Z</published>
-  <updated>2020-01-13T16:08:57Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;Lately the data engineering team has been looking into productionizing (i.e. running in Airflow) a bunch of models that the data science team has been producing. This often involves languages and environments that are a bit outside of our comfort zone &amp;mdash; for example, &lt;a href="https://github.com/mozilla/missioncontrol-v2"&gt;the next version of Mission Control&lt;/a&gt; relies on the &lt;a href="https://mc-stan.org/users/interfaces/rstan"&gt;R-stan library&lt;/a&gt; to produce a model of expected crash behaviour as Firefox is released.&lt;/p&gt;
-
-&lt;p&gt;To make things as simple and deterministic as possible, we&amp;rsquo;ve been building up Docker containers to run/execute this code along with their dependencies, which makes things nice and reproducible. My initial thought was to use just the language-native toolchains to build up my container for the above project, but quickly found a number of problems:&lt;/p&gt;
-
-&lt;ol&gt;
- &lt;li&gt;For local testing, Docker on Mac is &lt;em&gt;slow&lt;/em&gt;: when doing a large number of statistical calculations (as above), you can count on your testing iterations taking 3 to 4 (or more) times longer.&lt;/li&gt;
- &lt;li&gt;On initial setup, the default R packaging strategy is to have the user of a package like R-stan recompile from source. This can take &lt;em&gt;forever&lt;/em&gt; if you have a long list of dependencies with C-compiled extensions (pretty much a given if you&amp;rsquo;re working in the data space): rebuilding my initial docker environment for missioncontrol-v2 took almost an hour. This isn&amp;rsquo;t just a problem for local development: it also makes continuous integration using a service like Circle or Travis expensive and painful.&lt;/li&gt;&lt;/ol&gt;
-
-&lt;p&gt;I had been vaguely aware of &lt;a href="https://docs.conda.io/en/latest/"&gt;Conda&lt;/a&gt; for a few years, but didn&amp;rsquo;t really understand its value proposition until I started working on the above project: why bother with a heavyweight package manager when you already have Docker to virtualize things? The answer is that it solves both of the above problems: for local development, you can get something more-or-less identical to what you&amp;rsquo;re running inside Docker with no performance penalty whatsoever. And for building the docker container itself, Conda&amp;rsquo;s package repository contains pre-compiled versions of all the dependencies you&amp;rsquo;d want to use for something like this (even somewhat esoteric libraries like R-stan are available on &lt;a href="https://conda-forge.org/"&gt;conda-forge&lt;/a&gt;), which brought my build cycle times down to less than 5 minutes.&lt;/p&gt;
-
-&lt;p&gt;tl;dr: If you have a bunch of R / python code you want to run in a reproducible manner, consider Conda.&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">Using BigQuery JavaScript UDFs to analyze Firefox telemetry for fun &amp; profit</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit/?utm_source=Telemetry&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2019-10-using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit</id>
-  <published>2019-10-30T15:11:17Z</published>
-  <updated>2019-10-30T15:11:17Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;For the last year, we&amp;rsquo;ve been gradually migrating our backend Telemetry systems from AWS to GCP. I&amp;rsquo;ve been helping out here and there with this effort, most recently porting a job we used to detect slow tab spinners in Firefox nightly, which produced a small dataset that feeds a &lt;a href="https://mikeconley.github.io/bug1310250/"&gt;small adhoc dashboard&lt;/a&gt; which Mike Conley maintains. This was a relatively small task as things go, but it highlighted some features and improvements which I think might be broadly interesting, so I decided to write up a small blog post about it.&lt;/p&gt;
-
-&lt;p&gt;Essentially all this dashboard tells you is what percentage of the Firefox nightly population saw a tab spinner over the past 6 months. And of those that did see a tab spinner, what was the severity? Essentially we’re just trying to make sure that there are no major regressions of user experience (and also that efforts to improve things bore fruit):&lt;/p&gt;
-
-&lt;center&gt;&lt;img style="width:600px" srcset="/files/2019/10/tab-spinner-dash.png" /&gt;&lt;/center&gt;
-
-&lt;p&gt;Pretty simple stuff, but getting the data necessary to produce this kind of dashboard used to be anything but trivial: while some common business/product questions could be answered by a quick query to &lt;a href="https://docs.telemetry.mozilla.org/datasets/batch_view/clients_daily/reference.html"&gt;clients_daily&lt;/a&gt;, getting engineering-specific metrics like this usually involved trawling through gigabytes of raw heka encoded blobs using an Apache Spark cluster and then extracting the relevant information out of the telemetry probe histograms (in this case, &lt;code&gt;FX_TAB_SWITCH_SPINNER_VISIBLE_MS&lt;/code&gt; and &lt;code&gt;FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS&lt;/code&gt;) contained therein.&lt;/p&gt;
-
-&lt;p&gt;The code itself was rather complicated (&lt;a href="https://github.com/mozilla/python_mozetl/blob/58dce245ce8012b338e8b102a8c2c0f00601be60/mozetl/tab_spinner/tab_spinner.py"&gt;take a look, if you dare&lt;/a&gt;) but even worse, running it could get &lt;em&gt;very expensive&lt;/em&gt;. We had a 14 node cluster churning through this script daily, and it took on average about an hour and a half to run! I don&amp;rsquo;t have the exact cost figures on hand (and am not sure if I&amp;rsquo;d be authorized to share them if I did), but based on a back of the envelope sketch, this one single script was probably costing us somewhere on the order of $10-$40 a day (that works out to between $3650-$14600 a year).&lt;/p&gt;
-
-&lt;p&gt;With our move to &lt;a href="https://cloud.google.com/bigquery/"&gt;BigQuery&lt;/a&gt;, things get a lot simpler! Thanks to the combined effort of my team and data operations[1], we now produce &amp;ldquo;stable&amp;rdquo; ping tables on a daily basis with &lt;em&gt;all&lt;/em&gt; the relevant histogram data (stored as JSON blobs), queryable using relatively vanilla SQL. In this case, the data we care about is in &lt;code&gt;telemetry.main&lt;/code&gt; (named after the main ping, appropriately enough). With the help of a small &lt;a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions"&gt;JavaScript UDF&lt;/a&gt; function, all of this data can easily be extracted into a table inside a single SQL query scheduled by &lt;a href="https://docs.telemetry.mozilla.org/tools/stmo.html"&gt;sql.telemetry.mozilla.org&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class="brush: sql"&gt;
- &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="n"&gt;TEMP&lt;/span&gt; &lt;span class="k"&gt;FUNCTION&lt;/span&gt;
-  &lt;span class="n"&gt;udf_js_json_extract_highest_long_spinner&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;input&lt;/span&gt; &lt;span class="n"&gt;STRING&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="k"&gt;RETURNS&lt;/span&gt; &lt;span class="n"&gt;INT64&lt;/span&gt;
-  &lt;span class="k"&gt;LANGUAGE&lt;/span&gt; &lt;span class="n"&gt;js&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="ss"&gt;"""&lt;/span&gt;
-&lt;span class="ss"&gt;    if (input == null) {&lt;/span&gt;
-&lt;span class="ss"&gt;      return 0;&lt;/span&gt;
-&lt;span class="ss"&gt;    }&lt;/span&gt;
-&lt;span class="ss"&gt;    var result = JSON.parse(input);&lt;/span&gt;
-&lt;span class="ss"&gt;    var valuesMap = result.values;&lt;/span&gt;
-&lt;span class="ss"&gt;    var highest = 0;&lt;/span&gt;
-&lt;span class="ss"&gt;    for (var key in valuesMap) {&lt;/span&gt;
-&lt;span class="ss"&gt;      var range = parseInt(key);&lt;/span&gt;
-&lt;span class="ss"&gt;      if (valuesMap[key]) {&lt;/span&gt;
-&lt;span class="ss"&gt;        highest = range &amp;gt; 0 ? range : 1;&lt;/span&gt;
-&lt;span class="ss"&gt;      }&lt;/span&gt;
-&lt;span class="ss"&gt;    }&lt;/span&gt;
-&lt;span class="ss"&gt;    return highest;&lt;/span&gt;
-&lt;span class="ss"&gt;"""&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-
-&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;64000&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_64000ms_or_higher&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;27856&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;64000&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_27856ms_to_63999ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;12124&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;27856&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_12124ms_to_27855ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;5277&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;12124&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_5277ms_to_12123ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;2297&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;5277&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_2297ms_to_5276ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;2297&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_1000ms_to_2296ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_0ms_to_49ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_50ms_to_99ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_100ms_to_199ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_200ms_to_399ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="k"&gt;sum&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;case&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;400&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="mi"&gt;800&lt;/span&gt; &lt;span class="k"&gt;then&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="k"&gt;end&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;v_400ms_to_799ms&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="k"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="k"&gt;count&lt;/span&gt;
-&lt;span class="k"&gt;from&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;client_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;greatest&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;highest_long&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;highest_short&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;highest&lt;/span&gt;
-&lt;span class="k"&gt;from&lt;/span&gt;
-&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;
-    &lt;span class="n"&gt;SUBSTR&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;8&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;client_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;udf_js_json_extract_highest_long_spinner&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;payload&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;histograms&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;highest_long&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;udf_js_json_extract_highest_long_spinner&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;payload&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;histograms&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;FX_TAB_SWITCH_SPINNER_VISIBLE_MS&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;highest_short&lt;/span&gt;
-&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;telemetry&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;main&lt;/span&gt;
-&lt;span class="k"&gt;WHERE&lt;/span&gt;
-    &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;channel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;nightly&amp;#39;&lt;/span&gt;
-    &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;normalized_os&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;Windows&amp;#39;&lt;/span&gt;
-    &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;application&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;build_id&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;FORMAT_DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;"%Y%m%d"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;DATE_SUB&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;CURRENT_DATE&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="nb"&gt;INTERVAL&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;QUARTER&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;DATE_SUB&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;CURRENT_DATE&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="nb"&gt;INTERVAL&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;QUARTER&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;span class="k"&gt;group&lt;/span&gt; &lt;span class="k"&gt;by&lt;/span&gt; &lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;client_id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;group&lt;/span&gt; &lt;span class="k"&gt;by&lt;/span&gt; &lt;span class="n"&gt;build_id&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;In addition to being much simpler, this new job is also &lt;em&gt;way&lt;/em&gt; cheaper. The last run of it scanned just over 1 TB of data, meaning it cost us just over $5. Not as cheap as I might like, but considerably less expensive than before: I&amp;rsquo;ve also scheduled it to only run once every other day, since Mike tells me he doesn&amp;rsquo;t need this data any more often than that.&lt;/p&gt;
-
-&lt;p&gt;[1] I understand that Jeff Klukas, Frank Bertsch, Daniel Thorn, Anthony Miyaguchi, and Wesley Dawson are the principals involved - apologies if I&amp;rsquo;m forgetting someone.&lt;/p&gt;</content></entry></feed>
+  &lt;li id="2020-08-17-mozregression-and-older-builds-footnote-1-definition" class="footnote-definition"&gt;
+   &lt;p&gt;I only added the telemetry to capture this information &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1651401"&gt;relatively recently&lt;/a&gt;, so we&amp;rsquo;re actually only looking at about a month of data in this post. We&amp;rsquo;ll have more complete results later this year.&amp;nbsp;&lt;a href="#2020-08-17-mozregression-and-older-builds-footnote-1-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</content></entry></feed>
