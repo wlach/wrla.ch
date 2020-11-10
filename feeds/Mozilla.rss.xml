@@ -4,9 +4,130 @@
   <title>William Lachance's Log: Posts tagged 'Mozilla'</title>
   <description>William Lachance's Log: Posts tagged 'Mozilla'</description>
   <link>https://wlach.github.io/tags/Mozilla.html</link>
-  <lastBuildDate>Mon, 17 Aug 2020 19:01:57 UT</lastBuildDate>
-  <pubDate>Mon, 17 Aug 2020 19:01:57 UT</pubDate>
+  <lastBuildDate>Tue, 10 Nov 2020 14:09:20 UT</lastBuildDate>
+  <pubDate>Tue, 10 Nov 2020 14:09:20 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>iodide retrospective</title>
+   <link>https://wlach.github.io/blog/2020/11/iodide-retrospective/?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-11-iodide-retrospective</guid>
+   <pubDate>Tue, 10 Nov 2020 14:09:20 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;A bit belatedly, I thought I&amp;rsquo;d write a bit about &lt;a href="https://alpha.iodide.io"&gt;Iodide&lt;/a&gt;: an effort to create a compelling, client-centred scientific notebook environment.&lt;/p&gt;
+
+&lt;p&gt;Despite not writing a ton about it (the sole exception being &lt;a href="/2019/03/new-ideas-old-buildings/"&gt;this brief essay&lt;/a&gt; about my conservative choice for the server backend) Iodide took up a very large chunk of my mental energy from late 2018 through 2019. It was also essentially my only attempt at working on something that was on its way to being an actual &lt;em&gt;product&lt;/em&gt; while at Mozilla: while I&amp;rsquo;ve led other projects that have been interesting and/or impactful in my 9 odd-years here (&lt;a href="https://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt; and &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder"&gt;perfherder&lt;/a&gt; being the biggest successes), they fall firmly into the &amp;ldquo;internal tools supporting another product&amp;rdquo; category.&lt;/p&gt;
+
+&lt;p&gt;At this point it&amp;rsquo;s probably safe to say that most of the project has wound down: no one is being paid to work on Iodide and it&amp;rsquo;s essentially in extreme maintenance mode. Before it&amp;rsquo;s put to bed altogether, I&amp;rsquo;d like to write a few notes about its approach, where I think it had big advantanges, and where it seems to fall short. I&amp;rsquo;ll conclude with some areas I&amp;rsquo;d like to explore (or would like to see others explore!). I&amp;rsquo;d like to emphasize that this is &lt;em&gt;my opinion only&lt;/em&gt;: the rest of the Iodide core team no doubt have their own thoughts. That said, let&amp;rsquo;s jump in.&lt;/p&gt;
+
+&lt;h2 id="what-is-iodide-anyway"&gt;What is Iodide, anyway?&lt;/h2&gt;
+
+&lt;p&gt;One thing that&amp;rsquo;s interesting about a product like Iodide is that people tend to project their hopes and dreams onto it: if you asked any given member of the Iodide team to give a 200 word description of the project, you&amp;rsquo;d probably get a slightly different answer emphasizing different things. That said, a fair initial approximation of the project vision would be &amp;ldquo;a scientific notebook like Jupyter, but running in the browser&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;What does this mean? First, let&amp;rsquo;s talk about what Jupyter does: at heart, it&amp;rsquo;s basically a Python &amp;ldquo;kernel&amp;rdquo; (read: interpreter), fronted by a webserver. You send snipits of the code to the interpreter via a web interface and they would faithfully be run on the backend (either on your local machine in a separate process or a server in the cloud). Results are then be returned back to the web interface and then rendered by the browser in one form or another.&lt;/p&gt;
+
+&lt;p&gt;Iodide&amp;rsquo;s model is quite similar, with one difference: instead of running the kernel in another process or somewhere in the cloud, all the heavy lifting happens &lt;em&gt;in the browser itself&lt;/em&gt;, using the local JavaScript and/or WebAssembly runtime. The very first version of the product that Hamilton Ulmer and Brendan Colloran came up with was &lt;em&gt;definitely&lt;/em&gt; in this category: it had no server-side component whatsoever.&lt;/p&gt;
+
+&lt;p&gt;Truth be told, even applications like Jupyter do a fair amount of computation on the client side to render a user interface and the results of computations: the distinction is not as clear cut as you might think. But in general I think the premise holds: if you load an iodide notebook today (still possible on alpha.iodide.io! no account required), the only thing that comes from the server is a little bit of static JavaScript and a flat file delivered as a JSON payload. All the &amp;ldquo;magic&amp;rdquo; of whatever computation you might come up with happens on the client.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s take a quick look at the default tryit iodide notebook to give an idea of what I mean:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;%% fetch
+// load a js library and a csv file with a fetch cell
+js: https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.2/d3.js
+text: csvDataString = https://data.sfgov.org/api/views/5cei-gny5/rows.csv?accessType=DOWNLOAD
+
+%% js
+// parse the data using the d3 library (and show the value in the console)
+parsedData = d3.csvParse(csvDataString)
+
+%% js
+// replace the text in the report element "htmlInMd"
+document.getElementById('htmlInMd').innerText = parsedData[0].Address
+
+%% py
+# use python to select some of the data
+from js import parsedData
+[x['Address'] for x in parsedData if x['Lead Remediation'] == 'true']&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;%%&lt;/code&gt; delimiters indicate individual cells. The &lt;code&gt;fetch&lt;/code&gt; cell is an iodide-native cell with its own logic to load the specified resources into a JavaScript variables when evaluated. &lt;code&gt;js&lt;/code&gt; and &lt;code&gt;py&lt;/code&gt; cells direct the browser to interpret the code inside of them, which causes the DOM to mutate. From these building blocks (and a few others), you can build up an interactive report which can &lt;em&gt;also&lt;/em&gt; be freely forked and edited by anyone who cares to.&lt;/p&gt;
+
+&lt;p&gt;In some ways, I think Iodide has more in common with services like Glitch or Codepen than with Jupyter. In effect, it&amp;rsquo;s mostly offering a way to build up a static web page (doing whatever) using web technologies&amp;mdash; even if the user interface affordances and cell-based computation model might remind you more of a scientific notebook.&lt;/p&gt;
+
+&lt;h2 id="what-works-well-about-this-approach"&gt;What works well about this approach&lt;/h2&gt;
+
+&lt;p&gt;There&amp;rsquo;s a few nifty things that come from doing things this way:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;The environment is easily extensible for those familiar with JavaScript or other client side technologies. There is no need to mess with strange plugin architectures or APIs or conform to the opinions of someone else on what options there are for data visualization and presentation. If you want to use jQuery inside your notebook for a user interface widget, just import it and go!&lt;/li&gt;
+ &lt;li&gt;The architecture scales to many, many users: since all the computation happens on the client, the server&amp;rsquo;s only role is to store and retrieve notebook content. alpha.iodide.io has happily been running on Heroku&amp;rsquo;s least expensive dyno type for its entire existence.&lt;/li&gt;
+ &lt;li&gt;Reproducibility: so long as the iodide notebook has no references to data on third party servers with authentiction, there is no stopping someone from being able to reproduce whatever computations led to your results.&lt;/li&gt;
+ &lt;li&gt;Related to reproducibility, it&amp;rsquo;s easy to &lt;em&gt;build off&lt;/em&gt; of someone else&amp;rsquo;s notebook or exploration, since everything is so self-contained.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;I continue to be surprised and impressed with what people come up with in the Jupyter ecosystem so I don&amp;rsquo;t want to claim these are things that &amp;ldquo;only Iodide&amp;rdquo; (or other tools like it) can do&amp;mdash; what I will say is that I haven&amp;rsquo;t seen many things that combine both the conciseness and expressiveness of iomd. The beauty of the web is that there is such an abundance of tutorials and resources to support creating interactive content: when building iodide notebooks, I would freely borrow from resources such as MDN and Stackoverflow, instead of being locked into what the authoring software thinks one should be able express.&lt;/p&gt;
+
+&lt;h2 id="whats-awkward"&gt;What&amp;rsquo;s awkward&lt;/h2&gt;
+
+&lt;p&gt;Every silver lining has a cloud and (unfortunately) Iodide has a pretty big one. Depending on how you use Iodide, you will almost certainly run into the following problems:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;You are limited by the computational affordances provided by the browser: there is no obvious way to offload long-running or expensive computations to a cluster of machines using a technology like &lt;a href="https://spark.apache.org/"&gt;Spark&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;Long-running computations will block the main thread, causing your notebook to become extremely unresponsive for the duration.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;The first, I (and most people?) can usually live with. Computers are quite powerful these days and most data tasks I&amp;rsquo;m interested in are easily within the range of capabilities of my laptop. In the cases where I need to do something larger scale, I&amp;rsquo;m quite happy to fire up a Jupyter Notebook, BigQuery Console, or &amp;lt;other tool of choice&amp;gt; to do the heavy-lifting, and then move back to a client-side approach to visualize and explore my results.&lt;/p&gt;
+
+&lt;p&gt;The second is much harder to deal with, since it means that the process of exploration that is so key to scientific computing. I&amp;rsquo;m quite happy to wait 5 seconds, 15 seconds, even a minute for a longer-running computation to complete but if I see the slow script dialog and everything about my environment grinds to a halt, it not only blocks my work but causes me to lose faith in the system. How do I know if it&amp;rsquo;s even going to finish?&lt;/p&gt;
+
+&lt;p&gt;This occurs way more often than you might think: even a simple notebook loading pandas (via pyodide) can cause Firefox to pop up the slow script dialog:&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2020/11/iodide-slow-script.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;Why is this so? Aren&amp;rsquo;t browsers complex beasts which can do a million things in parallel these days? Only sort of: while the graphical and network portions of loading and using a web site are highly parallel, JavaScript and any changes to the DOM &lt;em&gt;can only occur synchronously&lt;/em&gt; by default. Let&amp;rsquo;s break down a simple iodide example which trivially hangs the browser:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;%% js
+
+while (1) { true }&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href="https://alpha.iodide.io/notebooks/6487/"&gt;link&lt;/a&gt; (but you really don&amp;rsquo;t want to)&lt;/p&gt;
+
+&lt;p&gt;What&amp;rsquo;s going on here? When you execute that cell, the web site&amp;rsquo;s sole thread is now devoted to running that infinite loop. No longer can any other JavaScript-based event handler be run, so for example the text editor (which uses &lt;a href="https://microsoft.github.io/monaco-editor/"&gt;Monaco&lt;/a&gt; under the hood) and menus are now completely unresponsive.&lt;/p&gt;
+
+&lt;p&gt;The iodide team was aware of this issue since I joined the project. There were no end of discussions about how to work around it, but they never really come to a satisfying conclusion. The most obvious solution is to move the cell&amp;rsquo;s computation to a web worker, but workers don&amp;rsquo;t have synchronous access to the DOM which is required for web content to work as you&amp;rsquo;d expect. While there are projects like &lt;a href="https://github.com/GoogleChromeLabs/comlink"&gt;ComLink&lt;/a&gt; that attempt to bridge this divide, they require both a fair amount of skill and code to use effectively. As mentioned above, one of the key differentiators between iodide and other notebook environments is that tools like jQuery, d3, etc. &amp;ldquo;just work&amp;rdquo;. That is, you can take a code snipit off the web and run it inside an iodide notebook: there&amp;rsquo;s no workaround I&amp;rsquo;ve been able to find which maintains that behaviour &lt;em&gt;and&lt;/em&gt; ensures that the Iodide notebook environment is always responsive.&lt;/p&gt;
+
+&lt;p&gt;It took a while for this to really hit home, but having some separation from the project, I&amp;rsquo;ve come to realize that the problem is that our underlying technology isn&amp;rsquo;t designed for the task we were asking of it, nor is it likely to ever be in the near future. While the web (by which I mean not only the browser, but the ecosystem of popular tooling and libraries that has been built on top of it) has certainly grown in scope to things it was never envisioned to handle like games and office applications, it&amp;rsquo;s just not optimized for what I&amp;rsquo;d call &amp;ldquo;editable content&amp;rdquo;. That is, the situation where a web page offers affordances for manipulating its own representation.&lt;/p&gt;
+
+&lt;p&gt;While modern web browsers have evolved to (sort of) protect one errant site from bringing the whole thing down, they certainly haven&amp;rsquo;t evolved to protect a particular site against &lt;em&gt;itself&lt;/em&gt;. And why would they? Web developers usually work in the terminal and text editor: the assumption is that if their test code misbehaves, they&amp;rsquo;ll just kill their tab and start all over again. Application state is persisted either on-disk or inside an external database, so nothing will really be lost.&lt;/p&gt;
+
+&lt;p&gt;Could this ever change? Possibly, but I think it would be a radical rethinking of what the web is, and I&amp;rsquo;m not really sure what would motivate it.&lt;/p&gt;
+
+&lt;h2 id="a-way-forward"&gt;A way forward&lt;/h2&gt;
+
+&lt;p&gt;While working on iodide, we were fond of looking at this diagram, which was taken from &lt;a href="https://dl.acm.org/doi/10.1145/3173574.3173606"&gt;this study of the data science workflow&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2020/11/ds-workflow.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;It describes how people typically perform computational inquiry: typically you would poke around with some raw data, run some transformations on it. Only after that process was complete would you start trying to build up a &amp;ldquo;presentation&amp;rdquo; of your results to your audience.&lt;/p&gt;
+
+&lt;p&gt;Looking back, it&amp;rsquo;s clear that Iodide&amp;rsquo;s strong suit was the &lt;em&gt;explanation&lt;/em&gt; part of this workflow, rather than collaboration and exploration. My strong suspicion is that we actually want to use different tools for each one of these tasks. Coincidentally, this also maps to the bulk of my experience working with data at Mozilla, using iodide or not: my most successful front-end data visualization projects were typically the distilled result of a very large number of adhoc explorations (python scripts, SQL queries, Jupyter notebooks, &amp;hellip;). The actual visualization itself contains very little computational meat: basically &amp;ldquo;just enough&amp;rdquo; to let the user engage with the data fruitfully.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately much of my work in this area uses semi-sensitive internal Mozilla data so can&amp;rsquo;t be publicly shared, but here&amp;rsquo;s one example:&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2020/11/bq-migration-burndown.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href="https://alpha.iodide.io/notebooks/3593/?viewMode=report"&gt;link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I built this dashboard in a single day to track our progress (resolved/open bugs) when we were migrating our data platform from AWS to GCP. It was useful: it let us quickly visualize which areas needed more attention and gave upper management more confidence that we were moving closer to our goal. However, there was little computation going on in the client: most of the backend work was happening in our &lt;a href="https://bugzilla.mozilla.org"&gt;Bugzilla instance&lt;/a&gt;: the iodide notebook just does a little bit of post-processing to visualize the results in a useful way.&lt;/p&gt;
+
+&lt;p&gt;Along these lines, I still think there is a place in the world for an interactive &lt;em&gt;visualization&lt;/em&gt; environment built on principles similar to iodide: basically a markdown editor augmented with primitives oriented around data exploration (for example, charts and data tables), with allowances to bring in any JavaScript library you might want. However, any in-depth data processing would be assumed to have mostly been run elsewhere, in advance. The editing environment could either be the browser or a code editor running on your local machine, per user preference: in either case, there would not be any really important computational state running in the browser, so things like dynamic reloading (or just closing an errant tab) should not cause the user to lose any work.&lt;/p&gt;
+
+&lt;p&gt;This would give you the best of both worlds: you could easily create compelling visualizations that are easy to share and remix at minimal cost (because all the work happens in the browser), but you could &lt;em&gt;also&lt;/em&gt; use whatever existing tools work best for your initial data exploration (whether that be JavaScript or the more traditional Python data science stack). And because the new tool has a reduced scope, I think building such an environment would be a much more tractable project for an individual or small group to pursue.&lt;/p&gt;
+
+&lt;p&gt;More on this in the future, I hope.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Many thanks to &lt;a href="https://teonbrooks.com/"&gt;Teon Brooks&lt;/a&gt; and Devin Bayly for reviewing an early draft of this post&lt;/em&gt;&lt;/p&gt;</description></item>
   <item>
    <title>mozregression and older builds</title>
    <link>https://wlach.github.io/blog/2020/08/mozregression-and-older-builds/?utm_source=Mozilla&amp;utm_medium=RSS</link>
@@ -828,27 +949,4 @@
 
 &lt;p&gt;We&amp;rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&amp;rsquo;t (and shouldn&amp;rsquo;t) draw any kind of conclusion whatsoever.&lt;/p&gt;
 
-&lt;p&gt;Ok, so that&amp;rsquo;s just science 101: don&amp;rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &amp;mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.&lt;/p&gt;</description></item>
-  <item>
-   <title>Giving and receiving help at Mozilla</title>
-   <link>https://wlach.github.io/blog/2018/01/giving-and-receiving-help-at-mozilla/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2018-01-giving-and-receiving-help-at-mozilla</guid>
-   <pubDate>Wed, 17 Jan 2018 18:49:34 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;This is going to sound corny, but helping people really is one of my favorite things at Mozilla, even with &lt;a href="https://mozilla.github.io/mozregression/"&gt;projects I have mostly moved on from&lt;/a&gt;. As someone who primarily works on internal tools, I love hearing about bugs in the software I maintain or questions on how to use it best.&lt;/p&gt;
-
-&lt;p&gt;Given this, you might think that getting in touch with me via irc or slack is the fastest and best way to get your issue addressed. We certainly have a culture of using these instant-messaging applications at Mozilla for everything and anything. Unfortunately, I have found that being &amp;ldquo;always on&amp;rdquo; to respond to everything hasn&amp;rsquo;t been positive for either my productivity or mental health. My personal situation aside, getting pinged on irc while I&amp;rsquo;m out of the office often results in stuff getting lost &amp;mdash; the person who asked me the question is often gone by the time I return and am able to answer.&lt;/p&gt;
-
-&lt;p&gt;With that in mind, here&amp;rsquo;s some notes on my preferred conversation style when making initial contact about an issue:&lt;/p&gt;
-
-&lt;ol&gt;
- &lt;li&gt;Please don&amp;rsquo;t send context-free pings on irc. It has been &lt;a href="http://edunham.net/2017/10/05/saying_ping.html"&gt;explained elsewhere&lt;/a&gt;  why this doesn&amp;rsquo;t work that well, so I won&amp;rsquo;t repeat the argument here.&lt;/li&gt;
- &lt;li&gt;If you are at all suspicious that your issue might be a bug in some software  maintain, just &lt;a href="https://bugzilla.mozilla.org/enter_bug.cgi"&gt;file a bug&lt;/a&gt; and needinfo me. That puts us right on the path to documenting  the problem and getting to a resolution &amp;mdash; even if something turns out to not  be a bug, if you&amp;rsquo;re seeing an unexpected error it points to a usability issue.&lt;/li&gt;
- &lt;li&gt;For everything else, email is best. I do check it quite frequently between  bursts of work (i.e. many times a day). I promise I won&amp;rsquo;t leave you hanging  for days on end as long as I&amp;rsquo;m not on vacation.&lt;/li&gt;&lt;/ol&gt;
-
-&lt;p&gt;These aren&amp;rsquo;t ironclad rules. If your question pertains to a project I&amp;rsquo;m &lt;em&gt;actively&lt;/em&gt; working on, it might make sense to ping me on irc first (preferably on a channel where other people are around who might also be able to help). If it&amp;rsquo;s an actual &lt;em&gt;emergency&lt;/em&gt;, then of course talk to me on irc straight away (or even call me on my phone) &amp;mdash; if I don&amp;rsquo;t respond, then fall back to filing bug or sending email. Use common sense.&lt;/p&gt;
-
-&lt;p&gt;One of my new years resolutions is to also apply these rules to my communications with others at Mozilla as well, so if you see my violating it feel free to point me back at this post. Or just use this handy meme I created:&lt;/p&gt;
-
-&lt;center&gt;&lt;img src="/files/2018/01/scale-of-asking.jpg" /&gt;&lt;/center&gt;</description></item></channel></rss>
+&lt;p&gt;Ok, so that&amp;rsquo;s just science 101: don&amp;rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &amp;mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.&lt;/p&gt;</description></item></channel></rss>

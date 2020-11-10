@@ -7,6 +7,7 @@ https://wlach.github.io/blog/2013/07/simple-command-line-ntp-client-for-android-
 https://wlach.github.io/blog/2009/03/breaking-news-cat-watches-himself-in-tv/
 https://wlach.github.io/blog/2013/03/documentation-for-mozdevice/
 https://wlach.github.io/blog/2013/05/proof-of-concept-eideticker-dashboard-for-firefoxos/
+https://wlach.github.io/blog/2020/11/iodide-retrospective/
 https://wlach.github.io/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/
 https://wlach.github.io/blog/2011/10/faster-but-not-quite-there-yet-8230/
 https://wlach.github.io/blog/2018/10/pydata-nyc-2018/
