@@ -42,6 +42,7 @@ https://wlach.github.io/blog/2013/09/early-morning-questions/
 https://wlach.github.io/blog/2017/12/maintaining-metricsgraphics/
 https://wlach.github.io/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/
 https://wlach.github.io/blog/2016/02/albert-low/
+https://wlach.github.io/blog/2021/01/the-glean-dictionary/
 https://wlach.github.io/blog/2010/11/rice-038-barley-rae-spoon-at-casa-del-popolo/
 https://wlach.github.io/blog/2010/04/i-can-has-edmonton-transit-iphone-app/
 https://wlach.github.io/blog/2016/10/slow-treeherder-fast-treeherder/

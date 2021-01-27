@@ -4,9 +4,35 @@
   <title>William Lachance's Log: Posts tagged 'Mozilla'</title>
   <description>William Lachance's Log: Posts tagged 'Mozilla'</description>
   <link>https://wlach.github.io/tags/Mozilla.html</link>
-  <lastBuildDate>Tue, 10 Nov 2020 14:09:20 UT</lastBuildDate>
-  <pubDate>Tue, 10 Nov 2020 14:09:20 UT</pubDate>
+  <lastBuildDate>Wed, 27 Jan 2021 13:53:44 UT</lastBuildDate>
+  <pubDate>Wed, 27 Jan 2021 13:53:44 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>The Glean Dictionary</title>
+   <link>https://wlach.github.io/blog/2021/01/the-glean-dictionary/?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2021-01-the-glean-dictionary</guid>
+   <pubDate>Wed, 27 Jan 2021 13:53:44 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;I&amp;rsquo;m happy to announce the availability of the first milestone of the Glean Dictionary, a project to provide a comprehensive &amp;ldquo;data dictionary&amp;rdquo; of the data Mozilla collects inside its products and how it makes use of it. You can access it via this development URL:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://dictionary.protosaur.dev/"&gt;https://dictionary.protosaur.dev/&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2021/01/glean-dictionary.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;The goal of this first milestone was to provide an equivalent to the &lt;a href="https://probes.telemetry.mozilla.org"&gt;popular &amp;ldquo;probe&amp;rdquo; dictionary&lt;/a&gt; for newer applications which use the Glean SDK, such as Firefox for Android. As Firefox on Glean (FoG) comes together, this will also serve as an index of what data is available for Firefox and how to access it.&lt;/p&gt;
+
+&lt;p&gt;In addition to displaying a browsable inventory of the low-level metrics which these applications collect, the Glean Dictionary also provides:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Code search functionality (via &lt;a href="https://searchfox.org"&gt;Searchfox&lt;/a&gt;) to see where any given data collection is defined and used.&lt;/li&gt;
+ &lt;li&gt;Information on how this information is represented inside Mozilla&amp;rsquo;s BigQuery data store.&lt;/li&gt;
+ &lt;li&gt;Where available, links to browse / view this information using the &lt;a href="https://glam.telemetry.mozilla.org"&gt;Glean Aggregated Metrics Dashboard&lt;/a&gt; (GLAM).&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;Subsequent phases of this project will expand the Glean Dictionary to include derived datasets and dashboards / reports built using this data, as well as allow users to add their own annotations on metric behaviour via a GitHub-based documentation system. For more information, see the &lt;a href="https://docs.google.com/document/d/1OkTWA3rsSJ0m5g9GDnxXVUMkJP-xJMQk_bDgDq-Z9xM/edit#"&gt;project proposal&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Glean Dictionary is the result of the efforts of many contributors, both inside and outside Mozilla Data. Special shout-out to &lt;a href="https://www.linh-nguyen.com/outreachy"&gt;Linh Nyugen&lt;/a&gt;, who has been moving mountains inside the codebase as part of an Outreachy internship with us. We welcome your feedback and involvement! See our &lt;a href="https://github.com/mozilla/glean-dictionary"&gt;project repository&lt;/a&gt; and Matrix channel (&lt;a href="https://chat.mozilla.org/#/room/#glean-dictionary:mozilla.org"&gt;#glean-dictionary on chat.mozilla.org&lt;/a&gt;)&lt;/p&gt;</description></item>
   <item>
    <title>iodide retrospective</title>
    <link>https://wlach.github.io/blog/2020/11/iodide-retrospective/?utm_source=Mozilla&amp;utm_medium=RSS</link>
@@ -923,30 +949,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Data issues aside, the indications are that there&amp;rsquo;s been a steady increase in the quality of Firefox over the last few releases based on the main user facing error metric we&amp;rsquo;ve cared about in the past (main crashes), so that&amp;rsquo;s good. :)&lt;/p&gt;
 
-&lt;p&gt;If you want to play with the system yourself, the &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;development instance&lt;/a&gt; is still up. We will probably look at making this thing &amp;ldquo;official&amp;rdquo; next quarter.&lt;/p&gt;</description></item>
-  <item>
-   <title>Derived versus direct</title>
-   <link>https://wlach.github.io/blog/2018/02/derived-versus-direct/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2018-02-derived-versus-direct</guid>
-   <pubDate>Mon, 12 Feb 2018 21:06:40 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;To attempt to make complex phenomena more understandable, we often use derived measures when representing Telemetry data at Mozilla. For error rates for example, we often measure things in terms of &amp;ldquo;X per khours of use&amp;rdquo; (where X might be &amp;ldquo;main crashes&amp;rdquo;, &amp;ldquo;appearance of the slow script dialogue&amp;rdquo;). I.e. instead of showing a raw &lt;em&gt;count&lt;/em&gt; of errors we show a rate. Normally this is a good thing: it allows the user to easily compare two things which might have different raw numbers for whatever reason but where you&amp;rsquo;d normally expect the ratio to be similar. For example, we see that although the &lt;em&gt;uptake&lt;/em&gt; of the newly-released Firefox 58.0.2 is a bit slower than 58.0.1, the overall crash rate (as sampled every 5 minutes) is more or less the same after about a day has rolled around:&lt;/p&gt;
-
-&lt;p&gt;&lt;img srcset="/files/2018/02/main_crashes_normalized.png" /&gt;&lt;/p&gt;
-
-&lt;p&gt;On the other hand, looking at raw counts doesn&amp;rsquo;t really give you much of a hint on how to interpret the results. Depending on the scale of the graph, the actual rates could actually resolve to being vastly different:&lt;/p&gt;
-
-&lt;p&gt;&lt;img srcset="/files/2018/02/main_crashes_raw.png" /&gt;&lt;/p&gt;
-
-&lt;p&gt;Ok, so this simple tool (using a ratio) is useful. Yay! Unfortunately, there is one case where using this technique can lead to a very deceptive visualization: when the number of samples is really small, a few outliers can give a really false impression of what&amp;rsquo;s really happening. Take this graph of what the crash rate looked like &lt;em&gt;just after&lt;/em&gt; Firefox 58.0 was released:&lt;/p&gt;
-
-&lt;p&gt;&lt;img srcset="/files/2018/02/relative_small_crash_counts.png" /&gt;&lt;/p&gt;
-
-&lt;p&gt;10 to 100 errors per 1000 hours, say it isn&amp;rsquo;t so? But wait, how many errors do we have absolutely? Hovering over a representative point in the graph with the normalization (use of a ratio) turned off:&lt;/p&gt;
-
-&lt;p&gt;&lt;img srcset="/files/2018/02/absolute_small_crash_counts.png" /&gt;&lt;/p&gt;
-
-&lt;p&gt;We&amp;rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&amp;rsquo;t (and shouldn&amp;rsquo;t) draw any kind of conclusion whatsoever.&lt;/p&gt;
-
-&lt;p&gt;Ok, so that&amp;rsquo;s just science 101: don&amp;rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &amp;mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;If you want to play with the system yourself, the &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;development instance&lt;/a&gt; is still up. We will probably look at making this thing &amp;ldquo;official&amp;rdquo; next quarter.&lt;/p&gt;</description></item></channel></rss>
