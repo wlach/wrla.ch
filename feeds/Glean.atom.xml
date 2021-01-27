@@ -14,7 +14,9 @@
   <author>
    <name>William Lachance</name></author>
   <content type="html">
-&lt;p&gt;I&amp;rsquo;m happy to announce the availability of the first milestone of the Glean Dictionary, a project to provide a comprehensive &amp;ldquo;data dictionary&amp;rdquo; of the data Mozilla collects inside its products and how it makes use of it. You can access it via this development URL:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;(“This Week in Glean” is a series of blog posts that the Glean Team at Mozilla is using to try to communicate better about our work. They could be release notes, documentation, hopes, dreams, or whatever: so long as it is inspired by Glean. You can find &lt;a href="https://mozilla.github.io/glean/book/appendix/twig.html"&gt;an index of all TWiG posts online.&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;On behalf of Mozilla&amp;rsquo;s Data group, I&amp;rsquo;m happy to announce the availability of the first milestone of the Glean Dictionary, a project to provide a comprehensive &amp;ldquo;data dictionary&amp;rdquo; of the data Mozilla collects inside its products and how it makes use of it. You can access it via this development URL:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="https://dictionary.protosaur.dev/"&gt;https://dictionary.protosaur.dev/&lt;/a&gt;&lt;/p&gt;
 
@@ -23,6 +25,8 @@
 
 &lt;p&gt;The goal of this first milestone was to provide an equivalent to the &lt;a href="https://probes.telemetry.mozilla.org"&gt;popular &amp;ldquo;probe&amp;rdquo; dictionary&lt;/a&gt; for newer applications which use the Glean SDK, such as Firefox for Android. As Firefox on Glean (FoG) comes together, this will also serve as an index of what data is available for Firefox and how to access it.&lt;/p&gt;
 
+&lt;p&gt;Part of the vision of this project is to act as a showcase for Mozilla&amp;rsquo;s practices around &lt;a href="https://www.mozilla.org/en-US/about/policy/lean-data/"&gt;lean data&lt;/a&gt; and &lt;a href="https://wiki.mozilla.org/Firefox/Data_Collection"&gt;data governance&lt;/a&gt;: you&amp;rsquo;ll note that every metric and ping in the Glean Dictionary has a data review associated with it &amp;mdash; giving the general public a window into what we&amp;rsquo;re collecting and why.&lt;/p&gt;
+
 &lt;p&gt;In addition to displaying a browsable inventory of the low-level metrics which these applications collect, the Glean Dictionary also provides:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -30,9 +34,9 @@
  &lt;li&gt;Information on how this information is represented inside Mozilla&amp;rsquo;s BigQuery data store.&lt;/li&gt;
  &lt;li&gt;Where available, links to browse / view this information using the &lt;a href="https://glam.telemetry.mozilla.org"&gt;Glean Aggregated Metrics Dashboard&lt;/a&gt; (GLAM).&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;Subsequent phases of this project will expand the Glean Dictionary to include derived datasets and dashboards / reports built using this data, as well as allow users to add their own annotations on metric behaviour via a GitHub-based documentation system. For more information, see the &lt;a href="https://docs.google.com/document/d/1OkTWA3rsSJ0m5g9GDnxXVUMkJP-xJMQk_bDgDq-Z9xM/edit#"&gt;project proposal&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Over the next few months, we&amp;rsquo;ll be expanding the Glean Dictionary to include derived datasets and dashboards / reports built using this data, as well as allow users to add their own annotations on metric behaviour via a GitHub-based documentation system. For more information, see the &lt;a href="https://docs.google.com/document/d/1OkTWA3rsSJ0m5g9GDnxXVUMkJP-xJMQk_bDgDq-Z9xM/edit#"&gt;project proposal&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;The Glean Dictionary is the result of the efforts of many contributors, both inside and outside Mozilla Data. Special shout-out to &lt;a href="https://www.linh-nguyen.com/outreachy"&gt;Linh Nyugen&lt;/a&gt;, who has been moving mountains inside the codebase as part of an Outreachy internship with us. We welcome your feedback and involvement! See our &lt;a href="https://github.com/mozilla/glean-dictionary"&gt;project repository&lt;/a&gt; and Matrix channel (&lt;a href="https://chat.mozilla.org/#/room/#glean-dictionary:mozilla.org"&gt;#glean-dictionary on chat.mozilla.org&lt;/a&gt;)&lt;/p&gt;</content></entry>
+&lt;p&gt;The Glean Dictionary is the result of the efforts of many contributors, both inside and outside Mozilla Data. Special shout-out to &lt;a href="https://www.linh-nguyen.com/outreachy"&gt;Linh Nguyen&lt;/a&gt;, who has been moving mountains inside the codebase as part of an Outreachy internship with us. We welcome your feedback and involvement! For more information, see our &lt;a href="https://github.com/mozilla/glean-dictionary"&gt;project repository&lt;/a&gt; and Matrix channel (&lt;a href="https://chat.mozilla.org/#/room/#glean-dictionary:mozilla.org"&gt;#glean-dictionary on chat.mozilla.org&lt;/a&gt;).&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Mozilla Telemetry in 2020: From "Just Firefox" to a "Galaxy of Data"</title>
   <link rel="alternate" href="https://wlach.github.io/blog/2020/07/mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data/?utm_source=Glean&amp;utm_medium=Atom" />
