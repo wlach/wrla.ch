@@ -92,6 +92,65 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2015/10/the-new-old-perfherder-data-model/">The new old Perfherder data model</a></h2>
+    <p class="index-date">Oct 23rd, 2015</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a>  <a href="/tags/SQL.html">SQL</a></span></p>
+  </header>
+
+<p>I spent a good chunk of time last quarter redesigning how <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a> stores its data internally. Here are some notes on this change, for posterity.</p>
+
+<p>Perfherder&#8217;s data model is based around two concepts:</p>
+
+<ol>
+ <li>Series signatures: A unique set of properties (platform, test name, suite name, options) that identifies a performance test.</li>
+ <li>Series data: A set of measurements for a series signature, indexed by treeherder push and job information.</li></ol>
+
+<p>When it was first written, Perfherder stored the second type of data as a JSON-encoded series in a relational (MySQL) database. That is, instead of storing each datum as a row in the database, we would store sequences of them. The assumption was that for the common case (getting a bunch of data to plot on a graph), this would be faster than fetching a bunch of rows and then encoding them as JSON. Unfortunately this wasn&#8217;t really true, and it had some serious drawbacks besides.</p>
+
+<p>First, the approach&#8217;s performance was awful when it came time to add new data. To avoid needing to decode or download the full stored series when you wanted to render only a small subset of it, we stored the same series multiple times over various time intervals. For example, we stored the series data for one day, one week&#8230; all the way up to one year. You can probably see the problem already: you have to decode and re-encode the same data structure many times for each time interval for every new performance datum you were inserting into the database. The pseudo code looked something like this for each push:</p>
+
+<pre><code>for each platform we're testing talos on:
+  for each talos job for the platform:
+    for each test suite in the talos job:
+      for each subtest in the test suite:
+        for each time interval in one year, 90 days, 60 days, ...:
+           fetch and decode json series for that time interval from db
+           add datapoint to end of series
+           re-encode series as json and store in db</code></pre>
+
+<p>Consider that we have some 6 platforms (android, linux64, osx, winxp, win7, win8), 20ish test suites with potentially dozens of subtests&#8230; and you can see where the problems begin.</p>
+
+<p>In addition to being slow to write, this was also a pig in terms of disk space consumption. The overhead of JSON (&#8220;{, }&#8221; characters, object properties) really starts to add up when you&#8217;re storing millions of performance measurements. We got around this (sort of) by gzipping the contents of these series, but that still left us with gigantic mysql replay logs as we stored the complete &#8220;transaction&#8221; of replacing each of these series rows thousands of times per day. At one point, we completely ran out of disk space on the treeherder staging instance due to this issue.</p>
+
+<p>Read performance was also often terrible for many common use cases. The original assumption I mentioned above was wrong: rendering points on a graph is only one use case a system like Perfherder has to handle. We also want to be able to get the set of series values associated with two result sets (to render comparison views) or to look up the data associated with a particular job. We were essentially indexing the performance data only on one single dimension (time) which made these other types of operations unnecessarily complex and slow &#8212; especially as the data you want to look up ages. For example, to look up a two week old comparison between two pushes, you&#8217;d also have to fetch the data for <em>every</em> subsequent push. That&#8217;s a lot of unnecessary overhead when you&#8217;re rendering a comparison view with 100 or so different performance tests:</p>
+
+<p><a href="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM.png"><img src="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM-300x178.png" alt="Screen Shot 2015-08-07 at 1.57.39 PM" width="300" height="178" class="alignnone size-medium wp-image-1229" srcset="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM-300x178.png 300w, /files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM.png 1003w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+
+<p>So what&#8217;s the alternative? It&#8217;s actually the most obvious thing: just encode one database row per performance series value and create indexes on each of the properties that we might want to search on (repository, timestamp, job id, push id). Yes, this is a lot of rows (the new database stands at 48 million rows of performance data, and counting) but you know what? MySQL is <em>designed</em> to handle that sort of load. The current performance data table looks like this:</p>
+
+<pre><code>+----------------+------------------+
+| Field          | Type             |
++----------------+------------------+
+| id             | int(11)          |
+| job_id         | int(10) unsigned |
+| result_set_id  | int(10) unsigned |
+| value          | double           |
+| push_timestamp | datetime(6)      |
+| repository_id  | int(11)          | 
+| signature_id   | int(11)          | 
++----------------+------------------+</code></pre>
+
+<p>MySQL can store each of these structures very efficiently, I haven&#8217;t done the exact calculations, but this is well under 50 bytes per row. Including indexes, the complete set of performance data going back to last year clocks in at 15 gigs. Not bad. And we can examine this data structure across any combination of dimensions we like (push, job, timestamp, repository) making common queries to perfherder very fast.</p>
+
+<p>What about the initial assumption, that it would be faster to get a series out of the database if it&#8217;s already pre-encoded? Nope, not really. If you have a good index and you&#8217;re only fetching the data you need, the overhead of encoding a bunch of database rows to JSON is pretty minor. From my (remote) location in Toronto, I can fetch 30 days of <a href="https://treeherder.mozilla.org/perf.html#/graphs?timerange=2592000&amp;#038;series=[mozilla-inbound,c233ba1133abbd544002dfbc29d9e63ced42a20e,1]">tcheck2 data</a> in 250 ms. Almost certainly most of that is network latency. If the original implementation was faster, it&#8217;s not by a significant amount.</p>
+
+<p><a href="/files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM.png"><img src="/files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM-300x188.png" alt="Screen Shot 2015-10-23 at 1.55.09 PM" width="300" height="188" class="alignnone size-medium wp-image-1259" srcset="/files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM-300x188.png 300w, /files/2015/10/Screen-Shot-2015-10-23-at-1.55.09-PM-1024x643.png 1024w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
+
+<p><strong>Lesson</strong>: Sometimes using ancient technologies (SQL) in the most obvious way is the right thing to do. <a href="http://c2.com/xp/DoTheSimplestThingThatCouldPossiblyWork.html">DoTheSimplestThingThatCouldPossiblyWork</a></p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2015/09/perfherder-summer-of-contribution-thoughts/">Perfherder summer of contribution thoughts</a></h2>
     <p class="index-date">Sep 29th, 2015</p>
     <p><span class="tags"><a href="/tags/Community.html">Community</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
@@ -402,26 +461,6 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <p>Most of the people who donated wanted to remain anonymous, which is cool. But among those who were cool about being public, big thanks to: Julia Evans, Chris Atlee, Mike Conley, Ted Tibbetts, Paul and Eva Lachance, Alex Demarsh and Lauren Reid (if I&#8217;m missing someone who wants to be named, please let me know).</p>
 
 <p>Incidentally, I&#8217;ve learned a bit more about Ebola over the past week, and I&#8217;m fairly sure that we&#8217;ll be ok here in Canada and the States given the fact that the virus isn&#8217;t actually that contagious (and that we have reasonable facilities for treating it in a safe manner, major screwups in Dallas notwithstanding). Liberia and other parts of Africa are still very much worth worrying about though, so I still 100% that starting this campaign was the right thing for me to do as an individual. Actually wiping out the disease will likely require government-level resources and intervention. Still waiting for a more serious resource commitment from Canada (cautiously optimistic about what&#8217;s happening with the States).</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe/">Doing something about Ebola before it becomes a catostrophe</a></h2>
-    <p class="index-date">Oct 12th, 2014</p>
-    <p><span class="tags"><a href="/tags/Ebola.html">Ebola</a>  <a href="/tags/MSF.html">MSF</a></span></p>
-  </header>
-
-<p>I&#8217;ve been appalled at the (lack of) response to the Ebola epidemic in Africa. We&#8217;re talking about a deadly disease which could infect <a href="http://www.nytimes.com/2014/09/24/health/ebola-cases-could-reach-14-million-in-4-months-cdc-estimates.html">more than a million people</a> by January 2015 and explode out of control&#8230; but the response from our governments has been pitiful, ranging from &#8220;inadequate&#8221; in the case of the United States to &#8220;pretty much nothing&#8221; from Canada.</p>
-
-<p>Closer to home, my friends and acquaintances seem more interested in trading cute quips (&#8220;Want to get space on public transit? Pretend to have a conversation on your cellphone about how you just came home from Liberia!&#8221; LOL) and image captures from CNN and Fox News saying dumb things (&#8220;Is Ebola the ISIS of epidemics?&#8221;) than anything else.</p>
-
-<p>I don&#8217;t really know how to emphasize how serious this situation is. Yes, there are a million causes and issues competing for people&#8217;s attention these days. But Ebola is an <em>epidemic</em>. Many, many people could die. Even more could suffer. In the extreme case, <a href="http://cluborlov.blogspot.ca/2014/10/ebola-and-five-stages-of-collapse.html">this could be the end of civilization as we know it</a>. Some kind of action is called for.</p>
-
-<p>I don&#8217;t have any medical expertise, otherwise I&#8217;d probably be offering to volunteer abroad. The most I have to offer is money and a very modest circle of influence. So be it, that will have to do. I&#8217;m not going to sit back and do nothing while this happens.</p>
-
-<p><a href="http://msf.ca">Doctors without Borders</a> seem to be the non-profit organiztion who have been able to do the most to be able to respond to this situation (and they&#8217;ve generally gotten good reviews in the past as a no-nonsense humanitarian group responding to crises all over the world). For the next week, I will match dollar for dollar any contribution (of any amount) that anyone donates to this organization, up to a maximum of $2500 (total across all contributions). Just email me at <a href="mailto:wrlach@gmail.com">wrlach@gmail.com</a> with your donation and whether you&#8217;d like to remain anonymous.</p>
-
-<p>At the end of this coming week (Sunday, October 19th), I&#8217;ll donate the matching funds to MSF and do up another blog post with the results and the names of the people who donated and consented to have their names published. The world needs to know that I&#8217;m not the only one that cares about this.</p> 
   <hr/>
 </article>
 <footer>
