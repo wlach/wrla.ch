@@ -3,14 +3,14 @@
  <channel>
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
-  <link>https://wlach.github.io/index.html</link>
+  <link>https://wrla.ch/index.html</link>
   <lastBuildDate>Sun, 21 Mar 2021 07:12:19 UT</lastBuildDate>
   <pubDate>Sun, 21 Mar 2021 07:12:19 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Blog moving back to wrla.ch</title>
-   <link>https://wlach.github.io/blog/2021/03/blog-moving-back-to-wrla-ch/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2021-03-blog-moving-back-to-wrla-ch</guid>
+   <link>https://wrla.ch/blog/2021/03/blog-moving-back-to-wrla-ch/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-03-blog-moving-back-to-wrla-ch</guid>
    <pubDate>Sun, 21 Mar 2021 07:12:19 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -23,8 +23,8 @@
 &lt;p&gt;In related news, I decided to reactivate my twitter account: you can once again find me there as &lt;a href="https://twitter.com/wrlach"&gt;@wrlach&lt;/a&gt; (my old username got taken in my absence). I&amp;rsquo;m not totally thrilled about this (I basically stand by what I wrote a &lt;a href="/blog/2018/01/quitting-twitter/"&gt;few years ago&lt;/a&gt;, except maybe the concession I made to Facebook being &amp;ldquo;ok&amp;rdquo;), but it seems to be where my industry peers are. As someone who doesn&amp;rsquo;t have a large organic following, I&amp;rsquo;ve come to really value forums where I can share my work. That said, I&amp;rsquo;m going to be very selective about what I engage with on that site: I appreciate your understanding.&lt;/p&gt;</description></item>
   <item>
    <title>Community @ Mozilla: People First, Open Source Second</title>
-   <link>https://wlach.github.io/blog/2021/02/community-mozilla-people-first-open-source-second/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2021-02-community-mozilla-people-first-open-source-second</guid>
+   <link>https://wrla.ch/blog/2021/02/community-mozilla-people-first-open-source-second/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-02-community-mozilla-people-first-open-source-second</guid>
    <pubDate>Wed, 24 Feb 2021 14:08:16 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -81,8 +81,8 @@
    &lt;p&gt;This includes our internal communications channels like our &lt;a href="https://wiki.mozilla.org/Matrix"&gt;Matrix instance&lt;/a&gt; as well as issue trackers like Bugzilla. There&amp;rsquo;s also a question of what to do about non-Mozilla channels, like Twitter or the &lt;a href="https://news.ycombinator.com"&gt;Orange Site&lt;/a&gt;. Although not Mozilla spaces, these places are often vectors for harassment of community members. I don&amp;rsquo;t have any good answers for what to do about this, aside from offering my solidarity and support to those suffering abuse on these channels. Disagreement with Mozilla&amp;rsquo;s strategy or policy is one thing, but personal attacks, harassment, and character assasination is never ok&amp;mdash; no matter where it&amp;rsquo;s happening.&amp;nbsp;&lt;a href="#2021-02-24-community-mozilla-people-first-open-source-second-footnote-2-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</description></item>
   <item>
    <title>The Glean Dictionary</title>
-   <link>https://wlach.github.io/blog/2021/01/the-glean-dictionary/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2021-01-the-glean-dictionary</guid>
+   <link>https://wrla.ch/blog/2021/01/the-glean-dictionary/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-01-the-glean-dictionary</guid>
    <pubDate>Wed, 27 Jan 2021 13:53:44 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -111,8 +111,8 @@
 &lt;p&gt;The Glean Dictionary is the result of the efforts of many contributors, both inside and outside Mozilla Data. Special shout-out to &lt;a href="https://www.linh-nguyen.com/outreachy"&gt;Linh Nguyen&lt;/a&gt;, who has been moving mountains inside the codebase as part of an Outreachy internship with us. We welcome your feedback and involvement! For more information, see our &lt;a href="https://github.com/mozilla/glean-dictionary"&gt;project repository&lt;/a&gt; and Matrix channel (&lt;a href="https://chat.mozilla.org/#/room/#glean-dictionary:mozilla.org"&gt;#glean-dictionary on chat.mozilla.org&lt;/a&gt;).&lt;/p&gt;</description></item>
   <item>
    <title>iodide retrospective</title>
-   <link>https://wlach.github.io/blog/2020/11/iodide-retrospective/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-11-iodide-retrospective</guid>
+   <link>https://wrla.ch/blog/2020/11/iodide-retrospective/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-11-iodide-retrospective</guid>
    <pubDate>Tue, 10 Nov 2020 14:09:20 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -232,8 +232,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;em&gt;Many thanks to &lt;a href="https://teonbrooks.com/"&gt;Teon Brooks&lt;/a&gt; and Devin Bayly for reviewing an early draft of this post&lt;/em&gt;&lt;/p&gt;</description></item>
   <item>
    <title>mozregression and older builds</title>
-   <link>https://wlach.github.io/blog/2020/08/mozregression-and-older-builds/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-08-mozregression-and-older-builds</guid>
+   <link>https://wrla.ch/blog/2020/08/mozregression-and-older-builds/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-08-mozregression-and-older-builds</guid>
    <pubDate>Mon, 17 Aug 2020 19:01:57 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -282,8 +282,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
    &lt;p&gt;I only added the telemetry to capture this information &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1651401"&gt;relatively recently&lt;/a&gt;, so we&amp;rsquo;re actually only looking at about a month of data in this post. We&amp;rsquo;ll have more complete results later this year.&amp;nbsp;&lt;a href="#2020-08-17-mozregression-and-older-builds-footnote-1-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</description></item>
   <item>
    <title>Mozilla Telemetry in 2020: From "Just Firefox" to a "Galaxy of Data"</title>
-   <link>https://wlach.github.io/blog/2020/07/mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-07-mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data</guid>
+   <link>https://wrla.ch/blog/2020/07/mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-07-mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data</guid>
    <pubDate>Thu, 16 Jul 2020 18:42:44 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -374,8 +374,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
    &lt;p&gt;The scope of this data collection comes from the fact that Fenix is a &lt;em&gt;very&lt;/em&gt; large and complex application. rather than a desire to collect everything just because we can&amp;mdash; smaller efforts like mozregression collect a &lt;a href="https://mozilla.github.io/mozregression/documentation/telemetry.html"&gt;much more limited set of data&lt;/a&gt;.&amp;nbsp;&lt;a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-3-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</description></item>
   <item>
    <title>mozregression GUI: now available for Linux</title>
-   <link>https://wlach.github.io/blog/2020/06/mozregression-gui-now-available-for-linux/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-06-mozregression-gui-now-available-for-linux</guid>
+   <link>https://wrla.ch/blog/2020/06/mozregression-gui-now-available-for-linux/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-06-mozregression-gui-now-available-for-linux</guid>
    <pubDate>Mon, 29 Jun 2020 20:39:06 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -409,8 +409,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Honestly, my main takeaway is just not to build an application like this in Python unless you absolutely have to (e.g. you&amp;rsquo;re building an application which needs system-level access). The web is a pretty wonderful medium for creating graphical applications these days, and by using it you sidestep these type of installation issues.&lt;/p&gt;</description></item>
   <item>
    <title>The humble blog</title>
-   <link>https://wlach.github.io/blog/2020/05/the-humble-blog/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-05-the-humble-blog</guid>
+   <link>https://wrla.ch/blog/2020/05/the-humble-blog/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-05-the-humble-blog</guid>
    <pubDate>Sun, 24 May 2020 18:01:24 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -421,8 +421,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Is there some way we can blend some of these old school ideas (blogs, newsgroups, open discussion forums) with better technology and &lt;a href="https://www.mozilla.org/en-US/about/governance/policies/participation/"&gt;social practices&lt;/a&gt;? Let&amp;rsquo;s find out.&lt;/p&gt;</description></item>
   <item>
    <title>A principled reorganization of docs.telemetry.mozilla.org</title>
-   <link>https://wlach.github.io/blog/2020/05/a-principled-reorganization-of-docs-telemetry-mozilla-org/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-05-a-principled-reorganization-of-docs-telemetry-mozilla-org</guid>
+   <link>https://wrla.ch/blog/2020/05/a-principled-reorganization-of-docs-telemetry-mozilla-org/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-05-a-principled-reorganization-of-docs-telemetry-mozilla-org</guid>
    <pubDate>Mon, 11 May 2020 15:44:45 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -517,8 +517,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
    &lt;p&gt;docs.telemetry.mozilla.org has a huge section devoted to derived datasets (20+), many of which are obsolete or not recommended. At the same time, we are missing explicit reference material for the most commonly used tables in BigQuery (e.g. &lt;code&gt;telemetry.main&lt;/code&gt;).&amp;nbsp;&lt;a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</description></item>
   <item>
    <title>This Week in Glean: mozregression telemetry (part 2)</title>
-   <link>https://wlach.github.io/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-05-this-week-in-glean-mozregression-telemetry-part-2</guid>
+   <link>https://wrla.ch/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-05-this-week-in-glean-mozregression-telemetry-part-2</guid>
    <pubDate>Fri, 08 May 2020 14:32:40 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -626,8 +626,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;We&amp;rsquo;re not done yet! Next time, we&amp;rsquo;ll look into making a public-facing dashboard demonstrating these results and making an aggregated version of the mozregression telemetry data publicly accessible to researchers and the general public. If we&amp;rsquo;re lucky, there might even be a bit of &lt;em&gt;data science&lt;/em&gt;. Stay tuned!&lt;/p&gt;</description></item>
   <item>
    <title>mozregression for MacOS</title>
-   <link>https://wlach.github.io/blog/2020/04/mozregression-for-macos/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-04-mozregression-for-macos</guid>
+   <link>https://wrla.ch/blog/2020/04/mozregression-for-macos/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-04-mozregression-for-macos</guid>
    <pubDate>Fri, 24 Apr 2020 14:59:04 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -642,8 +642,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Speaking of Glean, mozregression, and Telemetry, stay tuned for more updates on that soon. It&amp;rsquo;s been an adventure!&lt;/p&gt;</description></item>
   <item>
    <title>This week in Glean (special guest post): mozregression telemetry (part 1)</title>
-   <link>https://wlach.github.io/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-02-this-week-in-glean-special-guest-post-mozregression-telemetry-part-1</guid>
+   <link>https://wrla.ch/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-02-this-week-in-glean-special-guest-post-mozregression-telemetry-part-1</guid>
    <pubDate>Fri, 28 Feb 2020 15:50:58 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -755,8 +755,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;There are a bunch of things I still need to work through before landing this inside mozregression itself. Notably, the Glean python bindings are python3-only, so we&amp;rsquo;ll need to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766"&gt;port the mozregression GUI to python 3&lt;/a&gt; before we can start measuring usage there. But I&amp;rsquo;m excited at how quickly this work is coming together: stay tuned for part 2 in a few weeks.&lt;/p&gt;</description></item>
   <item>
    <title>Conda is pretty great</title>
-   <link>https://wlach.github.io/blog/2020/01/conda-is-pretty-great/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-01-conda-is-pretty-great</guid>
+   <link>https://wrla.ch/blog/2020/01/conda-is-pretty-great/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-01-conda-is-pretty-great</guid>
    <pubDate>Mon, 13 Jan 2020 16:08:57 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -773,8 +773,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;tl;dr: If you have a bunch of R / python code you want to run in a reproducible manner, consider Conda.&lt;/p&gt;</description></item>
   <item>
    <title>Using BigQuery JavaScript UDFs to analyze Firefox telemetry for fun &amp; profit</title>
-   <link>https://wlach.github.io/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2019-10-using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit</guid>
+   <link>https://wrla.ch/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2019-10-using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit</guid>
    <pubDate>Wed, 30 Oct 2019 15:11:17 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -848,8 +848,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;[1] I understand that Jeff Klukas, Frank Bertsch, Daniel Thorn, Anthony Miyaguchi, and Wesley Dawson are the principals involved - apologies if I&amp;rsquo;m forgetting someone.&lt;/p&gt;</description></item>
   <item>
    <title>Metrics Graphics: Stepping back for a while</title>
-   <link>https://wlach.github.io/blog/2019/09/metrics-graphics-stepping-back-for-a-while/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2019-09-metrics-graphics-stepping-back-for-a-while</guid>
+   <link>https://wrla.ch/blog/2019/09/metrics-graphics-stepping-back-for-a-while/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2019-09-metrics-graphics-stepping-back-for-a-while</guid>
    <pubDate>Thu, 26 Sep 2019 20:33:54 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -858,8 +858,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you follow the link to the &lt;a href="https://github.com/metricsgraphics/metrics-graphics/"&gt;metrics graphics repository&lt;/a&gt;, you&amp;rsquo;ll note that the version has been bumped to &amp;ldquo;3.0-alpha3&amp;rdquo;. I was &lt;em&gt;this close&lt;/em&gt; to making one last new release this afternoon but decided I didn&amp;rsquo;t want to potentially break existing users who were fine using the last &amp;ldquo;official&amp;rdquo; version (v3.0 bumps the version of d3 used to &amp;ldquo;5&amp;rdquo;, among other breaking changes). I&amp;rsquo;d encourage people who want to continue using the library to make a fork and publish a copy under their user or organization name on npm.&lt;/p&gt;</description></item>
   <item>
    <title>mozregression update: python 3 edition</title>
-   <link>https://wlach.github.io/blog/2019/09/mozregression-update-python-3-edition/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2019-09-mozregression-update-python-3-edition</guid>
+   <link>https://wrla.ch/blog/2019/09/mozregression-update-python-3-edition/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2019-09-mozregression-update-python-3-edition</guid>
    <pubDate>Mon, 16 Sep 2019 15:29:04 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -891,8 +891,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;If you&amp;rsquo;re interested in working on any of the above, please feel free to dive in on one of the above bugs. I can&amp;rsquo;t offer formal mentorship, but am happy to help out where I can.&lt;/p&gt;</description></item>
   <item>
    <title>Time for some project updates</title>
-   <link>https://wlach.github.io/blog/2019/09/time-for-some-project-updates/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2019-09-time-for-some-project-updates</guid>
+   <link>https://wrla.ch/blog/2019/09/time-for-some-project-updates/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2019-09-time-for-some-project-updates</guid>
    <pubDate>Mon, 16 Sep 2019 14:41:39 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -901,8 +901,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;More to come.&lt;/p&gt;</description></item>
   <item>
    <title>Goodbye, noble stead</title>
-   <link>https://wlach.github.io/blog/2019/05/goodbye-noble-stead/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2019-05-goodbye-noble-stead</guid>
+   <link>https://wrla.ch/blog/2019/05/goodbye-noble-stead/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2019-05-goodbye-noble-stead</guid>
    <pubDate>Wed, 22 May 2019 00:52:21 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -919,8 +919,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;I left a note with some pointers on what needs work and asking whoever fixes it up to give it a lot of love, but honestly this bike&amp;rsquo;s fate is out of my control at this point. So it is with all things.&lt;/p&gt;</description></item>
   <item>
    <title>New ideas, old buildings</title>
-   <link>https://wlach.github.io/blog/2019/03/new-ideas-old-buildings/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2019-03-new-ideas-old-buildings</guid>
+   <link>https://wrla.ch/blog/2019/03/new-ideas-old-buildings/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2019-03-new-ideas-old-buildings</guid>
    <pubDate>Fri, 22 Mar 2019 19:08:11 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -942,8 +942,8 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;As we move ahead, we may find places where applying new backend server technologies makes sense. Heck, maybe we&amp;rsquo;ll chose to rewrite the whole thing at some point. But to get to launch, chosing a bunch of boring, tested software for this portion of Iodide was (in my view) absolutely the right decision and I make no apologies for it.&lt;/p&gt;</description></item>
   <item>
    <title>Making contribution work for Firefox tooling and data projects</title>
-   <link>https://wlach.github.io/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2018-11-making-contribution-work-for-firefox-tooling-and-data-projects</guid>
+   <link>https://wrla.ch/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2018-11-making-contribution-work-for-firefox-tooling-and-data-projects</guid>
    <pubDate>Mon, 26 Nov 2018 16:13:46 UT</pubDate>
    <author>William Lachance</author>
    <description>

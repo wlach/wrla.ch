@@ -4,7 +4,7 @@
 ;; in frog/params.
 (define/contract (init)
   (-> any)
-  (current-scheme/host "https://wlach.github.io")
+  (current-scheme/host "https://wrla.ch")
   (current-uri-prefix "/")
   (current-title "William Lachance's Log")
   (current-author "William Lachance")
