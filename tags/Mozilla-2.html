@@ -92,6 +92,24 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2020/04/mozregression-for-macos/">mozregression for MacOS</a></h2>
+    <p class="index-date">Apr 24th, 2020</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
+  </header>
+
+<p>Just a quick note that, as a side-effect of the work I mentioned a while ago to <a href="/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/">add telemetry to mozregression</a>, mozregression now has a graphical Mac client! It&rsquo;s a bit of a pain to install (since it&rsquo;s unsigned), but likely worlds easier for the average person to get going than the command-line version. Please feel free to <a href="https://mozilla.github.io/mozregression/install.html">point people to it</a> if you&rsquo;re looking to get a regression range for a MacOS-specific problem with Firefox.</p>
+
+<center><img style="width:600px" src="/files/2020/04/mozregression-gui-mac.png" /></center>
+
+<p>More details: The <a href="https://mozilla.github.io/glean/book/dev/python/index.html">Glean Python SDK</a>, which <a href="https://mozilla.github.io/mozregression/documentation/telemetry.html">mozregression now uses for telemetry</a>, requires Python 3. This provided the impetus to port the GUI itself to Python 3 and PySide2 (the modern incarnation of PyQt), which brought with it a much easier installation/development experience for the GUI on platforms like Mac and Linux.</p>
+
+<p>I haven&rsquo;t gotten around to producing GUI binaries for the Linux yet, but it should not be much work.</p>
+
+<p>Speaking of Glean, mozregression, and Telemetry, stay tuned for more updates on that soon. It&rsquo;s been an adventure!</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/">This week in Glean (special guest post): mozregression telemetry (part 1)</a></h2>
     <p class="index-date">Feb 28th, 2020</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Telemetry.html">Telemetry</a>  <a href="/tags/Glean.html">Glean</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
@@ -450,22 +468,6 @@
 <p><a href="https://air.mozilla.org/mission-control-dashboard-intro/">link</a></p> 
   <hr/>
 </article>
-<article>
-  <header>
-    <h2><a href="/blog/2018/04/metricsgraphics-movements/">metricsgraphics movements</a></h2>
-    <p class="index-date">Apr 30th, 2018</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Metrics-Graphics.html">Metrics Graphics</a></span></p>
-  </header>
-
-<p>Just wanted to give a quick update on some things that have been happening with the <a href="https://www.metricsgraphics.org">metrics graphics</a> since I stepped up to help with maintainership a few months ago:</p>
-
-<ul>
- <li><a href="https://github.com/hamilton">Hamilton</a>&rsquo;s back as co-maintainer! This has been especially helpful  as he understands much of the historical context of metricsgraphics better than I do.</li>
- <li>We&rsquo;ve merged in a large number of small fixes and improvements into the codebase,  thanks to myself and a number of other contributors. Special shout-out to Thomas  Champagne, who has contributed a <a href="https://github.com/metricsgraphics/metrics-graphics/commits?author=thomaschampagne">large number of nifty new features</a>.</li>
- <li>We moved the project from Mozilla to its <a href="https://github.com/metricsgraphics/">own organization</a> on  github. This feels like a much better way forward for a project which is supposed to be useful  far outside the bounds of Mozilla, and hopeful makes contributors feel more like the first-class  citizens of the project that they actually are.</li>
- <li>We have a GSOC intern! As part of the Mozilla GSOC, Yunhao Zheng is going to be working on  adding rich brushing/zooming support to Metrics Graphics, which should be quite useful for  visualizing complex data in projects like <a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder">Perfherder</a> (<a href="https://docs.google.com/document/d/1_KIOJtemqlCBktDdfdjDuS4XhICeaKO3QhNRwbnnf-g/">Project outline</a>, <a href="https://summerofcode.withgoogle.com/projects/#5422620527296512">Yunhao&rsquo;s proposal</a>)</li></ul> 
-  <hr/>
-</article>
 <footer>
  <ul class="pagination">
   <li class="page-item"><a class="page-link" href="/tags/Mozilla.html">
@@ -480,6 +482,7 @@
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-8.html">8</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-9.html">9</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-10.html">10</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-11.html">11</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-3.html">
     <quote>&rarr;</quote></a></li></ul></footer>
     </div>

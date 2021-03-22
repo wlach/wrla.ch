@@ -92,6 +92,96 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">Mobile Firefox: Measuring How a Browser Feels</a></h2>
+    <p class="index-date">Jun 26th, 2012</p>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<blockquote>
+ <p>A while back, I began work on a new test framework for mobile browsers called Eideticker, which aims to benchmark browsers by capturing them on HMDI video, then running image analysis on the result. I wrote about this in a blog post entitled, “<a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">Measuring what the user sees</a>.” Some seven months later, we are about to release a new version of Firefox for Android and Eideticker has played a major role in qualifying its performance and identifying areas for improvement along the way.</p></blockquote>
+
+<p>I thought it would be worth publicizing some of the results that we have seen so far and explain why Eideticker has been useful. This post aims to explain the ideas behind Eideticker and hopes to inspire ideas on how to further improve objective cross-browser benchmarks.</p>
+
+<p><strong>Idea 1: Put cross-browser performance tests on a more rigorous footing</strong></p>
+
+<p>One of the problems with existing benchmarks is that the graphical performance that they measure is entirely synthetic. So when something like Microsoft&#8217;s fishbowl demo claims 50 frames per second, that is based entirely on an internal measurement. There is no guarantee that is what the user is actually seeing. For all we know, it could be throwing half those frames away. To say nothing of the fact that measuring the results could interfere with the results themselves!</p>
+
+<p>With Eideticker, we only analyze what the user sees (under the assumption that what the user sees is what comes out of the device&#8217;s HDMI out). To measure frame rate, Eideticker painstakingly analyzes a video capture to see the difference between each frame. Only if one frame is qualitatively different than the one before it will it consider it to be a step forward in the animation progression. There is no room for a browser to &#8220;cheat&#8221; by, for example, throwing a frame away. Here are two example frames from an Eideticker capture of an animated clock, along with a visual representation of the difference it measured between them:</p>
+
+<table style="border:none;">
+ <tr>
+  <td></td> 
+  <td></td> 
+  <td></td></tr></table>
+
+<p>&nbsp;</p>
+
+<p></p>
+
+<p><em>Note: The red area of the graphic on the right indicates a region that Eideticker has detected as having changed between the two images. The black area of the graphic indicates a region that is unchanged.</em></p>
+
+<p>Seeing visual evidence like this increases our confidence that things are truly better than they were before. For example, Eideticker very clearly, and accurately, measured the improvement when <a href="http://benoitgirard.wordpress.com/2012/05/15/off-main-thread-compositing-omtc-and-why-it-matters/">Off Main Thread Compositing</a> landed. We saw a big performance jump in the afore-mentioned clock benchmark:
+ <br />
+ <br />&nbsp;</p>
+
+<p>&nbsp;
+ <br /><em>Note: Nightly = the new Firefox for Android as of that date (an incremental step towards what was just released), XUL = Previous Firefox for Android, Stock = Default browser that comes with Android 2.2.</em></p>
+
+<p><strong>Idea 2: Measure subjective performance based on actual user interaction patterns</strong></p>
+
+<p>Measuring real browser output is useful, but the problem is that these benchmarks do not actually measure how a user experiences the Web. Does an animated image of a clock or a <a href="http://ie.microsoft.com/testdrive/Performance/FishIETank/">fishtank</a> actually represent a normal user experience? Thanks to the development of mobile gaming, this is slowly changing, but I was still say “no.”  The majority of users time spent mobile browsing is spent on news websites, Wikipedia, Facebook and I Can Haz Cheezburger. <a href="#_msocom_1"></a> For these sites, I would submit that there are two things users care about:</p>
+
+<ol>
+ <li>
+  <p>When I swipe to move the content (e.g. to scroll down to see more content on <a href="http://CNN.com/">CNN.com</a>), does it respond instantaneously and in a pleasing manner? Do I see a nice smooth animation or a jerky mess?</p></li>
+ <li>
+  <p>When the content moves, do I see new content right away? Or do I have to wait a few moments while the view updates (this slow load is also called checkerboarding)?</p></li></ol>
+
+<p>&nbsp;
+ <br />I think the key here is to measure what the user sees. Internal measurements for anything other than what the user experiences are misleading and inconsistent across browsers.</p>
+
+<p>For the first item, I believe the best indication of perceived responsiveness and smoothness is found by measuring the number of frames that are displayed in response to user interaction. As with all measurements, it is not perfect, but one can safely say that if there are only a few frames changed in response to a swipe, the experience is going to be jerky.</p>
+
+<p>Compare these two videos of panning on <a href="http://CNN.com/">CNN.com</a>. The first is the previous Firefox for Android, clocking in at about 12.3 frames per second (fps). The second is the recent Firefox for Android , clocking in at 23 fps using Eideticker&#8217;s internal measurements:</p>
+
+<p>&nbsp;</p>
+
+<table style="border: none;">
+ <tr>
+  <td>
+   <video width="200px" height="240" src="/files/2012/06/xul-fennec-cnn.webm" controls="controls"></video></td> 
+  <td>
+   <video width="200px" height="240" src="/files/2012/06/native-fennec-cnn.webm" controls="controls"></video></td></tr></table>
+
+<p>For the second, we can easily measure how quickly a user sees content by setting the background color of the page to an obvious color (in Eideticker we use magenta), overlaying an image on top, then measuring the amount of the page that is magenta while panning around. Since all modern browsers just use the background color of the page when something is to be redrawn (or at least can be configured that way), it&#8217;s easy to compare across browsers. You can see in the videos above that the new Native Firefox does much better than the old one in this regard, at least on this benchmark. Here&#8217;s an image of Eideticker detecting checkerboarding on a capture (red indicates checkerboarded areas):</p>
+
+<table style="border:none;">
+ <tr>
+  <td></td> 
+  <td></td></tr></table>
+
+<p></p>
+
+<table style="border: none;">
+ <tr>
+  <td></td> 
+  <td></td></tr></table>
+
+<p><em>Note: The red area of the graphic on the right indicates a region that Eideticker has detected as checkerboarded (i.e. undrawn). The black area of the graphic indicates a region that is fully drawn.</em></p>
+
+<p>The important thing in both cases is that these captures represent <strong>a real user experience</strong>. The swipe gestures are synthesized such that they are interpreted by Android as an actual touch event. This is important: using tricks like <a href="https://developer.mozilla.org/en/DOM/window.scrollTo">javascript scrollTo</a> inside your Web page to pan would not actually engage the renderer in quite the same way. On Firefox for Android (and probably other browsers as well, though I haven&#8217;t checked), the response to a touch event is always handled inside the browser internal rendering engine to give the expected &#8220;physical feel.&#8221; Manually moving the viewport would give completely different results since so much of the fancy code we use to reduce the redraw delay would not be engaged.</p>
+
+<p><strong>Conclusion</strong></p>
+
+<p>Overall, I am very happy with how Eideticker has allowed us to track and measure improvements in Firefox for Android. In developing Eideticker, we aimed to create a benchmark that measured how users actually interact with a browser – not how abstract measurements claim how great a browser is.  As we move ahead with new projects to improve Firefox for Android, Eideticker will continue to be useful in making sure that using our browser is the best experience that it can be, especially combined with other tools like Benoit Girard&#8217;s <a href="http://benoitgirard.wordpress.com/2012/03/30/writing-a-profiler/">sampling profiler</a>.</p>
+
+<p>For more information on Eideticker, feel free to visit <a href="https://wiki.mozilla.org/Project_Eideticker">its homepage</a> on <a href="http://wiki.mozilla.org/">wiki.mozilla.org</a>.</p>
+
+<p>&nbsp;</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod/">Mass code relicensing with facebook&#8217;s codemod</a></h2>
     <p class="index-date">Jun 7th, 2012</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -337,41 +427,6 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 <p>The demo is pretty cheesey (just click on any of the datapoints to see the video capture), but nonetheless does seem to illustrate some interesting differences between the three browsers. The big jump in performance for nightly comes from the landing of the Maple branch, which happened earlier this week. Hopefully this validates some of the work that the mobile/graphics team has been doing over the past while. Exciting times!</p> 
   <hr/>
 </article>
-<article>
-  <header>
-    <h2><a href="/blog/2012/02/playing-with-pandas/">Playing with pandas</a></h2>
-    <p class="index-date">Feb 10th, 2012</p>
-    <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Pandaboard.html">Pandaboard</a></span></p>
-  </header>
-
-<p>For the last few days I&#8217;ve been experimenting with getting a Pandaboard running Android 4.0, continuing the work that Clint Talbert <a href="http://cmtalbert.wordpress.com/2011/10/12/pandaboard-status/">started in the fall</a> to get these boards for use as a replacement for the Tegra in Mozilla&#8217;s android automation. The first objective is to get a reproducible build going, after that we&#8217;ll try to get some of our custom tools (<a href="https://wiki.mozilla.org/Mobile/Fennec_Unittests/Remote_Testing">SUTAgent</a> &#38; friends) installed by default.</p>
-
-<p>So far this has been&#8230; interesting. Much as Clint did before, I thought I&#8217;d document some of the notes on what I did in the hopes that they&#8217;ll be helpful to other people trying to do similar things.</p>
-
-<p>Getting things up and running is a two step process. First, you build the beast. This part is straightforward, just follow the instructions here:</p>
-
-<p>At least the build part is more or less straightforward. Just follow the instructions here:</p>
-
-<ul>
- <li><a href="http://source.android.com/source/building.html">http://source.android.com/source/building.html</a></li>
- <li><a href="http://source.android.com/source/building-devices.html">http://source.android.com/source/building-devices.html</a></li></ul>
-
-<p>Note that you almost certainly want to build in the &#8220;eng&#8221; configuration, which is rooted and (apparently) has some extra tools installed.</p>
-
-<p>Installing it is a little more tricky. The way they want you to do this is put the pandaboard into a special mode and copy the stuff you built onto an sdcard. Seem a little funny to you? Yeah, it does to me too. Why not just build an sdcard image directly?
- <br />Nonetheless, this is the officially supported way of imaging a pandaboard, so let&#8217;s just follow it until we can think of a better way of doing things. The instructions for doing this on the pandaboard are located in the source tree here:</p>
-
-<p><code>&lt;a href="http://source-android.frandroid.com/device/ti/panda/README"&gt;device/ti/panda/README&lt;/a&gt;</code></p>
-
-<p>These are mostly correct as far as I can tell, but there&#8217;s a few gotchas. First, you need to run the commands mentioned as root unless you&#8217;ve configured USB to be configurable by your user. Second, most of those commands are not in the path by default so you&#8217;ll need to specify the full path to e.g. the fastboot utility. The instructions <a href="http://fosiao.com/node/19">here</a> cover these exception cases: I recommend following them instead.</p>
-
-<p>One thing which neither document mentions is that you really need to make sure your sdcard is wiped completely clean before using fastboot. The &#8220;oem format&#8221; step only recreates the partition table, it doesn&#8217;t delete any corrupted partitions. If you reboot while these are still in place, it will try to bring up your corrupted version of Android, not the fastboot console. I spent quite some time debugging why I couldn&#8217;t properly flash the operating system before realizing this. Easiest way to get around this is to dd <code>/dev/zero</code> onto the sdcard before beginning the flashing process.</p>
-
-<p>Also, while not strictly necessary to get something up and running, I recommend highly getting an HDMI monitor as well as a serialUSB adapter. The former is useful to see if your Android device actually successfully booted up, the latter is useful for debugging boot issues where you don&#8217;t get that far (the serial console is always available from boot).</p>
-
-<p>So, after painfully learning about the above caveats, I have managed to get things mostly working. I can see the ICS homescreen on my attached HDMI monitor and interact with it if I attach a USB mouse. The one gotcha is that both ethernet and WIFI networking are totally broken. Plugging in an ethernet cable or connecting to a WIFI network seems to result in the machine randomly rebooting, with the logs saying nothing useful. Both of these things are ostensibly supposed to be working according to the latest I&#8217;ve read from Google so I&#8217;m not exactly sure what&#8217;s going on. Investigations will continue.</p> 
-  <hr/>
-</article>
 <footer>
  <ul class="pagination">
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-8.html">
@@ -386,6 +441,7 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-8.html">8</a></li>
   <li class="page-item active"><a class="page-link" href="/tags/Mozilla-9.html">9</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-10.html">10</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-11.html">11</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-10.html">
     <quote>&rarr;</quote></a></li></ul></footer>
     </div>

@@ -6,7 +6,7 @@
     <title>William Lachance's Log</title>
     <meta name="description" content="William Lachance's Log" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wlach.github.io/index.html" />
@@ -91,6 +91,22 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2021/03/blog-moving-back-to-wrla-ch/">Blog moving back to wrla.ch</a></h2>
+    <p class="index-date">Mar 21st, 2021</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/meta.html">meta</a></span></p>
+  </header>
+
+<p>House keeping news: I&rsquo;m moving this blog back to the <a href="https://wrla.ch">wrla.ch</a> domain from wlach.github.io. This domain sorta kinda worked before (I set up a <a href="https://netlify.com">netlify</a> deploy a couple years ago), but the software used to generate this blog referenced github all over the place in its output, so it didn&rsquo;t really work as you&rsquo;d expect. Anyway, this will be the last entry published on wlach.github.io: my plan is to turn that domain into a set of redirects in the future.</p>
+
+<p>I don&rsquo;t know how many of you are out there who still use RSS, but please update your feeds. I have filed a bug to update my Planet Mozilla entry, so hopefully the change there will be seamless.</p>
+
+<p>Why? Recent events have made me not want to tie my public web presence to a particular company (especially a larger one, like Microsoft). I don&rsquo;t have any immediate plans to move this blog off of github, but this gives me that option in the future. For those wondering, the original rationale for moving <em>to</em> github is in <a href="/blog/2016/01/new-year-new-blog/">this post</a>. Looking back, the idea of moving away from a VPS and WordPress made sense, the move away from my own domain less so. I think it may have been harder to set up static hosting (esp. with HTTPS) at that time, though I might also have just been ignorant.</p>
+
+<p>In related news, I decided to reactivate my twitter account: you can once again find me there as <a href="https://twitter.com/wrlach">@wrlach</a> (my old username got taken in my absence). I&rsquo;m not totally thrilled about this (I basically stand by what I wrote a <a href="/blog/2018/01/quitting-twitter/">few years ago</a>, except maybe the concession I made to Facebook being &ldquo;ok&rdquo;), but it seems to be where my industry peers are. As someone who doesn&rsquo;t have a large organic following, I&rsquo;ve come to really value forums where I can share my work. That said, I&rsquo;m going to be very selective about what I engage with on that site: I appreciate your understanding.</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2021/02/community-mozilla-people-first-open-source-second/">Community @ Mozilla: People First, Open Source Second</a></h2>
     <p class="index-date">Feb 24th, 2021</p>
@@ -709,24 +725,6 @@ while (1) { true }</code></pre>
 <h2 id="next-steps">Next Steps</h2>
 
 <p>We&rsquo;re not done yet! Next time, we&rsquo;ll look into making a public-facing dashboard demonstrating these results and making an aggregated version of the mozregression telemetry data publicly accessible to researchers and the general public. If we&rsquo;re lucky, there might even be a bit of <em>data science</em>. Stay tuned!</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2020/04/mozregression-for-macos/">mozregression for MacOS</a></h2>
-    <p class="index-date">Apr 24th, 2020</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
-  </header>
-
-<p>Just a quick note that, as a side-effect of the work I mentioned a while ago to <a href="/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/">add telemetry to mozregression</a>, mozregression now has a graphical Mac client! It&rsquo;s a bit of a pain to install (since it&rsquo;s unsigned), but likely worlds easier for the average person to get going than the command-line version. Please feel free to <a href="https://mozilla.github.io/mozregression/install.html">point people to it</a> if you&rsquo;re looking to get a regression range for a MacOS-specific problem with Firefox.</p>
-
-<center><img style="width:600px" src="/files/2020/04/mozregression-gui-mac.png" /></center>
-
-<p>More details: The <a href="https://mozilla.github.io/glean/book/dev/python/index.html">Glean Python SDK</a>, which <a href="https://mozilla.github.io/mozregression/documentation/telemetry.html">mozregression now uses for telemetry</a>, requires Python 3. This provided the impetus to port the GUI itself to Python 3 and PySide2 (the modern incarnation of PyQt), which brought with it a much easier installation/development experience for the GUI on platforms like Mac and Linux.</p>
-
-<p>I haven&rsquo;t gotten around to producing GUI binaries for the Linux yet, but it should not be much work.</p>
-
-<p>Speaking of Glean, mozregression, and Telemetry, stay tuned for more updates on that soon. It&rsquo;s been an adventure!</p> 
   <hr/>
 </article>
 <footer>
