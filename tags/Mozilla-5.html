@@ -92,6 +92,45 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2016/03/are-we-fast-yet-and-perfherder/">Are We Fast Yet and Perfherder</a></h2>
+    <p class="index-date">Mar 30th, 2016</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
+  </header>
+
+<p>Historically at Mozilla, we&rsquo;ve had a bunch of different systems running to benchmark Firefox&rsquo;s performance. The two most broadly-scoped are <a href="https://wiki.mozilla.org/Buildbot/Talos">Talos</a> (which runs as part of our build process, and emphasizes common real-world use cases, like page loading) and <a href="https://arewefastyet.com/">Are We Fast Yet</a> (which runs seperately, and emphasizes JavaScript performance and benchmarks).</p>
+
+<p>As many of you know, most of my focus over the last year-and-a-bit has been developing a system called Perfherder, which aims to make monitoring and acting on performance data easier. A great introduction to Perfherder is my <a href="/blog/2016/03/platform-engineering-project-of-the-month-perfherder/">project of the month post</a>.</p>
+
+<p>The initial focus of Perfherder has been Talos, which is deeply integrated into our automation and also maintained by Engineering Productivity (my group). However, the intention was always to allow anyone in the Mozilla community to submit performance data for Firefox and sheriff it, much like Treeherder has supported the submission of test result data from third parties (e.g. autophone, Firefox UI tests). There are more commonalities than differences in how we do performance sheriffing with Are We Fast Yet (which currently has its own web interface) and Perfherder, so it made sense to see if we could pool resources.</p>
+
+<p>So, over the last couple of months, <a href="https://elvis314.wordpress.com/">Joel Maher</a> and I have been in discussions with Hannes Verschore, current maintainer of Are We Fast Yet (AWFY) to see what could be done. It looks like it is possible for Perfherder to provide most of what AWFY needs, though there are a few exceptions. I thought for the benefit of others, it might be useful to outline what&rsquo;s done, what&rsquo;s coming next, and what might not be implemented (at least not any time soon).</p>
+
+<h3 id="whats-done">What&rsquo;s done</h3>
+
+<ul>
+ <li>Get AWFY submitting data to Perfherder and allow it to be sheriffed  seperately from Talos. This is working on treeherder stage, and you  can already examine the <a href="https://treeherder.allizom.org/perf.html#/alerts?status=0&amp;framework=5">alert data</a>.</li></ul>
+
+<h3 id="whats-in-progress-or-in-the-near-term-pipeline">What&rsquo;s in progress (or in the near-term pipeline)</h3>
+
+<ul>
+ <li>Allow custom alerting behaviour (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1254595">bug 1254595</a>). For example, we want  to alert on subtests for AWFY while still summarizing the results.  This is something we don&rsquo;t currently support.</li>
+ <li>Allow creating an alert manually (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1260791">bug 1260791</a>). Sadly, our regression detection  algorithm is not perfect. AWFY already supports this, we should too. This is something we also want for Talos.</li>
+ <li>Make regression-filing templates non-talos-specific (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1260805">bug 1260805</a>). Currently we have a convenience template for filing bugs for performance  regressions, but this is currently specific to various things about Talos (job running instructions, links to documentation, etc.). We should  make it configurable so other projects like AWFY can take advantage of this functionality.</li></ul>
+
+<h3 id="under-consideration">Under consideration</h3>
+
+<ul>
+ <li>Some kind of support for bisecting a push to figure out which patch  caused a regression. AWFY currently supports this, but it&rsquo;s a fairly  difficult thing to add to Perfherder (much of which is built upon  Treeherder&rsquo;s per-push result model). Maybe this is something we should  do, but it would be a significant amount of effort.</li>
+ <li>Proprietary benchmarks: AWFY runs one benchmark the results for  which we can&rsquo;t make public. Adding &ldquo;private&rdquo; jobs or results to  Treeherder is likely a big can of worms, but it might be something  we want to do eventually.</li></ul>
+
+<h3 id="probably-wont-fix">Probably won&rsquo;t fix</h3>
+
+<ul>
+ <li>Supporting comparative measurements between Firefox and other  browsers. This is an important task, but doesn&rsquo;t really fit into the  model of Perfherder, which is intimately tied to the revision data  associated with Firefox. To do this would require detailed tracking  of Chrome on the same basis, and I don&rsquo;t think that&rsquo;s really a place  where we want to go. We should definitely monitor for general  trends, but I think that is best done with a seperate system.</li></ul> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2016/03/platform-engineering-project-of-the-month-perfherder/">Platform engineering project of the month: Perfherder</a></h2>
     <p class="index-date">Mar 14th, 2016</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
@@ -486,25 +525,6 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <p>As is hopefully obvious, this confirms that the affected subtest continues to hold its higher value while another test just bounces around more or less in the range it was before.</p>
 
 <p>Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at <a href="http://treeherder.mozilla.org/perf.html">http://treeherder.mozilla.org/perf.html</a>.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/">Measuring e10s vs. non-e10s performance with Perfherder</a></h2>
-    <p class="index-date">Feb 18th, 2015</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-  </header>
-
-<p>For the past few months I&#8217;ve been working on a sub-project of Treeherder called Perfherder, which aims to provide a workflow that will let us more easily detect and manage performance regressions in our products (initially just those detected in <a href="https://wiki.mozilla.org/Buildbot/Talos">Talos</a>, but there&#8217;s room to expand on that later). This is a long term project and we&#8217;re still sorting out the details of exactly how it will work, but I thought I&#8217;d quickly announce a milestone.</p>
-
-<p>As a first step, I&#8217;ve been hacking on a graphical user interface to visualize the performance data we&#8217;re now storing inside Treeherder. It&#8217;s pretty bare bones so far, but already it has two features which <a href="http://graphs.mozilla.org">graphserver</a> doesn&#8217;t: the ability to view sub-test results (i.e. the page load time for a specific page in the tp5 suite, as opposed to the geometric mean of all of them) and the ability to see results for e10s builds.</p>
-
-<p>Here&#8217;s an example, comparing the tp5o 163.com page load times on windows 7 with e10s enabled (and not):</p>
-
-<p><a href="/files/2015/02/e10s-vs-non-e10s.png"><img src="/files/2015/02/e10s-vs-non-e10s.png" alt="e10s-vs-non-e10s" width="901" height="489" class="alignnone size-full wp-image-1157" srcset="/files/2015/02/e10s-vs-non-e10s-300x162.png 300w, /files/2015/02/e10s-vs-non-e10s.png 901w" sizes="(max-width: 901px) 100vw, 901px" /></a>
- <br /><a href="https://treeherder.mozilla.org/perf.html#/graphs?timerange=7776000&amp;#038;seriesList=[[%22mozilla-central%22,%22a78a233646c932ee1c56cf27da58b6aaa4eda2c3%22],[%22mozilla-central%22,%228e9323fd7fadb0623ec520a8ccaec2e733f3d501%22]]">[link]</a></p>
-
-<p>Green is e10s, red is non-e10s (the legend picture doesn&#8217;t reflect this because we have yet to deploy a fix to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1130554">bug 1130554</a>, but I promise I&#8217;m not lying). As you can see, the gap has been closing (in particular, something landed in mid-January that improved the e10s numbers quite a bit), but page load times are still measurably slower with this feature enabled.</p> 
   <hr/>
 </article>
 <footer>

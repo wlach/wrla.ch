@@ -9,7 +9,7 @@
     <meta name="keywords" content="Glean" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="canonical" href="https://wlach.github.io/tags/Glean.html" />
+    <link rel="canonical" href="https://wrla.ch/tags/Glean.html" />
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
@@ -91,6 +91,40 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Glean</em></p>  <article>
+  <header>
+    <h2><a href="/blog/2021/05/mozregression-update-may-2021/">mozregression update May 2021</a></h2>
+    <p class="index-date">May 10th, 2021</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Glean.html">Glean</a>  <a href="/tags/Telemetry.html">Telemetry</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
+  </header>
+
+<p>Just wanted to give some quick updates on the state of <a href="https://mozilla.github.io/mozregression">mozregression</a>.</p>
+
+<h2 id="anti-virus-false-positives">Anti-virus false positives</h2>
+
+<p>One of the persistent issues with mozregression is that it seems to be <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1647533">persistently detected as a virus by many popular anti-virus scanners</a>. The causes for this are somewhat complex, but at root the problem is that mozregression requires fairly broad permissions to do the things it needs to do (install and run copies of Firefox) and thus its behavior is hard to distinguish from a piece of software doing something malicious.</p>
+
+<p>Recently there have been a number of mitigations which seem to be improving this situation:</p>
+
+<ul>
+ <li>:bryce has been submitting copies of mozregression to Microsoft so that Windows Defender (probably the most popular anti-virus software on this platform) doesn&rsquo;t flag it.</li>
+ <li>I recently <a href="https://github.com/mozilla/mozregression/releases">released mozregression 4.0.17</a>, which upgrades the GUI dependency for pyinstaller to a later version which sets PE checksums correctly on the generated executable (<a href="https://github.com/pyinstaller/pyinstaller/issues/5579">pyinstaller/pyinstaller#5579</a>).</li></ul>
+
+<p>It&rsquo;s tempting to lament the fact that this is happening, but in a way I can understand it&rsquo;s hard to reliably detect what kind of software is legitimate and what isn&rsquo;t. I take the responsibility for distributing this kind of software seriously, and have pretty strict limits on who has access to the mozregression GitHub repository and what pull requests I&rsquo;ll merge.</p>
+
+<h2 id="ci-ported-to-github-actions">CI ported to GitHub Actions</h2>
+
+<p>Due to changes in Travis&rsquo;s policies, we needed to migrate continuous integration for mozregression to GitHub actions. You can see the gory details in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1686039">bug 1686039</a>. One possibly interesting wrinkle to others: due to Mozilla&rsquo;s security policy, we can&rsquo;t use (most) external actions inside our GitHub repository. I thus rewrote the logic for uploading a mozregression release to GitHub for MacOS and Linux GUI builds (Windows builds are still happening via <a href="https://www.appveyor.com/">AppVeyor</a> for now) <a href="https://github.com/mozilla/mozregression/blob/495ef37e701709dce3a4b76ea67ec5b1f26043be/.github/workflows/build.yml#L86">from scratch</a>. Feel free to check the above out if you have a similar need.</p>
+
+<h2 id="macos-big-sur">MacOS Big Sur</h2>
+
+<p>As of version 4.0.17, the mozregression GUI now works on MacOS Big Sur. It is safe to ask community members to install and use it on this platform (though <a href="https://mozilla.github.io/mozregression/install.html#mozregression-gui">note the caveats</a> due to the bundle being unsigned).</p>
+
+<h2 id="usage-dashboard">Usage Dashboard</h2>
+
+<p>Fulfilling a promise I implied last year, I created a <a href="https://docs.telemetry.mozilla.org/cookbooks/public_data.html">public dataset</a> for mozregression and created an <a href="https://observablehq.com/@wlach/mozregression-public-usage-dashboard">dashboard tracking mozregression use</a> using <a href="https://observablehq.com/">Observable</a>. There are a few interesting insights and trends there that can be gleaned from our telemetry. I&rsquo;d be curious if the community can find any more!</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2021/01/the-glean-dictionary/">The Glean Dictionary</a></h2>
     <p class="index-date">Jan 27th, 2021</p>

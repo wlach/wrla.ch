@@ -82,6 +82,7 @@ https://wrla.ch/blog/2019/09/time-for-some-project-updates/
 https://wrla.ch/blog/2020/08/mozregression-and-older-builds/
 https://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/
 https://wrla.ch/blog/2013/03/a-visit-to-the-montreal-zen-center/
+https://wrla.ch/blog/2021/05/mozregression-update-may-2021/
 https://wrla.ch/blog/2017/02/cancel-all-the-things/
 https://wrla.ch/blog/2011/12/an-api-for-amt-data/
 https://wrla.ch/blog/2015/01/mozregression-updates/

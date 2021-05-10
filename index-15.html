@@ -92,6 +92,22 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2010/03/adventures-in-processing-with-prender/">Adventures in processing with prender</a></h2>
+    <p class="index-date">Mar 7th, 2010</p>
+    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a></span></p>
+  </header>
+
+<p>First, I&#8217;m overdue in announcing <a href="http://transittogo.mindsea.ca/">Transit to Go</a> a.k.a. &#8220;the iPhone transit map that&#8217;s demonstrably more useful than a paper schedule&#8221; a.k.a. &#8220;your bus departure in 15 seconds or less, no matter where you are&#8221;. I wrote up a <a href="http://www.mindsea.com/blog/2010/03/transit-to-go-pulling-out-all-the-stops/">blog post</a> about it for <a href="http://www.mindsea.com">Mindsea</a>&#8216;s site, if you&#8217;re interested in finding out more.</p>
+
+<p>Second, all this transit excitement has made me start thinking about better routing and geometry algorithms again. I&#8217;ve been experimenting a bit with Brandon Martin Anderson&#8217;s <a href="http://github.com/bmander/prender">prender</a> framework, used by the infamous <a href="http://bmander.github.com/graphserver/">Graphserver</a>, and have been pretty happy with the results. It basically lets you do <a href="http://processing.org">processing</a> visualizations in python (i.e. no Java coding required). Here&#8217;s a quick picture of it in action, rendering the Nova Scotian road network, as distributed by <a href="http://geobase.ca">geobase</a>.</p>
+
+<p><img src="/files/2010/03/nova_scotia.png" alt="Nova Scotia as rendered by prender" title="Nova Scotia as rendered by prender" width="400" height="220" class="alignnone size-full wp-image-95" /></p>
+
+<p>The neat thing about this framework is that you can render quickly to an arbitrary level of detail, which should prove very useful when troubleshooting the behavior of some of the code I&#8217;m working on. If anyone is interested in running the framework on MacOS X (like I was), <a href="http://github.com/wlach/prender">my fork</a> of the project has the appropriate patches.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2010/02/it-8217-s-alive/">It&#8217;s alive!</a></h2>
     <p class="index-date">Feb 11th, 2010</p>
     <p><span class="tags"></span></p>

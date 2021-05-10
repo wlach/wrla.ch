@@ -92,6 +92,43 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/">PyCon 2014 impressions: ipython notebook is the future &#38; more</a></h2>
+    <p class="index-date">Apr 22nd, 2014</p>
+    <p><span class="tags"><a href="/tags/Montreal.html">Montreal</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Python.html">Python</a></span></p>
+  </header>
+
+<p>This year&#8217;s PyCon US (<a href="http://python.org">Python</a> Conference) was in my city of residence (Montr&eacute;al) so I took the opportunity to go and see what was up in the world of the language I use the most at Mozilla. It was pretty great!</p>
+
+<p><strong>ipython</strong></p>
+
+<p>The highlight for me was learning about the possibilities of <a href="http://ipython.org/">ipython notebooks</a>, an absolutely fantastic interactive tool for debugging python in a live browser-based environment. I&#8217;d heard about it before, but it wasn&#8217;t immediately apparent how it would really improve things &#8212; it seemed to be just a less convenient interface to the python console that required me to futz around with my web browser. Watching a few presentations on the topic made me realize how wrong I was. It&#8217;s already changed the way I do work with Eideticker data, for the better.</p>
+
+<figure id="attachment_1042" style="width: 848px" class="wp-caption alignnone">[<img src="/files/2014/04/eideticker-ipython.png" alt="Using ipython to analyze some eideticker data" width="848" height="842" class="size-full wp-image-1042" srcset="/files/2014/04/eideticker-ipython-150x150.png 150w, /files/2014/04/eideticker-ipython-300x297.png 300w, /files/2014/04/eideticker-ipython.png 848w" sizes="(max-width: 848px) 100vw, 848px" />][3]
+ <figcaption class="wp-caption-text">Using ipython to analyze some eideticker data</figcaption></figure>
+
+<p>I think the basic premise is really quite simple: a better interface for typing in, experimenting with, and running python code. If you stop and think about it, the modern web interface supports a much richer vocabulary of interactive concepts that the console (or even text editors like emacs): there&#8217;s no reason we shouldn&#8217;t take advantage of it.</p>
+
+<p>Here are the (IMO) killer features that make it worth using:</p>
+
+<ul>
+ <li>The ability to immediately re-execute a block of code after editing and seeing an error (essentially merging the immediacy of the python console with the permanency / cut &#38; pastability of an actual script)</li>
+ <li>Live-printing out graphs of numerical results using <a href="http://matplotlib.org/">matplotlib</a>. ZOMG this is so handy. Especially in conjunction with the live-editing outlined above, there&#8217;s no better tool for fine-tuning mathematical/statistical analysis.</li>
+ <li>The shareability of the results. Any ipython notebook can be saved and then saved to a public website. Many presentations at PyCon 2014, in fact, were done entirely with ipython notebooks. So handy for answering questions like &#8220;how did you get that&#8221;?</li></ul>
+
+<p>To learn more about how to use ipython notebooks for data analysis, I highly recommend Julie Evan&#8217;s talk <a href="http://pyvideo.org/video/2657/diving-into-open-data-with-ipython-notebook-pan-0">Diving into Open Data with IPython Notebook &#38; Pandas</a>, which you can find on pyvideo.org.</p>
+
+<p><strong>Other Good Talks</strong></p>
+
+<p>I saw some other good talks at the conference, here are some of them:</p>
+
+<ul>
+ <li><a href="http://pyvideo.org/video/2571/all-your-ducks-in-a-row-data-structures-in-the-s">All Your Ducks In A Row: Data Structures in the Standard Library and Beyond</a> &#8211; A useful talk by Brandon Rhoades on the implementation of basic data structures in Python, and how to select the ones to use for optimal performance. It turns out that lists aren&#8217;t the best thing to use for long sequences of numerical data (who knew?)</li>
+ <li><a href="http://pyvideo.org/video/2627/fast-python-slow-python">Fast Python, Slow Python</a> &#8211; An interesting talk by Alex Gaynor about how to write decent performing pure-python code in a single-threaded context. Lots of intelligent stuff about producing robust code that matches your intention and data structures, and caution against doing fancy things in the name of being &#8220;pythonic&#8221; or &#8220;general&#8221;.</li>
+ <li><a href="http://pyvideo.org/video/2658/analyzing-rap-lyrics-with-python">Analyzing Rap Lyrics with Python</a> &#8211; Another data analysis talk, this one about a subject I knew almost nothing about. The best part of it (for me anyway) was learning how the speaker (Julie Lavoie) narrowed her focus in her research to the exact aspects of the problem that would let her answer the question she was interested in (&#8220;Can we automatically find out which rap lyrics are the most sexist?&#8221;) as opposed to interesting problems (&#8220;how can I design the most general scraping library possible?&#8221;) that don&#8217;t answer the question. In my opinion, this ability to focus is one of the key things that seperates successful projects from unsuccessful ones.</li></ul> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2014/03/upcoming-travels-to-japan-and-taiwan/">Upcoming travels to Japan and Taiwan</a></h2>
     <p class="index-date">Mar 16th, 2014</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -376,63 +413,6 @@
 <p>Likely next step: Create some kind of chassis for mounting both the camera and device on a permanent basis (instead of an adhoc one on my desk) so we can start running these sorts of tests on a daily basis, much like we currently do with Android on the <a href="http://eideticker.wrla.ch">Eideticker Dashboard</a>.</p>
 
 <p>As an aside, I&#8217;ve been really impressed with both the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Marionette">Marionette</a> framework and the gaiatests python module that was written up for FirefoxOS. Writing the above test took just 5 minutes &#8212; and <a href="https://github.com/mozilla/eideticker/blob/master/src/tests/b2g/appscrolling/scroll.py">the code</a> is quite straightforward. Quite the pleasant change from my various efforts in Android automation.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2013/03/eideticker-limitations-in-cross-browser-performance-testing/">Eideticker: Limitations in cross-browser performance testing</a></h2>
-    <p class="index-date">Mar 20th, 2013</p>
-    <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>Last summer I <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">wrote a bit</a> about using <a href="https://wiki.mozilla.org/Project_Eideticker">Eideticker</a> to measure the relative performance of Firefox for Android versus other browsers (Chrome, stock, etc.). At the time I was pretty optimistic about Eideticker&#8217;s usefulness as a truly &#8220;objective&#8221; measure of user experience that would give us a more accurate view of how we compared against the competition than traditional benchmarking suites (which more often than not, measure things that a user will never see normally when browsing the web). Since then, there&#8217;s been some things that I&#8217;ve discovered, as well as some developments in terms of the &#8220;state of the art&#8221; in mobile browsing that have caused me to reconsider that view &#8212; while I haven&#8217;t given up entirely on this concept (and I&#8217;m still very much convinced of eideticker&#8217;s utility as an internal benchmarking tool), there&#8217;s definitely some limitations in terms of what we can do that I&#8217;m not sure how to overcome.</p>
-
-<p>Essentially, there are currently three different types of Eideticker performance tests:</p>
-
-<ul>
- <li>Animation tests: Measure the smoothness of an animation by comparing frames and seeing how many are different. Currently the only example of this is the <a href="http://eideticker.wrla.ch/#/samsung-gn/clock/fps">canvas &#8220;clock&#8221; test</a>, but many others are possible.</li>
- <li>Startup tests: Measure the amount of time it takes from when the application is launched to when the browser is fully running/available. There are currently two variants of this test in the dashboard, both measure the amount of time taken to fully render Firefox&#8217;s home screen (the only difference between the two is whether the browser profile is fully initialized). The <a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe">dirty profile</a> benchmark probably most closely resembles what a user would usually experience.</li>
- <li>Scrolling tests: Measure the amount of undrawn areas when the user is panning a website. Most of the current eideticker tests are of this kind. A good example of this is the <a href="http://eideticker.wrla.ch/#/samsung-gn/taskjs/fps">taskjs benchmark</a>.</li></ul>
-
-<p>In this blog post, I&#8217;m going to focus on startup and scrolling tests. Animation tests are interesting, but they are also generally the sorts of tests that are easiest to measure in synthetic ways (e.g. by putting a frame counter in your javascript code) and have thus far not been a huge focus for Eideticker development.</p>
-
-<p>As it turns out, it&#8217;s unfortunately been rather difficult to create truly objective tests which measure the difference between browsers in these two categories. I&#8217;ll go over them in order.</p>
-
-<p><strong>Startup tests</strong></p>
-
-<p>There are essentially two types of startup tests: one where you measure the amount of time to get to the browser&#8217;s home screen when you explicitly launch the app (e.g. by pressing the Firefox icon in the app chooser), another where you load a web page in a browser from another app (e.g. by clicking on a link in the Twitter application).</p>
-
-<p>The first is actually fairly easy to test across browsers, although we are not currently. There&#8217;s not really a good reason for that, it was just an oversight, so I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=852744">bug 852744</a> to add something like this.</p>
-
-<p>The second case (startup to the browser&#8217;s homescreen) is a bit more difficult. The problem here is that, in a nutshell, an apples to apples comparison is very difficult if not impossible simply because different browsers do different things when the user presses the application icon. Here&#8217;s what we see with Firefox:</p>
-
-<p><img src="/files/eideticker/firefox-startup.png" style="width:25%;" /></p>
-
-<p>And here&#8217;s what we see with Chrome:</p>
-
-<p><img src="/files/eideticker/chrome-startup.png" style="width:25%;" /></p>
-
-<p>And here&#8217;s what we see with the stock browser:</p>
-
-<p><img src="/files/eideticker/stock-startup.png" style="width:25%;" /></p>
-
-<p>As you can see Chrome and the stock browser are totally different: they try to &#8220;restore&#8221; the browser back to its state from the last time (in Chrome&#8217;s case, I was last visiting taskjs.org, in Stock&#8217;s case, I was just on the homepage).</p>
-
-<p>Personally I prefer Firefox&#8217;s behaviour (generally I want to browse somewhere new when I press the icon on my phone), but that&#8217;s really beside the point. It&#8217;s possible to hack around what chrome is doing by restoring the profile between sessions to some sort of clean &#8220;new tab&#8221; state, but at that point you&#8217;re not really reproducing a realistic user scenario. Sure, we can draw a comparison, but how valid is it really? It seems to me that the comparison is mostly only useful in a very broad &#8220;how quickly does the user see something useful&#8221; sense.</p>
-
-<p><strong>Panning tests</strong></p>
-
-<p>I had quite a bit of hope for these initially. They seemed like a place where Eideticker could do something that conventional benchmarking suites couldn&#8217;t, as things like panning a web page are not presently possible to do in JavaScript. The main measure I tried to compare against was something called &#8220;checkerboarding&#8221;, which essentially represents the amount of time that the user waits for the page to redraw when panning around.</p>
-
-<p>At the time that I wrote these tests, most browsers displayed regions that were not yet drawn while panning using the page background. We figured that it would thus be possible to detect regions of the page which were not yet drawn by looking for the background color while initiating a panning action. I thus hacked up existing web pages to have a magenta background, then wrote some image analysis code to detect regions that were that color (under the assumption that magenta is only rarely seen in webpages). It worked pretty well.</p>
-
-<p>The world&#8217;s moved on a bit since I wrote that: modern browsers like Chrome and Firefox use something like progressive drawing to display a lower resolution &#8220;tile&#8221; where possible in this case, so the user at least sees something resembling the actual page while panning on a slower device. To see what I mean, try visiting a slow-to-render site like taskjs.org and try panning down quickly. You should see something like this (click to expand):</p>
-
-<p><a href="/files/eideticker/firefox-partialy-drawn.png"><img src="/files/eideticker/firefox-partialy-drawn.png" style="width:50%;" /></a></p>
-
-<p>Unfortunately, while this is certainly a better user experience, it is not so easy to detect and measure. For Firefox, we&#8217;ve disabled this behaviour so that we see the old checkerboard pattern. This is useful for our internal measurements (we can see both if our drawing code as well as our heuristics about when to draw are getting better or worse over time) but it only works for us.</p>
-
-<p>If anyone has any suggestions on what to do here, let me know as I&#8217;m a bit stuck. There are other metrics we could still compare against (i.e. how smooth is the panning animation aka frames per second?) but these aren&#8217;t nearly as interesting.</p> 
   <hr/>
 </article>
 <footer>

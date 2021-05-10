@@ -3,14 +3,46 @@
  <channel>
   <title>William Lachance's Log: Posts tagged 'Glean'</title>
   <description>William Lachance's Log: Posts tagged 'Glean'</description>
-  <link>https://wlach.github.io/tags/Glean.html</link>
-  <lastBuildDate>Wed, 27 Jan 2021 13:53:44 UT</lastBuildDate>
-  <pubDate>Wed, 27 Jan 2021 13:53:44 UT</pubDate>
+  <link>https://wrla.ch/tags/Glean.html</link>
+  <lastBuildDate>Mon, 10 May 2021 13:56:43 UT</lastBuildDate>
+  <pubDate>Mon, 10 May 2021 13:56:43 UT</pubDate>
   <ttl>1800</ttl>
   <item>
+   <title>mozregression update May 2021</title>
+   <link>https://wrla.ch/blog/2021/05/mozregression-update-may-2021/?utm_source=Glean&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-05-mozregression-update-may-2021</guid>
+   <pubDate>Mon, 10 May 2021 13:56:43 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;Just wanted to give some quick updates on the state of &lt;a href="https://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="anti-virus-false-positives"&gt;Anti-virus false positives&lt;/h2&gt;
+
+&lt;p&gt;One of the persistent issues with mozregression is that it seems to be &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1647533"&gt;persistently detected as a virus by many popular anti-virus scanners&lt;/a&gt;. The causes for this are somewhat complex, but at root the problem is that mozregression requires fairly broad permissions to do the things it needs to do (install and run copies of Firefox) and thus its behavior is hard to distinguish from a piece of software doing something malicious.&lt;/p&gt;
+
+&lt;p&gt;Recently there have been a number of mitigations which seem to be improving this situation:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;:bryce has been submitting copies of mozregression to Microsoft so that Windows Defender (probably the most popular anti-virus software on this platform) doesn&amp;rsquo;t flag it.&lt;/li&gt;
+ &lt;li&gt;I recently &lt;a href="https://github.com/mozilla/mozregression/releases"&gt;released mozregression 4.0.17&lt;/a&gt;, which upgrades the GUI dependency for pyinstaller to a later version which sets PE checksums correctly on the generated executable (&lt;a href="https://github.com/pyinstaller/pyinstaller/issues/5579"&gt;pyinstaller/pyinstaller#5579&lt;/a&gt;).&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;It&amp;rsquo;s tempting to lament the fact that this is happening, but in a way I can understand it&amp;rsquo;s hard to reliably detect what kind of software is legitimate and what isn&amp;rsquo;t. I take the responsibility for distributing this kind of software seriously, and have pretty strict limits on who has access to the mozregression GitHub repository and what pull requests I&amp;rsquo;ll merge.&lt;/p&gt;
+
+&lt;h2 id="ci-ported-to-github-actions"&gt;CI ported to GitHub Actions&lt;/h2&gt;
+
+&lt;p&gt;Due to changes in Travis&amp;rsquo;s policies, we needed to migrate continuous integration for mozregression to GitHub actions. You can see the gory details in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1686039"&gt;bug 1686039&lt;/a&gt;. One possibly interesting wrinkle to others: due to Mozilla&amp;rsquo;s security policy, we can&amp;rsquo;t use (most) external actions inside our GitHub repository. I thus rewrote the logic for uploading a mozregression release to GitHub for MacOS and Linux GUI builds (Windows builds are still happening via &lt;a href="https://www.appveyor.com/"&gt;AppVeyor&lt;/a&gt; for now) &lt;a href="https://github.com/mozilla/mozregression/blob/495ef37e701709dce3a4b76ea67ec5b1f26043be/.github/workflows/build.yml#L86"&gt;from scratch&lt;/a&gt;. Feel free to check the above out if you have a similar need.&lt;/p&gt;
+
+&lt;h2 id="macos-big-sur"&gt;MacOS Big Sur&lt;/h2&gt;
+
+&lt;p&gt;As of version 4.0.17, the mozregression GUI now works on MacOS Big Sur. It is safe to ask community members to install and use it on this platform (though &lt;a href="https://mozilla.github.io/mozregression/install.html#mozregression-gui"&gt;note the caveats&lt;/a&gt; due to the bundle being unsigned).&lt;/p&gt;
+
+&lt;h2 id="usage-dashboard"&gt;Usage Dashboard&lt;/h2&gt;
+
+&lt;p&gt;Fulfilling a promise I implied last year, I created a &lt;a href="https://docs.telemetry.mozilla.org/cookbooks/public_data.html"&gt;public dataset&lt;/a&gt; for mozregression and created an &lt;a href="https://observablehq.com/@wlach/mozregression-public-usage-dashboard"&gt;dashboard tracking mozregression use&lt;/a&gt; using &lt;a href="https://observablehq.com/"&gt;Observable&lt;/a&gt;. There are a few interesting insights and trends there that can be gleaned from our telemetry. I&amp;rsquo;d be curious if the community can find any more!&lt;/p&gt;</description></item>
+  <item>
    <title>The Glean Dictionary</title>
-   <link>https://wlach.github.io/blog/2021/01/the-glean-dictionary/?utm_source=Glean&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2021-01-the-glean-dictionary</guid>
+   <link>https://wrla.ch/blog/2021/01/the-glean-dictionary/?utm_source=Glean&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-01-the-glean-dictionary</guid>
    <pubDate>Wed, 27 Jan 2021 13:53:44 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -39,8 +71,8 @@
 &lt;p&gt;The Glean Dictionary is the result of the efforts of many contributors, both inside and outside Mozilla Data. Special shout-out to &lt;a href="https://www.linh-nguyen.com/outreachy"&gt;Linh Nguyen&lt;/a&gt;, who has been moving mountains inside the codebase as part of an Outreachy internship with us. We welcome your feedback and involvement! For more information, see our &lt;a href="https://github.com/mozilla/glean-dictionary"&gt;project repository&lt;/a&gt; and Matrix channel (&lt;a href="https://chat.mozilla.org/#/room/#glean-dictionary:mozilla.org"&gt;#glean-dictionary on chat.mozilla.org&lt;/a&gt;).&lt;/p&gt;</description></item>
   <item>
    <title>Mozilla Telemetry in 2020: From "Just Firefox" to a "Galaxy of Data"</title>
-   <link>https://wlach.github.io/blog/2020/07/mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data/?utm_source=Glean&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-07-mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data</guid>
+   <link>https://wrla.ch/blog/2020/07/mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data/?utm_source=Glean&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-07-mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data</guid>
    <pubDate>Thu, 16 Jul 2020 18:42:44 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -131,8 +163,8 @@
    &lt;p&gt;The scope of this data collection comes from the fact that Fenix is a &lt;em&gt;very&lt;/em&gt; large and complex application. rather than a desire to collect everything just because we can&amp;mdash; smaller efforts like mozregression collect a &lt;a href="https://mozilla.github.io/mozregression/documentation/telemetry.html"&gt;much more limited set of data&lt;/a&gt;.&amp;nbsp;&lt;a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-3-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</description></item>
   <item>
    <title>This Week in Glean: mozregression telemetry (part 2)</title>
-   <link>https://wlach.github.io/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/?utm_source=Glean&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-05-this-week-in-glean-mozregression-telemetry-part-2</guid>
+   <link>https://wrla.ch/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/?utm_source=Glean&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-05-this-week-in-glean-mozregression-telemetry-part-2</guid>
    <pubDate>Fri, 08 May 2020 14:32:40 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -240,8 +272,8 @@
 &lt;p&gt;We&amp;rsquo;re not done yet! Next time, we&amp;rsquo;ll look into making a public-facing dashboard demonstrating these results and making an aggregated version of the mozregression telemetry data publicly accessible to researchers and the general public. If we&amp;rsquo;re lucky, there might even be a bit of &lt;em&gt;data science&lt;/em&gt;. Stay tuned!&lt;/p&gt;</description></item>
   <item>
    <title>This week in Glean (special guest post): mozregression telemetry (part 1)</title>
-   <link>https://wlach.github.io/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/?utm_source=Glean&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2020-02-this-week-in-glean-special-guest-post-mozregression-telemetry-part-1</guid>
+   <link>https://wrla.ch/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/?utm_source=Glean&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-02-this-week-in-glean-special-guest-post-mozregression-telemetry-part-1</guid>
    <pubDate>Fri, 28 Feb 2020 15:50:58 UT</pubDate>
    <author>William Lachance</author>
    <description>

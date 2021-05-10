@@ -4,7 +4,41 @@
  <link rel="self" href="https://wrla.ch/feeds/Mozilla.atom.xml" />
  <link href="https://wrla.ch/tags/Mozilla.html" />
  <id>urn:https-wrla-ch:-tags-Mozilla-html</id>
- <updated>2021-03-21T07:12:19Z</updated>
+ <updated>2021-05-10T13:56:43Z</updated>
+ <entry>
+  <title type="text">mozregression update May 2021</title>
+  <link rel="alternate" href="https://wrla.ch/blog/2021/05/mozregression-update-may-2021/?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2021-05-mozregression-update-may-2021</id>
+  <published>2021-05-10T13:56:43Z</published>
+  <updated>2021-05-10T13:56:43Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;Just wanted to give some quick updates on the state of &lt;a href="https://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="anti-virus-false-positives"&gt;Anti-virus false positives&lt;/h2&gt;
+
+&lt;p&gt;One of the persistent issues with mozregression is that it seems to be &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1647533"&gt;persistently detected as a virus by many popular anti-virus scanners&lt;/a&gt;. The causes for this are somewhat complex, but at root the problem is that mozregression requires fairly broad permissions to do the things it needs to do (install and run copies of Firefox) and thus its behavior is hard to distinguish from a piece of software doing something malicious.&lt;/p&gt;
+
+&lt;p&gt;Recently there have been a number of mitigations which seem to be improving this situation:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;:bryce has been submitting copies of mozregression to Microsoft so that Windows Defender (probably the most popular anti-virus software on this platform) doesn&amp;rsquo;t flag it.&lt;/li&gt;
+ &lt;li&gt;I recently &lt;a href="https://github.com/mozilla/mozregression/releases"&gt;released mozregression 4.0.17&lt;/a&gt;, which upgrades the GUI dependency for pyinstaller to a later version which sets PE checksums correctly on the generated executable (&lt;a href="https://github.com/pyinstaller/pyinstaller/issues/5579"&gt;pyinstaller/pyinstaller#5579&lt;/a&gt;).&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;It&amp;rsquo;s tempting to lament the fact that this is happening, but in a way I can understand it&amp;rsquo;s hard to reliably detect what kind of software is legitimate and what isn&amp;rsquo;t. I take the responsibility for distributing this kind of software seriously, and have pretty strict limits on who has access to the mozregression GitHub repository and what pull requests I&amp;rsquo;ll merge.&lt;/p&gt;
+
+&lt;h2 id="ci-ported-to-github-actions"&gt;CI ported to GitHub Actions&lt;/h2&gt;
+
+&lt;p&gt;Due to changes in Travis&amp;rsquo;s policies, we needed to migrate continuous integration for mozregression to GitHub actions. You can see the gory details in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1686039"&gt;bug 1686039&lt;/a&gt;. One possibly interesting wrinkle to others: due to Mozilla&amp;rsquo;s security policy, we can&amp;rsquo;t use (most) external actions inside our GitHub repository. I thus rewrote the logic for uploading a mozregression release to GitHub for MacOS and Linux GUI builds (Windows builds are still happening via &lt;a href="https://www.appveyor.com/"&gt;AppVeyor&lt;/a&gt; for now) &lt;a href="https://github.com/mozilla/mozregression/blob/495ef37e701709dce3a4b76ea67ec5b1f26043be/.github/workflows/build.yml#L86"&gt;from scratch&lt;/a&gt;. Feel free to check the above out if you have a similar need.&lt;/p&gt;
+
+&lt;h2 id="macos-big-sur"&gt;MacOS Big Sur&lt;/h2&gt;
+
+&lt;p&gt;As of version 4.0.17, the mozregression GUI now works on MacOS Big Sur. It is safe to ask community members to install and use it on this platform (though &lt;a href="https://mozilla.github.io/mozregression/install.html#mozregression-gui"&gt;note the caveats&lt;/a&gt; due to the bundle being unsigned).&lt;/p&gt;
+
+&lt;h2 id="usage-dashboard"&gt;Usage Dashboard&lt;/h2&gt;
+
+&lt;p&gt;Fulfilling a promise I implied last year, I created a &lt;a href="https://docs.telemetry.mozilla.org/cookbooks/public_data.html"&gt;public dataset&lt;/a&gt; for mozregression and created an &lt;a href="https://observablehq.com/@wlach/mozregression-public-usage-dashboard"&gt;dashboard tracking mozregression use&lt;/a&gt; using &lt;a href="https://observablehq.com/"&gt;Observable&lt;/a&gt;. There are a few interesting insights and trends there that can be gleaned from our telemetry. I&amp;rsquo;d be curious if the community can find any more!&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Blog moving back to wrla.ch</title>
   <link rel="alternate" href="https://wrla.ch/blog/2021/03/blog-moving-back-to-wrla-ch/?utm_source=Mozilla&amp;utm_medium=Atom" />
@@ -991,32 +1025,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;As time goes by, you just continue this process. Depending on the contributor, they may start coming up with their own ideas for how a project might be improved or they might still want to follow your lead (or that of the team), but at the least I generally see an improvement in their self-directedness and confidence after a period of sustained contribution. In either case, the key to success remains the same: sustained and positive communication and sharing of goals and aspirations, making sure that both parties are getting something positive out of the experience. Where possible, I try to include contributors in team meetings. Where there&amp;rsquo;s an especially close working relationship (e.g. &lt;a href="https://summerofcode.withgoogle.com/archive/"&gt;Google Summer of Code&lt;/a&gt;). I try to set up a weekly one on one. Regardless, I make reviewing code, answering questions, and providing suggestions on how to move forward a top priority (i.e. not something I&amp;rsquo;ll leave for a few days). It&amp;rsquo;s the least I can do if someone is willing to take time out to contribute to my project.&lt;/p&gt;
 
-&lt;p&gt;If this seems similar to the best practices for how members of a team should onboard each other and work together, that&amp;rsquo;s not really a coincidence. Obviously the relationship is a little different because we&amp;rsquo;re not operating with a formal managerial structure and usually the work is unpaid: I try to bear that mind and make double sure that contributors are really getting some useful skills and habits that they can take with them to future jobs and other opportunities, while also emphasizing that their code contributions are their own, not Mozilla&amp;rsquo;s. So far it seems to have worked out pretty well for all concerned (me, Mozilla, and the contributors).&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">Mission Control 1.0</title>
-  <link rel="alternate" href="https://wrla.ch/blog/2018/06/mission-control-1-0/?utm_source=Mozilla&amp;utm_medium=Atom" />
-  <id>urn:https-wrla-ch:-blog-2018-06-mission-control-1-0</id>
-  <published>2018-06-05T21:50:32Z</published>
-  <updated>2018-06-05T21:50:32Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;Just a quick announcement that the first &amp;ldquo;production-ready&amp;rdquo; version of Mission Control just went live yesterday, at this easy-to-remember URL:&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://missioncontrol.telemetry.mozilla.org"&gt;https://missioncontrol.telemetry.mozilla.org&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;For those not yet familiar with the project, Mission Control aims to track release stability and quality across Firefox releases. It is similar in spirit to arewestableyet and other crash dashboards, with the following new and exciting properties:&lt;/p&gt;
-
-&lt;ul&gt;
- &lt;li&gt;Uses the full set of crash counts gathered via telemetry, rather than the arbitrary  sample that users decide to submit to crash-stats&lt;/li&gt;
- &lt;li&gt;Results are available within minutes of ingestion by telemetry (although be warned  &lt;a href="/blog/2017/10/better-or-worse-by-what-measure/"&gt;initial results for a release always look bad&lt;/a&gt;)&lt;/li&gt;
- &lt;li&gt;The denominator in our crash rate is usage hours, rather than the probably-incorrect  calculation of active-daily-installs used by  &lt;a href="https://arewestableyet.com"&gt;arewestableyet&lt;/a&gt; (not a knock on the people who  wrote that tool, there was nothing better available at the time)&lt;/li&gt;
- &lt;li&gt;We have a detailed breakdown of the results by platform (rather than letting Windows  results dominate the overall rates due to its high volume of usage)&lt;/li&gt;&lt;/ul&gt;
-
-&lt;p&gt;In general, my hope is that this tool will provide a more scientific and accurate idea of release stability and quality over time. There&amp;rsquo;s lots more to do, but I think this is a promising start. Much gratitude to &lt;a href="https://home.kairo.at/blog/2014-04/how_effective_is_the_stability_program"&gt;kairo&lt;/a&gt;, calixte, &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; and others who helped build my understanding of this area.&lt;/p&gt;
-
-&lt;p&gt;The dashboard itself an easier thing to show than talk about, so I recorded a quick demonstration of some of the dashboard&amp;rsquo;s capabilities and published it on air mozilla:&lt;/p&gt;
-
-&lt;iframe src="https://air.mozilla.org/mission-control-dashboard-intro/video/" width="896" height="524" frameborder="0" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
-
-&lt;p&gt;&lt;a href="https://air.mozilla.org/mission-control-dashboard-intro/"&gt;link&lt;/a&gt;&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;If this seems similar to the best practices for how members of a team should onboard each other and work together, that&amp;rsquo;s not really a coincidence. Obviously the relationship is a little different because we&amp;rsquo;re not operating with a formal managerial structure and usually the work is unpaid: I try to bear that mind and make double sure that contributors are really getting some useful skills and habits that they can take with them to future jobs and other opportunities, while also emphasizing that their code contributions are their own, not Mozilla&amp;rsquo;s. So far it seems to have worked out pretty well for all concerned (me, Mozilla, and the contributors).&lt;/p&gt;</content></entry></feed>
