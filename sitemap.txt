@@ -26,6 +26,7 @@ https://wrla.ch/blog/2016/03/platform-engineering-project-of-the-month-perfherde
 https://wrla.ch/blog/2014/07/measuring-frames-per-second-and-animation-smoothness-with-eideticker/
 https://wrla.ch/blog/2011/04/routez-opensourced/
 https://wrla.ch/blog/2014/09/mozregression-0-24/
+https://wrla.ch/blog/2021/06/glean-dictionary-updates/
 https://wrla.ch/blog/2016/05/quarter-of-contribution-june-july-2016-edition/
 https://wrla.ch/blog/2013/04/further-meditative-practice/
 https://wrla.ch/blog/2015/07/perfherder-update/

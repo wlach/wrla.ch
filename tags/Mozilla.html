@@ -92,6 +92,63 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2021/06/glean-dictionary-updates/">Glean Dictionary updates</a></h2>
+    <p class="index-date">Jun 2nd, 2021</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Glean.html">Glean</a></span></p>
+  </header>
+
+<p>(<a href="https://blog.mozilla.org/data/2021/06/02/this-week-in-glean-glean-dictionary-updates/">this is a cross-post from the data blog</a>)</p>
+
+<p>Lots of progress on the Glean Dictionary since I made the initial release announcement a couple of months ago. For those coming in late, the Glean Dictionary is intended to be a <a href="https://en.wikipedia.org/wiki/Data_dictionary">data dictionary</a> for applications built using the <a href="https://mozilla.github.io/glean">Glean SDK</a> and <a href="https://github.com/mozilla/glean.js/">Glean.js</a>. This currently includes Firefox for Android and Firefox iOS, as well as newer initiatives like <a href="https://rally.mozilla.org">Rally</a>. Desktop Firefox <em>will</em> use Glean in the future, see <a href="https://firefox-source-docs.mozilla.org/toolkit/components/glean/index.html">Firefox on Glean (FoG)</a>.</p>
+
+<h2 id="production-url">Production URL</h2>
+
+<p>We&rsquo;re in production! You can now access the Glean Dictionary at <a href="https://dictionary.telemetry.mozilla.org">dictionary.telemetry.mozilla.org</a>. The old protosaur-based URL will redirect.</p>
+
+<h2 id="glean-dictionary--looker--">Glean Dictionary + Looker = ❤️</h2>
+
+<p>At the end of last year, Mozilla chose <a href="https://looker.com">Looker</a> as our internal business intelligence tool. Frank Bertsch, Daniel Thorn, Anthony Miyaguchi and others have been building out first class support for Glean applications inside this platform, and we&rsquo;re starting to see these efforts bear fruit. Looker&rsquo;s explores are far easier to use for basic data questions, opening up data based inquiry to a much larger cross section of Mozilla.</p>
+
+<p>I recorded a quick example of this integration here:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/B635wgZy7Iw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
+
+<p>Note that Looker access is restricted to Mozilla employees and NDA&rsquo;d volunteers. Stay tuned for <a href="https://docs.telemetry.mozilla.org/cookbooks/public_data.html">more public data</a> to be indexed inside the Glean Dictionary in the future.</p>
+
+<h2 id="glean-annotations">Glean annotations!</h2>
+
+<p>I did up the first cut of a GitHub-based system for adding annotations to metrics &mdash; acting as a knowledge base for things data scientists and others have discovered about Glean Telemetry in the field. This can be <em>invaluable</em> when doing new analysis. A good example of this is the annotation added for the <a href="https://dictionary.telemetry.mozilla.org/apps/firefox_ios/metrics/app_opened_as_default_browser">opened as default browser</a> metric for Firefox for iOS, which has several gotchas:</p>
+
+<div class="figure"><img src="/files/2021/06/annotations-example.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>Many thanks to Krupa Raj and Leif Oines for producing the requirements which led up to this implementation, as well as their evangelism of this work more generally inside Mozilla. Last month, Leif and I did a presentation about this at Data Club, which has been syndicated onto YouTube:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aGjrXhXNRq8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"></iframe>
+
+<p>Since then, we&rsquo;ve had a very successful working session with some people Data Science and have started to fill out an initial set of annotations. You can see the progress in the <a href="https://github.com/mozilla/glean-annotations">glean-annotations</a> repository.</p>
+
+<h2 id="other-improvements">Other Improvements</h2>
+
+<p>Lots more miscellaneous improvements and fixes have gone into the Glean Dictionary in the last several months: see our <a href="https://github.com/mozilla/glean-dictionary/releases">releases</a> for a full list. One thing that irrationally pleases me are the <a href="https://github.com/mozilla/glean-dictionary/pull/626">new labels Linh Nguyen added last week</a>: colorful and lively, they make it easy to see when a Glean Metric is coming from a library:</p>
+
+<div class="figure"><img src="/files/2021/06/labels-example.png" alt="" />
+ <p class="caption"></p></div>
+
+<h2 id="future-work">Future work</h2>
+
+<p>The Glean Dictionary is just getting started! In the next couple of weeks, we&rsquo;re hoping to:</p>
+
+<ul>
+ <li>Expand the Looker integration outlined above, as our deploy takes more shape.</li>
+ <li>Work on adding &ldquo;feature&rdquo; classification to the Glean Dictionary, to make it easier for product managers and other non-engineering types to quickly find the metrics and other information they need without needing to fully understand what&rsquo;s in the source tree.</li>
+ <li>Continue to refine the user interface of the Glean Dictionary as we get more feedback from people using it across Mozilla.</li></ul>
+
+<p>If you&rsquo;re interested in getting involved, join us! The Glean Dictionary is developed in the open using cutting edge front-end technologies like <a href="https://svelte.dev">Svelte</a>. Our conviction is that being transparent about the data Mozilla collects helps us build trust with our users and the community. We&rsquo;re a friendly group and hang out on the <a href="https://chat.mozilla.org/#/room/#glean-dictionary:mozilla.org">#glean-dictionary channel</a> on Matrix.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2021/05/mozregression-update-may-2021/">mozregression update May 2021</a></h2>
     <p class="index-date">May 10th, 2021</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Glean.html">Glean</a>  <a href="/tags/Telemetry.html">Telemetry</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
@@ -550,104 +607,6 @@ while (1) { true }</code></pre>
 <p>Like many organizations, Mozilla&rsquo;s gone down the path of Google Docs, Zoom and Slack which makes me more than a little sad: good ideas disappear down the memory hole <em>super</em> quickly with these tools, not to mention the fact that they are closed-by-default (even to people inside Mozilla!). My view on &ldquo;open&rdquo; is a bit more nuanced than it used to be: I no longer think everything need be all-public, all-the-time&mdash; but I still think talking about and through our ideas (even if imperfectly formed or stated) with a broad audience builds trust and leads to better outcomes.</p>
 
 <p>Is there some way we can blend some of these old school ideas (blogs, newsgroups, open discussion forums) with better technology and <a href="https://www.mozilla.org/en-US/about/governance/policies/participation/">social practices</a>? Let&rsquo;s find out.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2020/05/a-principled-reorganization-of-docs-telemetry-mozilla-org/">A principled reorganization of docs.telemetry.mozilla.org</a></h2>
-    <p class="index-date">May 11th, 2020</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>(this post is aimed primarily at an internal audience, but I thought I&rsquo;d go ahead and make it public as a blog post)</p>
-
-<p>I&rsquo;ve been thinking a bunch over the past few months about the Mozilla data organization&rsquo;s documentation story. We have a first class data platform here at Mozilla, but using it to answer questions, especially for newer employees, can be quite intimidating. As we continue our collective journey to becoming a modern data-driven organization, part of the formula for unlocking this promise is making the tools and platforms we create accessible to a broad internal audience.</p>
-
-<p>My data peers are a friendly group of people and we have historically been good at answering questions on forums like the #fx-metrics slack channel: we&rsquo;ll keep doing this. That said, our time is limited: we need a common resource for helping bring people up to speed on how to use the data platform to answer common questions.</p>
-
-<p>Our documentation site, <a href="https://docs.telemetry.mozilla.org">docs.telemetry.mozilla.org</a>, was meant to be this resource: however in the last couple of years an understanding of its purpose has been (at least partially) lost and it has become somewhat overgrown with content that isn&rsquo;t very relevant to those it&rsquo;s intended to help.</p>
-
-<p>This post&rsquo;s goal is to re-establish a mission for our documentation site &mdash; towards the end, some concrete proposals on what to change are also outlined.</p>
-
-<h2 id="setting-the-audience">Setting the audience</h2>
-
-<p>docs.telemetry.mozilla.org was and is meant to be a resource useful for <em>data practitioners</em> within Mozilla.</p>
-
-<p>Examples of different data practioners and their use cases:</p>
-
-<ul>
- <li>A data scientist performing an experiment analysis</li>
- <li>A data analyst producing a report on the effectiveness of a recent marketing campaign</li>
- <li>A Firefox engineer trying to understand the performance characteristics of a new feature</li>
- <li>A technical product manager trying to understand the characteristics of a particular user segment</li>
- <li>A quality assurance engineer trying to understand the severity of a Firefox crash</li></ul>
-
-<p>There are a range of skills that these different groups bring to the table, but there are some common things we expect a data practitioner to have, whatever their formal job description:</p>
-
-<ul>
- <li>At least some programming and analytical experience</li>
- <li>Comfortable working with and understanding complex data systems with multiple levels of abstraction (for example: the relationship between the Firefox browser which produces Telemetry data and the backend system which processes it)</li>
- <li>The time necessary to dig into details</li></ul>
-
-<p>This also <em>excludes</em> a few groups:</p>
-
-<ul>
- <li>Senior leadership or executives: they are of course free to use docs.telemetry.mozilla.org if helpful, but it is expected that the type of analytical work covered by the documentation will normally be done by a data practitioner and that relevant concepts and background information will be explained <em>to them</em> (in the form of high-level dashboards, presentations, etc.).</li>
- <li>Data Engineering: some of the material on docs.telemetry.mozilla.org may be incidentally useful to this internal audience, but explaining the full details of the data platform itself belongs elsewhere.</li></ul>
-
-<h2 id="what-do-these-users-need">What do these users need?</h2>
-
-<p>In general, a data practitioner is trying to answer a specific set of questions in the context of an exploration. There are a few things that they need:</p>
-
-<ul>
- <li>A working knowledge of how to use the technological tools to answer the questions they might have: for example, how to create a SQL query counting the median value of a particular histogram for a particular usage segment.</li>
- <li>A set of guidelines on best practices on how to measure specific things: for example, we want our people using our telemetry systems to use well-formulated practices for measuring things like &ldquo;Monthly Active Users&rdquo; rather than re-inventing such things themselves.</li></ul>
-
-<h2 id="what-serves-this-need">What serves this need?</h2>
-
-<p>A few years ago, Ryan Harter <a href="https://blog.harterrt.com/lit-review.html">did an extensive literature review</a> on writing documentation on technical subjects - the take away from this exploration is that the global consensus is that we should focus most of our attention on writing practical tutorials which enables our users to perform specific tasks in the service of the above objective.</p>
-
-<p>There is a proverb, allegedly attributed to Confucius which goes something like this:</p>
-
-<blockquote>
- <p>&ldquo;I hear and I forget. I see and I remember. I do and I understand.&rdquo;</p></blockquote>
-
-<p>The understanding we want to build is how to use our data systems and tools to answer questions. Some knowledge of how our data platform works is no doubt necessary to accomplish this, but it is mostly functional knowledge we care about imparting to data practitioners: the best way to build this understanding is to guide users in performing tasks.</p>
-
-<p>This makes sense intuitively, but it is also borne out by the <em>data</em> that this is what our users are looking for. Looking through the top pages on Google Analytics, virtually all of them<sup><a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-1-definition" name="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-1-return">1</a></sup> refer either to a cookbook or howto guide:</p>
-
-<div class="figure"><img src="/files/2020/05/docs-tmo-ga.png" alt="" />
- <p class="caption"></p></div>
-
-<p>Happily, this allows us to significantly narrow our focus for docs.telemetry.mozilla.org. We no longer need to worry about:</p>
-
-<ul>
- <li>Providing lists or summaries of data tools available inside Mozilla<sup><a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-2-definition" name="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-2-return">2</a></sup>: we can talk about tools only as needed in the context of tasks they want to accomplish. We may want to keep such a list handy elsewhere for some other reason (e.g. internal auditing purposes), but we can safely say that it belongs somewhere else, like the Mozilla wiki, mana, or the telemetry.mozilla.org portal.</li>
- <li>Detailed reference on the technical details of the data platform implementation. Links to this kind of material can be surfaced inside the documentation where relevant, but it is expected that an implementation reference will normally be stored and presented within the context of the tools themselves (a good example would be <a href="https://mozilla.github.io/gcp-ingestion/">the existing documentation for GCP ingestion</a>).</li>
- <li>Detailed reference on all data sets, ping types, or probes: hand-written documentation for this kind of information is difficult to keep up to date with manual processes<sup><a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-definition" name="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-return">3</a></sup> and is best generated automatically and browsed with tools like the <a href="https://probes.telemetry.mozilla.org/">probe dictionary</a>.</li>
- <li>Detailed reference material on how to submit Telemetry. While an overview of how to <em>think about</em> submitting telemetry may be in scope (recall that we consider Firefox engineers a kind of data practitioner), the details are really a seperate topic that is better left to another resource which is closer to the implementation (for example, the <a href="https://firefox-source-docs.mozilla.org/">Firefox Source Documentation</a> or the <a href="https://mozilla.github.io/glean/book/index.html">Glean SDK reference</a>).</li></ul>
-
-<p>Scanning through the above, you&rsquo;ll see a common theme: avoid overly detailed reference material. The above is not to say that we should avoid background documentation altogether. For example, an understanding of how our data pipeline works is key to understanding how up-to-date a dashboard is expected to be. However, this type of documentation should be written bearing in mind the audience (focusing on what they need to know as data practitioners) and should be surfaced towards the end of the documentation as <em>supporting material</em>.</p>
-
-<p>As an exception, there is also a very small amount of reference documentation which we want to put at top-level because it is so important: for example the <a href="https://docs.telemetry.mozilla.org/metrics/index.html">standard metrics</a> page describes how we define &ldquo;MAU&rdquo; and &ldquo;DAU&rdquo;: these are measures that we want to standardize in the organization, and not have someone re-invent every time they produce an analysis or report. However, we should be very cautious about how much of this &ldquo;front facing&rdquo; material we include: if we overwhelm our audience with details right out of the gate, they are apt to ignore them.</p>
-
-<h2 id="concrete-actions">Concrete actions</h2>
-
-<ul>
- <li>We should continue working on tutorials on how to perform common tasks: this includes not only the low-level guides that we currently have (e.g. BigQuery and SQL tutorials) but also information on how to effectively use our higher-level, more accessible tools like GLAM and GUD to answer questions.</li>
- <li>Medium term, we should remove the per-dataset documentation and replace it with a graphical tool for browsing this type of information (perhaps <a href="https://cloud.google.com/data-catalog">Google Data Catalog</a>). Since this is likely to be a rather involved project, we can keep the existing documentation for now &mdash; but for new datasets, we should encourage their authors to write tutorials on how to use them effectively (assuming they are of broad general interest) instead of hand-creating schema definitions that are likely to go out of date quickly.</li>
- <li>We should set clear expectations and guidelines of what does and doesn&rsquo;t belong on docs.telemetry.mozilla.org as part of a larger style guide. This style guide should be referenced somewhere prominent (perhaps as part of a <a href="https://help.github.com/en/github/building-a-strong-community/creating-a-pull-request-template-for-your-repository">pull request template</a>) so that historical knowledge of what this resource is for isn&rsquo;t lost.</li></ul>
-
-<h2 id="footnotes">Footnotes</h2>
-
-<div class="footnotes">
- <ol>
-  <li id="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-1-definition" class="footnote-definition">
-   <p>For some reason which I cannot fathom, a broad (non-Mozilla) audience seems unusually interested in our SQL style guide.&nbsp;<a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-1-return">↩</a></p></li>
-  <li id="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-2-definition" class="footnote-definition">
-   <p>The current Firefox data documentation has a <a href="https://docs.telemetry.mozilla.org/tools/projects.html">project glossary</a> that is riddled with links to obsolete and unused projects.&nbsp;<a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-2-return">↩</a></p></li>
-  <li id="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-definition" class="footnote-definition">
-   <p>docs.telemetry.mozilla.org has a huge section devoted to derived datasets (20+), many of which are obsolete or not recommended. At the same time, we are missing explicit reference material for the most commonly used tables in BigQuery (e.g. <code>telemetry.main</code>).&nbsp;<a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-return">↩</a></p></li></ol></div> 
   <hr/>
 </article>
 <footer>

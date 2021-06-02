@@ -4,7 +4,64 @@
  <link rel="self" href="https://wrla.ch/feeds/Glean.atom.xml" />
  <link href="https://wrla.ch/tags/Glean.html" />
  <id>urn:https-wrla-ch:-tags-Glean-html</id>
- <updated>2021-05-10T13:56:43Z</updated>
+ <updated>2021-06-02T16:01:52Z</updated>
+ <entry>
+  <title type="text">Glean Dictionary updates</title>
+  <link rel="alternate" href="https://wrla.ch/blog/2021/06/glean-dictionary-updates/?utm_source=Glean&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2021-06-glean-dictionary-updates</id>
+  <published>2021-06-02T16:01:52Z</published>
+  <updated>2021-06-02T16:01:52Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;(&lt;a href="https://blog.mozilla.org/data/2021/06/02/this-week-in-glean-glean-dictionary-updates/"&gt;this is a cross-post from the data blog&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Lots of progress on the Glean Dictionary since I made the initial release announcement a couple of months ago. For those coming in late, the Glean Dictionary is intended to be a &lt;a href="https://en.wikipedia.org/wiki/Data_dictionary"&gt;data dictionary&lt;/a&gt; for applications built using the &lt;a href="https://mozilla.github.io/glean"&gt;Glean SDK&lt;/a&gt; and &lt;a href="https://github.com/mozilla/glean.js/"&gt;Glean.js&lt;/a&gt;. This currently includes Firefox for Android and Firefox iOS, as well as newer initiatives like &lt;a href="https://rally.mozilla.org"&gt;Rally&lt;/a&gt;. Desktop Firefox &lt;em&gt;will&lt;/em&gt; use Glean in the future, see &lt;a href="https://firefox-source-docs.mozilla.org/toolkit/components/glean/index.html"&gt;Firefox on Glean (FoG)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="production-url"&gt;Production URL&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;re in production! You can now access the Glean Dictionary at &lt;a href="https://dictionary.telemetry.mozilla.org"&gt;dictionary.telemetry.mozilla.org&lt;/a&gt;. The old protosaur-based URL will redirect.&lt;/p&gt;
+
+&lt;h2 id="glean-dictionary--looker--"&gt;Glean Dictionary + Looker = ❤️&lt;/h2&gt;
+
+&lt;p&gt;At the end of last year, Mozilla chose &lt;a href="https://looker.com"&gt;Looker&lt;/a&gt; as our internal business intelligence tool. Frank Bertsch, Daniel Thorn, Anthony Miyaguchi and others have been building out first class support for Glean applications inside this platform, and we&amp;rsquo;re starting to see these efforts bear fruit. Looker&amp;rsquo;s explores are far easier to use for basic data questions, opening up data based inquiry to a much larger cross section of Mozilla.&lt;/p&gt;
+
+&lt;p&gt;I recorded a quick example of this integration here:&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/B635wgZy7Iw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Note that Looker access is restricted to Mozilla employees and NDA&amp;rsquo;d volunteers. Stay tuned for &lt;a href="https://docs.telemetry.mozilla.org/cookbooks/public_data.html"&gt;more public data&lt;/a&gt; to be indexed inside the Glean Dictionary in the future.&lt;/p&gt;
+
+&lt;h2 id="glean-annotations"&gt;Glean annotations!&lt;/h2&gt;
+
+&lt;p&gt;I did up the first cut of a GitHub-based system for adding annotations to metrics &amp;mdash; acting as a knowledge base for things data scientists and others have discovered about Glean Telemetry in the field. This can be &lt;em&gt;invaluable&lt;/em&gt; when doing new analysis. A good example of this is the annotation added for the &lt;a href="https://dictionary.telemetry.mozilla.org/apps/firefox_ios/metrics/app_opened_as_default_browser"&gt;opened as default browser&lt;/a&gt; metric for Firefox for iOS, which has several gotchas:&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2021/06/annotations-example.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;Many thanks to Krupa Raj and Leif Oines for producing the requirements which led up to this implementation, as well as their evangelism of this work more generally inside Mozilla. Last month, Leif and I did a presentation about this at Data Club, which has been syndicated onto YouTube:&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/aGjrXhXNRq8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Since then, we&amp;rsquo;ve had a very successful working session with some people Data Science and have started to fill out an initial set of annotations. You can see the progress in the &lt;a href="https://github.com/mozilla/glean-annotations"&gt;glean-annotations&lt;/a&gt; repository.&lt;/p&gt;
+
+&lt;h2 id="other-improvements"&gt;Other Improvements&lt;/h2&gt;
+
+&lt;p&gt;Lots more miscellaneous improvements and fixes have gone into the Glean Dictionary in the last several months: see our &lt;a href="https://github.com/mozilla/glean-dictionary/releases"&gt;releases&lt;/a&gt; for a full list. One thing that irrationally pleases me are the &lt;a href="https://github.com/mozilla/glean-dictionary/pull/626"&gt;new labels Linh Nguyen added last week&lt;/a&gt;: colorful and lively, they make it easy to see when a Glean Metric is coming from a library:&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2021/06/labels-example.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;h2 id="future-work"&gt;Future work&lt;/h2&gt;
+
+&lt;p&gt;The Glean Dictionary is just getting started! In the next couple of weeks, we&amp;rsquo;re hoping to:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Expand the Looker integration outlined above, as our deploy takes more shape.&lt;/li&gt;
+ &lt;li&gt;Work on adding &amp;ldquo;feature&amp;rdquo; classification to the Glean Dictionary, to make it easier for product managers and other non-engineering types to quickly find the metrics and other information they need without needing to fully understand what&amp;rsquo;s in the source tree.&lt;/li&gt;
+ &lt;li&gt;Continue to refine the user interface of the Glean Dictionary as we get more feedback from people using it across Mozilla.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;If you&amp;rsquo;re interested in getting involved, join us! The Glean Dictionary is developed in the open using cutting edge front-end technologies like &lt;a href="https://svelte.dev"&gt;Svelte&lt;/a&gt;. Our conviction is that being transparent about the data Mozilla collects helps us build trust with our users and the community. We&amp;rsquo;re a friendly group and hang out on the &lt;a href="https://chat.mozilla.org/#/room/#glean-dictionary:mozilla.org"&gt;#glean-dictionary channel&lt;/a&gt; on Matrix.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">mozregression update May 2021</title>
   <link rel="alternate" href="https://wrla.ch/blog/2021/05/mozregression-update-may-2021/?utm_source=Glean&amp;utm_medium=Atom" />

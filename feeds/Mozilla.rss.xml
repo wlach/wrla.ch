@@ -4,9 +4,64 @@
   <title>William Lachance's Log: Posts tagged 'Mozilla'</title>
   <description>William Lachance's Log: Posts tagged 'Mozilla'</description>
   <link>https://wrla.ch/tags/Mozilla.html</link>
-  <lastBuildDate>Mon, 10 May 2021 13:56:43 UT</lastBuildDate>
-  <pubDate>Mon, 10 May 2021 13:56:43 UT</pubDate>
+  <lastBuildDate>Wed, 02 Jun 2021 16:01:52 UT</lastBuildDate>
+  <pubDate>Wed, 02 Jun 2021 16:01:52 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Glean Dictionary updates</title>
+   <link>https://wrla.ch/blog/2021/06/glean-dictionary-updates/?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-06-glean-dictionary-updates</guid>
+   <pubDate>Wed, 02 Jun 2021 16:01:52 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;(&lt;a href="https://blog.mozilla.org/data/2021/06/02/this-week-in-glean-glean-dictionary-updates/"&gt;this is a cross-post from the data blog&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Lots of progress on the Glean Dictionary since I made the initial release announcement a couple of months ago. For those coming in late, the Glean Dictionary is intended to be a &lt;a href="https://en.wikipedia.org/wiki/Data_dictionary"&gt;data dictionary&lt;/a&gt; for applications built using the &lt;a href="https://mozilla.github.io/glean"&gt;Glean SDK&lt;/a&gt; and &lt;a href="https://github.com/mozilla/glean.js/"&gt;Glean.js&lt;/a&gt;. This currently includes Firefox for Android and Firefox iOS, as well as newer initiatives like &lt;a href="https://rally.mozilla.org"&gt;Rally&lt;/a&gt;. Desktop Firefox &lt;em&gt;will&lt;/em&gt; use Glean in the future, see &lt;a href="https://firefox-source-docs.mozilla.org/toolkit/components/glean/index.html"&gt;Firefox on Glean (FoG)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="production-url"&gt;Production URL&lt;/h2&gt;
+
+&lt;p&gt;We&amp;rsquo;re in production! You can now access the Glean Dictionary at &lt;a href="https://dictionary.telemetry.mozilla.org"&gt;dictionary.telemetry.mozilla.org&lt;/a&gt;. The old protosaur-based URL will redirect.&lt;/p&gt;
+
+&lt;h2 id="glean-dictionary--looker--"&gt;Glean Dictionary + Looker = ❤️&lt;/h2&gt;
+
+&lt;p&gt;At the end of last year, Mozilla chose &lt;a href="https://looker.com"&gt;Looker&lt;/a&gt; as our internal business intelligence tool. Frank Bertsch, Daniel Thorn, Anthony Miyaguchi and others have been building out first class support for Glean applications inside this platform, and we&amp;rsquo;re starting to see these efforts bear fruit. Looker&amp;rsquo;s explores are far easier to use for basic data questions, opening up data based inquiry to a much larger cross section of Mozilla.&lt;/p&gt;
+
+&lt;p&gt;I recorded a quick example of this integration here:&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/B635wgZy7Iw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Note that Looker access is restricted to Mozilla employees and NDA&amp;rsquo;d volunteers. Stay tuned for &lt;a href="https://docs.telemetry.mozilla.org/cookbooks/public_data.html"&gt;more public data&lt;/a&gt; to be indexed inside the Glean Dictionary in the future.&lt;/p&gt;
+
+&lt;h2 id="glean-annotations"&gt;Glean annotations!&lt;/h2&gt;
+
+&lt;p&gt;I did up the first cut of a GitHub-based system for adding annotations to metrics &amp;mdash; acting as a knowledge base for things data scientists and others have discovered about Glean Telemetry in the field. This can be &lt;em&gt;invaluable&lt;/em&gt; when doing new analysis. A good example of this is the annotation added for the &lt;a href="https://dictionary.telemetry.mozilla.org/apps/firefox_ios/metrics/app_opened_as_default_browser"&gt;opened as default browser&lt;/a&gt; metric for Firefox for iOS, which has several gotchas:&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2021/06/annotations-example.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;Many thanks to Krupa Raj and Leif Oines for producing the requirements which led up to this implementation, as well as their evangelism of this work more generally inside Mozilla. Last month, Leif and I did a presentation about this at Data Club, which has been syndicated onto YouTube:&lt;/p&gt;
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/aGjrXhXNRq8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen"&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Since then, we&amp;rsquo;ve had a very successful working session with some people Data Science and have started to fill out an initial set of annotations. You can see the progress in the &lt;a href="https://github.com/mozilla/glean-annotations"&gt;glean-annotations&lt;/a&gt; repository.&lt;/p&gt;
+
+&lt;h2 id="other-improvements"&gt;Other Improvements&lt;/h2&gt;
+
+&lt;p&gt;Lots more miscellaneous improvements and fixes have gone into the Glean Dictionary in the last several months: see our &lt;a href="https://github.com/mozilla/glean-dictionary/releases"&gt;releases&lt;/a&gt; for a full list. One thing that irrationally pleases me are the &lt;a href="https://github.com/mozilla/glean-dictionary/pull/626"&gt;new labels Linh Nguyen added last week&lt;/a&gt;: colorful and lively, they make it easy to see when a Glean Metric is coming from a library:&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2021/06/labels-example.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;h2 id="future-work"&gt;Future work&lt;/h2&gt;
+
+&lt;p&gt;The Glean Dictionary is just getting started! In the next couple of weeks, we&amp;rsquo;re hoping to:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Expand the Looker integration outlined above, as our deploy takes more shape.&lt;/li&gt;
+ &lt;li&gt;Work on adding &amp;ldquo;feature&amp;rdquo; classification to the Glean Dictionary, to make it easier for product managers and other non-engineering types to quickly find the metrics and other information they need without needing to fully understand what&amp;rsquo;s in the source tree.&lt;/li&gt;
+ &lt;li&gt;Continue to refine the user interface of the Glean Dictionary as we get more feedback from people using it across Mozilla.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;If you&amp;rsquo;re interested in getting involved, join us! The Glean Dictionary is developed in the open using cutting edge front-end technologies like &lt;a href="https://svelte.dev"&gt;Svelte&lt;/a&gt;. Our conviction is that being transparent about the data Mozilla collects helps us build trust with our users and the community. We&amp;rsquo;re a friendly group and hang out on the &lt;a href="https://chat.mozilla.org/#/room/#glean-dictionary:mozilla.org"&gt;#glean-dictionary channel&lt;/a&gt; on Matrix.&lt;/p&gt;</description></item>
   <item>
    <title>mozregression update May 2021</title>
    <link>https://wrla.ch/blog/2021/05/mozregression-update-may-2021/?utm_source=Mozilla&amp;utm_medium=RSS</link>
@@ -953,38 +1008,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Only slightly more than half a year since I began work on the iodide server, we now have both a publicly accessible site for others to experiment with &lt;em&gt;and&lt;/em&gt; an internal one for Mozilla&amp;rsquo;s business needs. It&amp;rsquo;s hard to say what would have happened had I chosen something more experimental to build Iodide&amp;rsquo;s server piece, but at the very least there would have been a substantial learning curve involved &amp;mdash; in addition to engineering effort to fill in the gaps where the new technology is not yet complete &amp;mdash; which would have meant less time to innovate where it really mattered. Django&amp;rsquo;s &lt;a href="https://docs.djangoproject.com/en/2.1/topics/migrations/"&gt;database migration system&lt;/a&gt;, for example, took years to come to fruition and I&amp;rsquo;m not aware of anything comparable in the world of JavaScript web frameworks.&lt;/p&gt;
 
-&lt;p&gt;As we move ahead, we may find places where applying new backend server technologies makes sense. Heck, maybe we&amp;rsquo;ll chose to rewrite the whole thing at some point. But to get to launch, chosing a bunch of boring, tested software for this portion of Iodide was (in my view) absolutely the right decision and I make no apologies for it.&lt;/p&gt;</description></item>
-  <item>
-   <title>Making contribution work for Firefox tooling and data projects</title>
-   <link>https://wrla.ch/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2018-11-making-contribution-work-for-firefox-tooling-and-data-projects</guid>
-   <pubDate>Mon, 26 Nov 2018 16:13:46 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;One of my favorite parts about Mozilla is mentoring and working alongside third party contributors. Somewhat surprisingly since I work on internal tools, I&amp;rsquo;ve had a fair amount of luck finding people to help work on projects within my purview: &lt;a href="https://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt;, &lt;a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder"&gt;perfherder&lt;/a&gt;, &lt;a href="https://metricsgraphics.org"&gt;metrics graphics&lt;/a&gt;, and others have all benefited from the contributions of people outside of Mozilla.&lt;/p&gt;
-
-&lt;p&gt;In most cases (a notable exception being metrics graphics), these have been internal-tooling projects used by others to debug, develop, or otherwise understand the behaviour of Firefox. On the face of it, none of the things I work on are exactly &amp;ldquo;high profile cutting edge stuff&amp;rdquo; in the way, say, Firefox or the Rust Programming Language are. So why do they bother? The exact formula varies depending on contributor, but I think it usually comes down to some combination of these two things:&lt;/p&gt;
-
-&lt;ol&gt;
- &lt;li&gt;A desire to learn and demonstrate competence with industry standard  tooling (the python programming language, frontend web development, backend  databases, &amp;ldquo;big data&amp;rdquo; technologies like Parquet, &amp;hellip;).&lt;/li&gt;
- &lt;li&gt;A desire to work with and gain recognition inside of a community of  like-minded people.&lt;/li&gt;&lt;/ol&gt;
-
-&lt;p&gt;Pretty basic, obvious stuff &amp;mdash; there is an appeal here to basic human desires like the need for security and a sense of belonging. Once someone&amp;rsquo;s &amp;ldquo;in the loop&amp;rdquo;, so to speak, generally things take care of themselves. The real challenge, I&amp;rsquo;ve found, is getting people from the &amp;ldquo;I am potentially interested in doing something with Mozilla internal tools&amp;rdquo; to the stage that they are confident and competent enough to work in a reasonably self-directed way. When I was on the A-Team, we classified this transition in terms of a &lt;a href="https://ateam-bootcamp.readthedocs.io/en/latest/guide/curve.html"&gt;commitment curve&lt;/a&gt;:&lt;/p&gt;
-
-&lt;p&gt;&lt;img srcset="/files/2018/11/commitment-curve-visualization.png 2x" /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1080119"&gt;prototype commitment curve graphic by Steven Brown&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;The hardest part, in my experience, is the initial part of that curve. At this point, people are just dipping their toe in the water. Some may not have a ton of experience with software development yet. In other cases, my projects may just not be the right fit for them. But of course, sometimes there is a fit, or at least one could be developed! What I&amp;rsquo;ve found most helpful is &amp;ldquo;clearing a viable path&amp;rdquo; forward for the right kind of contributor. That is, some kind of initial hypothesis of what a successful contribution experience would look like as a new person transitions from &amp;ldquo;explorer&amp;rdquo; stage in the chart above to &amp;ldquo;associate&amp;rdquo;.&lt;/p&gt;
-
-&lt;p&gt;I don&amp;rsquo;t exactly have a perfect template for what &amp;ldquo;clearing a path&amp;rdquo; looks like in every case. It depends quite a bit on the nature of the contributor. But there are some common themes that I&amp;rsquo;ve found effective:&lt;/p&gt;
-
-&lt;p&gt;First, provide good, concise documentation both on the project&amp;rsquo;s purpose and vision and how to get started easily and keep it up to date. For projects with a front-end web component, I try to decouple the front end parts from the backend services so that people can &lt;code&gt;yarn install &amp;amp;&amp;amp; yarn start&lt;/code&gt; &lt;a href="/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/"&gt;their way to success&lt;/a&gt;. Being able to &lt;em&gt;see&lt;/em&gt; the project in action quickly (and not getting stuck on some mundane getting started step) is key in maintaining initial interest.&lt;/p&gt;
-
-&lt;p&gt;Second, provide a set of good starter issues (sometimes called &amp;ldquo;good first bugs&amp;rdquo;) for people to work on. Generally these would be non-critical-path type issues that have straightforward instructions to resolve and fix. Again, the idea here is to give people a sense of quick progress and resolution, a &amp;ldquo;yes I can actually do this&amp;rdquo; sort of feeling. But be careful not to let a contributor get stuck here! These bugs take a disproportionate amount of effort to file and mentor compared to their actual value &amp;mdash; the key is to progress the contributor to the next level once it&amp;rsquo;s clear they can handle the basics involved in solving such an issue (checking out the source code, applying a fix, submitting a patch, etc). Otherwise you&amp;rsquo;re going to feel frustrated and wonder why you&amp;rsquo;re on an endless treadmill of writing up trivial bugs.&lt;/p&gt;
-
-&lt;p&gt;Third, once a contributor has established themselves by fixing a few of these simple issues, I try to get to know them a little better. Send them an email, learn where they&amp;rsquo;re from, invite them to chat on the project channel if they can. At the same time, this is an opportunity to craft a somewhat larger piece of work (a sort of mini-project) that they can do, tailored to the interests. For example, a new contributor on the Mission Control has recently been working on adding &lt;a href="https://jestjs.io/"&gt;Jest&lt;/a&gt; tests to the project &amp;mdash; I provided some basic guidance of things to look at, but did not dictate exactly &lt;em&gt;how&lt;/em&gt; to perform the task. They figured that out for themselves.&lt;/p&gt;
-
-&lt;p&gt;As time goes by, you just continue this process. Depending on the contributor, they may start coming up with their own ideas for how a project might be improved or they might still want to follow your lead (or that of the team), but at the least I generally see an improvement in their self-directedness and confidence after a period of sustained contribution. In either case, the key to success remains the same: sustained and positive communication and sharing of goals and aspirations, making sure that both parties are getting something positive out of the experience. Where possible, I try to include contributors in team meetings. Where there&amp;rsquo;s an especially close working relationship (e.g. &lt;a href="https://summerofcode.withgoogle.com/archive/"&gt;Google Summer of Code&lt;/a&gt;). I try to set up a weekly one on one. Regardless, I make reviewing code, answering questions, and providing suggestions on how to move forward a top priority (i.e. not something I&amp;rsquo;ll leave for a few days). It&amp;rsquo;s the least I can do if someone is willing to take time out to contribute to my project.&lt;/p&gt;
-
-&lt;p&gt;If this seems similar to the best practices for how members of a team should onboard each other and work together, that&amp;rsquo;s not really a coincidence. Obviously the relationship is a little different because we&amp;rsquo;re not operating with a formal managerial structure and usually the work is unpaid: I try to bear that mind and make double sure that contributors are really getting some useful skills and habits that they can take with them to future jobs and other opportunities, while also emphasizing that their code contributions are their own, not Mozilla&amp;rsquo;s. So far it seems to have worked out pretty well for all concerned (me, Mozilla, and the contributors).&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;As we move ahead, we may find places where applying new backend server technologies makes sense. Heck, maybe we&amp;rsquo;ll chose to rewrite the whole thing at some point. But to get to launch, chosing a bunch of boring, tested software for this portion of Iodide was (in my view) absolutely the right decision and I make no apologies for it.&lt;/p&gt;</description></item></channel></rss>
