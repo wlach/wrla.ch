@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0">
+ <channel>
+  <title>William Lachance's Log: Posts tagged 'Recurse'</title>
+  <description>William Lachance's Log: Posts tagged 'Recurse'</description>
+  <link>https://wrla.ch/tags/Recurse.html</link>
+  <lastBuildDate>Wed, 23 Jun 2021 21:15:15 UT</lastBuildDate>
+  <pubDate>Wed, 23 Jun 2021 21:15:15 UT</pubDate>
+  <ttl>1800</ttl>
+  <item>
+   <title>Mini-sabbatical and introducing Irydium</title>
+   <link>https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/?utm_source=Recurse&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-06-mini-sabbatical-and-introducing-irydium</guid>
+   <pubDate>Wed, 23 Jun 2021 21:15:15 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;Approaching my 10-year moz-iversary in July, I&amp;rsquo;ve decided it&amp;rsquo;s time to take a bit of a mini-sabbatical: I&amp;rsquo;ll be out (and trying as hard as possible not to check bugmail) from Friday, June 25th until August 9th. During this time, I&amp;rsquo;ll be doing a batch at the &lt;a href="https://recurse.com"&gt;Recurse Centre&lt;/a&gt; (something like a writer&amp;rsquo;s retreat for programmers), exploring some of my interests around data visualization and analysis that don&amp;rsquo;t quite fit into my role as a Data Engineer here at Mozilla.&lt;/p&gt;
+
+&lt;p&gt;In particular, I&amp;rsquo;m planning to work a bunch on a project tentatively called &amp;ldquo;Irydium&amp;rdquo;, which pursues some of the ideas I &lt;a href="https://wrla.ch/blog/2020/11/iodide-retrospective/"&gt;sketched out last year in my Iodide retrospective&lt;/a&gt; and a few more besides. I&amp;rsquo;ve been steadily working on it in my off hours, but it&amp;rsquo;s become clear that some of the things I want to pursue would benefit from more dedicated attention and the broader perspective that I&amp;rsquo;m hoping the Recurse community will be able to provide.&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2021/06/irydium.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;I had meant to write up a proper blog post to announce the project before I left, but it looks like I&amp;rsquo;m pretty much out of time. Instead, I&amp;rsquo;ll just offer up the examples on the newly-minted &lt;a href="https://irydium.dev"&gt;irydium.dev&lt;/a&gt; and invite people to contact me if any of the ideas on the site sounds interesting. I&amp;rsquo;m hoping to blog a whole bunch while I&amp;rsquo;m there, but probably not under the Mozilla tag. Feel free to add wrla.ch to your RSS feed if you want to follow what I&amp;rsquo;m up to!&lt;/p&gt;</description></item></channel></rss>

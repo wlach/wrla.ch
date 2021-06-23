@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 14)</title>
     <meta name="description" content="William Lachance's Log (page 14)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-14.html" />
@@ -91,6 +91,20 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2011/06/template-for-a-map-based-web-app/">Template for a map-based web app</a></h2>
+    <p class="index-date">Jun 3rd, 2011</p>
+    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Open-Data.html">Open Data</a></span></p>
+  </header>
+
+<p>Finally got around doing something I&#8217;d meaning to for a while, which is create a simple template for a web-based mapping application based on jQuery and some of my earlier work on <a href="https://github.com/wlach/routez">routez</a>. I&#8217;m hoping this might be useful as a starter for a few open data applications!</p>
+
+<p><a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/example-map-site-2/" rel="attachment wp-att-258"><img src="/files/2011/06/example-map-site1.png" alt="" title="Example Map Site" width="400" height="303" class="alignnone size-full wp-image-258" srcset="/files/2011/06/example-map-site1-300x227.png 300w, /files/2011/06/example-map-site1.png 400w" sizes="(max-width: 400px) 100vw, 400px" /></a></p>
+
+<p><a href="http://wlach.wrla.ch/blog/Map-Layout-Template/">Preview</a> <a href="https://github.com/wlach/Map-Layout-Template">Source</a></p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2011/04/routez-opensourced/">Routez opensourced</a></h2>
     <p class="index-date">Apr 19th, 2011</p>
@@ -301,20 +315,6 @@
  <li>Sped up the graph and database generation by an order of magnitude. Not too exciting from a user perspective, but I should now be able to iterate the codebase much faster.</li>
  <li>Better transit stop / street graph linking: No more does libroutez simply try to find the closest street level vertice to link to when merging transit stops with street information&#8211; we now actually create _new_ street level vertices as needed and link to those. Upshot? Slightly better directions and prettier polylines. When I first thought up the algorithm a month ago, I thought I was totally brilliant, only to later find out that Andrew Byrd had done something almost identical a few months earlier for <a href="http://github.com/andrewbyrd/graphserver">graphserver</a>. Ah well, at least it&#8217;s implemented.</li>
  <li>I <a href="http://gist.github.com/361848">coded up a script</a> to automatically generate synthetic headsigns for GTFS feeds which don&#8217;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&#8217;t you do better than saying that all your buses go in the &#8220;1&#8221; direction? There&#8217;s a reason why it&#8217;s a required field you know. Not only would it help me, but <a href="http://google.com/transit">Google Transit</a> would give better results for your city as well.</li></ul> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2010/03/fun-with-wifidog/">Fun with WifiDog</a></h2>
-    <p class="index-date">Mar 23rd, 2010</p>
-    <p><span class="tags"><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a>  <a href="/tags/Usability.html">Usability</a>  <a href="/tags/WifiDog.html">WifiDog</a></span></p>
-  </header>
-
-<p>Because I don&#8217;t have enough spare time projects (<em>this is a joke</em>), I decided to take on the task of adding a must-requested special iPhone/iPod-touch friendly view for the <a href="http://dev.wifidog.org/">WifiDog</a> authentication server (used by the infamous <a href="http://www.ilesansfil.org/">Île Sans Fil</a>) after being inspired by the WifiDog camp held a few weeks ago at Station C. I finally finally finished up a prototype today. It&#8217;s a bit of a hack, but a relatively clean one&#8211; hopefully some version of it can be integrated into trunk, and users with mobile devices will have a better experience when they&#8217;re on the go in Montr&eacute;al (or any other area with a community-oriented wifidog deployment: I hear there&#8217;s lots).</p>
-
-<p><img src="/files/2010/03/wifidog_iphone_2.jpg" alt="WifiDog on iPhone yo" title="WifiDog on iPhone yo" width="320" height="480" class="alignnone size-full wp-image-108" /></p>
-
-<p>For those interested in grubby details, you can track the progress of this work on the <a href="http://dev.wifidog.org/ticket/696">WifiDog ticket tracker</a>.</p> 
   <hr/>
 </article>
 <footer>

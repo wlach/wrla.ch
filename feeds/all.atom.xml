@@ -4,7 +4,24 @@
  <link rel="self" href="https://wrla.ch/feeds/all.atom.xml" />
  <link href="https://wrla.ch/index.html" />
  <id>urn:https-wrla-ch:-index-html</id>
- <updated>2021-06-02T16:01:52Z</updated>
+ <updated>2021-06-23T21:15:15Z</updated>
+ <entry>
+  <title type="text">Mini-sabbatical and introducing Irydium</title>
+  <link rel="alternate" href="https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/?utm_source=all&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2021-06-mini-sabbatical-and-introducing-irydium</id>
+  <published>2021-06-23T21:15:15Z</published>
+  <updated>2021-06-23T21:15:15Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;Approaching my 10-year moz-iversary in July, I&amp;rsquo;ve decided it&amp;rsquo;s time to take a bit of a mini-sabbatical: I&amp;rsquo;ll be out (and trying as hard as possible not to check bugmail) from Friday, June 25th until August 9th. During this time, I&amp;rsquo;ll be doing a batch at the &lt;a href="https://recurse.com"&gt;Recurse Centre&lt;/a&gt; (something like a writer&amp;rsquo;s retreat for programmers), exploring some of my interests around data visualization and analysis that don&amp;rsquo;t quite fit into my role as a Data Engineer here at Mozilla.&lt;/p&gt;
+
+&lt;p&gt;In particular, I&amp;rsquo;m planning to work a bunch on a project tentatively called &amp;ldquo;Irydium&amp;rdquo;, which pursues some of the ideas I &lt;a href="https://wrla.ch/blog/2020/11/iodide-retrospective/"&gt;sketched out last year in my Iodide retrospective&lt;/a&gt; and a few more besides. I&amp;rsquo;ve been steadily working on it in my off hours, but it&amp;rsquo;s become clear that some of the things I want to pursue would benefit from more dedicated attention and the broader perspective that I&amp;rsquo;m hoping the Recurse community will be able to provide.&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2021/06/irydium.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;I had meant to write up a proper blog post to announce the project before I left, but it looks like I&amp;rsquo;m pretty much out of time. Instead, I&amp;rsquo;ll just offer up the examples on the newly-minted &lt;a href="https://irydium.dev"&gt;irydium.dev&lt;/a&gt; and invite people to contact me if any of the ideas on the site sounds interesting. I&amp;rsquo;m hoping to blog a whole bunch while I&amp;rsquo;m there, but probably not under the Mozilla tag. Feel free to add wrla.ch to your RSS feed if you want to follow what I&amp;rsquo;m up to!&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Glean Dictionary updates</title>
   <link rel="alternate" href="https://wrla.ch/blog/2021/06/glean-dictionary-updates/?utm_source=all&amp;utm_medium=Atom" />
@@ -1021,24 +1038,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
   <content type="html">
 &lt;p&gt;I&amp;rsquo;ve been a bit bad about updating this blog over the past year or so, though this hasn&amp;rsquo;t meant there haven&amp;rsquo;t been things to talk about. For the next couple weeks, I&amp;rsquo;m going to try to give some updates on the projects I have been spending time on in the past year, both old and new. I&amp;rsquo;m going to begin with some of the less-loved things I&amp;rsquo;ve been working on, partially in an attempt to motivate some forward-motion on things that I believe are rather important to Mozilla.&lt;/p&gt;
 
-&lt;p&gt;More to come.&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">Goodbye, noble stead</title>
-  <link rel="alternate" href="https://wrla.ch/blog/2019/05/goodbye-noble-stead/?utm_source=all&amp;utm_medium=Atom" />
-  <id>urn:https-wrla-ch:-blog-2019-05-goodbye-noble-stead</id>
-  <published>2019-05-22T00:52:21Z</published>
-  <updated>2019-05-22T00:52:21Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;With lots of sadness, I just gave away my vintage 1970s velo-sport. This was my first bike I owned as a mid-twentysomething adult (I temporarily gave up biking and took up smoking when I was 19, two of the worst decisions of my life). Picked it up at the suggestion of my now ex-wife after frustration with the Halifax bus system. Used it to &lt;a href="https://www.thecoast.ca/halifax/beta-the-public-transit-day-tripper/Content?oid=1098826"&gt;hack said transit system&lt;/a&gt; amidst riding hundreds and hundreds of kilometres on the Halifax penisula and beyond. A few years later, it came with me to Montreal, where we rode even more - near-daily commutes from NDG to Mile End and rides for pie to Mont St Hilaire. Finally, it was fated to come with me to Toronto, where it served to take me on long rides on the waterfront trail, east to Pickering, west as far as Niagara Falls, as well as serving as a daily commuter from Leslieville to my office in the Fashion District, not to mention early-morning jaunts across town for 6am sittings at the Toronto Zen Centre.&lt;/p&gt;
-
-&lt;p&gt;&lt;img style="width:400px" srcset="/files/2019/05/wills_bike_1.jpg 2x" /&gt;&lt;/p&gt;
-
-&lt;p&gt;Over the years, I&amp;rsquo;ve probably sunk over two thousand dollars into repairs (as well as doing a fair number of work on it myself). An issue with the front wheel puncturing three tubes in succession finally convinced me that this was a losing battle, unless I wanted to put down a large sum into an overhaul. If I used it less I could probably justify some more minor repairs, but I think most of it (with the exception of the frame and headset) is on its last legs. Given the amount that I bicycle, it just seemed to make sense to get a new one, and see what a modern commuter has to offer. So I decided to cut my losses and buy a brand new one at Urbane Cycling.&lt;/p&gt;
-
-&lt;p&gt;It was a hard decision to replace it, and harder still to give it away. I &lt;em&gt;loved&lt;/em&gt; this old bike, far more than any inanimate thing that has been in my presence. I am grateful for the good care it took of me (I have not had a single major accident riding it), and the adventures it enabled me to have. I took this picture of it in the donation rack at Bikesauce, which is almost certainly the last I&amp;rsquo;ll see of it:&lt;/p&gt;
-
-&lt;p&gt;&lt;img style="width:400px" srcset="/files/2019/05/wills_bike_2.jpg 2x" /&gt;&lt;/p&gt;
-
-&lt;p&gt;I left a note with some pointers on what needs work and asking whoever fixes it up to give it a lot of love, but honestly this bike&amp;rsquo;s fate is out of my control at this point. So it is with all things.&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;More to come.&lt;/p&gt;</content></entry></feed>

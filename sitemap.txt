@@ -13,6 +13,7 @@ https://wrla.ch/blog/2011/10/faster-but-not-quite-there-yet-8230/
 https://wrla.ch/blog/2018/10/pydata-nyc-2018/
 https://wrla.ch/blog/2013/02/eideticker-for-firefoxos/
 https://wrla.ch/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up/
+https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/
 https://wrla.ch/blog/2014/09/using-flexbox-in-web-applications/
 https://wrla.ch/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/
 https://wrla.ch/blog/2017/10/mission-control-ready-for-contributions/

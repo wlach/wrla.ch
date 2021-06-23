@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 4)</title>
     <meta name="description" content="William Lachance's Log (page 4)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-4.html" />
@@ -91,6 +91,32 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2018/01/quitting-twitter/">Quitting Twitter</a></h2>
+    <p class="index-date">Jan 13th, 2018</p>
+    <p><span class="tags"><a href="/tags/Social-Media.html">Social Media</a>  <a href="/tags/Psychology.html">Psychology</a></span></p>
+  </header>
+
+<p>(this post probably won&rsquo;t make much sense unless you have been a user of Twitter since/during 2016&ndash;2018)</p>
+
+<p>Decided to kill my Twitter account today. Probably most people won&rsquo;t miss my presence there as I haven&rsquo;t actively posting on the site in quite some time, but I did check it quite frequently. I suspect it consumed (and I&rsquo;m ashamed to admit this), at least an hour of my day on average. Twitter when I wake up, Twitter on the streetcar, Twitter every god damn empty moment.</p>
+
+<p>Of all the large social media propertes, I find Twitter by far leads in the amount of negative sentiment it displays, especially in the last year or so. Donald Trump, #GamerGate, Brexit, Nazis, the list goes on. That&rsquo;s probably why it is so uniquely capable of grabbing my attention in particular, there&rsquo;s some dark part of me which gravitates towards exactly this type of content.</p>
+
+<p>Now, due to the filter bubble effect, 99% of what <em>I</em> see on that site is a negative <em>response</em> to those things, but so what? The overwhelming of effect of my interaction with the site is simply to make me more more fearful and angry, nothing more. The very format of Twitter (brief bursts of performative text) doesn&rsquo;t encourage any kind of intelligent or compassionate reaction to what you are seeing or reading. It would be one thing if the negative things I saw on Twitter motivated me to take a positive action of <em>any</em> kind, but if the net effect of hearing bad news is just to make you feel bad, then what&rsquo;s the point?</p>
+
+<p>I&rsquo;m not much of a fan of Facebook either, but it has (less often than I would like, but sometimes) been a platform for facilitating worthwhile social and cultural interactions both on the site and off. I could probably count the number of similar exchanges I have had on Twitter on one hand &mdash; overwhelmingly my experience with twitter is that engagement (posting) leads only to a regrettable salvo of petty bickering and <a href="http://tirania.org/blog/archive/2011/Feb-17.html">well actuallys</a>.</p>
+
+<p>So, let&rsquo;s see what life on the other side of this site is like. The demons which pulled me to Twitter every day are no doubt still there&hellip; but hopefully they&rsquo;ll be easier to handle without the influence of a technology which amplifies their effect.</p>
+
+<p>Further reading:</p>
+
+<ul>
+ <li><a href="http://www.macdrifter.com/2017/11/fuck-twitter.html">Fuck Twitter</a></li>
+ <li><a href="http://www.businessinsider.com/jaron-lanier-interview-on-silicon-valley-culture-metoo-backlash-ai-and-the-future-2017-12">Jaron Lanier</a> on negative sentiment in social media (among other interesting topics)</li></ul> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2017/12/maintaining-metricsgraphics/">Maintaining metricsgraphics</a></h2>
     <p class="index-date">Dec 6th, 2017</p>
@@ -383,52 +409,6 @@
  <li>You almost certainly want to create a script (<a href="https://github.com/mozilla/python_moztelemetry/blob/d2aa84bbac09465d38eeb0b5beb20edc7ddcc21b/runtests.sh">example</a>) to streamline all the steps of running the tests: this will make running the tests easier for anyone wanting to contribute to your project and reduce the amount of documentation that you will have to write.</li></ol>
 
 <p>The relevant files and documentation are in the repositories linked above.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/">Easier reproduction of intermittent test failures in automation</a></h2>
-    <p class="index-date">Apr 5th, 2017</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Treeherder.html">Treeherder</a>  <a href="/tags/Taskcluster.html">Taskcluster</a></span></p>
-  </header>
-
-<p>As part of the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell">Stockwell project</a>, I&rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&rsquo;s often very difficult to reproduce an intermittent failure we see in Treeherder locally since the environment is so different, but historically it has been a big hassle to get access to the machines we use in automation for various reasons.</p>
-
-<p>One option that rolled out last year was the so-called one-click loaner, which enabled developers to sign out an virtual machine instance identical to the ones used to run unit tests (at least if the tests are running on Taskcluster, which is increasingly often the case), then execute their particular case with whatever extra debugging options they would find useful. This is a big step forward, but it&rsquo;s still quite a bit of hassle, since it requires a bunch of manual work on the part of the developer to interact with the instance.</p>
-
-<p>What if we could <em>just</em> re-run the particular test an arbitrary number of times with whatever options we wanted, simply by clicking on a few buttons on Treeherder? I&rsquo;ve been exploring this for the first few months of 2017 and I&rsquo;ve come up with a prototype which I think is ready for people to start playing with.</p>
-
-<p>The user interface to this is pretty straightforward. Just find a job you want to retrigger in Treeherder:</p>
-
-<p><img src="/files/2017/04/treeherder-selected-mochitest.png" /></p>
-
-<p>Then select the &rsquo;&hellip;&rsquo; option in the panel below and press &ldquo;Custom Action&hellip;&rdquo;:</p>
-
-<p><img src="/files/2017/04/treeherder-taskcluster-options.png" /></p>
-
-<p>You should get a small piece of JSON to edit, which corresponds to the configuration for the retriggered job:</p>
-
-<p><img src="/files/2017/04/treeherder-custom-action.png" /></p>
-
-<p>The main field to edit is &ldquo;path&rdquo;. You should set this to the name of the test you want to try retriggering. For example <code>dom/animation/test/css-transitions/test_animation-ready.html</code>. You can also set custom Firefox preferences and environment variables, to turn on different types of debugging.</p>
-
-<p>Unfortunately as usual with a new feature at Mozilla, there are a bunch of limitations and caveats:</p>
-
-<ul>
- <li>This depends on functionality that&rsquo;s only in Taskcluster, so  buildbot jobs are exempt.</li>
- <li>No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which hopefully isn&rsquo;t that far off).</li>
- <li>Browser chrome tests failing in mysterious ways if run repeatedly  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347654">bug 1347654</a>)</li>
- <li>Only reftest and mochitest are currently supported. XPCShell  support is blocked by the lack of support in its harness for  running a job repeatedly (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347696">bug 1347696</a>).  Web Platform Tests need the requisite support in mozharness for  just setting up the tests without running them &mdash; the same issue  that prevents us from debugging such tests with a one-click loaner  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348833">bug 1348833</a>).</li></ul>
-
-<p>Aside from fixing the above limitations, the following features would also be really nifty to have:</p>
-
-<ul>
- <li>Ability to trigger a custom job as part of a try push (i.e.  not needing to retrigger off an existing job)</li>
- <li>Run these jobs under rr, and provide a way to login and  interactively debug when the problem is actually reproduced.</li></ul>
-
-<p>I am actually in the process of moving to another team @ Mozilla (more on that in another post), so I probably won&rsquo;t have a ton of time to work on the above &mdash; but I&rsquo;d be happy to help anyone who&rsquo;s interested in developing this idea further.</p>
-
-<p>A special shout out to the <a href="https://wiki.mozilla.org/TaskCluster">Taskcluster</a> team for helping me with the development of this feature: in particular the action task implementation from <a href="https://jonasfj.dk/">Jonas Finnemann Jensen</a> that made it possible to develop this feature in the first place.</p> 
   <hr/>
 </article>
 <footer>

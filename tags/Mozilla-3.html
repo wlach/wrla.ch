@@ -92,6 +92,31 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2019/03/new-ideas-old-buildings/">New ideas, old buildings</a></h2>
+    <p class="index-date">Mar 22nd, 2019</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Iodide.html">Iodide</a></span></p>
+  </header>
+
+<p>Last week, Brendan Colloran <a href="https://hacks.mozilla.org/2019/03/iodide-an-experimental-tool-for-scientific-communicatiodide-for-scientific-communication-exploration-on-the-web/">announced Iodide</a>, a new take on scientific collaboration and reporting that I&rsquo;ve been really happy to contribute to over the past year-and-a-bit. I&rsquo;ve been describing it to people I meet as kind of "<a href="https://glitch.com/">glitch</a> meets <a href="https://jupyter.org/">jupyter</a> " but that doesn&rsquo;t quite do it justice. I&rsquo;d recommend reading Brendan&rsquo;s blog post (and taking a look at our <a href="https://alpha.iodide.io">demonstration site</a>) to get the full picture.</p>
+
+<p>One question that I&rsquo;ve heard asked (including on Brendan&rsquo;s post) is why we chose a rather conventional and old technology (<a href="https://www.djangoproject.com/">Django</a>) for the server backend. Certainly, Iodide has not been shy about building with relatively new or experimental technologies for other parts (e.g. Python on WebAssembly for the notebooks, React/Redux for the frontend). Why not complete the cycle by using a new-fangled JavaScript web server like, I don&rsquo;t know, <a href="https://nestjs.com/">NestJS</a>? And while we&rsquo;re at it, what&rsquo;s with iodide&rsquo;s ridiculous <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST API</a>? Don&rsquo;t you know <a href="https://graphql.org/">GraphQL</a> is the only legitimate way to expose your backend to the world in 2019?</p>
+
+<p>The great urban theorist of the twentieth century, <a href="https://en.wikipedia.org/wiki/Jane_Jacobs">Jane Jacobs</a> has a quote I love:</p>
+
+<p>
+ <i>“Old ideas can sometimes use new buildings. New ideas must use old buildings.”</i></p>
+
+<p>Laura Thompson (an engineering director at Mozilla) has restated this wisdom in a software development context as <a href="https://speakerdeck.com/lauraxt/build-exciting-things-with-boring-technologies">&ldquo;Build exciting things with boring technologies&rdquo;</a>.</p>
+
+<p>It so happened that the server was not an area Iodide was focusing on for innovation (at least initially), so it made much, much more sense to use something proven and battle-tested for the server side deployment. I&rsquo;d used Django for a number of projects at Mozilla before this one (<a href="https://github.com/mozilla/treeherder">Treeherder/Perfherder</a> and <a href="https://github.com/mozilla/missioncontrol/">Mission Control</a>) and have been wildly impressed by the project&rsquo;s excellent <a href="https://docs.djangoproject.com/">documentation</a>, <a href="https://docs.djangoproject.com/en/2.1/topics/db/">database access layer</a>, and support for building a standardized API via the <a href="https://www.django-rest-framework.org/">Django REST Framework</a> add-on. Not to mention the fact that so much of Mozilla&rsquo;s in-house ops and web development expertise is based around this framework (I could name off probably 5 or 6 internal business systems based around the Django stack, in addition to Treeherder), so deploying Iodide and getting help building it would be something of a known quantity.</p>
+
+<p>Only slightly more than half a year since I began work on the iodide server, we now have both a publicly accessible site for others to experiment with <em>and</em> an internal one for Mozilla&rsquo;s business needs. It&rsquo;s hard to say what would have happened had I chosen something more experimental to build Iodide&rsquo;s server piece, but at the very least there would have been a substantial learning curve involved &mdash; in addition to engineering effort to fill in the gaps where the new technology is not yet complete &mdash; which would have meant less time to innovate where it really mattered. Django&rsquo;s <a href="https://docs.djangoproject.com/en/2.1/topics/migrations/">database migration system</a>, for example, took years to come to fruition and I&rsquo;m not aware of anything comparable in the world of JavaScript web frameworks.</p>
+
+<p>As we move ahead, we may find places where applying new backend server technologies makes sense. Heck, maybe we&rsquo;ll chose to rewrite the whole thing at some point. But to get to launch, chosing a bunch of boring, tested software for this portion of Iodide was (in my view) absolutely the right decision and I make no apologies for it.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/">Making contribution work for Firefox tooling and data projects</a></h2>
     <p class="index-date">Nov 26th, 2018</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Community.html">Community</a></span></p>
@@ -336,30 +361,6 @@
 <p>In my experience, the most interesting problems when it comes to projects like these center around the question of how to present extremely complex data in a way that is intuitive but not misleading. Probably 90% of that work happens in the frontend. In the past, I&rsquo;ve had pretty good luck finding contributors for my projects (especially <a href="/tags/Perfherder.html">Perfherder</a>) by doing call-outs on this blog. So let it be known: If Mission Control sounds like an interesting project and you know <a href="https://reactjs.org/">React</a>/<a href="http://redux.js.org/">Redux</a>/<a href="https://d3js.org/">D3</a>/<a href="https://www.metricsgraphicsjs.org/">MetricsGraphics</a> (or want to learn), let&rsquo;s work together!</p>
 
 <p>I&rsquo;ve created some <a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">good first bugs</a> to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on <a href="https://wiki.mozilla.org/IRC">irc.mozilla.org</a> #missioncontrol if you want to discuss further.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2017/10/mission-control/">Mission Control</a></h2>
-    <p class="index-date">Oct 6th, 2017</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-  </header>
-
-<p>Time for an overdue post on the mission control project that I&rsquo;ve been working on for the past few quarters, since I transitioned to the data platform team.</p>
-
-<p>One of the gaps in our data story when it comes to Firefox is being able to see how a new release is doing in the immediate hours after release. Tools like <a href="https://crash-stats.mozilla.com/home/product/Firefox">crashstats</a> and the <a href="https://telemetry.mozilla.org/new-pipeline/evo.html">telemetry evolution dashboard</a> are great, but it can take many hours (if not days) before you can reliably see that there is an issue in a metric that we care about (number of crashes, say). This is just too long &mdash; such delays unnecessarily retard rolling out a release when it is safe (because there is a paranoia that there might be some lingering problem which we we&rsquo;re waiting to see reported). And if, somehow, despite our abundant caution a problem <em>did</em> slip through it would take us some time to recognize it and roll out a fix.</p>
-
-<p>Enter mission control. By hooking up a high-performance spark streaming job directly to our ingestion pipeline, we can now be able to detect within moments whether firefox is performing unacceptably within the field according to a particular measure.</p>
-
-<p>To make the volume of data manageable, we create a grouped data set with the raw count of the various measures (e.g. main crashes, content crashes, slow script dialog counts) along with each unique combination of dimensions (e.g. platform, channel, release).</p>
-
-<p>Of course, all this data is not so useful without a tool to visualize it, which is what I&rsquo;ve been spending the majority of my time on. The idea is to be able to go from a top level description of what&rsquo;s going on a particular channel (release for example) all the way down to a detailed view of how a measure has been performing over a time interval:</p>
-
-<p><img srcset="/files/2017/10/missioncontrol-ui.png 2x" /></p>
-
-<p>This particular screenshot shows the volume of content crashes (sampled every 5 minutes) over the last 48 hours on windows release. You&rsquo;ll note that the later version (56.0) seems to be much crashier than earlier versions (55.0.3) which would seem to be a problem except that the populations are not directly comparable (since the profile of a user still on an older version of Firefox is rather different from that of one who has already upgraded). This is one of the still unsolved problems of this project: finding a reliable, automatable baseline of what an &ldquo;acceptable result&rdquo; for any particular measure might be.</p>
-
-<p>Even still, the tool can still be useful for exploring a bunch of data quickly and it has been progressing rapidly over the last few weeks. And like almost everything Mozilla does, both the <a href="https://github.com/mozilla/missioncontrol/">source</a> and <a href="https://data-missioncontrol.dev.mozaws.net/">dashboard</a> are open to the public. I&rsquo;m planning on flagging some easier bugs for newer contributors to work on in the next couple weeks, but in the meantime if you&rsquo;re interested in this project and want to get involved, feel free to look us up on irc.mozilla.org #missioncontrol (I&rsquo;m there as &lsquo;wlach&rsquo;).</p> 
   <hr/>
 </article>
 <footer>
