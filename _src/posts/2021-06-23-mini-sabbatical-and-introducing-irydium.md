@@ -1,6 +1,6 @@
     Title: Mini-sabbatical and introducing Irydium
     Date: 2021-06-23T17:15:15
-    Tags: Mozilla, Recurse
+    Tags: Mozilla, Recurse, Irydium
 
 Approaching my 10-year moz-iversary in July, I've decided it's time to take a bit of a mini-sabbatical: I'll be out (and trying as
 hard as possible not to check bugmail) from Friday, June 25th until August 9th.

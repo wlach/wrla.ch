@@ -118,6 +118,7 @@ https://wrla.ch/blog/2012/04/an-even-better-way-of-taking-screenshots-on-android
 https://wrla.ch/blog/2016/08/herding-automation-infrastructure/
 https://wrla.ch/blog/2015/03/perfherder-update-summary-series-drilldown/
 https://wrla.ch/blog/2013/11/mozregression-now-supports-inbound-builds/
+https://wrla.ch/blog/2021/06/irydium-points-of-departure/
 https://wrla.ch/blog/2009/03/hbus-ca-and-thoughts-about-crowdsourcing/
 https://wrla.ch/blog/2014/10/doing-something-about-ebola-before-it-becomes-a-catostrophe/
 https://wrla.ch/blog/2015/08/more-perfherder-updates/

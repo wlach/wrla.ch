@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 9)</title>
     <meta name="description" content="William Lachance's Log (page 9)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-9.html" />
@@ -91,6 +91,22 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2013/11/mozregression-now-supports-inbound-builds/">mozregression now supports inbound builds</a></h2>
+    <p class="index-date">Nov 28th, 2013</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
+  </header>
+
+<p>Just wanted to send out a quick note that I recently added inbound support to <a href="http://mozilla.github.io/mozregression/">mozregression</a> for desktop builds of Firefox on Windows, Mac, and Linux.</p>
+
+<p>For the uninitiated, mozregression is an automated tool that lets you bisect through builds of Firefox to find out when a problem was introduced. You give it the last known good date, the last known bad date and off it will go, automatically pulling down builds to test. After each iteration, it will ask you whether this build was good or bad, update the regression range accordingly, and then the cycle repeats until there are no more intermediate builds.</p>
+
+<p>Previously, it would only use nightlies which meant a one day granularity &#8212; this meant pretty wide regression ranges, made wider in the last year by the fact that so much more is now going into the tree over the course of the day. However, with inbound support (using the new inbound archive) we now have the potential to get a much tighter range, which should be super helpful for developers. Best of all, mozregression doesn&#8217;t require any particularly advanced skills to use which means everyone in the Mozilla community can help out.</p>
+
+<p>For anyone interested, there&#8217;s quite a bit of scope to improve mozregression to make it do more things (FirefoxOS support, easier installation&#8230;). Feel free to check out <a href="http://github.com/mozilla/mozregression">the repository</a>, the <a href="https://github.com/mozilla/mozregression/issues?state=open">issues list</a> (I just added <a href="https://github.com/mozilla/mozregression/issues/76">an easy one</a> which would make a great first bug) and ask questions on irc.mozilla.org#ateam!</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2013/11/meditative-practice-followup/">Meditative practice followup</a></h2>
     <p class="index-date">Nov 13th, 2013</p>
@@ -342,30 +358,6 @@
 <p>Mindfulness, as far as I can gather, is simply non-judgemental awareness of what we are doing (and what we are supposed to be doing). Every time a distraction is noticed, felt, and understood, you&#8217;ve just experienced some approximation of the end goal of the meditation. Like it is with other things (an exercise regimen, learning to play a musical instrument), every small victory should push you further and the path to where you want to go. With enough practice, it might just become part of your day-to-day experience.</p>
 
 <p>Or so I&#8217;m told by the book. Up to now, I haven&#8217;t enjoyed any longlasting effects from meditation aside from (possibly?) a bit more mental clarity in my day-to-day tasks. But I&#8217;ve found the practice to be extremely interesting both from the point of view of understanding my own thought, as well as being rather relaxing in and of itself. So while I&#8217;m curious as to what comes next, I am happy enough with things as they are in the present. I&#8217;m planning to continue to meditate (20&ndash;30 minutes a day, 6 days a week), but also delve a bit deeper into the details and history of Zen and Vipasanna. More updates as appropriate.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last/">Actual useful FirefoxOS Eideticker results at last</a></h2>
-    <p class="index-date">Apr 22nd, 2013</p>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>Another update on getting <a href="http://wrla.ch/blog/2013/02/eideticker-for-firefoxos/">Eideticker working with FirefoxOS</a>. Once again this is sort of high-level, looking forward to writing something more in-depth soon now that we have the basics working.</p>
-
-<p>I finally got the last kinks out of the rig I was using to capture live video from FirefoxOS phones using the Point Grey devices last week. In order to make things reasonable I had to write some custom code to isolate the actual device screen from the rest of capture and a few other things. The setup looks interesting (reminds me a bit of something out of the War of the Worlds):</p>
-
-<p><a href="/files/2013/04/eideticker-pointgrey-mounted.jpg"><img src="/files/2013/04/eideticker-pointgrey-mounted.jpg" alt="eideticker-pointgrey-mounted" width="512" height="683" class="alignnone size-full wp-image-894" srcset="/files/2013/04/eideticker-pointgrey-mounted-224x300.jpg 224w, /files/2013/04/eideticker-pointgrey-mounted.jpg 512w" sizes="(max-width: 512px) 100vw, 512px" /></a></p>
-
-<p>Here&#8217;s some example video of a test I wrote up to measure the performance of contacts scrolling performance (measured at a very respectable 44 frames per second, in case you wondering):</p>
-
-<video src="/files/eideticker/contacts-scrolling-pointgrey.webm" controls="controls"></video>
-
-<p>Surprisingly enough, I didn&#8217;t wind up having to write up any code to compensate for a noisy image. Of course there&#8217;s a certain amount of variance in every frame depending on how much light is hitting the camera sensor at any particular moment, but apparently not enough to interfere with getting useful results in the tests I&#8217;ve been running.</p>
-
-<p>Likely next step: Create some kind of chassis for mounting both the camera and device on a permanent basis (instead of an adhoc one on my desk) so we can start running these sorts of tests on a daily basis, much like we currently do with Android on the <a href="http://eideticker.wrla.ch">Eideticker Dashboard</a>.</p>
-
-<p>As an aside, I&#8217;ve been really impressed with both the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Marionette">Marionette</a> framework and the gaiatests python module that was written up for FirefoxOS. Writing the above test took just 5 minutes &#8212; and <a href="https://github.com/mozilla/eideticker/blob/master/src/tests/b2g/appscrolling/scroll.py">the code</a> is quite straightforward. Quite the pleasant change from my various efforts in Android automation.</p> 
   <hr/>
 </article>
 <footer>

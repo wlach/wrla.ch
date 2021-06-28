@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Recurse'</title>
- <link rel="self" href="https://wrla.ch/feeds/Recurse.atom.xml" />
- <link href="https://wrla.ch/tags/Recurse.html" />
- <id>urn:https-wrla-ch:-tags-Recurse-html</id>
+ <title type="text">William Lachance's Log: Posts tagged 'Irydium'</title>
+ <link rel="self" href="https://wrla.ch/feeds/Irydium.atom.xml" />
+ <link href="https://wrla.ch/tags/Irydium.html" />
+ <id>urn:https-wrla-ch:-tags-Irydium-html</id>
  <updated>2021-06-28T16:28:40Z</updated>
  <entry>
   <title type="text">Irydium: Points of departure</title>
-  <link rel="alternate" href="https://wrla.ch/blog/2021/06/irydium-points-of-departure/?utm_source=Recurse&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wrla.ch/blog/2021/06/irydium-points-of-departure/?utm_source=Irydium&amp;utm_medium=Atom" />
   <id>urn:https-wrla-ch:-blog-2021-06-irydium-points-of-departure</id>
   <published>2021-06-28T16:28:40Z</published>
   <updated>2021-06-28T16:28:40Z</updated>
@@ -76,7 +76,7 @@
    &lt;p&gt;There is at least one effort (&lt;a href="https://github.com/asg017/dataflow"&gt;Dataflow&lt;/a&gt;) to allow editing Observable documents without using Observable itself, which is interesting.&amp;nbsp;&lt;a href="#2021-06-28-irydium-points-of-departure-footnote-2-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</content></entry>
  <entry>
   <title type="text">Mini-sabbatical and introducing Irydium</title>
-  <link rel="alternate" href="https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/?utm_source=Recurse&amp;utm_medium=Atom" />
+  <link rel="alternate" href="https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/?utm_source=Irydium&amp;utm_medium=Atom" />
   <id>urn:https-wrla-ch:-blog-2021-06-mini-sabbatical-and-introducing-irydium</id>
   <published>2021-06-23T21:15:15Z</published>
   <updated>2021-06-23T21:15:15Z</updated>

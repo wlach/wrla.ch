@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'Recurse'</title>
- <link rel="self" href="https://wrla.ch/feeds/Recurse.atom.xml" />
- <link href="https://wrla.ch/tags/Recurse.html" />
- <id>urn:https-wrla-ch:-tags-Recurse-html</id>
- <updated>2021-06-28T16:28:40Z</updated>
- <entry>
-  <title type="text">Irydium: Points of departure</title>
-  <link rel="alternate" href="https://wrla.ch/blog/2021/06/irydium-points-of-departure/?utm_source=Recurse&amp;utm_medium=Atom" />
-  <id>urn:https-wrla-ch:-blog-2021-06-irydium-points-of-departure</id>
-  <published>2021-06-28T16:28:40Z</published>
-  <updated>2021-06-28T16:28:40Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+<rss version="2.0">
+ <channel>
+  <title>William Lachance's Log: Posts tagged 'Irydium'</title>
+  <description>William Lachance's Log: Posts tagged 'Irydium'</description>
+  <link>https://wrla.ch/tags/Irydium.html</link>
+  <lastBuildDate>Mon, 28 Jun 2021 16:28:40 UT</lastBuildDate>
+  <pubDate>Mon, 28 Jun 2021 16:28:40 UT</pubDate>
+  <ttl>1800</ttl>
+  <item>
+   <title>Irydium: Points of departure</title>
+   <link>https://wrla.ch/blog/2021/06/irydium-points-of-departure/?utm_source=Irydium&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-06-irydium-points-of-departure</guid>
+   <pubDate>Mon, 28 Jun 2021 16:28:40 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;So it&amp;rsquo;s my first day at the Recurse centre, which I &lt;a href="/blog/2021/06/mini-sabbatical-and-introducing-irydium/"&gt;blogged briefly about last week&lt;/a&gt;. I thought I&amp;rsquo;d start out by going into a bit more detail about what I&amp;rsquo;m trying to do with &lt;a href="https://github.com/irydium/irydium"&gt;Irydium&lt;/a&gt;. This post might be a bit discursive and some of my thoughts are only half-formed: my intent here is towards trying to &lt;em&gt;express some of these ideas at all&lt;/em&gt; rather than to come up with the perfect formulation for them, which is going to take time. It is based partly on a presentation I gave at Mozilla last Friday (just before going on my 6-week leave, which starts today).&lt;/p&gt;
 
 &lt;h2 id="first-principles"&gt;First principles&lt;/h2&gt;
@@ -73,16 +73,14 @@
   &lt;li id="2021-06-28-irydium-points-of-departure-footnote-1-definition" class="footnote-definition"&gt;
    &lt;p&gt;Please don&amp;rsquo;t conflate &amp;ldquo;unique&amp;rdquo; with &amp;ldquo;superior&amp;rdquo;: I&amp;rsquo;m well aware that all designs come with trade offs.  In particular, Irydium&amp;rsquo;s approach will almost certainly make it difficult / impossible to interact with &amp;ldquo;big data&amp;rdquo; systems in an efficient way.&amp;nbsp;&lt;a href="#2021-06-28-irydium-points-of-departure-footnote-1-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
   &lt;li id="2021-06-28-irydium-points-of-departure-footnote-2-definition" class="footnote-definition"&gt;
-   &lt;p&gt;There is at least one effort (&lt;a href="https://github.com/asg017/dataflow"&gt;Dataflow&lt;/a&gt;) to allow editing Observable documents without using Observable itself, which is interesting.&amp;nbsp;&lt;a href="#2021-06-28-irydium-points-of-departure-footnote-2-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</content></entry>
- <entry>
-  <title type="text">Mini-sabbatical and introducing Irydium</title>
-  <link rel="alternate" href="https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/?utm_source=Recurse&amp;utm_medium=Atom" />
-  <id>urn:https-wrla-ch:-blog-2021-06-mini-sabbatical-and-introducing-irydium</id>
-  <published>2021-06-23T21:15:15Z</published>
-  <updated>2021-06-23T21:15:15Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
+   &lt;p&gt;There is at least one effort (&lt;a href="https://github.com/asg017/dataflow"&gt;Dataflow&lt;/a&gt;) to allow editing Observable documents without using Observable itself, which is interesting.&amp;nbsp;&lt;a href="#2021-06-28-irydium-points-of-departure-footnote-2-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</description></item>
+  <item>
+   <title>Mini-sabbatical and introducing Irydium</title>
+   <link>https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/?utm_source=Irydium&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-06-mini-sabbatical-and-introducing-irydium</guid>
+   <pubDate>Wed, 23 Jun 2021 21:15:15 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
 &lt;p&gt;Approaching my 10-year moz-iversary in July, I&amp;rsquo;ve decided it&amp;rsquo;s time to take a bit of a mini-sabbatical: I&amp;rsquo;ll be out (and trying as hard as possible not to check bugmail) from Friday, June 25th until August 9th. During this time, I&amp;rsquo;ll be doing a batch at the &lt;a href="https://recurse.com"&gt;Recurse Centre&lt;/a&gt; (something like a writer&amp;rsquo;s retreat for programmers), exploring some of my interests around data visualization and analysis that don&amp;rsquo;t quite fit into my role as a Data Engineer here at Mozilla.&lt;/p&gt;
 
 &lt;p&gt;In particular, I&amp;rsquo;m planning to work a bunch on a project tentatively called &amp;ldquo;Irydium&amp;rdquo;, which pursues some of the ideas I &lt;a href="https://wrla.ch/blog/2020/11/iodide-retrospective/"&gt;sketched out last year in my Iodide retrospective&lt;/a&gt; and a few more besides. I&amp;rsquo;ve been steadily working on it in my off hours, but it&amp;rsquo;s become clear that some of the things I want to pursue would benefit from more dedicated attention and the broader perspective that I&amp;rsquo;m hoping the Recurse community will be able to provide.&lt;/p&gt;
@@ -90,4 +88,4 @@
 &lt;div class="figure"&gt;&lt;img src="/files/2021/06/irydium.png" alt="" /&gt;
  &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
 
-&lt;p&gt;I had meant to write up a proper blog post to announce the project before I left, but it looks like I&amp;rsquo;m pretty much out of time. Instead, I&amp;rsquo;ll just offer up the examples on the newly-minted &lt;a href="https://irydium.dev"&gt;irydium.dev&lt;/a&gt; and invite people to contact me if any of the ideas on the site sounds interesting. I&amp;rsquo;m hoping to blog a whole bunch while I&amp;rsquo;m there, but probably not under the Mozilla tag. Feel free to add wrla.ch to your RSS feed if you want to follow what I&amp;rsquo;m up to!&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;I had meant to write up a proper blog post to announce the project before I left, but it looks like I&amp;rsquo;m pretty much out of time. Instead, I&amp;rsquo;ll just offer up the examples on the newly-minted &lt;a href="https://irydium.dev"&gt;irydium.dev&lt;/a&gt; and invite people to contact me if any of the ideas on the site sounds interesting. I&amp;rsquo;m hoping to blog a whole bunch while I&amp;rsquo;m there, but probably not under the Mozilla tag. Feel free to add wrla.ch to your RSS feed if you want to follow what I&amp;rsquo;m up to!&lt;/p&gt;</description></item></channel></rss>

@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 4)</title>
     <meta name="description" content="William Lachance's Log (page 4)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-4.html" />
@@ -91,6 +91,31 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2018/01/giving-and-receiving-help-at-mozilla/">Giving and receiving help at Mozilla</a></h2>
+    <p class="index-date">Jan 17th, 2018</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p>This is going to sound corny, but helping people really is one of my favorite things at Mozilla, even with <a href="https://mozilla.github.io/mozregression/">projects I have mostly moved on from</a>. As someone who primarily works on internal tools, I love hearing about bugs in the software I maintain or questions on how to use it best.</p>
+
+<p>Given this, you might think that getting in touch with me via irc or slack is the fastest and best way to get your issue addressed. We certainly have a culture of using these instant-messaging applications at Mozilla for everything and anything. Unfortunately, I have found that being &ldquo;always on&rdquo; to respond to everything hasn&rsquo;t been positive for either my productivity or mental health. My personal situation aside, getting pinged on irc while I&rsquo;m out of the office often results in stuff getting lost &mdash; the person who asked me the question is often gone by the time I return and am able to answer.</p>
+
+<p>With that in mind, here&rsquo;s some notes on my preferred conversation style when making initial contact about an issue:</p>
+
+<ol>
+ <li>Please don&rsquo;t send context-free pings on irc. It has been <a href="http://edunham.net/2017/10/05/saying_ping.html">explained elsewhere</a>  why this doesn&rsquo;t work that well, so I won&rsquo;t repeat the argument here.</li>
+ <li>If you are at all suspicious that your issue might be a bug in some software  maintain, just <a href="https://bugzilla.mozilla.org/enter_bug.cgi">file a bug</a> and needinfo me. That puts us right on the path to documenting  the problem and getting to a resolution &mdash; even if something turns out to not  be a bug, if you&rsquo;re seeing an unexpected error it points to a usability issue.</li>
+ <li>For everything else, email is best. I do check it quite frequently between  bursts of work (i.e. many times a day). I promise I won&rsquo;t leave you hanging  for days on end as long as I&rsquo;m not on vacation.</li></ol>
+
+<p>These aren&rsquo;t ironclad rules. If your question pertains to a project I&rsquo;m <em>actively</em> working on, it might make sense to ping me on irc first (preferably on a channel where other people are around who might also be able to help). If it&rsquo;s an actual <em>emergency</em>, then of course talk to me on irc straight away (or even call me on my phone) &mdash; if I don&rsquo;t respond, then fall back to filing bug or sending email. Use common sense.</p>
+
+<p>One of my new years resolutions is to also apply these rules to my communications with others at Mozilla as well, so if you see my violating it feel free to point me back at this post. Or just use this handy meme I created:</p>
+
+<center><img src="/files/2018/01/scale-of-asking.jpg" /></center> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2018/01/quitting-twitter/">Quitting Twitter</a></h2>
     <p class="index-date">Jan 13th, 2018</p>
@@ -384,31 +409,6 @@
 <p><a href="/files/2017/07/muirwoods-20170702.jpg"><img style="width:640px" src="/files/2017/07/muirwoods-20170702.jpg" /></a></p>
 
 <p>It occurred to me at the time that I took that photo that pretty much every sensory receptor in my optic nerve was registering the signal of some kind of life. Thousands of beings (trees, clover, moss, lichens) in turn made up of trillions upon trillions of tiny beings (cells, bacteria) all conscious and interacting with each other in ways that I can barely begin to understand.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2017/06/using-docker-to-run-automated-tests/">Using Docker to run automated tests</a></h2>
-    <p class="index-date">Jun 2nd, 2017</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Docker.html">Docker</a></span></p>
-  </header>
-
-<p>A couple months ago, I joined the Mozilla Data Platform team, to work on our <a href="https://wiki.mozilla.org/Telemetry">Telemetry</a> and automated data collection services. This has been an interesting transition for me, and a natural jumping off point from my work on <a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder">Perfherder</a>. Now, instead of manipulating mere 10s of gigabytes worth of fairly regular data, I&rsquo;m working with 100s of terrabytes of noisy data with a much larger number of dimensions. :P It&rsquo;s been interesting so far.</p>
-
-<p>One of the first things I decided to work on was improving our unit testing story around a few of our primary packages for data analysis/etl: <a href="https://github.com/mozilla/python_moztelemetry/">python_moztelemetry</a> (a library we use for running custom spark jobs against Telemetry data) and <a href="https://github.com/mozilla/telemetry-batch-view/">telemetry-batch-view</a> (a set of scala jobs we run against the main telemetry data store to create a useful set of aggregations that are easily queried with tools like <a href="https://redash.io/">redash</a>).</p>
-
-<p>It turns out that these tools interact with several larger / more involved pieces than I&rsquo;m used to dealing with (such as hbase and thrift). For continuous integration/automation, we already had a set of travis scripts to install and reproduce the environment needed to test these parts, but there was no straightforward way to do this locally. My third time through creating an Ubuntu virtual machine environment to reproduce this environment locally (long story), I figured it was finally time for me to investigate using something to automate that setup procedure and make it easier for new developers to get into these projects.</p>
-
-<p>I hadn&rsquo;t used it much before, but <a href="https://docker.com">Docker</a> seemed like a fairly obvious choice. Small, simple, and Linuxy? Sign me up.</p>
-
-<p>I&rsquo;m pretty happy with how things turned out, but there were a few caveats. Docker is more of a general purpose tool for building environments for running <em>things</em>, whether that be an apache webserver or a jabber messaging doohickey (whereas e.g. something like travis is basically a domain-specific language for creating and running automated tests). There were a few tricks I needed to employ to make the whole testing process smooth in both cases, which I&rsquo;ll document here for posterity:</p>
-
-<ol>
- <li>You can <code>ADD</code> a set of files / directories to a docker environment inside your Dockerfile, but if you want your set of tests to pick up any changes made since the environment was created, you really should mount your testing directory inside the container using the <code>-v</code> option.</li>
- <li>If you need to download/install a piece of software when building the docker container, use the <code>RUN</code> directive instead of <code>ADD</code>. This will speed up rebuilding the container while you&rsquo;re iterating on it (because you can take advantage of the Docker layers cache).</li>
- <li>You almost certainly want to create a script (<a href="https://github.com/mozilla/python_moztelemetry/blob/d2aa84bbac09465d38eeb0b5beb20edc7ddcc21b/runtests.sh">example</a>) to streamline all the steps of running the tests: this will make running the tests easier for anyone wanting to contribute to your project and reduce the amount of documentation that you will have to write.</li></ol>
-
-<p>The relevant files and documentation are in the repositories linked above.</p> 
   <hr/>
 </article>
 <footer>

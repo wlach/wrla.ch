@@ -4,7 +4,76 @@
  <link rel="self" href="https://wrla.ch/feeds/all.atom.xml" />
  <link href="https://wrla.ch/index.html" />
  <id>urn:https-wrla-ch:-index-html</id>
- <updated>2021-06-23T21:15:15Z</updated>
+ <updated>2021-06-28T16:28:40Z</updated>
+ <entry>
+  <title type="text">Irydium: Points of departure</title>
+  <link rel="alternate" href="https://wrla.ch/blog/2021/06/irydium-points-of-departure/?utm_source=all&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2021-06-irydium-points-of-departure</id>
+  <published>2021-06-28T16:28:40Z</published>
+  <updated>2021-06-28T16:28:40Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;So it&amp;rsquo;s my first day at the Recurse centre, which I &lt;a href="/blog/2021/06/mini-sabbatical-and-introducing-irydium/"&gt;blogged briefly about last week&lt;/a&gt;. I thought I&amp;rsquo;d start out by going into a bit more detail about what I&amp;rsquo;m trying to do with &lt;a href="https://github.com/irydium/irydium"&gt;Irydium&lt;/a&gt;. This post might be a bit discursive and some of my thoughts are only half-formed: my intent here is towards trying to &lt;em&gt;express some of these ideas at all&lt;/em&gt; rather than to come up with the perfect formulation for them, which is going to take time. It is based partly on a presentation I gave at Mozilla last Friday (just before going on my 6-week leave, which starts today).&lt;/p&gt;
+
+&lt;h2 id="first-principles"&gt;First principles&lt;/h2&gt;
+
+&lt;p&gt;The premise of Irydium is that despite obvious advances in terms of the ability of computers to crunch numbers and analyze data, our ability to share whatever we learn from these understandings is still far too difficult, especially for people new to the field. Even for domain experts (those with the job title &amp;ldquo;Data Engineer&amp;rdquo; or &amp;ldquo;Data Scientist&amp;rdquo; or similar) this is still more difficult than one would like.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve made a few observations over the past couple years of trying to explain and document Mozilla&amp;rsquo;s data platform that I think form a good starting point for trying to close the gap:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;em&gt;Text is pretty great&lt;/em&gt;.  Writing, just plain text, is (in my opinion) the single best medium for giving context to data.  In terms of raw information density and ability to communicate complex ideas, nothing beats it.  If you haven&amp;rsquo;t read it before, the essay &lt;a href="https://graydon2.dreamwidth.org/193447.html"&gt;always bet on text&lt;/a&gt; (by Graydon Hoare, creator of Rust) is well worth reading.&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Markdown is pretty great too&lt;/em&gt;.  Essentially an easy-to-write superset of HTML, it&amp;rsquo;s become the medium of choice for many desktop publishing workflows and has become the basis for many efforts in the &amp;ldquo;interactive presentation&amp;rdquo; space that I&amp;rsquo;m most interested in.&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Reactive Systems make Data Exposition Exposition Easier&lt;/em&gt;.  A reactive abstraction in front of your computational model reduces development times, makes your work more reproducible and is often easier for less-experienced people to understand.  I&amp;rsquo;d cite the long-standing success of Excel and the recent interest in projects like Observable as evidence for this.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;h2 id="ok-so-what-is-irydium"&gt;Ok, so what is Irydium?&lt;/h2&gt;
+
+&lt;p&gt;Irydium is, at heart, a way to translate markdown documents into an interactive, compelling visual presentation.&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="/files/2021/06/irydium-2.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;My view is that publishing markdown text on the web is very close to a solved problem, and that we should build on that success rather than invent something new. This is not necessarily a new point of view (e.g. &lt;a href="https://rmarkdown.rstudio.com/"&gt;Rmarkdown&lt;/a&gt; and &lt;a href="https://jupyterbook.org/"&gt;JupyterBook&lt;/a&gt; have similar premises) but I think some aspects of Irydium&amp;rsquo;s approach are mildly novel (or at least within the space of &amp;ldquo;not generally accepted ideas&amp;rdquo;).&lt;/p&gt;
+
+&lt;p&gt;If you want to get a bit of a flavor for how it works, visit the demonstration site (&lt;a href="https://irydium.dev"&gt;irydium.dev&lt;/a&gt;) and play with some of the examples.&lt;/p&gt;
+
+&lt;h2 id="what-makes-irydium-different-from-x"&gt;What makes Irydium different from &amp;lt;X&amp;gt;?&lt;/h2&gt;
+
+&lt;p&gt;While there are a bunch of related projects in this space, there&amp;rsquo;s a few design principles about Irydium that make it a little different from most of what&amp;rsquo;s already out there&lt;sup&gt;&lt;a href="#2021-06-28-irydium-points-of-departure-footnote-1-definition" name="2021-06-28-irydium-points-of-departure-footnote-1-return"&gt;1&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;em&gt;Reactive&lt;/em&gt;: Irydium is reactive in the same way that a spreadsheet is &amp;mdash; that is, any individual change you make will immediately flow to the rest of the system.  This provides a more intuitive model for the creator of the document and also makes it easier to create truly interactive visualizations.&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Idempotent&lt;/em&gt;: in Irydium, a source document will yield the same presentation every time it&amp;rsquo;s run.  There&amp;rsquo;s no need to reason about what the state of the &amp;ldquo;kernel&amp;rdquo; is.  This is a highly valuable property when thinking about how to make your analyses reproducible.&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Familiar&lt;/em&gt;: Irydium uses as few &lt;em&gt;novel&lt;/em&gt; concepts and technologies as possible: it builds on some of the best ideas and technologies produced by the open source community: &lt;a href="https://python.org"&gt;Python&lt;/a&gt;, &lt;a href="https://pyodide.org"&gt;pyodide&lt;/a&gt;, &lt;a href="https://svelte.dev"&gt;Svelte&lt;/a&gt;, &lt;a href="https://mdsvex.com"&gt;mdsvex&lt;/a&gt;, &lt;a href="https://myst-parser.readthedocs.io/en/latest/"&gt;MyST&lt;/a&gt; and a few others &amp;mdash; chosen for having a reasonably shallow learning curve.&lt;/li&gt;
+ &lt;li&gt;&lt;em&gt;Hackable&lt;/em&gt;: While I&amp;rsquo;m working on an online environment to build and share irydium documents, it&amp;rsquo;s also fully possible to do so using the tools you know and love like Visual Studio Code.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;h2 id="related-projects"&gt;Related projects&lt;/h2&gt;
+
+&lt;p&gt;With the above caveats, there are still a number of projects that overlap with Irydium&amp;rsquo;s ideas and/or design goals. A few that seem worth mentioning here:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href="https://alpha.iodide.io"&gt;Iodide&lt;/a&gt;: This is the obvious one, at least for those who have been following my work for a while.  Iodide was an experiment in making a &amp;ldquo;web native&amp;rdquo; version of a scientific notebook: it uses the cell-based computational model that will be familiar to anyone who&amp;rsquo;s used Jupyter, but all the computation happens on the client.  It is probably most famous for launching &lt;a href="https://pyodide.org"&gt;pyodide&lt;/a&gt;, a port of Python to WebAssembly (that Irydium now uses to support Python).  I feel like it has a number of design issues (some of which I&amp;rsquo;ve &lt;a href="/blog/2020/11/iodide-retrospective/"&gt;blogged about previously&lt;/a&gt;) and is not currently in active development.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://observablehq.com"&gt;Observable&lt;/a&gt;: Client-side reactive notebooks, commercial backing, broadly used in the D3 community.  Shares Irydium&amp;rsquo;s reactive approach, departs from it in terms of using a custom file format and emphasizing their interactive editing and collaboration environment (which is indeed quite impressive).  I&amp;rsquo;ve used Observable for a few small work things (&lt;a href="https://observablehq.com/@wlach/mozregression-public-usage-dashboard"&gt;example&lt;/a&gt;) and while there&amp;rsquo;s a lot I like about it, I am a bit non-plussed by how many wheels it reinvents and the implicit lock-in to a single vendor.&lt;sup&gt;&lt;a href="#2021-06-28-irydium-points-of-departure-footnote-2-definition" name="2021-06-28-irydium-points-of-departure-footnote-2-return"&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://starboard.gg"&gt;Starboard&lt;/a&gt;: Similar in some ways to Iodide, but in active development.  I&amp;rsquo;ve started chatting a bit with the core developers on whether there might be areas we could collaborate.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://ellx.io/"&gt;Ellx&lt;/a&gt;: I found out a bit about this relatively recently, via the Svelte discord.  Actually very close in some ways to Irydium in terms of choices of technology (e.g. &lt;a href="https://svelte.dev"&gt;Svelte&lt;/a&gt;).  Again, in initial chats with the core developers on possible collaborations.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;h2 id="success-criteria"&gt;Success criteria&lt;/h2&gt;
+
+&lt;p&gt;My intent with Irydium, at this point in its development, is to prove out some concepts and see where they lead. While I&amp;rsquo;d welcome it if Irydium became a successful, widely adopted environment for building interactive data visualizations, I&amp;rsquo;d also be totally happy with other outcomes, such as:&lt;/p&gt;
+
+&lt;ol&gt;
+ &lt;li&gt;Providing a source of ideas and/or code for other people.&lt;/li&gt;
+ &lt;li&gt;Working on (or with) Irydium being a good learning experience both for myself and others&lt;/li&gt;&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;div class="footnotes"&gt;
+ &lt;ol&gt;
+  &lt;li id="2021-06-28-irydium-points-of-departure-footnote-1-definition" class="footnote-definition"&gt;
+   &lt;p&gt;Please don&amp;rsquo;t conflate &amp;ldquo;unique&amp;rdquo; with &amp;ldquo;superior&amp;rdquo;: I&amp;rsquo;m well aware that all designs come with trade offs.  In particular, Irydium&amp;rsquo;s approach will almost certainly make it difficult / impossible to interact with &amp;ldquo;big data&amp;rdquo; systems in an efficient way.&amp;nbsp;&lt;a href="#2021-06-28-irydium-points-of-departure-footnote-1-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+  &lt;li id="2021-06-28-irydium-points-of-departure-footnote-2-definition" class="footnote-definition"&gt;
+   &lt;p&gt;There is at least one effort (&lt;a href="https://github.com/asg017/dataflow"&gt;Dataflow&lt;/a&gt;) to allow editing Observable documents without using Observable itself, which is interesting.&amp;nbsp;&lt;a href="#2021-06-28-irydium-points-of-departure-footnote-2-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</content></entry>
  <entry>
   <title type="text">Mini-sabbatical and introducing Irydium</title>
   <link rel="alternate" href="https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/?utm_source=all&amp;utm_medium=Atom" />
@@ -1026,16 +1095,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
  &lt;li&gt;Add some kind of telemetry to mozregression to measure usage of this tool  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581647"&gt;bug 1581647&lt;/a&gt;).  My anecdotal experience is that this tool is pretty invaluable for Firefox  development and QA, but this is not immediately apparent to Mozilla&amp;rsquo;s  leadership and it&amp;rsquo;s thus very difficult to convince people to spend their  cycles on maintaining and improving this tool. Field data may help change  that story.&lt;/li&gt;
  &lt;li&gt;Supporting new Mozilla products which aren&amp;rsquo;t built (entirely) out of mozilla-central,  most especially Fenix (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1556042"&gt;bug 1556042&lt;/a&gt;)  and Firefox Reality (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1568488"&gt;bug 1568488&lt;/a&gt;).  This is probably rather involved (mozregression has a big pile of assumptions about how  the builds it pulls down are stored and organized) but that doesn&amp;rsquo;t mean that  this work isn&amp;rsquo;t necessary.&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;If you&amp;rsquo;re interested in working on any of the above, please feel free to dive in on one of the above bugs. I can&amp;rsquo;t offer formal mentorship, but am happy to help out where I can.&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">Time for some project updates</title>
-  <link rel="alternate" href="https://wrla.ch/blog/2019/09/time-for-some-project-updates/?utm_source=all&amp;utm_medium=Atom" />
-  <id>urn:https-wrla-ch:-blog-2019-09-time-for-some-project-updates</id>
-  <published>2019-09-16T14:41:39Z</published>
-  <updated>2019-09-16T14:41:39Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;I&amp;rsquo;ve been a bit bad about updating this blog over the past year or so, though this hasn&amp;rsquo;t meant there haven&amp;rsquo;t been things to talk about. For the next couple weeks, I&amp;rsquo;m going to try to give some updates on the projects I have been spending time on in the past year, both old and new. I&amp;rsquo;m going to begin with some of the less-loved things I&amp;rsquo;ve been working on, partially in an attempt to motivate some forward-motion on things that I believe are rather important to Mozilla.&lt;/p&gt;
-
-&lt;p&gt;More to come.&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;If you&amp;rsquo;re interested in working on any of the above, please feel free to dive in on one of the above bugs. I can&amp;rsquo;t offer formal mentorship, but am happy to help out where I can.&lt;/p&gt;</content></entry></feed>
