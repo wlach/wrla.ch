@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 2)</title>
     <meta name="description" content="William Lachance's Log (page 2)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Buddhism, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Mozilla, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-2.html" />
@@ -91,6 +91,100 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2020/07/mozilla-telemetry-in-2020-from-just-firefox-to-a-galaxy-of-data/">Mozilla Telemetry in 2020: From &ldquo;Just Firefox&rdquo; to a &ldquo;Galaxy of Data&rdquo;</a></h2>
+    <p class="index-date">Jul 16th, 2020</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Telemetry.html">Telemetry</a>  <a href="/tags/Glean.html">Glean</a></span></p>
+  </header>
+
+<p><em>(“This Week in Glean” is a series of blog posts that the Glean Team at Mozilla is using to try to communicate better about our work. They could be release notes, documentation, hopes, dreams, or whatever: so long as it is inspired by Glean. You can find <a href="https://mozilla.github.io/glean/book/appendix/twig.html">an index of all TWiG posts online.</a>)</em></p>
+
+<p><em>This is a special guest post by non-Glean-team member William Lachance!</em></p>
+
+<p>In the last year or so, there&rsquo;s been a significant shift in the way we (Data Engineering) think about application-submitted data @ Mozilla, but although we have a new application-based SDK based on these principles (<a href="https://mozilla.github.io/glean/book/index.html">the Glean SDK</a>), most of our <a href="https://telemetry.mozilla.org">data tools</a> and <a href="https://docs.telemetry.mozilla.org">documentation</a> have not yet been updated to reflect this new state of affairs.</p>
+
+<p>Much of this story is known <em>inside</em> Mozilla Data Engineering, but I thought it might be worth jotting them down into a blog post as a point of reference for people outside the immediate team. Knowing this may provide some context for some our activities and efforts over the next year or two, at least until our tools, documentation, and tribal knowledge evolve.</p>
+
+<p>In sum, the key differences are:</p>
+
+<ul>
+ <li>Instead of just one application we care about, there are many.</li>
+ <li>Instead of just caring about (mostly<sup><a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-1-definition" name="2020-07-16-mozilla-telemetry-in-2020-footnote-1-return">1</a></sup>) one type of ping (the Firefox <em>main</em> ping), an individual application may submit <em>many different</em> types of pings in the course of their use.</li>
+ <li>Instead of having both probes (histogram, scalar, or other data type) <em>and</em> bespoke parametric values in a JSON schema like the <a href="https://firefox-source-docs.mozilla.org/toolkit/components/telemetry/data/environment.html">telemetry environment</a>, there are now only <em>metric types</em> which are explicitly defined as part of each ping.</li></ul>
+
+<p>The new world is pretty exciting and freeing, but there is some new domain complexity that we need to figure out how to navigate. I&rsquo;ll discuss that in my last section.</p>
+
+<h2 id="the-old-world-firefox-is-king">The Old World: Firefox is king</h2>
+
+<p>Up until roughly mid&ndash;2019, Firefox was the centre of Mozilla&rsquo;s data world (with the occasional nod to Firefox for Android, which uses the same source repository). The Data Platform (often called &ldquo;Telemetry&rdquo;) was explicitly designed to cater to the needs of Firefox Developers (and to a lesser extent, product/program managers) and a set of bespoke tooling was built on top of our data pipeline architecture - <a href="https://ravitillo.wordpress.com/2017/01/23/an-overview-of-mozillas-data-pipeline/">this blog post from 2017 describes much of it</a>.</p>
+
+<p>In outline, the model is simple: on the client side, assuming a given user had not turned off Telemetry, during the course of a day&rsquo;s operation Firefox would keep track of various measures, called &ldquo;probes&rdquo;. At the end of that duration, it would submit a JSON-encoded &ldquo;main ping&rdquo; to our servers with the probe information and <a href="https://github.com/mozilla-services/mozilla-pipeline-schemas/blob/97bac7acaaa5cb328d7f0f7348f3ddaaae657eda/schemas/telemetry/main/main.4.schema.json">a bunch of other mostly hand-specified junk</a>, which would then find its way to a &ldquo;data lake&rdquo; (read: an Amazon S3 bucket). On top of this, we provided a <a href="https://github.com/mozilla/python_moztelemetry/">python API</a> (built on top of <a href="https://spark.apache.org/docs/latest/api/python/index.html">PySpark</a>) which enabled people inside Mozilla to query all submitted pings across our usage population.</p>
+
+<p>The only type of low-level object that was hard to keep track of was the list of probes: Firefox is a complex piece of software and there are <em>many</em> aspects of it we wanted to instrument to validate performance and quality of the product - especially on the more-experimental Nightly and Beta channels. To solve this problem, a <a href="https://probes.telemetry.mozilla.org/">probe dictionary</a> was created to help developers find measures that corresponded to the product area that they were interested in.</p>
+
+<p>On a higher-level, accessing this type of data using the python API quickly became slow and frustrating: the aggregation of years of Firefox ping data was hundreds of terabytes big, and even taking advantage of PySpark&rsquo;s impressive capabilities, querying the data across any reasonably large timescale was slow and expensive. Here, the solution was to create derived datasets which enabled fast(er) access to pings and other derived measures, document them on docs.telemetry.mozilla.org, and then allow access to them through tools like <a href="https://docs.telemetry.mozilla.org/tools/stmo.html">sql.telemetry.mozilla.org</a> or the <a href="https://telemetry.mozilla.org/new-pipeline/dist.html">Measurement Dashboard</a>.</p>
+
+<h2 id="the-new-world-more-of-everything">The New World: More of everything</h2>
+
+<p>Even in the old world, other products that submitted telemetry <em>existed</em> (e.g. Firefox for Android, Firefox for iOS, the venerable FirefoxOS) but I would not call them first-class citizens. Most of our documentation treated them as (at best) weird edge cases. At the time of this writing, you can see this distinction clearly on docs.telemetry.mozilla.org where there is one (fairly detailed) tutorial called &ldquo;Choosing a Desktop Dataset&rdquo; while essentially all other products are lumped into &ldquo;Choosing a Mobile Dataset&rdquo;.</p>
+
+<div class="figure"><img src="/files/2020/07/docs-tmo-pic.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>While the new universe of mobile products are probably the most notable addition to our list of things we want to keep track of, they&rsquo;re only one piece of the puzzle. Really we&rsquo;re interested in measuring <em>all the things</em> (in accordance with our <a href="https://www.mozilla.org/en-US/about/policy/lean-data/">lean data practices</a>, of course) including tools we use to <em>build our products</em> like <a href="https://wiki.mozilla.org/MozPhab">mozphab</a> and <a href="https://mozilla.github.io/mozregression">mozregression</a>.</p>
+
+<p>In expanding our scope, we&rsquo;ve found that mobile (and other products) have different requirements that influence what data we would want to send and when. For example, sending one blob of JSON multiple times per day might make sense for performance metrics on a desktop product (which is usually on a fast, unmetered network) but is much less acceptable on mobile (where every byte counts). For this reason, it makes sense to have <em>different ping types</em> for the same product, not just one. For example, Fenix (the new Firefox for Android) sends a tiny baseline ping<sup><a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-2-definition" name="2020-07-16-mozilla-telemetry-in-2020-footnote-2-return">2</a></sup> on every run to (roughly) measure daily active users and a larger metrics ping sent on a (roughly) daily interval to measure (for example) a distribution of page load times.</p>
+
+<p>Finally, we found that naively collecting certain types of data as raw histograms or inside the schema didn&rsquo;t always work well. For example, encoding session lengths as plain integers <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1514392">would often produce weird results in the case of clock skew</a>. For this reason, we decided to <a href="https://mozilla.github.io/glean/book/user/metrics/index.html">standardize on a set of well-defined metrics</a> using Glean, which tries to minimize footguns. We explicitly no longer allow clients to submit arbitrary JSON or values as part of a telemetry ping: if you have a use case not covered by the existing metrics, <a href="https://wiki.mozilla.org/Glean/Adding_or_changing_Glean_metric_types">make a case for it and add it to the list</a>!</p>
+
+<p>To illustrate this, let&rsquo;s take a (subset) of what we might be looking at in terms of what the Fenix application sends:</p>
+
+<div class="figure"><img src="/files/2020/07/fenix-pings-diagram.png" alt="" />
+ <p class="caption"></p></div>
+
+<p><a href="/files/2020/07/fenix-pings-diagram.mmd">mermaid source</a></p>
+
+<p>At the top level we segment based on the &ldquo;application&rdquo; (just Fenix in this example). Just below that, there are the pings that this application might submit (I listed three: the baseline and metrics pings described above, along with a &ldquo;migration&rdquo; ping, which tracks metrics when a user migrates from Fennec to Fenix). And below <em>that</em> there are different types of metrics included in the pings: I listed a few that came out of a quick scan of the Fenix BigQuery tables using my <a href="https://mozilla-schema-dictionary.netlify.app/#!/tables/org_mozilla_fenix.metrics">prototype schema dictionary</a>.</p>
+
+<p>This is actually only the surface-level: at the time of this writing, Fenix has no fewer than 12 different ping types and <em>many</em> different metrics inside each of them.<sup><a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-3-definition" name="2020-07-16-mozilla-telemetry-in-2020-footnote-3-return">3</a></sup> On a client level, the new Glean SDK provides easy-to-use primitives to help developers collect this type of information in a principled, privacy-preserving way: for example, <a href="https://github.com/mozilla/data-review">data review</a> is built into every metric type. But what about after it hits our ingestion endpoints?</p>
+
+<p>Hand-crafting schemas, data ingestion pipelines, and individualized ETL scripts for such a large matrix of applications, ping types, and measurements would quickly become intractable. Instead, we (Mozilla Data Engineering) refactored our data pipeline to parse out the information from the Glean schemas and then create tables in our BigQuery datastore corresponding to what&rsquo;s in them - this has proceeded as an extension to our (now somewhat misnamed) <a href="https://github.com/mozilla/probe-scraper">probe-scraper</a> tool.</p>
+
+<p>You can then query this data directly (see <a href="https://docs.telemetry.mozilla.org/concepts/glean/accessing_glean_data.html">accessing glean data</a>) or build up a derived dataset using our SQL-based ETL system, <a href="https://github.com/mozilla/bigquery-etl/">BigQuery-ETL</a>. This part of the equation has been working fairly well, I&rsquo;d say: we now have a diverse set of products producing Glean telemetry and submitting it to our servers, and the amount of manual effort required to add each application was minimal (aside from adding new capabilities to the platform as we went along).</p>
+
+<p>What hasn&rsquo;t quite kept pace is our tooling to make navigating and using this new collection of data tractable.</p>
+
+<h2 id="what-could-bring-this-all-together">What could bring this all together?</h2>
+
+<p>As mentioned before, this new world is quite powerful and gives Mozilla a bunch of new capabilities but it isn&rsquo;t yet well documented and we lack the tools to easily connect the dots from &ldquo;I have a product question&rdquo; to &ldquo;I know how to write an SQL query / Spark Job to answer it&rdquo; or (better yet) &ldquo;this product dashboard will answer it&rdquo;.</p>
+
+<p>Up until now, our defacto answer has been some combination of &ldquo;Use the probe dictionary / telemetry.mozilla.org&rdquo; and/or &ldquo;refer to docs.telemetry.mozilla.org&rdquo;. I submit that we&rsquo;re at the point where these approaches break down: as mentioned above, there are many more types of data we now need to care about than just &ldquo;probes&rdquo; (or &ldquo;metrics&rdquo;, in Glean-parlance). When we just cared about the main ping, we could write dataset documentation for its recommended access point (<a href="https://docs.telemetry.mozilla.org/datasets/batch_view/main_summary/reference.html">main_summary</a>) and the raw number of derived datasets was managable. But in this new world, where we have <em>N</em> applications times <em>M</em> ping types, the number of canonical ping tables are now so many that documenting them all on docs.telemetry.mozilla.org no longer makes sense.</p>
+
+<p>A few months ago, I thought that <a href="https://cloud.google.com/data-catalog">Google&rsquo;s Data Catalog</a> (billed as offering &ldquo;a unified view of all your datasets&rdquo;) might provide a solution, but on further examination it only solves part of the problem: it provides only a view on your BigQuery tables and it isn&rsquo;t designed to provide detailed information on the domain objects we care about (products, pings, measures, and tools). You can map some of the properties from these objects onto the tables (e.g. adding a probe&rsquo;s description field to the column representing it in the BigQuery table), but Data Calalog&rsquo;s interface to surfacing and filtering through this information is rather slow and clumsy and requires detailed knowledge of how these higher level concepts relate to BigQuery primitives.</p>
+
+<p>Instead, what I think we need is a <em>new system</em> which allows a data practitioner (Data Scientist, Firefox Engineer, Data Engineer, Product Manager, whoever) to visualize the relevant set of domain objects relevant to their product/feature of interest <em>quickly</em> then map them to specific BigQuery tables and other resources (e.g. visualizations using tools like <a href="https://github.com/mozilla/glam">GLAM</a>) which allow people to quickly answer questions so we can make better products. Basically, I am thinking of some combination of:</p>
+
+<ul>
+ <li>The existing probe dictionary (derived from existing product metadata)</li>
+ <li>A new &ldquo;application&rdquo; dictionary (derived from some simple to-be-defined application metadata description)</li>
+ <li>A new &ldquo;ping&rdquo; dictionary (derived from existing product metadata)</li>
+ <li>A BigQuery schema dictionary (I wrote up a <a href="https://mozilla-schema-dictionary.netlify.app/">prototype of this a couple weeks ago</a>) to map between these higher-level objects and what&rsquo;s in our low-level data store</li>
+ <li>Documentation for derived datasets generated by BigQuery-ETL (ideally stored alongside the ETL code itself, so it&rsquo;s easy to keep up to date)</li>
+ <li>A data tool dictionary describing how to easily <em>access</em> the above data in various ways (e.g. SQL query, dashboard plot, etc.)</li></ul>
+
+<p>This might sound ambitious, but it&rsquo;s basically just a system for collecting and visualizing various types of documentation&mdash; something we have proven we know how to do. And I think a product like this could be incredibly empowering, not only for the internal audience at Mozilla but also the <em>external</em> audience who wants to support us but has valid concerns about what we&rsquo;re collecting and why: since this system is based entirely on systems which are already open (inside GitHub or Mercurial repositories), there is no reason we can&rsquo;t make it available to the public.</p>
+
+<div class="footnotes">
+ <ol>
+  <li id="2020-07-16-mozilla-telemetry-in-2020-footnote-1-definition" class="footnote-definition">
+   <p>Technically, <a href="https://docs.telemetry.mozilla.org/datasets/pings.html">there are various other types of pings</a> submitted by Firefox, but the main ping is the one 99% of people care about.&nbsp;<a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-1-return">↩</a></p></li>
+  <li id="2020-07-16-mozilla-telemetry-in-2020-footnote-2-definition" class="footnote-definition">
+   <p>This is actually a capability that the Glean SDK provides, so other products (e.g. Lockwise, Firefox for iOS) also benefit from this capability.&nbsp;<a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-2-return">↩</a></p></li>
+  <li id="2020-07-16-mozilla-telemetry-in-2020-footnote-3-definition" class="footnote-definition">
+   <p>The scope of this data collection comes from the fact that Fenix is a <em>very</em> large and complex application. rather than a desire to collect everything just because we can&mdash; smaller efforts like mozregression collect a <a href="https://mozilla.github.io/mozregression/documentation/telemetry.html">much more limited set of data</a>.&nbsp;<a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-3-return">↩</a></p></li></ol></div> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2020/06/mozregression-gui-now-available-for-linux/">mozregression GUI: now available for Linux</a></h2>
     <p class="index-date">Jun 29th, 2020</p>
@@ -590,41 +684,6 @@
 <p>Just a note that I&rsquo;ve decided to step back from <a href="https://metricsgraphicsjs.org">metrics graphics</a> maintenance for the time being, which means that the project is essentially unowned. This has sort of been the case for a while, but I figured I should probably make it official.</p>
 
 <p>If you follow the link to the <a href="https://github.com/metricsgraphics/metrics-graphics/">metrics graphics repository</a>, you&rsquo;ll note that the version has been bumped to &ldquo;3.0-alpha3&rdquo;. I was <em>this close</em> to making one last new release this afternoon but decided I didn&rsquo;t want to potentially break existing users who were fine using the last &ldquo;official&rdquo; version (v3.0 bumps the version of d3 used to &ldquo;5&rdquo;, among other breaking changes). I&rsquo;d encourage people who want to continue using the library to make a fork and publish a copy under their user or organization name on npm.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2019/09/mozregression-update-python-3-edition/">mozregression update: python 3 edition</a></h2>
-    <p class="index-date">Sep 16th, 2019</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
-  </header>
-
-<p>For those who are still wondering, yup, I am still maintaining <a href="https://mozilla.github.io/mozregression/">mozregression</a>, though increasingly reluctantly. Given how important this project is to the development of Firefox (getting a regression window using mozregression is standard operating procedure whenever a new bug is reported in Firefox), it feels like this project is pretty vital, so I continue out of some sense of obligation &mdash; but really, someone more interested in Mozilla&rsquo;a build, automation and testing systems would be better suited to this task: over the past few years, my interests/focus have shifted away from this area to building up Mozilla&rsquo;s data storage and visualization platform.</p>
-
-<p>This post will describe some of the things that have happened in the last year and where I see the project going. My hope is to attract some new blood to add some needed features to the project and maybe take on some of the maintainership duties.</p>
-
-<h2 id="python-3">python 3</h2>
-
-<p>The most important update is that, as of today, the command-line version of mozregression (v3.0.1) should work with python 3.5+. <a href="https://python-modernize.readthedocs.io/en/latest/">modernize</a> did most of the work for us, though there were some unit tests that needed updating: special thanks to <a href="https://github.com/gloomy-ghost">@gloomy-ghost</a> for helping with that.</p>
-
-<p>For now, we will continue to support python 2.7 in parallel, mainly because the GUI has not yet been ported to python 3 (more on that later) and we have CI to make sure it doesn&rsquo;t break.</p>
-
-<h2 id="other-updates">other updates</h2>
-
-<p>The last year has mostly been one of maintenance. Thanks in particular to Ian Moody (:kwan) for his work throughout the year &mdash; including patches to adapt mozregression support to our new updates policy and shippable builds (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1532412">bug 1532412</a>), and Kartikaya Gupta (:kats) for adding support for bisecting the GeckoView example app (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1507225">bug 1507225</a>).</p>
-
-<h2 id="future-work">future work</h2>
-
-<p>There are a bunch of things I see us wanting to add or change with mozregression over the next year or so. I might get to some of these if I have some spare cycles, but probably best not to count on it:</p>
-
-<ul>
- <li>Port the mozregression GUI to Python 3 (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581633">bug  1581633</a>) As mentioned  above, the command-line client works with python 3, but we have yet to port  the <a href="">GUI</a>. We should do that. This probably also entails porting the GUI to  use PyQT5 (which is pip-installable and thus much easier to integrate into a  CI process), see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766">bug 1426766</a>.</li>
- <li>Make self-contained GUI builds available for MacOS X (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1425105">bug  1425105</a>) and Linux  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581643">bug 1581643</a>).</li>
- <li>Improve our mechanism for producing a standalone version of the GUI in  general. We&rsquo;ve used <a href="https://github.com/anthony-tuininga/cx_Freeze">cx_Freeze</a>  which mostly works ok, but has a number of problems (e.g. it pulls in a bunch of unnecessary dependencies, which  bloats the size of the installer). Upgrading the GUI to use python 3 may  alleviate some of these issues, but it might be worth considering other  options in this space, like Gregory Szorc&rsquo;s <a href="https://github.com/indygreg/PyOxidizer">pyoxidizer</a>.</li>
- <li>Add some kind of telemetry to mozregression to measure usage of this tool  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581647">bug 1581647</a>).  My anecdotal experience is that this tool is pretty invaluable for Firefox  development and QA, but this is not immediately apparent to Mozilla&rsquo;s  leadership and it&rsquo;s thus very difficult to convince people to spend their  cycles on maintaining and improving this tool. Field data may help change  that story.</li>
- <li>Supporting new Mozilla products which aren&rsquo;t built (entirely) out of mozilla-central,  most especially Fenix (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1556042">bug 1556042</a>)  and Firefox Reality (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1568488">bug 1568488</a>).  This is probably rather involved (mozregression has a big pile of assumptions about how  the builds it pulls down are stored and organized) but that doesn&rsquo;t mean that  this work isn&rsquo;t necessary.</li></ul>
-
-<p>If you&rsquo;re interested in working on any of the above, please feel free to dive in on one of the above bugs. I can&rsquo;t offer formal mentorship, but am happy to help out where I can.</p> 
   <hr/>
 </article>
 <footer>

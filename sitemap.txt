@@ -151,4 +151,5 @@ https://wrla.ch/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile/
 https://wrla.ch/blog/2016/02/talos-suites-now-visible-from-trychooser/
 https://wrla.ch/blog/2013/11/meditative-practice-followup/
 https://wrla.ch/blog/2009/12/changes/
+https://wrla.ch/blog/2021/07/adding-persistence-to-irydium-with-supabase/
 https://wrla.ch/About.html

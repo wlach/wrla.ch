@@ -4,9 +4,53 @@
   <title>William Lachance's Log: Posts tagged 'Irydium'</title>
   <description>William Lachance's Log: Posts tagged 'Irydium'</description>
   <link>https://wrla.ch/tags/Irydium.html</link>
-  <lastBuildDate>Mon, 28 Jun 2021 16:28:40 UT</lastBuildDate>
-  <pubDate>Mon, 28 Jun 2021 16:28:40 UT</pubDate>
+  <lastBuildDate>Mon, 05 Jul 2021 15:09:56 UT</lastBuildDate>
+  <pubDate>Mon, 05 Jul 2021 15:09:56 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Adding persistence to Irydium with Supabase</title>
+   <link>https://wrla.ch/blog/2021/07/adding-persistence-to-irydium-with-supabase/?utm_source=Irydium&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-07-adding-persistence-to-irydium-with-supabase</guid>
+   <pubDate>Mon, 05 Jul 2021 15:09:56 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;Entering the second week of &lt;a href="https://recurse.com"&gt;Recurse&lt;/a&gt;. Besides orientation and a few adventures in pair programming (special shout out to &lt;a href="http://universalities.com/"&gt;Jane Adams&lt;/a&gt; for trying out Irydium with me!), I spent most of my time attempting to get document saving &amp;amp; loading working with Irydium.&lt;/p&gt;
+
+&lt;p&gt;I learned from &lt;a href="https://alpha.iodide.io"&gt;Iodide&lt;/a&gt; that not having a good document sharing story really inhibits collaboration and sharing, which is something I explicitly want to do here at the Recurse centre (and in general for this project). That said, this isn&amp;rsquo;t actually an area I want to spend a lot of time on right now: it&amp;rsquo;s the shape of problem I&amp;rsquo;ve solved many times before (and that has been solved by many others). I&amp;rsquo;d rather spend my time over the next few weeks on things I haven&amp;rsquo;t had much of a chance to look at or pursue in my day-to-day.&lt;/p&gt;
+
+&lt;p&gt;So, to try to keep the complexity down, I decided to take the same approach as the &lt;a href="https://svelte.dev/repl"&gt;svelte repl&lt;/a&gt;, which aims only to allow the reproduction of simple examples. It allows you to save anything you type in it and also browse anything that you had previously saved. That&amp;rsquo;s not going to replace GitHub, but it&amp;rsquo;s more than enough to get started.&lt;/p&gt;
+
+&lt;h2 id="supabase"&gt;Supabase&lt;/h2&gt;
+
+&lt;p&gt;So with that goal in mind, how to do go about it? If I wanted to completely fall back on my previous knowledge, I could have gone for the tried + true approach of Django / Heroku to add a persistence layer (what I did for Iodide). That would have had the benefit of being familiar but would also have increased the overall implementation complexity of Irydium considerably. In the past year, I&amp;rsquo;ve become convinced that &lt;a href="https://en.wikipedia.org/wiki/Serverless_computing"&gt;serverless&lt;/a&gt; approaches to building web applications are the wave of the future, at least for applications like this one. They&amp;rsquo;re easier to set up, easier to develop, and (generally speaking) cheaper to deploy. Just before I launched, I set up &lt;a href="https://irydium.dev"&gt;irydium.dev&lt;/a&gt; as a static site on &lt;a href="https://netlify.com"&gt;Netlify&lt;/a&gt; and it&amp;rsquo;s been a great experience: deploys are super fast and it&amp;rsquo;s easy to reason about what&amp;rsquo;s going on &amp;ldquo;under the hood&amp;rdquo; (since there&amp;rsquo;s not a much of a hood to look under).&lt;/p&gt;
+
+&lt;p&gt;With that in mind, I decided to take a (small) gamble and give &lt;a href="https://supabase.io/"&gt;Supabase&lt;/a&gt; a try for this one after determining it would be compatible with the approach I wanted to take. Supabase bills itself as a &amp;ldquo;Firebase Alternative&amp;rdquo; (&lt;a href="https://firebase.google.com/"&gt;Firebase&lt;/a&gt; is another popular solution for bootstrapping simple web applications with persistence). In contrast to Firebase, Supabase uses a standard database technologies (Postgres!) and has a nice JavaScript SDK and a bunch of well-written tutorials (including &lt;a href="https://supabase.io/docs/guides/with-svelte"&gt;one especially for Svelte&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;The naive model for integrating with Supabase is pretty simple:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Set up a Supabase application, which provides you with a unique API endpoint to make web requests (this endpoint can be exposed publicly).&lt;/li&gt;
+ &lt;li&gt;Have your client authenticate with an OAuth provider (e.g. GitHub, GitLab), then store an authentication token in localStorage.&lt;/li&gt;
+ &lt;li&gt;You can then make requests to the above endpoint with the authentication token, which lets Supabase use row-level security to restrict modifications to the database: in this case, we can restrict users to updating their own documents.&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;I&amp;rsquo;d say it probably took me 20&amp;ndash;30 hours to get the feature working end-to-end (including documentation), which wasn&amp;rsquo;t too bad. My impressions were pretty positive: the aforementioned tutorial is pretty decent, the supabase-js library provides a nice ORM-like abstraction over SQL and integrates nicely with Svelte. In general working with Supabase felt pretty familiar to me from previous experiences writing database-backed applications, which I take as a very good sign.&lt;/p&gt;
+
+&lt;p&gt;The part that felt the weirdest was writing raw SQL to set up the &amp;ldquo;documents&amp;rdquo; table that Irydium uses: SQL is something I&amp;rsquo;m fairly used to writing because of my experiences at Mozilla, but I imagine this might be off-putting to someone newer to writing these types of things. Also, I have some concerns of how maintainable a Supabase database is over the long term: while it was easy enough to &lt;a href="https://github.com/irydium/irydium/blob/f816ea6444c94635972a57bc92d7770398117c1e/README.md#working-on-the-site"&gt;document the currently-simple setup instructions in the README&lt;/a&gt;, I do somewhat fear the prospect of managing my database via their SQL console. Something like Django&amp;rsquo;s &lt;a href="https://docs.djangoproject.com/en/3.2/topics/migrations/"&gt;schema migrations&lt;/a&gt; and &lt;a href="https://docs.djangoproject.com/en/3.2/howto/custom-management-commands/"&gt;management commands&lt;/a&gt; would be a welcome addition to Supabase&amp;rsquo;s SDK.&lt;/p&gt;
+
+&lt;h2 id="netlify-functions"&gt;Netlify functions&lt;/h2&gt;
+
+&lt;p&gt;The above approach isn&amp;rsquo;t what most people would consider to be &amp;ldquo;best practice&amp;rdquo;&lt;sup&gt;&lt;a href="#2021-07-05-adding-persistence-to-irydium-with-supabase-footnote-1-definition" name="2021-07-05-adding-persistence-to-irydium-with-supabase-footnote-1-return"&gt;1&lt;/a&gt;&lt;/sup&gt;. In particular, storing credentials in localStorage is probably not the best idea for an application presenting interactive content like Irydium: it wouldn&amp;rsquo;t be particularly difficult for a malicious document to steal someone&amp;rsquo;s secret and send it somewhere it shouldn&amp;rsquo;t be.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m not &lt;em&gt;so&lt;/em&gt; worried about it at this stage of the project, but one intriguing possibility here (that&amp;rsquo;s compatible with our current deploy set up) would be to write some simple &lt;a href="https://www.netlify.com/products/functions/"&gt;Netlify Functions&lt;/a&gt; to do the actual interaction with Supabase, while delegating to Netlify for the authentication itself (using &lt;a href="https://docs.netlify.com/visitor-access/identity/"&gt;Netlify Identity&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;I experimented writing a simple function to prove out this approach and it seems to work quite well (&lt;a href="https://github.com/irydium/irydium/blob/fecea66a1cd0bedaaab4a3e6502413c55d34ec11/packages/site/netlify_functions/post.js"&gt;source&lt;/a&gt;, &lt;a href="https://irydium.dev/.netlify/functions/post?id=65107940-dd88-11eb-866c-0a4e9a1089db"&gt;example&lt;/a&gt;). This particular function is making an anonymous query to the database, but I see no obstacle to handling authenticated ones as well. Having an API under a &lt;code&gt;.netlify&lt;/code&gt; namespace seems kinda weird on first blush, but I can probably get used to it.&lt;/p&gt;
+
+&lt;p&gt;I want to move on to other things now (parsers! document state visualizations!) but might poke at this more later. In the mean time, if you write/build something cool at &lt;a href="https://irydium.dev/repl"&gt;irydium.dev/repl&lt;/a&gt;, let me know!&lt;/p&gt;
+
+&lt;div class="footnotes"&gt;
+ &lt;ol&gt;
+  &lt;li id="2021-07-05-adding-persistence-to-irydium-with-supabase-footnote-1-definition" class="footnote-definition"&gt;
+   &lt;p&gt;See, for example, &lt;a href="https://dev.to/rdegges/please-stop-using-local-storage-1i04"&gt;Please Stop Using Local Storage&lt;/a&gt;&amp;nbsp;&lt;a href="#2021-07-05-adding-persistence-to-irydium-with-supabase-footnote-1-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</description></item>
   <item>
    <title>Irydium: Points of departure</title>
    <link>https://wrla.ch/blog/2021/06/irydium-points-of-departure/?utm_source=Irydium&amp;utm_medium=RSS</link>
@@ -71,7 +115,7 @@
 &lt;div class="footnotes"&gt;
  &lt;ol&gt;
   &lt;li id="2021-06-28-irydium-points-of-departure-footnote-1-definition" class="footnote-definition"&gt;
-   &lt;p&gt;Please don&amp;rsquo;t conflate &amp;ldquo;unique&amp;rdquo; with &amp;ldquo;superior&amp;rdquo;: I&amp;rsquo;m well aware that all designs come with trade offs.  In particular, Irydium&amp;rsquo;s approach will almost certainly make it difficult / impossible to interact with &amp;ldquo;big data&amp;rdquo; systems in an efficient way.&amp;nbsp;&lt;a href="#2021-06-28-irydium-points-of-departure-footnote-1-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+   &lt;p&gt;Please don&amp;rsquo;t conflate &amp;ldquo;unique&amp;rdquo; with &amp;ldquo;superior&amp;rdquo;: I&amp;rsquo;m well aware that all designs come with trade offs.  In particular, Irydium&amp;rsquo;s approach will almost certainly make it difficult / impossible to directly interact with &amp;ldquo;big data&amp;rdquo; systems in an efficient way.&amp;nbsp;&lt;a href="#2021-06-28-irydium-points-of-departure-footnote-1-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
   &lt;li id="2021-06-28-irydium-points-of-departure-footnote-2-definition" class="footnote-definition"&gt;
    &lt;p&gt;There is at least one effort (&lt;a href="https://github.com/asg017/dataflow"&gt;Dataflow&lt;/a&gt;) to allow editing Observable documents without using Observable itself, which is interesting.&amp;nbsp;&lt;a href="#2021-06-28-irydium-points-of-departure-footnote-2-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</description></item>
   <item>

@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 12)</title>
     <meta name="description" content="William Lachance's Log (page 12)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Buddhism, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Buddhism, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Mozilla, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-12.html" />
@@ -91,6 +91,24 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2012/04/gofaster-dashboard-back-online/">GoFaster dashboard back online</a></h2>
+    <p class="index-date">Apr 19th, 2012</p>
+    <p><span class="tags"><a href="/tags/GoFaster.html">GoFaster</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Release-Engineering.html">Release Engineering</a></span></p>
+  </header>
+
+<p>Build times for mozilla-central are a major factor in developer productivity. Faster build times mean more people using try (reducing breakage) and more fine-grained regression ranges (reducing the impact of breakages). As a side benefit, it allows us to avoid buying and maintaining more hardware (or put new hardware to better use). About a half-year ago, we set up a project called BuildFaster to try to bring these times down, setting the ambitious goal of getting build times (from checkin to tests done) down to 2 hours. We didn&#8217;t quite succeed, though we did make some major strides. As part of this project, we also developed a dashboard to track our progress and narrow down the major bottlenecks which were keeping up our build times.</p>
+
+<p>Unfortunately, this dashboard went down earlier this year with the rest of Brasstacks and we hadn&#8217;t had the chance to bring it back up. I&#8217;m pleased to announce that thanks to Jonathan Griffin, it&#8217;s finally <a href="http://brasstacks.mozilla.com/gofaster/#/">back online</a>.</p>
+
+<p>While no one is actively working on build performance at the moment (at least to my knowledge), it&#8217;s still useful to keep track of build times to make sure that we don&#8217;t regress. Anecdotally, it has seemed to me that the time needed to get results from try has been pretty stable over the last while, and this is borne out by the results:</p>
+
+<p><a href="http://wrla.ch/blog/2012/04/gofaster-dashboard-back-online/gofaster-dashboard-update-2012/" rel="attachment wp-att-529"><img src="/files/2012/04/gofaster-dashboard-update-2012.png" alt="" title="gofaster-dashboard-update-2012" width="628" height="508" class="alignnone size-full wp-image-529" srcset="/files/2012/04/gofaster-dashboard-update-2012-300x242.png 300w, /files/2012/04/gofaster-dashboard-update-2012.png 628w" sizes="(max-width: 628px) 100vw, 628px" /></a></p>
+
+<p>As the cliche goes: no news is good news.</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2012/04/yet-more-adventures-in-mobile-performance-analysis/">Yet more adventures in mobile performance analysis</a></h2>
     <p class="index-date">Apr 5th, 2012</p>
@@ -316,30 +334,6 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 <video src="/files/eideticker/eideticker-2011-12-21.webm" width="600px" controls="controls"></video>
 
 <p>Happy holidays!</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2011/12/an-api-for-amt-data/">An API for AMT data</a></h2>
-    <p class="index-date">Dec 14th, 2011</p>
-    <p><span class="tags"><a href="/tags/Open-Data.html">Open Data</a>  <a href="/tags/Transit.html">Transit</a></span></p>
-  </header>
-
-<p>The <a href="http://www.amt.qc.ca">AMT</a> released their <a href="http://t.co/AofpyI4E">GTFS schedule information</a> to the public earlier this week, which is awesome. Not coincidentally, Montreal is going to have a <a href="http://transportationcamp.org/montreal/">Transportation Camp</a> tomorrow, wherein people will hack on transportation software and discuss open data issues.</p>
-
-<p>GTFS information is useful and standard, but in its raw form it can be a bit difficult to wrangle with. So in advance of the event, I thought it might be helpful/useful to put a simple JSON API to the data, based on my <a href="http://github.com/wlach/routez">routez</a> software. Should be useful for creating an app or two! There&#8217;s two endpoints that are currently defined:</p>
-
-<p><code>/api/v1/stop/&lt;stop code&gt;/upcoming_stoptimes</code></p>
-
-<p>This will give a set of upcoming departures at a particular AMT stop (represented by its code). Example:</p>
-
-<p><a href="http://amt.wrla.ch/blog/api/v1/stop/11260/upcoming_stoptimes">http://amt.wrla.ch/blog/api/v1/stop/11260/upcoming_stoptimes</a></p>
-
-<p><code>/api/v1/place/&lt;lat,lng&gt;/upcoming_stoptimes?distance=&lt;distance in meters&gt;</code></p>
-
-<p>This will give a set of AMT stops within range of that endpoint, along with upcoming departures. Example:</p>
-
-<p><a href="http://amt.wrla.ch/blog/api/v1/place/45.49640,%20-73.57567/upcoming_stoptimes?distance=1000">http://amt.wrla.ch/blog/api/v1/place/45.49640,%20-73.57567/upcoming_stoptimes?distance=1000</a></p> 
   <hr/>
 </article>
 <footer>
