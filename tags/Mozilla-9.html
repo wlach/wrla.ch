@@ -92,6 +92,29 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2012/09/say-hello-to-frof/">Say hello to frof</a></h2>
+    <p class="index-date">Sep 25th, 2012</p>
+    <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Profiling.html">Profiling</a></span></p>
+  </header>
+
+<p>Inspired by the work I&#8217;d been doing with Benoit Girard to <a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/">integrate the Firefox Profiler with Eideticker</a>, I decided to create an easy-to-use python script to help with gathering profiles on Fennec, which I call <a href="https://github.com/wlach/frof">frof</a>.</p>
+
+<p>Frof pretty considerably reduces the amount of busywork you need to do to gather a profile. Instead of a rather complicated multi-step process to initialize fennec with the right parameters for profiling, downloading profiles, etc., you can just run the frof script like so:
+ <br /><code>&lt;br /&gt;
+frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
+ <br />Assuming that frof was bootstrapped correctly (and your phone is connected to your computer in debugging mode), this should start up fennec automatically with that URL loaded. Now, just perform whatever action you want to profile on your phone, then press enter in the terminal when you&#8217;re done. Voila, instant profile trace which you can examine, post to bugs, etc. All the other details are automated.</p>
+
+<p>Backstory: the inspiration for frof came from a personal itch of mine, the fact that leaflet.js maps seem to be causing out-of-memory errors on Fennec when zooming is enabled (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=784580">bug 784580</a>). I wanted to be able to capture some profiles to see what was going on, but the <a href="https://developer.mozilla.org/en-US/docs/Performance/Profiling_with_the_Built-in_Profiler#Profiling_Firefox_mobile">current instructions</a> on MDN seem a bit unwieldly. I figured I&#8217;d get lots of mileage out of a tool to make this easier (especially if I was going to get into a profile, edit, debug cycle), so I spent a few hours dilligently copying the logic we put into eideticker to gather profiles into a standalone script.</p>
+
+<p><a href="http://wrla.ch/blog/2012/09/say-hello-to-frof/frof-profile-leaflet/" rel="attachment wp-att-760"><img src="/files/2012/09/frof-profile-leaflet.png" alt="A profile I generated of a leaflet map with frof" title="frof profile leaflet" width="703" height="365" class="alignnone size-full wp-image-760" srcset="/files/2012/09/frof-profile-leaflet-300x155.png 300w, /files/2012/09/frof-profile-leaflet.png 703w" sizes="(max-width: 703px) 100vw, 703px" /></a></p>
+
+<p>Unfortunately in my case, the gecko profile didn&#8217;t tell me much, aside from the fact that Gecko didn&#8217;t seem to be the culprit (remember that on Android we also have lots of Java-based frontend code to contend with, which the profiler doesn&#8217;t measure). I&#8217;m going to stare more at the Java code and dig into the various high-level tools that Android provides for profiling performance and memory usage. My current hypothesis is that the problem is the screenshot code and the CSS transitions that leaflet generates when zooming. In the mean time, the only thing I have to show for my foray away from writing tools for Mozilla is &#8230; yet another tool.</p>
+
+<p>Oh well, it could be worse. My fervent hope is that frof will be helpful for both Fennec developers and QA. Let me know if you wind up using it!</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/">More Eideticker happenings: Profiling and startup testing</a></h2>
     <p class="index-date">Sep 13th, 2012</p>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -402,29 +425,6 @@
 <p><a href="http://wrla.ch/blog/2012/04/gofaster-dashboard-back-online/gofaster-dashboard-update-2012/" rel="attachment wp-att-529"><img src="/files/2012/04/gofaster-dashboard-update-2012.png" alt="" title="gofaster-dashboard-update-2012" width="628" height="508" class="alignnone size-full wp-image-529" srcset="/files/2012/04/gofaster-dashboard-update-2012-300x242.png 300w, /files/2012/04/gofaster-dashboard-update-2012.png 628w" sizes="(max-width: 628px) 100vw, 628px" /></a></p>
 
 <p>As the cliche goes: no news is good news.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2012/04/yet-more-adventures-in-mobile-performance-analysis/">Yet more adventures in mobile performance analysis</a></h2>
-    <p class="index-date">Apr 5th, 2012</p>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
-
-<p>Participated in an <a href="https://wiki.mozilla.org/Fennec/NativeUI/checkerboarding">interesting meeting</a> on checkerboarding in Firefox for Android yesterday. As a reminder, checkerboarding refers to the amount of time you spend waiting to see the full page after you do a swipe on your mobile device, and it&#8217;s a big issue right now &#8211; so much so that it puts our delivery goal for the new native browser at risk.</p>
-
-<p>It seems like we have a number of strategies for improving performance which will likely solve the problem, but we need to be able to measure improvements to make sure that we&#8217;re making progress. This is one of the places where Eideticker could be useful (especially with regards to measuring us against the competition), though there are a few things that we need to add before it&#8217;s going to be as useful as it could be. The most urgent, as I understand, is to come up with a suite of tests which accurately represent the set of pages that we&#8217;re having issues with. The current main measure of checkerboarding that we&#8217;re using with eideticker is taskjs.org which, while an interesting test case in some ways, doesn&#8217;t accurately represent the sort of site that the user would normally go to in the wild (and thus be annoyed by). 😉</p>
-
-<p>This is going to take a few days (and a lot of review: I&#8217;m definitely no expert when it comes to this stuff) to get right, but I just added two tests for the New York Times which I think are a step in the right direction of being more representative of real-world use cases. Have a look here:</p>
-
-<p><a href="http://wrla.ch/eideticker/dashboard/#/nytimes-scrolling">http://wrla.ch/eideticker/dashboard/#/nytimes-scrolling</a>
- <br /><a href="http://wrla.ch/eideticker/dashboard/#/nytimes-zooming">http://wrla.ch/eideticker/dashboard/#/nytimes-zooming</a></p>
-
-<p>The results here actually aren&#8217;t as bad as I would have expected/remembered. There amount of checkerboarding after a zoom out is a bit annoying (I understand this a known issue with font caching, or something) but not too terrible. Still, any improvements that show up here will probably apply across a wide variety of sites, as the design patterns on the New York Times site are very common.</p>
-
-<p>(P.S. yes, I know I promised a comparison with Google Chrome for Android last time&#8230; rest assured that&#8217;s still coming soon!)</p> 
   <hr/>
 </article>
 <footer>

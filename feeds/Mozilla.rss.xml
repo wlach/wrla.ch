@@ -4,9 +4,26 @@
   <title>William Lachance's Log: Posts tagged 'Mozilla'</title>
   <description>William Lachance's Log: Posts tagged 'Mozilla'</description>
   <link>https://wrla.ch/tags/Mozilla.html</link>
-  <lastBuildDate>Wed, 23 Jun 2021 21:15:15 UT</lastBuildDate>
-  <pubDate>Wed, 23 Jun 2021 21:15:15 UT</pubDate>
+  <lastBuildDate>Mon, 12 Jul 2021 16:30:42 UT</lastBuildDate>
+  <pubDate>Mon, 12 Jul 2021 16:30:42 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>10 years at Mozilla</title>
+   <link>https://wrla.ch/blog/2021/07/10-years-at-mozilla/?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-07-10-years-at-mozilla</guid>
+   <pubDate>Mon, 12 Jul 2021 16:30:42 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;Yesterday (July 11, 2021) was the 10 year anniversary of starting at the Mozilla Corporation. My life has changed a &lt;em&gt;ton&lt;/em&gt; in those years: in that time I ended a marriage, changed the city in which I live two times, and took up religion&lt;sup&gt;&lt;a href="#2021-07-12-10-years-at-mozilla-footnote-1-definition" name="2021-07-12-10-years-at-mozilla-footnote-1-return"&gt;1&lt;/a&gt;&lt;/sup&gt;. Mozilla has also changed pretty drastically in my time here, &lt;a href="https://blog.mozilla.org/blog/2020/08/11/changing-world-changing-mozilla/"&gt;especially in the last year&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Yet somehow I&amp;rsquo;m still at it, for more or less for the same reasons that led me to accept my initial offer to join the &lt;a href="https://wiki.mozilla.org/EngineeringProductivity"&gt;A-team&lt;/a&gt;.&lt;sup&gt;&lt;a href="#2021-07-12-10-years-at-mozilla-footnote-2-definition" name="2021-07-12-10-years-at-mozilla-footnote-2-return"&gt;2&lt;/a&gt;&lt;/sup&gt; The Internet has the immense potential to be a force for individual empowerment and yet more than ever, we see this technology used to consolidate unchecked power, spread misinformation, and generally exploit people. Mozilla is not perfect (no organization is: 10 years anywhere will teach you that), but it&amp;rsquo;s one of the few remaining counter-forces to these accelerating trends. While I&amp;rsquo;m currently taking a bit of a break to &lt;a href="https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/"&gt;explore some stuff on my own&lt;/a&gt;, I am looking forward to getting back to work on &lt;a href="https://www.mozilla.org/en-CA/about/manifesto/"&gt;the mission&lt;/a&gt; when I return in mid-August.&lt;/p&gt;
+
+&lt;div class="footnotes"&gt;
+ &lt;ol&gt;
+  &lt;li id="2021-07-12-10-years-at-mozilla-footnote-1-definition" class="footnote-definition"&gt;
+   &lt;p&gt;To the extent that Zen Buddhism is a religion.&amp;nbsp;&lt;a href="#2021-07-12-10-years-at-mozilla-footnote-1-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+  &lt;li id="2021-07-12-10-years-at-mozilla-footnote-2-definition" class="footnote-definition"&gt;
+   &lt;p&gt;I&amp;rsquo;ve since moved to &lt;a href="https://wiki.mozilla.org/Data"&gt;Data @ Mozilla&lt;/a&gt;&amp;nbsp;&lt;a href="#2021-07-12-10-years-at-mozilla-footnote-2-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</description></item>
   <item>
    <title>Mini-sabbatical and introducing Irydium</title>
    <link>https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/?utm_source=Mozilla&amp;utm_medium=RSS</link>
@@ -990,14 +1007,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
  &lt;li&gt;Add some kind of telemetry to mozregression to measure usage of this tool  (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581647"&gt;bug 1581647&lt;/a&gt;).  My anecdotal experience is that this tool is pretty invaluable for Firefox  development and QA, but this is not immediately apparent to Mozilla&amp;rsquo;s  leadership and it&amp;rsquo;s thus very difficult to convince people to spend their  cycles on maintaining and improving this tool. Field data may help change  that story.&lt;/li&gt;
  &lt;li&gt;Supporting new Mozilla products which aren&amp;rsquo;t built (entirely) out of mozilla-central,  most especially Fenix (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1556042"&gt;bug 1556042&lt;/a&gt;)  and Firefox Reality (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1568488"&gt;bug 1568488&lt;/a&gt;).  This is probably rather involved (mozregression has a big pile of assumptions about how  the builds it pulls down are stored and organized) but that doesn&amp;rsquo;t mean that  this work isn&amp;rsquo;t necessary.&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;If you&amp;rsquo;re interested in working on any of the above, please feel free to dive in on one of the above bugs. I can&amp;rsquo;t offer formal mentorship, but am happy to help out where I can.&lt;/p&gt;</description></item>
-  <item>
-   <title>Time for some project updates</title>
-   <link>https://wrla.ch/blog/2019/09/time-for-some-project-updates/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2019-09-time-for-some-project-updates</guid>
-   <pubDate>Mon, 16 Sep 2019 14:41:39 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;I&amp;rsquo;ve been a bit bad about updating this blog over the past year or so, though this hasn&amp;rsquo;t meant there haven&amp;rsquo;t been things to talk about. For the next couple weeks, I&amp;rsquo;m going to try to give some updates on the projects I have been spending time on in the past year, both old and new. I&amp;rsquo;m going to begin with some of the less-loved things I&amp;rsquo;ve been working on, partially in an attempt to motivate some forward-motion on things that I believe are rather important to Mozilla.&lt;/p&gt;
-
-&lt;p&gt;More to come.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;If you&amp;rsquo;re interested in working on any of the above, please feel free to dive in on one of the above bugs. I can&amp;rsquo;t offer formal mentorship, but am happy to help out where I can.&lt;/p&gt;</description></item></channel></rss>

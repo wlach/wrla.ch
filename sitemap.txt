@@ -5,6 +5,7 @@ https://wrla.ch/blog/2017/10/mission-control/
 https://wrla.ch/blog/2012/01/yet-more-checkerboarding-analysis/
 https://wrla.ch/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/
 https://wrla.ch/blog/2009/03/breaking-news-cat-watches-himself-in-tv/
+https://wrla.ch/blog/2021/07/10-years-at-mozilla/
 https://wrla.ch/blog/2013/03/documentation-for-mozdevice/
 https://wrla.ch/blog/2013/05/proof-of-concept-eideticker-dashboard-for-firefoxos/
 https://wrla.ch/blog/2020/11/iodide-retrospective/

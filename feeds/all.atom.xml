@@ -4,7 +4,26 @@
  <link rel="self" href="https://wrla.ch/feeds/all.atom.xml" />
  <link href="https://wrla.ch/index.html" />
  <id>urn:https-wrla-ch:-index-html</id>
- <updated>2021-07-05T15:09:56Z</updated>
+ <updated>2021-07-12T16:30:42Z</updated>
+ <entry>
+  <title type="text">10 years at Mozilla</title>
+  <link rel="alternate" href="https://wrla.ch/blog/2021/07/10-years-at-mozilla/?utm_source=all&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2021-07-10-years-at-mozilla</id>
+  <published>2021-07-12T16:30:42Z</published>
+  <updated>2021-07-12T16:30:42Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;Yesterday (July 11, 2021) was the 10 year anniversary of starting at the Mozilla Corporation. My life has changed a &lt;em&gt;ton&lt;/em&gt; in those years: in that time I ended a marriage, changed the city in which I live two times, and took up religion&lt;sup&gt;&lt;a href="#2021-07-12-10-years-at-mozilla-footnote-1-definition" name="2021-07-12-10-years-at-mozilla-footnote-1-return"&gt;1&lt;/a&gt;&lt;/sup&gt;. Mozilla has also changed pretty drastically in my time here, &lt;a href="https://blog.mozilla.org/blog/2020/08/11/changing-world-changing-mozilla/"&gt;especially in the last year&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Yet somehow I&amp;rsquo;m still at it, for more or less for the same reasons that led me to accept my initial offer to join the &lt;a href="https://wiki.mozilla.org/EngineeringProductivity"&gt;A-team&lt;/a&gt;.&lt;sup&gt;&lt;a href="#2021-07-12-10-years-at-mozilla-footnote-2-definition" name="2021-07-12-10-years-at-mozilla-footnote-2-return"&gt;2&lt;/a&gt;&lt;/sup&gt; The Internet has the immense potential to be a force for individual empowerment and yet more than ever, we see this technology used to consolidate unchecked power, spread misinformation, and generally exploit people. Mozilla is not perfect (no organization is: 10 years anywhere will teach you that), but it&amp;rsquo;s one of the few remaining counter-forces to these accelerating trends. While I&amp;rsquo;m currently taking a bit of a break to &lt;a href="https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/"&gt;explore some stuff on my own&lt;/a&gt;, I am looking forward to getting back to work on &lt;a href="https://www.mozilla.org/en-CA/about/manifesto/"&gt;the mission&lt;/a&gt; when I return in mid-August.&lt;/p&gt;
+
+&lt;div class="footnotes"&gt;
+ &lt;ol&gt;
+  &lt;li id="2021-07-12-10-years-at-mozilla-footnote-1-definition" class="footnote-definition"&gt;
+   &lt;p&gt;To the extent that Zen Buddhism is a religion.&amp;nbsp;&lt;a href="#2021-07-12-10-years-at-mozilla-footnote-1-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+  &lt;li id="2021-07-12-10-years-at-mozilla-footnote-2-definition" class="footnote-definition"&gt;
+   &lt;p&gt;I&amp;rsquo;ve since moved to &lt;a href="https://wiki.mozilla.org/Data"&gt;Data @ Mozilla&lt;/a&gt;&amp;nbsp;&lt;a href="#2021-07-12-10-years-at-mozilla-footnote-2-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</content></entry>
  <entry>
   <title type="text">Adding persistence to Irydium with Supabase</title>
   <link rel="alternate" href="https://wrla.ch/blog/2021/07/adding-persistence-to-irydium-with-supabase/?utm_source=all&amp;utm_medium=Atom" />
@@ -1094,16 +1113,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;In addition to being much simpler, this new job is also &lt;em&gt;way&lt;/em&gt; cheaper. The last run of it scanned just over 1 TB of data, meaning it cost us just over $5. Not as cheap as I might like, but considerably less expensive than before: I&amp;rsquo;ve also scheduled it to only run once every other day, since Mike tells me he doesn&amp;rsquo;t need this data any more often than that.&lt;/p&gt;
 
-&lt;p&gt;[1] I understand that Jeff Klukas, Frank Bertsch, Daniel Thorn, Anthony Miyaguchi, and Wesley Dawson are the principals involved - apologies if I&amp;rsquo;m forgetting someone.&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">Metrics Graphics: Stepping back for a while</title>
-  <link rel="alternate" href="https://wrla.ch/blog/2019/09/metrics-graphics-stepping-back-for-a-while/?utm_source=all&amp;utm_medium=Atom" />
-  <id>urn:https-wrla-ch:-blog-2019-09-metrics-graphics-stepping-back-for-a-while</id>
-  <published>2019-09-26T20:33:54Z</published>
-  <updated>2019-09-26T20:33:54Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;Just a note that I&amp;rsquo;ve decided to step back from &lt;a href="https://metricsgraphicsjs.org"&gt;metrics graphics&lt;/a&gt; maintenance for the time being, which means that the project is essentially unowned. This has sort of been the case for a while, but I figured I should probably make it official.&lt;/p&gt;
-
-&lt;p&gt;If you follow the link to the &lt;a href="https://github.com/metricsgraphics/metrics-graphics/"&gt;metrics graphics repository&lt;/a&gt;, you&amp;rsquo;ll note that the version has been bumped to &amp;ldquo;3.0-alpha3&amp;rdquo;. I was &lt;em&gt;this close&lt;/em&gt; to making one last new release this afternoon but decided I didn&amp;rsquo;t want to potentially break existing users who were fine using the last &amp;ldquo;official&amp;rdquo; version (v3.0 bumps the version of d3 used to &amp;ldquo;5&amp;rdquo;, among other breaking changes). I&amp;rsquo;d encourage people who want to continue using the library to make a fork and publish a copy under their user or organization name on npm.&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;[1] I understand that Jeff Klukas, Frank Bertsch, Daniel Thorn, Anthony Miyaguchi, and Wesley Dawson are the principals involved - apologies if I&amp;rsquo;m forgetting someone.&lt;/p&gt;</content></entry></feed>
