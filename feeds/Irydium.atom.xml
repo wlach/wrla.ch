@@ -4,7 +4,56 @@
  <link rel="self" href="https://wrla.ch/feeds/Irydium.atom.xml" />
  <link href="https://wrla.ch/tags/Irydium.html" />
  <id>urn:https-wrla-ch:-tags-Irydium-html</id>
- <updated>2021-07-05T15:09:56Z</updated>
+ <updated>2021-07-28T19:16:42Z</updated>
+ <entry>
+  <title type="text">Irydium @ Recurse Updates</title>
+  <link rel="alternate" href="https://wrla.ch/blog/2021/07/irydium-recurse-updates/?utm_source=Irydium&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2021-07-irydium-recurse-updates</id>
+  <published>2021-07-28T19:16:42Z</published>
+  <updated>2021-07-28T19:16:42Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;Some quick updates on where &lt;a href="https://irydium.dev"&gt;Irydium&lt;/a&gt; is at, roughly a week-and-a-half before my mini-sabbatical at the &lt;a href="https://recurse.com"&gt;Recurse Centre&lt;/a&gt; ends.&lt;/p&gt;
+
+&lt;h2 id="jupyterbook-and-myst"&gt;JupyterBook and MyST&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;d been admiring &lt;a href="https://jupyterbook.org"&gt;JupyterBook&lt;/a&gt; from afar for some time: their project philosophy appealed to me greatly. In particular, the &lt;a href="https://myst-parser.readthedocs.io/"&gt;MyST extensions&lt;/a&gt; to markdown seemed like a natural fit for this project and a natural point of collaboration and cross-pollination. A couple of weeks ago, I finally got in touch with some people working on that project, which prompted a few small efforts:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;&lt;a href="https://github.com/executablebooks/myst-vs-code/pull/32"&gt;Adding Svelte support to VSCode&amp;rsquo;s MyST Plugin&lt;/a&gt;, which in turn prompted me to figure out &lt;a href="https://github.com/sveltejs/language-tools/issues/1094"&gt;why the VSCode plugin for Svelte doesn&amp;rsquo;t render inline content correctly&lt;/a&gt; (tl;dr: probably a bug in VSCode?)&lt;/li&gt;
+ &lt;li&gt;&lt;a href="https://irydium.dev/examples#myst-directives"&gt;Adding support for a couple of MyST&amp;rsquo;s built-in directives&lt;/a&gt; (&amp;ldquo;warning&amp;rdquo; and &amp;ldquo;note&amp;rdquo;).&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href="https://irydium.dev/examples#myst-directives"&gt;&lt;img src="https://i.imgur.com/A24e302.png" alt="" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve become convinced that building on top of MyST is right for both Irydium and the larger community. Increasing Irydium&amp;rsquo;s support for MyST is tracked in &lt;a href="https://github.com/irydium/irydium/issues/123"&gt;irydium/irydium#123&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="using-irydium-to-build-irydium"&gt;Using Irydium to build Irydium&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been spending a fair bit of time thinking of how to ma ke it easier for people to build Irydium documents through &lt;em&gt;composition&lt;/em&gt; of existing documents. Landed the first pieces of this. The first is the ability to &amp;ldquo;import&amp;rdquo; a code chunk from another irydium document. There&amp;rsquo;s a few examples of this in the new &lt;a href="https://irydium.dev/components"&gt;components section&lt;/a&gt; of irydium.dev:&lt;/p&gt;
+
+&lt;div class="figure"&gt;&lt;img src="https://i.imgur.com/y4qNTj6.png" alt="" /&gt;
+ &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
+
+&lt;p&gt;In a sense this allows you to define a reusable piece of code along with both documentation and usage examples. I think this concept will be particularly useful for supporting language plugins (which I will write about in an upcoming post).&lt;/p&gt;
+
+&lt;h2 id="its-a-real-project-now"&gt;It&amp;rsquo;s a real project now&lt;/h2&gt;
+
+&lt;p&gt;I spent a bit of time last week doing some community gardening. I still consider Irydium an &amp;ldquo;experiment&amp;rdquo; but I&amp;rsquo;d like to at least open up the possibility of it being something larger. To help make that happen, I started working on some basic project governance pieces, namely:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;We have a &lt;a href="https://github.com/irydium/irydium/blob/main/CODE_OF_CONDUCT.md"&gt;code of conduct&lt;/a&gt; and &lt;a href="https://github.com/irydium/irydium/blob/main/CONTRIBUTING.md"&gt;contributing guidelines&lt;/a&gt;. I opted to go for the Contributor Covenant, which seems to be a good minimal viable social contract. I considered something proposing something more comprehensive (like the &lt;a href="https://www.rust-lang.org/policies/code-of-conduct"&gt;Rust Code of Conduct&lt;/a&gt;), but I felt that&amp;rsquo;s something for a &lt;em&gt;group&lt;/em&gt; of people to discuss and debate, should the time come where Irydium is more than a one-person show. For now, I&amp;rsquo;ll do my best to make sure that everyone in Irydium&amp;rsquo;s orbit has a good experience.&lt;/li&gt;
+ &lt;li&gt;There&amp;rsquo;s a proper issues list, including some &amp;ldquo;good first bugs&amp;rdquo; for people to look at (shout out to &lt;a href="https://github.com/m-clare/"&gt;@m-clare&lt;/a&gt; for submitting the first PR to Irydium!)&lt;/li&gt;
+ &lt;li&gt;We have a &lt;a href="https://gitter.im/irydium/community"&gt;channel on gitter&lt;/a&gt;, also accessible &lt;a href="https://matrix.to/#/#irydium_community:gitter.im"&gt;via Matrix&lt;/a&gt;. Come say hi!&lt;/li&gt;&lt;/ul&gt;
+
+&lt;h2 id="next-steps"&gt;Next steps&lt;/h2&gt;
+
+&lt;p&gt;There&amp;rsquo;s not a ton of time left at RC, so some of these things may have to be done in my spare time after the batch ends. That said, here&amp;rsquo;s my near-term roadmap:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Add support for code chunks to output content directly to the DOM (currently the only way to output to an Irydium document is through a Svelte component). This will be particularly important for Python support, where people expect the output of a cell running &lt;a href="https://github.com/altair-viz"&gt;altair&lt;/a&gt; or &lt;a href="https://github.com/matplotlib/matplotlib/"&gt;matplotlib&lt;/a&gt; to display directly in the document (as they do in Jupyter). Tracked in &lt;a href="https://github.com/irydium/irydium/issues/122"&gt;irydium/irydium#122&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;Integrate &lt;a href="https://ellx.io/"&gt;ellx.io&lt;/a&gt;&amp;rsquo;s next-generation JavaScript bundler, &lt;a href="https://github.com/dmaevsky/tokamak"&gt;tokamak&lt;/a&gt;. This should make building irydium documents much more robust and error proof and paves the way to further improvements. Special shout-out to the ellx developers for being so friendly and open to collaboration: ellx is a novel approach to application development and definitely worth checking out if you haven&amp;rsquo;t already. Tracked in &lt;a href="https://github.com/irydium/irydium/issues/125"&gt;irydium/irydium#125&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;Finish and document support for language plugins (and make another blog post especially about them, they&amp;rsquo;re cool!). Tracked in &lt;a href="https://github.com/irydium/irydium/issues/144"&gt;irydium/irydium#144&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;</content></entry>
  <entry>
   <title type="text">Adding persistence to Irydium with Supabase</title>
   <link rel="alternate" href="https://wrla.ch/blog/2021/07/adding-persistence-to-irydium-with-supabase/?utm_source=Irydium&amp;utm_medium=Atom" />

@@ -92,6 +92,129 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2020/11/iodide-retrospective/">iodide retrospective</a></h2>
+    <p class="index-date">Nov 10th, 2020</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/iodide.html">iodide</a></span></p>
+  </header>
+
+<p>A bit belatedly, I thought I&rsquo;d write a short retrospective on <a href="https://alpha.iodide.io">Iodide</a>: an effort to create a compelling, client-centred scientific notebook environment.</p>
+
+<p>Despite not writing a ton about it (the sole exception being <a href="/blog/2019/03/new-ideas-old-buildings/">this brief essay</a> about my conservative choice for the server backend) Iodide took up a very large chunk of my mental energy from late 2018 through 2019. It was also essentially my only attempt at working on something that was on its way to being an actual <em>product</em> while at Mozilla: while I&rsquo;ve led other projects that have been interesting and/or impactful in my 9 odd-years here (<a href="https://mozilla.github.io/mozregression/">mozregression</a> and <a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder">perfherder</a> being the biggest successes), they fall firmly into the &ldquo;internal tools supporting another product&rdquo; category.</p>
+
+<p>At this point it&rsquo;s probably safe to say that the project has wound down: no one is being paid to work on Iodide and it&rsquo;s essentially in extreme maintenance mode. Before it&rsquo;s put to bed altogether, I&rsquo;d like to write a few notes about its approach, where I think it had big advantanges, and where it seems to fall short. I&rsquo;ll conclude with some areas I&rsquo;d like to explore (or would like to see others explore!). I&rsquo;d like to emphasize that this is <em>my opinion only</em>: the rest of the Iodide core team no doubt have their own thoughts. That said, let&rsquo;s jump in.</p>
+
+<h2 id="what-is-iodide-anyway">What is Iodide, anyway?</h2>
+
+<p>One thing that&rsquo;s interesting about a product like Iodide is that people tend to project their hopes and dreams onto it: if you asked any given member of the Iodide team to give a 200 word description of the project, you&rsquo;d probably get a slightly different answer emphasizing different things. That said, a fair initial approximation of the project vision would be &ldquo;a scientific notebook like Jupyter, but running in the browser&rdquo;.</p>
+
+<p>What does this mean? First, let&rsquo;s talk about what Jupyter does: at heart, it&rsquo;s basically a Python &ldquo;kernel&rdquo; (read: interpreter), fronted by a webserver. You send snipits of the code to the interpreter via a web interface and they would faithfully be run on the backend (either on your local machine in a separate process or a server in the cloud). Results are then be returned back to the web interface and then rendered by the browser in one form or another.</p>
+
+<p>Iodide&rsquo;s model is quite similar, with one difference: instead of running the kernel in another process or somewhere in the cloud, all the heavy lifting happens <em>in the browser itself</em>, using the local JavaScript and/or WebAssembly runtime. The very first version of the product that Hamilton Ulmer and Brendan Colloran came up with was <em>definitely</em> in this category: it had no server-side component whatsoever.</p>
+
+<p>Truth be told, even applications like Jupyter do a fair amount of computation on the client side to render a user interface and the results of computations: the distinction is not as clear cut as you might think. But in general I think the premise holds: if you load an iodide notebook today (still possible on alpha.iodide.io! no account required), the only thing that comes from the server is a little bit of static JavaScript and a flat file delivered as a JSON payload. All the &ldquo;magic&rdquo; of whatever computation you might come up with happens on the client.</p>
+
+<p>Let&rsquo;s take a quick look at the default tryit iodide notebook to give an idea of what I mean:</p>
+
+<pre><code>%% fetch
+// load a js library and a csv file with a fetch cell
+js: https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.2/d3.js
+text: csvDataString = https://data.sfgov.org/api/views/5cei-gny5/rows.csv?accessType=DOWNLOAD
+
+%% js
+// parse the data using the d3 library (and show the value in the console)
+parsedData = d3.csvParse(csvDataString)
+
+%% js
+// replace the text in the report element "htmlInMd"
+document.getElementById('htmlInMd').innerText = parsedData[0].Address
+
+%% py
+# use python to select some of the data
+from js import parsedData
+[x['Address'] for x in parsedData if x['Lead Remediation'] == 'true']</code></pre>
+
+<p>The <code>%%</code> delimiters indicate individual cells. The <code>fetch</code> cell is an iodide-native cell with its own logic to load the specified resources into a JavaScript variables when evaluated. <code>js</code> and <code>py</code> cells direct the browser to interpret the code inside of them, which causes the DOM to mutate. From these building blocks (and a few others), you can build up an interactive report which can <em>also</em> be freely forked and edited by anyone who cares to.</p>
+
+<p>In some ways, I think Iodide has more in common with services like Glitch or Codepen than with Jupyter. In effect, it&rsquo;s mostly offering a way to build up a static web page (doing whatever) using web technologies&mdash; even if the user interface affordances and cell-based computation model might remind you more of a scientific notebook.</p>
+
+<h2 id="what-works-well-about-this-approach">What works well about this approach</h2>
+
+<p>There&rsquo;s a few nifty things that come from doing things this way:</p>
+
+<ul>
+ <li>The environment is easily extensible for those familiar with JavaScript or other client side technologies. There is no need to mess with strange plugin architectures or APIs or conform to the opinions of someone else on what options there are for data visualization and presentation. If you want to use jQuery inside your notebook for a user interface widget, just import it and go!</li>
+ <li>The architecture scales to many, many users: since all the computation happens on the client, the server&rsquo;s only role is to store and retrieve notebook content. alpha.iodide.io has happily been running on Heroku&rsquo;s least expensive dyno type for its entire existence.</li>
+ <li>Reproducibility: so long as the iodide notebook has no references to data on third party servers with authentiction, there is no stopping someone from being able to reproduce whatever computations led to your results.</li>
+ <li>Related to reproducibility, it&rsquo;s easy to <em>build off</em> of someone else&rsquo;s notebook or exploration, since everything is so self-contained.</li></ul>
+
+<p>I continue to be surprised and impressed with what people come up with in the Jupyter ecosystem so I don&rsquo;t want to claim these are things that &ldquo;only Iodide&rdquo; (or other tools like it) can do&mdash; what I will say is that I haven&rsquo;t seen many things that combine both the conciseness and expressiveness of iomd. The beauty of the web is that there is such an abundance of tutorials and resources to support creating interactive content: when building iodide notebooks, I would freely borrow from resources such as MDN and Stackoverflow, instead of being locked into what the authoring software thinks one should be able express.</p>
+
+<h2 id="whats-awkward">What&rsquo;s awkward</h2>
+
+<p>Every silver lining has a cloud and (unfortunately) Iodide has a pretty big one. Depending on how you use Iodide, you will almost certainly run into the following problems:</p>
+
+<ul>
+ <li>You are limited by the computational affordances provided by the browser: there is no obvious way to offload long-running or expensive computations to a cluster of machines using a technology like <a href="https://spark.apache.org/">Spark</a>.</li>
+ <li>Long-running computations will block the main thread, causing your notebook to become extremely unresponsive for the duration.</li></ul>
+
+<p>The first, I (and most people?) can usually live with. Computers are quite powerful these days and most data tasks I&rsquo;m interested in are easily within the range of capabilities of my laptop. In the cases where I need to do something larger scale, I&rsquo;m quite happy to fire up a Jupyter Notebook, BigQuery Console, or &lt;other tool of choice&gt; to do the heavy-lifting, and then move back to a client-side approach to visualize and explore my results.</p>
+
+<p>The second is much harder to deal with, since it means that the process of exploration that is so key to scientific computing. I&rsquo;m quite happy to wait 5 seconds, 15 seconds, even a minute for a longer-running computation to complete but if I see the slow script dialog and everything about my environment grinds to a halt, it not only blocks my work but causes me to lose faith in the system. How do I know if it&rsquo;s even going to finish?</p>
+
+<p>This occurs way more often than you might think: even a simple notebook loading pandas (via pyodide) can cause Firefox to pop up the slow script dialog:</p>
+
+<div class="figure"><img src="/files/2020/11/iodide-slow-script.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>Why is this so? Aren&rsquo;t browsers complex beasts which can do a million things in parallel these days? Only sort of: while the graphical and network portions of loading and using a web site are highly parallel, JavaScript and any changes to the DOM <em>can only occur synchronously</em> by default. Let&rsquo;s break down a simple iodide example which trivially hangs the browser:</p>
+
+<pre><code>%% js
+
+while (1) { true }</code></pre>
+
+<p><a href="https://alpha.iodide.io/notebooks/6487/">link</a> (but you really don&rsquo;t want to)</p>
+
+<p>What&rsquo;s going on here? When you execute that cell, the web site&rsquo;s sole thread is now devoted to running that infinite loop. No longer can any other JavaScript-based event handler be run, so for example the text editor (which uses <a href="https://microsoft.github.io/monaco-editor/">Monaco</a> under the hood) and menus are now completely unresponsive.</p>
+
+<p>The iodide team was aware of this issue since I joined the project. There were no end of discussions about how to work around it, but they never really come to a satisfying conclusion. The most obvious solution is to move the cell&rsquo;s computation to a web worker, but workers don&rsquo;t have synchronous access to the DOM which is required for web content to work as you&rsquo;d expect. While there are projects like <a href="https://github.com/GoogleChromeLabs/comlink">ComLink</a> that attempt to bridge this divide, they require both a fair amount of skill and code to use effectively. As mentioned above, one of the key differentiators between iodide and other notebook environments is that tools like jQuery, d3, etc. &ldquo;just work&rdquo;. That is, you can take a code snipit off the web and run it inside an iodide notebook: there&rsquo;s no workaround I&rsquo;ve been able to find which maintains that behaviour <em>and</em> ensures that the Iodide notebook environment is always responsive.</p>
+
+<p>It took a while for this to really hit home, but having some separation from the project, I&rsquo;ve come to realize that the problem is that the underlying technology isn&rsquo;t designed for the task we were asking of it, nor is it likely to ever be in the near future. While the web (by which I mean not only the browser, but the ecosystem of popular tooling and libraries that has been built on top of it) has certainly grown in scope to things it was never envisioned to handle like games and office applications, it&rsquo;s just not optimized for what I&rsquo;d call &ldquo;editable content&rdquo;. That is, the situation where a web page offers affordances for manipulating its own representation.</p>
+
+<p>While modern web browsers have evolved to (sort of) protect one errant site from bringing the whole thing down, they certainly haven&rsquo;t evolved to protect a particular site against <em>itself</em>. And why would they? Web developers usually work in the terminal and text editor: the assumption is that if their test code misbehaves, they&rsquo;ll just kill their tab and start all over again. Application state is persisted either on-disk or inside an external database, so nothing will really be lost.</p>
+
+<p>Could this ever change? Possibly, but I think it would be a radical rethinking of what the web is, and I&rsquo;m not really sure what would motivate it.</p>
+
+<h2 id="a-way-forward">A way forward</h2>
+
+<p>While working on iodide, we were fond of looking at this diagram, which was taken from <a href="https://dl.acm.org/doi/10.1145/3173574.3173606">this study of the data science workflow</a>:</p>
+
+<div class="figure"><img src="/files/2020/11/ds-workflow.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>It describes how people typically perform computational inquiry: typically you would poke around with some raw data, run some transformations on it. Only after that process was complete would you start trying to build up a &ldquo;presentation&rdquo; of your results to your audience.</p>
+
+<p>Looking back, it&rsquo;s clear that Iodide&rsquo;s strong suit was the <em>explanation</em> part of this workflow, rather than collaboration and exploration. My strong suspicion is that we actually want to use different tools for each one of these tasks. Coincidentally, this also maps to the bulk of my experience working with data at Mozilla, using iodide or not: my most successful front-end data visualization projects were typically the distilled result of a very large number of adhoc explorations (python scripts, SQL queries, Jupyter notebooks, &hellip;). The actual visualization itself contains very little computational meat: basically &ldquo;just enough&rdquo; to let the user engage with the data fruitfully.</p>
+
+<p>Unfortunately much of my work in this area uses semi-sensitive internal Mozilla data so can&rsquo;t be publicly shared, but here&rsquo;s one example:</p>
+
+<div class="figure"><img src="/files/2020/11/bq-migration-burndown.png" alt="" />
+ <p class="caption"></p></div>
+
+<p><a href="https://alpha.iodide.io/notebooks/3593/?viewMode=report">link</a></p>
+
+<p>I built this dashboard in a single day to track our progress (resolved/open bugs) when we were migrating our data platform from AWS to GCP. It was useful: it let us quickly visualize which areas needed more attention and gave upper management more confidence that we were moving closer to our goal. However, there was little computation going on in the client: most of the backend work was happening in our <a href="https://bugzilla.mozilla.org">Bugzilla instance</a>: the iodide notebook just does a little bit of post-processing to visualize the results in a useful way.</p>
+
+<p>Along these lines, I still think there is a place in the world for an interactive <em>visualization</em> environment built on principles similar to iodide: basically a markdown editor augmented with primitives oriented around data exploration (for example, charts and data tables), with allowances to bring in any JavaScript library you might want. However, any in-depth data processing would be assumed to have mostly been run elsewhere, in advance. The editing environment could either be the browser or a code editor running on your local machine, per user preference: in either case, there would not be any really important computational state running in the browser, so things like dynamic reloading (or just closing an errant tab) should not cause the user to lose any work.</p>
+
+<p>This would give you the best of both worlds: you could easily create compelling visualizations that are easy to share and remix at minimal cost (because all the work happens in the browser), but you could <em>also</em> use whatever existing tools work best for your initial data exploration (whether that be JavaScript or the more traditional Python data science stack). And because the new tool has a reduced scope, I think building such an environment would be a much more tractable project for an individual or small group to pursue.</p>
+
+<p>More on this in the future, I hope.</p>
+
+<p><em>Many thanks to <a href="https://teonbrooks.com/">Teon Brooks</a> and Devin Bayly for reviewing an early draft of this post</em></p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2020/08/mozregression-and-older-builds/">mozregression and older builds</a></h2>
     <p class="index-date">Aug 17th, 2020</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a>  <a href="/tags/telemetry.html">telemetry</a></span></p>
@@ -647,83 +770,6 @@
 <p>I had been vaguely aware of <a href="https://docs.conda.io/en/latest/">Conda</a> for a few years, but didn&rsquo;t really understand its value proposition until I started working on the above project: why bother with a heavyweight package manager when you already have Docker to virtualize things? The answer is that it solves both of the above problems: for local development, you can get something more-or-less identical to what you&rsquo;re running inside Docker with no performance penalty whatsoever. And for building the docker container itself, Conda&rsquo;s package repository contains pre-compiled versions of all the dependencies you&rsquo;d want to use for something like this (even somewhat esoteric libraries like R-stan are available on <a href="https://conda-forge.org/">conda-forge</a>), which brought my build cycle times down to less than 5 minutes.</p>
 
 <p>tl;dr: If you have a bunch of R / python code you want to run in a reproducible manner, consider Conda.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit/">Using BigQuery JavaScript UDFs to analyze Firefox telemetry for fun &amp; profit</a></h2>
-    <p class="index-date">Oct 30th, 2019</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Telemetry.html">Telemetry</a></span></p>
-  </header>
-
-<p>For the last year, we&rsquo;ve been gradually migrating our backend Telemetry systems from AWS to GCP. I&rsquo;ve been helping out here and there with this effort, most recently porting a job we used to detect slow tab spinners in Firefox nightly, which produced a small dataset that feeds a <a href="https://mikeconley.github.io/bug1310250/">small adhoc dashboard</a> which Mike Conley maintains. This was a relatively small task as things go, but it highlighted some features and improvements which I think might be broadly interesting, so I decided to write up a small blog post about it.</p>
-
-<p>Essentially all this dashboard tells you is what percentage of the Firefox nightly population saw a tab spinner over the past 6 months. And of those that did see a tab spinner, what was the severity? Essentially we’re just trying to make sure that there are no major regressions of user experience (and also that efforts to improve things bore fruit):</p>
-
-<center><img style="width:600px" srcset="/files/2019/10/tab-spinner-dash.png" /></center>
-
-<p>Pretty simple stuff, but getting the data necessary to produce this kind of dashboard used to be anything but trivial: while some common business/product questions could be answered by a quick query to <a href="https://docs.telemetry.mozilla.org/datasets/batch_view/clients_daily/reference.html">clients_daily</a>, getting engineering-specific metrics like this usually involved trawling through gigabytes of raw heka encoded blobs using an Apache Spark cluster and then extracting the relevant information out of the telemetry probe histograms (in this case, <code>FX_TAB_SWITCH_SPINNER_VISIBLE_MS</code> and <code>FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS</code>) contained therein.</p>
-
-<p>The code itself was rather complicated (<a href="https://github.com/mozilla/python_mozetl/blob/58dce245ce8012b338e8b102a8c2c0f00601be60/mozetl/tab_spinner/tab_spinner.py">take a look, if you dare</a>) but even worse, running it could get <em>very expensive</em>. We had a 14 node cluster churning through this script daily, and it took on average about an hour and a half to run! I don&rsquo;t have the exact cost figures on hand (and am not sure if I&rsquo;d be authorized to share them if I did), but based on a back of the envelope sketch, this one single script was probably costing us somewhere on the order of $10-$40 a day (that works out to between $3650-$14600 a year).</p>
-
-<p>With our move to <a href="https://cloud.google.com/bigquery/">BigQuery</a>, things get a lot simpler! Thanks to the combined effort of my team and data operations[1], we now produce &ldquo;stable&rdquo; ping tables on a daily basis with <em>all</em> the relevant histogram data (stored as JSON blobs), queryable using relatively vanilla SQL. In this case, the data we care about is in <code>telemetry.main</code> (named after the main ping, appropriately enough). With the help of a small <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions">JavaScript UDF</a> function, all of this data can easily be extracted into a table inside a single SQL query scheduled by <a href="https://docs.telemetry.mozilla.org/tools/stmo.html">sql.telemetry.mozilla.org</a>.</p>
-
-<div class="brush: sql">
- <div class="colorful">
-  <pre><span></span><span class="k">CREATE</span> <span class="n">TEMP</span> <span class="k">FUNCTION</span>
-  <span class="n">udf_js_json_extract_highest_long_spinner</span> <span class="p">(</span><span class="k">input</span> <span class="n">STRING</span><span class="p">)</span>
-  <span class="k">RETURNS</span> <span class="n">INT64</span>
-  <span class="k">LANGUAGE</span> <span class="n">js</span> <span class="k">AS</span> <span class="ss">"""</span>
-<span class="ss">    if (input == null) {</span>
-<span class="ss">      return 0;</span>
-<span class="ss">    }</span>
-<span class="ss">    var result = JSON.parse(input);</span>
-<span class="ss">    var valuesMap = result.values;</span>
-<span class="ss">    var highest = 0;</span>
-<span class="ss">    for (var key in valuesMap) {</span>
-<span class="ss">      var range = parseInt(key);</span>
-<span class="ss">      if (valuesMap[key]) {</span>
-<span class="ss">        highest = range &gt; 0 ? range : 1;</span>
-<span class="ss">      }</span>
-<span class="ss">    }</span>
-<span class="ss">    return highest;</span>
-<span class="ss">"""</span><span class="p">;</span>
-
-<span class="k">SELECT</span> <span class="n">build_id</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">64000</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_64000ms_or_higher</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">27856</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">64000</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_27856ms_to_63999ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">12124</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">27856</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_12124ms_to_27855ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">5277</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">12124</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_5277ms_to_12123ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">2297</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">5277</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_2297ms_to_5276ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">1000</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">2297</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_1000ms_to_2296ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_0ms_to_49ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">50</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_50ms_to_99ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">100</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">200</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_100ms_to_199ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">400</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_200ms_to_399ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">400</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">800</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_400ms_to_799ms</span><span class="p">,</span>
-<span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="k">count</span>
-<span class="k">from</span>
-<span class="p">(</span><span class="k">select</span> <span class="n">build_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="k">max</span><span class="p">(</span><span class="n">greatest</span><span class="p">(</span><span class="n">highest_long</span><span class="p">,</span> <span class="n">highest_short</span><span class="p">))</span> <span class="k">as</span> <span class="n">highest</span>
-<span class="k">from</span>
-<span class="p">(</span><span class="k">SELECT</span>
-    <span class="n">SUBSTR</span><span class="p">(</span><span class="n">application</span><span class="p">.</span><span class="n">build_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="k">as</span> <span class="n">build_id</span><span class="p">,</span>
-    <span class="n">client_id</span><span class="p">,</span>
-    <span class="n">udf_js_json_extract_highest_long_spinner</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">histograms</span><span class="p">.</span><span class="n">FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS</span><span class="p">)</span> <span class="k">AS</span> <span class="n">highest_long</span><span class="p">,</span>
-    <span class="n">udf_js_json_extract_highest_long_spinner</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">histograms</span><span class="p">.</span><span class="n">FX_TAB_SWITCH_SPINNER_VISIBLE_MS</span><span class="p">)</span> <span class="k">as</span> <span class="n">highest_short</span>
-<span class="k">FROM</span> <span class="n">telemetry</span><span class="p">.</span><span class="n">main</span>
-<span class="k">WHERE</span>
-    <span class="n">application</span><span class="p">.</span><span class="n">channel</span><span class="o">=</span><span class="s1">&#39;nightly&#39;</span>
-    <span class="k">AND</span> <span class="n">normalized_os</span><span class="o">=</span><span class="s1">&#39;Windows&#39;</span>
-    <span class="k">AND</span> <span class="n">application</span><span class="p">.</span><span class="n">build_id</span> <span class="o">&gt;</span> <span class="n">FORMAT_DATE</span><span class="p">(</span><span class="ss">"%Y%m%d"</span><span class="p">,</span> <span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span> <span class="nb">INTERVAL</span> <span class="mi">2</span> <span class="n">QUARTER</span><span class="p">))</span>
-    <span class="k">AND</span> <span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span> <span class="nb">INTERVAL</span> <span class="mi">2</span> <span class="n">QUARTER</span><span class="p">))</span>
-<span class="k">group</span> <span class="k">by</span> <span class="n">build_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">)</span> <span class="k">group</span> <span class="k">by</span> <span class="n">build_id</span><span class="p">;</span>
-</pre></div>
-
-</div>
-
-<p>In addition to being much simpler, this new job is also <em>way</em> cheaper. The last run of it scanned just over 1 TB of data, meaning it cost us just over $5. Not as cheap as I might like, but considerably less expensive than before: I&rsquo;ve also scheduled it to only run once every other day, since Mike tells me he doesn&rsquo;t need this data any more often than that.</p>
-
-<p>[1] I understand that Jeff Klukas, Frank Bertsch, Daniel Thorn, Anthony Miyaguchi, and Wesley Dawson are the principals involved - apologies if I&rsquo;m forgetting someone.</p> 
   <hr/>
 </article>
 <footer>

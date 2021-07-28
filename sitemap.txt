@@ -97,6 +97,7 @@ https://wrla.ch/blog/2021/03/blog-moving-back-to-wrla-ch/
 https://wrla.ch/blog/2018/11/making-contribution-work-for-firefox-tooling-and-data-projects/
 https://wrla.ch/blog/2014/06/end-of-q2-eideticker-update-flame-tests-future-plans/
 https://wrla.ch/blog/2016/08/perfherder-quarter-of-contribution-summer-2016-results/
+https://wrla.ch/blog/2021/07/irydium-recurse-updates/
 https://wrla.ch/blog/2019/09/metrics-graphics-stepping-back-for-a-while/
 https://wrla.ch/blog/2014/08/a-new-meditation-app/
 https://wrla.ch/blog/2014/03/eideticker-for-firefoxos-becoming-more-useful/
