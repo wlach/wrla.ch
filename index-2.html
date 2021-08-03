@@ -92,6 +92,38 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2021/01/the-glean-dictionary/">The Glean Dictionary</a></h2>
+    <p class="index-date">Jan 27th, 2021</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Glean.html">Glean</a></span></p>
+  </header>
+
+<p><em>(“This Week in Glean” is a series of blog posts that the Glean Team at Mozilla is using to try to communicate better about our work. They could be release notes, documentation, hopes, dreams, or whatever: so long as it is inspired by Glean. You can find <a href="https://mozilla.github.io/glean/book/appendix/twig.html">an index of all TWiG posts online.</a>)</em></p>
+
+<p>On behalf of Mozilla&rsquo;s Data group, I&rsquo;m happy to announce the availability of the first milestone of the Glean Dictionary, a project to provide a comprehensive &ldquo;data dictionary&rdquo; of the data Mozilla collects inside its products and how it makes use of it. You can access it via this development URL:</p>
+
+<p><a href="https://dictionary.protosaur.dev/">https://dictionary.protosaur.dev/</a></p>
+
+<div class="figure"><img src="/files/2021/01/glean-dictionary.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>The goal of this first milestone was to provide an equivalent to the <a href="https://probes.telemetry.mozilla.org">popular &ldquo;probe&rdquo; dictionary</a> for newer applications which use the Glean SDK, such as Firefox for Android. As Firefox on Glean (FoG) comes together, this will also serve as an index of what data is available for Firefox and how to access it.</p>
+
+<p>Part of the vision of this project is to act as a showcase for Mozilla&rsquo;s practices around <a href="https://www.mozilla.org/en-US/about/policy/lean-data/">lean data</a> and <a href="https://wiki.mozilla.org/Firefox/Data_Collection">data governance</a>: you&rsquo;ll note that every metric and ping in the Glean Dictionary has a data review associated with it &mdash; giving the general public a window into what we&rsquo;re collecting and why.</p>
+
+<p>In addition to displaying a browsable inventory of the low-level metrics which these applications collect, the Glean Dictionary also provides:</p>
+
+<ul>
+ <li>Code search functionality (via <a href="https://searchfox.org">Searchfox</a>) to see where any given data collection is defined and used.</li>
+ <li>Information on how this information is represented inside Mozilla&rsquo;s BigQuery data store.</li>
+ <li>Where available, links to browse / view this information using the <a href="https://glam.telemetry.mozilla.org">Glean Aggregated Metrics Dashboard</a> (GLAM).</li></ul>
+
+<p>Over the next few months, we&rsquo;ll be expanding the Glean Dictionary to include derived datasets and dashboards / reports built using this data, as well as allow users to add their own annotations on metric behaviour via a GitHub-based documentation system. For more information, see the <a href="https://docs.google.com/document/d/1OkTWA3rsSJ0m5g9GDnxXVUMkJP-xJMQk_bDgDq-Z9xM/edit#">project proposal</a>.</p>
+
+<p>The Glean Dictionary is the result of the efforts of many contributors, both inside and outside Mozilla Data. Special shout-out to <a href="https://www.linh-nguyen.com/outreachy">Linh Nguyen</a>, who has been moving mountains inside the codebase as part of an Outreachy internship with us. We welcome your feedback and involvement! For more information, see our <a href="https://github.com/mozilla/glean-dictionary">project repository</a> and Matrix channel (<a href="https://chat.mozilla.org/#/room/#glean-dictionary:mozilla.org">#glean-dictionary on chat.mozilla.org</a>).</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2020/11/iodide-retrospective/">iodide retrospective</a></h2>
     <p class="index-date">Nov 10th, 2020</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/iodide.html">iodide</a></span></p>
@@ -750,26 +782,6 @@ while (1) { true }</code></pre>
 <h2 id="next-steps">Next steps</h2>
 
 <p>There are a bunch of things I still need to work through before landing this inside mozregression itself. Notably, the Glean python bindings are python3-only, so we&rsquo;ll need to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766">port the mozregression GUI to python 3</a> before we can start measuring usage there. But I&rsquo;m excited at how quickly this work is coming together: stay tuned for part 2 in a few weeks.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2020/01/conda-is-pretty-great/">Conda is pretty great</a></h2>
-    <p class="index-date">Jan 13th, 2020</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Telemetry.html">Telemetry</a></span></p>
-  </header>
-
-<p>Lately the data engineering team has been looking into productionizing (i.e. running in Airflow) a bunch of models that the data science team has been producing. This often involves languages and environments that are a bit outside of our comfort zone &mdash; for example, <a href="https://github.com/mozilla/missioncontrol-v2">the next version of Mission Control</a> relies on the <a href="https://mc-stan.org/users/interfaces/rstan">R-stan library</a> to produce a model of expected crash behaviour as Firefox is released.</p>
-
-<p>To make things as simple and deterministic as possible, we&rsquo;ve been building up Docker containers to run/execute this code along with their dependencies, which makes things nice and reproducible. My initial thought was to use just the language-native toolchains to build up my container for the above project, but quickly found a number of problems:</p>
-
-<ol>
- <li>For local testing, Docker on Mac is <em>slow</em>: when doing a large number of statistical calculations (as above), you can count on your testing iterations taking 3 to 4 (or more) times longer.</li>
- <li>On initial setup, the default R packaging strategy is to have the user of a package like R-stan recompile from source. This can take <em>forever</em> if you have a long list of dependencies with C-compiled extensions (pretty much a given if you&rsquo;re working in the data space): rebuilding my initial docker environment for missioncontrol-v2 took almost an hour. This isn&rsquo;t just a problem for local development: it also makes continuous integration using a service like Circle or Travis expensive and painful.</li></ol>
-
-<p>I had been vaguely aware of <a href="https://docs.conda.io/en/latest/">Conda</a> for a few years, but didn&rsquo;t really understand its value proposition until I started working on the above project: why bother with a heavyweight package manager when you already have Docker to virtualize things? The answer is that it solves both of the above problems: for local development, you can get something more-or-less identical to what you&rsquo;re running inside Docker with no performance penalty whatsoever. And for building the docker container itself, Conda&rsquo;s package repository contains pre-compiled versions of all the dependencies you&rsquo;d want to use for something like this (even somewhat esoteric libraries like R-stan are available on <a href="https://conda-forge.org/">conda-forge</a>), which brought my build cycle times down to less than 5 minutes.</p>
-
-<p>tl;dr: If you have a bunch of R / python code you want to run in a reproducible manner, consider Conda.</p> 
   <hr/>
 </article>
 <footer>

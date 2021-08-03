@@ -4,9 +4,48 @@
   <title>William Lachance's Log: Posts tagged 'Irydium'</title>
   <description>William Lachance's Log: Posts tagged 'Irydium'</description>
   <link>https://wrla.ch/tags/Irydium.html</link>
-  <lastBuildDate>Wed, 28 Jul 2021 19:16:42 UT</lastBuildDate>
-  <pubDate>Wed, 28 Jul 2021 19:16:42 UT</pubDate>
+  <lastBuildDate>Tue, 03 Aug 2021 15:37:35 UT</lastBuildDate>
+  <pubDate>Tue, 03 Aug 2021 15:37:35 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Lightweight dashboards and reports with Irydium and surge.sh</title>
+   <link>https://wrla.ch/blog/2021/08/lightweight-dashboards-and-reports-with-irydium-and-surge-sh/?utm_source=Irydium&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-08-lightweight-dashboards-and-reports-with-irydium-and-surge-sh</guid>
+   <pubDate>Tue, 03 Aug 2021 15:37:35 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;One of my main goals with &lt;a href="https://irydium.dev"&gt;Irydium&lt;/a&gt; is to allow it to be a part of as many possible data science and engineering workflows (including ones I haven&amp;rsquo;t thought of). Yes, like &lt;a href="https://alpha.iodide.io"&gt;Iodide&lt;/a&gt; and other products, I am (slowly) building a web-based interface for building and sharing dashboards, reports, and similar things. However, I also want to fully support local and command-line based workflows. Beyond the obvious utility of being able to use your favorite text-editor to create documents, this also opens up the possibility of combining Irydium with other tools and workflows. For a slightly longer exposition on why this is desirable, I would highly recommend reading Ryan Harter&amp;rsquo;s post on the subject: &lt;a href="https://blog.harterrt.com/coding_in_textboxes.html"&gt;Don&amp;rsquo;t make me code in your text box&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id="using-the-irydium-template"&gt;Using the irydium template&lt;/h2&gt;
+
+&lt;p&gt;To make getting started easier, I just created an &lt;a href="https://github.com/irydium/irydium-template"&gt;irydium-template&lt;/a&gt;: a simple GitHub repository which contains a minimal markdown document (a &lt;a href="https://www.economist.com/big-mac-index"&gt;big mac index&lt;/a&gt; visualization) which you can use as a base, as well as a bit of npm scaffolding to get you up and running quickly. To check it out via the console, I recommend using &lt;a href="https://github.com/Rich-Harris/degit"&gt;degit&lt;/a&gt; (the tool of choice for such things in the Svelte community):&lt;/p&gt;
+
+&lt;div class="brush: bash"&gt;
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;npx degit git@github.com:irydium/irydium-template.git my-notebook
+npm install
+npm run dev
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;This will create a webserver which renders the document (index.md) at port 3000, along with some debugging options. As you edit and save the document, the site should update automatically.&lt;/p&gt;
+
+&lt;h2 id="publishing-your-work"&gt;Publishing your work&lt;/h2&gt;
+
+&lt;p&gt;When you&amp;rsquo;re happy with the results, you can create a static version of the site (an &lt;code&gt;index.html&lt;/code&gt; file) by running &lt;code&gt;npm run build&lt;/code&gt;. You can publish this via whatever you like: GitHub pages, Netlify / Vercel or&amp;hellip; my new favorite service, &lt;a href="https://surge.sh"&gt;surge.sh&lt;/a&gt;. Surge provides a really simple hosting service for hosting static sites and works great with Irydium. Installing &lt;em&gt;and&lt;/em&gt; running it locally is two commands:&lt;/p&gt;
+
+&lt;div class="brush: bash"&gt;
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;npm install -g surge
+surge
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;Surge will prompt you for an email and a password, then will automatically publish your site at a unique URL. As an example, I published a site for the above template: &lt;a href="https://few-blade.surge.sh"&gt;few-blade.surge.sh&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Interested in chatting more about this? Feel free to reach out on the &lt;a href="https://gitter.im/irydium/community"&gt;Irydium Gitter chat&lt;/a&gt;.&lt;/p&gt;</description></item>
   <item>
    <title>Irydium @ Recurse Updates</title>
    <link>https://wrla.ch/blog/2021/07/irydium-recurse-updates/?utm_source=Irydium&amp;utm_medium=RSS</link>

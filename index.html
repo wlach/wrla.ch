@@ -92,6 +92,47 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2021/08/lightweight-dashboards-and-reports-with-irydium-and-surge-sh/">Lightweight dashboards and reports with Irydium and surge.sh</a></h2>
+    <p class="index-date">Aug 3rd, 2021</p>
+    <p><span class="tags"><a href="/tags/Irydium.html">Irydium</a>  <a href="/tags/Recurse.html">Recurse</a></span></p>
+  </header>
+
+<p>One of my main goals with <a href="https://irydium.dev">Irydium</a> is to allow it to be a part of as many possible data science and engineering workflows (including ones I haven&rsquo;t thought of). Yes, like <a href="https://alpha.iodide.io">Iodide</a> and other products, I am (slowly) building a web-based interface for building and sharing dashboards, reports, and similar things. However, I also want to fully support local and command-line based workflows. Beyond the obvious utility of being able to use your favorite text-editor to create documents, this also opens up the possibility of combining Irydium with other tools and workflows. For a slightly longer exposition on why this is desirable, I would highly recommend reading Ryan Harter&rsquo;s post on the subject: <a href="https://blog.harterrt.com/coding_in_textboxes.html">Don&rsquo;t make me code in your text box</a>.</p>
+
+<h2 id="using-the-irydium-template">Using the irydium template</h2>
+
+<p>To make getting started easier, I just created an <a href="https://github.com/irydium/irydium-template">irydium-template</a>: a simple GitHub repository which contains a minimal markdown document (a <a href="https://www.economist.com/big-mac-index">big mac index</a> visualization) which you can use as a base, as well as a bit of npm scaffolding to get you up and running quickly. To check it out via the console, I recommend using <a href="https://github.com/Rich-Harris/degit">degit</a> (the tool of choice for such things in the Svelte community):</p>
+
+<div class="brush: bash">
+ <div class="colorful">
+  <pre><span></span>npx degit git@github.com:irydium/irydium-template.git my-notebook
+npm install
+npm run dev
+</pre></div>
+
+</div>
+
+<p>This will create a webserver which renders the document (index.md) at port 3000, along with some debugging options. As you edit and save the document, the site should update automatically.</p>
+
+<h2 id="publishing-your-work">Publishing your work</h2>
+
+<p>When you&rsquo;re happy with the results, you can create a static version of the site (an <code>index.html</code> file) by running <code>npm run build</code>. You can publish this via whatever you like: GitHub pages, Netlify / Vercel or&hellip; my new favorite service, <a href="https://surge.sh">surge.sh</a>. Surge provides a really simple hosting service for hosting static sites and works great with Irydium. Installing <em>and</em> running it locally is two commands:</p>
+
+<div class="brush: bash">
+ <div class="colorful">
+  <pre><span></span>npm install -g surge
+surge
+</pre></div>
+
+</div>
+
+<p>Surge will prompt you for an email and a password, then will automatically publish your site at a unique URL. As an example, I published a site for the above template: <a href="https://few-blade.surge.sh">few-blade.surge.sh</a></p>
+
+<p>Interested in chatting more about this? Feel free to reach out on the <a href="https://gitter.im/irydium/community">Irydium Gitter chat</a>.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2021/07/irydium-recurse-updates/">Irydium @ Recurse Updates</a></h2>
     <p class="index-date">Jul 28th, 2021</p>
     <p><span class="tags"><a href="/tags/Irydium.html">Irydium</a>  <a href="/tags/Recurse.html">Recurse</a></span></p>
@@ -455,38 +496,6 @@
    <p>I&rsquo;ve since moved to the <a href="https://wiki.mozilla.org/Data">Data team</a>.&nbsp;<a href="#2021-02-24-community-mozilla-people-first-open-source-second-footnote-1-return">↩</a></p></li>
   <li id="2021-02-24-community-mozilla-people-first-open-source-second-footnote-2-definition" class="footnote-definition">
    <p>This includes our internal communications channels like our <a href="https://wiki.mozilla.org/Matrix">Matrix instance</a> as well as issue trackers like Bugzilla. There&rsquo;s also a question of what to do about non-Mozilla channels, like Twitter or the <a href="https://news.ycombinator.com">Orange Site</a>. Although not Mozilla spaces, these places are often vectors for harassment of community members. I don&rsquo;t have any good answers for what to do about this, aside from offering my solidarity and support to those suffering abuse on these channels. Disagreement with Mozilla&rsquo;s strategy or policy is one thing, but personal attacks, harassment, and character assasination is never ok&mdash; no matter where it&rsquo;s happening.&nbsp;<a href="#2021-02-24-community-mozilla-people-first-open-source-second-footnote-2-return">↩</a></p></li></ol></div> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2021/01/the-glean-dictionary/">The Glean Dictionary</a></h2>
-    <p class="index-date">Jan 27th, 2021</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Glean.html">Glean</a></span></p>
-  </header>
-
-<p><em>(“This Week in Glean” is a series of blog posts that the Glean Team at Mozilla is using to try to communicate better about our work. They could be release notes, documentation, hopes, dreams, or whatever: so long as it is inspired by Glean. You can find <a href="https://mozilla.github.io/glean/book/appendix/twig.html">an index of all TWiG posts online.</a>)</em></p>
-
-<p>On behalf of Mozilla&rsquo;s Data group, I&rsquo;m happy to announce the availability of the first milestone of the Glean Dictionary, a project to provide a comprehensive &ldquo;data dictionary&rdquo; of the data Mozilla collects inside its products and how it makes use of it. You can access it via this development URL:</p>
-
-<p><a href="https://dictionary.protosaur.dev/">https://dictionary.protosaur.dev/</a></p>
-
-<div class="figure"><img src="/files/2021/01/glean-dictionary.png" alt="" />
- <p class="caption"></p></div>
-
-<p>The goal of this first milestone was to provide an equivalent to the <a href="https://probes.telemetry.mozilla.org">popular &ldquo;probe&rdquo; dictionary</a> for newer applications which use the Glean SDK, such as Firefox for Android. As Firefox on Glean (FoG) comes together, this will also serve as an index of what data is available for Firefox and how to access it.</p>
-
-<p>Part of the vision of this project is to act as a showcase for Mozilla&rsquo;s practices around <a href="https://www.mozilla.org/en-US/about/policy/lean-data/">lean data</a> and <a href="https://wiki.mozilla.org/Firefox/Data_Collection">data governance</a>: you&rsquo;ll note that every metric and ping in the Glean Dictionary has a data review associated with it &mdash; giving the general public a window into what we&rsquo;re collecting and why.</p>
-
-<p>In addition to displaying a browsable inventory of the low-level metrics which these applications collect, the Glean Dictionary also provides:</p>
-
-<ul>
- <li>Code search functionality (via <a href="https://searchfox.org">Searchfox</a>) to see where any given data collection is defined and used.</li>
- <li>Information on how this information is represented inside Mozilla&rsquo;s BigQuery data store.</li>
- <li>Where available, links to browse / view this information using the <a href="https://glam.telemetry.mozilla.org">Glean Aggregated Metrics Dashboard</a> (GLAM).</li></ul>
-
-<p>Over the next few months, we&rsquo;ll be expanding the Glean Dictionary to include derived datasets and dashboards / reports built using this data, as well as allow users to add their own annotations on metric behaviour via a GitHub-based documentation system. For more information, see the <a href="https://docs.google.com/document/d/1OkTWA3rsSJ0m5g9GDnxXVUMkJP-xJMQk_bDgDq-Z9xM/edit#">project proposal</a>.</p>
-
-<p>The Glean Dictionary is the result of the efforts of many contributors, both inside and outside Mozilla Data. Special shout-out to <a href="https://www.linh-nguyen.com/outreachy">Linh Nguyen</a>, who has been moving mountains inside the codebase as part of an Outreachy internship with us. We welcome your feedback and involvement! For more information, see our <a href="https://github.com/mozilla/glean-dictionary">project repository</a> and Matrix channel (<a href="https://chat.mozilla.org/#/room/#glean-dictionary:mozilla.org">#glean-dictionary on chat.mozilla.org</a>).</p> 
   <hr/>
 </article>
 <footer>

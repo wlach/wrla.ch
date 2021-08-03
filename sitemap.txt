@@ -1,5 +1,6 @@
 https://wrla.ch/blog/2014/05/mozregression-new-maintainer-issues-tracked-in-bugzilla/
 https://wrla.ch/blog/2011/11/weirdest-and-saddest-unsolicited-email-ever/
+https://wrla.ch/blog/2021/08/lightweight-dashboards-and-reports-with-irydium-and-surge-sh/
 https://wrla.ch/blog/2012/10/catching-problems-early-with-python/
 https://wrla.ch/blog/2017/10/mission-control/
 https://wrla.ch/blog/2012/01/yet-more-checkerboarding-analysis/
