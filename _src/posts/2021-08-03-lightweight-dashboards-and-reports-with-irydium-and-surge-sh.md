@@ -2,8 +2,7 @@
     Date: 2021-08-03T11:37:35
     Tags: Irydium, Recurse
 
-One of my main goals with [Irydium] is to allow it to be a part of as many possible data science and engineering workflows
-(including ones I haven't thought of).
+One of my main goals with [Irydium] is to allow it to be a part of as many data science and engineering workflows as possible (including ones I haven't thought of).
 Yes, like [Iodide] and other products, I am (slowly) building a web-based interface for building and sharing dashboards, reports, and similar things.
 However, I also want to fully support local and command-line based workflows.
 Beyond the obvious utility of being able to use your favorite text-editor to create documents, this also opens up the possibility of combining Irydium with other tools and workflows.
