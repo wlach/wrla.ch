@@ -92,6 +92,121 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/">This week in Glean (special guest post): mozregression telemetry (part 1)</a></h2>
+    <p class="index-date">Feb 28th, 2020</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Telemetry.html">Telemetry</a>  <a href="/tags/Glean.html">Glean</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
+  </header>
+
+<p><em>(“This Week in Glean” is a series of blog posts that the Glean Team at Mozilla is using to try to communicate better about our work. They could be release notes, documentation, hopes, dreams, or whatever: so long as it is inspired by Glean. You can find <a href="https://mozilla.github.io/glean/book/appendix/twig.html">an index of all TWiG posts online.</a>)</em></p>
+
+<p><em>This is a special guest post by non-Glean-team member William Lachance!</em></p>
+
+<p>As I <a href="/blog/2019/09/mozregression-update-python-3-edition/">mentioned last time</a> I talked about <a href="https://mozilla.github.io/mozregression/">mozregression</a>, I have been thinking about adding some telemetry to the system to better understand the usage of this tool, to justify some part of Mozilla spending some cycles maintaining and improving it (assuming my intuition that this tool is heavily used is confirmed).</p>
+
+<p>Coincidentally, the Telemetry client team has been working on a new library for measuring these types of things in a principled way called <a href="https://mozilla.github.io/glean/book/index.html">Glean</a>, which even has python bindings! Using this has the potential in saving a lot of work: not only does Glean provide a framework for submitting data, our backend systems are automatically set up to process data submitted via into Glean into <a href="https://cloud.google.com/bigquery">BigQuery</a> tables, which can then easily be queried using tools like <a href="https://docs.telemetry.mozilla.org/tools/stmo.html">sql.telemetry.mozilla.org</a>.</p>
+
+<p>I thought it might be useful to go through some of what I&rsquo;ve been exploring, in case others at Mozilla are interested in instrumenting their pet internal tools or projects. If this effort is successful, I&rsquo;ll distill these notes into a tutorial in the Glean documentation.</p>
+
+<h2 id="initial-steps-defining-pings-and-metrics">Initial steps: defining pings and metrics</h2>
+
+<p>The initial step in setting up a Glean project of any type is to define explicitly the types of pings and metrics. You can look at a &ldquo;ping&rdquo; as being a small bucket of data submitted by a piece of software in the field. A &ldquo;metric&rdquo; is something we&rsquo;re measuring and including in a ping.</p>
+
+<p>Most of the Glean documentation focuses on browser-based use-cases where we might want to sample lots of different things on an ongoing basis, but for mozregression our needs are considerably simpler: we just want to know when someone <em>has</em> used it along with a small number of non-personally identifiable characteristics of their usage, e.g. the mozregression version number and the name of the application they are bisecting.</p>
+
+<p>Glean has <a href="https://mozilla.github.io/glean/book/user/pings/events.html">the concept of event pings</a>, but it seems like those are there more for a fine-grained view of what&rsquo;s going on during an application&rsquo;s use. So let&rsquo;s define a new ping just for ourselves, giving it the unimaginative name &ldquo;usage&rdquo;. This goes in a file called <code>pings.yaml</code>:</p>
+
+<div class="brush: yaml">
+ <div class="colorful">
+  <pre><span></span><span class="nn">---</span>
+<span class="nt">$schema</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/pings/1-0-0</span>
+
+<span class="nt">usage</span><span class="p">:</span>
+  <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
+    <span class="no">A ping to record usage of mozregression</span>
+  <span class="nt">include_client_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="nt">notification_emails</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span>
+  <span class="nt">bugs</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://bugzilla.mozilla.org/123456789/</span>
+  <span class="nt">data_reviews</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span>
+</pre></div>
+
+</div>
+
+<p>We also need to define a list of things we want to measure. To start with, let&rsquo;s just test with one piece of sample information: the app we&rsquo;re bisecting (e.g. &ldquo;Firefox&rdquo; or &ldquo;Gecko View Example&rdquo;). This goes in a file called <code>metrics.yaml</code>:</p>
+
+<div class="brush: yaml">
+ <div class="colorful">
+  <pre><span></span><span class="nn">---</span>
+<span class="nt">$schema</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/metrics/1-0-0</span>
+
+<span class="nt">usage</span><span class="p">:</span>
+  <span class="nt">app</span><span class="p">:</span>
+    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+    <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
+      <span class="no">The name of the app being bisected</span>
+    <span class="nt">notification_emails</span><span class="p">:</span> 
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span>
+    <span class="nt">bugs</span><span class="p">:</span> 
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">https://bugzilla.mozilla.org/show_bug.cgi?id=1581647</span>
+    <span class="nt">data_reviews</span><span class="p">:</span> 
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span>
+    <span class="nt">expires</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">never</span>
+    <span class="nt">send_in_pings</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">usage</span>
+</pre></div>
+
+</div>
+
+<p>The <code>data_reviews</code> sections in both of the above are obviously bogus, we will need to actually get data review before landing and using this code, to make sure that we&rsquo;re in conformance with Mozilla&rsquo;s <a href="https://wiki.mozilla.org/Firefox/Data_Collection">data collection policies</a>.</p>
+
+<h2 id="testing-it-out">Testing it out</h2>
+
+<p>But in the mean time, we can test our setup with the <a href="https://docs.telemetry.mozilla.org/concepts/glean/debug_ping_view.html">Glean debug pings viewer</a> by setting a special tag (<code>mozregression-test-tag</code>) on our output. Here&rsquo;s a small python script which does just that:</p>
+
+<div class="brush: py">
+ <div class="colorful">
+  <pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">glean</span> <span class="kn">import</span> <span class="n">Glean</span><span class="p">,</span> <span class="n">Configuration</span>
+<span class="kn">from</span> <span class="nn">glean</span> <span class="kn">import</span> <span class="p">(</span><span class="n">load_metrics</span><span class="p">,</span>
+                   <span class="n">load_pings</span><span class="p">)</span>
+
+<span class="n">mozregression_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s1">&#39;.mozilla2&#39;</span> <span class="o">/</span> <span class="s1">&#39;mozregression&#39;</span>
+
+<span class="n">Glean</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span>
+    <span class="n">application_id</span><span class="o">=</span><span class="s2">"mozregression"</span><span class="p">,</span>
+    <span class="n">application_version</span><span class="o">=</span><span class="s2">"0.1.1"</span><span class="p">,</span>
+    <span class="n">upload_enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">configuration</span><span class="o">=</span><span class="n">Configuration</span><span class="p">(</span>
+      <span class="n">ping_tag</span><span class="o">=</span><span class="s2">"mozregression-test-tag"</span>
+    <span class="p">),</span>
+    <span class="n">data_dir</span><span class="o">=</span><span class="n">mozregression_path</span> <span class="o">/</span> <span class="s2">"data"</span>
+<span class="p">)</span>
+<span class="n">Glean</span><span class="o">.</span><span class="n">set_upload_enabled</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">pings</span> <span class="o">=</span> <span class="n">load_pings</span><span class="p">(</span><span class="s2">"pings.yaml"</span><span class="p">)</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="n">load_metrics</span><span class="p">(</span><span class="s2">"metrics.yaml"</span><span class="p">)</span>
+
+<span class="n">metrics</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">app</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">"reality"</span><span class="p">)</span>
+<span class="n">pings</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">submit</span><span class="p">()</span>
+</pre></div>
+
+</div>
+
+<p>Running this script on my laptop, I see that a respectable JSON payload was delivered to and processed by our servers:</p>
+
+<p><img style="width:600px" src="/files/2020/02/glean-debug-ping-viewer.png" /></p>
+
+<p>As you can see, we&rsquo;re successfully processing both the &ldquo;version&rdquo; number of mozregression, some characteristics of the machine sending the information (my MacBook in this case), as well as our single measure. We also have a client id, which should tell us roughly how many distinct installations of mozregression are sending pings. This should be more than sufficient for an initial &ldquo;mozregression usage dashboard&rdquo;.</p>
+
+<h2 id="next-steps">Next steps</h2>
+
+<p>There are a bunch of things I still need to work through before landing this inside mozregression itself. Notably, the Glean python bindings are python3-only, so we&rsquo;ll need to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766">port the mozregression GUI to python 3</a> before we can start measuring usage there. But I&rsquo;m excited at how quickly this work is coming together: stay tuned for part 2 in a few weeks.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2020/01/conda-is-pretty-great/">Conda is pretty great</a></h2>
     <p class="index-date">Jan 13th, 2020</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Telemetry.html">Telemetry</a></span></p>
@@ -355,34 +470,6 @@
  <li><a href="https://pydata.org/nyc2018/schedule/presentation/30/">Data Science in Health Care: Beyond the Hype</a>:  Great presentations in how data science can be used to improve health care outcomes. Lots of relevant  insights that I think are also applicable to &ldquo;product health&rdquo; here at Mozilla. I  particularly liked the way the presenter framed requirements when deciding whether or not  to do a type of analysis: &ldquo;if i knew [information], i would do [intervention], which would  have [measurable outcome]&rdquo;</li></ul>
 
 <p>Of course, this post wouldn&rsquo;t be complete without a mention of <a href="http://droettboom.com/">Mike Droettboom</a>&rsquo;s <a href="https://pydata.org/nyc2018/schedule/presentation/3/">talk</a> on <a href="https://iodide.io">iodide</a>, a project I&rsquo;ve been spending some considerable cycles helping with over the last couple of quarters. I need to write some longer thoughts on iodide at some point in the near future, but in a nutshell it&rsquo;s a scientific notebook environment where the computational kernel lives entirely inside the browser. It was well received and we had a great followup session afterwards with people interested in using it for various things. Being able to show a python environment in the browser which &ldquo;just works&rdquo;, with no installation or other steps makes a <em>great</em> tech demo. I&rsquo;m really excited about the public launch of our server-based environment, which will hopefully be coming in the next couple of months.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2018/06/mission-control-1-0/">Mission Control 1.0</a></h2>
-    <p class="index-date">Jun 5th, 2018</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-  </header>
-
-<p>Just a quick announcement that the first &ldquo;production-ready&rdquo; version of Mission Control just went live yesterday, at this easy-to-remember URL:</p>
-
-<p><a href="https://missioncontrol.telemetry.mozilla.org">https://missioncontrol.telemetry.mozilla.org</a></p>
-
-<p>For those not yet familiar with the project, Mission Control aims to track release stability and quality across Firefox releases. It is similar in spirit to arewestableyet and other crash dashboards, with the following new and exciting properties:</p>
-
-<ul>
- <li>Uses the full set of crash counts gathered via telemetry, rather than the arbitrary  sample that users decide to submit to crash-stats</li>
- <li>Results are available within minutes of ingestion by telemetry (although be warned  <a href="/blog/2017/10/better-or-worse-by-what-measure/">initial results for a release always look bad</a>)</li>
- <li>The denominator in our crash rate is usage hours, rather than the probably-incorrect  calculation of active-daily-installs used by  <a href="https://arewestableyet.com">arewestableyet</a> (not a knock on the people who  wrote that tool, there was nothing better available at the time)</li>
- <li>We have a detailed breakdown of the results by platform (rather than letting Windows  results dominate the overall rates due to its high volume of usage)</li></ul>
-
-<p>In general, my hope is that this tool will provide a more scientific and accurate idea of release stability and quality over time. There&rsquo;s lots more to do, but I think this is a promising start. Much gratitude to <a href="https://home.kairo.at/blog/2014-04/how_effective_is_the_stability_program">kairo</a>, calixte, <a href="https://chuttenblog.wordpress.com/">chutten</a> and others who helped build my understanding of this area.</p>
-
-<p>The dashboard itself an easier thing to show than talk about, so I recorded a quick demonstration of some of the dashboard&rsquo;s capabilities and published it on air mozilla:</p>
-
-<iframe src="https://air.mozilla.org/mission-control-dashboard-intro/video/" width="896" height="524" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-
-<p><a href="https://air.mozilla.org/mission-control-dashboard-intro/">link</a></p> 
   <hr/>
 </article>
 <footer>

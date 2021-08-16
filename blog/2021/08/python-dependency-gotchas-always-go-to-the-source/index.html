@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8" />
+    <title>Python dependency gotchas: always go to the source</title>
+    <meta name="description" content="Getting back into the swing of things at Mozilla after my extended break. I'm currently working on enhancing and extending Looker support for Glean-based applications, which eventually led me back to working on bigquery-etl, our framework for creating der..." />
+    <meta name="author" content="William Lachance" />
+    <meta name="keywords" content="Mozilla, Python" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href="https://wrla.ch/blog/2021/08/python-dependency-gotchas-always-go-to-the-source/" />
+    <link rel="next" href="/blog/2021/08/lightweight-dashboards-and-reports-with-irydium-and-surge-sh/" /> 
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/pygments.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/css/scribble.css"
+    />
+    <!-- Feeds -->
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      href="/feeds/all.atom.xml"
+      title="Atom Feed"
+    />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      href="/feeds/all.rss.xml"
+      title="RSS Feed"
+    />
+    <!-- JS -->
+    <script type="text/javascript">
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-xxxxx', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <nav
+      class="flex items-center justify-between flex-wrap bg-gray-800 py-1 px-8"
+    >
+      <div class="flex items-center flex-shrink-0 text-gray-400 mr-6">
+        <div class="p-1">
+          <a href="/index.html"
+            ><img
+              src="/img/wlach_icon.png"
+              width="32"
+              height="32"
+              class="p rounded"
+          /></a>
+        </div>
+        <div class="p-1">
+          <a
+            href="/index.html"
+            class="text-gray-200 font-semibold text-xl tracking-tight hover:text-white"
+            >wlach log</a
+          >
+        </div>
+      </div>
+      <div class="flex-grow lg:flex lg:items-center">
+        <div class="text-sm lg:flex-grow">
+          <a
+            href="/About.html"
+            class="mt-4 lg:inline-block lg:mt-0 hover:text-white mr-4 text-gray-600"
+          >
+            About</a>
+          <a
+            class="mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-white mr-4"
+            href="/feeds/all.atom.xml"
+            >Atom</a
+          >
+          <a
+            class="mt-4 lg:inline-block lg:mt-0 text-gray-600 hover:text-white mr-4"
+            href="/feeds/all.rss.xml"
+            >RSS</a
+          >
+        </div>
+      </div>
+    </nav>
+    <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
+         <article>
+  <header>
+    <h1>Python dependency gotchas: always go to the source</h1>
+    <p class="index-date">Aug 16th, 2021</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Python.html">Python</a></span></p>
+  </header>
+
+<p>Getting back into the swing of things at Mozilla after my extended break. I&rsquo;m currently working on enhancing and extending <a href="https://looker.com/">Looker</a> support for Glean-based applications, which eventually led me back to working on <a href="https://mozilla.github.io/bigquery-etl/">bigquery-etl</a>, our framework for creating derived datasets in our data lake.</p>
+
+<p>I spent some time working on improving the initial developer experience of bigquery-etl early this year, so I figured it would be no problem to get going again despite an extended hiatus from it (I think it&rsquo;s probably been ~2&ndash;3 months since I last touched it). Unfortunately the first thing I got after creating a fresh virtual environment (to pick up the new dependency updates) was this exciting looking error:</p>
+
+<pre><code>wlach@antwerp bigquery-etl % ./bqetl --help
+Traceback (most recent call last):
+  ...
+  File "/Users/wlach/src/bigquery-etl/venv/lib/python3.9/site-packages/google/cloud/bigquery_v2/types/__init__.py", line 16, in &lt;module&gt;
+    from .encryption_config import EncryptionConfiguration
+  File "/Users/wlach/src/bigquery-etl/venv/lib/python3.9/site-packages/google/cloud/bigquery_v2/types/encryption_config.py", line 26, in &lt;module&gt;
+    class EncryptionConfiguration(proto.Message):
+  File "/Users/wlach/src/bigquery-etl/venv/lib/python3.9/site-packages/proto/message.py", line 200, in __new__
+    file_info = _file_info._FileInfo.maybe_add_descriptor(filename, package)
+  File "/Users/wlach/src/bigquery-etl/venv/lib/python3.9/site-packages/proto/_file_info.py", line 42, in maybe_add_descriptor
+    descriptor=descriptor_pb2.FileDescriptorProto(
+TypeError: descriptor to field 'google.protobuf.FileDescriptorProto.name' doesn't apply to 'FileDescriptorProto' object</code></pre>
+
+<h2 id="what-i-did">What I did</h2>
+
+<p>Since we have pretty decent continuous integration at Mozilla, when I see an error like this I am usually pretty sure it&rsquo;s some kind of strange interaction between my local development environment and whatever dependencies we&rsquo;ve specified for the repository in question. Usually these problems are pretty easy to solve.</p>
+
+<p>First thing I tried was to type the error into Google, to see if this had come up for anyone else before. I tried several variations of <code>TypeError: descriptor to field</code> and <code>FileDescriptorProto</code> and nothing really turned up. This strategy almost always turns up <em>something</em>. When it doesn&rsquo;t it usually indicates that something pretty strange is happening.</p>
+
+<p>To see if this was a strange problem particular to <em>us</em>, I asked on our internal channel but no one had offhand seen or heard of this error either. One of my colleagues (who had a working setup on a Mac, the same environment I was using) suggested I set up <a href="https://github.com/pyenv/pyenv">pyenv</a> to isolate my development environment, which was a good idea but did not seem to solve the problem: both Python 3.8 and 3.9 installed via pyenv ran into the exact same issue.</p>
+
+<p>After flailing around trying a number of other failed approaches (maybe I need to upgrade the version of virtualenv that we&rsquo;re using?), I broke down and looked harder at the error itself. It seemed to be some kind of typing error in Google&rsquo;s protobuf library, which google-cloud-bigquery is calling. If this sort of thing was happening to <em>everyone</em>, we probably would have seen it happening more broadly. So my guess, again, was that it was happening due to an obscure interaction between some variable on my machine and this particular combination of dependencies.</p>
+
+<p>At this point, I systematically went through our set of python dependencies to see what might be the matter. For the most part, I found nothing surprising or suspicious. <code>google-api-core</code> was at the latest version, as was <code>google-cloud-bigquery</code>. However, I <em>did</em> notice that the version of <a href="https://pypi.org/project/protobuf/">protobuf</a> we were using was a little older (3.15.8 when the latest &ldquo;official&rdquo; version on pypi was 3.17.3).</p>
+
+<div class="figure"><img src="/files/2021/08/pypi-screenshot.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>It seemed like a longshot that the problem was there, but it seemed like upgrading the dependency was worth a try just in case. So I bumped the version of protobuf to the latest version in my local checkout (<code>pip install protobuf==3.17.3</code>)&hellip;</p>
+
+<p>&hellip; and sure enough, after doing so, the problem was fixed and <code>./bqetl --help</code> started working again:</p>
+
+<pre><code>wlach@antwerp bigquery-etl % ./bqetl --help
+Usage: bqetl [OPTIONS] COMMAND [ARGS]...
+
+  CLI tools for working with bigquery-etl.
+
+...</code></pre>
+
+<p>After doing so, I did up a quick <a href="https://github.com/mozilla/bigquery-etl/pull/2266">pull request</a> and the problem is now fixed, at least for me.</p>
+
+<p>It&rsquo;s a bit unfortunate that <a href="https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates">dependabot</a> (which we have configured for this repository) didn&rsquo;t send an update for protobuf, which would have fixed this problem earlier.<sup><a href="#2021-08-16-python-dependency-gotchas-always-go-to-the-source-footnote-1-definition" name="2021-08-16-python-dependency-gotchas-always-go-to-the-source-footnote-1-return">1</a></sup> It seems like it&rsquo;s not completely reliable for python packages, for whatever reason: I have also noticed this problem with <a href="https://github.com/mozilla/mozregression">mozregression</a>.</p>
+
+<p>I <em>suspect</em> (though can&rsquo;t confirm) that the problem here is a backwards-incompatible change made to either <code>protobuf</code> or one of the packages that uses it. However, the nature of the incompatibility seems subtle: bigquery-etl works fine with the old set of dependencies we run in continuous integration and it appears to only come up in specific circumstances (i.e. mine). Unfortunately, I need to get back to what I was <em>actually</em> planning to work on and don&rsquo;t have time to unwind the rather set of complex interactions going on here. Maybe later!</p>
+
+<h2 id="what-i-would-have-done-differently">What I would have done differently</h2>
+
+<p>This kind of illustrates (again) to me that while some shortcuts and heuristics can save a bunch of time and mental effort (Googling things all the time is basically standard practice in the industry at this point), sometimes you really just need to start a little closer at the problem to find a solution. I was hesitant to do this in this case because I&rsquo;m never sure where those kinds of rabbit holes are going to take me (e.g. I <a href="https://github.com/mozilla/telemetry-airflow/issues/844">spent several days</a> debugging a bad interaction between Kubernetes and our airflow cluster in late 2019 with not much to show for the effort), but often all it takes is understanding the general shape of the problem to move you to a quick solution.</p>
+
+<h2 id="other-lessons">Other lessons</h2>
+
+<p>Here&rsquo;s a couple of other things this experience reinforced for me (these are more subjective, take them or leave them):</p>
+
+<ul>
+ <li>Local development environments are kind of a waste of time. The above work took me several hours and it&rsquo;s going to result in ~zero user-visible improvements for anyone outside of Mozilla Data Engineering. I&rsquo;m excited about the potential productivity improvements that might come from using tools like <a href="https://github.com/features/codespaces">GitHub Codespaces</a>.</li>
+ <li>While I can&rsquo;t confirm this was the source of the problem in this particular case, in general backwards compatibility <em>on every level</em> is super important when your software has broad reach and doubly so if it&rsquo;s a widely-used dependency of other software (and is thus hard to reason about in isolation). In these cases, what seems like a trivial change (e.g. improving the type signatures inside a Python library) can squander many hours of people&rsquo;s time if you&rsquo;re not careful. Backwards-incompatible changes, however innocuous they may seem, should always invoke <a href="https://semver.org/">a major version bump</a>.</li>
+ <li>Likewise, bugs in software that have broad usage (like dependabot) can have big downstream impacts. If dependabot&rsquo;s version bumping for python was more reliable, we likely wouldn&rsquo;t have had this problem. The glass-half-full interpretation of this is that fixing these types of issues would have an outsized benefit for the commons.</li></ul>
+
+<div class="footnotes">
+ <ol>
+  <li id="2021-08-16-python-dependency-gotchas-always-go-to-the-source-footnote-1-definition" class="footnote-definition">
+   <p>As an aside, the main reason we use dependabot and aggressively update packages like <code>google-api-core</code> is due to a <a href="https://github.com/pypa/pip/issues/9644">bug in pip</a>.&nbsp;<a href="#2021-08-16-python-dependency-gotchas-always-go-to-the-source-footnote-1-return">↩</a></p></li></ol></div>
+  <hr/>
+</article>
+    </div>
+    <footer class="container max-w-screen-md px-8 py-4 mx-auto less-important">
+      <p>Comments / thoughts? Feel free to send an email to wlach on protonmail.com or
+        (for Mozilla-related stuff) reach me at <code>wlach</code> on <a href="https://wiki.mozilla.org/Matrix">Mozilla's instance of Matrix</a>.</p>
+      <p>
+        Site generated by
+        <a href="https://github.com/greghendershott/frog">Frog</a>.
+        Post content is licensed under a
+        <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+          >Creative Commons Attribution 4.0 Unported License</a
+        >.
+      </p>
+    </footer>
+  </body>
+</html>

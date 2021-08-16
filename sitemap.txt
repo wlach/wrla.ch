@@ -55,6 +55,7 @@ https://wrla.ch/blog/2013/02/finding-a-camera-for-eideticker/
 https://wrla.ch/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last/
 https://wrla.ch/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/
 https://wrla.ch/blog/2009/04/creating-a-google-transit-feed-for-fun-and-profit/
+https://wrla.ch/blog/2021/08/python-dependency-gotchas-always-go-to-the-source/
 https://wrla.ch/blog/2015/04/pycon-2015/
 https://wrla.ch/blog/2020/01/conda-is-pretty-great/
 https://wrla.ch/blog/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod/

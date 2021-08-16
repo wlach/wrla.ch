@@ -92,6 +92,22 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2013/03/follow-up-on-8220-finding-a-camera-for-eideticker-8221/">Follow up on &#8220;Finding a Camera for Eideticker&#8221;</a></h2>
+    <p class="index-date">Mar 8th, 2013</p>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p>Quick update on my <a href="http://wrla.ch/blog/2013/02/finding-a-camera-for-eideticker/">last post</a> about finding some kind of camera suitable for use in automated performance testing of fennec and b2g with eideticker. Shortly after I wrote that, I found out about a company called <a href="http://ptgrey.com">Point Grey Research</a> which manufactures custom web cameras intended for exactly the sorts of things we&#8217;re doing. Initial results with the <a href="http://ww2.ptgrey.com/USB3/Flea3">Flea3 camera</a> I ordered from them are quite promising:</p>
+
+<video width="400px" src="/files/eideticker/pointgrey-taskjs.webm" controls="controls"></video>
+
+<p>(the actual capture is even higher quality than that would suggest&#8230; some detail is lost in the conversion to webm)</p>
+
+<p>There seems to be some sort of issue with the white balance in that capture which is causing a flashing effect (I suspect this just involves flipping some kind of software setting&#8230; still trying to grok their SDK), and we&#8217;ll need to create some sort of enclosure for the setup so ambient light doesn&#8217;t interfere with the capture&#8230; but overall I&#8217;m pretty optimistic about this baby. 60 frames per second, very high resolution (1280&#215;960), no issues with HDMI (since it&#8217;s just a USB camera), relatively inexpensive.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2013/02/finding-a-camera-for-eideticker/">Finding a camera for Eideticker</a></h2>
     <p class="index-date">Feb 19th, 2013</p>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -452,24 +468,6 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 <p>For more information on Eideticker, feel free to visit <a href="https://wiki.mozilla.org/Project_Eideticker">its homepage</a> on <a href="http://wiki.mozilla.org/">wiki.mozilla.org</a>.</p>
 
 <p>&nbsp;</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod/">Mass code relicensing with facebook&#8217;s codemod</a></h2>
-    <p class="index-date">Jun 7th, 2012</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>Recently the Firefox source repository (mozilla-central) was converted over recently to a new license with a <a href="http://www.mozilla.org/MPL/headers/">lovely short boilerplate</a>. This is great, but here in <a href="https://wiki.mozilla.org/Auto-tools">automation and tools</a>, we have a fairly large number of projects that live outside of the main tree but for which the new license still applies. A few weeks ago, I wanted to move one our projects over (mozbase), but didn&#8217;t want to spend hours manually editing text files. I understand that a script was used to convert mozilla-central, but a quick google didn&#8217;t turn it up. <strong>[ edit:** thanks to Ed Morley for pointing out to me that it lives here: <a href="http://hg.mozilla.org/users/gerv_mozilla.org/relic/">http://hg.mozilla.org/users/gerv_mozilla.org/relic/</a> **]</strong></p>
-
-<p>I surely could have asked about where this script is, but this problem gave me an excuse to try something that I&#8217;d been meaning to for a while: Facebook&#8217;s <a href="https://github.com/facebook/codemod">codemod</a>. Codemod is a neat little command-line utility which aims to help with mass refactorings of code. All you have to do is provide a few regular expressions to replace, and off it goes. I tried it out with mozbase, and the results were great: 5 minutes spent coming up with a regular expression and jiggering with command line options, and the job was done.</p>
-
-<p>I had the desire to do this again today for <a href="http://github.com/mozilla/eideticker">Eideticker</a>, and decided to document the (extremely simple) process for posterity. I just used this simple command line&#8230;</p>
-
-<p><code>../codemod/src/codemod.py --extensions py -m '# \*\*\*\*\* BEGIN LICENSE.*END LICENSE BLOCK \*\*\*\*\*' '# This Source Code Form is subject to the terms of the Mozilla Public\n# License, v. 2.0. If a copy of the MPL was not distributed with this file,\n# You can obtain one at http://mozilla.org/MPL/2.0/.'</code></p>
-
-<p>&#8230; et voila, out popped <a href="https://github.com/mozilla/eideticker/commit/9456933670fb4590af3060f4ff40d11271859b8d">shiny new boilerplate</a>.</p> 
   <hr/>
 </article>
 <footer>
