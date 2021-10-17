@@ -4,7 +4,7 @@
 
     <meta charset="utf-8" />
     <title>More Eideticker happenings: Profiling and startup testing</title>
-    <meta name="description" content="_[ For more information on the Eideticker software I’m referring to, see this entry ]_  Just wanted to give some updates on a few new Eideticker features which have landed in the past week.  **Profiling support**  While Eideticker is a great tool for obse..." />
+    <meta name="description" content="_[ For more information on the Eideticker software I'm referring to, see this entry ]_  Just wanted to give some updates on a few new Eideticker features which have landed in the past week.  **Profiling support**  While Eideticker is a great tool for obse..." />
     <meta name="author" content="William Lachance" />
     <meta name="keywords" content="Eideticker, Mozilla" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -97,13 +97,13 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
 <p>Just wanted to give some updates on a few new Eideticker features which have landed in the past week.</p>
 
 <p><strong>Profiling support</strong></p>
 
-<p>While Eideticker is a great tool for observing the external behaviour of the mobile browser, it hasn&#8217;t been able to tell us much about what&#8217;s going on inside. If something&#8217;s slow, why is it slow? If it&#8217;s slower than it was the day before, what&#8217;s the cause? If it&#8217;s faster? What explains the deviations in test results from one run to the other?</p>
+<p>While Eideticker is a great tool for observing the external behaviour of the mobile browser, it hasn&rsquo;t been able to tell us much about what&rsquo;s going on inside. If something&rsquo;s slow, why is it slow? If it&rsquo;s slower than it was the day before, what&rsquo;s the cause? If it&rsquo;s faster? What explains the deviations in test results from one run to the other?</p>
 
 <p>Thanks to <a href="http://benoitgirard.wordpress.com/">Benoit Girard</a> (+ a little bit of integration work from me), we can now start providing answers to these questions. Eideticker now has a mode that allows us to capture a <a href="https://developer.mozilla.org/en-US/docs/Performance/Profiling_with_the_Built-in_Profiler">sampling profile</a> of the application while the video capture is ongoing. From the dashboard, you can now get access said profile, just by clicking on a link.</p>
 
@@ -112,17 +112,17 @@
 
 <p>Note that the profile is not yet synchronized precisely to the videocapture (the profile works over the entire run of the browser), but Benoit is busily making that happen. That should hopefully land soon, in the mean time we still have some pretty useful data.</p>
 
-<p>To say I&#8217;m excited about this would be an understatement. I think it has the potential to open up a whole new world of understanding of why our mobile (and desktop, someday) browser performs the way it does.</p>
+<p>To say I&rsquo;m excited about this would be an understatement. I think it has the potential to open up a whole new world of understanding of why our mobile (and desktop, someday) browser performs the way it does.</p>
 
 <p><strong>Startup / pageload testing</strong></p>
 
-<p>Eideticker has had support for measuring startup and page load time for a few months now, but I hadn&#8217;t yet hooked it up to the dashboard. As of today, it now is. There&#8217;s a bunch of different angles that are interesting to measure here (new vs. old profiles, whether the browser has been launched since boot, launching web applications, loading about:home or loading a web page, &#8230;) which I&#8217;ll get to in due course. For now, we at least have a baseline of how long it takes to see the Firefox homescreen on a Galaxy Nexus:</p>
+<p>Eideticker has had support for measuring startup and page load time for a few months now, but I hadn&rsquo;t yet hooked it up to the dashboard. As of today, it now is. There&rsquo;s a bunch of different angles that are interesting to measure here (new vs. old profiles, whether the browser has been launched since boot, launching web applications, loading about:home or loading a web page, &hellip;) which I&rsquo;ll get to in due course. For now, we at least have a baseline of how long it takes to see the Firefox homescreen on a Galaxy Nexus:</p>
 
 <video width="400px" src="http://wrla.ch/eideticker/dashboard/videos/video-1347572002.11.webm" controls="controls"></video>
 
-<p>Of course, this is hooked up to the profiling support previously mentioned. Here&#8217;s <a href="http://people.mozilla.com/~bgirard/cleopatra/?zippedProfile=profiles/sps-profile-1347572285.4.zip&amp;#038;videoCapture=videos/video-1347572285.4.webm">an example profile</a>.</p>
+<p>Of course, this is hooked up to the profiling support previously mentioned. Here&rsquo;s <a href="http://people.mozilla.com/~bgirard/cleopatra/?zippedProfile=profiles/sps-profile-1347572285.4.zip&amp;videoCapture=videos/video-1347572285.4.webm">an example profile</a>.</p>
 
-<p>I&#8217;ve already filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=791106">one bug</a> based on the data gathered so far.</p>
+<p>I&rsquo;ve already filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=791106">one bug</a> based on the data gathered so far.</p>
   <hr/>
 </article>
     </div>

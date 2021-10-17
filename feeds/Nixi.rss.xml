@@ -3,14 +3,14 @@
  <channel>
   <title>William Lachance's Log: Posts tagged 'Nixi'</title>
   <description>William Lachance's Log: Posts tagged 'Nixi'</description>
-  <link>https://wlach.github.io/tags/Nixi.html</link>
+  <link>https://wrla.ch/tags/Nixi.html</link>
   <lastBuildDate>Sat, 09 Jan 2016 04:21:13 UT</lastBuildDate>
   <pubDate>Sat, 09 Jan 2016 04:21:13 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>NIXI is moving too</title>
-   <link>https://wlach.github.io/blog/2016/01/nixi-is-moving-too/?utm_source=Nixi&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2016-01-nixi-is-moving-too</guid>
+   <link>https://wrla.ch/blog/2016/01/nixi-is-moving-too/?utm_source=Nixi&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2016-01-nixi-is-moving-too</guid>
    <pubDate>Sat, 09 Jan 2016 04:21:13 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -29,12 +29,12 @@
 &lt;p&gt;I still think nixi is worlds more usable than most bikesharing maps, even if it&amp;rsquo;s not an actively maintained project of mine any more. Here&amp;rsquo;s hoping it lasts many more years in its new incarnation.&lt;/p&gt;</description></item>
   <item>
    <title>NIXI Update</title>
-   <link>https://wlach.github.io/blog/2013/08/nixi-update/?utm_source=Nixi&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2013-08-nixi-update</guid>
+   <link>https://wrla.ch/blog/2013/08/nixi-update/?utm_source=Nixi&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2013-08-nixi-update</guid>
    <pubDate>Sun, 25 Aug 2013 04:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;I&amp;#8217;ve been working on a new, mobile friendly version of &lt;a href="http://nixi.ca/"&gt;Nixi&lt;/a&gt; on-and-off for the past year and a bit. I&amp;#8217;m not sure when it&amp;#8217;s ever going to be finished, so I thought I might as well post the work-in-progress, which has these noteworthy improvements:&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve been working on a new, mobile friendly version of &lt;a href="http://nixi.ca/"&gt;Nixi&lt;/a&gt; on-and-off for the past year and a bit. I&amp;rsquo;m not sure when it&amp;rsquo;s ever going to be finished, so I thought I might as well post the work-in-progress, which has these noteworthy improvements:&lt;/p&gt;
 
 &lt;ul&gt;
  &lt;li&gt;Even faster than before (using the &lt;a href="http://getbootstrap.com"&gt;Bootstrap&lt;/a&gt; library behind the scenes, no longer using slow canvas library to update map)&lt;/li&gt;

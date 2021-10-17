@@ -3,14 +3,14 @@
   <head>
 
     <meta charset="utf-8" />
-    <title>It&#8217;s alive!</title>
-    <meta name="description" content="`>>> import  neocoder >>> g = neocoder.GeoCoder(&quot;greater-hrm2.db&quot;) >>> g.get_latlng(&quot;14 Johnson, North Preston&quot;) SQL: select firstHouseNumber, lastHouseNumber, length, coords from road where name like 'Johnson' and firstHouseNumber <= '14' and lastHouseNu..." />
+    <title>Mass code relicensing with facebook's codemod</title>
+    <meta name="description" content="Recently the Firefox source repository (mozilla-central) was converted over recently to a new license with a lovely short boilerplate. This is great, but here in automation and tools, we have a fairly large number of projects that live outside of the main..." />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="Mozilla" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="canonical" href="https://wrla.ch/blog/2010/02/it-8217-s-alive/" />
-    <link rel="next" href="/blog/2010/01/projects-for-2010/" /> <link rel="prev" href="/blog/2010/03/adventures-in-processing-with-prender/" />
+    <link rel="canonical" href="https://wrla.ch/blog/2012/06/mass-code-relicensing-with-facebook-s-codemod/" />
+    <link rel="next" href="/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/" /> <link rel="prev" href="/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/" />
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link
@@ -92,16 +92,20 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
-    <h1>It&#8217;s alive!</h1>
-    <p class="index-date">Feb 11th, 2010</p>
-    <p><span class="tags"></span></p>
+    <h1>Mass code relicensing with facebook&rsquo;s codemod</h1>
+    <p class="index-date">Jun 7th, 2012</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<pre><code>&gt;&gt;&gt; import  neocoder
-&gt;&gt;&gt; g = neocoder.GeoCoder("greater-hrm2.db")
-&gt;&gt;&gt; g.get_latlng("14 Johnson, North Preston")
-SQL: select firstHouseNumber, lastHouseNumber, length, coords from road where name like 'Johnson' and firstHouseNumber &lt;= '14' and lastHouseNumber &gt;= '14' and placeName like 'North Preston' limit 1
-(44.73895263671875, -63.464725494384766)</code></pre>
+<p>Recently the Firefox source repository (mozilla-central) was converted over recently to a new license with a <a href="http://www.mozilla.org/MPL/headers/">lovely short boilerplate</a>. This is great, but here in <a href="https://wiki.mozilla.org/Auto-tools">automation and tools</a>, we have a fairly large number of projects that live outside of the main tree but for which the new license still applies. A few weeks ago, I wanted to move one our projects over (mozbase), but didn&rsquo;t want to spend hours manually editing text files. I understand that a script was used to convert mozilla-central, but a quick google didn&rsquo;t turn it up. <strong>[ edit:** thanks to Ed Morley for pointing out to me that it lives here: <a href="http://hg.mozilla.org/users/gerv_mozilla.org/relic/">http://hg.mozilla.org/users/gerv_mozilla.org/relic/</a> **]</strong></p>
+
+<p>I surely could have asked about where this script is, but this problem gave me an excuse to try something that I&rsquo;d been meaning to for a while: Facebook&rsquo;s <a href="https://github.com/facebook/codemod">codemod</a>. Codemod is a neat little command-line utility which aims to help with mass refactorings of code. All you have to do is provide a few regular expressions to replace, and off it goes. I tried it out with mozbase, and the results were great: 5 minutes spent coming up with a regular expression and jiggering with command line options, and the job was done.</p>
+
+<p>I had the desire to do this again today for <a href="http://github.com/mozilla/eideticker">Eideticker</a>, and decided to document the (extremely simple) process for posterity. I just used this simple command line&#8230;</p>
+
+<p><code>../codemod/src/codemod.py --extensions py -m '# \*\*\*\*\* BEGIN LICENSE.*END LICENSE BLOCK \*\*\*\*\*' '# This Source Code Form is subject to the terms of the Mozilla Public\n# License, v. 2.0. If a copy of the MPL was not distributed with this file,\n# You can obtain one at http://mozilla.org/MPL/2.0/.'</code></p>
+
+<p>&#8230; et voila, out popped <a href="https://github.com/mozilla/eideticker/commit/9456933670fb4590af3060f4ff40d11271859b8d">shiny new boilerplate</a>.</p>
   <hr/>
 </article>
     </div>

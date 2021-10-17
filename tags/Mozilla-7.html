@@ -97,49 +97,49 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
 <p>Just wanted to write up a few notes on using Eideticker to measure animation smoothness, since this is a topic that comes up pretty often and I wind up explaining these things repeatedly. 😉</p>
 
-<p>When rendering web content, we want the screen to update something like 60 times per second (typical refresh rate of an LCD screen) when an animation or other change is occurring. When this isn&#8217;t happening, there is often a user perception of jank (a.k.a. things not working as they should). Generally we express how well we measure up to this ideal by counting the number of &#8220;frames per second&#8221; that we&#8217;re producing. If you&#8217;re reading this, you&#8217;re probably already familiar with the concept in outline. If you want to know more, you can check out the <a href="http://en.wikipedia.org/wiki/Frame_rate">wikipedia article</a> which goes into more detail.</p>
+<p>When rendering web content, we want the screen to update something like 60 times per second (typical refresh rate of an LCD screen) when an animation or other change is occurring. When this isn&rsquo;t happening, there is often a user perception of jank (a.k.a. things not working as they should). Generally we express how well we measure up to this ideal by counting the number of &ldquo;frames per second&rdquo; that we&rsquo;re producing. If you&rsquo;re reading this, you&rsquo;re probably already familiar with the concept in outline. If you want to know more, you can check out the <a href="http://en.wikipedia.org/wiki/Frame_rate">wikipedia article</a> which goes into more detail.</p>
 
-<p>At an internal level, this concept matches up conceptually with what Gecko is doing. The graphics pipeline produces frames inside graphics memory, which is then sent to the LCD display (whether it be connected to a laptop or a mobile phone) to be viewed. By instrumenting the code, we can see how often this is happening, and whether it is occurring at the right frequency to reach 60 fps. My understanding is that we have at least some code which does exactly this, though I&#8217;m not 100% up to date on how accurate it is.</p>
+<p>At an internal level, this concept matches up conceptually with what Gecko is doing. The graphics pipeline produces frames inside graphics memory, which is then sent to the LCD display (whether it be connected to a laptop or a mobile phone) to be viewed. By instrumenting the code, we can see how often this is happening, and whether it is occurring at the right frequency to reach 60 fps. My understanding is that we have at least some code which does exactly this, though I&rsquo;m not 100% up to date on how accurate it is.</p>
 
 <p>But even assuming the best internal system monitoring, Eideticker might still be useful because:</p>
 
 <ul>
- <li>It is more &#8220;objective&#8221;. This is valuable not only for our internal purposes to validate other automation (sometimes internal instrumentation can be off due to a bug or whatever), but also to &#8220;prove&#8221; to partners that our software has the performance characteristics that we claim.</li>
+ <li>It is more &ldquo;objective&rdquo;. This is valuable not only for our internal purposes to validate other automation (sometimes internal instrumentation can be off due to a bug or whatever), but also to &ldquo;prove&rdquo; to partners that our software has the performance characteristics that we claim.</li>
  <li>The visual artifacts it leaves behind can be valuable for inspection and debugging. i.e. <a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/">you can correlate videos with profiling information</a>.</li></ul>
 
-<p>Unfortunately, deriving this sort of information from a video capture is more complicated than you&#8217;d expect.</p>
+<p>Unfortunately, deriving this sort of information from a video capture is more complicated than you&rsquo;d expect.</p>
 
 <p><strong>What does frames per second even mean?</strong></p>
 
-<p>Given a set of N frames captured from the device, the immediate solution when it comes to &#8220;frames per second&#8221; is to just compare frames against each other (e.g. by comparing the value of individual pixels) and then counting the ones that are different as &#8220;unique frames&#8221;. Divide the total number of unique frames by the length of the
- <br />capture and&#8230; voila? Frames per second? Not quite.</p>
+<p>Given a set of N frames captured from the device, the immediate solution when it comes to &ldquo;frames per second&rdquo; is to just compare frames against each other (e.g. by comparing the value of individual pixels) and then counting the ones that are different as &ldquo;unique frames&rdquo;. Divide the total number of unique frames by the length of the
+ <br />capture and&hellip; voila? Frames per second? Not quite.</p>
 
-<p>First off, there&#8217;s the inherent problem that sometimes the expected behaviour of a test is for the screen to be unchanging for a period of time. For example, at the very beginning of a capture (when we are waiting for the input event to be acknowledged) and at the end (when we are waiting for things to settle). Second, it&#8217;s also easy to imagine the display remaining static for a period of time in the middle of a capture (say in between gestures in a multi-part capture). In these cases, there will likely be no observable change on the screen and thus the number of frames counted will be artificially low, skewing the frames per second number down.</p>
+<p>First off, there&rsquo;s the inherent problem that sometimes the expected behaviour of a test is for the screen to be unchanging for a period of time. For example, at the very beginning of a capture (when we are waiting for the input event to be acknowledged) and at the end (when we are waiting for things to settle). Second, it&rsquo;s also easy to imagine the display remaining static for a period of time in the middle of a capture (say in between gestures in a multi-part capture). In these cases, there will likely be no observable change on the screen and thus the number of frames counted will be artificially low, skewing the frames per second number down.</p>
 
 <p><strong>Measurement problems</strong></p>
 
-<p>Ok, so you might not consider that class of problem that big a deal. Maybe we could just not consider the frames at the beginning or end of the capture. And for pauses in the middle&#8230; as long as we get an absolute number at the end, we&#8217;re fine right? That&#8217;s at least enough to let us know that we&#8217;re getting better or worse, assuming that whatever we&#8217;re testing is behaving the same way between runs and we&#8217;re just trying to measure how many frames hit the screen.</p>
+<p>Ok, so you might not consider that class of problem that big a deal. Maybe we could just not consider the frames at the beginning or end of the capture. And for pauses in the middle&#8230; as long as we get an absolute number at the end, we&rsquo;re fine right? That&rsquo;s at least enough to let us know that we&rsquo;re getting better or worse, assuming that whatever we&rsquo;re testing is behaving the same way between runs and we&rsquo;re just trying to measure how many frames hit the screen.</p>
 
-<p>I might agree with you there, but there&#8217;s a further problems that are specific to measuring on-screen performance using a high-speed camera as we are currently with FirefoxOS.</p>
+<p>I might agree with you there, but there&rsquo;s a further problems that are specific to measuring on-screen performance using a high-speed camera as we are currently with FirefoxOS.</p>
 
 <p>An LCD updates gradually, and not all at once. Remnants of previous frames will remain on screen long past their interval. Take for example these five frames (sampled at 120fps) from a capture of a pan down in the FirefoxOS Contacts application (<a href="/files/2014/07/movie.webm">movie</a>):</p>
 
 <p><a href="/files/2014/07/sidebyside.png"><img src="/files/2014/07/sidebyside-1024x263.png" alt="sidebyside" width="474" height="121" class="alignnone size-large wp-image-1074" srcset="/files/2014/07/sidebyside-300x77.png 300w, /files/2014/07/sidebyside-1024x263.png 1024w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
 
-<p>Note how if you look closely these 5 frames are actually the intersection of *three* seperate frames. One with &#8220;Adam Card&#8221; at the top, another with &#8220;Barbara Bloomquist&#8221; at the top, then another with &#8220;Barbara Bloomquist&#8221; even further up. Between each frame, artifacts of the previous one are clearly visible.</p>
+<p>Note how if you look closely these 5 frames are actually the intersection of *three* seperate frames. One with &ldquo;Adam Card&rdquo; at the top, another with &ldquo;Barbara Bloomquist&rdquo; at the top, then another with &ldquo;Barbara Bloomquist&rdquo; even further up. Between each frame, artifacts of the previous one are clearly visible.</p>
 
 <p>Plausible sounding solutions:</p>
 
 <ul>
- <li>Try to resolve the original images by distinguishing &#8220;new&#8221; content from ghosting artifacts. Sounds possible, but probably hard? I&#8217;ve tried a number of simplistic techniques (i.e. trying to find times when change is &#8220;peaking&#8221;), but nothing has really worked out very well.</li>
- <li>Somehow reverse engineering the interface between the graphics chipset and the LCD panel, and writing some kind of custom hardware to &#8220;capture&#8221; the framebuffer as it is being sent from one to the other. Also sounds difficult.</li>
- <li>Just forget about this problem altogether and only try to capture periods of time in the capture where the image has stayed static for a sustained period of time (i.e. for say 4&ndash;5 frames and up) and we&#8217;re pretty sure it&#8217;s jank.</li></ul>
+ <li>Try to resolve the original images by distinguishing &ldquo;new&rdquo; content from ghosting artifacts. Sounds possible, but probably hard? I&rsquo;ve tried a number of simplistic techniques (i.e. trying to find times when change is &ldquo;peaking&rdquo;), but nothing has really worked out very well.</li>
+ <li>Somehow reverse engineering the interface between the graphics chipset and the LCD panel, and writing some kind of custom hardware to &ldquo;capture&rdquo; the framebuffer as it is being sent from one to the other. Also sounds difficult.</li>
+ <li>Just forget about this problem altogether and only try to capture periods of time in the capture where the image has stayed static for a sustained period of time (i.e. for say 4&ndash;5 frames and up) and we&rsquo;re pretty sure it&rsquo;s jank.</li></ul>
 
-<p>Personally the last solution appeals to me the most, although it has the obvious disadvantage of being a &#8220;homebrew&#8221; metric that no one has ever heard of before, which might make it difficult to use to prove that performance is adequate &#8212; the numbers come with a long-winded explanation instead of being something that people immediately understand.</p> 
+<p>Personally the last solution appeals to me the most, although it has the obvious disadvantage of being a &ldquo;homebrew&rdquo; metric that no one has ever heard of before, which might make it difficult to use to prove that performance is adequate &#8212; the numbers come with a long-winded explanation instead of being something that people immediately understand.</p> 
   <hr/>
 </article>
 <article>
@@ -149,23 +149,23 @@
     <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
-<p>Just wanted to give an update on where Eideticker is at the end of Q2 2014. The big news is that we&#8217;ve started to run startup tests against the Flame, the results of which are starting to appear on the dashboard:</p>
+<p>Just wanted to give an update on where Eideticker is at the end of Q2 2014. The big news is that we&rsquo;ve started to run startup tests against the Flame, the results of which are starting to appear on the dashboard:</p>
 
 <p><a href="/files/2014/06/eideticker-contacts-flame.png"><img src="/files/2014/06/eideticker-contacts-flame.png" alt="eideticker-contacts-flame" width="1002" height="664" class="alignnone size-full wp-image-1062" srcset="/files/2014/06/eideticker-contacts-flame-300x198.png 300w, /files/2014/06/eideticker-contacts-flame.png 1002w" sizes="(max-width: 1002px) 100vw, 1002px" /></a> <a href="http://eideticker.mozilla.org/b2g/#/flame/b2g-contacts-startup/timetostableframe">[link]</a></p>
 
-<p>It is expected that these tests will provide a useful complement to the <a href="https://datazilla.mozilla.org/b2g/?branch=master&amp;#038;device=flame&amp;#038;range=7&amp;#038;test=cold_load_time&amp;#038;app_list=browser,calendar,camera,clock,contacts,email%20FTU,fm_radio,gallery,marketplace,messages,music,phone,settings,template,usage,video&amp;#038;app=phone&amp;#038;gaia_rev=b8f36518696f3191&amp;#038;gecko_rev=c90b38c47a1d&amp;#038;plot=avg">existing startup tests</a> we&#8217;re running with b2gperf, in particular answering the &#8220;is this regression real?&#8221; question.</p>
+<p>It is expected that these tests will provide a useful complement to the <a href="https://datazilla.mozilla.org/b2g/?branch=master&amp;device=flame&amp;range=7&amp;test=cold_load_time&amp;app_list=browser,calendar,camera,clock,contacts,email%20FTU,fm_radio,gallery,marketplace,messages,music,phone,settings,template,usage,video&amp;app=phone&amp;gaia_rev=b8f36518696f3191&amp;gecko_rev=c90b38c47a1d&amp;plot=avg">existing startup tests</a> we&rsquo;re running with b2gperf, in particular answering the &ldquo;is this regression real?&rdquo; question.</p>
 
 <p>Pending work for Q3:</p>
 
 <ul>
- <li>Enable scrolling tests on the Flame. I got these working against the Hamachi <a href="http://wrla.ch/blog/2014/03/its-all-about-the-entropy/">a few months ago</a> but because of some weird input issue we&#8217;re seeing we can&#8217;t yet enable them on the Flame. This is being tracked in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1028824">bug 1028824</a>. If anyone has background on the behaviour of the touch screen driver for this device I would appreciate some help.</li>
- <li>Enable tests for multiple branches on the Flame (currently we&#8217;re only doing master). This is pretty much ready to go (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1017834">bug 1017834</a>), just need to land it.</li>
- <li>Annotate eideticker graphs with internal benchmark information. Eli Perelman of the FirefoxOS performance team has come up with a standard set of on-load events for the Gaia apps (app chrome loaded, app content loaded, &#8230;) that each app will generate, feeding into tools like b2gperf and test-perf. We want to show this information in Eideticker&#8217;s frame-by-frame analysis (<a href="http://eideticker.mozilla.org/b2g/detail.html?id=2b007f8cfd8b11e3923c10ddb19eacac#/framecannyentropies">example</a>) so we can verify that the app&#8217;s behaviour is consistent with what it is claimed. This is being tracked in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1018334">bug 1018334</a></li>
- <li>Re-enable Eideticker for Android and run tests more frequently. Sadly we haven&#8217;t been consistently generating new Eideticker results for Android for the last quarter because of networking issues in the new Mountain View office, where the test rig for those live. One way or another, we want to fix this next quarter and hopefully run tests more frequently against mozilla-inbound (instead of just nightly builds)</li></ul>
+ <li>Enable scrolling tests on the Flame. I got these working against the Hamachi <a href="http://wrla.ch/blog/2014/03/its-all-about-the-entropy/">a few months ago</a> but because of some weird input issue we&rsquo;re seeing we can&rsquo;t yet enable them on the Flame. This is being tracked in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1028824">bug 1028824</a>. If anyone has background on the behaviour of the touch screen driver for this device I would appreciate some help.</li>
+ <li>Enable tests for multiple branches on the Flame (currently we&rsquo;re only doing master). This is pretty much ready to go (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1017834">bug 1017834</a>), just need to land it.</li>
+ <li>Annotate eideticker graphs with internal benchmark information. Eli Perelman of the FirefoxOS performance team has come up with a standard set of on-load events for the Gaia apps (app chrome loaded, app content loaded, &hellip;) that each app will generate, feeding into tools like b2gperf and test-perf. We want to show this information in Eideticker&rsquo;s frame-by-frame analysis (<a href="http://eideticker.mozilla.org/b2g/detail.html?id=2b007f8cfd8b11e3923c10ddb19eacac#/framecannyentropies">example</a>) so we can verify that the app&rsquo;s behaviour is consistent with what it is claimed. This is being tracked in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1018334">bug 1018334</a></li>
+ <li>Re-enable Eideticker for Android and run tests more frequently. Sadly we haven&rsquo;t been consistently generating new Eideticker results for Android for the last quarter because of networking issues in the new Mountain View office, where the test rig for those live. One way or another, we want to fix this next quarter and hopefully run tests more frequently against mozilla-inbound (instead of just nightly builds)</li></ul>
 
-<p>The above isn&#8217;t an exhaustive list: there&#8217;s much more that we have in mind for the future that&#8217;s not yet scheduled or defined well (e.g. get Eideticker reporting to Treeherder&#8217;s new performance module). If you have any questions or feedback on anything outlined above I&#8217;d love to hear it!</p> 
+<p>The above isn&rsquo;t an exhaustive list: there&rsquo;s much more that we have in mind for the future that&rsquo;s not yet scheduled or defined well (e.g. get Eideticker reporting to Treeherder&rsquo;s new performance module). If you have any questions or feedback on anything outlined above I&rsquo;d love to hear it!</p> 
   <hr/>
 </article>
 <article>
@@ -175,11 +175,11 @@
     <p><span class="tags"><a href="/tags/ateam.html">ateam</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Just wanted to make a quick announcement that <a href="https://pypi.python.org/pypi/ManifestDestiny">ManifestDestiny</a>, the python package we use internally here at Mozilla for declaratively managing lists of tests in <a href="https://developer.mozilla.org/en/docs/Mochitest">Mochitest</a> and other places, has been renamed to <a href="https://pypi.python.org/pypi/manifestparser">manifestparser</a>. We kept the versioning the same (0.6), so the only thing you should need to change in your python package dependencies is a quick substitution of &#8220;ManifestDestiny&#8221; with &#8220;manifestparser&#8221;. We will keep ManifestDestiny around indefinitely on pypi, but only to make sure old stuff doesn&#8217;t break. New versions of the software will only be released under the name &#8220;manifestparser&#8221;.</p>
+<p>Just wanted to make a quick announcement that <a href="https://pypi.python.org/pypi/ManifestDestiny">ManifestDestiny</a>, the python package we use internally here at Mozilla for declaratively managing lists of tests in <a href="https://developer.mozilla.org/en/docs/Mochitest">Mochitest</a> and other places, has been renamed to <a href="https://pypi.python.org/pypi/manifestparser">manifestparser</a>. We kept the versioning the same (0.6), so the only thing you should need to change in your python package dependencies is a quick substitution of &ldquo;ManifestDestiny&rdquo; with &ldquo;manifestparser&rdquo;. We will keep ManifestDestiny around indefinitely on pypi, but only to make sure old stuff doesn&rsquo;t break. New versions of the software will only be released under the name &ldquo;manifestparser&rdquo;.</p>
 
-<p>Quick history lesson: &#8220;Manifest destiny&#8221; refers to a philosophy of exceptionalism and expansionism that was widely held by American settlers in the 19th century. The concept is considered offensive by some, as it was used to justify displacing and dispossessing Native Americans. Wikipedia&#8217;s <a href="http://en.wikipedia.org/wiki/Manifest_destiny">article</a> on the subject has a good summary if you want to learn more.</p>
+<p>Quick history lesson: &ldquo;Manifest destiny&rdquo; refers to a philosophy of exceptionalism and expansionism that was widely held by American settlers in the 19th century. The concept is considered offensive by some, as it was used to justify displacing and dispossessing Native Americans. Wikipedia&rsquo;s <a href="http://en.wikipedia.org/wiki/Manifest_destiny">article</a> on the subject has a good summary if you want to learn more.</p>
 
-<p>Here at <a href="https://wiki.mozilla.org/Auto-tools">Mozilla Tools &#38; Automation</a>, we&#8217;re most interested in creating software that everyone can feel good about depending on, so we agreed to rename it. When I raised this with my peers, there were no objections. I know these things are often the source of much drama in the free software world, but there&#8217;s really none to see here.</p>
+<p>Here at <a href="https://wiki.mozilla.org/Auto-tools">Mozilla Tools &#38; Automation</a>, we&rsquo;re most interested in creating software that everyone can feel good about depending on, so we agreed to rename it. When I raised this with my peers, there were no objections. I know these things are often the source of much drama in the free software world, but there&rsquo;s really none to see here.</p>
 
 <p>Happy manifest parsing!</p> 
   <hr/>
@@ -194,11 +194,11 @@
 <p>Just wanted to give some quick updates on <a href="http://mozilla.github.io/mozregression/">mozregression</a>, your favorite regression-finding tool for Firefox:</p>
 
 <ol>
- <li>I moved all issue tracking in mozregression to bugzilla from github issues. Github unfortunately doesn&#8217;t really scale to handle notifications sensibly when you&#8217;re part of a large organization like Mozilla, which meant many problems were flying past me unseen. <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Testing&amp;#038;component=mozregression">File your new bugs</a> in bugzilla, they&#8217;re now much more likely to be acted upon.</li>
- <li><a href="http://blackrhino.io/">Sam Garrett</a> has stepped up to be co-maintainer of the project with me. He&#8217;s been doing a great job whacking out a bunch of bugs and keeping things running reliably, and it was time to give him some recognition and power to keep things moving forward.</li>
+ <li>I moved all issue tracking in mozregression to bugzilla from github issues. Github unfortunately doesn&rsquo;t really scale to handle notifications sensibly when you&rsquo;re part of a large organization like Mozilla, which meant many problems were flying past me unseen. <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Testing&amp;component=mozregression">File your new bugs</a> in bugzilla, they&rsquo;re now much more likely to be acted upon.</li>
+ <li><a href="http://blackrhino.io/">Sam Garrett</a> has stepped up to be co-maintainer of the project with me. He&rsquo;s been doing a great job whacking out a bunch of bugs and keeping things running reliably, and it was time to give him some recognition and power to keep things moving forward.</li>
  <li>On that note, I just released mozregression 0.17, which now shows the revision number when running a build (a request from the graphics team, bug <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1007238">1007238</a>) and handles respins of nightly builds correctly (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1000422">bug 1000422</a>). Both of these were fixed by Sam.</li></ol>
 
-<p>If you&#8217;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &#8212; as I&#8217;ve found out over the last few months, people <em>all over</em> the Mozilla organization (managers, developers, QA &#8230;) use it in the course of their work and it saves tons of their time. A list of currently open bugs is <a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;#038;product=Testing">here</a>.</p> 
+<p>If you&rsquo;re interested in contributing to Mozilla and are somewhat familiar with python, mozregression is a great place to start. The codebase is quite approachable and the impact will be high &#8212; as I&rsquo;ve found out over the last few months, people <em>all over</em> the Mozilla organization (managers, developers, QA) use it in the course of their work and it saves tons of their time. A list of currently open bugs is <a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;product=Testing">here</a>.</p> 
   <hr/>
 </article>
 <article>
@@ -208,34 +208,34 @@
     <p><span class="tags"><a href="/tags/Montreal.html">Montreal</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Python.html">Python</a></span></p>
   </header>
 
-<p>This year&#8217;s PyCon US (<a href="http://python.org">Python</a> Conference) was in my city of residence (Montr&eacute;al) so I took the opportunity to go and see what was up in the world of the language I use the most at Mozilla. It was pretty great!</p>
+<p>This year&rsquo;s PyCon US (<a href="http://python.org">Python</a> Conference) was in my city of residence (Montr&eacute;al) so I took the opportunity to go and see what was up in the world of the language I use the most at Mozilla. It was pretty great!</p>
 
 <p><strong>ipython</strong></p>
 
-<p>The highlight for me was learning about the possibilities of <a href="http://ipython.org/">ipython notebooks</a>, an absolutely fantastic interactive tool for debugging python in a live browser-based environment. I&#8217;d heard about it before, but it wasn&#8217;t immediately apparent how it would really improve things &#8212; it seemed to be just a less convenient interface to the python console that required me to futz around with my web browser. Watching a few presentations on the topic made me realize how wrong I was. It&#8217;s already changed the way I do work with Eideticker data, for the better.</p>
+<p>The highlight for me was learning about the possibilities of <a href="http://ipython.org/">ipython notebooks</a>, an absolutely fantastic interactive tool for debugging python in a live browser-based environment. I&rsquo;d heard about it before, but it wasn&rsquo;t immediately apparent how it would really improve things &#8212; it seemed to be just a less convenient interface to the python console that required me to futz around with my web browser. Watching a few presentations on the topic made me realize how wrong I was. It&rsquo;s already changed the way I do work with Eideticker data, for the better.</p>
 
 <figure id="attachment_1042" style="width: 848px" class="wp-caption alignnone">[<img src="/files/2014/04/eideticker-ipython.png" alt="Using ipython to analyze some eideticker data" width="848" height="842" class="size-full wp-image-1042" srcset="/files/2014/04/eideticker-ipython-150x150.png 150w, /files/2014/04/eideticker-ipython-300x297.png 300w, /files/2014/04/eideticker-ipython.png 848w" sizes="(max-width: 848px) 100vw, 848px" />][3]
  <figcaption class="wp-caption-text">Using ipython to analyze some eideticker data</figcaption></figure>
 
-<p>I think the basic premise is really quite simple: a better interface for typing in, experimenting with, and running python code. If you stop and think about it, the modern web interface supports a much richer vocabulary of interactive concepts that the console (or even text editors like emacs): there&#8217;s no reason we shouldn&#8217;t take advantage of it.</p>
+<p>I think the basic premise is really quite simple: a better interface for typing in, experimenting with, and running python code. If you stop and think about it, the modern web interface supports a much richer vocabulary of interactive concepts that the console (or even text editors like emacs): there&rsquo;s no reason we shouldn&rsquo;t take advantage of it.</p>
 
 <p>Here are the (IMO) killer features that make it worth using:</p>
 
 <ul>
  <li>The ability to immediately re-execute a block of code after editing and seeing an error (essentially merging the immediacy of the python console with the permanency / cut &#38; pastability of an actual script)</li>
- <li>Live-printing out graphs of numerical results using <a href="http://matplotlib.org/">matplotlib</a>. ZOMG this is so handy. Especially in conjunction with the live-editing outlined above, there&#8217;s no better tool for fine-tuning mathematical/statistical analysis.</li>
- <li>The shareability of the results. Any ipython notebook can be saved and then saved to a public website. Many presentations at PyCon 2014, in fact, were done entirely with ipython notebooks. So handy for answering questions like &#8220;how did you get that&#8221;?</li></ul>
+ <li>Live-printing out graphs of numerical results using <a href="http://matplotlib.org/">matplotlib</a>. ZOMG this is so handy. Especially in conjunction with the live-editing outlined above, there&rsquo;s no better tool for fine-tuning mathematical/statistical analysis.</li>
+ <li>The shareability of the results. Any ipython notebook can be saved and then saved to a public website. Many presentations at PyCon 2014, in fact, were done entirely with ipython notebooks. So handy for answering questions like &ldquo;how did you get that&rdquo;?</li></ul>
 
-<p>To learn more about how to use ipython notebooks for data analysis, I highly recommend Julie Evan&#8217;s talk <a href="http://pyvideo.org/video/2657/diving-into-open-data-with-ipython-notebook-pan-0">Diving into Open Data with IPython Notebook &#38; Pandas</a>, which you can find on pyvideo.org.</p>
+<p>To learn more about how to use ipython notebooks for data analysis, I highly recommend Julie Evan&rsquo;s talk <a href="http://pyvideo.org/video/2657/diving-into-open-data-with-ipython-notebook-pan-0">Diving into Open Data with IPython Notebook &#38; Pandas</a>, which you can find on pyvideo.org.</p>
 
 <p><strong>Other Good Talks</strong></p>
 
 <p>I saw some other good talks at the conference, here are some of them:</p>
 
 <ul>
- <li><a href="http://pyvideo.org/video/2571/all-your-ducks-in-a-row-data-structures-in-the-s">All Your Ducks In A Row: Data Structures in the Standard Library and Beyond</a> &#8211; A useful talk by Brandon Rhoades on the implementation of basic data structures in Python, and how to select the ones to use for optimal performance. It turns out that lists aren&#8217;t the best thing to use for long sequences of numerical data (who knew?)</li>
- <li><a href="http://pyvideo.org/video/2627/fast-python-slow-python">Fast Python, Slow Python</a> &#8211; An interesting talk by Alex Gaynor about how to write decent performing pure-python code in a single-threaded context. Lots of intelligent stuff about producing robust code that matches your intention and data structures, and caution against doing fancy things in the name of being &#8220;pythonic&#8221; or &#8220;general&#8221;.</li>
- <li><a href="http://pyvideo.org/video/2658/analyzing-rap-lyrics-with-python">Analyzing Rap Lyrics with Python</a> &#8211; Another data analysis talk, this one about a subject I knew almost nothing about. The best part of it (for me anyway) was learning how the speaker (Julie Lavoie) narrowed her focus in her research to the exact aspects of the problem that would let her answer the question she was interested in (&#8220;Can we automatically find out which rap lyrics are the most sexist?&#8221;) as opposed to interesting problems (&#8220;how can I design the most general scraping library possible?&#8221;) that don&#8217;t answer the question. In my opinion, this ability to focus is one of the key things that seperates successful projects from unsuccessful ones.</li></ul> 
+ <li><a href="http://pyvideo.org/video/2571/all-your-ducks-in-a-row-data-structures-in-the-s">All Your Ducks In A Row: Data Structures in the Standard Library and Beyond</a> : A useful talk by Brandon Rhoades on the implementation of basic data structures in Python, and how to select the ones to use for optimal performance. It turns out that lists aren&rsquo;t the best thing to use for long sequences of numerical data (who knew?)</li>
+ <li><a href="http://pyvideo.org/video/2627/fast-python-slow-python">Fast Python, Slow Python</a> : An interesting talk by Alex Gaynor about how to write decent performing pure-python code in a single-threaded context. Lots of intelligent stuff about producing robust code that matches your intention and data structures, and caution against doing fancy things in the name of being &ldquo;pythonic&rdquo; or &ldquo;general&rdquo;.</li>
+ <li><a href="http://pyvideo.org/video/2658/analyzing-rap-lyrics-with-python">Analyzing Rap Lyrics with Python</a> : Another data analysis talk, this one about a subject I knew almost nothing about. The best part of it (for me anyway) was learning how the speaker (Julie Lavoie) narrowed her focus in her research to the exact aspects of the problem that would let her answer the question she was interested in (&ldquo;Can we automatically find out which rap lyrics are the most sexist?&rdquo;) as opposed to interesting problems (&ldquo;how can I design the most general scraping library possible?&rdquo;) that don&rsquo;t answer the question. In my opinion, this ability to focus is one of the key things that seperates successful projects from unsuccessful ones.</li></ul> 
   <hr/>
 </article>
 <article>
@@ -245,31 +245,31 @@
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Just a quick note that I&#8217;ll shortly be travelling from the frozen land of Montreal, Canada to Japan and Taiwan over the next week, with no particular agenda other than to explore and meet people. If any Mozillians are interested in meeting up for food or drink, and discussion of <a href="https://wiki.mozilla.org/B2G/Performance">FirefoxOS performance</a>, <a href="https://wiki.mozilla.org/Project_Eideticker">Eideticker</a>, <a href="http://wrla.ch/blog/2014/03/its-all-about-the-entropy/">entropy</a> or anything else&#8230; feel free to contact me at <a href="mailto:wrlach@gmail.com">wrlach@gmail.com</a>.</p>
+<p>Just a quick note that I&rsquo;ll shortly be travelling from the frozen land of Montreal, Canada to Japan and Taiwan over the next week, with no particular agenda other than to explore and meet people. If any Mozillians are interested in meeting up for food or drink, and discussion of <a href="https://wiki.mozilla.org/B2G/Performance">FirefoxOS performance</a>, <a href="https://wiki.mozilla.org/Project_Eideticker">Eideticker</a>, <a href="http://wrla.ch/blog/2014/03/its-all-about-the-entropy/">entropy</a> or anything else, feel free to contact me at <a href="mailto:wrlach@gmail.com">wrlach@gmail.com</a>.</p>
 
 <p>Exact itinerary:</p>
 
 <ul>
- <li>Thu Mar 20 &#8211; Sat Mar 22: Tokyo, Japan</li>
- <li>Sat Mar 22 &#8211; Tue Mar 25: Kyoto, Japan</li>
- <li>Tue Mar 25 &#8211; Thu Mar 27: Tokyo, Japan</li>
- <li>Thu Mar 27 &#8211; Sun Mar 30: Taipei, Taiwan</li></ul>
+ <li>Thu Mar 20 : Sat Mar 22: Tokyo, Japan</li>
+ <li>Sat Mar 22 : Tue Mar 25: Kyoto, Japan</li>
+ <li>Tue Mar 25 : Thu Mar 27: Tokyo, Japan</li>
+ <li>Thu Mar 27 : Sun Mar 30: Taipei, Taiwan</li></ul>
 
-<p>I will also be in Taipei the week of the March 31st, though I expect most of my time to be occupied with discussions/activities inside the Taipei office about FirefoxOS performance matters (the Firefox performance team is having a work week there, and I&#8217;m tagging along to talk about / hack on Eideticker and other automation stuff).</p> 
+<p>I will also be in Taipei the week of the March 31st, though I expect most of my time to be occupied with discussions/activities inside the Taipei office about FirefoxOS performance matters (the Firefox performance team is having a work week there, and I&rsquo;m tagging along to talk about / hack on Eideticker and other automation stuff).</p> 
   <hr/>
 </article>
 <article>
   <header>
-    <h2><a href="/blog/2014/03/it-8217-s-all-about-the-entropy/">It&#8217;s all about the entropy</a></h2>
+    <h2><a href="/blog/2014/03/it-s-all-about-the-entropy/">It&rsquo;s all about the entropy</a></h2>
     <p class="index-date">Mar 14th, 2014</p>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
-<p>So recently I&#8217;ve been exploring new and different methods of measuring things that we care about on FirefoxOS &#8212; like startup time or amount of <a href="http://www.masonchang.com/blog/2014/3/2/wow-such-checkerboard">checkerboarding</a>. With Android, where we have a mostly clean signal, these measurements were pretty straightforward. Want to measure startup times? Just capture a video of Firefox starting, then compare the frames pixel by pixel to see how much they differ. When the pixels aren&#8217;t that different anymore, we&#8217;re &#8220;done&#8221;. Likewise, to measure checkerboarding we just calculated the areas of the screen where things were not completely drawn yet, frame-by-frame.</p>
+<p>So recently I&rsquo;ve been exploring new and different methods of measuring things that we care about on FirefoxOS &#8212; like startup time or amount of <a href="http://www.masonchang.com/blog/2014/3/2/wow-such-checkerboard">checkerboarding</a>. With Android, where we have a mostly clean signal, these measurements were pretty straightforward. Want to measure startup times? Just capture a video of Firefox starting, then compare the frames pixel by pixel to see how much they differ. When the pixels aren&rsquo;t that different anymore, we&rsquo;re &ldquo;done&rdquo;. Likewise, to measure checkerboarding we just calculated the areas of the screen where things were not completely drawn yet, frame-by-frame.</p>
 
-<p>On FirefoxOS, where we&#8217;re using a camera to measure these things, it has not been so simple. I&#8217;ve already discussed this with respect to startup time in a <a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">previous post</a>. One of the ideas I talk about there is &#8220;entropy&#8221; (or the amount of unique information in the frame). It turns out that this is a pretty deep concept, and is useful for even more things than I thought of at the time. Since this is probably a concept that people are going to be thinking/talking about for a while, it&#8217;s worth going into a little more detail about the math behind it.</p>
+<p>On FirefoxOS, where we&rsquo;re using a camera to measure these things, it has not been so simple. I&rsquo;ve already discussed this with respect to startup time in a <a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">previous post</a>. One of the ideas I talk about there is &ldquo;entropy&rdquo; (or the amount of unique information in the frame). It turns out that this is a pretty deep concept, and is useful for even more things than I thought of at the time. Since this is probably a concept that people are going to be thinking/talking about for a while, it&rsquo;s worth going into a little more detail about the math behind it.</p>
 
 <p>The <a href="http://en.wikipedia.org/wiki/Shannon_entropy">wikipedia article</a> on information theoretic entropy is a pretty good introduction. You should read it. It all boils down to this formula:</p>
 
@@ -277,9 +277,9 @@
 
 <p>You can see this section of the wikipedia article (and the various articles that it links to) if you want to break down where that comes from, but the short answer is that given a set of random samples, the more different values there are, the higher the entropy will be. Look at it from a probabilistic point of view: if you take a random set of data and want to make predictions on what future data will look like. If it is highly random, it will be harder to predict what comes next. Conversely, if it is more uniform it is easier to predict what form it will take.</p>
 
-<p>Another, possibly more accessible way of thinking about the entropy of a given set of data would be &#8220;how well would it compress?&#8221;. For example, a bitmap image with nothing but black in it could compress very well as there&#8217;s essentially only 1 piece of unique information in it repeated many times &#8212; the black pixel. On the other hand, a bitmap image of completely randomly generated pixels would probably compress very badly, as almost every pixel represents several dimensions of unique information. For all the statistics terminology, etc. that&#8217;s all the above formula is trying to say.</p>
+<p>Another, possibly more accessible way of thinking about the entropy of a given set of data would be &ldquo;how well would it compress?&rdquo;. For example, a bitmap image with nothing but black in it could compress very well as there&rsquo;s essentially only 1 piece of unique information in it repeated many times &#8212; the black pixel. On the other hand, a bitmap image of completely randomly generated pixels would probably compress very badly, as almost every pixel represents several dimensions of unique information. For all the statistics terminology, etc. that&rsquo;s all the above formula is trying to say.</p>
 
-<p>So we have a model of entropy, now what? For Eideticker, the question is &#8212; how can we break the frame data we&#8217;re gathering down into a form that&#8217;s amenable to this kind of analysis? The approach I took (on the recommendation of <a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html">this article</a>) was to create a histogram with 256 bins (representing the number of distinct possibilities in a black &#38; white capture) out of all the pixels in the frame, then run the formula over that. The exact function I wound up using looks like this:</p>
+<p>So we have a model of entropy, now what? For Eideticker, the question is &#8212; how can we break the frame data we&rsquo;re gathering down into a form that&rsquo;s amenable to this kind of analysis? The approach I took (on the recommendation of <a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html">this article</a>) was to create a histogram with 256 bins (representing the number of distinct possibilities in a black &#38; white capture) out of all the pixels in the frame, then run the formula over that. The exact function I wound up using looks like this:</p>
 
 <pre><code>def _get_frame_entropy((i, capture, sobelized)):
     frame = capture.get_frame(i, True).astype('float')
@@ -296,15 +296,13 @@
     samples_probability = [float(h) / histogram_length for h in histogram]
     entropy = -sum([p * math.log(p, 2) for p in samples_probability if p != 0])
 
-    return entropy
-
-</code></pre>
+    return entropy</code></pre>
 
 <p><a href="https://github.com/mozilla/eideticker/blob/master/src/videocapture/videocapture/entropy.py#L10">[Context]</a></p>
 
-<p>The &#8220;sobelized&#8221; bit allows us to optionally convolve the frame with a sobel filter before running the entropy calculation, which removes most of the data in the capture except for the edges. This is especially useful for FirefoxOS, where the signal has quite a bit of random noise from ambient lighting that artificially inflate the entropy values even in places where there is little actual &#8220;information&#8221;.</p>
+<p>The &ldquo;sobelized&rdquo; bit allows us to optionally convolve the frame with a sobel filter before running the entropy calculation, which removes most of the data in the capture except for the edges. This is especially useful for FirefoxOS, where the signal has quite a bit of random noise from ambient lighting that artificially inflate the entropy values even in places where there is little actual &ldquo;information&rdquo;.</p>
 
-<p>This type of transformation often reveals very interesting information about what&#8217;s going on in an eideticker test. For example, take this video of the user panning down in the contacts app:</p>
+<p>This type of transformation often reveals very interesting information about what&rsquo;s going on in an eideticker test. For example, take this video of the user panning down in the contacts app:</p>
 
 <div style="width: 640px; " class="wp-video">
  <video class="wp-video-shortcode" id="video-1012-2" width="640" height="917" preload="metadata" controls="controls">
@@ -315,20 +313,20 @@
 <p><a href="/files/2014/03/contacts-scrolling-entropy-graph.png"><img src="/files/2014/03/contacts-scrolling-entropy-graph.png" alt="contacts scrolling entropy graph" width="933" height="482" class="alignnone size-full wp-image-1022" srcset="/files/2014/03/contacts-scrolling-entropy-graph-300x154.png 300w, /files/2014/03/contacts-scrolling-entropy-graph.png 933w" sizes="(max-width: 933px) 100vw, 933px" /></a>
  <br /><a href="http://eideticker.wrla.ch/b2g/detail.html?id=3f7b7c88a9ed11e380c5f0def1767b24#/framesobelentropies">[Link to original]</a></p>
 
-<p>The Y axis represents entropy, as calculated by the code above. There is no inherently &#8220;right&#8221; value for this &#8212; it all depends on the application you&#8217;re testing and what you expect to see displayed on the screen. In general though, higher values are better as it indicates more frames of the capture are &#8220;complete&#8221;.</p>
+<p>The Y axis represents entropy, as calculated by the code above. There is no inherently &ldquo;right&rdquo; value for this &#8212; it all depends on the application you&rsquo;re testing and what you expect to see displayed on the screen. In general though, higher values are better as it indicates more frames of the capture are &ldquo;complete&rdquo;.</p>
 
-<p>The region at the beginning where it is at about 5.0 represents the contacts app with a set of contacts fully displayed (at startup). The &#8220;flat&#8221; regions where the entropy is at roughly 4.25? Those are the areas where the app is &#8220;checkerboarding&#8221; (blanking out waiting for graphics or layout engine to draw contact information). Click through to the original and swipe over the graph to see what I mean.</p>
+<p>The region at the beginning where it is at about 5.0 represents the contacts app with a set of contacts fully displayed (at startup). The &ldquo;flat&rdquo; regions where the entropy is at roughly 4.25? Those are the areas where the app is &ldquo;checkerboarding&rdquo; (blanking out waiting for graphics or layout engine to draw contact information). Click through to the original and swipe over the graph to see what I mean.</p>
 
-<p>It&#8217;s easy to see what a hypothetical ideal end state would be for this capture: a graph with a smooth entropy of about 5.0 (similar to the start state, where all contacts are fully drawn in). We can track our progress towards this goal (or our deviation from it), by watching the eideticker b2g dashboard and seeing if the summation of the entropy values for frames over the entire test increases or decreases over time. If we see it generally increase, that probably means we&#8217;re seeing less checkerboarding in the capture. If we see it decrease, that might mean we&#8217;re now seeing checkerboarding where we weren&#8217;t before.</p>
+<p>It&rsquo;s easy to see what a hypothetical ideal end state would be for this capture: a graph with a smooth entropy of about 5.0 (similar to the start state, where all contacts are fully drawn in). We can track our progress towards this goal (or our deviation from it), by watching the eideticker b2g dashboard and seeing if the summation of the entropy values for frames over the entire test increases or decreases over time. If we see it generally increase, that probably means we&rsquo;re seeing less checkerboarding in the capture. If we see it decrease, that might mean we&rsquo;re now seeing checkerboarding where we weren&rsquo;t before.</p>
 
-<p>It&#8217;s too early to say for sure, but over the past few days the trend has been positive:</p>
+<p>It&rsquo;s too early to say for sure, but over the past few days the trend has been positive:</p>
 
 <p><a href="/files/2014/03/entropy-levels-climbing.png"><img src="/files/2014/03/entropy-levels-climbing.png" alt="entropy-levels-climbing" width="822" height="529" class="alignnone size-full wp-image-1025" srcset="/files/2014/03/entropy-levels-climbing-300x193.png 300w, /files/2014/03/entropy-levels-climbing.png 822w" sizes="(max-width: 822px) 100vw, 822px" /></a>
  <br /><a href="http://eideticker.wrla.ch/b2g/#/inari/b2g-contacts-scrolling/overallentropy">[Link to original]</a></p>
 
 <p>(note that there were some problems in the way the tests were being run before, so results before the 12th should not be considered valid)</p>
 
-<p>So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&#8217;s find them!</p> 
+<p>So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&rsquo;s find them!</p> 
   <hr/>
 </article>
 <article>
@@ -338,22 +336,22 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
 <p>Time for a long overdue eideticker-for-firefoxos update. <a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">Last time we were here</a> (almost 5 months ago! man time flies), I was discussing methodologies for measuring startup performance. Since then, <a href="http://blargon7.com/">Dave Hunt</a> and myself have been doing lots of work to make Eideticker more robust and useful. Notably, we now have a setup in London running a suite of Eideticker tests on the latest version of FirefoxOS on the Inari on a daily basis, reporting to <a href="http://eideticker.mozilla.org/b2g">http://eideticker.mozilla.org/b2g</a>.</p>
 
 <p><a href="/files/2014/03/b2g-contacts-startup-dashboard.png"><img src="/files/2014/03/b2g-contacts-startup-dashboard.png" alt="b2g-contacts-startup-dashboard" width="840" height="601" class="alignnone size-full wp-image-1005" srcset="/files/2014/03/b2g-contacts-startup-dashboard-300x214.png 300w, /files/2014/03/b2g-contacts-startup-dashboard.png 840w" sizes="(max-width: 840px) 100vw, 840px" /></a></p>
 
-<p>There were more than a few false starts with and some of the earlier data is not to be entirely trusted&#8230; but it now seems to be chugging along nicely, hopefully providing startup numbers that provide a useful counterpoint to the <a href="https://datazilla.mozilla.org/b2g">datazilla startup numbers</a> we&#8217;ve already been collecting for some time. There still seem to be some minor problems, but in general I am becoming more and more confident in it as time goes on.</p>
+<p>There were more than a few false starts with and some of the earlier data is not to be entirely trusted but it now seems to be chugging along nicely, hopefully providing startup numbers that provide a useful counterpoint to the <a href="https://datazilla.mozilla.org/b2g">datazilla startup numbers</a> we&rsquo;ve already been collecting for some time. There still seem to be some minor problems, but in general I am becoming more and more confident in it as time goes on.</p>
 
-<p>One feature that I am particularly proud of is the detail view, which enables you to see frame-by-frame what&#8217;s going on. Click on any datapoint on the graph, then open up the view that gives an account of what eideticker is measuring. Hover over the graph and you can see what the video looks like at any point in the capture. This not only lets you know that something regressed, but how. For example, in the messages app, you can scan through this view to see exactly when the first message shows up, and what exact state the application is in when Eideticker says it&#8217;s &#8220;done loading&#8221;.</p>
+<p>One feature that I am particularly proud of is the detail view, which enables you to see frame-by-frame what&rsquo;s going on. Click on any datapoint on the graph, then open up the view that gives an account of what eideticker is measuring. Hover over the graph and you can see what the video looks like at any point in the capture. This not only lets you know that something regressed, but how. For example, in the messages app, you can scan through this view to see exactly when the first message shows up, and what exact state the application is in when Eideticker says it&rsquo;s &ldquo;done loading&rdquo;.</p>
 
 <p><a href="/files/2014/03/capture-detail-view.png"><img src="/files/2014/03/capture-detail-view.png" alt="Capture Detail View" width="964" height="843" class="alignnone size-full wp-image-1008" srcset="/files/2014/03/capture-detail-view-300x262.png 300w, /files/2014/03/capture-detail-view.png 964w" sizes="(max-width: 964px) 100vw, 964px" /></a>
  <br /><a href="http://eideticker.wrla.ch/b2g/framediff.html?id=3819a484a6d611e3ab89f0def1767b24">[link to original]</a></p>
 
 <p>(apologies for the low quality of the video &#8212; should be fixed with <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=980479">this bug</a> next week)</p>
 
-<p>As it turns out, this view has also proven to be particularly useful when working with the new entropy measurements in Eideticker which I&#8217;ve been using to measure checkerboarding (redraw delay) on FirefoxOS. More on that next week.</p> 
+<p>As it turns out, this view has also proven to be particularly useful when working with the new entropy measurements in Eideticker which I&rsquo;ve been using to measure checkerboarding (redraw delay) on FirefoxOS. More on that next week.</p> 
   <hr/>
 </article>
 <article>
@@ -367,9 +365,9 @@
 
 <p>For the uninitiated, mozregression is an automated tool that lets you bisect through builds of Firefox to find out when a problem was introduced. You give it the last known good date, the last known bad date and off it will go, automatically pulling down builds to test. After each iteration, it will ask you whether this build was good or bad, update the regression range accordingly, and then the cycle repeats until there are no more intermediate builds.</p>
 
-<p>Previously, it would only use nightlies which meant a one day granularity &#8212; this meant pretty wide regression ranges, made wider in the last year by the fact that so much more is now going into the tree over the course of the day. However, with inbound support (using the new inbound archive) we now have the potential to get a much tighter range, which should be super helpful for developers. Best of all, mozregression doesn&#8217;t require any particularly advanced skills to use which means everyone in the Mozilla community can help out.</p>
+<p>Previously, it would only use nightlies which meant a one day granularity &#8212; this meant pretty wide regression ranges, made wider in the last year by the fact that so much more is now going into the tree over the course of the day. However, with inbound support (using the new inbound archive) we now have the potential to get a much tighter range, which should be super helpful for developers. Best of all, mozregression doesn&rsquo;t require any particularly advanced skills to use which means everyone in the Mozilla community can help out.</p>
 
-<p>For anyone interested, there&#8217;s quite a bit of scope to improve mozregression to make it do more things (FirefoxOS support, easier installation&#8230;). Feel free to check out <a href="http://github.com/mozilla/mozregression">the repository</a>, the <a href="https://github.com/mozilla/mozregression/issues?state=open">issues list</a> (I just added <a href="https://github.com/mozilla/mozregression/issues/76">an easy one</a> which would make a great first bug) and ask questions on irc.mozilla.org#ateam!</p> 
+<p>For anyone interested, there&rsquo;s quite a bit of scope to improve mozregression to make it do more things (FirefoxOS support, easier installation). Feel free to check out <a href="http://github.com/mozilla/mozregression">the repository</a>, the <a href="https://github.com/mozilla/mozregression/issues?state=open">issues list</a> (I just added <a href="https://github.com/mozilla/mozregression/issues/76">an easy one</a> which would make a great first bug) and ask questions on irc.mozilla.org#ateam!</p> 
   <hr/>
 </article>
 <article>
@@ -379,22 +377,22 @@
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>So we&#8217;ve been using Eideticker to automatically measure startup/pageload times for about a year now on Android, and more recently on FirefoxOS as well (albeit not automatically). This gives us nice and pretty graphs like this:</p>
+<p>So we&rsquo;ve been using Eideticker to automatically measure startup/pageload times for about a year now on Android, and more recently on FirefoxOS as well (albeit not automatically). This gives us nice and pretty graphs like this:</p>
 
 <p><a href="/files/2013/10/flot-startup-times-gn.png"><img src="/files/2013/10/flot-startup-times-gn.png" alt="flot-startup-times-gn" width="620" height="568" class="alignnone size-full wp-image-986" srcset="/files/2013/10/flot-startup-times-gn-300x274.png 300w, /files/2013/10/flot-startup-times-gn.png 620w" sizes="(max-width: 620px) 100vw, 620px" /></a></p>
 
-<p>Ok, so we&#8217;re generating numbers and graphing them. That&#8217;s great. But what&#8217;s really going on behind the scenes? I&#8217;m glad you asked. The story is a bit different depending on which platform you&#8217;re talking about.</p>
+<p>Ok, so we&rsquo;re generating numbers and graphing them. That&rsquo;s great. But what&rsquo;s really going on behind the scenes? I&rsquo;m glad you asked. The story is a bit different depending on which platform you&rsquo;re talking about.</p>
 
 <p><strong>Android</strong></p>
 
-<p>On Android we connect Eideticker to the device&#8217;s HDMI out, so we count on a nearly pixel-perfect signal. In practice, it isn&#8217;t quite, but it is within a few RGB values that we can easily filter for. This lets us come up with a pretty good mechanism for determining when a page load or app startup is finished: just compare frames, and say we&#8217;ve &#8220;stopped&#8221; when the pixel differences between frames are negligible (previously defined at 2048 pixels, now 4096 &#8212; see below). Eideticker&#8217;s new frame difference view lets us see how this works. Look at this graph of application startup:</p>
+<p>On Android we connect Eideticker to the device&rsquo;s HDMI out, so we count on a nearly pixel-perfect signal. In practice, it isn&rsquo;t quite, but it is within a few RGB values that we can easily filter for. This lets us come up with a pretty good mechanism for determining when a page load or app startup is finished: just compare frames, and say we&rsquo;ve &ldquo;stopped&rdquo; when the pixel differences between frames are negligible (previously defined at 2048 pixels, now 4096 &#8212; see below). Eideticker&rsquo;s new frame difference view lets us see how this works. Look at this graph of application startup:</p>
 
 <p><a href="/files/2013/10/frame-difference-android-startup.png"><img src="/files/2013/10/frame-difference-android-startup.png" alt="frame-difference-android-startup" width="803" height="514" class="alignnone size-full wp-image-973" srcset="/files/2013/10/frame-difference-android-startup-300x192.png 300w, /files/2013/10/frame-difference-android-startup.png 803w" sizes="(max-width: 803px) 100vw, 803px" /></a>
  <br /><a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe">[Link to original]</a></p>
 
-<p>What&#8217;s going on here? Well, we see some huge jumps in the beginning. This represents the animated transitions that Android makes as we transition from the SUTAgent application (don&#8217;t ask) to the beginnings of the FirefoxOS browser chrome. You&#8217;ll notice though that there&#8217;s some more changes that come in around the 3 second mark. This is when the site bookmarks are fully loaded. If you load the original page (link above) and swipe your mouse over the graph, you can see what&#8217;s going on for yourself.</p>
+<p>What&rsquo;s going on here? Well, we see some huge jumps in the beginning. This represents the animated transitions that Android makes as we transition from the SUTAgent application (don&rsquo;t ask) to the beginnings of the FirefoxOS browser chrome. You&rsquo;ll notice though that there&rsquo;s some more changes that come in around the 3 second mark. This is when the site bookmarks are fully loaded. If you load the original page (link above) and swipe your mouse over the graph, you can see what&rsquo;s going on for yourself.</p>
 
-<p>This approach is not completely without problems. It turns out that there is sometimes some minor churn in the display even when the app is for all intents and purposes started. For example, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=922770">sometimes the scrollbar fading out of view can result in a significantish pixel value change</a>, so I recently upped the threshold of pixels that are different from 2048 to 4096. We also recently encountered a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=926997">silly problem</a> with a random automation app displaying &#8220;toasts&#8221; which caused results to artificially spike. More tweaking may still be required. However, on the whole I&#8217;m pretty happy with this solution. It gives useful, undeniably objective results whose meaning is easy to understand.</p>
+<p>This approach is not completely without problems. It turns out that there is sometimes some minor churn in the display even when the app is for all intents and purposes started. For example, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=922770">sometimes the scrollbar fading out of view can result in a significantish pixel value change</a>, so I recently upped the threshold of pixels that are different from 2048 to 4096. We also recently encountered a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=926997">silly problem</a> with a random automation app displaying &ldquo;toasts&rdquo; which caused results to artificially spike. More tweaking may still be required. However, on the whole I&rsquo;m pretty happy with this solution. It gives useful, undeniably objective results whose meaning is easy to understand.</p>
 
 <p><strong>FirefoxOS</strong></p>
 
@@ -404,21 +402,21 @@
  <video class="wp-video-shortcode" id="video-972-1" width="409" height="580" preload="metadata" controls="controls">
   <source type="video/webm" src="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm?_=1" /> <a href="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm">/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm</a></video></div>
 
-<p>My experience has been that pixel differences can be so great between visually identical frames on an eideticker capture on these devices that it&#8217;s pretty much impossible to settle on when startup is done using the frame difference method. It&#8217;s of course possible to detect very large scale changes, but the small scale ones (like the contacts actually appearing in the example above) are very hard to distinguish from random differences in the amount of light absorbed by the camera sensor. Tricks like using median filtering (a.k.a. &#8220;blurring&#8221;) help a bit, but not much. Take a look at this graph, for example:</p>
+<p>My experience has been that pixel differences can be so great between visually identical frames on an eideticker capture on these devices that it&rsquo;s pretty much impossible to settle on when startup is done using the frame difference method. It&rsquo;s of course possible to detect very large scale changes, but the small scale ones (like the contacts actually appearing in the example above) are very hard to distinguish from random differences in the amount of light absorbed by the camera sensor. Tricks like using median filtering (a.k.a. &ldquo;blurring&rdquo;) help a bit, but not much. Take a look at this graph, for example:</p>
 
 <p><a href="/files/2013/10/plotly-contacts-load-pixeldiff.png"><img src="/files/2013/10/plotly-contacts-load-pixeldiff.png" alt="plotly-contacts-load-pixeldiff" width="531" height="679" class="alignnone size-full wp-image-980" srcset="/files/2013/10/plotly-contacts-load-pixeldiff-234x300.png 234w, /files/2013/10/plotly-contacts-load-pixeldiff.png 531w" sizes="(max-width: 531px) 100vw, 531px" /></a>
  <br /><a href="https://plot.ly/~WilliamLachance/3">[Link to original]</a></p>
 
-<p>You&#8217;ll note that the pixel differences during &#8220;static&#8221; parts of the capture are highly variable. This is because the pixel difference depends heavily on how &#8220;bright&#8221; each frame is: parts of the capture which are black (e.g. a contacts icon with a black background) have a much lower difference between them than parts that are bright (e.g. the contacts screen fully loaded).</p>
+<p>You&rsquo;ll note that the pixel differences during &ldquo;static&rdquo; parts of the capture are highly variable. This is because the pixel difference depends heavily on how &ldquo;bright&rdquo; each frame is: parts of the capture which are black (e.g. a contacts icon with a black background) have a much lower difference between them than parts that are bright (e.g. the contacts screen fully loaded).</p>
 
 <p>After a day or so of experimenting and research, I settled on an approach which seems to work pretty reliably. Instead of comparing the frames directly, I measure the <a href="http://en.wikipedia.org/wiki/Entropy">entropy</a> of the <a href="http://en.wikipedia.org/wiki/Image_histogram">histogram</a> of colours used in each frame (essentially just an indication of brightness in this case, see <a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html">this article</a> for more on calculating it), then compare that of each frame with the average of the same measure over 5 previous frames (to account for the fact that two frames may be arbitrarily different, but that is unlikely that a sequence of frames will be). This seems to work much better than frame difference in this environment: although there are plenty of minute differences in light absorption in a capture from this camera, the overall color composition stays mostly the same. See this graph:</p>
 
 <p><a href="/files/2013/10/plotly-contacts-load-entropy.png"><img src="/files/2013/10/plotly-contacts-load-entropy.png" alt="plotly-contacts-load-entropy" width="546" height="674" class="alignnone size-full wp-image-979" srcset="/files/2013/10/plotly-contacts-load-entropy-243x300.png 243w, /files/2013/10/plotly-contacts-load-entropy.png 546w" sizes="(max-width: 546px) 100vw, 546px" /></a>
  <br /><a href="https://plot.ly/~WilliamLachance/5">[Link to original]</a></p>
 
-<p>If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&#8217;s not nearly as pronounced as before. In practice, I&#8217;ve been able to get extremely consistent numbers with a reasonable &#8220;threshold&#8221; of &#8220;0.05&#8221;.</p>
+<p>If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&rsquo;s not nearly as pronounced as before. In practice, I&rsquo;ve been able to get extremely consistent numbers with a reasonable &ldquo;threshold&rdquo; of &ldquo;0.05&rdquo;.</p>
 
-<p>In Eideticker I&#8217;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &#8220;pixel differences&#8221; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&#8217;t count on light composition changing the same way for those cases. My initial thought was to use <a href="http://en.wikipedia.org/wiki/Edge_detection">edge detection</a> (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.</p> 
+<p>In Eideticker I&rsquo;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &ldquo;pixel differences&rdquo; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&rsquo;t count on light composition changing the same way for those cases. My initial thought was to use <a href="http://en.wikipedia.org/wiki/Edge_detection">edge detection</a> (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.</p> 
   <hr/>
 </article>
 <footer>

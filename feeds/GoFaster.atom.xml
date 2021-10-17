@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'GoFaster'</title>
- <link rel="self" href="https://wlach.github.io/feeds/GoFaster.atom.xml" />
- <link href="https://wlach.github.io/tags/GoFaster.html" />
- <id>urn:https-wlach-github-io:-tags-GoFaster-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/GoFaster.atom.xml" />
+ <link href="https://wrla.ch/tags/GoFaster.html" />
+ <id>urn:https-wrla-ch:-tags-GoFaster-html</id>
  <updated>2012-04-19T04:00:00Z</updated>
  <entry>
   <title type="text">GoFaster dashboard back online</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2012/04/gofaster-dashboard-back-online/?utm_source=GoFaster&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2012-04-gofaster-dashboard-back-online</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2012/04/gofaster-dashboard-back-online/?utm_source=GoFaster&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2012-04-gofaster-dashboard-back-online</id>
   <published>2012-04-19T04:00:00Z</published>
   <updated>2012-04-19T04:00:00Z</updated>
   <author>
    <name>William Lachance</name></author>
   <content type="html">
-&lt;p&gt;Build times for mozilla-central are a major factor in developer productivity. Faster build times mean more people using try (reducing breakage) and more fine-grained regression ranges (reducing the impact of breakages). As a side benefit, it allows us to avoid buying and maintaining more hardware (or put new hardware to better use). About a half-year ago, we set up a project called BuildFaster to try to bring these times down, setting the ambitious goal of getting build times (from checkin to tests done) down to 2 hours. We didn&amp;#8217;t quite succeed, though we did make some major strides. As part of this project, we also developed a dashboard to track our progress and narrow down the major bottlenecks which were keeping up our build times.&lt;/p&gt;
+&lt;p&gt;Build times for mozilla-central are a major factor in developer productivity. Faster build times mean more people using try (reducing breakage) and more fine-grained regression ranges (reducing the impact of breakages). As a side benefit, it allows us to avoid buying and maintaining more hardware (or put new hardware to better use). About a half-year ago, we set up a project called BuildFaster to try to bring these times down, setting the ambitious goal of getting build times (from checkin to tests done) down to 2 hours. We didn&amp;rsquo;t quite succeed, though we did make some major strides. As part of this project, we also developed a dashboard to track our progress and narrow down the major bottlenecks which were keeping up our build times.&lt;/p&gt;
 
-&lt;p&gt;Unfortunately, this dashboard went down earlier this year with the rest of Brasstacks and we hadn&amp;#8217;t had the chance to bring it back up. I&amp;#8217;m pleased to announce that thanks to Jonathan Griffin, it&amp;#8217;s finally &lt;a href="http://brasstacks.mozilla.com/gofaster/#/"&gt;back online&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Unfortunately, this dashboard went down earlier this year with the rest of Brasstacks and we hadn&amp;rsquo;t had the chance to bring it back up. I&amp;rsquo;m pleased to announce that thanks to Jonathan Griffin, it&amp;rsquo;s finally &lt;a href="http://brasstacks.mozilla.com/gofaster/#/"&gt;back online&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;While no one is actively working on build performance at the moment (at least to my knowledge), it&amp;#8217;s still useful to keep track of build times to make sure that we don&amp;#8217;t regress. Anecdotally, it has seemed to me that the time needed to get results from try has been pretty stable over the last while, and this is borne out by the results:&lt;/p&gt;
+&lt;p&gt;While no one is actively working on build performance at the moment (at least to my knowledge), it&amp;rsquo;s still useful to keep track of build times to make sure that we don&amp;rsquo;t regress. Anecdotally, it has seemed to me that the time needed to get results from try has been pretty stable over the last while, and this is borne out by the results:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/2012/04/gofaster-dashboard-back-online/gofaster-dashboard-update-2012/" rel="attachment wp-att-529"&gt;&lt;img src="/files/2012/04/gofaster-dashboard-update-2012.png" alt="" title="gofaster-dashboard-update-2012" width="628" height="508" class="alignnone size-full wp-image-529" srcset="/files/2012/04/gofaster-dashboard-update-2012-300x242.png 300w, /files/2012/04/gofaster-dashboard-update-2012.png 628w" sizes="(max-width: 628px) 100vw, 628px" /&gt;&lt;/a&gt;&lt;/p&gt;
 

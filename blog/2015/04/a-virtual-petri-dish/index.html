@@ -4,7 +4,7 @@
 
     <meta charset="utf-8" />
     <title>A virtual petri dish</title>
-    <meta name="description" content="Was feeling a bit restless today, so I decided to build something on a theme I’d been thinking of since, oh gosh, I guess high school — an ecosystem simulation.  My original concept for it had three different types of entities — grass, rabbits, and foxes ..." />
+    <meta name="description" content="Was feeling a bit restless today, so I decided to build something on a theme I'd been thinking of since, oh gosh, I guess high school — an ecosystem simulation.  My original concept for it had three different types of entities — grass, rabbits, and foxes ..." />
     <meta name="author" content="William Lachance" />
     <meta name="keywords" content="Data Visualization" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -97,21 +97,21 @@
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a></span></p>
   </header>
 
-<p>Was feeling a bit restless today, so I decided to build something on a theme I&#8217;d been thinking of since, oh gosh, I guess high school &#8212; an ecosystem simulation.</p>
+<p>Was feeling a bit restless today, so I decided to build something on a theme I&rsquo;d been thinking of since, oh gosh, I guess high school &#8212; an ecosystem simulation.</p>
 
-<p>My original concept for it had three different types of entities &#8212; grass, rabbits, and foxes wandering around in a fixed environment. Each would eat the previous and try to reproduce. Both the rabbits and foxes need to continually eat to survive, otherwise they will die. The grass will just grow unprompted. I think I may have picked up the idea from elsewhere, but am not sure (it&#8217;s been nearly 17 years after all).</p>
+<p>My original concept for it had three different types of entities &#8212; grass, rabbits, and foxes wandering around in a fixed environment. Each would eat the previous and try to reproduce. Both the rabbits and foxes need to continually eat to survive, otherwise they will die. The grass will just grow unprompted. I think I may have picked up the idea from elsewhere, but am not sure (it&rsquo;s been nearly 17 years after all).</p>
 
-<p>I suppose the urge to do this comes from my fascination with the concepts of birth, death, and rebirth. Conway&#8217;s <a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">game of life</a> is probably the most famous computer representation of this sort of theme, but I always found the behavior slightly too contrived and simple to be deeply satisfying to me (at least from the point of view of representing this concept: the game is certainly interesting for other reasons). Conway&#8217;s simulation is completely deterministic and only has one type of entity, the cell. There&#8217;s an element of randomness and hierarchy in the real world, and I wanted to represent these somehow.</p>
+<p>I suppose the urge to do this comes from my fascination with the concepts of birth, death, and rebirth. Conway&rsquo;s <a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">game of life</a> is probably the most famous computer representation of this sort of theme, but I always found the behavior slightly too contrived and simple to be deeply satisfying to me (at least from the point of view of representing this concept: the game is certainly interesting for other reasons). Conway&rsquo;s simulation is completely deterministic and only has one type of entity, the cell. There&rsquo;s an element of randomness and hierarchy in the real world, and I wanted to represent these somehow.</p>
 
-<p>It was remarkably easy to get things going using my preferred toolkit for these things (Javascript and Canvas) &#8212; about 3 hours to get something on the screen, then a bunch of tweaking until I found the behavior I wanted. Either I&#8217;m getting smarter or the tools to build these things are getting better. Probably the latter.</p>
+<p>It was remarkably easy to get things going using my preferred toolkit for these things (Javascript and Canvas) &#8212; about 3 hours to get something on the screen, then a bunch of tweaking until I found the behavior I wanted. Either I&rsquo;m getting smarter or the tools to build these things are getting better. Probably the latter.</p>
 
-<p>In the end, I only wound up having rabbits and grass in my simulation in this iteration and went for a very abstract representation of what was going on (colored squares for everything!). It turns out that no more than that was really necessary to create something that held my interest. Here&#8217;s a screenshot (doesn&#8217;t really do it justice):</p>
+<p>In the end, I only wound up having rabbits and grass in my simulation in this iteration and went for a very abstract representation of what was going on (colored squares for everything!). It turns out that no more than that was really necessary to create something that held my interest. Here&rsquo;s a screenshot (doesn&rsquo;t really do it justice):</p>
 
 <p><a href="/files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM.png"><img src="/files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM.png" alt="Screen Shot 2015-04-25 at 10.24.21 PM" width="1002" height="1006" class="alignnone size-full wp-image-1198" srcset="/files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM-150x150.png 150w, /files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM-298x300.png 298w, /files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM.png 1002w" sizes="(max-width: 1002px) 100vw, 1002px" /></a></p>
 
-<p>If you&#8217;d like to check it out for yourself, I put a copy on my website <a href="http://wrla.ch/eco">here</a>. It probably requires a fairly fancy computer to run at a decent speed (I built it using a 2014 MacBook Pro and made very little effort to optimize it). If that doesn&#8217;t work out for you, I put up a <a href="https://youtu.be/LwLFw1_GGnU">video capture of the simulation on youtube</a>.</p>
+<p>If you&rsquo;d like to check it out for yourself, I put a copy on my website <a href="http://wrla.ch/eco">here</a>. It probably requires a fairly fancy computer to run at a decent speed (I built it using a 2014 MacBook Pro and made very little effort to optimize it). If that doesn&rsquo;t work out for you, I put up a <a href="https://youtu.be/LwLFw1_GGnU">video capture of the simulation on youtube</a>.</p>
 
-<p>The math and programming behind the simulation is completely arbitrary and anything but rigorous. There are probably a bunch of bugs and unintended behaviors. This has all probably been done a million times before by people I&#8217;ve never met and never will. I&#8217;m ok with that.</p>
+<p>The math and programming behind the simulation is completely arbitrary and anything but rigorous. There are probably a bunch of bugs and unintended behaviors. This has all probably been done a million times before by people I&rsquo;ve never met and never will. I&rsquo;m ok with that.</p>
 
 <p><strong>Update</strong>: <a href="https://github.com/wlach/ecoautomata">Source now on github</a>, for those who want to play with it and submit pull requests.</p>
   <hr/>

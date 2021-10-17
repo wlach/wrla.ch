@@ -2,10 +2,9 @@
     Date: 2015-03-27T00:00:00
     Tags: Data Visualization, Mozilla, Perfherder
 
+Just wanted to give another quick Perfherder update. Since the [last time][1], I've added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn't possible with Graphserver and I'm hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.
 
-Just wanted to give another quick Perfherder update. Since the [last time][1], I&#8217;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&#8217;t possible with Graphserver and I&#8217;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.
-
-Let&#8217;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in [bug 1128354][2]. Using [Mishra Vikas][3]&#8216;s new &#8220;highlight revision mode&#8221; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:
+Let's give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in [bug 1128354][2]. Using [Mishra Vikas][3]&#8216;s new "highlight revision mode" in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:
 
 [<img src="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png" alt="Screen Shot 2015-03-27 at 3.18.28 PM" width="474" height="230" class="alignnone size-large wp-image-1184" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-300x146.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png 1167w" sizes="(max-width: 474px) 100vw, 474px" />][4]
 
@@ -21,9 +20,9 @@ As is hopefully obvious, this confirms that the affected subtest continues to ho
 
 Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at <http://treeherder.mozilla.org/perf.html>.
 
- [1]: http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/
- [2]: https://bugzilla.mozilla.org/show_bug.cgi?id=1128354
- [3]: https://mozillians.org/en-US/u/mishravikas/
- [4]: /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png
- [5]: /files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png
- [6]: /files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM.png
+[1]: http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/
+[2]: https://bugzilla.mozilla.org/show_bug.cgi?id=1128354
+[3]: https://mozillians.org/en-US/u/mishravikas/
+[4]: /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png
+[5]: /files/2015/03/Screen-Shot-2015-03-27-at-2.35.25-PM.png
+[6]: /files/2015/03/Screen-Shot-2015-03-27-at-2.36.49-PM.png

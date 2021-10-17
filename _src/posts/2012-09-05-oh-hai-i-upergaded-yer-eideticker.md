@@ -2,8 +2,7 @@
     Date: 2012-09-05T00:00:00
     Tags: Eideticker, Mozilla
 
-
-*[ For more information on the Eideticker software I&#8217;m referring to, see [this entry][1] ]*
+_[ For more information on the Eideticker software I'm referring to, see [this entry][1] ]_
 
 <a href="http://wrla.ch/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/multi-device-dash/" rel="attachment wp-att-709"><img src="/files/2012/09/multi-device-dash.png" alt="" title="multi-device-dash" width="771" height="576" class="alignnone size-full wp-image-709" srcset="/files/2012/09/multi-device-dash-300x224.png 300w, /files/2012/09/multi-device-dash.png 771w" sizes="(max-width: 771px) 100vw, 771px" /></a>
 
@@ -15,4 +14,4 @@ Old style URLs like `http://wrla.ch/eideticker/dashboard/#/taskjs-scrolling/chec
 
 Note that some benchmarks for the Galaxy Nexus are still missing. This is a known problem and will be fixed soon.
 
- [1]: http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/
+[1]: http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/

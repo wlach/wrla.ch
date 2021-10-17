@@ -513,7 +513,7 @@
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
   </header>
 
-<p>Lots of movement in <a href="http://mozilla.github.io/mozregression">mozregression</a> (a tool for automatically determining when a regression was introduced in Firefox by bisecting builds on ftp.mozilla.org) in the last few months. Here&#8217;s some highlights:</p>
+<p>Lots of movement in <a href="http://mozilla.github.io/mozregression">mozregression</a> (a tool for automatically determining when a regression was introduced in Firefox by bisecting builds on ftp.mozilla.org) in the last few months. Here&rsquo;s some highlights:</p>
 
 <ul>
  <li>Support for win64 nightly and inbound builds (Kapil Singh, Vaibhav Agarwal)</li>
@@ -521,11 +521,11 @@
  <li>Way better logging and printing of remaining time to finish bisection (Julien Pagès)</li>
  <li>Much improved performance when bisecting inbound (Julien)</li>
  <li>Support for automatic determination on whether a build is good/bad via a custom script (Julien)</li>
- <li>Tons of bug fixes and other robustness improvements (me, Sam, Julien, others&#8230;)</li></ul>
+ <li>Tons of bug fixes and other robustness improvements (me, Sam, Julien, others)</li></ul>
 
-<p>Also thanks to Julien, we have a <a href="http://mozilla.github.io/mozregression/">spiffy new website</a> which documents many of these features. If it&#8217;s been a while, be sure to <a href="http://mozilla.github.io/mozregression/install.html">update your copy of mozregression to the latest version</a> and check out the site for documentation on how to use the new features described above!</p>
+<p>Also thanks to Julien, we have a <a href="http://mozilla.github.io/mozregression/">spiffy new website</a> which documents many of these features. If it&rsquo;s been a while, be sure to <a href="http://mozilla.github.io/mozregression/install.html">update your copy of mozregression to the latest version</a> and check out the site for documentation on how to use the new features described above!</p>
 
-<p>Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&#8217;s just that much more useful to Firefox contributors everywhere.</p> 
+<p>Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&rsquo;s just that much more useful to Firefox contributors everywhere.</p> 
   <hr/>
 </article>
 <article>
@@ -539,11 +539,11 @@
 
 <ol>
  <li>
-  <p>Thanks to Sam Garrett, you can now specify a different branch other than inbound to get finer grained regression ranges from. E.g. if you&#8217;re pretty sure a regression occurred on fx-team, you can do something like:   <code>mozregression --inbound-branch fx-team -g 2014-09-13 -b 2014-09-14</code></p></li>
- <li>Fixed a bug where we could get an incorrect regression range (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1059856">bug 1059856</a>). Unfortunately the root cause of the bug is still open (it&#8217;s a bit tricky to match mozilla-central commits to that of other branches) but I think this most recent fix should make things work in 99.9% of cases. Let me know if I&#8217;m wrong.</li>
+  <p>Thanks to Sam Garrett, you can now specify a different branch other than inbound to get finer grained regression ranges from. E.g. if you&rsquo;re pretty sure a regression occurred on fx-team, you can do something like:  <code>mozregression --inbound-branch fx-team -g 2014-09-13 -b 2014-09-14</code></p></li>
+ <li>Fixed a bug where we could get an incorrect regression range (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1059856">bug 1059856</a>). Unfortunately the root cause of the bug is still open (it&rsquo;s a bit tricky to match mozilla-central commits to that of other branches) but I think this most recent fix should make things work in 99.9% of cases. Let me know if I&rsquo;m wrong.</li>
  <li>Thanks to Julien Pagès, we now download the inbound build metadata in parallel, which speeds up inbound bisection quite significantly</li></ol>
 
-<p>If you know a bit of python, contributing to mozregression is a great way to have a high impact on Mozilla. Many platform developers use this project in their day-to-day work, but there&#8217;s still <a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;#038;product=Testing">lots of room for improvement</a>.</p> 
+<p>If you know a bit of python, contributing to mozregression is a great way to have a high impact on Mozilla. Many platform developers use this project in their day-to-day work, but there&rsquo;s still <a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;product=Testing">lots of room for improvement</a>.</p> 
   <hr/>
 </article>
 <footer>

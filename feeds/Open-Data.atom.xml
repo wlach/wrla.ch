@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'Open Data'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Open-Data.atom.xml" />
- <link href="https://wlach.github.io/tags/Open-Data.html" />
- <id>urn:https-wlach-github-io:-tags-Open-Data-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/Open-Data.atom.xml" />
+ <link href="https://wrla.ch/tags/Open-Data.html" />
+ <id>urn:https-wrla-ch:-tags-Open-Data-html</id>
  <updated>2011-12-14T05:00:00Z</updated>
  <entry>
   <title type="text">An API for AMT data</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/12/an-api-for-amt-data/?utm_source=Open-Data&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-12-an-api-for-amt-data</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2011/12/an-api-for-amt-data/?utm_source=Open-Data&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2011-12-an-api-for-amt-data</id>
   <published>2011-12-14T05:00:00Z</published>
   <updated>2011-12-14T05:00:00Z</updated>
   <author>
@@ -16,7 +16,7 @@
   <content type="html">
 &lt;p&gt;The &lt;a href="http://www.amt.qc.ca"&gt;AMT&lt;/a&gt; released their &lt;a href="http://t.co/AofpyI4E"&gt;GTFS schedule information&lt;/a&gt; to the public earlier this week, which is awesome. Not coincidentally, Montreal is going to have a &lt;a href="http://transportationcamp.org/montreal/"&gt;Transportation Camp&lt;/a&gt; tomorrow, wherein people will hack on transportation software and discuss open data issues.&lt;/p&gt;
 
-&lt;p&gt;GTFS information is useful and standard, but in its raw form it can be a bit difficult to wrangle with. So in advance of the event, I thought it might be helpful/useful to put a simple JSON API to the data, based on my &lt;a href="http://github.com/wlach/routez"&gt;routez&lt;/a&gt; software. Should be useful for creating an app or two! There&amp;#8217;s two endpoints that are currently defined:&lt;/p&gt;
+&lt;p&gt;GTFS information is useful and standard, but in its raw form it can be a bit difficult to wrangle with. So in advance of the event, I thought it might be helpful/useful to put a simple JSON API to the data, based on my &lt;a href="http://github.com/wlach/routez"&gt;routez&lt;/a&gt; software. Should be useful for creating an app or two! There&amp;rsquo;s two endpoints that are currently defined:&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;/api/v1/stop/&amp;lt;stop code&amp;gt;/upcoming_stoptimes&lt;/code&gt;&lt;/p&gt;
 
@@ -31,8 +31,8 @@
 &lt;p&gt;&lt;a href="http://amt.wrla.ch/blog/api/v1/place/45.49640,%20-73.57567/upcoming_stoptimes?distance=1000"&gt;http://amt.wrla.ch/blog/api/v1/place/45.49640,%20-73.57567/upcoming_stoptimes?distance=1000&lt;/a&gt;&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Updates on my ridiculous pet projects</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/09/updates-on-my-ridiculous-pet-projects/?utm_source=Open-Data&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-09-updates-on-my-ridiculous-pet-projects</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2011/09/updates-on-my-ridiculous-pet-projects/?utm_source=Open-Data&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2011-09-updates-on-my-ridiculous-pet-projects</id>
   <published>2011-09-29T04:00:00Z</published>
   <updated>2011-09-29T04:00:00Z</updated>
   <author>
@@ -40,37 +40,37 @@
   <content type="html">
 &lt;ol&gt;
  &lt;li&gt;
-  &lt;p&gt;As you may or may not have noticed, &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt; has been down for the past few weeks. Halifax updated the data but I didn&amp;#8217;t have a chance to update it. Well, I finally did, and hbus is now up in its former glory (minus a small issue with stops named &amp;#8216;6016_merged_3300509&amp;#8217;: thanks Metro Transit, time to update &lt;a href="https://github.com/wlach/routez/blob/master/src/gtfs-hacks/update-halifax-gtfs.py"&gt;that script&lt;/a&gt; to massage your data again!) . I still wonder a bit about why I keep putting time into a site oriented around a city I haven&amp;#8217;t lived in for over 2 years now (especially when Google Maps arguably does a better job at most things than I do), but there you go!&lt;/p&gt;&lt;/li&gt;
+  &lt;p&gt;As you may or may not have noticed, &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt; has been down for the past few weeks. Halifax updated the data but I didn&amp;rsquo;t have a chance to update it. Well, I finally did, and hbus is now up in its former glory (minus a small issue with stops named &amp;#8216;6016_merged_3300509&amp;prime;: thanks Metro Transit, time to update &lt;a href="https://github.com/wlach/routez/blob/master/src/gtfs-hacks/update-halifax-gtfs.py"&gt;that script&lt;/a&gt; to massage your data again!) . I still wonder a bit about why I keep putting time into a site oriented around a city I haven&amp;rsquo;t lived in for over 2 years now (especially when Google Maps arguably does a better job at most things than I do), but there you go!&lt;/p&gt;&lt;/li&gt;
  &lt;li&gt;
-  &lt;p&gt;&lt;a href="http://nixi.ca"&gt;NIXI&lt;/a&gt; is still up and being useful to me, though I&amp;#8217;m a little bit disappointed by its uptake from the rest of the world (the site gets like 5&amp;ndash;12 unique views a day). What do I need to do for you guys? A mobile version? French localization? I just added support for Washington (Capital Bikeshare) and Boston (Hubway), maybe it&amp;#8217;ll get some uptake there.&lt;/p&gt;&lt;/li&gt;
+  &lt;p&gt;&lt;a href="http://nixi.ca"&gt;NIXI&lt;/a&gt; is still up and being useful to me, though I&amp;rsquo;m a little bit disappointed by its uptake from the rest of the world (the site gets like 5&amp;ndash;12 unique views a day). What do I need to do for you guys? A mobile version? French localization? I just added support for Washington (Capital Bikeshare) and Boston (Hubway), maybe it&amp;rsquo;ll get some uptake there.&lt;/p&gt;&lt;/li&gt;
  &lt;li&gt;
-  &lt;p&gt;Not really my project, but Stephane Guidoin put up an awesome site called &lt;a href="http://zonecone.ca"&gt;zonecone.ca&lt;/a&gt; which helps you find out about traffic obstacles that might delay your journey. It even has a nifty feature where you can create an account, specify a route you take regularly (say, your commute), and it&amp;#8217;ll automatically notify you if something pops up. As you may have guessed, I&amp;#8217;m not the biggest fan of automobiles, but this is still very cool. 😉 This site was originally based on &lt;a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/"&gt;the map layout template&lt;/a&gt; that I announced a few months ago.&lt;/p&gt;&lt;/li&gt;
+  &lt;p&gt;Not really my project, but Stephane Guidoin put up an awesome site called &lt;a href="http://zonecone.ca"&gt;zonecone.ca&lt;/a&gt; which helps you find out about traffic obstacles that might delay your journey. It even has a nifty feature where you can create an account, specify a route you take regularly (say, your commute), and it&amp;rsquo;ll automatically notify you if something pops up. As you may have guessed, I&amp;rsquo;m not the biggest fan of automobiles, but this is still very cool. 😉 This site was originally based on &lt;a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/"&gt;the map layout template&lt;/a&gt; that I announced a few months ago.&lt;/p&gt;&lt;/li&gt;
  &lt;li&gt;
-  &lt;p&gt;I have a lettuce plant growing on my new balcony. It&amp;#8217;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</content></entry>
+  &lt;p&gt;I have a lettuce plant growing on my new balcony. It&amp;rsquo;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</content></entry>
  <entry>
   <title type="text">Template for a map-based web app</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/06/template-for-a-map-based-web-app/?utm_source=Open-Data&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-06-template-for-a-map-based-web-app</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/?utm_source=Open-Data&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2011-06-template-for-a-map-based-web-app</id>
   <published>2011-06-03T04:00:00Z</published>
   <updated>2011-06-03T04:00:00Z</updated>
   <author>
    <name>William Lachance</name></author>
   <content type="html">
-&lt;p&gt;Finally got around doing something I&amp;#8217;d meaning to for a while, which is create a simple template for a web-based mapping application based on jQuery and some of my earlier work on &lt;a href="https://github.com/wlach/routez"&gt;routez&lt;/a&gt;. I&amp;#8217;m hoping this might be useful as a starter for a few open data applications!&lt;/p&gt;
+&lt;p&gt;Finally got around doing something I&amp;rsquo;d meaning to for a while, which is create a simple template for a web-based mapping application based on jQuery and some of my earlier work on &lt;a href="https://github.com/wlach/routez"&gt;routez&lt;/a&gt;. I&amp;rsquo;m hoping this might be useful as a starter for a few open data applications!&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/example-map-site-2/" rel="attachment wp-att-258"&gt;&lt;img src="/files/2011/06/example-map-site1.png" alt="" title="Example Map Site" width="400" height="303" class="alignnone size-full wp-image-258" srcset="/files/2011/06/example-map-site1-300x227.png 300w, /files/2011/06/example-map-site1.png 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wlach.wrla.ch/blog/Map-Layout-Template/"&gt;Preview&lt;/a&gt; &lt;a href="https://github.com/wlach/Map-Layout-Template"&gt;Source&lt;/a&gt;&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Routez opensourced</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/04/routez-opensourced/?utm_source=Open-Data&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-04-routez-opensourced</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2011/04/routez-opensourced/?utm_source=Open-Data&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2011-04-routez-opensourced</id>
   <published>2011-04-19T04:00:00Z</published>
   <updated>2011-04-19T04:00:00Z</updated>
   <author>
    <name>William Lachance</name></author>
   <content type="html">
-&lt;p&gt;Just a quick note to say that I just opensourced the software behind &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt;, nicknamed &amp;#8220;Routez&amp;#8221; under the &lt;a href="http://www.affero.org/oagpl.html"&gt;Affero GPL&lt;/a&gt;. You can get the code on &lt;a href="http://github.com/wlach/routez"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Just a quick note to say that I just opensourced the software behind &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt;, nicknamed &amp;ldquo;Routez&amp;rdquo; under the &lt;a href="http://www.affero.org/oagpl.html"&gt;Affero GPL&lt;/a&gt;. You can get the code on &lt;a href="http://github.com/wlach/routez"&gt;github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/04/routez-opensourced/hbus_shot_apr_2011/" rel="attachment wp-att-238"&gt;&lt;img src="/files/2011/04/hbus_shot_apr_2011.png" alt="" title="hbus_shot_apr_2011" width="300" height="225" class="aligncenter size-full wp-image-238" /&gt;&lt;/a&gt;&lt;/p&gt;
 
@@ -78,24 +78,23 @@
 
 &lt;ul&gt;
  &lt;li&gt;A trip planning front-end much like Google Transit (built from the ground up using the &lt;a href="http://github.com/wlach/libroutez"&gt;libroutez&lt;/a&gt; library).&lt;/li&gt;
- &lt;li&gt;A &amp;#8220;nearby&amp;#8221; routes feature which gives you all the bus departures near a particular location.&lt;/li&gt;&lt;/ul&gt;
+ &lt;li&gt;A &amp;ldquo;nearby&amp;rdquo; routes feature which gives you all the bus departures near a particular location.&lt;/li&gt;&lt;/ul&gt;
 
 &lt;p&gt;On the backend, both of these features are accessible via JSON APIs, for use in transit apps, etc. &lt;a href="http://transittogo.mindsea.ca"&gt;Transit to Go&lt;/a&gt; uses these to great effect.&lt;/p&gt;
 
 &lt;p&gt;There is nothing particularly Halifax-specific to the underlying Routez software, aside from various references in the web front end to Halifax and hbus.ca. In fact, we use Routez to provide information for Transit to Go Edmonton right now, with no modification.&lt;/p&gt;
 
-&lt;p&gt;Originally my plan was to release something that was completely generic out of the box so that anyone could trivially make up a version of this site for their favourite city. I&amp;#8217;ve made some headway towards that goal over the last week or so, but there&amp;#8217;s still some ways to go. There&amp;#8217;s basically two major issues:&lt;/p&gt;
+&lt;p&gt;Originally my plan was to release something that was completely generic out of the box so that anyone could trivially make up a version of this site for their favourite city. I&amp;rsquo;ve made some headway towards that goal over the last week or so, but there&amp;rsquo;s still some ways to go. There&amp;rsquo;s basically two major issues:&lt;/p&gt;
 
 &lt;ol&gt;
- &lt;li&gt;The geocoder depends on information gleaned from the geobase road network dataset. The intent behind this is noble (provide an end-to-end solution that doesn&amp;#8217;t depend on third parties) but in practice this limits the software&amp;#8217;s usefulness. It would be better to optionally allow a Routez-based site to use Google&amp;#8217;s geocoder on the front-end. Unfortunately, to comply with Google&amp;#8217;s terms of service, we&amp;#8217;d also need to use their Maps API for the base map as well. Perhaps the best option here would be to use something like &lt;a href="http://mapstraction.com"&gt;Mapstraction&lt;/a&gt; to allow users to select their preferred mapping provider.
-  &lt;br /&gt;&lt;/li&gt;
+ &lt;li&gt;The geocoder depends on information gleaned from the geobase road network dataset. The intent behind this is noble (provide an end-to-end solution that doesn&amp;rsquo;t depend on third parties) but in practice this limits the software&amp;rsquo;s usefulness. It would be better to optionally allow a Routez-based site to use Google&amp;rsquo;s geocoder on the front-end. Unfortunately, to comply with Google&amp;rsquo;s terms of service, we&amp;rsquo;d also need to use their Maps API for the base map as well. Perhaps the best option here would be to use something like &lt;a href="http://mapstraction.com"&gt;Mapstraction&lt;/a&gt; to allow users to select their preferred mapping provider.&lt;/li&gt;
  &lt;li&gt;The trip planning software used in the backend, libroutez, is getting a bit long in the tooth and is quite finicky about what kind of data it will accept. I think the long-term solution to this is to switch to &lt;a href="http://graphserver.github.com/graphserver/"&gt;Graphserver&lt;/a&gt; (which is more mature and better supported), but some features would have to be added to it to support the kind of things that Routez needs (like a list of upcoming departures at a particular transit stop).&lt;/li&gt;&lt;/ol&gt;
 
 &lt;p&gt;Even with these problems, I figured it would be better to open up what I have for people to check out and play with. Have a look and let me know what you think!&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">D&amp;eacute;chets Montr&amp;eacute;al goes mobile</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile/?utm_source=Open-Data&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2011/02/d-eacute-chets-montr-eacute-al-goes-mobile/?utm_source=Open-Data&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2011-02-d-eacute-chets-montr-eacute-al-goes-mobile</id>
   <published>2011-02-19T05:00:00Z</published>
   <updated>2011-02-19T05:00:00Z</updated>
   <author>
@@ -105,14 +104,14 @@
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/?attachment_id=210" rel="attachment wp-att-210"&gt;&lt;img src="/files/2011/02/dechets-screenies.jpg" alt="" title="Dechets Montreal Screenshots" width="400" height="243" class="alignnone size-full wp-image-210" srcset="/files/2011/02/dechets-screenies-300x182.jpg 300w, /files/2011/02/dechets-screenies.jpg 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;The interface is intentionally quite simplistic, the idea being that if you&amp;#8217;re accessing the site using a mobile device you&amp;#8217;re probably only interested in the collection schedule for the current week and nothing else. If you want something more complicated you probably should just be using the full site.&lt;/p&gt;
+&lt;p&gt;The interface is intentionally quite simplistic, the idea being that if you&amp;rsquo;re accessing the site using a mobile device you&amp;rsquo;re probably only interested in the collection schedule for the current week and nothing else. If you want something more complicated you probably should just be using the full site.&lt;/p&gt;
 
 &lt;p&gt;Anyway, another fun opportunity to play with mobile web technology (a bit of break from my current &lt;a href="http://mindsea.com"&gt;consulting gig&lt;/a&gt;, which is mostly native iPhone apps). A few things that I learned this time around:&lt;/p&gt;
 
 &lt;ul&gt;
- &lt;li&gt;It&amp;#8217;s easy to give your application a nice icon when added to the iPhone home screen by using a &lt;a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html#//apple_ref/doc/uid/TP40002051-CH3"&gt;webpage icon&lt;/a&gt;.&lt;/li&gt;
- &lt;li&gt;Related to the above, you can give the user a nice hint to add your webpage to their homescreen by using Google&amp;#8217;s &lt;a href="http://code.google.com/p/mobile-bookmark-bubble/"&gt;mobile bookmark bubble&lt;/a&gt; library.&lt;/li&gt;
- &lt;li&gt;The iPhone&amp;#8217;s form interface will persist after pressing &amp;#8220;Search&amp;#8221; unless &lt;a href="http://www.em-motion.mobi/2010/05/01/iphone-ajax-form-submission/"&gt;you change the focus using an anchor element&lt;/a&gt;.&lt;/li&gt;
- &lt;li&gt;&lt;a href="http://jquery.com"&gt;jQuery&lt;/a&gt; is the best thing since sliced bread for dynamic web applications (ok, I actually knew this already but I just can&amp;#8217;t get over how great it is).&lt;/li&gt;&lt;/ul&gt;
+ &lt;li&gt;It&amp;rsquo;s easy to give your application a nice icon when added to the iPhone home screen by using a &lt;a href="http://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html#//apple_ref/doc/uid/TP40002051-CH3"&gt;webpage icon&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;Related to the above, you can give the user a nice hint to add your webpage to their homescreen by using Google&amp;rsquo;s &lt;a href="http://code.google.com/p/mobile-bookmark-bubble/"&gt;mobile bookmark bubble&lt;/a&gt; library.&lt;/li&gt;
+ &lt;li&gt;The iPhone&amp;rsquo;s form interface will persist after pressing &amp;ldquo;Search&amp;rdquo; unless &lt;a href="http://www.em-motion.mobi/2010/05/01/iphone-ajax-form-submission/"&gt;you change the focus using an anchor element&lt;/a&gt;.&lt;/li&gt;
+ &lt;li&gt;&lt;a href="http://jquery.com"&gt;jQuery&lt;/a&gt; is the best thing since sliced bread for dynamic web applications (ok, I actually knew this already but I just can&amp;rsquo;t get over how great it is).&lt;/li&gt;&lt;/ul&gt;
 
 &lt;p&gt;Thanks muchly to Kent Mewhort, the brains behind D&amp;eacute;chets Montr&amp;eacute;al, for helping me incorporate my work into his Drupal-based site.&lt;/p&gt;</content></entry></feed>

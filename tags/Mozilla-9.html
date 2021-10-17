@@ -97,7 +97,7 @@
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Python.html">Python</a></span></p>
   </header>
 
-<p>Just a few quick notes on how to avoid a class of errors I&#8217;ve been seeing in Mozilla&#8217;s automation over the last year. Since python interprets code dynamically, it&#8217;s pretty easy for problems like undefined variables to slip through, especially if they&#8217;re in a codepath that isn&#8217;t frequently tested. The most recent example I found was in some cleanup-after-error code for remote mochitest/reftest, which tried to call &#8220;self.cleanup&#8221; from a standalone method.</p>
+<p>Just a few quick notes on how to avoid a class of errors I&rsquo;ve been seeing in Mozilla&rsquo;s automation over the last year. Since python interprets code dynamically, it&rsquo;s pretty easy for problems like undefined variables to slip through, especially if they&rsquo;re in a codepath that isn&rsquo;t frequently tested. The most recent example I found was in some cleanup-after-error code for remote mochitest/reftest, which tried to call &ldquo;self.cleanup&rdquo; from a standalone method.</p>
 
 <pre><code>def main():
       ...
@@ -117,26 +117,35 @@
 
 <p><a href="http://hg.mozilla.org/mozilla-central/file/942ed5747b63/testing/mochitest/runtestsremote.py#l481">testing/mochitest/runtestsremote.py</a></p>
 
-<p>We&#8217;re calling cleanup as if it were a class variable, but we&#8217;re not inside any class! It&#8217;s easy to see what will happen if you try to run some similar code from the python console:</p>
+<p>We&rsquo;re calling cleanup as if it were a class variable, but we&rsquo;re not inside any class! It&rsquo;s easy to see what will happen if you try to run some similar code from the python console:</p>
 
 <pre><code>&gt;&gt;&gt; self.cleanup()
 Traceback (most recent call last):
   File "&amp;lt;stdin&gt;", line 1, in &amp;lt;module&gt;
 NameError: name 'self' is not defined</code></pre>
 
-<p>However, because we&#8217;re in a blanket try&#8230;except, we will never see an error. The cleanup code will never be called, instead the exception is immediately caught and subsequently ignored. Probably not the end of the world in this case (there are other parts of our mobile automation which will perform the same cleanup later), but it&#8217;s easy to imagine where this would be a more serious problem.</p>
+<p>However, because we&rsquo;re in a blanket try&hellip;except, we will never see an error. The cleanup code will never be called, instead the exception is immediately caught and subsequently ignored. Probably not the end of the world in this case (there are other parts of our mobile automation which will perform the same cleanup later), but it&rsquo;s easy to imagine where this would be a more serious problem.</p>
 
-<p>There&#8217;s two very easy ways to help stop errors like this before they hit our code:</p>
+<p>There&rsquo;s two very easy ways to help stop errors like this before they hit our code:</p>
 
 <ol>
- <li>
-  <p>Try to avoid using a blanket try&#8230;except. In addition to catching legitimate problems which we want to ignore (in the remote case for example, devicemanager exceptions), it also catches (and thus obscures) things like syntax, name, or type errors. Instead, try just catching the specific exception you&#8217;re looking for. For example, we might rewrite the case above as:</p>``` try:</li></ol>
+ <li>Try to avoid using a blanket try&hellip;except. In addition to catching legitimate problems which we want to ignore (in the remote case for example, devicemanager exceptions), it also catches (and thus obscures) things like syntax, name, or type errors. Instead, try just catching the specific exception you&rsquo;re looking for. For example, we might rewrite the case above as:</li></ol>
 
-<p> mochitest.cleanup(None, options) except devicemanager.DMError:  print &ldquo;WARNING: Device error while cleaning up&rdquo; <code>2. pyflakes, pyflakes, pyflakes. [Pyflakes][2] is a fantastic tool for analyzing your python code for common problems. It&amp;#8217;s kind of analagous to [jslint][3], for those of you familiar with that. Here&amp;#8217;s what happens when we run pyflakes against the offending code:</code> wlach@eideticker:~/src/mozilla-central$ pyflakes testing/mochitest/runtestsremote.py  testing/mochitest/runtestsremote.py:7: &lsquo;time&rsquo; imported but unused testing/mochitest/runtestsremote.py:481: undefined name &lsquo;self&rsquo; testing/mochitest/runtestsremote.py:500: undefined name &lsquo;self&rsquo; ```</p>
+<p> <code></code></p>
 
-<pre><code>I&amp;#8217;ve found pyflakes to be an indispensable part of my workflow. I generally run it after making any substantial change to a python file, and certainly before pushing anything to be consumed by others.</code></pre>
+<p>try: mochitest.cleanup(None, options) except devicemanager.DMError: print &ldquo;WARNING: Device error while cleaning up&rdquo;</p>
 
-<p>Ultimately there&#8217;s no substitute for actually thoroughly testing your code, no matter what language you&#8217;re using. But using the right techniques and tools can certainly make your life easier.</p>
+<p><code>2. pyflakes, pyflakes, pyflakes. [Pyflakes][2] is a fantastic tool for analyzing your python code for common problems. It's kind of analagous to [jslint][3], for those of you familiar with that. Here's what happens when we run pyflakes against the offending code:
+
+    ```
+wlach@eideticker:~/src/mozilla-central$ pyflakes testing/mochitest/runtestsremote.py
+testing/mochitest/runtestsremote.py:7: 'time' imported but unused
+testing/mochitest/runtestsremote.py:481: undefined name 'self'
+testing/mochitest/runtestsremote.py:500: undefined name 'self'</code></p>
+
+<pre><code>I've found pyflakes to be an indispensable part of my workflow. I generally run it after making any substantial change to a python file, and certainly before pushing anything to be consumed by others.</code></pre>
+
+<p>Ultimately there&rsquo;s no substitute for actually thoroughly testing your code, no matter what language you&rsquo;re using. But using the right techniques and tools can certainly make your life easier.</p>
 
 <p>[ for those wondering, a fix for the issue mentioned in this post is part of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=801652">bug 801652</a> ]</p> 
   <hr/>
@@ -148,18 +157,17 @@ NameError: name 'self' is not defined</code></pre>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Profiling.html">Profiling</a></span></p>
   </header>
 
-<p>Inspired by the work I&#8217;d been doing with Benoit Girard to <a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/">integrate the Firefox Profiler with Eideticker</a>, I decided to create an easy-to-use python script to help with gathering profiles on Fennec, which I call <a href="https://github.com/wlach/frof">frof</a>.</p>
+<p>Inspired by the work I&rsquo;d been doing with Benoit Girard to <a href="http://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/">integrate the Firefox Profiler with Eideticker</a>, I decided to create an easy-to-use python script to help with gathering profiles on Fennec, which I call <a href="https://github.com/wlach/frof">frof</a>.</p>
 
 <p>Frof pretty considerably reduces the amount of busywork you need to do to gather a profile. Instead of a rather complicated multi-step process to initialize fennec with the right parameters for profiling, downloading profiles, etc., you can just run the frof script like so:
- <br /><code>&lt;br /&gt;
-frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
- <br />Assuming that frof was bootstrapped correctly (and your phone is connected to your computer in debugging mode), this should start up fennec automatically with that URL loaded. Now, just perform whatever action you want to profile on your phone, then press enter in the terminal when you&#8217;re done. Voila, instant profile trace which you can examine, post to bugs, etc. All the other details are automated.</p>
+ <br /><code>&lt;br /&gt; frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
+ <br />Assuming that frof was bootstrapped correctly (and your phone is connected to your computer in debugging mode), this should start up fennec automatically with that URL loaded. Now, just perform whatever action you want to profile on your phone, then press enter in the terminal when you&rsquo;re done. Voila, instant profile trace which you can examine, post to bugs, etc. All the other details are automated.</p>
 
-<p>Backstory: the inspiration for frof came from a personal itch of mine, the fact that leaflet.js maps seem to be causing out-of-memory errors on Fennec when zooming is enabled (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=784580">bug 784580</a>). I wanted to be able to capture some profiles to see what was going on, but the <a href="https://developer.mozilla.org/en-US/docs/Performance/Profiling_with_the_Built-in_Profiler#Profiling_Firefox_mobile">current instructions</a> on MDN seem a bit unwieldly. I figured I&#8217;d get lots of mileage out of a tool to make this easier (especially if I was going to get into a profile, edit, debug cycle), so I spent a few hours dilligently copying the logic we put into eideticker to gather profiles into a standalone script.</p>
+<p>Backstory: the inspiration for frof came from a personal itch of mine, the fact that leaflet.js maps seem to be causing out-of-memory errors on Fennec when zooming is enabled (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=784580">bug 784580</a>). I wanted to be able to capture some profiles to see what was going on, but the <a href="https://developer.mozilla.org/en-US/docs/Performance/Profiling_with_the_Built-in_Profiler#Profiling_Firefox_mobile">current instructions</a> on MDN seem a bit unwieldly. I figured I&rsquo;d get lots of mileage out of a tool to make this easier (especially if I was going to get into a profile, edit, debug cycle), so I spent a few hours dilligently copying the logic we put into eideticker to gather profiles into a standalone script.</p>
 
 <p><a href="http://wrla.ch/blog/2012/09/say-hello-to-frof/frof-profile-leaflet/" rel="attachment wp-att-760"><img src="/files/2012/09/frof-profile-leaflet.png" alt="A profile I generated of a leaflet map with frof" title="frof profile leaflet" width="703" height="365" class="alignnone size-full wp-image-760" srcset="/files/2012/09/frof-profile-leaflet-300x155.png 300w, /files/2012/09/frof-profile-leaflet.png 703w" sizes="(max-width: 703px) 100vw, 703px" /></a></p>
 
-<p>Unfortunately in my case, the gecko profile didn&#8217;t tell me much, aside from the fact that Gecko didn&#8217;t seem to be the culprit (remember that on Android we also have lots of Java-based frontend code to contend with, which the profiler doesn&#8217;t measure). I&#8217;m going to stare more at the Java code and dig into the various high-level tools that Android provides for profiling performance and memory usage. My current hypothesis is that the problem is the screenshot code and the CSS transitions that leaflet generates when zooming. In the mean time, the only thing I have to show for my foray away from writing tools for Mozilla is &#8230; yet another tool.</p>
+<p>Unfortunately in my case, the gecko profile didn&rsquo;t tell me much, aside from the fact that Gecko didn&rsquo;t seem to be the culprit (remember that on Android we also have lots of Java-based frontend code to contend with, which the profiler doesn&rsquo;t measure). I&rsquo;m going to stare more at the Java code and dig into the various high-level tools that Android provides for profiling performance and memory usage. My current hypothesis is that the problem is the screenshot code and the CSS transitions that leaflet generates when zooming. In the mean time, the only thing I have to show for my foray away from writing tools for Mozilla is yet another tool.</p>
 
 <p>Oh well, it could be worse. My fervent hope is that frof will be helpful for both Fennec developers and QA. Let me know if you wind up using it!</p> 
   <hr/>
@@ -171,13 +179,13 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
 <p>Just wanted to give some updates on a few new Eideticker features which have landed in the past week.</p>
 
 <p><strong>Profiling support</strong></p>
 
-<p>While Eideticker is a great tool for observing the external behaviour of the mobile browser, it hasn&#8217;t been able to tell us much about what&#8217;s going on inside. If something&#8217;s slow, why is it slow? If it&#8217;s slower than it was the day before, what&#8217;s the cause? If it&#8217;s faster? What explains the deviations in test results from one run to the other?</p>
+<p>While Eideticker is a great tool for observing the external behaviour of the mobile browser, it hasn&rsquo;t been able to tell us much about what&rsquo;s going on inside. If something&rsquo;s slow, why is it slow? If it&rsquo;s slower than it was the day before, what&rsquo;s the cause? If it&rsquo;s faster? What explains the deviations in test results from one run to the other?</p>
 
 <p>Thanks to <a href="http://benoitgirard.wordpress.com/">Benoit Girard</a> (+ a little bit of integration work from me), we can now start providing answers to these questions. Eideticker now has a mode that allows us to capture a <a href="https://developer.mozilla.org/en-US/docs/Performance/Profiling_with_the_Built-in_Profiler">sampling profile</a> of the application while the video capture is ongoing. From the dashboard, you can now get access said profile, just by clicking on a link.</p>
 
@@ -186,17 +194,17 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 
 <p>Note that the profile is not yet synchronized precisely to the videocapture (the profile works over the entire run of the browser), but Benoit is busily making that happen. That should hopefully land soon, in the mean time we still have some pretty useful data.</p>
 
-<p>To say I&#8217;m excited about this would be an understatement. I think it has the potential to open up a whole new world of understanding of why our mobile (and desktop, someday) browser performs the way it does.</p>
+<p>To say I&rsquo;m excited about this would be an understatement. I think it has the potential to open up a whole new world of understanding of why our mobile (and desktop, someday) browser performs the way it does.</p>
 
 <p><strong>Startup / pageload testing</strong></p>
 
-<p>Eideticker has had support for measuring startup and page load time for a few months now, but I hadn&#8217;t yet hooked it up to the dashboard. As of today, it now is. There&#8217;s a bunch of different angles that are interesting to measure here (new vs. old profiles, whether the browser has been launched since boot, launching web applications, loading about:home or loading a web page, &#8230;) which I&#8217;ll get to in due course. For now, we at least have a baseline of how long it takes to see the Firefox homescreen on a Galaxy Nexus:</p>
+<p>Eideticker has had support for measuring startup and page load time for a few months now, but I hadn&rsquo;t yet hooked it up to the dashboard. As of today, it now is. There&rsquo;s a bunch of different angles that are interesting to measure here (new vs. old profiles, whether the browser has been launched since boot, launching web applications, loading about:home or loading a web page, &hellip;) which I&rsquo;ll get to in due course. For now, we at least have a baseline of how long it takes to see the Firefox homescreen on a Galaxy Nexus:</p>
 
 <video width="400px" src="http://wrla.ch/eideticker/dashboard/videos/video-1347572002.11.webm" controls="controls"></video>
 
-<p>Of course, this is hooked up to the profiling support previously mentioned. Here&#8217;s <a href="http://people.mozilla.com/~bgirard/cleopatra/?zippedProfile=profiles/sps-profile-1347572285.4.zip&amp;#038;videoCapture=videos/video-1347572285.4.webm">an example profile</a>.</p>
+<p>Of course, this is hooked up to the profiling support previously mentioned. Here&rsquo;s <a href="http://people.mozilla.com/~bgirard/cleopatra/?zippedProfile=profiles/sps-profile-1347572285.4.zip&amp;videoCapture=videos/video-1347572285.4.webm">an example profile</a>.</p>
 
-<p>I&#8217;ve already filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=791106">one bug</a> based on the data gathered so far.</p> 
+<p>I&rsquo;ve already filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=791106">one bug</a> based on the data gathered so far.</p> 
   <hr/>
 </article>
 <article>
@@ -206,7 +214,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
 <p><a href="http://wrla.ch/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/multi-device-dash/" rel="attachment wp-att-709"><img src="/files/2012/09/multi-device-dash.png" alt="" title="multi-device-dash" width="771" height="576" class="alignnone size-full wp-image-709" srcset="/files/2012/09/multi-device-dash-300x224.png 300w, /files/2012/09/multi-device-dash.png 771w" sizes="(max-width: 771px) 100vw, 771px" /></a></p>
 
@@ -226,17 +234,17 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Orangutan.html">Orangutan</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
-<p>I just merged a new approach I&#8217;ve been using to simulate touch events into the master branch of Eideticker called <a href="http://github.com/wlach/orangutan">Orangutan</a>.</p>
+<p>I just merged a new approach I&rsquo;ve been using to simulate touch events into the master branch of Eideticker called <a href="http://github.com/wlach/orangutan">Orangutan</a>.</p>
 
 <p><a href="http://wrla.ch/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns/orangutan/" rel="attachment wp-att-696"><img src="/files/2012/07/orangutan.jpg" alt="Image of Orangutan" title="orangutan" width="415" height="600" class="alignnone size-full wp-image-696" srcset="/files/2012/07/orangutan-207x300.jpg 207w, /files/2012/07/orangutan.jpg 415w" sizes="(max-width: 415px) 100vw, 415px" /></a></p>
 
-<p>As I&#8217;ve mentioned before, we really need to simulate actual user gestures when doing this type of testing to measure real-world performance with Eideticker. Up to now, I&#8217;ve been using google&#8217;s <a href="http://developer.android.com/tools/help/monkeyrunner_concepts.html">MonkeyRunner</a> tool to do this. I was always a little skeptical about its approach (which involved using a privileged tool written in Java with special access to Android&#8217;s windowing system), but up until recently I&#8217;d managed to get around its <a href="http://code.google.com/p/android/issues/detail?id=27955">issues</a> with a <a href="https://github.com/mozilla/eideticker/commit/8d034212bc38c1fc80b9fe792c0b06919c74141a">successively</a> <a href="https://github.com/mozilla/eideticker/commit/55d63960dc0a5090cee00fe917a851db082ee0fd">more</a> <a href="https://github.com/mozilla/eideticker/commit/686882d32fb25a700afec35c39e53a73658688e3">complicated</a> series of hacks.</p>
+<p>As I&rsquo;ve mentioned before, we really need to simulate actual user gestures when doing this type of testing to measure real-world performance with Eideticker. Up to now, I&rsquo;ve been using google&rsquo;s <a href="http://developer.android.com/tools/help/monkeyrunner_concepts.html">MonkeyRunner</a> tool to do this. I was always a little skeptical about its approach (which involved using a privileged tool written in Java with special access to Android&rsquo;s windowing system), but up until recently I&rsquo;d managed to get around its <a href="http://code.google.com/p/android/issues/detail?id=27955">issues</a> with a <a href="https://github.com/mozilla/eideticker/commit/8d034212bc38c1fc80b9fe792c0b06919c74141a">successively</a> <a href="https://github.com/mozilla/eideticker/commit/55d63960dc0a5090cee00fe917a851db082ee0fd">more</a> <a href="https://github.com/mozilla/eideticker/commit/686882d32fb25a700afec35c39e53a73658688e3">complicated</a> series of hacks.</p>
 
-<p>Unfortunately, I finally came up with a problem that I couldn&#8217;t figure out how to fix: monkeyrunner doesn&#8217;t attach precise timing information to the events it generates, which completely throws off Google Chrome for Android when you try to simulate a pan gesture. I&#8217;ve tried just about every way of using the existing functionality (both the networked mode and the &#8220;script&#8221; mode), but nothing seemed to help. My conclusion is that the only way of continuing to use monkey would be to create a fix for the software itself, which implies forking and extending the entire Android Open Source Project. As noble a goal as that might be, doing that across all the major Android versions I want to support (2.2, 2.3, 4.0 and now 4.1) was more work than I felt like taking on (not to mention the question of how to deploy that work). I decided to build something entirely new which did not have this requirement.</p>
+<p>Unfortunately, I finally came up with a problem that I couldn&rsquo;t figure out how to fix: monkeyrunner doesn&rsquo;t attach precise timing information to the events it generates, which completely throws off Google Chrome for Android when you try to simulate a pan gesture. I&rsquo;ve tried just about every way of using the existing functionality (both the networked mode and the &ldquo;script&rdquo; mode), but nothing seemed to help. My conclusion is that the only way of continuing to use monkey would be to create a fix for the software itself, which implies forking and extending the entire Android Open Source Project. As noble a goal as that might be, doing that across all the major Android versions I want to support (2.2, 2.3, 4.0 and now 4.1) was more work than I felt like taking on (not to mention the question of how to deploy that work). I decided to build something entirely new which did not have this requirement.</p>
 
-<p>Enter Orangutan. Unlike MonkeyRunner, Orangutan simply injects events directly into low-level the kernel device file that represents an Android device&#8217;s touch screen. It&#8217;s fast (written in native C), trivial to build, and seems to work seamlessly with any application I&#8217;ve tried using it with (including Google Chrome for Android). Most interestingly for Mozilla, this interface is also present on Firefox OS (<a href="https://wiki.mozilla.org/B2G">Boot to Gecko</a>) based devices, so we should be able to use Orangutan there to support both Eideticker and any other testing framework which needs to test real-world user input test cases. Exciting times!</p> 
+<p>Enter Orangutan. Unlike MonkeyRunner, Orangutan simply injects events directly into low-level the kernel device file that represents an Android device&rsquo;s touch screen. It&rsquo;s fast (written in native C), trivial to build, and seems to work seamlessly with any application I&rsquo;ve tried using it with (including Google Chrome for Android). Most interestingly for Mozilla, this interface is also present on Firefox OS (<a href="https://wiki.mozilla.org/B2G">Boot to Gecko</a>) based devices, so we should be able to use Orangutan there to support both Eideticker and any other testing framework which needs to test real-world user input test cases. Exciting times!</p> 
   <hr/>
 </article>
 <article>
@@ -253,9 +261,9 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 
 <p><strong>Idea 1: Put cross-browser performance tests on a more rigorous footing</strong></p>
 
-<p>One of the problems with existing benchmarks is that the graphical performance that they measure is entirely synthetic. So when something like Microsoft&#8217;s fishbowl demo claims 50 frames per second, that is based entirely on an internal measurement. There is no guarantee that is what the user is actually seeing. For all we know, it could be throwing half those frames away. To say nothing of the fact that measuring the results could interfere with the results themselves!</p>
+<p>One of the problems with existing benchmarks is that the graphical performance that they measure is entirely synthetic. So when something like Microsoft&rsquo;s fishbowl demo claims 50 frames per second, that is based entirely on an internal measurement. There is no guarantee that is what the user is actually seeing. For all we know, it could be throwing half those frames away. To say nothing of the fact that measuring the results could interfere with the results themselves!</p>
 
-<p>With Eideticker, we only analyze what the user sees (under the assumption that what the user sees is what comes out of the device&#8217;s HDMI out). To measure frame rate, Eideticker painstakingly analyzes a video capture to see the difference between each frame. Only if one frame is qualitatively different than the one before it will it consider it to be a step forward in the animation progression. There is no room for a browser to &#8220;cheat&#8221; by, for example, throwing a frame away. Here are two example frames from an Eideticker capture of an animated clock, along with a visual representation of the difference it measured between them:</p>
+<p>With Eideticker, we only analyze what the user sees (under the assumption that what the user sees is what comes out of the device&rsquo;s HDMI out). To measure frame rate, Eideticker painstakingly analyzes a video capture to see the difference between each frame. Only if one frame is qualitatively different than the one before it will it consider it to be a step forward in the animation progression. There is no room for a browser to &ldquo;cheat&rdquo; by, for example, throwing a frame away. Here are two example frames from an Eideticker capture of an animated clock, along with a visual representation of the difference it measured between them:</p>
 
 <table style="border:none;">
  <tr>
@@ -291,7 +299,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 
 <p>For the first item, I believe the best indication of perceived responsiveness and smoothness is found by measuring the number of frames that are displayed in response to user interaction. As with all measurements, it is not perfect, but one can safely say that if there are only a few frames changed in response to a swipe, the experience is going to be jerky.</p>
 
-<p>Compare these two videos of panning on <a href="http://CNN.com/">CNN.com</a>. The first is the previous Firefox for Android, clocking in at about 12.3 frames per second (fps). The second is the recent Firefox for Android , clocking in at 23 fps using Eideticker&#8217;s internal measurements:</p>
+<p>Compare these two videos of panning on <a href="http://CNN.com/">CNN.com</a>. The first is the previous Firefox for Android, clocking in at about 12.3 frames per second (fps). The second is the recent Firefox for Android , clocking in at 23 fps using Eideticker&rsquo;s internal measurements:</p>
 
 <p>&nbsp;</p>
 
@@ -302,7 +310,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
   <td>
    <video width="200px" height="240" src="/files/2012/06/native-fennec-cnn.webm" controls="controls"></video></td></tr></table>
 
-<p>For the second, we can easily measure how quickly a user sees content by setting the background color of the page to an obvious color (in Eideticker we use magenta), overlaying an image on top, then measuring the amount of the page that is magenta while panning around. Since all modern browsers just use the background color of the page when something is to be redrawn (or at least can be configured that way), it&#8217;s easy to compare across browsers. You can see in the videos above that the new Native Firefox does much better than the old one in this regard, at least on this benchmark. Here&#8217;s an image of Eideticker detecting checkerboarding on a capture (red indicates checkerboarded areas):</p>
+<p>For the second, we can easily measure how quickly a user sees content by setting the background color of the page to an obvious color (in Eideticker we use magenta), overlaying an image on top, then measuring the amount of the page that is magenta while panning around. Since all modern browsers just use the background color of the page when something is to be redrawn (or at least can be configured that way), it&rsquo;s easy to compare across browsers. You can see in the videos above that the new Native Firefox does much better than the old one in this regard, at least on this benchmark. Here&rsquo;s an image of Eideticker detecting checkerboarding on a capture (red indicates checkerboarded areas):</p>
 
 <table style="border:none;">
  <tr>
@@ -318,11 +326,11 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 
 <p><em>Note: The red area of the graphic on the right indicates a region that Eideticker has detected as checkerboarded (i.e. undrawn). The black area of the graphic indicates a region that is fully drawn.</em></p>
 
-<p>The important thing in both cases is that these captures represent <strong>a real user experience</strong>. The swipe gestures are synthesized such that they are interpreted by Android as an actual touch event. This is important: using tricks like <a href="https://developer.mozilla.org/en/DOM/window.scrollTo">javascript scrollTo</a> inside your Web page to pan would not actually engage the renderer in quite the same way. On Firefox for Android (and probably other browsers as well, though I haven&#8217;t checked), the response to a touch event is always handled inside the browser internal rendering engine to give the expected &#8220;physical feel.&#8221; Manually moving the viewport would give completely different results since so much of the fancy code we use to reduce the redraw delay would not be engaged.</p>
+<p>The important thing in both cases is that these captures represent <strong>a real user experience</strong>. The swipe gestures are synthesized such that they are interpreted by Android as an actual touch event. This is important: using tricks like <a href="https://developer.mozilla.org/en/DOM/window.scrollTo">javascript scrollTo</a> inside your Web page to pan would not actually engage the renderer in quite the same way. On Firefox for Android (and probably other browsers as well, though I haven&rsquo;t checked), the response to a touch event is always handled inside the browser internal rendering engine to give the expected &ldquo;physical feel.&rdquo; Manually moving the viewport would give completely different results since so much of the fancy code we use to reduce the redraw delay would not be engaged.</p>
 
 <p><strong>Conclusion</strong></p>
 
-<p>Overall, I am very happy with how Eideticker has allowed us to track and measure improvements in Firefox for Android. In developing Eideticker, we aimed to create a benchmark that measured how users actually interact with a browser – not how abstract measurements claim how great a browser is.  As we move ahead with new projects to improve Firefox for Android, Eideticker will continue to be useful in making sure that using our browser is the best experience that it can be, especially combined with other tools like Benoit Girard&#8217;s <a href="http://benoitgirard.wordpress.com/2012/03/30/writing-a-profiler/">sampling profiler</a>.</p>
+<p>Overall, I am very happy with how Eideticker has allowed us to track and measure improvements in Firefox for Android. In developing Eideticker, we aimed to create a benchmark that measured how users actually interact with a browser – not how abstract measurements claim how great a browser is.  As we move ahead with new projects to improve Firefox for Android, Eideticker will continue to be useful in making sure that using our browser is the best experience that it can be, especially combined with other tools like Benoit Girard&rsquo;s <a href="http://benoitgirard.wordpress.com/2012/03/30/writing-a-profiler/">sampling profiler</a>.</p>
 
 <p>For more information on Eideticker, feel free to visit <a href="https://wiki.mozilla.org/Project_Eideticker">its homepage</a> on <a href="http://wiki.mozilla.org/">wiki.mozilla.org</a>.</p>
 
@@ -331,14 +339,14 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 </article>
 <article>
   <header>
-    <h2><a href="/blog/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod/">Mass code relicensing with facebook&#8217;s codemod</a></h2>
+    <h2><a href="/blog/2012/06/mass-code-relicensing-with-facebook-s-codemod/">Mass code relicensing with facebook&rsquo;s codemod</a></h2>
     <p class="index-date">Jun 7th, 2012</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Recently the Firefox source repository (mozilla-central) was converted over recently to a new license with a <a href="http://www.mozilla.org/MPL/headers/">lovely short boilerplate</a>. This is great, but here in <a href="https://wiki.mozilla.org/Auto-tools">automation and tools</a>, we have a fairly large number of projects that live outside of the main tree but for which the new license still applies. A few weeks ago, I wanted to move one our projects over (mozbase), but didn&#8217;t want to spend hours manually editing text files. I understand that a script was used to convert mozilla-central, but a quick google didn&#8217;t turn it up. <strong>[ edit:** thanks to Ed Morley for pointing out to me that it lives here: <a href="http://hg.mozilla.org/users/gerv_mozilla.org/relic/">http://hg.mozilla.org/users/gerv_mozilla.org/relic/</a> **]</strong></p>
+<p>Recently the Firefox source repository (mozilla-central) was converted over recently to a new license with a <a href="http://www.mozilla.org/MPL/headers/">lovely short boilerplate</a>. This is great, but here in <a href="https://wiki.mozilla.org/Auto-tools">automation and tools</a>, we have a fairly large number of projects that live outside of the main tree but for which the new license still applies. A few weeks ago, I wanted to move one our projects over (mozbase), but didn&rsquo;t want to spend hours manually editing text files. I understand that a script was used to convert mozilla-central, but a quick google didn&rsquo;t turn it up. <strong>[ edit:** thanks to Ed Morley for pointing out to me that it lives here: <a href="http://hg.mozilla.org/users/gerv_mozilla.org/relic/">http://hg.mozilla.org/users/gerv_mozilla.org/relic/</a> **]</strong></p>
 
-<p>I surely could have asked about where this script is, but this problem gave me an excuse to try something that I&#8217;d been meaning to for a while: Facebook&#8217;s <a href="https://github.com/facebook/codemod">codemod</a>. Codemod is a neat little command-line utility which aims to help with mass refactorings of code. All you have to do is provide a few regular expressions to replace, and off it goes. I tried it out with mozbase, and the results were great: 5 minutes spent coming up with a regular expression and jiggering with command line options, and the job was done.</p>
+<p>I surely could have asked about where this script is, but this problem gave me an excuse to try something that I&rsquo;d been meaning to for a while: Facebook&rsquo;s <a href="https://github.com/facebook/codemod">codemod</a>. Codemod is a neat little command-line utility which aims to help with mass refactorings of code. All you have to do is provide a few regular expressions to replace, and off it goes. I tried it out with mozbase, and the results were great: 5 minutes spent coming up with a regular expression and jiggering with command line options, and the job was done.</p>
 
 <p>I had the desire to do this again today for <a href="http://github.com/mozilla/eideticker">Eideticker</a>, and decided to document the (extremely simple) process for posterity. I just used this simple command line&#8230;</p>
 
@@ -354,11 +362,11 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Video.html">Video</a></span></p>
   </header>
 
-<p>So yesterday we had a small get-together at my place, which gave me the opportunity to try something I&#8217;d been meaning to do for a while: build my own retroscope.</p>
+<p>So yesterday we had a small get-together at my place, which gave me the opportunity to try something I&rsquo;d been meaning to do for a while: build my own retroscope.</p>
 
-<p>The idea is pretty simple: have a webcam record bits and pieces of a social event, then play them back on-the-spot a few minutes/hours later. I first heard about the concept from reading Nat Friedman&#8217;s <a href="http://nat.org/blog/2005/10/the-retroscope/">blog entry</a> from 2005 &#8212; if you read that, you see that he just hooked up a video camera to his TiVo. 7 years in the future, laptop webcams are ubiquitous and we have the awesome HTML5  tag, so I figured it would be easy to knock up something interesting in short order with zero custom hardware.</p>
+<p>The idea is pretty simple: have a webcam record bits and pieces of a social event, then play them back on-the-spot a few minutes/hours later. I first heard about the concept from reading Nat Friedman&rsquo;s <a href="http://nat.org/blog/2005/10/the-retroscope/">blog entry</a> from 2005 &#8212; if you read that, you see that he just hooked up a video camera to his TiVo. 7 years in the future, laptop webcams are ubiquitous and we have the awesome HTML5  tag, so I figured it would be easy to knock up something interesting in short order with zero custom hardware.</p>
 
-<p>Having only remembered that I wanted to do this about 30 minutes before people were scheduled to start arriving, I didn&#8217;t have much time to do anything really perfect. I settled on using <a href="http://stackoverflow.com/questions/7500763/command-line-streaming-webcam-with-audio-from-ubuntu-server-in-webm-format">this little snippet</a> from stackoverflow to generate short (5 second) movies on my laptop, then used scp to copy them over and display a montage of them in an auto-refreshing webpage on my &#8220;television&#8221; (which is a Mac-Mini connected to a large computer monitor). Despite being a total hack job, the end result generated much amusement. I think this is a bit different from what Nat originally did (it sounds from his blog like his retroscope played back longer segments), but I think the end result is actually a bit more fun.</p>
+<p>Having only remembered that I wanted to do this about 30 minutes before people were scheduled to start arriving, I didn&rsquo;t have much time to do anything really perfect. I settled on using <a href="http://stackoverflow.com/questions/7500763/command-line-streaming-webcam-with-audio-from-ubuntu-server-in-webm-format">this little snippet</a> from stackoverflow to generate short (5 second) movies on my laptop, then used scp to copy them over and display a montage of them in an auto-refreshing webpage on my &ldquo;television&rdquo; (which is a Mac-Mini connected to a large computer monitor). Despite being a total hack job, the end result generated much amusement. I think this is a bit different from what Nat originally did (it sounds from his blog like his retroscope played back longer segments), but I think the end result is actually a bit more fun.</p>
 
 <p><a href="http://wrla.ch/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-video-tag/retroscope-screenshot/" rel="attachment wp-att-598"><img src="/files/2012/05/retroscope-screenshot-1024x694.png" alt="" title="retroscope-screenshot" width="640" height="433" class="alignnone size-large wp-image-598" srcset="/files/2012/05/retroscope-screenshot-300x203.png 300w, /files/2012/05/retroscope-screenshot-1024x694.png 1024w, /files/2012/05/retroscope-screenshot.png 1319w" sizes="(max-width: 640px) 100vw, 640px" /></a></p>
 
@@ -366,7 +374,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 
 <p>(yes, that handsome fellow with the Pernot is me)</p>
 
-<p>I thought it might be fun to release the slightly-cleaned up results of this experiment as opensource for others to play with, so I created a small project for it on github. Unlike the original version, no complicated scp scheme is required &#8212; I just reused Joel Maher&#8217;s most excellent mozhttpd library from <a href="http://github.com/mozilla/mozbase">mozbase</a> to run a web server in the same process as the capture logic. All you need to do is run the server on a Linux machine with a webcam and connect to it with a web browser from any other machine on your local network.</p>
+<p>I thought it might be fun to release the slightly-cleaned up results of this experiment as opensource for others to play with, so I created a small project for it on github. Unlike the original version, no complicated scp scheme is required &#8212; I just reused Joel Maher&rsquo;s most excellent mozhttpd library from <a href="http://github.com/mozilla/mozbase">mozbase</a> to run a web server in the same process as the capture logic. All you need to do is run the server on a Linux machine with a webcam and connect to it with a web browser from any other machine on your local network.</p>
 
 <p><a href="https://github.com/wlach/retroscope">https://github.com/wlach/retroscope</a></p>
 
@@ -380,25 +388,25 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Ok, this is somewhat mundane, but I&#8217;ve already had to do it twice (and helped someone do something similar on #mobile), so I figured I might as well blog about it for posterity.</p>
+<p>Ok, this is somewhat mundane, but I&rsquo;ve already had to do it twice (and helped someone do something similar on #mobile), so I figured I might as well blog about it for posterity.</p>
 
 <p>For various automation tasks (notably the <a href="http://wrla.ch/eideticker/dashboard/">Eideticker dashboard</a> and the <a href="http://mrcote.info/phonedash/#/rawfennecstartup">cross-browser startup tests</a>), we need to be able to launch an Android browser on the command line (via adb shell or our own custom SUTAgent). This is a bit of a black art, but you can find references on how to do this on stackoverflow and other places. The magic incantation is:</p>
 
 <pre><code>am start -a android.intent.action.VIEW -n &amp;lt;application/intent&amp;gt; -d &amp;lt;url&amp;gt;</code></pre>
 
-<p>So, for example, to launch Fennec, you&#8217;d run this on the Android command prompt:</p>
+<p>So, for example, to launch Fennec, you&rsquo;d run this on the Android command prompt:</p>
 
 <pre><code>am start -a android.intent.action.VIEW -n org.mozilla.fennec/.App -d http://mygreatsite.info</code></pre>
 
 <p>Ok, easy enough, but what if we want to launch a new browser that we just downloaded (e.g. Google Chrome)? Where do we get the application and intent names?</p>
 
-<p>The short answer is that you need to reach into the apk and dig. 😉 There&#8217;s probably many ways of doing this, but here&#8217;s what I do (which has the distinct advantage of not needing to compile, download or run weird java applications):</p>
+<p>The short answer is that you need to reach into the apk and dig. 😉 There&rsquo;s probably many ways of doing this, but here&rsquo;s what I do (which has the distinct advantage of not needing to compile, download or run weird java applications):</p>
 
 <ol>
  <li>
   <p>Copy the apk onto your machine (the apk should be in /data/app: if you have a rooted phone, you should be able to copy that off to your machine).</p></li>
  <li>
-  <p>Extract <em>AndroidManifest.xml</em> from the apk (it&#8217;s just a .zip) and run <a href="http://android-random.googlecode.com/svn/trunk/axml2xml/axml2xml.pl">axml2xml.pl</a> on it.</p></li>
+  <p>Extract <em>AndroidManifest.xml</em> from the apk (it&rsquo;s just a .zip) and run <a href="http://android-random.googlecode.com/svn/trunk/axml2xml/axml2xml.pl">axml2xml.pl</a> on it.</p></li>
  <li>
   <p>Examine the resultant xml file and look for the <strong></strong> tag. It should have a property called <strong></strong> which is the package name. For example:</p></li></ol>
 
@@ -409,7 +417,7 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
 
 <p>Likewise here we see that the activity name we want is <strong>.Main</strong> (which Android explicitly expands out to <strong>com.android.chrome.Main</strong>)</p>
 
-<p>Armed with this information, you should now have enough information to launch the application. Furthering the example above, here&#8217;s how to start Chrome on Android via adb&#8217;s shell:</p>
+<p>Armed with this information, you should now have enough information to launch the application. Furthering the example above, here&rsquo;s how to start Chrome on Android via adb&rsquo;s shell:</p>
 
 <pre><code>am start -a android.intent.action.VIEW -n com.android.chrome/.Main -d http://mygreatsite.info</code></pre>
 
@@ -423,18 +431,18 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
 
 <p>tl;dr: You can now run the standard eideticker benchmarks easily on any Android phone without any kind of specialized hardware.</p>
 
-<p>So Eideticker is pretty great at comparing relative performance between different browsers and generally measuring things in an absolutely neutral way. Unfortunately it&#8217;s a bit of a pain to use it at the moment to catch regressions: the software still has a few bugs and encoding/decoding/analyzing the capture still takes a great deal of time. Not to mention the fact that it currently requires specialized hardware (though that will soon be less of a concern at least inside MoCo, where we have a bunch of Eideticker boxes on order for the Toronto and Mountain View offices).</p>
+<p>So Eideticker is pretty great at comparing relative performance between different browsers and generally measuring things in an absolutely neutral way. Unfortunately it&rsquo;s a bit of a pain to use it at the moment to catch regressions: the software still has a few bugs and encoding/decoding/analyzing the capture still takes a great deal of time. Not to mention the fact that it currently requires specialized hardware (though that will soon be less of a concern at least inside MoCo, where we have a bunch of Eideticker boxes on order for the Toronto and Mountain View offices).</p>
 
-<p>A few months ago, Chris Lord wrote up some great code to internally measure the amount of checkerboarding going on in Fennec. I&#8217;ve thought for a while that it would be a neat idea to hook this up to the Eideticker harness, and today I finally did so. After installing Eideticker, you can now run the benchmark on any machine against an arbitrary fennec build just by typing this from the eideticker root directory:</p>
+<p>A few months ago, Chris Lord wrote up some great code to internally measure the amount of checkerboarding going on in Fennec. I&rsquo;ve thought for a while that it would be a neat idea to hook this up to the Eideticker harness, and today I finally did so. After installing Eideticker, you can now run the benchmark on any machine against an arbitrary fennec build just by typing this from the eideticker root directory:</p>
 
 <pre><code>adb shell setprop log.tag.GeckoLayerRendererProf DEBUG
 ./bin/get-metric-for-build.py --no-capture --get-internal-checkerboard-stats --num-runs 3 nightly.apk src/tests/scrolling/taskjs.org/index.html</code></pre>
 
-<p>In return, you&#8217;ll get some nice clean results like this:</p>
+<p>In return, you&rsquo;ll get some nice clean results like this:</p>
 
 <pre><code>=== Internal Checkerboard Stats (sum of percents, not percentage) ===
 [167.34348, 171.871015, 175.3420296]</code></pre>
@@ -455,9 +463,9 @@ frof org.mozilla.fennec http://wrla.ch mywonderfulprofile.zip&lt;br /&gt;</code>
   <td>175.34</td> 
   <td>184.44</td></tr></table>
 
-<p>While the results aren&#8217;t identical (we measure number of frames differently inside Fennec than we do with Eideticker, for one thing), they do seem roughly correlated. So go forth, benchmark and tweak! 😉</p>
+<p>While the results aren&rsquo;t identical (we measure number of frames differently inside Fennec than we do with Eideticker, for one thing), they do seem roughly correlated. So go forth, benchmark and tweak! 😉</p>
 
-<p>P.S. If you&#8217;ve been following mobile automation, you might be asking why I don&#8217;t just suggest running Talos and Robocop on your workstation. Can&#8217;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&#8217;re much more involved to set up and use at the moment. Arguably they shouldn&#8217;t be, and this is something we (<a href="https://wiki.mozilla.org/Auto-tools/">Mozilla tools &amp; automation</a>) need to work on. We&#8217;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.</p> 
+<p>P.S. If you&rsquo;ve been following mobile automation, you might be asking why I don&rsquo;t just suggest running Talos and Robocop on your workstation. Can&rsquo;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&rsquo;re much more involved to set up and use at the moment. Arguably they shouldn&rsquo;t be, and this is something we (<a href="https://wiki.mozilla.org/Auto-tools/">Mozilla tools &amp; automation</a>) need to work on. We&rsquo;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.</p> 
   <hr/>
 </article>
 <footer>

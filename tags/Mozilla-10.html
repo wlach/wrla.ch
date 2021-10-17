@@ -97,11 +97,11 @@
     <p><span class="tags"><a href="/tags/GoFaster.html">GoFaster</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Release-Engineering.html">Release Engineering</a></span></p>
   </header>
 
-<p>Build times for mozilla-central are a major factor in developer productivity. Faster build times mean more people using try (reducing breakage) and more fine-grained regression ranges (reducing the impact of breakages). As a side benefit, it allows us to avoid buying and maintaining more hardware (or put new hardware to better use). About a half-year ago, we set up a project called BuildFaster to try to bring these times down, setting the ambitious goal of getting build times (from checkin to tests done) down to 2 hours. We didn&#8217;t quite succeed, though we did make some major strides. As part of this project, we also developed a dashboard to track our progress and narrow down the major bottlenecks which were keeping up our build times.</p>
+<p>Build times for mozilla-central are a major factor in developer productivity. Faster build times mean more people using try (reducing breakage) and more fine-grained regression ranges (reducing the impact of breakages). As a side benefit, it allows us to avoid buying and maintaining more hardware (or put new hardware to better use). About a half-year ago, we set up a project called BuildFaster to try to bring these times down, setting the ambitious goal of getting build times (from checkin to tests done) down to 2 hours. We didn&rsquo;t quite succeed, though we did make some major strides. As part of this project, we also developed a dashboard to track our progress and narrow down the major bottlenecks which were keeping up our build times.</p>
 
-<p>Unfortunately, this dashboard went down earlier this year with the rest of Brasstacks and we hadn&#8217;t had the chance to bring it back up. I&#8217;m pleased to announce that thanks to Jonathan Griffin, it&#8217;s finally <a href="http://brasstacks.mozilla.com/gofaster/#/">back online</a>.</p>
+<p>Unfortunately, this dashboard went down earlier this year with the rest of Brasstacks and we hadn&rsquo;t had the chance to bring it back up. I&rsquo;m pleased to announce that thanks to Jonathan Griffin, it&rsquo;s finally <a href="http://brasstacks.mozilla.com/gofaster/#/">back online</a>.</p>
 
-<p>While no one is actively working on build performance at the moment (at least to my knowledge), it&#8217;s still useful to keep track of build times to make sure that we don&#8217;t regress. Anecdotally, it has seemed to me that the time needed to get results from try has been pretty stable over the last while, and this is borne out by the results:</p>
+<p>While no one is actively working on build performance at the moment (at least to my knowledge), it&rsquo;s still useful to keep track of build times to make sure that we don&rsquo;t regress. Anecdotally, it has seemed to me that the time needed to get results from try has been pretty stable over the last while, and this is borne out by the results:</p>
 
 <p><a href="http://wrla.ch/blog/2012/04/gofaster-dashboard-back-online/gofaster-dashboard-update-2012/" rel="attachment wp-att-529"><img src="/files/2012/04/gofaster-dashboard-update-2012.png" alt="" title="gofaster-dashboard-update-2012" width="628" height="508" class="alignnone size-full wp-image-529" srcset="/files/2012/04/gofaster-dashboard-update-2012-300x242.png 300w, /files/2012/04/gofaster-dashboard-update-2012.png 628w" sizes="(max-width: 628px) 100vw, 628px" /></a></p>
 
@@ -115,20 +115,20 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
 
-<p>Participated in an <a href="https://wiki.mozilla.org/Fennec/NativeUI/checkerboarding">interesting meeting</a> on checkerboarding in Firefox for Android yesterday. As a reminder, checkerboarding refers to the amount of time you spend waiting to see the full page after you do a swipe on your mobile device, and it&#8217;s a big issue right now &#8211; so much so that it puts our delivery goal for the new native browser at risk.</p>
+<p>Participated in an <a href="https://wiki.mozilla.org/Fennec/NativeUI/checkerboarding">interesting meeting</a> on checkerboarding in Firefox for Android yesterday. As a reminder, checkerboarding refers to the amount of time you spend waiting to see the full page after you do a swipe on your mobile device, and it&rsquo;s a big issue right now : so much so that it puts our delivery goal for the new native browser at risk.</p>
 
-<p>It seems like we have a number of strategies for improving performance which will likely solve the problem, but we need to be able to measure improvements to make sure that we&#8217;re making progress. This is one of the places where Eideticker could be useful (especially with regards to measuring us against the competition), though there are a few things that we need to add before it&#8217;s going to be as useful as it could be. The most urgent, as I understand, is to come up with a suite of tests which accurately represent the set of pages that we&#8217;re having issues with. The current main measure of checkerboarding that we&#8217;re using with eideticker is taskjs.org which, while an interesting test case in some ways, doesn&#8217;t accurately represent the sort of site that the user would normally go to in the wild (and thus be annoyed by). 😉</p>
+<p>It seems like we have a number of strategies for improving performance which will likely solve the problem, but we need to be able to measure improvements to make sure that we&rsquo;re making progress. This is one of the places where Eideticker could be useful (especially with regards to measuring us against the competition), though there are a few things that we need to add before it&rsquo;s going to be as useful as it could be. The most urgent, as I understand, is to come up with a suite of tests which accurately represent the set of pages that we&rsquo;re having issues with. The current main measure of checkerboarding that we&rsquo;re using with eideticker is taskjs.org which, while an interesting test case in some ways, doesn&rsquo;t accurately represent the sort of site that the user would normally go to in the wild (and thus be annoyed by). 😉</p>
 
-<p>This is going to take a few days (and a lot of review: I&#8217;m definitely no expert when it comes to this stuff) to get right, but I just added two tests for the New York Times which I think are a step in the right direction of being more representative of real-world use cases. Have a look here:</p>
+<p>This is going to take a few days (and a lot of review: I&rsquo;m definitely no expert when it comes to this stuff) to get right, but I just added two tests for the New York Times which I think are a step in the right direction of being more representative of real-world use cases. Have a look here:</p>
 
 <p><a href="http://wrla.ch/eideticker/dashboard/#/nytimes-scrolling">http://wrla.ch/eideticker/dashboard/#/nytimes-scrolling</a>
  <br /><a href="http://wrla.ch/eideticker/dashboard/#/nytimes-zooming">http://wrla.ch/eideticker/dashboard/#/nytimes-zooming</a></p>
 
-<p>The results here actually aren&#8217;t as bad as I would have expected/remembered. There amount of checkerboarding after a zoom out is a bit annoying (I understand this a known issue with font caching, or something) but not too terrible. Still, any improvements that show up here will probably apply across a wide variety of sites, as the design patterns on the New York Times site are very common.</p>
+<p>The results here actually aren&rsquo;t as bad as I would have expected/remembered. There amount of checkerboarding after a zoom out is a bit annoying (I understand this a known issue with font caching, or something) but not too terrible. Still, any improvements that show up here will probably apply across a wide variety of sites, as the design patterns on the New York Times site are very common.</p>
 
-<p>(P.S. yes, I know I promised a comparison with Google Chrome for Android last time&#8230; rest assured that&#8217;s still coming soon!)</p> 
+<p>(P.S. yes, I know I promised a comparison with Google Chrome for Android last time: rest assured that&rsquo;s still coming soon!)</p> 
   <hr/>
 </article>
 <article>
@@ -138,11 +138,11 @@
     <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Just thought I&#8217;d mention this because I found it handy.</p>
+<p>Just thought I&rsquo;d mention this because I found it handy.</p>
 
-<p>A while back AaronMT <a href="http://aaronmt.com/?p=527">wrote up</a> some clever instructions on taking Android screenshots by dumping the contents of &#8216;/dev/fb0&#8217; and running ffmpeg on the results. This is useful, but you need to know the resolution of the device you have connected to pass the right arguments to ffmpeg. Wouldn&#8217;t it be better if you had just one script that would work for whatever device you had plugged in?</p>
+<p>A while back AaronMT <a href="http://aaronmt.com/?p=527">wrote up</a> some clever instructions on taking Android screenshots by dumping the contents of &#8216;/dev/fb0&rsquo; and running ffmpeg on the results. This is useful, but you need to know the resolution of the device you have connected to pass the right arguments to ffmpeg. Wouldn&rsquo;t it be better if you had just one script that would work for whatever device you had plugged in?</p>
 
-<p>In fact, there is a way to do this using the <a href="http://developer.android.com/guide/developing/tools/MonkeyRunner.html">monkeyrunner</a> utility. Intended mainly as a tool for synthesizing input on Android (more on that some other time), you can also easily get a capture of the Android screen with its python/jython API (assuming you have the Android SDK installed). Here&#8217;s a quick script which does the job:</p>
+<p>In fact, there is a way to do this using the <a href="http://developer.android.com/guide/developing/tools/MonkeyRunner.html">monkeyrunner</a> utility. Intended mainly as a tool for synthesizing input on Android (more on that some other time), you can also easily get a capture of the Android screen with its python/jython API (assuming you have the Android SDK installed). Here&rsquo;s a quick script which does the job:</p>
 
 <pre><code>from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice
 import os
@@ -157,10 +157,9 @@ result = device.takeSnapshot()
 result.writeToFile(sys.argv[1], 'png')</code></pre>
 
 <p>Copy that into a file called capture.py (or whatever), then run it like so:
- <br /><code>&lt;br /&gt;
-monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
+ <br /><code>&lt;br /&gt; monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 
-<p>And you&#8217;re off to the races! Nice screenshot, no utilities or non-essential command line arguments required!</p>
+<p>And you&rsquo;re off to the races! Nice screenshot, no utilities or non-essential command line arguments required!</p>
 
 <p>(credit to <a href="http://stackoverflow.com/a/9311243/295132">this stackoverflow answer</a> for the idea)</p> 
   <hr/>
@@ -172,9 +171,9 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
 
-<p>Since my <a href="http://wrla.ch/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/">first Eideticker dashboard post</a> was <a href="http://download.cnet.com/8301-2007_4-57401261-12/whats-going-on-with-firefox-for-android/?tag=epicStories">so well received</a>, I thought I&#8217;d give a quick update on another metric that I just brought online: checkerboarding (a.k.a. the amount of time you spend waiting to see the full page after you do a swipe on your mobile device).</p>
+<p>Since my <a href="http://wrla.ch/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/">first Eideticker dashboard post</a> was <a href="http://download.cnet.com/8301-2007_4-57401261-12/whats-going-on-with-firefox-for-android/?tag=epicStories">so well received</a>, I thought I&rsquo;d give a quick update on another metric that I just brought online: checkerboarding (a.k.a. the amount of time you spend waiting to see the full page after you do a swipe on your mobile device).</p>
 
 <p><a href="http://wrla.ch/blog/2012/03/eideticker-dashboard-update/checkerboard_dashboard/" rel="attachment wp-att-503"><img src="/files/2012/03/checkerboard_dashboard.png" alt="" title="checkerboard_dashboard" width="715" height="485" class="alignnone size-full wp-image-503" srcset="/files/2012/03/checkerboard_dashboard-300x203.png 300w, /files/2012/03/checkerboard_dashboard.png 715w" sizes="(max-width: 715px) 100vw, 715px" /></a></p>
 
@@ -194,9 +193,9 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 
 <p>Over the last while, Clint Talbert and I have been working on setting up automatic mobile performance tests using Eideticker (a framework to measure perceived Firefox performance by video capturing automated browser interactions: for more information, see my <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">earlier post</a>).</p>
 
-<p>There&#8217;s many reasons why this is interesting, but probably the most important one is that it can measure differences reliably across different types of mobile browsers. Currently I&#8217;m testing the old XUL fennec, the Android stock browser, and the latest nightlies.</p>
+<p>There&rsquo;s many reasons why this is interesting, but probably the most important one is that it can measure differences reliably across different types of mobile browsers. Currently I&rsquo;m testing the old XUL fennec, the Android stock browser, and the latest nightlies.</p>
 
-<p>I&#8217;m pleased to announce that the first iteration of the dashboard is available for public consumption, on my site.</p>
+<p>I&rsquo;m pleased to announce that the first iteration of the dashboard is available for public consumption, on my site.</p>
 
 <p><a href="http://wrla.ch/eideticker/dashboard/#/canvas">http://wrla.ch/eideticker/dashboard/#/canvas</a></p>
 
@@ -213,9 +212,9 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Pandaboard.html">Pandaboard</a></span></p>
   </header>
 
-<p>For the last few days I&#8217;ve been experimenting with getting a Pandaboard running Android 4.0, continuing the work that Clint Talbert <a href="http://cmtalbert.wordpress.com/2011/10/12/pandaboard-status/">started in the fall</a> to get these boards for use as a replacement for the Tegra in Mozilla&#8217;s android automation. The first objective is to get a reproducible build going, after that we&#8217;ll try to get some of our custom tools (<a href="https://wiki.mozilla.org/Mobile/Fennec_Unittests/Remote_Testing">SUTAgent</a> &#38; friends) installed by default.</p>
+<p>For the last few days I&rsquo;ve been experimenting with getting a Pandaboard running Android 4.0, continuing the work that Clint Talbert <a href="http://cmtalbert.wordpress.com/2011/10/12/pandaboard-status/">started in the fall</a> to get these boards for use as a replacement for the Tegra in Mozilla&rsquo;s android automation. The first objective is to get a reproducible build going, after that we&rsquo;ll try to get some of our custom tools (<a href="https://wiki.mozilla.org/Mobile/Fennec_Unittests/Remote_Testing">SUTAgent</a> &#38; friends) installed by default.</p>
 
-<p>So far this has been&#8230; interesting. Much as Clint did before, I thought I&#8217;d document some of the notes on what I did in the hopes that they&#8217;ll be helpful to other people trying to do similar things.</p>
+<p>So far this has been interesting. Much as Clint did before, I thought I&rsquo;d document some of the notes on what I did in the hopes that they&rsquo;ll be helpful to other people trying to do similar things.</p>
 
 <p>Getting things up and running is a two step process. First, you build the beast. This part is straightforward, just follow the instructions here:</p>
 
@@ -225,20 +224,20 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
  <li><a href="http://source.android.com/source/building.html">http://source.android.com/source/building.html</a></li>
  <li><a href="http://source.android.com/source/building-devices.html">http://source.android.com/source/building-devices.html</a></li></ul>
 
-<p>Note that you almost certainly want to build in the &#8220;eng&#8221; configuration, which is rooted and (apparently) has some extra tools installed.</p>
+<p>Note that you almost certainly want to build in the &ldquo;eng&rdquo; configuration, which is rooted and (apparently) has some extra tools installed.</p>
 
 <p>Installing it is a little more tricky. The way they want you to do this is put the pandaboard into a special mode and copy the stuff you built onto an sdcard. Seem a little funny to you? Yeah, it does to me too. Why not just build an sdcard image directly?
- <br />Nonetheless, this is the officially supported way of imaging a pandaboard, so let&#8217;s just follow it until we can think of a better way of doing things. The instructions for doing this on the pandaboard are located in the source tree here:</p>
+ <br />Nonetheless, this is the officially supported way of imaging a pandaboard, so let&rsquo;s just follow it until we can think of a better way of doing things. The instructions for doing this on the pandaboard are located in the source tree here:</p>
 
 <p><code>&lt;a href="http://source-android.frandroid.com/device/ti/panda/README"&gt;device/ti/panda/README&lt;/a&gt;</code></p>
 
-<p>These are mostly correct as far as I can tell, but there&#8217;s a few gotchas. First, you need to run the commands mentioned as root unless you&#8217;ve configured USB to be configurable by your user. Second, most of those commands are not in the path by default so you&#8217;ll need to specify the full path to e.g. the fastboot utility. The instructions <a href="http://fosiao.com/node/19">here</a> cover these exception cases: I recommend following them instead.</p>
+<p>These are mostly correct as far as I can tell, but there&rsquo;s a few gotchas. First, you need to run the commands mentioned as root unless you&rsquo;ve configured USB to be configurable by your user. Second, most of those commands are not in the path by default so you&rsquo;ll need to specify the full path to e.g. the fastboot utility. The instructions <a href="http://fosiao.com/node/19">here</a> cover these exception cases: I recommend following them instead.</p>
 
-<p>One thing which neither document mentions is that you really need to make sure your sdcard is wiped completely clean before using fastboot. The &#8220;oem format&#8221; step only recreates the partition table, it doesn&#8217;t delete any corrupted partitions. If you reboot while these are still in place, it will try to bring up your corrupted version of Android, not the fastboot console. I spent quite some time debugging why I couldn&#8217;t properly flash the operating system before realizing this. Easiest way to get around this is to dd <code>/dev/zero</code> onto the sdcard before beginning the flashing process.</p>
+<p>One thing which neither document mentions is that you really need to make sure your sdcard is wiped completely clean before using fastboot. The &ldquo;oem format&rdquo; step only recreates the partition table, it doesn&rsquo;t delete any corrupted partitions. If you reboot while these are still in place, it will try to bring up your corrupted version of Android, not the fastboot console. I spent quite some time debugging why I couldn&rsquo;t properly flash the operating system before realizing this. Easiest way to get around this is to dd <code>/dev/zero</code> onto the sdcard before beginning the flashing process.</p>
 
-<p>Also, while not strictly necessary to get something up and running, I recommend highly getting an HDMI monitor as well as a serialUSB adapter. The former is useful to see if your Android device actually successfully booted up, the latter is useful for debugging boot issues where you don&#8217;t get that far (the serial console is always available from boot).</p>
+<p>Also, while not strictly necessary to get something up and running, I recommend highly getting an HDMI monitor as well as a serialUSB adapter. The former is useful to see if your Android device actually successfully booted up, the latter is useful for debugging boot issues where you don&rsquo;t get that far (the serial console is always available from boot).</p>
 
-<p>So, after painfully learning about the above caveats, I have managed to get things mostly working. I can see the ICS homescreen on my attached HDMI monitor and interact with it if I attach a USB mouse. The one gotcha is that both ethernet and WIFI networking are totally broken. Plugging in an ethernet cable or connecting to a WIFI network seems to result in the machine randomly rebooting, with the logs saying nothing useful. Both of these things are ostensibly supposed to be working according to the latest I&#8217;ve read from Google so I&#8217;m not exactly sure what&#8217;s going on. Investigations will continue.</p> 
+<p>So, after painfully learning about the above caveats, I have managed to get things mostly working. I can see the ICS homescreen on my attached HDMI monitor and interact with it if I attach a USB mouse. The one gotcha is that both ethernet and WIFI networking are totally broken. Plugging in an ethernet cable or connecting to a WIFI network seems to result in the machine randomly rebooting, with the logs saying nothing useful. Both of these things are ostensibly supposed to be working according to the latest I&rsquo;ve read from Google so I&rsquo;m not exactly sure what&rsquo;s going on. Investigations will continue.</p> 
   <hr/>
 </article>
 <article>
@@ -248,18 +247,18 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>I&#8217;ve been spending a bit more time on refining the checkerboarding tests in Eideticker that I talked about last time. Most of my work has been focused on making the results as representative of a real world scenario as possible, to that effect I&#8217;ve been working on:</p>
+<p>I&rsquo;ve been spending a bit more time on refining the checkerboarding tests in Eideticker that I talked about last time. Most of my work has been focused on making the results as representative of a real world scenario as possible, to that effect I&rsquo;ve been working on:</p>
 
 <ul>
  <li>Changed the test case from a web site of my own concoction to a more realistic example (the <a href="http://taskjs.org">taskjs.org</a> site)</li>
  <li>Use actual Android native events (via <a href="http://developer.android.com/guide/developing/tools/monkeyrunner_concepts.html">MonkeyRunner</a>) to synthesize touch-based scrolling instead of simulating the event in JavaScript (which exercises a completely different codepath).</li>
- <li>Fixing various synchronization issues to make results more repeatable. Before captures were of wildly variable lengths, which made the numbers extremely suspect. There&#8217;s probably still a few issues, but much less than before.</li></ul>
+ <li>Fixing various synchronization issues to make results more repeatable. Before captures were of wildly variable lengths, which made the numbers extremely suspect. There&rsquo;s probably still a few issues, but much less than before.</li></ul>
 
-<p>The end result of this is a framework that gives much more meaningful results. The bad news is that the results that I&#8217;m measuring don&#8217;t show a very positive picture for where we&#8217;re at with the native re-write of Firefox. Even relative to the version of mobile Firefox which is currently on the Android Market, we still have some catching up to do. Here&#8217;s some video of the &#8220;old&#8221; firefox in action:</p>
+<p>The end result of this is a framework that gives much more meaningful results. The bad news is that the results that I&rsquo;m measuring don&rsquo;t show a very positive picture for where we&rsquo;re at with the native re-write of Firefox. Even relative to the version of mobile Firefox which is currently on the Android Market, we still have some catching up to do. Here&rsquo;s some video of the &ldquo;old&rdquo; firefox in action:</p>
 
 <video src="/files/eideticker/taskjs_xul.webm" width="600px" controls="controls"></video>
 
-<p>And here&#8217;s the Native fennec (what we&#8217;re currently offering in nightly, with some minor modifications by me to change the way the &#8220;checkerboard&#8221; is drawn for analysis purposes):</p>
+<p>And here&rsquo;s the Native fennec (what we&rsquo;re currently offering in nightly, with some minor modifications by me to change the way the &ldquo;checkerboard&rdquo; is drawn for analysis purposes):</p>
 
 <video src="/files/eideticker/taskjs_native.webm" width="600px" controls="controls"></video>
 
@@ -278,7 +277,7 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 
 <p>(by the way, this performance regression is filed as <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447">bug 719447</a>)</p>
 
-<p>I know there&#8217;s lots of great effort going into improving this situation, so I have hope that we&#8217;ll be doing much better on this metric in the coming days/weeks. The process for creating these videos/analyses is mostly automated at this point, so my plan is to create a small dashboard (ala <a href="http://arewefastyet.com">arewefastyet.com</a>) to measure these numbers over time on the latest nightlies. Stay tuned!</p> 
+<p>I know there&rsquo;s lots of great effort going into improving this situation, so I have hope that we&rsquo;ll be doing much better on this metric in the coming days/weeks. The process for creating these videos/analyses is mostly automated at this point, so my plan is to create a small dashboard (ala <a href="http://arewefastyet.com">arewefastyet.com</a>) to measure these numbers over time on the latest nightlies. Stay tuned!</p> 
   <hr/>
 </article>
 <article>
@@ -288,7 +287,7 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>After my <a href="http://wrla.ch/blog/2011/12/year-end-eideticker-update/">post</a> on measuring checkerboarding in mobile Firefox, <a href="http://cmtalbert.wordpress.com/">Clint Talbert</a> (my fearless manager) suggested I run a before and after test to measure the improvement that just landed as part of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=709152">bug 709512</a>. After a bit of cleanup, I did so, measuring the delta between my build on December 20th and the latest version of Aurora. The difference is pretty remarkable: at least on the LG G2X that I&#8217;ve been using for testing, we&#8217;ve gone from checkerboarding between 10&ndash;20% of the time and not checkerboarding almost at all (in between two runs of the test with the Aurora build, there is exactly one frame that checkerboards). All credit to <a href="http://chrislord.net/blog">Chris Lord</a> for that!</p>
+<p>After my <a href="http://wrla.ch/blog/2011/12/year-end-eideticker-update/">post</a> on measuring checkerboarding in mobile Firefox, <a href="http://cmtalbert.wordpress.com/">Clint Talbert</a> (my fearless manager) suggested I run a before and after test to measure the improvement that just landed as part of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=709152">bug 709512</a>. After a bit of cleanup, I did so, measuring the delta between my build on December 20th and the latest version of Aurora. The difference is pretty remarkable: at least on the LG G2X that I&rsquo;ve been using for testing, we&rsquo;ve gone from checkerboarding between 10&ndash;20% of the time and not checkerboarding almost at all (in between two runs of the test with the Aurora build, there is exactly one frame that checkerboards). All credit to <a href="http://chrislord.net/blog">Chris Lord</a> for that!</p>
 
 <p>See the video evidence for yourself. Before:</p>
 
@@ -306,14 +305,14 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Just before I leave for some Christmas vacation, it&#8217;s time for another update on the state of <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">Eideticker</a>. Since I last blogged about the software, I&#8217;ve been working on the following three areas:</p>
+<p>Just before I leave for some Christmas vacation, it&rsquo;s time for another update on the state of <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">Eideticker</a>. Since I last blogged about the software, I&rsquo;ve been working on the following three areas:</p>
 
 <ol>
- <li>Coming up with better algorithm (green screen / red screen) for both determining the area of the capture as well as the start/end of the capture. The harness was already flood filling the area with these colours at the beginning/end of the capture, but now we&#8217;re actually using this information. The code&#8217;s a little hacky, but it seems to work well enough for the test cases I&#8217;ve been using so far.</li>
- <li>As a demonstration, I wrote up a quick test that demonstrates checkerboarding on mobile Fennec, and wrote up a quick bit of analysis code to detect this pattern and give an overall measure of how much this test &#8220;checkerboards&#8221; (i.e. has regions that are not fully painted when the user scrolls). As I understand this is an area that our mobile team is currently working on this problem quite a bit, it will be interesting to watch the numbers given by this test and see if things improve.</li>
- <li>It&#8217;s a minor thing, but you can now view a complete webm movie of the captured movie right from the web interface.</li></ol>
+ <li>Coming up with better algorithm (green screen / red screen) for both determining the area of the capture as well as the start/end of the capture. The harness was already flood filling the area with these colours at the beginning/end of the capture, but now we&rsquo;re actually using this information. The code&rsquo;s a little hacky, but it seems to work well enough for the test cases I&rsquo;ve been using so far.</li>
+ <li>As a demonstration, I wrote up a quick test that demonstrates checkerboarding on mobile Fennec, and wrote up a quick bit of analysis code to detect this pattern and give an overall measure of how much this test &ldquo;checkerboards&rdquo; (i.e. has regions that are not fully painted when the user scrolls). As I understand this is an area that our mobile team is currently working on this problem quite a bit, it will be interesting to watch the numbers given by this test and see if things improve.</li>
+ <li>It&rsquo;s a minor thing, but you can now view a complete webm movie of the captured movie right from the web interface.</li></ol>
 
-<p>Here&#8217;s a quick demonstration video that shows all the above in action. As before, you might want to watch this full screen:</p>
+<p>Here&rsquo;s a quick demonstration video that shows all the above in action. As before, you might want to watch this full screen:</p>
 
 <video src="/files/eideticker/eideticker-2011-12-21.webm" width="600px" controls="controls"></video>
 
@@ -327,21 +326,21 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>So I got some nice feedback on my <a href="http://wrla.ch/blog/2011/12/eideticker-update/">Eideticker post</a> yesterday on various channels. It seems like some people are interested in hacking on the analysis portion, so I thought I&#8217;d give some quick pointers and suggestions of things to look at.</p>
+<p>So I got some nice feedback on my <a href="http://wrla.ch/blog/2011/12/eideticker-update/">Eideticker post</a> yesterday on various channels. It seems like some people are interested in hacking on the analysis portion, so I thought I&rsquo;d give some quick pointers and suggestions of things to look at.</p>
 
 <ol>
- <li>As I mentioned yesterday, the frame analysis is rather stupid. We need to come up with a better algorithm for disambiguating input noise (small fluctuations in the HDMI signal?) from actual changes in the page. Unfortunately the breadth of things that Eideticker&#8217;s meant to analyze makes this a bit difficult. I.e. edge detection probably wouldn&#8217;t work for something like Microsoft&#8217;s <a href="http://ie.microsoft.com/testdrive/performance/psychedelicbrowsing/Default.html">psychedelic browsing demo</a>. I suspect the best route here is to put some work into better understanding the nature of this &#8220;noise&#8221; and finding a way to filter it out explicitly.</li>
+ <li>As I mentioned yesterday, the frame analysis is rather stupid. We need to come up with a better algorithm for disambiguating input noise (small fluctuations in the HDMI signal?) from actual changes in the page. Unfortunately the breadth of things that Eideticker&rsquo;s meant to analyze makes this a bit difficult. I.e. edge detection probably wouldn&rsquo;t work for something like Microsoft&rsquo;s <a href="http://ie.microsoft.com/testdrive/performance/psychedelicbrowsing/Default.html">psychedelic browsing demo</a>. I suspect the best route here is to put some work into better understanding the nature of this &ldquo;noise&rdquo; and finding a way to filter it out explicitly.</li>
  <li>Our analysis code is still rather slow, and is crying out to be parallelized (either by using multiple cores of the same CPU or a GPU). Burak Yiğit Kaya recommended I look into <a href="http://mathema.tician.de/software/pycuda">PyCuda</a> which looks interesting. It looks like there are other possibilities as well though.</li>
  <li>Clipping capture by green screen/red screen. This should be doable by writing some relatively simple code to detect large amounts of green and red and then ignoring previous/current/subsequent frames as appropriate.</li>
- <li>Moar test cases! It was initially suggested to use some of the classic benchmarks, but these only seem to barely work on Fennec (at least with the setup I have). I don&#8217;t know if this is fixable or not, but until it is, we might be better off coming up with more reasonable/realistics measures of visual performance.</li></ol>
+ <li>Moar test cases! It was initially suggested to use some of the classic benchmarks, but these only seem to barely work on Fennec (at least with the setup I have). I don&rsquo;t know if this is fixable or not, but until it is, we might be better off coming up with more reasonable/realistics measures of visual performance.</li></ol>
 
 <p>You might be able to find other inspiration on the <a href="https://wiki.mozilla.org/Project_Eideticker">Eideticker project page</a> (note that some of this is out of date).</p>
 
-<p>You obviously need the decklink card to perform captures, but the analysis portion of Eideticker can be used/modified on any machine running Linux (Mac should also work, but is untested). To get up and running, just follow the instructions in <a href="https://github.com/mozilla/eideticker/blob/master/README.md">README.md</a>, dump a pregenerated capture into the captures/ directory (here&#8217;s <a href="http://people.mozilla.com/~wlachance/clock.zip">one</a> of a clock), and off you go! The actual analysis code (such as it is) is currently located in <a href="https://github.com/mozilla/eideticker/blob/master/src/videocapture/videocapture/capture.py">src/videocapture/videocapture/capture.py</a> while the web interface is in <a href="https://github.com/mozilla/eideticker/blob/master/src/webapp">https://github.com/mozilla/eideticker/blob/master/src/webapp</a>.</p>
+<p>You obviously need the decklink card to perform captures, but the analysis portion of Eideticker can be used/modified on any machine running Linux (Mac should also work, but is untested). To get up and running, just follow the instructions in <a href="https://github.com/mozilla/eideticker/blob/master/README.md">README.md</a>, dump a pregenerated capture into the captures/ directory (here&rsquo;s <a href="http://people.mozilla.com/~wlachance/clock.zip">one</a> of a clock), and off you go! The actual analysis code (such as it is) is currently located in <a href="https://github.com/mozilla/eideticker/blob/master/src/videocapture/videocapture/capture.py">src/videocapture/videocapture/capture.py</a> while the web interface is in <a href="https://github.com/mozilla/eideticker/blob/master/src/webapp">https://github.com/mozilla/eideticker/blob/master/src/webapp</a>.</p>
 
-<p>I&#8217;m going to be out later today (Friday), but I&#8217;m mostly around on IRC M-F 9ish&ndash;5ish EST on irc.mozilla.org #ateam as `wlach`. Feel free to pester me with questions!</p>
+<p>I&rsquo;m going to be out later today (Friday), but I&rsquo;m mostly around on IRC M-F 9ish&ndash;5ish EST on irc.mozilla.org #ateam as `wlach`. Feel free to pester me with questions!</p>
 
-<p>P.S. I didn&#8217;t really cover infrastructure/automation portions above as I suspect people will find that less interesting (especially without a video capture card to test with), but you can look at my <a href="http://groups.google.com/group/mozilla.tools/browse_thread/thread/a469b7909af589de#">newsgroup post</a> from yesterday if you want to see what I&#8217;ll likely be up to over the next few weeks.</p> 
+<p>P.S. I didn&rsquo;t really cover infrastructure/automation portions above as I suspect people will find that less interesting (especially without a video capture card to test with), but you can look at my <a href="http://groups.google.com/group/mozilla.tools/browse_thread/thread/a469b7909af589de#">newsgroup post</a> from yesterday if you want to see what I&rsquo;ll likely be up to over the next few weeks.</p> 
   <hr/>
 </article>
 <footer>

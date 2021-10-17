@@ -92,14 +92,14 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
-    <h2><a href="/blog/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod/">Mass code relicensing with facebook&#8217;s codemod</a></h2>
+    <h2><a href="/blog/2012/06/mass-code-relicensing-with-facebook-s-codemod/">Mass code relicensing with facebook&rsquo;s codemod</a></h2>
     <p class="index-date">Jun 7th, 2012</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Recently the Firefox source repository (mozilla-central) was converted over recently to a new license with a <a href="http://www.mozilla.org/MPL/headers/">lovely short boilerplate</a>. This is great, but here in <a href="https://wiki.mozilla.org/Auto-tools">automation and tools</a>, we have a fairly large number of projects that live outside of the main tree but for which the new license still applies. A few weeks ago, I wanted to move one our projects over (mozbase), but didn&#8217;t want to spend hours manually editing text files. I understand that a script was used to convert mozilla-central, but a quick google didn&#8217;t turn it up. <strong>[ edit:** thanks to Ed Morley for pointing out to me that it lives here: <a href="http://hg.mozilla.org/users/gerv_mozilla.org/relic/">http://hg.mozilla.org/users/gerv_mozilla.org/relic/</a> **]</strong></p>
+<p>Recently the Firefox source repository (mozilla-central) was converted over recently to a new license with a <a href="http://www.mozilla.org/MPL/headers/">lovely short boilerplate</a>. This is great, but here in <a href="https://wiki.mozilla.org/Auto-tools">automation and tools</a>, we have a fairly large number of projects that live outside of the main tree but for which the new license still applies. A few weeks ago, I wanted to move one our projects over (mozbase), but didn&rsquo;t want to spend hours manually editing text files. I understand that a script was used to convert mozilla-central, but a quick google didn&rsquo;t turn it up. <strong>[ edit:** thanks to Ed Morley for pointing out to me that it lives here: <a href="http://hg.mozilla.org/users/gerv_mozilla.org/relic/">http://hg.mozilla.org/users/gerv_mozilla.org/relic/</a> **]</strong></p>
 
-<p>I surely could have asked about where this script is, but this problem gave me an excuse to try something that I&#8217;d been meaning to for a while: Facebook&#8217;s <a href="https://github.com/facebook/codemod">codemod</a>. Codemod is a neat little command-line utility which aims to help with mass refactorings of code. All you have to do is provide a few regular expressions to replace, and off it goes. I tried it out with mozbase, and the results were great: 5 minutes spent coming up with a regular expression and jiggering with command line options, and the job was done.</p>
+<p>I surely could have asked about where this script is, but this problem gave me an excuse to try something that I&rsquo;d been meaning to for a while: Facebook&rsquo;s <a href="https://github.com/facebook/codemod">codemod</a>. Codemod is a neat little command-line utility which aims to help with mass refactorings of code. All you have to do is provide a few regular expressions to replace, and off it goes. I tried it out with mozbase, and the results were great: 5 minutes spent coming up with a regular expression and jiggering with command line options, and the job was done.</p>
 
 <p>I had the desire to do this again today for <a href="http://github.com/mozilla/eideticker">Eideticker</a>, and decided to document the (extremely simple) process for posterity. I just used this simple command line&#8230;</p>
 
@@ -115,11 +115,11 @@
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Video.html">Video</a></span></p>
   </header>
 
-<p>So yesterday we had a small get-together at my place, which gave me the opportunity to try something I&#8217;d been meaning to do for a while: build my own retroscope.</p>
+<p>So yesterday we had a small get-together at my place, which gave me the opportunity to try something I&rsquo;d been meaning to do for a while: build my own retroscope.</p>
 
-<p>The idea is pretty simple: have a webcam record bits and pieces of a social event, then play them back on-the-spot a few minutes/hours later. I first heard about the concept from reading Nat Friedman&#8217;s <a href="http://nat.org/blog/2005/10/the-retroscope/">blog entry</a> from 2005 &#8212; if you read that, you see that he just hooked up a video camera to his TiVo. 7 years in the future, laptop webcams are ubiquitous and we have the awesome HTML5  tag, so I figured it would be easy to knock up something interesting in short order with zero custom hardware.</p>
+<p>The idea is pretty simple: have a webcam record bits and pieces of a social event, then play them back on-the-spot a few minutes/hours later. I first heard about the concept from reading Nat Friedman&rsquo;s <a href="http://nat.org/blog/2005/10/the-retroscope/">blog entry</a> from 2005 &#8212; if you read that, you see that he just hooked up a video camera to his TiVo. 7 years in the future, laptop webcams are ubiquitous and we have the awesome HTML5  tag, so I figured it would be easy to knock up something interesting in short order with zero custom hardware.</p>
 
-<p>Having only remembered that I wanted to do this about 30 minutes before people were scheduled to start arriving, I didn&#8217;t have much time to do anything really perfect. I settled on using <a href="http://stackoverflow.com/questions/7500763/command-line-streaming-webcam-with-audio-from-ubuntu-server-in-webm-format">this little snippet</a> from stackoverflow to generate short (5 second) movies on my laptop, then used scp to copy them over and display a montage of them in an auto-refreshing webpage on my &#8220;television&#8221; (which is a Mac-Mini connected to a large computer monitor). Despite being a total hack job, the end result generated much amusement. I think this is a bit different from what Nat originally did (it sounds from his blog like his retroscope played back longer segments), but I think the end result is actually a bit more fun.</p>
+<p>Having only remembered that I wanted to do this about 30 minutes before people were scheduled to start arriving, I didn&rsquo;t have much time to do anything really perfect. I settled on using <a href="http://stackoverflow.com/questions/7500763/command-line-streaming-webcam-with-audio-from-ubuntu-server-in-webm-format">this little snippet</a> from stackoverflow to generate short (5 second) movies on my laptop, then used scp to copy them over and display a montage of them in an auto-refreshing webpage on my &ldquo;television&rdquo; (which is a Mac-Mini connected to a large computer monitor). Despite being a total hack job, the end result generated much amusement. I think this is a bit different from what Nat originally did (it sounds from his blog like his retroscope played back longer segments), but I think the end result is actually a bit more fun.</p>
 
 <p><a href="http://wrla.ch/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-video-tag/retroscope-screenshot/" rel="attachment wp-att-598"><img src="/files/2012/05/retroscope-screenshot-1024x694.png" alt="" title="retroscope-screenshot" width="640" height="433" class="alignnone size-large wp-image-598" srcset="/files/2012/05/retroscope-screenshot-300x203.png 300w, /files/2012/05/retroscope-screenshot-1024x694.png 1024w, /files/2012/05/retroscope-screenshot.png 1319w" sizes="(max-width: 640px) 100vw, 640px" /></a></p>
 
@@ -127,7 +127,7 @@
 
 <p>(yes, that handsome fellow with the Pernot is me)</p>
 
-<p>I thought it might be fun to release the slightly-cleaned up results of this experiment as opensource for others to play with, so I created a small project for it on github. Unlike the original version, no complicated scp scheme is required &#8212; I just reused Joel Maher&#8217;s most excellent mozhttpd library from <a href="http://github.com/mozilla/mozbase">mozbase</a> to run a web server in the same process as the capture logic. All you need to do is run the server on a Linux machine with a webcam and connect to it with a web browser from any other machine on your local network.</p>
+<p>I thought it might be fun to release the slightly-cleaned up results of this experiment as opensource for others to play with, so I created a small project for it on github. Unlike the original version, no complicated scp scheme is required &#8212; I just reused Joel Maher&rsquo;s most excellent mozhttpd library from <a href="http://github.com/mozilla/mozbase">mozbase</a> to run a web server in the same process as the capture logic. All you need to do is run the server on a Linux machine with a webcam and connect to it with a web browser from any other machine on your local network.</p>
 
 <p><a href="https://github.com/wlach/retroscope">https://github.com/wlach/retroscope</a></p>
 
@@ -141,25 +141,25 @@
     <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Ok, this is somewhat mundane, but I&#8217;ve already had to do it twice (and helped someone do something similar on #mobile), so I figured I might as well blog about it for posterity.</p>
+<p>Ok, this is somewhat mundane, but I&rsquo;ve already had to do it twice (and helped someone do something similar on #mobile), so I figured I might as well blog about it for posterity.</p>
 
 <p>For various automation tasks (notably the <a href="http://wrla.ch/eideticker/dashboard/">Eideticker dashboard</a> and the <a href="http://mrcote.info/phonedash/#/rawfennecstartup">cross-browser startup tests</a>), we need to be able to launch an Android browser on the command line (via adb shell or our own custom SUTAgent). This is a bit of a black art, but you can find references on how to do this on stackoverflow and other places. The magic incantation is:</p>
 
 <pre><code>am start -a android.intent.action.VIEW -n &amp;lt;application/intent&amp;gt; -d &amp;lt;url&amp;gt;</code></pre>
 
-<p>So, for example, to launch Fennec, you&#8217;d run this on the Android command prompt:</p>
+<p>So, for example, to launch Fennec, you&rsquo;d run this on the Android command prompt:</p>
 
 <pre><code>am start -a android.intent.action.VIEW -n org.mozilla.fennec/.App -d http://mygreatsite.info</code></pre>
 
 <p>Ok, easy enough, but what if we want to launch a new browser that we just downloaded (e.g. Google Chrome)? Where do we get the application and intent names?</p>
 
-<p>The short answer is that you need to reach into the apk and dig. 😉 There&#8217;s probably many ways of doing this, but here&#8217;s what I do (which has the distinct advantage of not needing to compile, download or run weird java applications):</p>
+<p>The short answer is that you need to reach into the apk and dig. 😉 There&rsquo;s probably many ways of doing this, but here&rsquo;s what I do (which has the distinct advantage of not needing to compile, download or run weird java applications):</p>
 
 <ol>
  <li>
   <p>Copy the apk onto your machine (the apk should be in /data/app: if you have a rooted phone, you should be able to copy that off to your machine).</p></li>
  <li>
-  <p>Extract <em>AndroidManifest.xml</em> from the apk (it&#8217;s just a .zip) and run <a href="http://android-random.googlecode.com/svn/trunk/axml2xml/axml2xml.pl">axml2xml.pl</a> on it.</p></li>
+  <p>Extract <em>AndroidManifest.xml</em> from the apk (it&rsquo;s just a .zip) and run <a href="http://android-random.googlecode.com/svn/trunk/axml2xml/axml2xml.pl">axml2xml.pl</a> on it.</p></li>
  <li>
   <p>Examine the resultant xml file and look for the <strong></strong> tag. It should have a property called <strong></strong> which is the package name. For example:</p></li></ol>
 
@@ -170,7 +170,7 @@
 
 <p>Likewise here we see that the activity name we want is <strong>.Main</strong> (which Android explicitly expands out to <strong>com.android.chrome.Main</strong>)</p>
 
-<p>Armed with this information, you should now have enough information to launch the application. Furthering the example above, here&#8217;s how to start Chrome on Android via adb&#8217;s shell:</p>
+<p>Armed with this information, you should now have enough information to launch the application. Furthering the example above, here&rsquo;s how to start Chrome on Android via adb&rsquo;s shell:</p>
 
 <pre><code>am start -a android.intent.action.VIEW -n com.android.chrome/.Main -d http://mygreatsite.info</code></pre>
 
@@ -184,18 +184,18 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
 
 <p>tl;dr: You can now run the standard eideticker benchmarks easily on any Android phone without any kind of specialized hardware.</p>
 
-<p>So Eideticker is pretty great at comparing relative performance between different browsers and generally measuring things in an absolutely neutral way. Unfortunately it&#8217;s a bit of a pain to use it at the moment to catch regressions: the software still has a few bugs and encoding/decoding/analyzing the capture still takes a great deal of time. Not to mention the fact that it currently requires specialized hardware (though that will soon be less of a concern at least inside MoCo, where we have a bunch of Eideticker boxes on order for the Toronto and Mountain View offices).</p>
+<p>So Eideticker is pretty great at comparing relative performance between different browsers and generally measuring things in an absolutely neutral way. Unfortunately it&rsquo;s a bit of a pain to use it at the moment to catch regressions: the software still has a few bugs and encoding/decoding/analyzing the capture still takes a great deal of time. Not to mention the fact that it currently requires specialized hardware (though that will soon be less of a concern at least inside MoCo, where we have a bunch of Eideticker boxes on order for the Toronto and Mountain View offices).</p>
 
-<p>A few months ago, Chris Lord wrote up some great code to internally measure the amount of checkerboarding going on in Fennec. I&#8217;ve thought for a while that it would be a neat idea to hook this up to the Eideticker harness, and today I finally did so. After installing Eideticker, you can now run the benchmark on any machine against an arbitrary fennec build just by typing this from the eideticker root directory:</p>
+<p>A few months ago, Chris Lord wrote up some great code to internally measure the amount of checkerboarding going on in Fennec. I&rsquo;ve thought for a while that it would be a neat idea to hook this up to the Eideticker harness, and today I finally did so. After installing Eideticker, you can now run the benchmark on any machine against an arbitrary fennec build just by typing this from the eideticker root directory:</p>
 
 <pre><code>adb shell setprop log.tag.GeckoLayerRendererProf DEBUG
 ./bin/get-metric-for-build.py --no-capture --get-internal-checkerboard-stats --num-runs 3 nightly.apk src/tests/scrolling/taskjs.org/index.html</code></pre>
 
-<p>In return, you&#8217;ll get some nice clean results like this:</p>
+<p>In return, you&rsquo;ll get some nice clean results like this:</p>
 
 <pre><code>=== Internal Checkerboard Stats (sum of percents, not percentage) ===
 [167.34348, 171.871015, 175.3420296]</code></pre>
@@ -216,9 +216,9 @@
   <td>175.34</td> 
   <td>184.44</td></tr></table>
 
-<p>While the results aren&#8217;t identical (we measure number of frames differently inside Fennec than we do with Eideticker, for one thing), they do seem roughly correlated. So go forth, benchmark and tweak! 😉</p>
+<p>While the results aren&rsquo;t identical (we measure number of frames differently inside Fennec than we do with Eideticker, for one thing), they do seem roughly correlated. So go forth, benchmark and tweak! 😉</p>
 
-<p>P.S. If you&#8217;ve been following mobile automation, you might be asking why I don&#8217;t just suggest running Talos and Robocop on your workstation. Can&#8217;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&#8217;re much more involved to set up and use at the moment. Arguably they shouldn&#8217;t be, and this is something we (<a href="https://wiki.mozilla.org/Auto-tools/">Mozilla tools &amp; automation</a>) need to work on. We&#8217;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.</p> 
+<p>P.S. If you&rsquo;ve been following mobile automation, you might be asking why I don&rsquo;t just suggest running Talos and Robocop on your workstation. Can&rsquo;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&rsquo;re much more involved to set up and use at the moment. Arguably they shouldn&rsquo;t be, and this is something we (<a href="https://wiki.mozilla.org/Auto-tools/">Mozilla tools &amp; automation</a>) need to work on. We&rsquo;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.</p> 
   <hr/>
 </article>
 <article>
@@ -228,11 +228,11 @@
     <p><span class="tags"><a href="/tags/GoFaster.html">GoFaster</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Release-Engineering.html">Release Engineering</a></span></p>
   </header>
 
-<p>Build times for mozilla-central are a major factor in developer productivity. Faster build times mean more people using try (reducing breakage) and more fine-grained regression ranges (reducing the impact of breakages). As a side benefit, it allows us to avoid buying and maintaining more hardware (or put new hardware to better use). About a half-year ago, we set up a project called BuildFaster to try to bring these times down, setting the ambitious goal of getting build times (from checkin to tests done) down to 2 hours. We didn&#8217;t quite succeed, though we did make some major strides. As part of this project, we also developed a dashboard to track our progress and narrow down the major bottlenecks which were keeping up our build times.</p>
+<p>Build times for mozilla-central are a major factor in developer productivity. Faster build times mean more people using try (reducing breakage) and more fine-grained regression ranges (reducing the impact of breakages). As a side benefit, it allows us to avoid buying and maintaining more hardware (or put new hardware to better use). About a half-year ago, we set up a project called BuildFaster to try to bring these times down, setting the ambitious goal of getting build times (from checkin to tests done) down to 2 hours. We didn&rsquo;t quite succeed, though we did make some major strides. As part of this project, we also developed a dashboard to track our progress and narrow down the major bottlenecks which were keeping up our build times.</p>
 
-<p>Unfortunately, this dashboard went down earlier this year with the rest of Brasstacks and we hadn&#8217;t had the chance to bring it back up. I&#8217;m pleased to announce that thanks to Jonathan Griffin, it&#8217;s finally <a href="http://brasstacks.mozilla.com/gofaster/#/">back online</a>.</p>
+<p>Unfortunately, this dashboard went down earlier this year with the rest of Brasstacks and we hadn&rsquo;t had the chance to bring it back up. I&rsquo;m pleased to announce that thanks to Jonathan Griffin, it&rsquo;s finally <a href="http://brasstacks.mozilla.com/gofaster/#/">back online</a>.</p>
 
-<p>While no one is actively working on build performance at the moment (at least to my knowledge), it&#8217;s still useful to keep track of build times to make sure that we don&#8217;t regress. Anecdotally, it has seemed to me that the time needed to get results from try has been pretty stable over the last while, and this is borne out by the results:</p>
+<p>While no one is actively working on build performance at the moment (at least to my knowledge), it&rsquo;s still useful to keep track of build times to make sure that we don&rsquo;t regress. Anecdotally, it has seemed to me that the time needed to get results from try has been pretty stable over the last while, and this is borne out by the results:</p>
 
 <p><a href="http://wrla.ch/blog/2012/04/gofaster-dashboard-back-online/gofaster-dashboard-update-2012/" rel="attachment wp-att-529"><img src="/files/2012/04/gofaster-dashboard-update-2012.png" alt="" title="gofaster-dashboard-update-2012" width="628" height="508" class="alignnone size-full wp-image-529" srcset="/files/2012/04/gofaster-dashboard-update-2012-300x242.png 300w, /files/2012/04/gofaster-dashboard-update-2012.png 628w" sizes="(max-width: 628px) 100vw, 628px" /></a></p>
 
@@ -246,20 +246,20 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
 
-<p>Participated in an <a href="https://wiki.mozilla.org/Fennec/NativeUI/checkerboarding">interesting meeting</a> on checkerboarding in Firefox for Android yesterday. As a reminder, checkerboarding refers to the amount of time you spend waiting to see the full page after you do a swipe on your mobile device, and it&#8217;s a big issue right now &#8211; so much so that it puts our delivery goal for the new native browser at risk.</p>
+<p>Participated in an <a href="https://wiki.mozilla.org/Fennec/NativeUI/checkerboarding">interesting meeting</a> on checkerboarding in Firefox for Android yesterday. As a reminder, checkerboarding refers to the amount of time you spend waiting to see the full page after you do a swipe on your mobile device, and it&rsquo;s a big issue right now : so much so that it puts our delivery goal for the new native browser at risk.</p>
 
-<p>It seems like we have a number of strategies for improving performance which will likely solve the problem, but we need to be able to measure improvements to make sure that we&#8217;re making progress. This is one of the places where Eideticker could be useful (especially with regards to measuring us against the competition), though there are a few things that we need to add before it&#8217;s going to be as useful as it could be. The most urgent, as I understand, is to come up with a suite of tests which accurately represent the set of pages that we&#8217;re having issues with. The current main measure of checkerboarding that we&#8217;re using with eideticker is taskjs.org which, while an interesting test case in some ways, doesn&#8217;t accurately represent the sort of site that the user would normally go to in the wild (and thus be annoyed by). 😉</p>
+<p>It seems like we have a number of strategies for improving performance which will likely solve the problem, but we need to be able to measure improvements to make sure that we&rsquo;re making progress. This is one of the places where Eideticker could be useful (especially with regards to measuring us against the competition), though there are a few things that we need to add before it&rsquo;s going to be as useful as it could be. The most urgent, as I understand, is to come up with a suite of tests which accurately represent the set of pages that we&rsquo;re having issues with. The current main measure of checkerboarding that we&rsquo;re using with eideticker is taskjs.org which, while an interesting test case in some ways, doesn&rsquo;t accurately represent the sort of site that the user would normally go to in the wild (and thus be annoyed by). 😉</p>
 
-<p>This is going to take a few days (and a lot of review: I&#8217;m definitely no expert when it comes to this stuff) to get right, but I just added two tests for the New York Times which I think are a step in the right direction of being more representative of real-world use cases. Have a look here:</p>
+<p>This is going to take a few days (and a lot of review: I&rsquo;m definitely no expert when it comes to this stuff) to get right, but I just added two tests for the New York Times which I think are a step in the right direction of being more representative of real-world use cases. Have a look here:</p>
 
 <p><a href="http://wrla.ch/eideticker/dashboard/#/nytimes-scrolling">http://wrla.ch/eideticker/dashboard/#/nytimes-scrolling</a>
  <br /><a href="http://wrla.ch/eideticker/dashboard/#/nytimes-zooming">http://wrla.ch/eideticker/dashboard/#/nytimes-zooming</a></p>
 
-<p>The results here actually aren&#8217;t as bad as I would have expected/remembered. There amount of checkerboarding after a zoom out is a bit annoying (I understand this a known issue with font caching, or something) but not too terrible. Still, any improvements that show up here will probably apply across a wide variety of sites, as the design patterns on the New York Times site are very common.</p>
+<p>The results here actually aren&rsquo;t as bad as I would have expected/remembered. There amount of checkerboarding after a zoom out is a bit annoying (I understand this a known issue with font caching, or something) but not too terrible. Still, any improvements that show up here will probably apply across a wide variety of sites, as the design patterns on the New York Times site are very common.</p>
 
-<p>(P.S. yes, I know I promised a comparison with Google Chrome for Android last time&#8230; rest assured that&#8217;s still coming soon!)</p> 
+<p>(P.S. yes, I know I promised a comparison with Google Chrome for Android last time: rest assured that&rsquo;s still coming soon!)</p> 
   <hr/>
 </article>
 <article>
@@ -269,11 +269,11 @@
     <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Just thought I&#8217;d mention this because I found it handy.</p>
+<p>Just thought I&rsquo;d mention this because I found it handy.</p>
 
-<p>A while back AaronMT <a href="http://aaronmt.com/?p=527">wrote up</a> some clever instructions on taking Android screenshots by dumping the contents of &#8216;/dev/fb0&#8217; and running ffmpeg on the results. This is useful, but you need to know the resolution of the device you have connected to pass the right arguments to ffmpeg. Wouldn&#8217;t it be better if you had just one script that would work for whatever device you had plugged in?</p>
+<p>A while back AaronMT <a href="http://aaronmt.com/?p=527">wrote up</a> some clever instructions on taking Android screenshots by dumping the contents of &#8216;/dev/fb0&rsquo; and running ffmpeg on the results. This is useful, but you need to know the resolution of the device you have connected to pass the right arguments to ffmpeg. Wouldn&rsquo;t it be better if you had just one script that would work for whatever device you had plugged in?</p>
 
-<p>In fact, there is a way to do this using the <a href="http://developer.android.com/guide/developing/tools/MonkeyRunner.html">monkeyrunner</a> utility. Intended mainly as a tool for synthesizing input on Android (more on that some other time), you can also easily get a capture of the Android screen with its python/jython API (assuming you have the Android SDK installed). Here&#8217;s a quick script which does the job:</p>
+<p>In fact, there is a way to do this using the <a href="http://developer.android.com/guide/developing/tools/MonkeyRunner.html">monkeyrunner</a> utility. Intended mainly as a tool for synthesizing input on Android (more on that some other time), you can also easily get a capture of the Android screen with its python/jython API (assuming you have the Android SDK installed). Here&rsquo;s a quick script which does the job:</p>
 
 <pre><code>from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice
 import os
@@ -288,10 +288,9 @@ result = device.takeSnapshot()
 result.writeToFile(sys.argv[1], 'png')</code></pre>
 
 <p>Copy that into a file called capture.py (or whatever), then run it like so:
- <br /><code>&lt;br /&gt;
-monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
+ <br /><code>&lt;br /&gt; monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 
-<p>And you&#8217;re off to the races! Nice screenshot, no utilities or non-essential command line arguments required!</p>
+<p>And you&rsquo;re off to the races! Nice screenshot, no utilities or non-essential command line arguments required!</p>
 
 <p>(credit to <a href="http://stackoverflow.com/a/9311243/295132">this stackoverflow answer</a> for the idea)</p> 
   <hr/>
@@ -303,9 +302,9 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
 
-<p>Since my <a href="http://wrla.ch/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/">first Eideticker dashboard post</a> was <a href="http://download.cnet.com/8301-2007_4-57401261-12/whats-going-on-with-firefox-for-android/?tag=epicStories">so well received</a>, I thought I&#8217;d give a quick update on another metric that I just brought online: checkerboarding (a.k.a. the amount of time you spend waiting to see the full page after you do a swipe on your mobile device).</p>
+<p>Since my <a href="http://wrla.ch/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/">first Eideticker dashboard post</a> was <a href="http://download.cnet.com/8301-2007_4-57401261-12/whats-going-on-with-firefox-for-android/?tag=epicStories">so well received</a>, I thought I&rsquo;d give a quick update on another metric that I just brought online: checkerboarding (a.k.a. the amount of time you spend waiting to see the full page after you do a swipe on your mobile device).</p>
 
 <p><a href="http://wrla.ch/blog/2012/03/eideticker-dashboard-update/checkerboard_dashboard/" rel="attachment wp-att-503"><img src="/files/2012/03/checkerboard_dashboard.png" alt="" title="checkerboard_dashboard" width="715" height="485" class="alignnone size-full wp-image-503" srcset="/files/2012/03/checkerboard_dashboard-300x203.png 300w, /files/2012/03/checkerboard_dashboard.png 715w" sizes="(max-width: 715px) 100vw, 715px" /></a></p>
 
@@ -325,9 +324,9 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 
 <p>Over the last while, Clint Talbert and I have been working on setting up automatic mobile performance tests using Eideticker (a framework to measure perceived Firefox performance by video capturing automated browser interactions: for more information, see my <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">earlier post</a>).</p>
 
-<p>There&#8217;s many reasons why this is interesting, but probably the most important one is that it can measure differences reliably across different types of mobile browsers. Currently I&#8217;m testing the old XUL fennec, the Android stock browser, and the latest nightlies.</p>
+<p>There&rsquo;s many reasons why this is interesting, but probably the most important one is that it can measure differences reliably across different types of mobile browsers. Currently I&rsquo;m testing the old XUL fennec, the Android stock browser, and the latest nightlies.</p>
 
-<p>I&#8217;m pleased to announce that the first iteration of the dashboard is available for public consumption, on my site.</p>
+<p>I&rsquo;m pleased to announce that the first iteration of the dashboard is available for public consumption, on my site.</p>
 
 <p><a href="http://wrla.ch/eideticker/dashboard/#/canvas">http://wrla.ch/eideticker/dashboard/#/canvas</a></p>
 
@@ -344,9 +343,9 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Pandaboard.html">Pandaboard</a></span></p>
   </header>
 
-<p>For the last few days I&#8217;ve been experimenting with getting a Pandaboard running Android 4.0, continuing the work that Clint Talbert <a href="http://cmtalbert.wordpress.com/2011/10/12/pandaboard-status/">started in the fall</a> to get these boards for use as a replacement for the Tegra in Mozilla&#8217;s android automation. The first objective is to get a reproducible build going, after that we&#8217;ll try to get some of our custom tools (<a href="https://wiki.mozilla.org/Mobile/Fennec_Unittests/Remote_Testing">SUTAgent</a> &#38; friends) installed by default.</p>
+<p>For the last few days I&rsquo;ve been experimenting with getting a Pandaboard running Android 4.0, continuing the work that Clint Talbert <a href="http://cmtalbert.wordpress.com/2011/10/12/pandaboard-status/">started in the fall</a> to get these boards for use as a replacement for the Tegra in Mozilla&rsquo;s android automation. The first objective is to get a reproducible build going, after that we&rsquo;ll try to get some of our custom tools (<a href="https://wiki.mozilla.org/Mobile/Fennec_Unittests/Remote_Testing">SUTAgent</a> &#38; friends) installed by default.</p>
 
-<p>So far this has been&#8230; interesting. Much as Clint did before, I thought I&#8217;d document some of the notes on what I did in the hopes that they&#8217;ll be helpful to other people trying to do similar things.</p>
+<p>So far this has been interesting. Much as Clint did before, I thought I&rsquo;d document some of the notes on what I did in the hopes that they&rsquo;ll be helpful to other people trying to do similar things.</p>
 
 <p>Getting things up and running is a two step process. First, you build the beast. This part is straightforward, just follow the instructions here:</p>
 
@@ -356,20 +355,20 @@ monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
  <li><a href="http://source.android.com/source/building.html">http://source.android.com/source/building.html</a></li>
  <li><a href="http://source.android.com/source/building-devices.html">http://source.android.com/source/building-devices.html</a></li></ul>
 
-<p>Note that you almost certainly want to build in the &#8220;eng&#8221; configuration, which is rooted and (apparently) has some extra tools installed.</p>
+<p>Note that you almost certainly want to build in the &ldquo;eng&rdquo; configuration, which is rooted and (apparently) has some extra tools installed.</p>
 
 <p>Installing it is a little more tricky. The way they want you to do this is put the pandaboard into a special mode and copy the stuff you built onto an sdcard. Seem a little funny to you? Yeah, it does to me too. Why not just build an sdcard image directly?
- <br />Nonetheless, this is the officially supported way of imaging a pandaboard, so let&#8217;s just follow it until we can think of a better way of doing things. The instructions for doing this on the pandaboard are located in the source tree here:</p>
+ <br />Nonetheless, this is the officially supported way of imaging a pandaboard, so let&rsquo;s just follow it until we can think of a better way of doing things. The instructions for doing this on the pandaboard are located in the source tree here:</p>
 
 <p><code>&lt;a href="http://source-android.frandroid.com/device/ti/panda/README"&gt;device/ti/panda/README&lt;/a&gt;</code></p>
 
-<p>These are mostly correct as far as I can tell, but there&#8217;s a few gotchas. First, you need to run the commands mentioned as root unless you&#8217;ve configured USB to be configurable by your user. Second, most of those commands are not in the path by default so you&#8217;ll need to specify the full path to e.g. the fastboot utility. The instructions <a href="http://fosiao.com/node/19">here</a> cover these exception cases: I recommend following them instead.</p>
+<p>These are mostly correct as far as I can tell, but there&rsquo;s a few gotchas. First, you need to run the commands mentioned as root unless you&rsquo;ve configured USB to be configurable by your user. Second, most of those commands are not in the path by default so you&rsquo;ll need to specify the full path to e.g. the fastboot utility. The instructions <a href="http://fosiao.com/node/19">here</a> cover these exception cases: I recommend following them instead.</p>
 
-<p>One thing which neither document mentions is that you really need to make sure your sdcard is wiped completely clean before using fastboot. The &#8220;oem format&#8221; step only recreates the partition table, it doesn&#8217;t delete any corrupted partitions. If you reboot while these are still in place, it will try to bring up your corrupted version of Android, not the fastboot console. I spent quite some time debugging why I couldn&#8217;t properly flash the operating system before realizing this. Easiest way to get around this is to dd <code>/dev/zero</code> onto the sdcard before beginning the flashing process.</p>
+<p>One thing which neither document mentions is that you really need to make sure your sdcard is wiped completely clean before using fastboot. The &ldquo;oem format&rdquo; step only recreates the partition table, it doesn&rsquo;t delete any corrupted partitions. If you reboot while these are still in place, it will try to bring up your corrupted version of Android, not the fastboot console. I spent quite some time debugging why I couldn&rsquo;t properly flash the operating system before realizing this. Easiest way to get around this is to dd <code>/dev/zero</code> onto the sdcard before beginning the flashing process.</p>
 
-<p>Also, while not strictly necessary to get something up and running, I recommend highly getting an HDMI monitor as well as a serialUSB adapter. The former is useful to see if your Android device actually successfully booted up, the latter is useful for debugging boot issues where you don&#8217;t get that far (the serial console is always available from boot).</p>
+<p>Also, while not strictly necessary to get something up and running, I recommend highly getting an HDMI monitor as well as a serialUSB adapter. The former is useful to see if your Android device actually successfully booted up, the latter is useful for debugging boot issues where you don&rsquo;t get that far (the serial console is always available from boot).</p>
 
-<p>So, after painfully learning about the above caveats, I have managed to get things mostly working. I can see the ICS homescreen on my attached HDMI monitor and interact with it if I attach a USB mouse. The one gotcha is that both ethernet and WIFI networking are totally broken. Plugging in an ethernet cable or connecting to a WIFI network seems to result in the machine randomly rebooting, with the logs saying nothing useful. Both of these things are ostensibly supposed to be working according to the latest I&#8217;ve read from Google so I&#8217;m not exactly sure what&#8217;s going on. Investigations will continue.</p> 
+<p>So, after painfully learning about the above caveats, I have managed to get things mostly working. I can see the ICS homescreen on my attached HDMI monitor and interact with it if I attach a USB mouse. The one gotcha is that both ethernet and WIFI networking are totally broken. Plugging in an ethernet cable or connecting to a WIFI network seems to result in the machine randomly rebooting, with the logs saying nothing useful. Both of these things are ostensibly supposed to be working according to the latest I&rsquo;ve read from Google so I&rsquo;m not exactly sure what&rsquo;s going on. Investigations will continue.</p> 
   <hr/>
 </article>
 <footer>

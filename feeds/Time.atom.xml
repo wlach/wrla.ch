@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'Time'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Time.atom.xml" />
- <link href="https://wlach.github.io/tags/Time.html" />
- <id>urn:https-wlach-github-io:-tags-Time-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/Time.atom.xml" />
+ <link href="https://wrla.ch/tags/Time.html" />
+ <id>urn:https-wrla-ch:-tags-Time-html</id>
  <updated>2013-07-08T04:00:00Z</updated>
  <entry>
   <title type="text">Simple command-line ntp client for Android and FirefoxOS</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/?utm_source=Time&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2013-07-simple-command-line-ntp-client-for-android-and-firefoxos</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2013/07/simple-command-line-ntp-client-for-android-and-firefoxos/?utm_source=Time&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2013-07-simple-command-line-ntp-client-for-android-and-firefoxos</id>
   <published>2013-07-08T04:00:00Z</published>
   <updated>2013-07-08T04:00:00Z</updated>
   <author>
    <name>William Lachance</name></author>
   <content type="html">
-&lt;p&gt;Today I did a quick port of Larry Doolittle&amp;#8217;s &lt;a href="http://doolittle.icarus.com/ntpclient/"&gt;ntpclient program&lt;/a&gt; to Android and FirefoxOS. Basically this lets you easily synchronize your device&amp;#8217;s time to that of a central server. Yes, there&amp;#8217;s lots and lots of Android &amp;#8220;applications&amp;#8221; which let you do this, but I wanted to be able to do this from the command line because that&amp;#8217;s how I roll. If you&amp;#8217;re interested, source and instructions are here:&lt;/p&gt;
+&lt;p&gt;Today I did a quick port of Larry Doolittle&amp;rsquo;s &lt;a href="http://doolittle.icarus.com/ntpclient/"&gt;ntpclient program&lt;/a&gt; to Android and FirefoxOS. Basically this lets you easily synchronize your device&amp;rsquo;s time to that of a central server. Yes, there&amp;rsquo;s lots and lots of Android &amp;ldquo;applications&amp;rdquo; which let you do this, but I wanted to be able to do this from the command line because that&amp;rsquo;s how I roll. If you&amp;rsquo;re interested, source and instructions are here:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="https://github.com/wlach/ntpclient-android"&gt;https://github.com/wlach/ntpclient-android&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;For those curious, no, I didn&amp;#8217;t just do this for fun. For next quarter, we want to write some Eideticker-based responsiveness tests for FirefoxOS and Android. For example, how long does it take from the time you tap on an icon in the homescreen on FirefoxOS to when the application is fully loaded? Or on Android, how long does it take to see a full list of sites in the awesomebar from the time you tap on the URL field and enter your search term?&lt;/p&gt;
+&lt;p&gt;For those curious, no, I didn&amp;rsquo;t just do this for fun. For next quarter, we want to write some Eideticker-based responsiveness tests for FirefoxOS and Android. For example, how long does it take from the time you tap on an icon in the homescreen on FirefoxOS to when the application is fully loaded? Or on Android, how long does it take to see a full list of sites in the awesomebar from the time you tap on the URL field and enter your search term?&lt;/p&gt;
 
 &lt;p&gt;Because an Eideticker test run involves two different machines (a host machine which controls the device and captures video of it in action, as well as the device itself), we need to use timestamps to really understand when and how events are being sent to the device. To do that reliably, we really need some easy way of synchronizing time between two machines (or at least accounting for the difference in their clocks, which amounts to about the same thing). NTP struck me as being the easiest, most standard way of doing this.&lt;/p&gt;</content></entry></feed>

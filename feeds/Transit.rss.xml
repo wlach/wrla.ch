@@ -3,20 +3,20 @@
  <channel>
   <title>William Lachance's Log: Posts tagged 'Transit'</title>
   <description>William Lachance's Log: Posts tagged 'Transit'</description>
-  <link>https://wlach.github.io/tags/Transit.html</link>
+  <link>https://wrla.ch/tags/Transit.html</link>
   <lastBuildDate>Wed, 14 Dec 2011 05:00:00 UT</lastBuildDate>
   <pubDate>Wed, 14 Dec 2011 05:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>An API for AMT data</title>
-   <link>https://wlach.github.io/blog/2011/12/an-api-for-amt-data/?utm_source=Transit&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-12-an-api-for-amt-data</guid>
+   <link>https://wrla.ch/blog/2011/12/an-api-for-amt-data/?utm_source=Transit&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2011-12-an-api-for-amt-data</guid>
    <pubDate>Wed, 14 Dec 2011 05:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
 &lt;p&gt;The &lt;a href="http://www.amt.qc.ca"&gt;AMT&lt;/a&gt; released their &lt;a href="http://t.co/AofpyI4E"&gt;GTFS schedule information&lt;/a&gt; to the public earlier this week, which is awesome. Not coincidentally, Montreal is going to have a &lt;a href="http://transportationcamp.org/montreal/"&gt;Transportation Camp&lt;/a&gt; tomorrow, wherein people will hack on transportation software and discuss open data issues.&lt;/p&gt;
 
-&lt;p&gt;GTFS information is useful and standard, but in its raw form it can be a bit difficult to wrangle with. So in advance of the event, I thought it might be helpful/useful to put a simple JSON API to the data, based on my &lt;a href="http://github.com/wlach/routez"&gt;routez&lt;/a&gt; software. Should be useful for creating an app or two! There&amp;#8217;s two endpoints that are currently defined:&lt;/p&gt;
+&lt;p&gt;GTFS information is useful and standard, but in its raw form it can be a bit difficult to wrangle with. So in advance of the event, I thought it might be helpful/useful to put a simple JSON API to the data, based on my &lt;a href="http://github.com/wlach/routez"&gt;routez&lt;/a&gt; software. Should be useful for creating an app or two! There&amp;rsquo;s two endpoints that are currently defined:&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;/api/v1/stop/&amp;lt;stop code&amp;gt;/upcoming_stoptimes&lt;/code&gt;&lt;/p&gt;
 

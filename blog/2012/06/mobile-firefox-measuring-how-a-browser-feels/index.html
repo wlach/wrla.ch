@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/" />
-    <link rel="next" href="/blog/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod/" /> <link rel="prev" href="/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans/" />
+    <link rel="next" href="/blog/2012/06/mass-code-relicensing-with-facebook-s-codemod/" /> <link rel="prev" href="/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutans/" />
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link
@@ -104,9 +104,9 @@
 
 <p><strong>Idea 1: Put cross-browser performance tests on a more rigorous footing</strong></p>
 
-<p>One of the problems with existing benchmarks is that the graphical performance that they measure is entirely synthetic. So when something like Microsoft&#8217;s fishbowl demo claims 50 frames per second, that is based entirely on an internal measurement. There is no guarantee that is what the user is actually seeing. For all we know, it could be throwing half those frames away. To say nothing of the fact that measuring the results could interfere with the results themselves!</p>
+<p>One of the problems with existing benchmarks is that the graphical performance that they measure is entirely synthetic. So when something like Microsoft&rsquo;s fishbowl demo claims 50 frames per second, that is based entirely on an internal measurement. There is no guarantee that is what the user is actually seeing. For all we know, it could be throwing half those frames away. To say nothing of the fact that measuring the results could interfere with the results themselves!</p>
 
-<p>With Eideticker, we only analyze what the user sees (under the assumption that what the user sees is what comes out of the device&#8217;s HDMI out). To measure frame rate, Eideticker painstakingly analyzes a video capture to see the difference between each frame. Only if one frame is qualitatively different than the one before it will it consider it to be a step forward in the animation progression. There is no room for a browser to &#8220;cheat&#8221; by, for example, throwing a frame away. Here are two example frames from an Eideticker capture of an animated clock, along with a visual representation of the difference it measured between them:</p>
+<p>With Eideticker, we only analyze what the user sees (under the assumption that what the user sees is what comes out of the device&rsquo;s HDMI out). To measure frame rate, Eideticker painstakingly analyzes a video capture to see the difference between each frame. Only if one frame is qualitatively different than the one before it will it consider it to be a step forward in the animation progression. There is no room for a browser to &ldquo;cheat&rdquo; by, for example, throwing a frame away. Here are two example frames from an Eideticker capture of an animated clock, along with a visual representation of the difference it measured between them:</p>
 
 <table style="border:none;">
  <tr>
@@ -142,7 +142,7 @@
 
 <p>For the first item, I believe the best indication of perceived responsiveness and smoothness is found by measuring the number of frames that are displayed in response to user interaction. As with all measurements, it is not perfect, but one can safely say that if there are only a few frames changed in response to a swipe, the experience is going to be jerky.</p>
 
-<p>Compare these two videos of panning on <a href="http://CNN.com/">CNN.com</a>. The first is the previous Firefox for Android, clocking in at about 12.3 frames per second (fps). The second is the recent Firefox for Android , clocking in at 23 fps using Eideticker&#8217;s internal measurements:</p>
+<p>Compare these two videos of panning on <a href="http://CNN.com/">CNN.com</a>. The first is the previous Firefox for Android, clocking in at about 12.3 frames per second (fps). The second is the recent Firefox for Android , clocking in at 23 fps using Eideticker&rsquo;s internal measurements:</p>
 
 <p>&nbsp;</p>
 
@@ -153,7 +153,7 @@
   <td>
    <video width="200px" height="240" src="/files/2012/06/native-fennec-cnn.webm" controls="controls"></video></td></tr></table>
 
-<p>For the second, we can easily measure how quickly a user sees content by setting the background color of the page to an obvious color (in Eideticker we use magenta), overlaying an image on top, then measuring the amount of the page that is magenta while panning around. Since all modern browsers just use the background color of the page when something is to be redrawn (or at least can be configured that way), it&#8217;s easy to compare across browsers. You can see in the videos above that the new Native Firefox does much better than the old one in this regard, at least on this benchmark. Here&#8217;s an image of Eideticker detecting checkerboarding on a capture (red indicates checkerboarded areas):</p>
+<p>For the second, we can easily measure how quickly a user sees content by setting the background color of the page to an obvious color (in Eideticker we use magenta), overlaying an image on top, then measuring the amount of the page that is magenta while panning around. Since all modern browsers just use the background color of the page when something is to be redrawn (or at least can be configured that way), it&rsquo;s easy to compare across browsers. You can see in the videos above that the new Native Firefox does much better than the old one in this regard, at least on this benchmark. Here&rsquo;s an image of Eideticker detecting checkerboarding on a capture (red indicates checkerboarded areas):</p>
 
 <table style="border:none;">
  <tr>
@@ -169,11 +169,11 @@
 
 <p><em>Note: The red area of the graphic on the right indicates a region that Eideticker has detected as checkerboarded (i.e. undrawn). The black area of the graphic indicates a region that is fully drawn.</em></p>
 
-<p>The important thing in both cases is that these captures represent <strong>a real user experience</strong>. The swipe gestures are synthesized such that they are interpreted by Android as an actual touch event. This is important: using tricks like <a href="https://developer.mozilla.org/en/DOM/window.scrollTo">javascript scrollTo</a> inside your Web page to pan would not actually engage the renderer in quite the same way. On Firefox for Android (and probably other browsers as well, though I haven&#8217;t checked), the response to a touch event is always handled inside the browser internal rendering engine to give the expected &#8220;physical feel.&#8221; Manually moving the viewport would give completely different results since so much of the fancy code we use to reduce the redraw delay would not be engaged.</p>
+<p>The important thing in both cases is that these captures represent <strong>a real user experience</strong>. The swipe gestures are synthesized such that they are interpreted by Android as an actual touch event. This is important: using tricks like <a href="https://developer.mozilla.org/en/DOM/window.scrollTo">javascript scrollTo</a> inside your Web page to pan would not actually engage the renderer in quite the same way. On Firefox for Android (and probably other browsers as well, though I haven&rsquo;t checked), the response to a touch event is always handled inside the browser internal rendering engine to give the expected &ldquo;physical feel.&rdquo; Manually moving the viewport would give completely different results since so much of the fancy code we use to reduce the redraw delay would not be engaged.</p>
 
 <p><strong>Conclusion</strong></p>
 
-<p>Overall, I am very happy with how Eideticker has allowed us to track and measure improvements in Firefox for Android. In developing Eideticker, we aimed to create a benchmark that measured how users actually interact with a browser – not how abstract measurements claim how great a browser is.  As we move ahead with new projects to improve Firefox for Android, Eideticker will continue to be useful in making sure that using our browser is the best experience that it can be, especially combined with other tools like Benoit Girard&#8217;s <a href="http://benoitgirard.wordpress.com/2012/03/30/writing-a-profiler/">sampling profiler</a>.</p>
+<p>Overall, I am very happy with how Eideticker has allowed us to track and measure improvements in Firefox for Android. In developing Eideticker, we aimed to create a benchmark that measured how users actually interact with a browser – not how abstract measurements claim how great a browser is.  As we move ahead with new projects to improve Firefox for Android, Eideticker will continue to be useful in making sure that using our browser is the best experience that it can be, especially combined with other tools like Benoit Girard&rsquo;s <a href="http://benoitgirard.wordpress.com/2012/03/30/writing-a-profiler/">sampling profiler</a>.</p>
 
 <p>For more information on Eideticker, feel free to visit <a href="https://wiki.mozilla.org/Project_Eideticker">its homepage</a> on <a href="http://wiki.mozilla.org/">wiki.mozilla.org</a>.</p>
 

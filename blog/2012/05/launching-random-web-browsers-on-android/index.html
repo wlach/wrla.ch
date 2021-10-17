@@ -4,7 +4,7 @@
 
     <meta charset="utf-8" />
     <title>Launching random web browsers on Android</title>
-    <meta name="description" content="Ok, this is somewhat mundane, but I’ve already had to do it twice (and helped someone do something similar on #mobile), so I figured I might as well blog about it for posterity.  For various automation tasks (notably the Eideticker dashboard and the cross..." />
+    <meta name="description" content="Ok, this is somewhat mundane, but I've already had to do it twice (and helped someone do something similar on #mobile), so I figured I might as well blog about it for posterity.  For various automation tasks (notably the Eideticker dashboard and the cross..." />
     <meta name="author" content="William Lachance" />
     <meta name="keywords" content="Android, Mozilla" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -97,25 +97,25 @@
     <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Ok, this is somewhat mundane, but I&#8217;ve already had to do it twice (and helped someone do something similar on #mobile), so I figured I might as well blog about it for posterity.</p>
+<p>Ok, this is somewhat mundane, but I&rsquo;ve already had to do it twice (and helped someone do something similar on #mobile), so I figured I might as well blog about it for posterity.</p>
 
 <p>For various automation tasks (notably the <a href="http://wrla.ch/eideticker/dashboard/">Eideticker dashboard</a> and the <a href="http://mrcote.info/phonedash/#/rawfennecstartup">cross-browser startup tests</a>), we need to be able to launch an Android browser on the command line (via adb shell or our own custom SUTAgent). This is a bit of a black art, but you can find references on how to do this on stackoverflow and other places. The magic incantation is:</p>
 
 <pre><code>am start -a android.intent.action.VIEW -n &amp;lt;application/intent&amp;gt; -d &amp;lt;url&amp;gt;</code></pre>
 
-<p>So, for example, to launch Fennec, you&#8217;d run this on the Android command prompt:</p>
+<p>So, for example, to launch Fennec, you&rsquo;d run this on the Android command prompt:</p>
 
 <pre><code>am start -a android.intent.action.VIEW -n org.mozilla.fennec/.App -d http://mygreatsite.info</code></pre>
 
 <p>Ok, easy enough, but what if we want to launch a new browser that we just downloaded (e.g. Google Chrome)? Where do we get the application and intent names?</p>
 
-<p>The short answer is that you need to reach into the apk and dig. 😉 There&#8217;s probably many ways of doing this, but here&#8217;s what I do (which has the distinct advantage of not needing to compile, download or run weird java applications):</p>
+<p>The short answer is that you need to reach into the apk and dig. 😉 There&rsquo;s probably many ways of doing this, but here&rsquo;s what I do (which has the distinct advantage of not needing to compile, download or run weird java applications):</p>
 
 <ol>
  <li>
   <p>Copy the apk onto your machine (the apk should be in /data/app: if you have a rooted phone, you should be able to copy that off to your machine).</p></li>
  <li>
-  <p>Extract <em>AndroidManifest.xml</em> from the apk (it&#8217;s just a .zip) and run <a href="http://android-random.googlecode.com/svn/trunk/axml2xml/axml2xml.pl">axml2xml.pl</a> on it.</p></li>
+  <p>Extract <em>AndroidManifest.xml</em> from the apk (it&rsquo;s just a .zip) and run <a href="http://android-random.googlecode.com/svn/trunk/axml2xml/axml2xml.pl">axml2xml.pl</a> on it.</p></li>
  <li>
   <p>Examine the resultant xml file and look for the <strong></strong> tag. It should have a property called <strong></strong> which is the package name. For example:</p></li></ol>
 
@@ -126,7 +126,7 @@
 
 <p>Likewise here we see that the activity name we want is <strong>.Main</strong> (which Android explicitly expands out to <strong>com.android.chrome.Main</strong>)</p>
 
-<p>Armed with this information, you should now have enough information to launch the application. Furthering the example above, here&#8217;s how to start Chrome on Android via adb&#8217;s shell:</p>
+<p>Armed with this information, you should now have enough information to launch the application. Furthering the example above, here&rsquo;s how to start Chrome on Android via adb&rsquo;s shell:</p>
 
 <pre><code>am start -a android.intent.action.VIEW -n com.android.chrome/.Main -d http://mygreatsite.info</code></pre>
 

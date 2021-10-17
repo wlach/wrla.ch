@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'hbus'</title>
- <link rel="self" href="https://wlach.github.io/feeds/hbus.atom.xml" />
- <link href="https://wlach.github.io/tags/hbus.html" />
- <id>urn:https-wlach-github-io:-tags-hbus-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/hbus.atom.xml" />
+ <link href="https://wrla.ch/tags/hbus.html" />
+ <id>urn:https-wrla-ch:-tags-hbus-html</id>
  <updated>2011-09-29T04:00:00Z</updated>
  <entry>
   <title type="text">Updates on my ridiculous pet projects</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/09/updates-on-my-ridiculous-pet-projects/?utm_source=hbus&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-09-updates-on-my-ridiculous-pet-projects</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2011/09/updates-on-my-ridiculous-pet-projects/?utm_source=hbus&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2011-09-updates-on-my-ridiculous-pet-projects</id>
   <published>2011-09-29T04:00:00Z</published>
   <updated>2011-09-29T04:00:00Z</updated>
   <author>
@@ -16,23 +16,23 @@
   <content type="html">
 &lt;ol&gt;
  &lt;li&gt;
-  &lt;p&gt;As you may or may not have noticed, &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt; has been down for the past few weeks. Halifax updated the data but I didn&amp;#8217;t have a chance to update it. Well, I finally did, and hbus is now up in its former glory (minus a small issue with stops named &amp;#8216;6016_merged_3300509&amp;#8217;: thanks Metro Transit, time to update &lt;a href="https://github.com/wlach/routez/blob/master/src/gtfs-hacks/update-halifax-gtfs.py"&gt;that script&lt;/a&gt; to massage your data again!) . I still wonder a bit about why I keep putting time into a site oriented around a city I haven&amp;#8217;t lived in for over 2 years now (especially when Google Maps arguably does a better job at most things than I do), but there you go!&lt;/p&gt;&lt;/li&gt;
+  &lt;p&gt;As you may or may not have noticed, &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt; has been down for the past few weeks. Halifax updated the data but I didn&amp;rsquo;t have a chance to update it. Well, I finally did, and hbus is now up in its former glory (minus a small issue with stops named &amp;#8216;6016_merged_3300509&amp;prime;: thanks Metro Transit, time to update &lt;a href="https://github.com/wlach/routez/blob/master/src/gtfs-hacks/update-halifax-gtfs.py"&gt;that script&lt;/a&gt; to massage your data again!) . I still wonder a bit about why I keep putting time into a site oriented around a city I haven&amp;rsquo;t lived in for over 2 years now (especially when Google Maps arguably does a better job at most things than I do), but there you go!&lt;/p&gt;&lt;/li&gt;
  &lt;li&gt;
-  &lt;p&gt;&lt;a href="http://nixi.ca"&gt;NIXI&lt;/a&gt; is still up and being useful to me, though I&amp;#8217;m a little bit disappointed by its uptake from the rest of the world (the site gets like 5&amp;ndash;12 unique views a day). What do I need to do for you guys? A mobile version? French localization? I just added support for Washington (Capital Bikeshare) and Boston (Hubway), maybe it&amp;#8217;ll get some uptake there.&lt;/p&gt;&lt;/li&gt;
+  &lt;p&gt;&lt;a href="http://nixi.ca"&gt;NIXI&lt;/a&gt; is still up and being useful to me, though I&amp;rsquo;m a little bit disappointed by its uptake from the rest of the world (the site gets like 5&amp;ndash;12 unique views a day). What do I need to do for you guys? A mobile version? French localization? I just added support for Washington (Capital Bikeshare) and Boston (Hubway), maybe it&amp;rsquo;ll get some uptake there.&lt;/p&gt;&lt;/li&gt;
  &lt;li&gt;
-  &lt;p&gt;Not really my project, but Stephane Guidoin put up an awesome site called &lt;a href="http://zonecone.ca"&gt;zonecone.ca&lt;/a&gt; which helps you find out about traffic obstacles that might delay your journey. It even has a nifty feature where you can create an account, specify a route you take regularly (say, your commute), and it&amp;#8217;ll automatically notify you if something pops up. As you may have guessed, I&amp;#8217;m not the biggest fan of automobiles, but this is still very cool. 😉 This site was originally based on &lt;a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/"&gt;the map layout template&lt;/a&gt; that I announced a few months ago.&lt;/p&gt;&lt;/li&gt;
+  &lt;p&gt;Not really my project, but Stephane Guidoin put up an awesome site called &lt;a href="http://zonecone.ca"&gt;zonecone.ca&lt;/a&gt; which helps you find out about traffic obstacles that might delay your journey. It even has a nifty feature where you can create an account, specify a route you take regularly (say, your commute), and it&amp;rsquo;ll automatically notify you if something pops up. As you may have guessed, I&amp;rsquo;m not the biggest fan of automobiles, but this is still very cool. 😉 This site was originally based on &lt;a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/"&gt;the map layout template&lt;/a&gt; that I announced a few months ago.&lt;/p&gt;&lt;/li&gt;
  &lt;li&gt;
-  &lt;p&gt;I have a lettuce plant growing on my new balcony. It&amp;#8217;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</content></entry>
+  &lt;p&gt;I have a lettuce plant growing on my new balcony. It&amp;rsquo;s doing ok, though it will probably have to be brought in soon due to frost. Will it get enough sun? Can I prevent my cat from eating it? Will it make a delicious salad? Stay tuned!&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</content></entry>
  <entry>
   <title type="text">Routez opensourced</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2011/04/routez-opensourced/?utm_source=hbus&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2011-04-routez-opensourced</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2011/04/routez-opensourced/?utm_source=hbus&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2011-04-routez-opensourced</id>
   <published>2011-04-19T04:00:00Z</published>
   <updated>2011-04-19T04:00:00Z</updated>
   <author>
    <name>William Lachance</name></author>
   <content type="html">
-&lt;p&gt;Just a quick note to say that I just opensourced the software behind &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt;, nicknamed &amp;#8220;Routez&amp;#8221; under the &lt;a href="http://www.affero.org/oagpl.html"&gt;Affero GPL&lt;/a&gt;. You can get the code on &lt;a href="http://github.com/wlach/routez"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Just a quick note to say that I just opensourced the software behind &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt;, nicknamed &amp;ldquo;Routez&amp;rdquo; under the &lt;a href="http://www.affero.org/oagpl.html"&gt;Affero GPL&lt;/a&gt;. You can get the code on &lt;a href="http://github.com/wlach/routez"&gt;github&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/04/routez-opensourced/hbus_shot_apr_2011/" rel="attachment wp-att-238"&gt;&lt;img src="/files/2011/04/hbus_shot_apr_2011.png" alt="" title="hbus_shot_apr_2011" width="300" height="225" class="aligncenter size-full wp-image-238" /&gt;&lt;/a&gt;&lt;/p&gt;
 
@@ -40,40 +40,39 @@
 
 &lt;ul&gt;
  &lt;li&gt;A trip planning front-end much like Google Transit (built from the ground up using the &lt;a href="http://github.com/wlach/libroutez"&gt;libroutez&lt;/a&gt; library).&lt;/li&gt;
- &lt;li&gt;A &amp;#8220;nearby&amp;#8221; routes feature which gives you all the bus departures near a particular location.&lt;/li&gt;&lt;/ul&gt;
+ &lt;li&gt;A &amp;ldquo;nearby&amp;rdquo; routes feature which gives you all the bus departures near a particular location.&lt;/li&gt;&lt;/ul&gt;
 
 &lt;p&gt;On the backend, both of these features are accessible via JSON APIs, for use in transit apps, etc. &lt;a href="http://transittogo.mindsea.ca"&gt;Transit to Go&lt;/a&gt; uses these to great effect.&lt;/p&gt;
 
 &lt;p&gt;There is nothing particularly Halifax-specific to the underlying Routez software, aside from various references in the web front end to Halifax and hbus.ca. In fact, we use Routez to provide information for Transit to Go Edmonton right now, with no modification.&lt;/p&gt;
 
-&lt;p&gt;Originally my plan was to release something that was completely generic out of the box so that anyone could trivially make up a version of this site for their favourite city. I&amp;#8217;ve made some headway towards that goal over the last week or so, but there&amp;#8217;s still some ways to go. There&amp;#8217;s basically two major issues:&lt;/p&gt;
+&lt;p&gt;Originally my plan was to release something that was completely generic out of the box so that anyone could trivially make up a version of this site for their favourite city. I&amp;rsquo;ve made some headway towards that goal over the last week or so, but there&amp;rsquo;s still some ways to go. There&amp;rsquo;s basically two major issues:&lt;/p&gt;
 
 &lt;ol&gt;
- &lt;li&gt;The geocoder depends on information gleaned from the geobase road network dataset. The intent behind this is noble (provide an end-to-end solution that doesn&amp;#8217;t depend on third parties) but in practice this limits the software&amp;#8217;s usefulness. It would be better to optionally allow a Routez-based site to use Google&amp;#8217;s geocoder on the front-end. Unfortunately, to comply with Google&amp;#8217;s terms of service, we&amp;#8217;d also need to use their Maps API for the base map as well. Perhaps the best option here would be to use something like &lt;a href="http://mapstraction.com"&gt;Mapstraction&lt;/a&gt; to allow users to select their preferred mapping provider.
-  &lt;br /&gt;&lt;/li&gt;
+ &lt;li&gt;The geocoder depends on information gleaned from the geobase road network dataset. The intent behind this is noble (provide an end-to-end solution that doesn&amp;rsquo;t depend on third parties) but in practice this limits the software&amp;rsquo;s usefulness. It would be better to optionally allow a Routez-based site to use Google&amp;rsquo;s geocoder on the front-end. Unfortunately, to comply with Google&amp;rsquo;s terms of service, we&amp;rsquo;d also need to use their Maps API for the base map as well. Perhaps the best option here would be to use something like &lt;a href="http://mapstraction.com"&gt;Mapstraction&lt;/a&gt; to allow users to select their preferred mapping provider.&lt;/li&gt;
  &lt;li&gt;The trip planning software used in the backend, libroutez, is getting a bit long in the tooth and is quite finicky about what kind of data it will accept. I think the long-term solution to this is to switch to &lt;a href="http://graphserver.github.com/graphserver/"&gt;Graphserver&lt;/a&gt; (which is more mature and better supported), but some features would have to be added to it to support the kind of things that Routez needs (like a list of upcoming departures at a particular transit stop).&lt;/li&gt;&lt;/ol&gt;
 
 &lt;p&gt;Even with these problems, I figured it would be better to open up what I have for people to check out and play with. Have a look and let me know what you think!&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Google Transit Halifax is down (but hbus and Transit to Go are still up)</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up/?utm_source=hbus&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2010-08-google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up/?utm_source=hbus&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2010-08-google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up</id>
   <published>2010-08-29T04:00:00Z</published>
   <updated>2010-08-29T04:00:00Z</updated>
   <author>
    <name>William Lachance</name></author>
   <content type="html">
-&lt;p&gt;Due to some schedule adjustments, it appears as if Metro Transit&amp;#8217;s Google Transit is &lt;a href="http://www.halifax.ca/googletransit/"&gt;temporarily out of service&lt;/a&gt; while they wait for Google to process their new transit feed.&lt;/p&gt;
+&lt;p&gt;Due to some schedule adjustments, it appears as if Metro Transit&amp;rsquo;s Google Transit is &lt;a href="http://www.halifax.ca/googletransit/"&gt;temporarily out of service&lt;/a&gt; while they wait for Google to process their new transit feed.&lt;/p&gt;
 
 &lt;p&gt;However, fear not! Unlike Google, obsessive compulsive computer programmer William Lachance works on weekends for free (or the low, low price of $1.99 in the case of iPhone applications) so your thirst for updated transit information can be satisfied. I link to these things often enough on this blog, but here they are again, for the benefit of first time viewers:&lt;/p&gt;
 
 &lt;ul&gt;
  &lt;li&gt;&lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt;&lt;/li&gt;
- &lt;li&gt;&lt;a href="http://transittogo.mindsea.ca"&gt;Transit to Go&lt;/a&gt;    In other news, it appears as if Metro Transit has finally seen the light and made their transit information available to anyone who wants it. I would like to think that I might have had &lt;a href="http://www.thecoast.ca/halifax/beta-the-public-transit-day-tripper/Content?oid=1098826"&gt;something to do with this&lt;/a&gt;, but I honestly have no idea. Anyway, if you want to check it out, it&amp;#8217;s available &lt;a href="http://www.halifax.ca/GoogleTransit/developerdata.html"&gt;here&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;</content></entry>
+ &lt;li&gt;&lt;a href="http://transittogo.mindsea.ca"&gt;Transit to Go&lt;/a&gt;   In other news, it appears as if Metro Transit has finally seen the light and made their transit information available to anyone who wants it. I would like to think that I might have had &lt;a href="http://www.thecoast.ca/halifax/beta-the-public-transit-day-tripper/Content?oid=1098826"&gt;something to do with this&lt;/a&gt;, but I honestly have no idea. Anyway, if you want to check it out, it&amp;rsquo;s available &lt;a href="http://www.halifax.ca/GoogleTransit/developerdata.html"&gt;here&lt;/a&gt;.&lt;/li&gt;&lt;/ul&gt;</content></entry>
  <entry>
   <title type="text">hbus is back</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2010/05/hbus-is-back/?utm_source=hbus&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2010-05-hbus-is-back</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2010/05/hbus-is-back/?utm_source=hbus&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2010-05-hbus-is-back</id>
   <published>2010-05-24T04:00:00Z</published>
   <updated>2010-05-24T04:00:00Z</updated>
   <author>
@@ -81,11 +80,11 @@
   <content type="html">
 &lt;p&gt;&lt;a href="http://hbus.ca"&gt;&lt;img src="/files/2010/05/hbus_shot1.png" alt="hbus_shot" title="hbus_shot" width="320" height="181" class="alignleft size-full wp-image-135" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;After a month long hiatus, I finally had a chance to get &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt; back into a working state. The big difference is that we&amp;#8217;re now using the &lt;a href="http://www.mindsea.com/2010/03/03/transit-to-go-pulling-out-all-the-stops/"&gt;official HRM transit data&lt;/a&gt;. Lots more remains to be done to make this site competitive for 2010 (most of the recent work has been back-end infrastructure stuff), but at least it&amp;#8217;s usable again.&lt;/p&gt;</content></entry>
+&lt;p&gt;After a month long hiatus, I finally had a chance to get &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt; back into a working state. The big difference is that we&amp;rsquo;re now using the &lt;a href="http://www.mindsea.com/2010/03/03/transit-to-go-pulling-out-all-the-stops/"&gt;official HRM transit data&lt;/a&gt;. Lots more remains to be done to make this site competitive for 2010 (most of the recent work has been back-end infrastructure stuff), but at least it&amp;rsquo;s usable again.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Oh, the lines! And some help for Edmonton.</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/?utm_source=hbus&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2010-04-oh-the-lines-and-some-help-for-edmonton</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/?utm_source=hbus&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2010-04-oh-the-lines-and-some-help-for-edmonton</id>
   <published>2010-04-10T04:00:00Z</published>
   <updated>2010-04-10T04:00:00Z</updated>
   <author>
@@ -97,12 +96,12 @@
 
 &lt;ul&gt;
  &lt;li&gt;Sped up the graph and database generation by an order of magnitude. Not too exciting from a user perspective, but I should now be able to iterate the codebase much faster.&lt;/li&gt;
- &lt;li&gt;Better transit stop / street graph linking: No more does libroutez simply try to find the closest street level vertice to link to when merging transit stops with street information&amp;#8211; we now actually create _new_ street level vertices as needed and link to those. Upshot? Slightly better directions and prettier polylines. When I first thought up the algorithm a month ago, I thought I was totally brilliant, only to later find out that Andrew Byrd had done something almost identical a few months earlier for &lt;a href="http://github.com/andrewbyrd/graphserver"&gt;graphserver&lt;/a&gt;. Ah well, at least it&amp;#8217;s implemented.&lt;/li&gt;
- &lt;li&gt;I &lt;a href="http://gist.github.com/361848"&gt;coded up a script&lt;/a&gt; to automatically generate synthetic headsigns for GTFS feeds which don&amp;#8217;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&amp;#8217;t you do better than saying that all your buses go in the &amp;#8220;1&amp;#8221; direction? There&amp;#8217;s a reason why it&amp;#8217;s a required field you know. Not only would it help me, but &lt;a href="http://google.com/transit"&gt;Google Transit&lt;/a&gt; would give better results for your city as well.&lt;/li&gt;&lt;/ul&gt;</content></entry>
+ &lt;li&gt;Better transit stop / street graph linking: No more does libroutez simply try to find the closest street level vertice to link to when merging transit stops with street information: we now actually create _new_ street level vertices as needed and link to those. Upshot? Slightly better directions and prettier polylines. When I first thought up the algorithm a month ago, I thought I was totally brilliant, only to later find out that Andrew Byrd had done something almost identical a few months earlier for &lt;a href="http://github.com/andrewbyrd/graphserver"&gt;graphserver&lt;/a&gt;. Ah well, at least it&amp;rsquo;s implemented.&lt;/li&gt;
+ &lt;li&gt;I &lt;a href="http://gist.github.com/361848"&gt;coded up a script&lt;/a&gt; to automatically generate synthetic headsigns for GTFS feeds which don&amp;rsquo;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&amp;rsquo;t you do better than saying that all your buses go in the &amp;ldquo;1&amp;rdquo; direction? There&amp;rsquo;s a reason why it&amp;rsquo;s a required field you know. Not only would it help me, but &lt;a href="http://google.com/transit"&gt;Google Transit&lt;/a&gt; would give better results for your city as well.&lt;/li&gt;&lt;/ul&gt;</content></entry>
  <entry>
   <title type="text">Projects for 2010</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2010/01/projects-for-2010/?utm_source=hbus&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2010-01-projects-for-2010</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2010/01/projects-for-2010/?utm_source=hbus&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2010-01-projects-for-2010</id>
   <published>2010-01-02T05:00:00Z</published>
   <updated>2010-01-02T05:00:00Z</updated>
   <author>
@@ -110,82 +109,71 @@
   <content type="html">
 &lt;p&gt;Hurrah, 2010 is upon us!&lt;/p&gt;
 
-&lt;p&gt;One new years resolution I have set for myself is to blog more about what I&amp;#8217;m working on. I&amp;#8217;ve learned over the last year that the audience of people who care about your projects &lt;em&gt;in development&lt;/em&gt; is vanishingly small. Thus, the need for secrecy in order to make a &amp;#8220;PR splash&amp;#8221; is rather small&amp;#8211; announce far and wide when you have something that &lt;a href="http://hbus.ca"&gt;people can use&lt;/a&gt; by all means, but don&amp;#8217;t worry too much about talking about what you&amp;#8217;re working on with the internets.&lt;/p&gt;
+&lt;p&gt;One new years resolution I have set for myself is to blog more about what I&amp;rsquo;m working on. I&amp;rsquo;ve learned over the last year that the audience of people who care about your projects &lt;em&gt;in development&lt;/em&gt; is vanishingly small. Thus, the need for secrecy in order to make a &amp;ldquo;PR splash&amp;rdquo; is rather small: announce far and wide when you have something that &lt;a href="http://hbus.ca"&gt;people can use&lt;/a&gt; by all means, but don&amp;rsquo;t worry too much about talking about what you&amp;rsquo;re working on with the internets.&lt;/p&gt;
 
-&lt;p&gt;In this spirit, some projects I&amp;#8217;m 99% certain I&amp;#8217;ll be releasing publicly in 2010:&lt;/p&gt;
+&lt;p&gt;In this spirit, some projects I&amp;rsquo;m 99% certain I&amp;rsquo;ll be releasing publicly in 2010:&lt;/p&gt;
 
 &lt;ul&gt;
  &lt;li&gt;&lt;strong&gt;&lt;a href="http://github.com/wlach/neocoder"&gt;neocoder&lt;/a&gt;&lt;/strong&gt; A lightweight geocoding library, with wrapper libraries for your language of choice. Written in C++ using &lt;a href="http://sqlite.org"&gt;SQLite&lt;/a&gt; and boost regular expressions. Will support both &lt;a href="http://openstreetmap.org"&gt;OpenStreetMap&lt;/a&gt; and &lt;a href="http://geobase.ca"&gt;GeoBase&lt;/a&gt; GML as input. Currently in development on github, hoping to release with routez (as its geocoding component).&lt;/li&gt;
- &lt;li&gt;&lt;strong&gt;routez&lt;/strong&gt; A generic travel planning web service, written in python using the &lt;a href="http://django-project.org"&gt;django&lt;/a&gt; framework and the &lt;a href="http://github.com/wlach/libroutez"&gt;libroutez&lt;/a&gt; libraries. This is basically the software behind &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt;&amp;#8230; the goal for 2010 is to clean it up and make it generic by clearing out the Halifax-specific stuff (mostly just the geocoding and site theme stuff at this point), then release it to the public under the &lt;a href="www.affero.org/oagpl.html"&gt;Affero GPL License&lt;/a&gt; (was originally going to with GPL, but &lt;a href="http://sfllaw.ca"&gt;Simon Law&lt;/a&gt; convinced me otherwise&amp;#8230; more on that in a future post).&lt;/li&gt;
- &lt;li&gt;&lt;strong&gt;Transit To Go&lt;/strong&gt; A dedicated iPhone client for the routez software, developed in collaboration with &lt;a href="http://appliedlogic.ca"&gt;Dmitri Dolguikh&lt;/a&gt; and &lt;a href="http://mindsea.com"&gt;Bill Wilson&lt;/a&gt;, two talent developers from Halifax. Has some innovative (in my opinion, anyway) details on how things will be viewed. This one&amp;#8217;s going to be proprietary, but will be affordable and awesome.&lt;/li&gt;&lt;/ul&gt;
+ &lt;li&gt;&lt;strong&gt;routez&lt;/strong&gt; A generic travel planning web service, written in python using the &lt;a href="http://django-project.org"&gt;django&lt;/a&gt; framework and the &lt;a href="http://github.com/wlach/libroutez"&gt;libroutez&lt;/a&gt; libraries. This is basically the software behind &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt; the goal for 2010 is to clean it up and make it generic by clearing out the Halifax-specific stuff (mostly just the geocoding and site theme stuff at this point), then release it to the public under the &lt;a href="www.affero.org/oagpl.html"&gt;Affero GPL License&lt;/a&gt; (was originally going to with GPL, but &lt;a href="http://sfllaw.ca"&gt;Simon Law&lt;/a&gt; convinced me otherwise: more on that in a future post).&lt;/li&gt;
+ &lt;li&gt;&lt;strong&gt;Transit To Go&lt;/strong&gt; A dedicated iPhone client for the routez software, developed in collaboration with &lt;a href="http://appliedlogic.ca"&gt;Dmitri Dolguikh&lt;/a&gt; and &lt;a href="http://mindsea.com"&gt;Bill Wilson&lt;/a&gt;, two talent developers from Halifax. Has some innovative (in my opinion, anyway) details on how things will be viewed. This one&amp;rsquo;s going to be proprietary, but will be affordable and awesome.&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;Besides this, I have a few more irons in the fire&amp;#8230; however, I&amp;#8217;m hesistant to talk about them just yet. Just getting the above done in the midst of my work with &lt;a href="http://navarra.ca"&gt;Navarra&lt;/a&gt; (to say nothing of having a life in there somewhere) is going to be challenging.&lt;/p&gt;
+&lt;p&gt;Besides this, I have a few more irons in the fire; however, I&amp;rsquo;m hesistant to talk about them just yet. Just getting the above done in the midst of my work with &lt;a href="http://navarra.ca"&gt;Navarra&lt;/a&gt; (to say nothing of having a life in there somewhere) is going to be challenging.&lt;/p&gt;
 
-&lt;p&gt;Thoughts? Would be particularly interested in hearing from people working on similar projects to neocoder and routez. Despite how it may some times appear, I don&amp;#8217;t have a NotInventedHere mentality: I&amp;#8217;ve done as an exhaustive survey of the field as I could before deciding to work on my own projects, and what I&amp;#8217;ve found just hasn&amp;#8217;t been the right fit for what I&amp;#8217;m trying to accomplish. However, the world&amp;#8217;s gotten so damn big that I&amp;#8217;m not sure if I&amp;#8217;m missing something&amp;#8230;&lt;/p&gt;</content></entry>
+&lt;p&gt;Thoughts? Would be particularly interested in hearing from people working on similar projects to neocoder and routez. Despite how it may some times appear, I don&amp;rsquo;t have a NotInventedHere mentality: I&amp;rsquo;ve done as an exhaustive survey of the field as I could before deciding to work on my own projects, and what I&amp;rsquo;ve found just hasn&amp;rsquo;t been the right fit for what I&amp;rsquo;m trying to accomplish. However, the world&amp;rsquo;s gotten so damn big that I&amp;rsquo;m not sure if I&amp;rsquo;m missing something.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Creating a google transit feed for fun and profit</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2009/04/creating-a-google-transit-feed-for-fun-and-profit/?utm_source=hbus&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2009-04-creating-a-google-transit-feed-for-fun-and-profit</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2009/04/creating-a-google-transit-feed-for-fun-and-profit/?utm_source=hbus&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2009-04-creating-a-google-transit-feed-for-fun-and-profit</id>
   <published>2009-04-23T04:00:00Z</published>
   <updated>2009-04-23T04:00:00Z</updated>
   <author>
    <name>William Lachance</name></author>
   <content type="html">
-&lt;p&gt;People frequently ask me how I manage to collect and input the data that is used by hbus.ca, given Metro Transit&amp;#8217;s intransigence. The &amp;#8220;bike and GPS&amp;#8221; angle is well known &lt;a href="http://www.thecoast.ca/halifax/beta-the-public-transit-day-tripper/Content?oid=1098826"&gt;by now&lt;/a&gt;, but what about the rest of the process? How do I get the data into a format that hbus.ca can consume?&lt;/p&gt;
+&lt;p&gt;People frequently ask me how I manage to collect and input the data that is used by hbus.ca, given Metro Transit&amp;rsquo;s intransigence. The &amp;ldquo;bike and GPS&amp;rdquo; angle is well known &lt;a href="http://www.thecoast.ca/halifax/beta-the-public-transit-day-tripper/Content?oid=1098826"&gt;by now&lt;/a&gt;, but what about the rest of the process? How do I get the data into a format that hbus.ca can consume?&lt;/p&gt;
 
 &lt;p&gt;The defacto standard for the interchange of transit information is &lt;a href="http://code.google.com/p/googletransitdatafeed"&gt;Google Transit Feed&lt;/a&gt; (GTFS). This exceedingly simple comma seperated value format is now supported by a plethora of software, including &lt;a href="http://google.com/transit"&gt;Google Transit&lt;/a&gt;, &lt;a href="http://github.com/bmander/graphserver"&gt;graphserver&lt;/a&gt;, as well as my very own &lt;a href="http://github.com/wlach/libroutez"&gt;libroutez&lt;/a&gt; (used by hbus.ca). It was obvious to me right from the beginning that the first step to building hbus.ca would be to create one of these feeds.&lt;/p&gt;
 
-&lt;p&gt;Manipulating a GTFS by hand is probably not a great idea. It&amp;#8217;s basically a dump of a relational database, and is pretty inscrutable from the point of view of a human being. What I really want to be able to do is be able
- &lt;br /&gt;to manipulate things on the level of stops, service periods, and routes&amp;#8211; and let some kind of abstraction layer take care of the low-level details. Fortunately, the awesome engineers at google created a python library called &lt;a href="http://code.google.com/p/googletransitdatafeed"&gt;Google Transit Data Feed&lt;/a&gt;, which can help with creating one of these things by providing abstractions of the key elements of a google transit feed (stops, service periods, etc.). You can then write a program which uses these abstractions to create and save a GTFS.&lt;/p&gt;
+&lt;p&gt;Manipulating a GTFS by hand is probably not a great idea. It&amp;rsquo;s basically a dump of a relational database, and is pretty inscrutable from the point of view of a human being. What I really want to be able to do is be able
+ &lt;br /&gt;to manipulate things on the level of stops, service periods, and routes: and let some kind of abstraction layer take care of the low-level details. Fortunately, the awesome engineers at google created a python library called &lt;a href="http://code.google.com/p/googletransitdatafeed"&gt;Google Transit Data Feed&lt;/a&gt;, which can help with creating one of these things by providing abstractions of the key elements of a google transit feed (stops, service periods, etc.). You can then write a program which uses these abstractions to create and save a GTFS.&lt;/p&gt;
 
-&lt;p&gt;Of course, providing the library appropriate information is easier said than done. Metro Transit&amp;#8217;s PDF schedules are not readily computer parsable (being designed to be printed out, after all). I needed some kind of semi-automated way of converting a Metro Transit schedule into GTFS, or this whole project was
+&lt;p&gt;Of course, providing the library appropriate information is easier said than done. Metro Transit&amp;rsquo;s PDF schedules are not readily computer parsable (being designed to be printed out, after all). I needed some kind of semi-automated way of converting a Metro Transit schedule into GTFS, or this whole project was
  &lt;br /&gt;going nowhere fast.&lt;/p&gt;
 
-&lt;p&gt;As an initial step, it turns out that it&amp;#8217;s quite possible to extract textual information from a PDF using the open source &lt;a href="http://poppler.freedesktop.org/"&gt;popplar&lt;/a&gt; library. From there, it&amp;#8217;s possible to extract the stopping times for an individual bus route. Let&amp;#8217;s give an example. For example, let&amp;#8217;s take the case of adding the 60 (Portland Hill&amp;#8217;s route), something I&amp;#8217;m currently working on. All I had to do was download the PDF file from Metro Transit&amp;#8217;s site and then run the following on the command line:
- &lt;br /&gt;&lt;code&gt;&amp;lt;br /&amp;gt;
-pdftotext -raw route60.pdf&amp;lt;br /&amp;gt;&lt;/code&gt;
+&lt;p&gt;As an initial step, it turns out that it&amp;rsquo;s quite possible to extract textual information from a PDF using the open source &lt;a href="http://poppler.freedesktop.org/"&gt;popplar&lt;/a&gt; library. From there, it&amp;rsquo;s possible to extract the stopping times for an individual bus route. Let&amp;rsquo;s give an example. For example, let&amp;rsquo;s take the case of adding the 60 (Portland Hill&amp;rsquo;s route), something I&amp;rsquo;m currently working on. All I had to do was download the PDF file from Metro Transit&amp;rsquo;s site and then run the following on the command line:
+ &lt;br /&gt;&lt;code&gt;&amp;lt;br /&amp;gt; pdftotext -raw route60.pdf&amp;lt;br /&amp;gt;&lt;/code&gt;
  &lt;br /&gt;The raw option basically makes sure the raw strings are dumped to disk, and that no attempt is made to preserve formatting. The result is a text file with content like this in it:
- &lt;br /&gt;&lt;code&gt;&amp;lt;br /&amp;gt;
-842a 847a 855a 858a 903a 906a 912a -&amp;lt;br /&amp;gt;
-857a 902a 910a 913a 918a 921a - 925a&amp;lt;br /&amp;gt;
-910a 915a 923a 926a 931a 934a 940a -&amp;lt;br /&amp;gt;
-940a 945a 953a - 1000a 1003a 1009a -&amp;lt;br /&amp;gt;
-...and every 30 minutes until&amp;lt;br /&amp;gt;
-210p 215p 223p - 230p 233p 239p -&amp;lt;br /&amp;gt;&lt;/code&gt;
- &lt;br /&gt;This type of format can be parsed easily enough. To create a proper transit feed though, schedule information isn&amp;#8217;t enough: you also need to know the locations of the stops, names of routes, etc. After some deliberation, I came to the determination that I needed some kind of intermediate format to store the above schedule information and this additional information. It would be readable both by humans (to ease its creation) and machines.&lt;/p&gt;
+ &lt;br /&gt;&lt;code&gt;&amp;lt;br /&amp;gt; 842a 847a 855a 858a 903a 906a 912a -&amp;lt;br /&amp;gt; 857a 902a 910a 913a 918a 921a - 925a&amp;lt;br /&amp;gt; 910a 915a 923a 926a 931a 934a 940a -&amp;lt;br /&amp;gt; 940a 945a 953a - 1000a 1003a 1009a -&amp;lt;br /&amp;gt; ...and every 30 minutes until&amp;lt;br /&amp;gt; 210p 215p 223p - 230p 233p 239p -&amp;lt;br /&amp;gt;&lt;/code&gt;
+ &lt;br /&gt;This type of format can be parsed easily enough. To create a proper transit feed though, schedule information isn&amp;rsquo;t enough: you also need to know the locations of the stops, names of routes, etc. After some deliberation, I came to the determination that I needed some kind of intermediate format to store the above schedule information and this additional information. It would be readable both by humans (to ease its creation) and machines.&lt;/p&gt;
 
-&lt;p&gt;The obvious markup for something like this is &lt;a href="http://yaml.org"&gt;YAML&lt;/a&gt; (if you&amp;#8217;re still using XML to store structured information, run, don&amp;#8217;t walk, and look at YAML: you can thank me later). Simple, clean, effective. GTFS is still the better choice for using the information in another application as its representation is much more amenable to being stored in a graph. Here&amp;#8217;s a few examples of my YAML format in action:&lt;/p&gt;
+&lt;p&gt;The obvious markup for something like this is &lt;a href="http://yaml.org"&gt;YAML&lt;/a&gt; (if you&amp;rsquo;re still using XML to store structured information, run, don&amp;rsquo;t walk, and look at YAML: you can thank me later). Simple, clean, effective. GTFS is still the better choice for using the information in another application as its representation is much more amenable to being stored in a graph. Here&amp;rsquo;s a few examples of my YAML format in action:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://github.com/wlach/halifax-transit-feed/blob/fef68c18928272670b3c57ae5530260deed85883/7-robie-to-gottingen.yml"&gt;7 (Robie to Gottingen)&lt;/a&gt;
  &lt;br /&gt;&lt;a href="http://github.com/wlach/halifax-transit-feed/blob/fef68c18928272670b3c57ae5530260deed85883/10-to-westphal.yml"&gt;10 (Westphal)&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Besides the scheduling information, the other main interesting component of a GTFS is the location of the stops. As anyone who&amp;#8217;s used a Metro Transit schedule has noticed, only major timepoints are covered in the PDF schedules. What of all the stops in between? This is where the bike and GPS come in.&lt;/p&gt;
+&lt;p&gt;Besides the scheduling information, the other main interesting component of a GTFS is the location of the stops. As anyone who&amp;rsquo;s used a Metro Transit schedule has noticed, only major timepoints are covered in the PDF schedules. What of all the stops in between? This is where the bike and GPS come in.&lt;/p&gt;
 
-&lt;p&gt;What I did was take a standard GPS from Mountain Equipment Co-op (The Garmin GPSMap 60x), get on my bike, take the readings of individual gotime numbers and positioning information, of the individual stops between the major timepoints. I then took this device back to my computer and, using a utility called &lt;a href="http://gpsbabel.org"&gt;GPSBabel&lt;/a&gt;, dumped out the stop information in a format called &amp;#8220;comma seperated value&amp;#8221;. It looks like this:
- &lt;br /&gt;&lt;code&gt;&amp;lt;br /&amp;gt;
-44.65825, -63.59252, 6785-21-31-33-34-35-3-7&amp;lt;br /&amp;gt;
-44.65982, -63.59452, 6768-21-31-33-35-86-3-7&amp;lt;br /&amp;gt;
-44.66113, -63.59659, 6782-21-31-33-34-35-3-7&amp;lt;br /&amp;gt;&lt;/code&gt;
+&lt;p&gt;What I did was take a standard GPS from Mountain Equipment Co-op (The Garmin GPSMap 60x), get on my bike, take the readings of individual gotime numbers and positioning information, of the individual stops between the major timepoints. I then took this device back to my computer and, using a utility called &lt;a href="http://gpsbabel.org"&gt;GPSBabel&lt;/a&gt;, dumped out the stop information in a format called &amp;ldquo;comma seperated value&amp;rdquo;. It looks like this:
+ &lt;br /&gt;&lt;code&gt;&amp;lt;br /&amp;gt; 44.65825, -63.59252, 6785-21-31-33-34-35-3-7&amp;lt;br /&amp;gt; 44.65982, -63.59452, 6768-21-31-33-35-86-3-7&amp;lt;br /&amp;gt; 44.66113, -63.59659, 6782-21-31-33-34-35-3-7&amp;lt;br /&amp;gt;&lt;/code&gt;
  &lt;br /&gt;The first two items are latitude and longitude, providing the positioning of the stop. The last item is a gotime number, followed by the set of buses which pass by the stop. Turning this into YAML is a matter of applying
  &lt;br /&gt;the following regular expression to the input:
- &lt;br /&gt;&lt;code&gt;&amp;lt;br /&amp;gt;
-\([0-9]+.[0-9]+\), \(-63.[0-9]+\), \([0-9]+\)- -&amp;gt; - { name: xxx, stop_code: \3, lat: \1, lng: \2 }&amp;lt;br /&amp;gt;&lt;/code&gt;
- &lt;br /&gt;To get an actual name for the stop (i.e.: &amp;#8220;Gottingen and Young&amp;#8221;), I wrote a simple script which finds the nearest intersection close to the stop in the &lt;a href="http://geobase.ca"&gt;GeoBase&lt;/a&gt; dataset. I then (at my discretion) corrected it based on my on-the-street knowledge of the layout of Halifax as well as adding certain details to help the user (e.g. bus stops on the way to the south end of Halifax are marked &amp;#8220;south bound&amp;#8221;).&lt;/p&gt;
+ &lt;br /&gt;&lt;code&gt;&amp;lt;br /&amp;gt; \([0-9]+.[0-9]+\), \(-63.[0-9]+\), \([0-9]+\)- -&amp;gt; - { name: xxx, stop_code: \3, lat: \1, lng: \2 }&amp;lt;br /&amp;gt;&lt;/code&gt;
+ &lt;br /&gt;To get an actual name for the stop (i.e.: &amp;ldquo;Gottingen and Young&amp;rdquo;), I wrote a simple script which finds the nearest intersection close to the stop in the &lt;a href="http://geobase.ca"&gt;GeoBase&lt;/a&gt; dataset. I then (at my discretion) corrected it based on my on-the-street knowledge of the layout of Halifax as well as adding certain details to help the user (e.g. bus stops on the way to the south end of Halifax are marked &amp;ldquo;south bound&amp;rdquo;).&lt;/p&gt;
 
 &lt;p&gt;With these two elements in place (a format for creating human-readable transit information and a library for creating GTFS), the only thing left to do is create a program which bridges the gap. Behold, the magic of
- &lt;br /&gt;&lt;a href="http://github.com/wlach/halifax-transit-feed/blob/fef68c18928272670b3c57ae5530260deed85883/createfeed.py"&gt;createfeed.py&lt;/a&gt;. With all of this in place, creating a google transit feed for Halifax is a simple matter of typing &amp;#8220;make&amp;#8221;.&lt;/p&gt;
+ &lt;br /&gt;&lt;a href="http://github.com/wlach/halifax-transit-feed/blob/fef68c18928272670b3c57ae5530260deed85883/createfeed.py"&gt;createfeed.py&lt;/a&gt;. With all of this in place, creating a google transit feed for Halifax is a simple matter of typing &amp;ldquo;make&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;Is this a ridiculous amount of work? I wouldn&amp;#8217;t say so. The vast, vast majority of my work on hbus.ca has been in creating the pathfinding code and geocoding functionality. This is work that can be translated to many different municipalities, and can easily be extended and made more useful in a myriad of ways.&lt;/p&gt;
+&lt;p&gt;Is this a ridiculous amount of work? I wouldn&amp;rsquo;t say so. The vast, vast majority of my work on hbus.ca has been in creating the pathfinding code and geocoding functionality. This is work that can be translated to many different municipalities, and can easily be extended and made more useful in a myriad of ways.&lt;/p&gt;
 
-&lt;p&gt;What does seem a little intimidating to me is completing what I started. Capturing bus stop information for the Halifax peninsula is one thing, but covering the outlying areas (Bayer&amp;#8217;s Lake, Sackville, etc.) is quite
- &lt;br /&gt;another. There&amp;#8217;s a lot of biking involved there, more perhaps than what one person can reasonably be expected to do. It was my hope that the initial release of hbus would validate the model of community-developed transit software to Metro Transit and they would see the benefit of releasing their internal copy of this data to the public, but unfortunately that doesn&amp;#8217;t seem to have happened.&lt;/p&gt;
+&lt;p&gt;What does seem a little intimidating to me is completing what I started. Capturing bus stop information for the Halifax peninsula is one thing, but covering the outlying areas (Bayer&amp;rsquo;s Lake, Sackville, etc.) is quite
+ &lt;br /&gt;another. There&amp;rsquo;s a lot of biking involved there, more perhaps than what one person can reasonably be expected to do. It was my hope that the initial release of hbus would validate the model of community-developed transit software to Metro Transit and they would see the benefit of releasing their internal copy of this data to the public, but unfortunately that doesn&amp;rsquo;t seem to have happened.&lt;/p&gt;
 
-&lt;p&gt;Getting that problem solved seems to be more a political problem than a technical one, and it&amp;#8217;s not my specialty. It really does make me wonder if I shouldn&amp;#8217;t reconsider the option of crowd sourcing, which I had
+&lt;p&gt;Getting that problem solved seems to be more a political problem than a technical one, and it&amp;rsquo;s not my specialty. It really does make me wonder if I shouldn&amp;rsquo;t reconsider the option of crowd sourcing, which I had
  &lt;br /&gt;&lt;a href="http://wrla.ch/blog/2009/03/hbusca-and-thoughts-about-crowdsourcing/"&gt;rejected&lt;/a&gt; earlier.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">hbus.ca and thoughts about crowdsourcing</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2009/03/hbus-ca-and-thoughts-about-crowdsourcing/?utm_source=hbus&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2009-03-hbus-ca-and-thoughts-about-crowdsourcing</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2009/03/hbus-ca-and-thoughts-about-crowdsourcing/?utm_source=hbus&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2009-03-hbus-ca-and-thoughts-about-crowdsourcing</id>
   <published>2009-03-25T04:00:00Z</published>
   <updated>2009-03-25T04:00:00Z</updated>
   <author>
@@ -196,14 +184,14 @@ pdftotext -raw route60.pdf&amp;lt;br /&amp;gt;&lt;/code&gt;
 
 &lt;p&gt;So I opened up my baby, &lt;a href="http://hbus.ca" title="hbus.ca"&gt;hbus.ca&lt;/a&gt;, to the public last week (though traffic only really started to pick up yesterday, after a &lt;a href="http://www.metronews.ca/halifax/local/article/201622"&gt;positive article&lt;/a&gt; in the daily news). This site, a trip planner for the Halifax Regional Municipality, was the cumulation of about 6 months of part time work on my part, between contracts for my awesome company, &lt;a href="http://navarra.ca"&gt;Navarra&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;I&amp;#8217;m debating on whether or not to start a seperate blog for hbus. At the moment I&amp;#8217;m leaning towards no: my thinking is that most people don&amp;#8217;t care about the inner workings of a site like hbus. They just want to figure out how to get from point A to B. Those who do care can read the rest of what I (and my part time co-conspirator, &lt;a href="http://cpirate.livejournal.com"&gt;Peter McCurdy&lt;/a&gt;) have to say.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m debating on whether or not to start a seperate blog for hbus. At the moment I&amp;rsquo;m leaning towards no: my thinking is that most people don&amp;rsquo;t care about the inner workings of a site like hbus. They just want to figure out how to get from point A to B. Those who do care can read the rest of what I (and my part time co-conspirator, &lt;a href="http://cpirate.livejournal.com"&gt;Peter McCurdy&lt;/a&gt;) have to say.&lt;/p&gt;
 
-&lt;p&gt;The most glaring limitation in hbus right now is that its route coverage is woefully limited. Trips on the main Halifax peninsula are generally planned pretty effectively. If you&amp;#8217;re travelling to a suburban area like Bayer&amp;#8217;s Lake or Burnside, not so much (unless you&amp;#8217;re lucky enough to be starting/ending near a bus timepoint). What is to be done?&lt;/p&gt;
+&lt;p&gt;The most glaring limitation in hbus right now is that its route coverage is woefully limited. Trips on the main Halifax peninsula are generally planned pretty effectively. If you&amp;rsquo;re travelling to a suburban area like Bayer&amp;rsquo;s Lake or Burnside, not so much (unless you&amp;rsquo;re lucky enough to be starting/ending near a bus timepoint). What is to be done?&lt;/p&gt;
 
-&lt;p&gt;A frequent suggestion I get from more technically minded folks is that I should &amp;#8220;crowd source&amp;#8221; the missing information. This basically implies creating a wikipedia-like architecture such that people could contribute their favourite stops, routes, etc.&lt;/p&gt;
+&lt;p&gt;A frequent suggestion I get from more technically minded folks is that I should &amp;ldquo;crowd source&amp;rdquo; the missing information. This basically implies creating a wikipedia-like architecture such that people could contribute their favourite stops, routes, etc.&lt;/p&gt;
 
-&lt;p&gt;It&amp;#8217;s a tempting idea. Such sites as &lt;a href="http://openstreetmap.org"&gt;OpenStreetMap&lt;/a&gt; show that this approach can be very effective for gathering large amount of geographical data. I&amp;#8217;m frankly not convinced it&amp;#8217;s the right approach here though. The fact is that &lt;a href="http://halifax.ca/metrotransit"&gt;Metro Transit&lt;/a&gt; MUST have a complete set of stops, route schedules, and route plans internally. There&amp;#8217;s no way they could plan their operations halfway effectively otherwise. Why should I burden the public with the task of recreating something which has already been done?&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a tempting idea. Such sites as &lt;a href="http://openstreetmap.org"&gt;OpenStreetMap&lt;/a&gt; show that this approach can be very effective for gathering large amount of geographical data. I&amp;rsquo;m frankly not convinced it&amp;rsquo;s the right approach here though. The fact is that &lt;a href="http://halifax.ca/metrotransit"&gt;Metro Transit&lt;/a&gt; MUST have a complete set of stops, route schedules, and route plans internally. There&amp;rsquo;s no way they could plan their operations halfway effectively otherwise. Why should I burden the public with the task of recreating something which has already been done?&lt;/p&gt;
 
-&lt;p&gt;I may be crazy, but I think the best avenue for the moment is to try to convince Metro Transit that it would be worthwhile to make this information public. I paid for the generation of the information with my tax dollars, why shouldn&amp;#8217;t I be able to make use of it? The preferred format for this information is &lt;a href="http://code.google.com/p/googletransitdatafeed/"&gt;Google Transit Data Feed&lt;/a&gt;, but I could make use of information in just about any representation (Arc GIS, etc.). Just give me what you have, and I&amp;#8217;ll take of the rest. &lt;a href="http://code.google.com/p/googletransitdatafeed/wiki/PublicFeeds"&gt;Over 20&lt;/a&gt; of the most successful transit agencies in North America (many of them much bigger than Metro Transit) have opened up their information to the public, with only positive results.&lt;/p&gt;
+&lt;p&gt;I may be crazy, but I think the best avenue for the moment is to try to convince Metro Transit that it would be worthwhile to make this information public. I paid for the generation of the information with my tax dollars, why shouldn&amp;rsquo;t I be able to make use of it? The preferred format for this information is &lt;a href="http://code.google.com/p/googletransitdatafeed/"&gt;Google Transit Data Feed&lt;/a&gt;, but I could make use of information in just about any representation (Arc GIS, etc.). Just give me what you have, and I&amp;rsquo;ll take of the rest. &lt;a href="http://code.google.com/p/googletransitdatafeed/wiki/PublicFeeds"&gt;Over 20&lt;/a&gt; of the most successful transit agencies in North America (many of them much bigger than Metro Transit) have opened up their information to the public, with only positive results.&lt;/p&gt;
 
 &lt;p&gt;The most obvious use of this information is a trip planner and, yes, I know every agency and their dog has (or will have) one of these. But maybe someone has a cool idea on how to make a trip planner easier to use (compare &lt;a href="http://hbus.ca"&gt;hbus.ca&lt;/a&gt; with &lt;a href="www.stm.info/azimuts/index.htm"&gt;Tous Azimuts&lt;/a&gt;). Or what about &lt;a href="http://www.walkscore.com/transit-map.php"&gt;transit maps&lt;/a&gt; that help people figure out where to live? Or iPhone and Blackberry applications? Or cool &lt;a href="http://myttc.ca/screensaver"&gt;screensavers&lt;/a&gt;? Or or or. The possibilities are truly endless once the data is out there. Come on Metro Transit, you have nothing to lose and the eternal love of your ridership to gain.&lt;/p&gt;</content></entry></feed>

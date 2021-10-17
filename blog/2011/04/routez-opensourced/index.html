@@ -4,7 +4,7 @@
 
     <meta charset="utf-8" />
     <title>Routez opensourced</title>
-    <meta name="description" content="Just a quick note to say that I just opensourced the software behind hbus.ca, nicknamed “Routez” under the Affero GPL. You can get the code on github.    For those new to the project, hbus.ca is a generic trip planning / transit information site for Halif..." />
+    <meta name="description" content="Just a quick note to say that I just opensourced the software behind hbus.ca, nicknamed &quot;Routez&quot; under the Affero GPL. You can get the code on github.    For those new to the project, hbus.ca is a generic trip planning / transit information site for Halif..." />
     <meta name="author" content="William Lachance" />
     <meta name="keywords" content="Free Software, hbus, Open Data, Transit to Go" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -97,7 +97,7 @@
     <p><span class="tags"><a href="/tags/Free-Software.html">Free Software</a>  <a href="/tags/hbus.html">hbus</a>  <a href="/tags/Open-Data.html">Open Data</a>  <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
   </header>
 
-<p>Just a quick note to say that I just opensourced the software behind <a href="http://hbus.ca">hbus.ca</a>, nicknamed &#8220;Routez&#8221; under the <a href="http://www.affero.org/oagpl.html">Affero GPL</a>. You can get the code on <a href="http://github.com/wlach/routez">github</a>.</p>
+<p>Just a quick note to say that I just opensourced the software behind <a href="http://hbus.ca">hbus.ca</a>, nicknamed &ldquo;Routez&rdquo; under the <a href="http://www.affero.org/oagpl.html">Affero GPL</a>. You can get the code on <a href="http://github.com/wlach/routez">github</a>.</p>
 
 <p><a href="http://wrla.ch/blog/2011/04/routez-opensourced/hbus_shot_apr_2011/" rel="attachment wp-att-238"><img src="/files/2011/04/hbus_shot_apr_2011.png" alt="" title="hbus_shot_apr_2011" width="300" height="225" class="aligncenter size-full wp-image-238" /></a></p>
 
@@ -105,17 +105,16 @@
 
 <ul>
  <li>A trip planning front-end much like Google Transit (built from the ground up using the <a href="http://github.com/wlach/libroutez">libroutez</a> library).</li>
- <li>A &#8220;nearby&#8221; routes feature which gives you all the bus departures near a particular location.</li></ul>
+ <li>A &ldquo;nearby&rdquo; routes feature which gives you all the bus departures near a particular location.</li></ul>
 
 <p>On the backend, both of these features are accessible via JSON APIs, for use in transit apps, etc. <a href="http://transittogo.mindsea.ca">Transit to Go</a> uses these to great effect.</p>
 
 <p>There is nothing particularly Halifax-specific to the underlying Routez software, aside from various references in the web front end to Halifax and hbus.ca. In fact, we use Routez to provide information for Transit to Go Edmonton right now, with no modification.</p>
 
-<p>Originally my plan was to release something that was completely generic out of the box so that anyone could trivially make up a version of this site for their favourite city. I&#8217;ve made some headway towards that goal over the last week or so, but there&#8217;s still some ways to go. There&#8217;s basically two major issues:</p>
+<p>Originally my plan was to release something that was completely generic out of the box so that anyone could trivially make up a version of this site for their favourite city. I&rsquo;ve made some headway towards that goal over the last week or so, but there&rsquo;s still some ways to go. There&rsquo;s basically two major issues:</p>
 
 <ol>
- <li>The geocoder depends on information gleaned from the geobase road network dataset. The intent behind this is noble (provide an end-to-end solution that doesn&#8217;t depend on third parties) but in practice this limits the software&#8217;s usefulness. It would be better to optionally allow a Routez-based site to use Google&#8217;s geocoder on the front-end. Unfortunately, to comply with Google&#8217;s terms of service, we&#8217;d also need to use their Maps API for the base map as well. Perhaps the best option here would be to use something like <a href="http://mapstraction.com">Mapstraction</a> to allow users to select their preferred mapping provider.
-  <br /></li>
+ <li>The geocoder depends on information gleaned from the geobase road network dataset. The intent behind this is noble (provide an end-to-end solution that doesn&rsquo;t depend on third parties) but in practice this limits the software&rsquo;s usefulness. It would be better to optionally allow a Routez-based site to use Google&rsquo;s geocoder on the front-end. Unfortunately, to comply with Google&rsquo;s terms of service, we&rsquo;d also need to use their Maps API for the base map as well. Perhaps the best option here would be to use something like <a href="http://mapstraction.com">Mapstraction</a> to allow users to select their preferred mapping provider.</li>
  <li>The trip planning software used in the backend, libroutez, is getting a bit long in the tooth and is quite finicky about what kind of data it will accept. I think the long-term solution to this is to switch to <a href="http://graphserver.github.com/graphserver/">Graphserver</a> (which is more mature and better supported), but some features would have to be added to it to support the kind of things that Routez needs (like a list of upcoming departures at a particular transit stop).</li></ol>
 
 <p>Even with these problems, I figured it would be better to open up what I have for people to check out and play with. Have a look and let me know what you think!</p>

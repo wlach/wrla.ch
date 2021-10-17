@@ -3,14 +3,14 @@
  <channel>
   <title>William Lachance's Log: Posts tagged 'Data Visualization'</title>
   <description>William Lachance's Log: Posts tagged 'Data Visualization'</description>
-  <link>https://wlach.github.io/tags/Data-Visualization.html</link>
+  <link>https://wrla.ch/tags/Data-Visualization.html</link>
   <lastBuildDate>Mon, 12 Feb 2018 21:06:40 UT</lastBuildDate>
   <pubDate>Mon, 12 Feb 2018 21:06:40 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Derived versus direct</title>
-   <link>https://wlach.github.io/blog/2018/02/derived-versus-direct/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2018-02-derived-versus-direct</guid>
+   <link>https://wrla.ch/blog/2018/02/derived-versus-direct/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2018-02-derived-versus-direct</guid>
    <pubDate>Mon, 12 Feb 2018 21:06:40 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -35,8 +35,8 @@
 &lt;p&gt;Ok, so that&amp;rsquo;s just science 101: don&amp;rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &amp;mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.&lt;/p&gt;</description></item>
   <item>
    <title>Better or worse: by what measure?</title>
-   <link>https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-better-or-worse-by-what-measure</guid>
+   <link>https://wrla.ch/blog/2017/10/better-or-worse-by-what-measure/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2017-10-better-or-worse-by-what-measure</guid>
    <pubDate>Thu, 26 Oct 2017 20:58:20 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -86,8 +86,8 @@
 &lt;p&gt;Shout out to &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; for reviewing this post and providing feedback and additions.&lt;/p&gt;</description></item>
   <item>
    <title>Mission Control: Ready for contributions</title>
-   <link>https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-mission-control-ready-for-contributions</guid>
+   <link>https://wrla.ch/blog/2017/10/mission-control-ready-for-contributions/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2017-10-mission-control-ready-for-contributions</guid>
    <pubDate>Fri, 20 Oct 2017 18:33:19 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -100,8 +100,8 @@
 &lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;</description></item>
   <item>
    <title>Mission Control</title>
-   <link>https://wlach.github.io/blog/2017/10/mission-control/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-mission-control</guid>
+   <link>https://wrla.ch/blog/2017/10/mission-control/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2017-10-mission-control</guid>
    <pubDate>Fri, 06 Oct 2017 19:05:37 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -122,18 +122,18 @@
 &lt;p&gt;Even still, the tool can still be useful for exploring a bunch of data quickly and it has been progressing rapidly over the last few weeks. And like almost everything Mozilla does, both the &lt;a href="https://github.com/mozilla/missioncontrol/"&gt;source&lt;/a&gt; and &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;dashboard&lt;/a&gt; are open to the public. I&amp;rsquo;m planning on flagging some easier bugs for newer contributors to work on in the next couple weeks, but in the meantime if you&amp;rsquo;re interested in this project and want to get involved, feel free to look us up on irc.mozilla.org #missioncontrol (I&amp;rsquo;m there as &amp;lsquo;wlach&amp;rsquo;).&lt;/p&gt;</description></item>
   <item>
    <title>More Perfherder  updates</title>
-   <link>https://wlach.github.io/blog/2015/08/more-perfherder-updates/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-08-more-perfherder-updates</guid>
+   <link>https://wrla.ch/blog/2015/08/more-perfherder-updates/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2015-08-more-perfherder-updates</guid>
    <pubDate>Fri, 07 Aug 2015 04:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;Since my last update, we&amp;#8217;ve been trucking along with improvements to &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt;, the project for making Firefox performance sheriffing and analysis easier.&lt;/p&gt;
+&lt;p&gt;Since my last update, we&amp;rsquo;ve been trucking along with improvements to &lt;a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder"&gt;Perfherder&lt;/a&gt;, the project for making Firefox performance sheriffing and analysis easier.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Compare visualization improvements&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;I&amp;#8217;ve been spending quite a bit of time trying to fix up the display of information in the compare view, to address feedback from developers and hopefully generally streamline things. &lt;a href="https://blog.mozilla.org/vdjeric/"&gt;Vladan&lt;/a&gt; (from the perf team) referred me to &lt;a href="https://mozillians.org/en-US/u/bwinton/"&gt;Blake Winton&lt;/a&gt;, who provided tons of awesome suggestions on how to present things more concisely.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve been spending quite a bit of time trying to fix up the display of information in the compare view, to address feedback from developers and hopefully generally streamline things. &lt;a href="https://blog.mozilla.org/vdjeric/"&gt;Vladan&lt;/a&gt; (from the perf team) referred me to &lt;a href="https://mozillians.org/en-US/u/bwinton/"&gt;Blake Winton&lt;/a&gt;, who provided tons of awesome suggestions on how to present things more concisely.&lt;/p&gt;
 
-&lt;p&gt;Here&amp;#8217;s an old versus new picture:&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s an old versus new picture:&lt;/p&gt;
 
 &lt;table&gt;
  &lt;tr&gt;
@@ -144,17 +144,17 @@
 
 &lt;ul&gt;
  &lt;li&gt;Removed or consolidated several types of numerical information which were overwhelming or confusing (e.g. presenting both numerical and percentage standard deviation in their own columns).&lt;/li&gt;
- &lt;li&gt;Added tooltips all over the place to explain what&amp;#8217;s being displayed.&lt;/li&gt;
- &lt;li&gt;Highlight more strongly when it appears there aren&amp;#8217;t enough runs to make a definitive determination on whether there was a regression or improvement.&lt;/li&gt;
- &lt;li&gt;Improve display of visual indicator of magnitude of regression/improvement (providing a pseudo-scale showing where the change ranges from 0% &amp;#8211; 20%+).&lt;/li&gt;
+ &lt;li&gt;Added tooltips all over the place to explain what&amp;rsquo;s being displayed.&lt;/li&gt;
+ &lt;li&gt;Highlight more strongly when it appears there aren&amp;rsquo;t enough runs to make a definitive determination on whether there was a regression or improvement.&lt;/li&gt;
+ &lt;li&gt;Improve display of visual indicator of magnitude of regression/improvement (providing a pseudo-scale showing where the change ranges from 0% : 20%+).&lt;/li&gt;
  &lt;li&gt;Provide more detail on the two changesets being compared in the header and make it easier to retrigger them (thanks to Mike Ling).&lt;/li&gt;
  &lt;li&gt;Much better and more intuitive error handling when something goes wrong (also thanks to Mike Ling).&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;The point of these changes isn&amp;#8217;t necessarily to make everything &amp;#8220;immediately obvious&amp;#8221; to people. We&amp;#8217;re not building general purpose software here: Perfherder will always be a rather specialized tool which presumes significant domain knowledge on the part of the people using it. However, even for our audience, it turns out that there&amp;#8217;s a lot of room to improve how our presentation: reducing the amount of extraneous noise helps people zero in on the things they really need to care about.&lt;/p&gt;
+&lt;p&gt;The point of these changes isn&amp;rsquo;t necessarily to make everything &amp;ldquo;immediately obvious&amp;rdquo; to people. We&amp;rsquo;re not building general purpose software here: Perfherder will always be a rather specialized tool which presumes significant domain knowledge on the part of the people using it. However, even for our audience, it turns out that there&amp;rsquo;s a lot of room to improve how our presentation: reducing the amount of extraneous noise helps people zero in on the things they really need to care about.&lt;/p&gt;
 
 &lt;p&gt;Special thanks to everyone who took time out of their schedules to provide so much good feedback, in particular &lt;a href="http://avih.github.io/"&gt;Avi Halmachi&lt;/a&gt;, &lt;a href="http://glandium.org/blog/"&gt;Glandium&lt;/a&gt;, and &lt;a href="http://elvis314.wordpress.com/"&gt;Joel Maher&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Of course more suggestions are always welcome. Please &lt;a href="https://treeherder.mozilla.org/perf.html#/comparechooser"&gt;give it a try&lt;/a&gt; and &lt;a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Tree%20Management&amp;amp;#038;component=Perfherder"&gt;file bugs against the perfherder component&lt;/a&gt; if you find anything you&amp;#8217;d like to see changed or improved.&lt;/p&gt;
+&lt;p&gt;Of course more suggestions are always welcome. Please &lt;a href="https://treeherder.mozilla.org/perf.html#/comparechooser"&gt;give it a try&lt;/a&gt; and &lt;a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Tree%20Management&amp;amp;component=Perfherder"&gt;file bugs against the perfherder component&lt;/a&gt; if you find anything you&amp;rsquo;d like to see changed or improved.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Getting the word out&lt;/strong&gt;&lt;/p&gt;
 
@@ -180,65 +180,65 @@ remote:
 remote: It looks like this try push has talos jobs. Compare performance against a baseline revision:
 remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=try&amp;amp;newRevision=e0aa56fb4ace&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Try pushes incorporating Talos jobs now automatically link to perfherder&amp;#8217;s compare view, both in the output from mercurial and in the emails the system sends. One of the challenges we&amp;#8217;ve been facing up to this point is just letting developers know that Perfherder &lt;em&gt;exists&lt;/em&gt; and it can help them either avoid or resolve performance regressions. I believe this will help.&lt;/p&gt;
+&lt;p&gt;Try pushes incorporating Talos jobs now automatically link to perfherder&amp;rsquo;s compare view, both in the output from mercurial and in the emails the system sends. One of the challenges we&amp;rsquo;ve been facing up to this point is just letting developers know that Perfherder &lt;em&gt;exists&lt;/em&gt; and it can help them either avoid or resolve performance regressions. I believe this will help.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Data quality and ingestion improvements&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Over the past couple weeks, we&amp;#8217;ve been comparing our regression detection code when run against Graphserver data to Perfherder data. In doing so, we discovered that we&amp;#8217;ve sometimes been using the wrong algorithm (geometric mean) to summarize some of our tests, leading to unexpected and less meaningful results. For example, the v8_7 benchmark uses a custom weighting algorithm for its score, to account for the fact that the things it tests have a particular range of expected values.&lt;/p&gt;
+&lt;p&gt;Over the past couple weeks, we&amp;rsquo;ve been comparing our regression detection code when run against Graphserver data to Perfherder data. In doing so, we discovered that we&amp;rsquo;ve sometimes been using the wrong algorithm (geometric mean) to summarize some of our tests, leading to unexpected and less meaningful results. For example, the v8_7 benchmark uses a custom weighting algorithm for its score, to account for the fact that the things it tests have a particular range of expected values.&lt;/p&gt;
 
-&lt;p&gt;To hopefully prevent this from happening again in the future, we&amp;#8217;ve decided to move the test summarization code out of Perfherder back into Talos (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1184966"&gt;bug 1184966&lt;/a&gt;). This has the additional benefit of creating a stronger connection between the content of the Talos logs and what Perfherder displays in its comparison and graph views, which has thrown people off in the past.&lt;/p&gt;
+&lt;p&gt;To hopefully prevent this from happening again in the future, we&amp;rsquo;ve decided to move the test summarization code out of Perfherder back into Talos (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1184966"&gt;bug 1184966&lt;/a&gt;). This has the additional benefit of creating a stronger connection between the content of the Talos logs and what Perfherder displays in its comparison and graph views, which has thrown people off in the past.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Continuing data challenges&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Having better tools for visualizing this stuff is great, but it also highlights some continuing problems we&amp;#8217;ve had with data quality. It turns out that our automation setup often produces &lt;em&gt;qualitatively different&lt;/em&gt; performance results for the exact same set of data, depending on when and how the tests are run.&lt;/p&gt;
+&lt;p&gt;Having better tools for visualizing this stuff is great, but it also highlights some continuing problems we&amp;rsquo;ve had with data quality. It turns out that our automation setup often produces &lt;em&gt;qualitatively different&lt;/em&gt; performance results for the exact same set of data, depending on when and how the tests are run.&lt;/p&gt;
 
 &lt;p&gt;A certain amount of random noise is always expected when running performance tests. As much as we might try to make them uniform, our testing machines and environments are just not 100% identical. That we expect and can deal with: our standard approach is just to retrigger runs, to make sure we get a representative sample of data from our population of machines.&lt;/p&gt;
 
-&lt;p&gt;The problem comes when there&amp;#8217;s a &lt;em&gt;pattern&lt;/em&gt; to the noise: we&amp;#8217;ve already noticed that tests run on the weekends produce different results (see Joel&amp;#8217;s post from a year ago, &lt;a href="https://elvis314.wordpress.com/2014/10/30/a-case-of-the-weekends/"&gt;&amp;#8220;A case of the weekends&amp;#8221;&lt;/a&gt;) but it seems as if there&amp;#8217;s other circumstances where one set of results will be different from another, depending on the time that each set of tests was run. Some tests and platforms (e.g. the a11yr suite, MacOS X 10.10) seem particularly susceptible to this issue.&lt;/p&gt;
+&lt;p&gt;The problem comes when there&amp;rsquo;s a &lt;em&gt;pattern&lt;/em&gt; to the noise: we&amp;rsquo;ve already noticed that tests run on the weekends produce different results (see Joel&amp;rsquo;s post from a year ago, &lt;a href="https://elvis314.wordpress.com/2014/10/30/a-case-of-the-weekends/"&gt;&amp;ldquo;A case of the weekends&amp;rdquo;&lt;/a&gt;) but it seems as if there&amp;rsquo;s other circumstances where one set of results will be different from another, depending on the time that each set of tests was run. Some tests and platforms (e.g. the a11yr suite, MacOS X 10.10) seem particularly susceptible to this issue.&lt;/p&gt;
 
-&lt;p&gt;We need to find better ways of dealing with this problem, as it can result in a lot of wasted time and energy, for both sheriffs and developers. See for example &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1190877"&gt;bug 1190877&lt;/a&gt;, which concerned a completely spurious regression on the tresize benchmark that was initially blamed on some changes to the media code&amp;#8211; in this case, Joel speculates that the linux64 test machines we use might have changed from under us in some way, but we really don&amp;#8217;t know yet.&lt;/p&gt;
+&lt;p&gt;We need to find better ways of dealing with this problem, as it can result in a lot of wasted time and energy, for both sheriffs and developers. See for example &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1190877"&gt;bug 1190877&lt;/a&gt;, which concerned a completely spurious regression on the tresize benchmark that was initially blamed on some changes to the media code: in this case, Joel speculates that the linux64 test machines we use might have changed from under us in some way, but we really don&amp;rsquo;t know yet.&lt;/p&gt;
 
 &lt;p&gt;I see two approaches possible here:&lt;/p&gt;
 
 &lt;ol&gt;
- &lt;li&gt;Figure out what&amp;#8217;s causing the same machines to produce qualitatively different result distributions and address that. This is of course the ideal solution, but it requires coordination with other parts of the organization who are likely quite busy and might be hard.&lt;/li&gt;
- &lt;li&gt;Figure out better ways of detecting and managing these sorts of case. I have noticed that the standard deviation inside the results when we have spurious regressions/improvements tends to be higher (see for example &lt;a href="https://treeherder.mozilla.org/perf.html#/compare?originalProject=mozilla-inbound&amp;amp;#038;originalRevision=4d0818791d07&amp;amp;#038;newProject=mozilla-inbound&amp;amp;#038;newRevision=5e130ad70aa7"&gt;this compare view&lt;/a&gt; for the aforementioned &amp;#8220;regression&amp;#8221;). Knowing what we do, maybe there&amp;#8217;s some statistical methods we can use to detect bad data?&lt;/li&gt;&lt;/ol&gt;
+ &lt;li&gt;Figure out what&amp;rsquo;s causing the same machines to produce qualitatively different result distributions and address that. This is of course the ideal solution, but it requires coordination with other parts of the organization who are likely quite busy and might be hard.&lt;/li&gt;
+ &lt;li&gt;Figure out better ways of detecting and managing these sorts of case. I have noticed that the standard deviation inside the results when we have spurious regressions/improvements tends to be higher (see for example &lt;a href="https://treeherder.mozilla.org/perf.html#/compare?originalProject=mozilla-inbound&amp;amp;originalRevision=4d0818791d07&amp;amp;newProject=mozilla-inbound&amp;amp;newRevision=5e130ad70aa7"&gt;this compare view&lt;/a&gt; for the aforementioned &amp;ldquo;regression&amp;rdquo;). Knowing what we do, maybe there&amp;rsquo;s some statistical methods we can use to detect bad data?&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;For now, I&amp;#8217;m leaning towards (2). I don&amp;#8217;t think we&amp;#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;</description></item>
+&lt;p&gt;For now, I&amp;rsquo;m leaning towards (2). I don&amp;rsquo;t think we&amp;rsquo;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!&lt;/p&gt;</description></item>
   <item>
    <title>A virtual petri dish</title>
-   <link>https://wlach.github.io/blog/2015/04/a-virtual-petri-dish/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-04-a-virtual-petri-dish</guid>
+   <link>https://wrla.ch/blog/2015/04/a-virtual-petri-dish/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2015-04-a-virtual-petri-dish</guid>
    <pubDate>Sat, 25 Apr 2015 04:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;Was feeling a bit restless today, so I decided to build something on a theme I&amp;#8217;d been thinking of since, oh gosh, I guess high school &amp;#8212; an ecosystem simulation.&lt;/p&gt;
+&lt;p&gt;Was feeling a bit restless today, so I decided to build something on a theme I&amp;rsquo;d been thinking of since, oh gosh, I guess high school &amp;#8212; an ecosystem simulation.&lt;/p&gt;
 
-&lt;p&gt;My original concept for it had three different types of entities &amp;#8212; grass, rabbits, and foxes wandering around in a fixed environment. Each would eat the previous and try to reproduce. Both the rabbits and foxes need to continually eat to survive, otherwise they will die. The grass will just grow unprompted. I think I may have picked up the idea from elsewhere, but am not sure (it&amp;#8217;s been nearly 17 years after all).&lt;/p&gt;
+&lt;p&gt;My original concept for it had three different types of entities &amp;#8212; grass, rabbits, and foxes wandering around in a fixed environment. Each would eat the previous and try to reproduce. Both the rabbits and foxes need to continually eat to survive, otherwise they will die. The grass will just grow unprompted. I think I may have picked up the idea from elsewhere, but am not sure (it&amp;rsquo;s been nearly 17 years after all).&lt;/p&gt;
 
-&lt;p&gt;I suppose the urge to do this comes from my fascination with the concepts of birth, death, and rebirth. Conway&amp;#8217;s &lt;a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"&gt;game of life&lt;/a&gt; is probably the most famous computer representation of this sort of theme, but I always found the behavior slightly too contrived and simple to be deeply satisfying to me (at least from the point of view of representing this concept: the game is certainly interesting for other reasons). Conway&amp;#8217;s simulation is completely deterministic and only has one type of entity, the cell. There&amp;#8217;s an element of randomness and hierarchy in the real world, and I wanted to represent these somehow.&lt;/p&gt;
+&lt;p&gt;I suppose the urge to do this comes from my fascination with the concepts of birth, death, and rebirth. Conway&amp;rsquo;s &lt;a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"&gt;game of life&lt;/a&gt; is probably the most famous computer representation of this sort of theme, but I always found the behavior slightly too contrived and simple to be deeply satisfying to me (at least from the point of view of representing this concept: the game is certainly interesting for other reasons). Conway&amp;rsquo;s simulation is completely deterministic and only has one type of entity, the cell. There&amp;rsquo;s an element of randomness and hierarchy in the real world, and I wanted to represent these somehow.&lt;/p&gt;
 
-&lt;p&gt;It was remarkably easy to get things going using my preferred toolkit for these things (Javascript and Canvas) &amp;#8212; about 3 hours to get something on the screen, then a bunch of tweaking until I found the behavior I wanted. Either I&amp;#8217;m getting smarter or the tools to build these things are getting better. Probably the latter.&lt;/p&gt;
+&lt;p&gt;It was remarkably easy to get things going using my preferred toolkit for these things (Javascript and Canvas) &amp;#8212; about 3 hours to get something on the screen, then a bunch of tweaking until I found the behavior I wanted. Either I&amp;rsquo;m getting smarter or the tools to build these things are getting better. Probably the latter.&lt;/p&gt;
 
-&lt;p&gt;In the end, I only wound up having rabbits and grass in my simulation in this iteration and went for a very abstract representation of what was going on (colored squares for everything!). It turns out that no more than that was really necessary to create something that held my interest. Here&amp;#8217;s a screenshot (doesn&amp;#8217;t really do it justice):&lt;/p&gt;
+&lt;p&gt;In the end, I only wound up having rabbits and grass in my simulation in this iteration and went for a very abstract representation of what was going on (colored squares for everything!). It turns out that no more than that was really necessary to create something that held my interest. Here&amp;rsquo;s a screenshot (doesn&amp;rsquo;t really do it justice):&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM.png"&gt;&lt;img src="/files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM.png" alt="Screen Shot 2015-04-25 at 10.24.21 PM" width="1002" height="1006" class="alignnone size-full wp-image-1198" srcset="/files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM-150x150.png 150w, /files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM-298x300.png 298w, /files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM.png 1002w" sizes="(max-width: 1002px) 100vw, 1002px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;If you&amp;#8217;d like to check it out for yourself, I put a copy on my website &lt;a href="http://wrla.ch/eco"&gt;here&lt;/a&gt;. It probably requires a fairly fancy computer to run at a decent speed (I built it using a 2014 MacBook Pro and made very little effort to optimize it). If that doesn&amp;#8217;t work out for you, I put up a &lt;a href="https://youtu.be/LwLFw1_GGnU"&gt;video capture of the simulation on youtube&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;d like to check it out for yourself, I put a copy on my website &lt;a href="http://wrla.ch/eco"&gt;here&lt;/a&gt;. It probably requires a fairly fancy computer to run at a decent speed (I built it using a 2014 MacBook Pro and made very little effort to optimize it). If that doesn&amp;rsquo;t work out for you, I put up a &lt;a href="https://youtu.be/LwLFw1_GGnU"&gt;video capture of the simulation on youtube&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;The math and programming behind the simulation is completely arbitrary and anything but rigorous. There are probably a bunch of bugs and unintended behaviors. This has all probably been done a million times before by people I&amp;#8217;ve never met and never will. I&amp;#8217;m ok with that.&lt;/p&gt;
+&lt;p&gt;The math and programming behind the simulation is completely arbitrary and anything but rigorous. There are probably a bunch of bugs and unintended behaviors. This has all probably been done a million times before by people I&amp;rsquo;ve never met and never will. I&amp;rsquo;m ok with that.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Update&lt;/strong&gt;: &lt;a href="https://github.com/wlach/ecoautomata"&gt;Source now on github&lt;/a&gt;, for those who want to play with it and submit pull requests.&lt;/p&gt;</description></item>
   <item>
    <title>Perfherder update: Summary series drilldown</title>
-   <link>https://wlach.github.io/blog/2015/03/perfherder-update-summary-series-drilldown/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2015-03-perfherder-update-summary-series-drilldown</guid>
+   <link>https://wrla.ch/blog/2015/03/perfherder-update-summary-series-drilldown/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2015-03-perfherder-update-summary-series-drilldown</guid>
    <pubDate>Fri, 27 Mar 2015 04:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;Just wanted to give another quick Perfherder update. Since the &lt;a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/"&gt;last time&lt;/a&gt;, I&amp;#8217;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&amp;#8217;t possible with Graphserver and I&amp;#8217;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.&lt;/p&gt;
+&lt;p&gt;Just wanted to give another quick Perfherder update. Since the &lt;a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/"&gt;last time&lt;/a&gt;, I&amp;rsquo;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&amp;rsquo;t possible with Graphserver and I&amp;rsquo;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.&lt;/p&gt;
 
-&lt;p&gt;Let&amp;#8217;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354"&gt;bug 1128354&lt;/a&gt;. Using &lt;a href="https://mozillians.org/en-US/u/mishravikas/"&gt;Mishra Vikas&lt;/a&gt;&amp;#8216;s new &amp;#8220;highlight revision mode&amp;#8221; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354"&gt;bug 1128354&lt;/a&gt;. Using &lt;a href="https://mozillians.org/en-US/u/mishravikas/"&gt;Mishra Vikas&lt;/a&gt;&amp;#8216;s new &amp;ldquo;highlight revision mode&amp;rdquo; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png"&gt;&lt;img src="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png" alt="Screen Shot 2015-03-27 at 3.18.28 PM" width="474" height="230" class="alignnone size-large wp-image-1184" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-300x146.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png 1167w" sizes="(max-width: 474px) 100vw, 474px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
@@ -254,17 +254,17 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;Hope people find this useful! If you want to play with this yourself, you can access the perfherder UI at &lt;a href="http://treeherder.mozilla.org/perf.html"&gt;http://treeherder.mozilla.org/perf.html&lt;/a&gt;.&lt;/p&gt;</description></item>
   <item>
-   <title>It&amp;#8217;s all about the entropy</title>
-   <link>https://wlach.github.io/blog/2014/03/it-8217-s-all-about-the-entropy/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2014-03-it-8217-s-all-about-the-entropy</guid>
+   <title>It's all about the entropy</title>
+   <link>https://wrla.ch/blog/2014/03/it-s-all-about-the-entropy/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2014-03-it-s-all-about-the-entropy</guid>
    <pubDate>Fri, 14 Mar 2014 04:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;#8217;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;[ For more information on the Eideticker software I&amp;rsquo;m referring to, see &lt;a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/"&gt;this entry&lt;/a&gt; ]&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;So recently I&amp;#8217;ve been exploring new and different methods of measuring things that we care about on FirefoxOS &amp;#8212; like startup time or amount of &lt;a href="http://www.masonchang.com/blog/2014/3/2/wow-such-checkerboard"&gt;checkerboarding&lt;/a&gt;. With Android, where we have a mostly clean signal, these measurements were pretty straightforward. Want to measure startup times? Just capture a video of Firefox starting, then compare the frames pixel by pixel to see how much they differ. When the pixels aren&amp;#8217;t that different anymore, we&amp;#8217;re &amp;#8220;done&amp;#8221;. Likewise, to measure checkerboarding we just calculated the areas of the screen where things were not completely drawn yet, frame-by-frame.&lt;/p&gt;
+&lt;p&gt;So recently I&amp;rsquo;ve been exploring new and different methods of measuring things that we care about on FirefoxOS &amp;#8212; like startup time or amount of &lt;a href="http://www.masonchang.com/blog/2014/3/2/wow-such-checkerboard"&gt;checkerboarding&lt;/a&gt;. With Android, where we have a mostly clean signal, these measurements were pretty straightforward. Want to measure startup times? Just capture a video of Firefox starting, then compare the frames pixel by pixel to see how much they differ. When the pixels aren&amp;rsquo;t that different anymore, we&amp;rsquo;re &amp;ldquo;done&amp;rdquo;. Likewise, to measure checkerboarding we just calculated the areas of the screen where things were not completely drawn yet, frame-by-frame.&lt;/p&gt;
 
-&lt;p&gt;On FirefoxOS, where we&amp;#8217;re using a camera to measure these things, it has not been so simple. I&amp;#8217;ve already discussed this with respect to startup time in a &lt;a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/"&gt;previous post&lt;/a&gt;. One of the ideas I talk about there is &amp;#8220;entropy&amp;#8221; (or the amount of unique information in the frame). It turns out that this is a pretty deep concept, and is useful for even more things than I thought of at the time. Since this is probably a concept that people are going to be thinking/talking about for a while, it&amp;#8217;s worth going into a little more detail about the math behind it.&lt;/p&gt;
+&lt;p&gt;On FirefoxOS, where we&amp;rsquo;re using a camera to measure these things, it has not been so simple. I&amp;rsquo;ve already discussed this with respect to startup time in a &lt;a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/"&gt;previous post&lt;/a&gt;. One of the ideas I talk about there is &amp;ldquo;entropy&amp;rdquo; (or the amount of unique information in the frame). It turns out that this is a pretty deep concept, and is useful for even more things than I thought of at the time. Since this is probably a concept that people are going to be thinking/talking about for a while, it&amp;rsquo;s worth going into a little more detail about the math behind it.&lt;/p&gt;
 
 &lt;p&gt;The &lt;a href="http://en.wikipedia.org/wiki/Shannon_entropy"&gt;wikipedia article&lt;/a&gt; on information theoretic entropy is a pretty good introduction. You should read it. It all boils down to this formula:&lt;/p&gt;
 
@@ -272,9 +272,9 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 &lt;p&gt;You can see this section of the wikipedia article (and the various articles that it links to) if you want to break down where that comes from, but the short answer is that given a set of random samples, the more different values there are, the higher the entropy will be. Look at it from a probabilistic point of view: if you take a random set of data and want to make predictions on what future data will look like. If it is highly random, it will be harder to predict what comes next. Conversely, if it is more uniform it is easier to predict what form it will take.&lt;/p&gt;
 
-&lt;p&gt;Another, possibly more accessible way of thinking about the entropy of a given set of data would be &amp;#8220;how well would it compress?&amp;#8221;. For example, a bitmap image with nothing but black in it could compress very well as there&amp;#8217;s essentially only 1 piece of unique information in it repeated many times &amp;#8212; the black pixel. On the other hand, a bitmap image of completely randomly generated pixels would probably compress very badly, as almost every pixel represents several dimensions of unique information. For all the statistics terminology, etc. that&amp;#8217;s all the above formula is trying to say.&lt;/p&gt;
+&lt;p&gt;Another, possibly more accessible way of thinking about the entropy of a given set of data would be &amp;ldquo;how well would it compress?&amp;rdquo;. For example, a bitmap image with nothing but black in it could compress very well as there&amp;rsquo;s essentially only 1 piece of unique information in it repeated many times &amp;#8212; the black pixel. On the other hand, a bitmap image of completely randomly generated pixels would probably compress very badly, as almost every pixel represents several dimensions of unique information. For all the statistics terminology, etc. that&amp;rsquo;s all the above formula is trying to say.&lt;/p&gt;
 
-&lt;p&gt;So we have a model of entropy, now what? For Eideticker, the question is &amp;#8212; how can we break the frame data we&amp;#8217;re gathering down into a form that&amp;#8217;s amenable to this kind of analysis? The approach I took (on the recommendation of &lt;a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html"&gt;this article&lt;/a&gt;) was to create a histogram with 256 bins (representing the number of distinct possibilities in a black &amp;#38; white capture) out of all the pixels in the frame, then run the formula over that. The exact function I wound up using looks like this:&lt;/p&gt;
+&lt;p&gt;So we have a model of entropy, now what? For Eideticker, the question is &amp;#8212; how can we break the frame data we&amp;rsquo;re gathering down into a form that&amp;rsquo;s amenable to this kind of analysis? The approach I took (on the recommendation of &lt;a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html"&gt;this article&lt;/a&gt;) was to create a histogram with 256 bins (representing the number of distinct possibilities in a black &amp;#38; white capture) out of all the pixels in the frame, then run the formula over that. The exact function I wound up using looks like this:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;def _get_frame_entropy((i, capture, sobelized)):
     frame = capture.get_frame(i, True).astype('float')
@@ -291,15 +291,13 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     samples_probability = [float(h) / histogram_length for h in histogram]
     entropy = -sum([p * math.log(p, 2) for p in samples_probability if p != 0])
 
-    return entropy
-
-&lt;/code&gt;&lt;/pre&gt;
+    return entropy&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;a href="https://github.com/mozilla/eideticker/blob/master/src/videocapture/videocapture/entropy.py#L10"&gt;[Context]&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;The &amp;#8220;sobelized&amp;#8221; bit allows us to optionally convolve the frame with a sobel filter before running the entropy calculation, which removes most of the data in the capture except for the edges. This is especially useful for FirefoxOS, where the signal has quite a bit of random noise from ambient lighting that artificially inflate the entropy values even in places where there is little actual &amp;#8220;information&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;The &amp;ldquo;sobelized&amp;rdquo; bit allows us to optionally convolve the frame with a sobel filter before running the entropy calculation, which removes most of the data in the capture except for the edges. This is especially useful for FirefoxOS, where the signal has quite a bit of random noise from ambient lighting that artificially inflate the entropy values even in places where there is little actual &amp;ldquo;information&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;This type of transformation often reveals very interesting information about what&amp;#8217;s going on in an eideticker test. For example, take this video of the user panning down in the contacts app:&lt;/p&gt;
+&lt;p&gt;This type of transformation often reveals very interesting information about what&amp;rsquo;s going on in an eideticker test. For example, take this video of the user panning down in the contacts app:&lt;/p&gt;
 
 &lt;div style="width: 640px; " class="wp-video"&gt;
  &lt;video class="wp-video-shortcode" id="video-1012-2" width="640" height="917" preload="metadata" controls="controls"&gt;
@@ -310,43 +308,43 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;&lt;a href="/files/2014/03/contacts-scrolling-entropy-graph.png"&gt;&lt;img src="/files/2014/03/contacts-scrolling-entropy-graph.png" alt="contacts scrolling entropy graph" width="933" height="482" class="alignnone size-full wp-image-1022" srcset="/files/2014/03/contacts-scrolling-entropy-graph-300x154.png 300w, /files/2014/03/contacts-scrolling-entropy-graph.png 933w" sizes="(max-width: 933px) 100vw, 933px" /&gt;&lt;/a&gt;
  &lt;br /&gt;&lt;a href="http://eideticker.wrla.ch/b2g/detail.html?id=3f7b7c88a9ed11e380c5f0def1767b24#/framesobelentropies"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;The Y axis represents entropy, as calculated by the code above. There is no inherently &amp;#8220;right&amp;#8221; value for this &amp;#8212; it all depends on the application you&amp;#8217;re testing and what you expect to see displayed on the screen. In general though, higher values are better as it indicates more frames of the capture are &amp;#8220;complete&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;The Y axis represents entropy, as calculated by the code above. There is no inherently &amp;ldquo;right&amp;rdquo; value for this &amp;#8212; it all depends on the application you&amp;rsquo;re testing and what you expect to see displayed on the screen. In general though, higher values are better as it indicates more frames of the capture are &amp;ldquo;complete&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;The region at the beginning where it is at about 5.0 represents the contacts app with a set of contacts fully displayed (at startup). The &amp;#8220;flat&amp;#8221; regions where the entropy is at roughly 4.25? Those are the areas where the app is &amp;#8220;checkerboarding&amp;#8221; (blanking out waiting for graphics or layout engine to draw contact information). Click through to the original and swipe over the graph to see what I mean.&lt;/p&gt;
+&lt;p&gt;The region at the beginning where it is at about 5.0 represents the contacts app with a set of contacts fully displayed (at startup). The &amp;ldquo;flat&amp;rdquo; regions where the entropy is at roughly 4.25? Those are the areas where the app is &amp;ldquo;checkerboarding&amp;rdquo; (blanking out waiting for graphics or layout engine to draw contact information). Click through to the original and swipe over the graph to see what I mean.&lt;/p&gt;
 
-&lt;p&gt;It&amp;#8217;s easy to see what a hypothetical ideal end state would be for this capture: a graph with a smooth entropy of about 5.0 (similar to the start state, where all contacts are fully drawn in). We can track our progress towards this goal (or our deviation from it), by watching the eideticker b2g dashboard and seeing if the summation of the entropy values for frames over the entire test increases or decreases over time. If we see it generally increase, that probably means we&amp;#8217;re seeing less checkerboarding in the capture. If we see it decrease, that might mean we&amp;#8217;re now seeing checkerboarding where we weren&amp;#8217;t before.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s easy to see what a hypothetical ideal end state would be for this capture: a graph with a smooth entropy of about 5.0 (similar to the start state, where all contacts are fully drawn in). We can track our progress towards this goal (or our deviation from it), by watching the eideticker b2g dashboard and seeing if the summation of the entropy values for frames over the entire test increases or decreases over time. If we see it generally increase, that probably means we&amp;rsquo;re seeing less checkerboarding in the capture. If we see it decrease, that might mean we&amp;rsquo;re now seeing checkerboarding where we weren&amp;rsquo;t before.&lt;/p&gt;
 
-&lt;p&gt;It&amp;#8217;s too early to say for sure, but over the past few days the trend has been positive:&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s too early to say for sure, but over the past few days the trend has been positive:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/files/2014/03/entropy-levels-climbing.png"&gt;&lt;img src="/files/2014/03/entropy-levels-climbing.png" alt="entropy-levels-climbing" width="822" height="529" class="alignnone size-full wp-image-1025" srcset="/files/2014/03/entropy-levels-climbing-300x193.png 300w, /files/2014/03/entropy-levels-climbing.png 822w" sizes="(max-width: 822px) 100vw, 822px" /&gt;&lt;/a&gt;
  &lt;br /&gt;&lt;a href="http://eideticker.wrla.ch/b2g/#/inari/b2g-contacts-scrolling/overallentropy"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;(note that there were some problems in the way the tests were being run before, so results before the 12th should not be considered valid)&lt;/p&gt;
 
-&lt;p&gt;So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&amp;#8217;s find them!&lt;/p&gt;</description></item>
+&lt;p&gt;So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&amp;rsquo;s find them!&lt;/p&gt;</description></item>
   <item>
    <title>Automatically measuring startup / load time with Eideticker</title>
-   <link>https://wlach.github.io/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2013-10-automatically-measuring-startup-load-time-with-eideticker</guid>
+   <link>https://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2013-10-automatically-measuring-startup-load-time-with-eideticker</guid>
    <pubDate>Thu, 17 Oct 2013 04:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;So we&amp;#8217;ve been using Eideticker to automatically measure startup/pageload times for about a year now on Android, and more recently on FirefoxOS as well (albeit not automatically). This gives us nice and pretty graphs like this:&lt;/p&gt;
+&lt;p&gt;So we&amp;rsquo;ve been using Eideticker to automatically measure startup/pageload times for about a year now on Android, and more recently on FirefoxOS as well (albeit not automatically). This gives us nice and pretty graphs like this:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/files/2013/10/flot-startup-times-gn.png"&gt;&lt;img src="/files/2013/10/flot-startup-times-gn.png" alt="flot-startup-times-gn" width="620" height="568" class="alignnone size-full wp-image-986" srcset="/files/2013/10/flot-startup-times-gn-300x274.png 300w, /files/2013/10/flot-startup-times-gn.png 620w" sizes="(max-width: 620px) 100vw, 620px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Ok, so we&amp;#8217;re generating numbers and graphing them. That&amp;#8217;s great. But what&amp;#8217;s really going on behind the scenes? I&amp;#8217;m glad you asked. The story is a bit different depending on which platform you&amp;#8217;re talking about.&lt;/p&gt;
+&lt;p&gt;Ok, so we&amp;rsquo;re generating numbers and graphing them. That&amp;rsquo;s great. But what&amp;rsquo;s really going on behind the scenes? I&amp;rsquo;m glad you asked. The story is a bit different depending on which platform you&amp;rsquo;re talking about.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Android&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;On Android we connect Eideticker to the device&amp;#8217;s HDMI out, so we count on a nearly pixel-perfect signal. In practice, it isn&amp;#8217;t quite, but it is within a few RGB values that we can easily filter for. This lets us come up with a pretty good mechanism for determining when a page load or app startup is finished: just compare frames, and say we&amp;#8217;ve &amp;#8220;stopped&amp;#8221; when the pixel differences between frames are negligible (previously defined at 2048 pixels, now 4096 &amp;#8212; see below). Eideticker&amp;#8217;s new frame difference view lets us see how this works. Look at this graph of application startup:&lt;/p&gt;
+&lt;p&gt;On Android we connect Eideticker to the device&amp;rsquo;s HDMI out, so we count on a nearly pixel-perfect signal. In practice, it isn&amp;rsquo;t quite, but it is within a few RGB values that we can easily filter for. This lets us come up with a pretty good mechanism for determining when a page load or app startup is finished: just compare frames, and say we&amp;rsquo;ve &amp;ldquo;stopped&amp;rdquo; when the pixel differences between frames are negligible (previously defined at 2048 pixels, now 4096 &amp;#8212; see below). Eideticker&amp;rsquo;s new frame difference view lets us see how this works. Look at this graph of application startup:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/files/2013/10/frame-difference-android-startup.png"&gt;&lt;img src="/files/2013/10/frame-difference-android-startup.png" alt="frame-difference-android-startup" width="803" height="514" class="alignnone size-full wp-image-973" srcset="/files/2013/10/frame-difference-android-startup-300x192.png 300w, /files/2013/10/frame-difference-android-startup.png 803w" sizes="(max-width: 803px) 100vw, 803px" /&gt;&lt;/a&gt;
  &lt;br /&gt;&lt;a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;What&amp;#8217;s going on here? Well, we see some huge jumps in the beginning. This represents the animated transitions that Android makes as we transition from the SUTAgent application (don&amp;#8217;t ask) to the beginnings of the FirefoxOS browser chrome. You&amp;#8217;ll notice though that there&amp;#8217;s some more changes that come in around the 3 second mark. This is when the site bookmarks are fully loaded. If you load the original page (link above) and swipe your mouse over the graph, you can see what&amp;#8217;s going on for yourself.&lt;/p&gt;
+&lt;p&gt;What&amp;rsquo;s going on here? Well, we see some huge jumps in the beginning. This represents the animated transitions that Android makes as we transition from the SUTAgent application (don&amp;rsquo;t ask) to the beginnings of the FirefoxOS browser chrome. You&amp;rsquo;ll notice though that there&amp;rsquo;s some more changes that come in around the 3 second mark. This is when the site bookmarks are fully loaded. If you load the original page (link above) and swipe your mouse over the graph, you can see what&amp;rsquo;s going on for yourself.&lt;/p&gt;
 
-&lt;p&gt;This approach is not completely without problems. It turns out that there is sometimes some minor churn in the display even when the app is for all intents and purposes started. For example, &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=922770"&gt;sometimes the scrollbar fading out of view can result in a significantish pixel value change&lt;/a&gt;, so I recently upped the threshold of pixels that are different from 2048 to 4096. We also recently encountered a &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=926997"&gt;silly problem&lt;/a&gt; with a random automation app displaying &amp;#8220;toasts&amp;#8221; which caused results to artificially spike. More tweaking may still be required. However, on the whole I&amp;#8217;m pretty happy with this solution. It gives useful, undeniably objective results whose meaning is easy to understand.&lt;/p&gt;
+&lt;p&gt;This approach is not completely without problems. It turns out that there is sometimes some minor churn in the display even when the app is for all intents and purposes started. For example, &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=922770"&gt;sometimes the scrollbar fading out of view can result in a significantish pixel value change&lt;/a&gt;, so I recently upped the threshold of pixels that are different from 2048 to 4096. We also recently encountered a &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=926997"&gt;silly problem&lt;/a&gt; with a random automation app displaying &amp;ldquo;toasts&amp;rdquo; which caused results to artificially spike. More tweaking may still be required. However, on the whole I&amp;rsquo;m pretty happy with this solution. It gives useful, undeniably objective results whose meaning is easy to understand.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;FirefoxOS&lt;/strong&gt;&lt;/p&gt;
 
@@ -356,29 +354,29 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
  &lt;video class="wp-video-shortcode" id="video-972-1" width="409" height="580" preload="metadata" controls="controls"&gt;
   &lt;source type="video/webm" src="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm?_=1" /&gt; &lt;a href="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm"&gt;/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm&lt;/a&gt;&lt;/video&gt;&lt;/div&gt;
 
-&lt;p&gt;My experience has been that pixel differences can be so great between visually identical frames on an eideticker capture on these devices that it&amp;#8217;s pretty much impossible to settle on when startup is done using the frame difference method. It&amp;#8217;s of course possible to detect very large scale changes, but the small scale ones (like the contacts actually appearing in the example above) are very hard to distinguish from random differences in the amount of light absorbed by the camera sensor. Tricks like using median filtering (a.k.a. &amp;#8220;blurring&amp;#8221;) help a bit, but not much. Take a look at this graph, for example:&lt;/p&gt;
+&lt;p&gt;My experience has been that pixel differences can be so great between visually identical frames on an eideticker capture on these devices that it&amp;rsquo;s pretty much impossible to settle on when startup is done using the frame difference method. It&amp;rsquo;s of course possible to detect very large scale changes, but the small scale ones (like the contacts actually appearing in the example above) are very hard to distinguish from random differences in the amount of light absorbed by the camera sensor. Tricks like using median filtering (a.k.a. &amp;ldquo;blurring&amp;rdquo;) help a bit, but not much. Take a look at this graph, for example:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/files/2013/10/plotly-contacts-load-pixeldiff.png"&gt;&lt;img src="/files/2013/10/plotly-contacts-load-pixeldiff.png" alt="plotly-contacts-load-pixeldiff" width="531" height="679" class="alignnone size-full wp-image-980" srcset="/files/2013/10/plotly-contacts-load-pixeldiff-234x300.png 234w, /files/2013/10/plotly-contacts-load-pixeldiff.png 531w" sizes="(max-width: 531px) 100vw, 531px" /&gt;&lt;/a&gt;
  &lt;br /&gt;&lt;a href="https://plot.ly/~WilliamLachance/3"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;You&amp;#8217;ll note that the pixel differences during &amp;#8220;static&amp;#8221; parts of the capture are highly variable. This is because the pixel difference depends heavily on how &amp;#8220;bright&amp;#8221; each frame is: parts of the capture which are black (e.g. a contacts icon with a black background) have a much lower difference between them than parts that are bright (e.g. the contacts screen fully loaded).&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll note that the pixel differences during &amp;ldquo;static&amp;rdquo; parts of the capture are highly variable. This is because the pixel difference depends heavily on how &amp;ldquo;bright&amp;rdquo; each frame is: parts of the capture which are black (e.g. a contacts icon with a black background) have a much lower difference between them than parts that are bright (e.g. the contacts screen fully loaded).&lt;/p&gt;
 
 &lt;p&gt;After a day or so of experimenting and research, I settled on an approach which seems to work pretty reliably. Instead of comparing the frames directly, I measure the &lt;a href="http://en.wikipedia.org/wiki/Entropy"&gt;entropy&lt;/a&gt; of the &lt;a href="http://en.wikipedia.org/wiki/Image_histogram"&gt;histogram&lt;/a&gt; of colours used in each frame (essentially just an indication of brightness in this case, see &lt;a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html"&gt;this article&lt;/a&gt; for more on calculating it), then compare that of each frame with the average of the same measure over 5 previous frames (to account for the fact that two frames may be arbitrarily different, but that is unlikely that a sequence of frames will be). This seems to work much better than frame difference in this environment: although there are plenty of minute differences in light absorption in a capture from this camera, the overall color composition stays mostly the same. See this graph:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/files/2013/10/plotly-contacts-load-entropy.png"&gt;&lt;img src="/files/2013/10/plotly-contacts-load-entropy.png" alt="plotly-contacts-load-entropy" width="546" height="674" class="alignnone size-full wp-image-979" srcset="/files/2013/10/plotly-contacts-load-entropy-243x300.png 243w, /files/2013/10/plotly-contacts-load-entropy.png 546w" sizes="(max-width: 546px) 100vw, 546px" /&gt;&lt;/a&gt;
  &lt;br /&gt;&lt;a href="https://plot.ly/~WilliamLachance/5"&gt;[Link to original]&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&amp;#8217;s not nearly as pronounced as before. In practice, I&amp;#8217;ve been able to get extremely consistent numbers with a reasonable &amp;#8220;threshold&amp;#8221; of &amp;#8220;0.05&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&amp;rsquo;s not nearly as pronounced as before. In practice, I&amp;rsquo;ve been able to get extremely consistent numbers with a reasonable &amp;ldquo;threshold&amp;rdquo; of &amp;ldquo;0.05&amp;rdquo;.&lt;/p&gt;
 
-&lt;p&gt;In Eideticker I&amp;#8217;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &amp;#8220;pixel differences&amp;#8221; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&amp;#8217;t count on light composition changing the same way for those cases. My initial thought was to use &lt;a href="http://en.wikipedia.org/wiki/Edge_detection"&gt;edge detection&lt;/a&gt; (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.&lt;/p&gt;</description></item>
+&lt;p&gt;In Eideticker I&amp;rsquo;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &amp;ldquo;pixel differences&amp;rdquo; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&amp;rsquo;t count on light composition changing the same way for those cases. My initial thought was to use &lt;a href="http://en.wikipedia.org/wiki/Edge_detection"&gt;edge detection&lt;/a&gt; (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.&lt;/p&gt;</description></item>
   <item>
    <title>NIXI Update</title>
-   <link>https://wlach.github.io/blog/2013/08/nixi-update/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2013-08-nixi-update</guid>
+   <link>https://wrla.ch/blog/2013/08/nixi-update/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2013-08-nixi-update</guid>
    <pubDate>Sun, 25 Aug 2013 04:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;I&amp;#8217;ve been working on a new, mobile friendly version of &lt;a href="http://nixi.ca/"&gt;Nixi&lt;/a&gt; on-and-off for the past year and a bit. I&amp;#8217;m not sure when it&amp;#8217;s ever going to be finished, so I thought I might as well post the work-in-progress, which has these noteworthy improvements:&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve been working on a new, mobile friendly version of &lt;a href="http://nixi.ca/"&gt;Nixi&lt;/a&gt; on-and-off for the past year and a bit. I&amp;rsquo;m not sure when it&amp;rsquo;s ever going to be finished, so I thought I might as well post the work-in-progress, which has these noteworthy improvements:&lt;/p&gt;
 
 &lt;ul&gt;
  &lt;li&gt;Even faster than before (using the &lt;a href="http://getbootstrap.com"&gt;Bootstrap&lt;/a&gt; library behind the scenes, no longer using slow canvas library to update map)&lt;/li&gt;
@@ -390,12 +388,12 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;p&gt;&lt;a href="/files/2013/08/nixi-screenshot.png"&gt; &lt;img src="/files/2013/08/nixi-screenshot-1024x672.png" alt="nixi screenshot" width="640" height="420" class="alignnone size-large wp-image-927" srcset="/files/2013/08/nixi-screenshot-300x196.png 300w, /files/2013/08/nixi-screenshot-1024x672.png 1024w, /files/2013/08/nixi-screenshot.png 1266w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/p&gt;</description></item>
   <item>
    <title>Measuring reduced checkerboarding in mobile Fennec</title>
-   <link>https://wlach.github.io/blog/2012/01/measuring-reduced-checkerboarding-in-mobile-fennec/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2012-01-measuring-reduced-checkerboarding-in-mobile-fennec</guid>
+   <link>https://wrla.ch/blog/2012/01/measuring-reduced-checkerboarding-in-mobile-fennec/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2012-01-measuring-reduced-checkerboarding-in-mobile-fennec</guid>
    <pubDate>Tue, 03 Jan 2012 05:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;After my &lt;a href="http://wrla.ch/blog/2011/12/year-end-eideticker-update/"&gt;post&lt;/a&gt; on measuring checkerboarding in mobile Firefox, &lt;a href="http://cmtalbert.wordpress.com/"&gt;Clint Talbert&lt;/a&gt; (my fearless manager) suggested I run a before and after test to measure the improvement that just landed as part of &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=709152"&gt;bug 709512&lt;/a&gt;. After a bit of cleanup, I did so, measuring the delta between my build on December 20th and the latest version of Aurora. The difference is pretty remarkable: at least on the LG G2X that I&amp;#8217;ve been using for testing, we&amp;#8217;ve gone from checkerboarding between 10&amp;ndash;20% of the time and not checkerboarding almost at all (in between two runs of the test with the Aurora build, there is exactly one frame that checkerboards). All credit to &lt;a href="http://chrislord.net/blog"&gt;Chris Lord&lt;/a&gt; for that!&lt;/p&gt;
+&lt;p&gt;After my &lt;a href="http://wrla.ch/blog/2011/12/year-end-eideticker-update/"&gt;post&lt;/a&gt; on measuring checkerboarding in mobile Firefox, &lt;a href="http://cmtalbert.wordpress.com/"&gt;Clint Talbert&lt;/a&gt; (my fearless manager) suggested I run a before and after test to measure the improvement that just landed as part of &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=709152"&gt;bug 709512&lt;/a&gt;. After a bit of cleanup, I did so, measuring the delta between my build on December 20th and the latest version of Aurora. The difference is pretty remarkable: at least on the LG G2X that I&amp;rsquo;ve been using for testing, we&amp;rsquo;ve gone from checkerboarding between 10&amp;ndash;20% of the time and not checkerboarding almost at all (in between two runs of the test with the Aurora build, there is exactly one frame that checkerboards). All credit to &lt;a href="http://chrislord.net/blog"&gt;Chris Lord&lt;/a&gt; for that!&lt;/p&gt;
 
 &lt;p&gt;See the video evidence for yourself. Before:&lt;/p&gt;
 
@@ -406,74 +404,72 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 &lt;video src="/files/eideticker/almostnocheckerboarding.webm" width="600px" controls="controls"&gt;&lt;/video&gt;</description></item>
   <item>
    <title>Year end Eideticker update</title>
-   <link>https://wlach.github.io/blog/2011/12/year-end-eideticker-update/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-12-year-end-eideticker-update</guid>
+   <link>https://wrla.ch/blog/2011/12/year-end-eideticker-update/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2011-12-year-end-eideticker-update</guid>
    <pubDate>Fri, 23 Dec 2011 05:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;Just before I leave for some Christmas vacation, it&amp;#8217;s time for another update on the state of &lt;a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/"&gt;Eideticker&lt;/a&gt;. Since I last blogged about the software, I&amp;#8217;ve been working on the following three areas:&lt;/p&gt;
+&lt;p&gt;Just before I leave for some Christmas vacation, it&amp;rsquo;s time for another update on the state of &lt;a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/"&gt;Eideticker&lt;/a&gt;. Since I last blogged about the software, I&amp;rsquo;ve been working on the following three areas:&lt;/p&gt;
 
 &lt;ol&gt;
- &lt;li&gt;Coming up with better algorithm (green screen / red screen) for both determining the area of the capture as well as the start/end of the capture. The harness was already flood filling the area with these colours at the beginning/end of the capture, but now we&amp;#8217;re actually using this information. The code&amp;#8217;s a little hacky, but it seems to work well enough for the test cases I&amp;#8217;ve been using so far.&lt;/li&gt;
- &lt;li&gt;As a demonstration, I wrote up a quick test that demonstrates checkerboarding on mobile Fennec, and wrote up a quick bit of analysis code to detect this pattern and give an overall measure of how much this test &amp;#8220;checkerboards&amp;#8221; (i.e. has regions that are not fully painted when the user scrolls). As I understand this is an area that our mobile team is currently working on this problem quite a bit, it will be interesting to watch the numbers given by this test and see if things improve.&lt;/li&gt;
- &lt;li&gt;It&amp;#8217;s a minor thing, but you can now view a complete webm movie of the captured movie right from the web interface.&lt;/li&gt;&lt;/ol&gt;
+ &lt;li&gt;Coming up with better algorithm (green screen / red screen) for both determining the area of the capture as well as the start/end of the capture. The harness was already flood filling the area with these colours at the beginning/end of the capture, but now we&amp;rsquo;re actually using this information. The code&amp;rsquo;s a little hacky, but it seems to work well enough for the test cases I&amp;rsquo;ve been using so far.&lt;/li&gt;
+ &lt;li&gt;As a demonstration, I wrote up a quick test that demonstrates checkerboarding on mobile Fennec, and wrote up a quick bit of analysis code to detect this pattern and give an overall measure of how much this test &amp;ldquo;checkerboards&amp;rdquo; (i.e. has regions that are not fully painted when the user scrolls). As I understand this is an area that our mobile team is currently working on this problem quite a bit, it will be interesting to watch the numbers given by this test and see if things improve.&lt;/li&gt;
+ &lt;li&gt;It&amp;rsquo;s a minor thing, but you can now view a complete webm movie of the captured movie right from the web interface.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;Here&amp;#8217;s a quick demonstration video that shows all the above in action. As before, you might want to watch this full screen:&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s a quick demonstration video that shows all the above in action. As before, you might want to watch this full screen:&lt;/p&gt;
 
 &lt;video src="/files/eideticker/eideticker-2011-12-21.webm" width="600px" controls="controls"&gt;&lt;/video&gt;
 
 &lt;p&gt;Happy holidays!&lt;/p&gt;</description></item>
   <item>
    <title>Eideticker update</title>
-   <link>https://wlach.github.io/blog/2011/12/eideticker-update/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-12-eideticker-update</guid>
+   <link>https://wrla.ch/blog/2011/12/eideticker-update/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2011-12-eideticker-update</guid>
    <pubDate>Thu, 08 Dec 2011 05:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;Since I last &lt;a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/"&gt;blogged&lt;/a&gt; about Eideticker, I&amp;#8217;ve made some good progress. Here&amp;#8217;s some highlights:&lt;/p&gt;
+&lt;p&gt;Since I last &lt;a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/"&gt;blogged&lt;/a&gt; about Eideticker, I&amp;rsquo;ve made some good progress. Here&amp;rsquo;s some highlights:&lt;/p&gt;
 
 &lt;ol&gt;
- &lt;li&gt;Eideticker has a new, &lt;a href="https://github.com/mozilla/eideticker/blob/master/bin/runtest.py"&gt;much simpler harness&lt;/a&gt; and tests are much easier to write. Initially, I was using &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;Talos&lt;/a&gt; for this task with the idea that it&amp;#8217;s better not to have duplicate code where it&amp;#8217;s not really required. Seemed like a fine idea in principle, but in practice Talos&amp;#8217;s architecture (which is really oriented around running a large sequence of tests and uploading the results to a central server) was difficult to extend to do what we need to do. At heart, eideticker really only needs to do a few things right now (start up Firefox, start videocapture, load a webpage, stop videocapture) so it&amp;#8217;s best to keep things simple.&lt;/li&gt;
- &lt;li&gt;I&amp;#8217;ve reworked the capture analysis API to use &lt;a href="http://numpy.scipy.org"&gt;numpy&lt;/a&gt; behind the scenes. It&amp;#8217;s still not quite as fast as I would like (doing a framediff analysis on a 30 second animation still takes a minute or so on my fast machine), but we&amp;#8217;re doing an order of magnitude better than before. numpy also seem to have quite the library of routines for doing the types of matrix algebra useful in image analysis, which should be helpful as the project progresses.&lt;/li&gt;
- &lt;li&gt;I added the beginnings of a fancy pants web interface for browsing captures and doing visualizations on them! I&amp;#8217;m pretty happy with how this is turning out so far, it&amp;#8217;s already been an incredibly useful tool for debugging Eideticker&amp;#8217;s analysis system and I think it will be equally useful for understanding Firefox&amp;#8217;s behaviour in general.&lt;/li&gt;&lt;/ol&gt;
+ &lt;li&gt;Eideticker has a new, &lt;a href="https://github.com/mozilla/eideticker/blob/master/bin/runtest.py"&gt;much simpler harness&lt;/a&gt; and tests are much easier to write. Initially, I was using &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;Talos&lt;/a&gt; for this task with the idea that it&amp;rsquo;s better not to have duplicate code where it&amp;rsquo;s not really required. Seemed like a fine idea in principle, but in practice Talos&amp;rsquo;s architecture (which is really oriented around running a large sequence of tests and uploading the results to a central server) was difficult to extend to do what we need to do. At heart, eideticker really only needs to do a few things right now (start up Firefox, start videocapture, load a webpage, stop videocapture) so it&amp;rsquo;s best to keep things simple.&lt;/li&gt;
+ &lt;li&gt;I&amp;rsquo;ve reworked the capture analysis API to use &lt;a href="http://numpy.scipy.org"&gt;numpy&lt;/a&gt; behind the scenes. It&amp;rsquo;s still not quite as fast as I would like (doing a framediff analysis on a 30 second animation still takes a minute or so on my fast machine), but we&amp;rsquo;re doing an order of magnitude better than before. numpy also seem to have quite the library of routines for doing the types of matrix algebra useful in image analysis, which should be helpful as the project progresses.&lt;/li&gt;
+ &lt;li&gt;I added the beginnings of a fancy pants web interface for browsing captures and doing visualizations on them! I&amp;rsquo;m pretty happy with how this is turning out so far, it&amp;rsquo;s already been an incredibly useful tool for debugging Eideticker&amp;rsquo;s analysis system and I think it will be equally useful for understanding Firefox&amp;rsquo;s behaviour in general.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;Here&amp;#8217;s an example analysis session, where I examine a ~60 second capture of the fishtank demo from Microsoft, borrowed from Mark Cote&amp;#8217;s &lt;a href="http://brasstacks.mozilla.com/speedtests/results.html"&gt;speedtest&lt;/a&gt; library. You might want to view this fullscreen:&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s an example analysis session, where I examine a ~60 second capture of the fishtank demo from Microsoft, borrowed from Mark Cote&amp;rsquo;s &lt;a href="http://brasstacks.mozilla.com/speedtests/results.html"&gt;speedtest&lt;/a&gt; library. You might want to view this fullscreen:&lt;/p&gt;
 
 &lt;video src="/files/eideticker/eideticker-20111207.webm" width="600px" controls="controls"&gt;&lt;/video&gt;
 
 &lt;p&gt;A few interesting things to note about this capture:&lt;/p&gt;
 
 &lt;ol&gt;
- &lt;li&gt;Our frame comparison algorithm is still comparatively dumb, it just computes the norm of the difference in RGB values between two frames. Since there&amp;#8217;s a (very tiny) amount of noise in the capture, we have to use a threshold to determine whether two frames are the same or not. For all that, the FPS estimate it comes with for the fishtank demo seems about right (and unfortunately at 2 fps, it&amp;#8217;s not particularly good).
-  &lt;br /&gt;&lt;/li&gt;
- &lt;li&gt;I added a green screen / red screen at the start / end of every capture to eliminate race conditions with starting the capture, but haven&amp;#8217;t yet actually taken those frames out of the analysis.
-  &lt;br /&gt;&lt;/li&gt;
- &lt;li&gt;If you look carefully at the animation, not all of the fish that should be displaying in the demo are. I think this has to do with the new native version of Fennec that I&amp;#8217;m using to test (old versions don&amp;#8217;t exhibit this property). I filed &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=708633"&gt;a bug&lt;/a&gt; for this.&lt;/li&gt;&lt;/ol&gt;
+ &lt;li&gt;Our frame comparison algorithm is still comparatively dumb, it just computes the norm of the difference in RGB values between two frames. Since there&amp;rsquo;s a (very tiny) amount of noise in the capture, we have to use a threshold to determine whether two frames are the same or not. For all that, the FPS estimate it comes with for the fishtank demo seems about right (and unfortunately at 2 fps, it&amp;rsquo;s not particularly good).&lt;/li&gt;
+ &lt;li&gt;I added a green screen / red screen at the start / end of every capture to eliminate race conditions with starting the capture, but haven&amp;rsquo;t yet actually taken those frames out of the analysis.&lt;/li&gt;
+ &lt;li&gt;If you look carefully at the animation, not all of the fish that should be displaying in the demo are. I think this has to do with the new native version of Fennec that I&amp;rsquo;m using to test (old versions don&amp;rsquo;t exhibit this property). I filed &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=708633"&gt;a bug&lt;/a&gt; for this.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;What&amp;#8217;s next? Well, as I mentioned last time, the real goal is to create a tool that developers will find useful. To that end, we have plans to set up an Eideticker machine in Mozilla Mountain View office that more people can use (either locally or remotely over the VPN). For this to be workable, I need to figure out how to get the full setup working on &amp;#8220;demand&amp;#8221;. Most of the setup already allows this, with one big exception: the actual Android device that we want to capture video from. The LG G2X that I&amp;#8217;m currently using works fine when I have physical access to it, but as far as I can tell it&amp;#8217;s not possible to get it outputting proper video of an application unless it&amp;#8217;s in an unlocked state (which it obviously isn&amp;#8217;t most of the time).&lt;/p&gt;
+&lt;p&gt;What&amp;rsquo;s next? Well, as I mentioned last time, the real goal is to create a tool that developers will find useful. To that end, we have plans to set up an Eideticker machine in Mozilla Mountain View office that more people can use (either locally or remotely over the VPN). For this to be workable, I need to figure out how to get the full setup working on &amp;ldquo;demand&amp;rdquo;. Most of the setup already allows this, with one big exception: the actual Android device that we want to capture video from. The LG G2X that I&amp;rsquo;m currently using works fine when I have physical access to it, but as far as I can tell it&amp;rsquo;s not possible to get it outputting proper video of an application unless it&amp;rsquo;s in an unlocked state (which it obviously isn&amp;rsquo;t most of the time).&lt;/p&gt;
 
-&lt;p&gt;My current thinking is that a &lt;a href="http://pandaboard.org/"&gt;Panda Board&lt;/a&gt; running a Vanilla version of Android might be a good candidate for a permanently-connected device. It is capable of HDMI output, doesn&amp;#8217;t have unwanted the bells and whistles of a physical phone (e.g. a lock screen), and should be much reliable due to its physical networking. So far I haven&amp;#8217;t &lt;a href="http://ask.linaro.org/questions/361/hdmi-output-on-android-build"&gt;had much luck&lt;/a&gt; getting it the video output working with the Decklink capture card, but I&amp;#8217;ve only just started trying. Work will continue.&lt;/p&gt;
+&lt;p&gt;My current thinking is that a &lt;a href="http://pandaboard.org/"&gt;Panda Board&lt;/a&gt; running a Vanilla version of Android might be a good candidate for a permanently-connected device. It is capable of HDMI output, doesn&amp;rsquo;t have unwanted the bells and whistles of a physical phone (e.g. a lock screen), and should be much reliable due to its physical networking. So far I haven&amp;rsquo;t &lt;a href="http://ask.linaro.org/questions/361/hdmi-output-on-android-build"&gt;had much luck&lt;/a&gt; getting it the video output working with the Decklink capture card, but I&amp;rsquo;ve only just started trying. Work will continue.&lt;/p&gt;
 
 &lt;p&gt;If I can somehow figure that out, and smooth out some of the rough edges with the web interface and capture API, I think the stage will be set for us all to do some pretty interesting stuff! Looking forward to it.&lt;/p&gt;</description></item>
   <item>
    <title>Measuring what the user sees</title>
-   <link>https://wlach.github.io/blog/2011/11/measuring-what-the-user-sees/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-11-measuring-what-the-user-sees</guid>
+   <link>https://wrla.ch/blog/2011/11/measuring-what-the-user-sees/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2011-11-measuring-what-the-user-sees</guid>
    <pubDate>Fri, 11 Nov 2011 05:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;I&amp;#8217;ve been spending the last month or so at Mozilla prototyping a new project called &lt;a href="https://wiki.mozilla.org/Project_Eideticker"&gt;Eideticker&lt;/a&gt; which aims to use video capture data and image/frame analysis for performance measurement of &lt;a href="https://wiki.mozilla.org/Mobile/Fennec/Android"&gt;Firefox Mobile&lt;/a&gt;. It&amp;#8217;s still in quite a rough state, but it&amp;#8217;s now complete enough that I thought it would be worth spending a bit of time describing both its motivation and how it works.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve been spending the last month or so at Mozilla prototyping a new project called &lt;a href="https://wiki.mozilla.org/Project_Eideticker"&gt;Eideticker&lt;/a&gt; which aims to use video capture data and image/frame analysis for performance measurement of &lt;a href="https://wiki.mozilla.org/Mobile/Fennec/Android"&gt;Firefox Mobile&lt;/a&gt;. It&amp;rsquo;s still in quite a rough state, but it&amp;rsquo;s now complete enough that I thought it would be worth spending a bit of time describing both its motivation and how it works.&lt;/p&gt;
 
-&lt;p&gt;First, a bit of an introduction. Up to now, our automated performance tools have used entirely synthetic benchmarks (how long til we get the onload event? how many ms since we last hit the main loop?) to gather performance information. As we&amp;#8217;ve found out, there&amp;#8217;s a lot you can measure with synthetic benchmarks. Tools like &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;Talos&lt;/a&gt; have proven themselves by catching performance regressions on a very regular basis.&lt;/p&gt;
+&lt;p&gt;First, a bit of an introduction. Up to now, our automated performance tools have used entirely synthetic benchmarks (how long til we get the onload event? how many ms since we last hit the main loop?) to gather performance information. As we&amp;rsquo;ve found out, there&amp;rsquo;s a lot you can measure with synthetic benchmarks. Tools like &lt;a href="https://wiki.mozilla.org/Buildbot/Talos"&gt;Talos&lt;/a&gt; have proven themselves by catching performance regressions on a very regular basis.&lt;/p&gt;
 
-&lt;p&gt;Still, there&amp;#8217;s many things that synthetic benchmarks can&amp;#8217;t easily or reliably measure. For example, it&amp;#8217;s nice to know that a page has triggered an &amp;#8220;onload&amp;#8221; event (and the sooner it does that, the better), but what does the browser look like before then? If it&amp;#8217;s a complicated or image intensive page, it might take 10 or 15 seconds to load. In this interval, user studies have clearly shown that an application displaying &lt;em&gt;something&lt;/em&gt; sooner rather than later is always desirable if it&amp;#8217;s not possible to display everything immediately (due to network traffic, CPU constraints, whatever). It&amp;#8217;s this area of user-perceived performance that Eideticker aims to help with. Eideticker creates a system to capture live data of what the browser is displaying, then performs image/frame analysis on the result to see how we&amp;#8217;re actually doing on these inherently subjective metrics. The above was just one example, others might include:&lt;/p&gt;
+&lt;p&gt;Still, there&amp;rsquo;s many things that synthetic benchmarks can&amp;rsquo;t easily or reliably measure. For example, it&amp;rsquo;s nice to know that a page has triggered an &amp;ldquo;onload&amp;rdquo; event (and the sooner it does that, the better), but what does the browser look like before then? If it&amp;rsquo;s a complicated or image intensive page, it might take 10 or 15 seconds to load. In this interval, user studies have clearly shown that an application displaying &lt;em&gt;something&lt;/em&gt; sooner rather than later is always desirable if it&amp;rsquo;s not possible to display everything immediately (due to network traffic, CPU constraints, whatever). It&amp;rsquo;s this area of user-perceived performance that Eideticker aims to help with. Eideticker creates a system to capture live data of what the browser is displaying, then performs image/frame analysis on the result to see how we&amp;rsquo;re actually doing on these inherently subjective metrics. The above was just one example, others might include:&lt;/p&gt;
 
 &lt;ul&gt;
  &lt;li&gt;Measuring amount of time it takes to actually see the start page from time of launch.&lt;/li&gt;
  &lt;li&gt;Measuring amount of time you see the checkboard pattern after panning the browser.&lt;/li&gt;
  &lt;li&gt;Measuring the visual artifacts while loading a complicated page (how long does it take to display something? how long until we get something close to the final expected result? how long until we get the actual final result?)&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;It turns out that it&amp;#8217;s possible to put together a system that does this type of analysis using off-the-shelf components. We&amp;#8217;re still very much in the early phase, but initial signs are promising. The initial test system has the following pieces:&lt;/p&gt;
+&lt;p&gt;It turns out that it&amp;rsquo;s possible to put together a system that does this type of analysis using off-the-shelf components. We&amp;rsquo;re still very much in the early phase, but initial signs are promising. The initial test system has the following pieces:&lt;/p&gt;
 
 &lt;ol&gt;
  &lt;li&gt;A Linux workstation equipped with a Decklink extreme 3D video capture card&lt;/li&gt;
@@ -481,92 +477,90 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
  &lt;li&gt;A version of talos modified to video capture the results of a test.&lt;/li&gt;
  &lt;li&gt;A bit of python code to actually analyze the video capture data.&lt;/li&gt;&lt;/ol&gt;
 
-&lt;p&gt;So far, I&amp;#8217;ve got the system working end-to-end for two simple cases. The first is the &amp;#8220;pageload&amp;#8221; case. This lets you capture the results of loading any page within a talos pageset. Here&amp;#8217;s a quick example of the movie we generate from a tsvg test:&lt;/p&gt;
+&lt;p&gt;So far, I&amp;rsquo;ve got the system working end-to-end for two simple cases. The first is the &amp;ldquo;pageload&amp;rdquo; case. This lets you capture the results of loading any page within a talos pageset. Here&amp;rsquo;s a quick example of the movie we generate from a tsvg test:&lt;/p&gt;
 
 &lt;video src="http://people.mozilla.com/~wlachance/eideticker-map.webm" width="50%" height="50%" controls="controls"&gt;&lt;/video&gt;
 
-&lt;p&gt;Here&amp;#8217;s another example, a color cycle test (actually the first test case I created, as a throwaway):&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s another example, a color cycle test (actually the first test case I created, as a throwaway):&lt;/p&gt;
 
 &lt;video src="http://people.mozilla.com/~wlachance/eideticker-colorcycle.webm" width="50%" height="50%" controls="controls"&gt;&lt;/video&gt;
 
-&lt;p&gt;After the video is captured, the next step is to analyze it! As described above (and in further detail on the &lt;a href="https://wiki.mozilla.org/Project_Eideticker"&gt;Eideticker wiki page&lt;/a&gt;), there&amp;#8217;s lots of things we could measure but the easiest thing is probably just to count the number of unique frames and derive a frame rate for the capture based on that (the higher the better, obviously). Based on an initial prototype from Chris Jones, I&amp;#8217;ve started work on a &lt;a href="https://github.com/mozilla/eideticker/blob/master/src/videocapture/videocapture/capture.py"&gt;python library&lt;/a&gt; to do exactly this. Assuming you have an eideticker capture handy, you can run a tool called &amp;#8220;analyze.py&amp;#8221; on the command line, and it&amp;#8217;ll give you its best guess of the # of unique frames:&lt;/p&gt;
+&lt;p&gt;After the video is captured, the next step is to analyze it! As described above (and in further detail on the &lt;a href="https://wiki.mozilla.org/Project_Eideticker"&gt;Eideticker wiki page&lt;/a&gt;), there&amp;rsquo;s lots of things we could measure but the easiest thing is probably just to count the number of unique frames and derive a frame rate for the capture based on that (the higher the better, obviously). Based on an initial prototype from Chris Jones, I&amp;rsquo;ve started work on a &lt;a href="https://github.com/mozilla/eideticker/blob/master/src/videocapture/videocapture/capture.py"&gt;python library&lt;/a&gt; to do exactly this. Assuming you have an eideticker capture handy, you can run a tool called &amp;ldquo;analyze.py&amp;rdquo; on the command line, and it&amp;rsquo;ll give you its best guess of the # of unique frames:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;&amp;lt;br /&amp;gt;
-(eideticker)wlach@eideticker:~/src/eideticker$ bin/analyze.py  ./src/talos/talos/captures/capture-2011-11-11T11:23:51.627183.zip&amp;lt;br /&amp;gt;
-Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;br /&amp;gt; (eideticker)wlach@eideticker:~/src/eideticker$ bin/analyze.py ./src/talos/talos/captures/capture-2011-11-11T11:23:51.627183.zip&amp;lt;br /&amp;gt; Unique frames: 121/272&amp;lt;br /&amp;gt;&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;(There are currently some rough edges with this: we&amp;#8217;re doing frame comparisons based on per-pixel changes, but the video capture data is slightly noisy so sometimes a pixel changes its value even when nothing has actually happened in the browser)&lt;/p&gt;
+&lt;p&gt;(There are currently some rough edges with this: we&amp;rsquo;re doing frame comparisons based on per-pixel changes, but the video capture data is slightly noisy so sometimes a pixel changes its value even when nothing has actually happened in the browser)&lt;/p&gt;
 
-&lt;p&gt;So that&amp;#8217;s what I&amp;#8217;ve got working so far. What&amp;#8217;s next? Short term, we have some &lt;a href="https://wiki.mozilla.org/Auto-tools/Goals/2011Q4#Eideticker"&gt;specific high-level goals&lt;/a&gt; about where we want to be with the system by the end of the quarter. The big unfinished pieces are getting an end-to-end test involving real user interaction (typing into the URL bar, etc.) going and turning this prototype system into something that&amp;#8217;s easy for others to duplicate and is robust enough to be easily extended. Hopefully this will come together fairly quickly now that the basics are in place.&lt;/p&gt;
+&lt;p&gt;So that&amp;rsquo;s what I&amp;rsquo;ve got working so far. What&amp;rsquo;s next? Short term, we have some &lt;a href="https://wiki.mozilla.org/Auto-tools/Goals/2011Q4#Eideticker"&gt;specific high-level goals&lt;/a&gt; about where we want to be with the system by the end of the quarter. The big unfinished pieces are getting an end-to-end test involving real user interaction (typing into the URL bar, etc.) going and turning this prototype system into something that&amp;rsquo;s easy for others to duplicate and is robust enough to be easily extended. Hopefully this will come together fairly quickly now that the basics are in place.&lt;/p&gt;
 
-&lt;p&gt;The longer term picture really depends on feedback from the community. Unlike many of the projects we work on in &lt;a href="https://wiki.mozilla.org/Auto-tools"&gt;automation &amp;#38; tools&lt;/a&gt;, Eideticker is &lt;strong&gt;not&lt;/strong&gt; meant to be something that&amp;#8217;s run on every checkin. Rather, it&amp;#8217;s intended to be a useful tool that can be run on an as needed basis by developers and QA. We obviously have our own ideas on how something like this might be useful (and what a reasonable user interface might be), but I&amp;#8217;ve found in cases like this it&amp;#8217;s much better to go to the people who will actually be using this thing. So with that in mind, here&amp;#8217;s a call for feedback. I have two very specific questions:&lt;/p&gt;
+&lt;p&gt;The longer term picture really depends on feedback from the community. Unlike many of the projects we work on in &lt;a href="https://wiki.mozilla.org/Auto-tools"&gt;automation &amp;#38; tools&lt;/a&gt;, Eideticker is &lt;strong&gt;not&lt;/strong&gt; meant to be something that&amp;rsquo;s run on every checkin. Rather, it&amp;rsquo;s intended to be a useful tool that can be run on an as needed basis by developers and QA. We obviously have our own ideas on how something like this might be useful (and what a reasonable user interface might be), but I&amp;rsquo;ve found in cases like this it&amp;rsquo;s much better to go to the people who will actually be using this thing. So with that in mind, here&amp;rsquo;s a call for feedback. I have two very specific questions:&lt;/p&gt;
 
 &lt;ul&gt;
- &lt;li&gt;Is there a specific problem you&amp;#8217;ve been working on that a framework like this might be helpful for?&lt;/li&gt;
+ &lt;li&gt;Is there a specific problem you&amp;rsquo;ve been working on that a framework like this might be helpful for?&lt;/li&gt;
  &lt;li&gt;What do you think of the current workflow model described in the &lt;a href="http://github.com/mozilla/eideticker/README.md"&gt;README&lt;/a&gt;?&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;My goal is to make something that people will love, so please do let me know what you think. Nothing about this project is cast in stone and the last thing I want is to deliver a product that people don&amp;#8217;t actually want to use.&lt;/p&gt;
+&lt;p&gt;My goal is to make something that people will love, so please do let me know what you think. Nothing about this project is cast in stone and the last thing I want is to deliver a product that people don&amp;rsquo;t actually want to use.&lt;/p&gt;
 
 &lt;p&gt;Equally, while Eideticker is being written primarily with the goal of making Mobile Firefox better (and in the slightly-less short term, desktop Firefox and &lt;a href="https://github.com/andreasgal/B2G"&gt;Boot to Gecko&lt;/a&gt;), much of it is broadly applicable to any user-facing mobile or desktop application. If you think some component of Eideticker might be interesting to your project and want to collaborate, feel free to get in touch.&lt;/p&gt;</description></item>
   <item>
-   <title>Faster, but not quite there yet&amp;#8230;</title>
-   <link>https://wlach.github.io/blog/2011/10/faster-but-not-quite-there-yet-8230/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-10-faster-but-not-quite-there-yet-8230</guid>
+   <title>Faster, but not quite there yet...</title>
+   <link>https://wrla.ch/blog/2011/10/faster-but-not-quite-there-yet/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2011-10-faster-but-not-quite-there-yet</guid>
    <pubDate>Tue, 25 Oct 2011 04:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;So as others have been posting about, we&amp;#8217;ve been making &lt;a href="http://atlee.ca/blog/2011/10/17/going-faster/"&gt;some headway&lt;/a&gt; on our progress on the GoFaster project. Unfortunately it seems like we&amp;#8217;re still some distance away from reaching our magic number of a 2 hour turnaround for each revision pushed.&lt;/p&gt;
+&lt;p&gt;So as others have been posting about, we&amp;rsquo;ve been making &lt;a href="http://atlee.ca/blog/2011/10/17/going-faster/"&gt;some headway&lt;/a&gt; on our progress on the GoFaster project. Unfortunately it seems like we&amp;rsquo;re still some distance away from reaching our magic number of a 2 hour turnaround for each revision pushed.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/10/faster-but-not-quite-there-yet/gofaster-e2e-graph-oct25/" rel="attachment wp-att-312"&gt;&lt;img src="/files/2011/10/gofaster-e2e-graph-oct25.png" alt="" title="gofaster-e2e-graph-oct25" width="632" height="511" class="alignnone size-full wp-image-312" srcset="/files/2011/10/gofaster-e2e-graph-oct25-300x242.png 300w, /files/2011/10/gofaster-e2e-graph-oct25.png 632w" sizes="(max-width: 632px) 100vw, 632px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;It&amp;#8217;s a bit hard to see the exact number on the graph (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697277"&gt;someone should fix that&lt;/a&gt;), but we seem to teetering around an average of 3 hours at this point. Looking at our &lt;a href="http://brasstacks.mozilla.com/gofaster/#/buildcharts"&gt;build charts&lt;/a&gt;, it seems like the critical path has shifted in many cases from Windows to MacOS X. Is there something we can do to close the gap there? Or is there a more general fix which would lead to substantial savings? If you have any thoughts, or would like to help out, we&amp;#8217;re scheduled to have a &lt;a href="https://wiki.mozilla.org/ReleaseEngineering/BuildFaster/Meetings/2011-10-26"&gt;short meeting tomorrow&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a bit hard to see the exact number on the graph (&lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697277"&gt;someone should fix that&lt;/a&gt;), but we seem to teetering around an average of 3 hours at this point. Looking at our &lt;a href="http://brasstacks.mozilla.com/gofaster/#/buildcharts"&gt;build charts&lt;/a&gt;, it seems like the critical path has shifted in many cases from Windows to MacOS X. Is there something we can do to close the gap there? Or is there a more general fix which would lead to substantial savings? If you have any thoughts, or would like to help out, we&amp;rsquo;re scheduled to have a &lt;a href="https://wiki.mozilla.org/ReleaseEngineering/BuildFaster/Meetings/2011-10-26"&gt;short meeting tomorrow&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Anyone is welcome to join, but note that we&amp;#8217;re practical, results-oriented people. Crazy ideas are fun, but we&amp;#8217;re most interested in proposals that have measurable data behind them and can be implemented in reasonable amounts of time.&lt;/p&gt;</description></item>
+&lt;p&gt;Anyone is welcome to join, but note that we&amp;rsquo;re practical, results-oriented people. Crazy ideas are fun, but we&amp;rsquo;re most interested in proposals that have measurable data behind them and can be implemented in reasonable amounts of time.&lt;/p&gt;</description></item>
   <item>
    <title>A better BIXI web site</title>
-   <link>https://wlach.github.io/blog/2011/06/a-better-bixi-web-site/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-06-a-better-bixi-web-site</guid>
+   <link>https://wrla.ch/blog/2011/06/a-better-bixi-web-site/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2011-06-a-better-bixi-web-site</guid>
    <pubDate>Fri, 10 Jun 2011 04:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;There&amp;#8217;s much to like about the BIXI bike-sharing system in Montr&amp;eacute;al: it&amp;#8217;s affordable ($78 for a year of biking), accessible and fun to use. There&amp;#8217;s absolutely no doubt in my mind that it&amp;#8217;s made cycling more of a main stream activity here in Montreal, which benefits everyone (even drivers indirectly gain from less congested streets).&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s much to like about the BIXI bike-sharing system in Montr&amp;eacute;al: it&amp;rsquo;s affordable ($78 for a year of biking), accessible and fun to use. There&amp;rsquo;s absolutely no doubt in my mind that it&amp;rsquo;s made cycling more of a main stream activity here in Montreal, which benefits everyone (even drivers indirectly gain from less congested streets).&lt;/p&gt;
 
-&lt;p&gt;With the arrival of the first BIXI stations in NDG, I decided to subscribe to it this year even though I have a bike of my own. So far, it looks like I&amp;#8217;m going to easily use it enough to justify the cost. I still use my regular bike for my commute from NDG to the Plateau, but on the edges there&amp;#8217;s a ton of cases where it just makes sense to use something that I don&amp;#8217;t have to worry about locking up and returning home. Sometimes I only want to go one way (for weather or whatever other reason). Other times I want to take public transit for one leg of my trip (or day), but need/want to take a quick jaunt elsewhere once I&amp;#8217;m downtown.&lt;/p&gt;
+&lt;p&gt;With the arrival of the first BIXI stations in NDG, I decided to subscribe to it this year even though I have a bike of my own. So far, it looks like I&amp;rsquo;m going to easily use it enough to justify the cost. I still use my regular bike for my commute from NDG to the Plateau, but on the edges there&amp;rsquo;s a ton of cases where it just makes sense to use something that I don&amp;rsquo;t have to worry about locking up and returning home. Sometimes I only want to go one way (for weather or whatever other reason). Other times I want to take public transit for one leg of my trip (or day), but need/want to take a quick jaunt elsewhere once I&amp;rsquo;m downtown.&lt;/p&gt;
 
-&lt;p&gt;I do have to say though, their new web site drives me &lt;em&gt;crazy&lt;/em&gt;. I&amp;#8217;ve thought prety deeply about the domain of creating user-friendly transit-focused web sites, so I think I can speak with some authority here.&lt;/p&gt;
+&lt;p&gt;I do have to say though, their new web site drives me &lt;em&gt;crazy&lt;/em&gt;. I&amp;rsquo;ve thought prety deeply about the domain of creating user-friendly transit-focused web sites, so I think I can speak with some authority here.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/06/a-better-bixi-web-site/bixi_shot/" rel="attachment wp-att-268"&gt;&lt;img src="/files/2011/06/bixi_shot.png" alt="" title="bixi_shot" width="400" height="265" class="alignnone size-full wp-image-268" srcset="/files/2011/06/bixi_shot-300x198.png 300w, /files/2011/06/bixi_shot.png 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Leaving aside it&amp;#8217;s value as a promotional tool for the service itself (not my area of expertise), the experience of trying to find a nearby station is complicated by a slow, multi-layered UI that requires repeated clicking and searching to find the nearest station that has bikes available. Why bother with this step when we can just display this information outright on the map? iPhone applications like &lt;a href="http://sites.google.com/site/bixouiphone/"&gt;Bixou&lt;/a&gt; have been doing this for years. It&amp;#8217;s time we brought the same experience to the desktop.&lt;/p&gt;
+&lt;p&gt;Leaving aside it&amp;rsquo;s value as a promotional tool for the service itself (not my area of expertise), the experience of trying to find a nearby station is complicated by a slow, multi-layered UI that requires repeated clicking and searching to find the nearest station that has bikes available. Why bother with this step when we can just display this information outright on the map? iPhone applications like &lt;a href="http://sites.google.com/site/bixouiphone/"&gt;Bixou&lt;/a&gt; have been doing this for years. It&amp;rsquo;s time we brought the same experience to the desktop.&lt;/p&gt;
 
-&lt;p&gt;Thus, I present &lt;a href="http://nixi.ca"&gt;nixi.ca&lt;/a&gt;: a clean, useable interface to BIXI&amp;#8217;s bike share system that presents the information you care about as effectively as possible, without all the clutter. I&amp;#8217;ve already found it useful, and I hope you do too. Think you can do better? Fork the source on &lt;a href="http://github.com/wlach/nixi"&gt;github&lt;/a&gt; and submit your changes back to me! Minus some glue code to fetch station info server side, it&amp;#8217;s entirely a client-side application written in HTML/JavaScript.&lt;/p&gt;
+&lt;p&gt;Thus, I present &lt;a href="http://nixi.ca"&gt;nixi.ca&lt;/a&gt;: a clean, useable interface to BIXI&amp;rsquo;s bike share system that presents the information you care about as effectively as possible, without all the clutter. I&amp;rsquo;ve already found it useful, and I hope you do too. Think you can do better? Fork the source on &lt;a href="http://github.com/wlach/nixi"&gt;github&lt;/a&gt; and submit your changes back to me! Minus some glue code to fetch station info server side, it&amp;rsquo;s entirely a client-side application written in HTML/JavaScript.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/06/a-better-bixi-web-site/nixi_shot/" rel="attachment wp-att-269"&gt;&lt;img src="/files/2011/06/nixi_shot.png" alt="" title="nixi_shot" width="400" height="265" class="alignnone size-full wp-image-269" srcset="/files/2011/06/nixi_shot-300x198.png 300w, /files/2011/06/nixi_shot.png 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Note that the site uses a bunch of modern HTML5 features, so currently requires a modern browser like Firefox, Chrome, or Safari to display properly. I may or may not fix this. Other notable omissions include support for other cities with the BIXI system (Toronto, Ottawa, &amp;#8230;) and French localization. Patches welcome!&lt;/p&gt;</description></item>
+&lt;p&gt;Note that the site uses a bunch of modern HTML5 features, so currently requires a modern browser like Firefox, Chrome, or Safari to display properly. I may or may not fix this. Other notable omissions include support for other cities with the BIXI system (Toronto, Ottawa, &amp;hellip;) and French localization. Patches welcome!&lt;/p&gt;</description></item>
   <item>
    <title>Template for a map-based web app</title>
-   <link>https://wlach.github.io/blog/2011/06/template-for-a-map-based-web-app/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2011-06-template-for-a-map-based-web-app</guid>
+   <link>https://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2011-06-template-for-a-map-based-web-app</guid>
    <pubDate>Fri, 03 Jun 2011 04:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;Finally got around doing something I&amp;#8217;d meaning to for a while, which is create a simple template for a web-based mapping application based on jQuery and some of my earlier work on &lt;a href="https://github.com/wlach/routez"&gt;routez&lt;/a&gt;. I&amp;#8217;m hoping this might be useful as a starter for a few open data applications!&lt;/p&gt;
+&lt;p&gt;Finally got around doing something I&amp;rsquo;d meaning to for a while, which is create a simple template for a web-based mapping application based on jQuery and some of my earlier work on &lt;a href="https://github.com/wlach/routez"&gt;routez&lt;/a&gt;. I&amp;rsquo;m hoping this might be useful as a starter for a few open data applications!&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/example-map-site-2/" rel="attachment wp-att-258"&gt;&lt;img src="/files/2011/06/example-map-site1.png" alt="" title="Example Map Site" width="400" height="303" class="alignnone size-full wp-image-258" srcset="/files/2011/06/example-map-site1-300x227.png 300w, /files/2011/06/example-map-site1.png 400w" sizes="(max-width: 400px) 100vw, 400px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="http://wlach.wrla.ch/blog/Map-Layout-Template/"&gt;Preview&lt;/a&gt; &lt;a href="https://github.com/wlach/Map-Layout-Template"&gt;Source&lt;/a&gt;&lt;/p&gt;</description></item>
   <item>
    <title>Adventures in processing with prender</title>
-   <link>https://wlach.github.io/blog/2010/03/adventures-in-processing-with-prender/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2010-03-adventures-in-processing-with-prender</guid>
+   <link>https://wrla.ch/blog/2010/03/adventures-in-processing-with-prender/?utm_source=Data-Visualization&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2010-03-adventures-in-processing-with-prender</guid>
    <pubDate>Sun, 07 Mar 2010 05:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
-&lt;p&gt;First, I&amp;#8217;m overdue in announcing &lt;a href="http://transittogo.mindsea.ca/"&gt;Transit to Go&lt;/a&gt; a.k.a. &amp;#8220;the iPhone transit map that&amp;#8217;s demonstrably more useful than a paper schedule&amp;#8221; a.k.a. &amp;#8220;your bus departure in 15 seconds or less, no matter where you are&amp;#8221;. I wrote up a &lt;a href="http://www.mindsea.com/blog/2010/03/transit-to-go-pulling-out-all-the-stops/"&gt;blog post&lt;/a&gt; about it for &lt;a href="http://www.mindsea.com"&gt;Mindsea&lt;/a&gt;&amp;#8216;s site, if you&amp;#8217;re interested in finding out more.&lt;/p&gt;
+&lt;p&gt;First, I&amp;rsquo;m overdue in announcing &lt;a href="http://transittogo.mindsea.ca/"&gt;Transit to Go&lt;/a&gt; a.k.a. &amp;ldquo;the iPhone transit map that&amp;rsquo;s demonstrably more useful than a paper schedule&amp;rdquo; a.k.a. &amp;ldquo;your bus departure in 15 seconds or less, no matter where you are&amp;rdquo;. I wrote up a &lt;a href="http://www.mindsea.com/blog/2010/03/transit-to-go-pulling-out-all-the-stops/"&gt;blog post&lt;/a&gt; about it for &lt;a href="http://www.mindsea.com"&gt;Mindsea&lt;/a&gt;&amp;#8216;s site, if you&amp;rsquo;re interested in finding out more.&lt;/p&gt;
 
-&lt;p&gt;Second, all this transit excitement has made me start thinking about better routing and geometry algorithms again. I&amp;#8217;ve been experimenting a bit with Brandon Martin Anderson&amp;#8217;s &lt;a href="http://github.com/bmander/prender"&gt;prender&lt;/a&gt; framework, used by the infamous &lt;a href="http://bmander.github.com/graphserver/"&gt;Graphserver&lt;/a&gt;, and have been pretty happy with the results. It basically lets you do &lt;a href="http://processing.org"&gt;processing&lt;/a&gt; visualizations in python (i.e. no Java coding required). Here&amp;#8217;s a quick picture of it in action, rendering the Nova Scotian road network, as distributed by &lt;a href="http://geobase.ca"&gt;geobase&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Second, all this transit excitement has made me start thinking about better routing and geometry algorithms again. I&amp;rsquo;ve been experimenting a bit with Brandon Martin Anderson&amp;rsquo;s &lt;a href="http://github.com/bmander/prender"&gt;prender&lt;/a&gt; framework, used by the infamous &lt;a href="http://bmander.github.com/graphserver/"&gt;Graphserver&lt;/a&gt;, and have been pretty happy with the results. It basically lets you do &lt;a href="http://processing.org"&gt;processing&lt;/a&gt; visualizations in python (i.e. no Java coding required). Here&amp;rsquo;s a quick picture of it in action, rendering the Nova Scotian road network, as distributed by &lt;a href="http://geobase.ca"&gt;geobase&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src="/files/2010/03/nova_scotia.png" alt="Nova Scotia as rendered by prender" title="Nova Scotia as rendered by prender" width="400" height="220" class="alignnone size-full wp-image-95" /&gt;&lt;/p&gt;
 
-&lt;p&gt;The neat thing about this framework is that you can render quickly to an arbitrary level of detail, which should prove very useful when troubleshooting the behavior of some of the code I&amp;#8217;m working on. If anyone is interested in running the framework on MacOS X (like I was), &lt;a href="http://github.com/wlach/prender"&gt;my fork&lt;/a&gt; of the project has the appropriate patches.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;The neat thing about this framework is that you can render quickly to an arbitrary level of detail, which should prove very useful when troubleshooting the behavior of some of the code I&amp;rsquo;m working on. If anyone is interested in running the framework on MacOS X (like I was), &lt;a href="http://github.com/wlach/prender"&gt;my fork&lt;/a&gt; of the project has the appropriate patches.&lt;/p&gt;</description></item></channel></rss>

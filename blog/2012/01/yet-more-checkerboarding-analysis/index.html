@@ -4,7 +4,7 @@
 
     <meta charset="utf-8" />
     <title>Yet more checkerboarding analysis</title>
-    <meta name="description" content="I’ve been spending a bit more time on refining the checkerboarding tests in Eideticker that I talked about last time. Most of my work has been focused on making the results as representative of a real world scenario as possible, to that effect I’ve been w..." />
+    <meta name="description" content="I've been spending a bit more time on refining the checkerboarding tests in Eideticker that I talked about last time. Most of my work has been focused on making the results as representative of a real world scenario as possible, to that effect I've been w..." />
     <meta name="author" content="William Lachance" />
     <meta name="keywords" content="Eideticker, Mozilla" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -97,18 +97,18 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>I&#8217;ve been spending a bit more time on refining the checkerboarding tests in Eideticker that I talked about last time. Most of my work has been focused on making the results as representative of a real world scenario as possible, to that effect I&#8217;ve been working on:</p>
+<p>I&rsquo;ve been spending a bit more time on refining the checkerboarding tests in Eideticker that I talked about last time. Most of my work has been focused on making the results as representative of a real world scenario as possible, to that effect I&rsquo;ve been working on:</p>
 
 <ul>
  <li>Changed the test case from a web site of my own concoction to a more realistic example (the <a href="http://taskjs.org">taskjs.org</a> site)</li>
  <li>Use actual Android native events (via <a href="http://developer.android.com/guide/developing/tools/monkeyrunner_concepts.html">MonkeyRunner</a>) to synthesize touch-based scrolling instead of simulating the event in JavaScript (which exercises a completely different codepath).</li>
- <li>Fixing various synchronization issues to make results more repeatable. Before captures were of wildly variable lengths, which made the numbers extremely suspect. There&#8217;s probably still a few issues, but much less than before.</li></ul>
+ <li>Fixing various synchronization issues to make results more repeatable. Before captures were of wildly variable lengths, which made the numbers extremely suspect. There&rsquo;s probably still a few issues, but much less than before.</li></ul>
 
-<p>The end result of this is a framework that gives much more meaningful results. The bad news is that the results that I&#8217;m measuring don&#8217;t show a very positive picture for where we&#8217;re at with the native re-write of Firefox. Even relative to the version of mobile Firefox which is currently on the Android Market, we still have some catching up to do. Here&#8217;s some video of the &#8220;old&#8221; firefox in action:</p>
+<p>The end result of this is a framework that gives much more meaningful results. The bad news is that the results that I&rsquo;m measuring don&rsquo;t show a very positive picture for where we&rsquo;re at with the native re-write of Firefox. Even relative to the version of mobile Firefox which is currently on the Android Market, we still have some catching up to do. Here&rsquo;s some video of the &ldquo;old&rdquo; firefox in action:</p>
 
 <video src="/files/eideticker/taskjs_xul.webm" width="600px" controls="controls"></video>
 
-<p>And here&#8217;s the Native fennec (what we&#8217;re currently offering in nightly, with some minor modifications by me to change the way the &#8220;checkerboard&#8221; is drawn for analysis purposes):</p>
+<p>And here&rsquo;s the Native fennec (what we&rsquo;re currently offering in nightly, with some minor modifications by me to change the way the &ldquo;checkerboard&rdquo; is drawn for analysis purposes):</p>
 
 <video src="/files/eideticker/taskjs_native.webm" width="600px" controls="controls"></video>
 
@@ -127,7 +127,7 @@
 
 <p>(by the way, this performance regression is filed as <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447">bug 719447</a>)</p>
 
-<p>I know there&#8217;s lots of great effort going into improving this situation, so I have hope that we&#8217;ll be doing much better on this metric in the coming days/weeks. The process for creating these videos/analyses is mostly automated at this point, so my plan is to create a small dashboard (ala <a href="http://arewefastyet.com">arewefastyet.com</a>) to measure these numbers over time on the latest nightlies. Stay tuned!</p>
+<p>I know there&rsquo;s lots of great effort going into improving this situation, so I have hope that we&rsquo;ll be doing much better on this metric in the coming days/weeks. The process for creating these videos/analyses is mostly automated at this point, so my plan is to create a small dashboard (ala <a href="http://arewefastyet.com">arewefastyet.com</a>) to measure these numbers over time on the latest nightlies. Stay tuned!</p>
   <hr/>
 </article>
     </div>

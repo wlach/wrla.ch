@@ -3,14 +3,14 @@
   <head>
 
     <meta charset="utf-8" />
-    <title>Follow up on &#8220;Finding a Camera for Eideticker&#8221;</title>
-    <meta name="description" content="Quick update on my last post about finding some kind of camera suitable for use in automated performance testing of fennec and b2g with eideticker. Shortly after I wrote that, I found out about a company called Point Grey Research which manufactures custo..." />
+    <title>It's alive!</title>
+    <meta name="description" content="`>>> import  neocoder >>> g = neocoder.GeoCoder(&quot;greater-hrm2.db&quot;) >>> g.get_latlng(&quot;14 Johnson, North Preston&quot;) SQL: select firstHouseNumber, lastHouseNumber, length, coords from road where name like 'Johnson' and firstHouseNumber <= '14' and lastHouseNu..." />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Eideticker, Mozilla" />
+    <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="canonical" href="https://wrla.ch/blog/2013/03/follow-up-on-8220-finding-a-camera-for-eideticker-8221/" />
-    <link rel="next" href="/blog/2013/02/finding-a-camera-for-eideticker/" /> <link rel="prev" href="/blog/2013/03/documentation-for-mozdevice/" />
+    <link rel="canonical" href="https://wrla.ch/blog/2010/02/it-s-alive/" />
+    <link rel="next" href="/blog/2010/01/projects-for-2010/" /> <link rel="prev" href="/blog/2010/03/adventures-in-processing-with-prender/" />
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link
@@ -92,18 +92,16 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
-    <h1>Follow up on &#8220;Finding a Camera for Eideticker&#8221;</h1>
-    <p class="index-date">Mar 8th, 2013</p>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h1>It&rsquo;s alive!</h1>
+    <p class="index-date">Feb 11th, 2010</p>
+    <p><span class="tags"></span></p>
   </header>
 
-<p>Quick update on my <a href="http://wrla.ch/blog/2013/02/finding-a-camera-for-eideticker/">last post</a> about finding some kind of camera suitable for use in automated performance testing of fennec and b2g with eideticker. Shortly after I wrote that, I found out about a company called <a href="http://ptgrey.com">Point Grey Research</a> which manufactures custom web cameras intended for exactly the sorts of things we&#8217;re doing. Initial results with the <a href="http://ww2.ptgrey.com/USB3/Flea3">Flea3 camera</a> I ordered from them are quite promising:</p>
-
-<video width="400px" src="/files/eideticker/pointgrey-taskjs.webm" controls="controls"></video>
-
-<p>(the actual capture is even higher quality than that would suggest&#8230; some detail is lost in the conversion to webm)</p>
-
-<p>There seems to be some sort of issue with the white balance in that capture which is causing a flashing effect (I suspect this just involves flipping some kind of software setting&#8230; still trying to grok their SDK), and we&#8217;ll need to create some sort of enclosure for the setup so ambient light doesn&#8217;t interfere with the capture&#8230; but overall I&#8217;m pretty optimistic about this baby. 60 frames per second, very high resolution (1280&#215;960), no issues with HDMI (since it&#8217;s just a USB camera), relatively inexpensive.</p>
+<pre><code>&gt;&gt;&gt; import  neocoder
+&gt;&gt;&gt; g = neocoder.GeoCoder("greater-hrm2.db")
+&gt;&gt;&gt; g.get_latlng("14 Johnson, North Preston")
+SQL: select firstHouseNumber, lastHouseNumber, length, coords from road where name like 'Johnson' and firstHouseNumber &lt;= '14' and lastHouseNumber &gt;= '14' and placeName like 'North Preston' limit 1
+(44.73895263671875, -63.464725494384766)</code></pre>
   <hr/>
 </article>
     </div>

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'Web'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Web.atom.xml" />
- <link href="https://wlach.github.io/tags/Web.html" />
- <id>urn:https-wlach-github-io:-tags-Web-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/Web.atom.xml" />
+ <link href="https://wrla.ch/tags/Web.html" />
+ <id>urn:https-wrla-ch:-tags-Web-html</id>
  <updated>2014-09-29T04:00:00Z</updated>
  <entry>
   <title type="text">Using Flexbox in web applications</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2014/09/using-flexbox-in-web-applications/?utm_source=Web&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2014-09-using-flexbox-in-web-applications</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2014/09/using-flexbox-in-web-applications/?utm_source=Web&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2014-09-using-flexbox-in-web-applications</id>
   <published>2014-09-29T04:00:00Z</published>
   <updated>2014-09-29T04:00:00Z</updated>
   <author>
    <name>William Lachance</name></author>
   <content type="html">
-&lt;p&gt;Over last few months, I discovered the joy that is CSS Flexbox, which solves the &amp;#8220;how do I lay out this set of div&amp;#8217;s in horizontally or vertically&amp;#8221;. I&amp;#8217;ve used it in three projects so far:&lt;/p&gt;
+&lt;p&gt;Over last few months, I discovered the joy that is CSS Flexbox, which solves the &amp;ldquo;how do I lay out this set of div&amp;rsquo;s in horizontally or vertically&amp;rdquo;. I&amp;rsquo;ve used it in three projects so far:&lt;/p&gt;
 
 &lt;ul&gt;
  &lt;li&gt;Centering the timer interface in my &lt;a href="http://wrla.ch/blog/2014/08/a-new-meditation-app/"&gt;meditation app&lt;/a&gt;, so that it scales nicely from a 320&amp;#215;480 FirefoxOS device all the way up to a high definition monitor&lt;/li&gt;
  &lt;li&gt;Laying out the chart / sidebar elements in the &lt;a href="http://eideticker.mozilla.org"&gt;Eideticker dashboard&lt;/a&gt; so that maximum horizontal space is used&lt;/li&gt;
  &lt;li&gt;Fixing various problems in the &lt;a href="http://treeherder.mozilla.org"&gt;Treeherder UI&lt;/a&gt; on smaller screens (see &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1043474"&gt;bug 1043474&lt;/a&gt; and its dependent bugs)&lt;/li&gt;&lt;/ul&gt;
 
-&lt;p&gt;When I talk to people about their troubles with CSS, layout comes up really high on the list. Historically, basic layout problems like a panel of vertical buttons have been ridiculously difficult, involving hacks involving floating divs and absolute positioning or &lt;a href="http://layout.jquery-dev.com/"&gt;JavaScript layout libraries&lt;/a&gt;. This is why people write articles entitled &lt;a href="http://uxmag.com/articles/give-and-use-tables"&gt;&amp;#8220;Give up and use tables&amp;#8221;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;When I talk to people about their troubles with CSS, layout comes up really high on the list. Historically, basic layout problems like a panel of vertical buttons have been ridiculously difficult, involving hacks involving floating divs and absolute positioning or &lt;a href="http://layout.jquery-dev.com/"&gt;JavaScript layout libraries&lt;/a&gt;. This is why people write articles entitled &lt;a href="http://uxmag.com/articles/give-and-use-tables"&gt;&amp;ldquo;Give up and use tables&amp;rdquo;&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Flexbox has pretty much put an end to these problems for me. There&amp;#8217;s no longer any need to &amp;#8220;give up and use tables&amp;#8221; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&amp;#8217;re so great. I think we&amp;#8217;re pretty close to Flexbox being supported across all the major browsers, so it&amp;#8217;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.&lt;/p&gt;
+&lt;p&gt;Flexbox has pretty much put an end to these problems for me. There&amp;rsquo;s no longer any need to &amp;ldquo;give up and use tables&amp;rdquo; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&amp;rsquo;re so great. I think we&amp;rsquo;re pretty close to Flexbox being supported across all the major browsers, so it&amp;rsquo;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.&lt;/p&gt;
 
-&lt;p&gt;To try and spread the word, I wrote up &lt;a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications"&gt;a howto article on using flexbox for web applications on MDN&lt;/a&gt;, covering some of the common use cases I mention above. If you&amp;#8217;ve been curious about flexbox but unsure how to use it, please have a look.&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;To try and spread the word, I wrote up &lt;a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications"&gt;a howto article on using flexbox for web applications on MDN&lt;/a&gt;, covering some of the common use cases I mention above. If you&amp;rsquo;ve been curious about flexbox but unsure how to use it, please have a look.&lt;/p&gt;</content></entry></feed>

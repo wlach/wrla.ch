@@ -4,7 +4,7 @@
 
     <meta charset="utf-8" />
     <title>Perfherder update: Summary series drilldown</title>
-    <meta name="description" content="Just wanted to give another quick Perfherder update. Since the last time, I’ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various s..." />
+    <meta name="description" content="Just wanted to give another quick Perfherder update. Since the last time, I've added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various s..." />
     <meta name="author" content="William Lachance" />
     <meta name="keywords" content="Data Visualization, Mozilla, Perfherder" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -97,9 +97,9 @@
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
   </header>
 
-<p>Just wanted to give another quick Perfherder update. Since the <a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/">last time</a>, I&#8217;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&#8217;t possible with Graphserver and I&#8217;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.</p>
+<p>Just wanted to give another quick Perfherder update. Since the <a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/">last time</a>, I&rsquo;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&rsquo;t possible with Graphserver and I&rsquo;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.</p>
 
-<p>Let&#8217;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354">bug 1128354</a>. Using <a href="https://mozillians.org/en-US/u/mishravikas/">Mishra Vikas</a>&#8216;s new &#8220;highlight revision mode&#8221; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:</p>
+<p>Let&rsquo;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354">bug 1128354</a>. Using <a href="https://mozillians.org/en-US/u/mishravikas/">Mishra Vikas</a>&#8216;s new &ldquo;highlight revision mode&rdquo; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:</p>
 
 <p><a href="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png"><img src="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png" alt="Screen Shot 2015-03-27 at 3.18.28 PM" width="474" height="230" class="alignnone size-large wp-image-1184" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-300x146.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png 1167w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
 

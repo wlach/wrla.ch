@@ -97,13 +97,13 @@
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
   </header>
 
-<p>Since my last update, we&#8217;ve been trucking along with improvements to <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a>, the project for making Firefox performance sheriffing and analysis easier.</p>
+<p>Since my last update, we&rsquo;ve been trucking along with improvements to <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a>, the project for making Firefox performance sheriffing and analysis easier.</p>
 
 <p><strong>Compare visualization improvements</strong></p>
 
-<p>I&#8217;ve been spending quite a bit of time trying to fix up the display of information in the compare view, to address feedback from developers and hopefully generally streamline things. <a href="https://blog.mozilla.org/vdjeric/">Vladan</a> (from the perf team) referred me to <a href="https://mozillians.org/en-US/u/bwinton/">Blake Winton</a>, who provided tons of awesome suggestions on how to present things more concisely.</p>
+<p>I&rsquo;ve been spending quite a bit of time trying to fix up the display of information in the compare view, to address feedback from developers and hopefully generally streamline things. <a href="https://blog.mozilla.org/vdjeric/">Vladan</a> (from the perf team) referred me to <a href="https://mozillians.org/en-US/u/bwinton/">Blake Winton</a>, who provided tons of awesome suggestions on how to present things more concisely.</p>
 
-<p>Here&#8217;s an old versus new picture:</p>
+<p>Here&rsquo;s an old versus new picture:</p>
 
 <table>
  <tr>
@@ -114,17 +114,17 @@
 
 <ul>
  <li>Removed or consolidated several types of numerical information which were overwhelming or confusing (e.g. presenting both numerical and percentage standard deviation in their own columns).</li>
- <li>Added tooltips all over the place to explain what&#8217;s being displayed.</li>
- <li>Highlight more strongly when it appears there aren&#8217;t enough runs to make a definitive determination on whether there was a regression or improvement.</li>
- <li>Improve display of visual indicator of magnitude of regression/improvement (providing a pseudo-scale showing where the change ranges from 0% &#8211; 20%+).</li>
+ <li>Added tooltips all over the place to explain what&rsquo;s being displayed.</li>
+ <li>Highlight more strongly when it appears there aren&rsquo;t enough runs to make a definitive determination on whether there was a regression or improvement.</li>
+ <li>Improve display of visual indicator of magnitude of regression/improvement (providing a pseudo-scale showing where the change ranges from 0% : 20%+).</li>
  <li>Provide more detail on the two changesets being compared in the header and make it easier to retrigger them (thanks to Mike Ling).</li>
  <li>Much better and more intuitive error handling when something goes wrong (also thanks to Mike Ling).</li></ul>
 
-<p>The point of these changes isn&#8217;t necessarily to make everything &#8220;immediately obvious&#8221; to people. We&#8217;re not building general purpose software here: Perfherder will always be a rather specialized tool which presumes significant domain knowledge on the part of the people using it. However, even for our audience, it turns out that there&#8217;s a lot of room to improve how our presentation: reducing the amount of extraneous noise helps people zero in on the things they really need to care about.</p>
+<p>The point of these changes isn&rsquo;t necessarily to make everything &ldquo;immediately obvious&rdquo; to people. We&rsquo;re not building general purpose software here: Perfherder will always be a rather specialized tool which presumes significant domain knowledge on the part of the people using it. However, even for our audience, it turns out that there&rsquo;s a lot of room to improve how our presentation: reducing the amount of extraneous noise helps people zero in on the things they really need to care about.</p>
 
 <p>Special thanks to everyone who took time out of their schedules to provide so much good feedback, in particular <a href="http://avih.github.io/">Avi Halmachi</a>, <a href="http://glandium.org/blog/">Glandium</a>, and <a href="http://elvis314.wordpress.com/">Joel Maher</a>.</p>
 
-<p>Of course more suggestions are always welcome. Please <a href="https://treeherder.mozilla.org/perf.html#/comparechooser">give it a try</a> and <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Tree%20Management&amp;#038;component=Perfherder">file bugs against the perfherder component</a> if you find anything you&#8217;d like to see changed or improved.</p>
+<p>Of course more suggestions are always welcome. Please <a href="https://treeherder.mozilla.org/perf.html#/comparechooser">give it a try</a> and <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Tree%20Management&amp;component=Perfherder">file bugs against the perfherder component</a> if you find anything you&rsquo;d like to see changed or improved.</p>
 
 <p><strong>Getting the word out</strong></p>
 
@@ -150,31 +150,31 @@ remote:
 remote: It looks like this try push has talos jobs. Compare performance against a baseline revision:
 remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=try&amp;newRevision=e0aa56fb4ace</code></pre>
 
-<p>Try pushes incorporating Talos jobs now automatically link to perfherder&#8217;s compare view, both in the output from mercurial and in the emails the system sends. One of the challenges we&#8217;ve been facing up to this point is just letting developers know that Perfherder <em>exists</em> and it can help them either avoid or resolve performance regressions. I believe this will help.</p>
+<p>Try pushes incorporating Talos jobs now automatically link to perfherder&rsquo;s compare view, both in the output from mercurial and in the emails the system sends. One of the challenges we&rsquo;ve been facing up to this point is just letting developers know that Perfherder <em>exists</em> and it can help them either avoid or resolve performance regressions. I believe this will help.</p>
 
 <p><strong>Data quality and ingestion improvements</strong></p>
 
-<p>Over the past couple weeks, we&#8217;ve been comparing our regression detection code when run against Graphserver data to Perfherder data. In doing so, we discovered that we&#8217;ve sometimes been using the wrong algorithm (geometric mean) to summarize some of our tests, leading to unexpected and less meaningful results. For example, the v8_7 benchmark uses a custom weighting algorithm for its score, to account for the fact that the things it tests have a particular range of expected values.</p>
+<p>Over the past couple weeks, we&rsquo;ve been comparing our regression detection code when run against Graphserver data to Perfherder data. In doing so, we discovered that we&rsquo;ve sometimes been using the wrong algorithm (geometric mean) to summarize some of our tests, leading to unexpected and less meaningful results. For example, the v8_7 benchmark uses a custom weighting algorithm for its score, to account for the fact that the things it tests have a particular range of expected values.</p>
 
-<p>To hopefully prevent this from happening again in the future, we&#8217;ve decided to move the test summarization code out of Perfherder back into Talos (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1184966">bug 1184966</a>). This has the additional benefit of creating a stronger connection between the content of the Talos logs and what Perfherder displays in its comparison and graph views, which has thrown people off in the past.</p>
+<p>To hopefully prevent this from happening again in the future, we&rsquo;ve decided to move the test summarization code out of Perfherder back into Talos (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1184966">bug 1184966</a>). This has the additional benefit of creating a stronger connection between the content of the Talos logs and what Perfherder displays in its comparison and graph views, which has thrown people off in the past.</p>
 
 <p><strong>Continuing data challenges</strong></p>
 
-<p>Having better tools for visualizing this stuff is great, but it also highlights some continuing problems we&#8217;ve had with data quality. It turns out that our automation setup often produces <em>qualitatively different</em> performance results for the exact same set of data, depending on when and how the tests are run.</p>
+<p>Having better tools for visualizing this stuff is great, but it also highlights some continuing problems we&rsquo;ve had with data quality. It turns out that our automation setup often produces <em>qualitatively different</em> performance results for the exact same set of data, depending on when and how the tests are run.</p>
 
 <p>A certain amount of random noise is always expected when running performance tests. As much as we might try to make them uniform, our testing machines and environments are just not 100% identical. That we expect and can deal with: our standard approach is just to retrigger runs, to make sure we get a representative sample of data from our population of machines.</p>
 
-<p>The problem comes when there&#8217;s a <em>pattern</em> to the noise: we&#8217;ve already noticed that tests run on the weekends produce different results (see Joel&#8217;s post from a year ago, <a href="https://elvis314.wordpress.com/2014/10/30/a-case-of-the-weekends/">&#8220;A case of the weekends&#8221;</a>) but it seems as if there&#8217;s other circumstances where one set of results will be different from another, depending on the time that each set of tests was run. Some tests and platforms (e.g. the a11yr suite, MacOS X 10.10) seem particularly susceptible to this issue.</p>
+<p>The problem comes when there&rsquo;s a <em>pattern</em> to the noise: we&rsquo;ve already noticed that tests run on the weekends produce different results (see Joel&rsquo;s post from a year ago, <a href="https://elvis314.wordpress.com/2014/10/30/a-case-of-the-weekends/">&ldquo;A case of the weekends&rdquo;</a>) but it seems as if there&rsquo;s other circumstances where one set of results will be different from another, depending on the time that each set of tests was run. Some tests and platforms (e.g. the a11yr suite, MacOS X 10.10) seem particularly susceptible to this issue.</p>
 
-<p>We need to find better ways of dealing with this problem, as it can result in a lot of wasted time and energy, for both sheriffs and developers. See for example <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1190877">bug 1190877</a>, which concerned a completely spurious regression on the tresize benchmark that was initially blamed on some changes to the media code&#8211; in this case, Joel speculates that the linux64 test machines we use might have changed from under us in some way, but we really don&#8217;t know yet.</p>
+<p>We need to find better ways of dealing with this problem, as it can result in a lot of wasted time and energy, for both sheriffs and developers. See for example <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1190877">bug 1190877</a>, which concerned a completely spurious regression on the tresize benchmark that was initially blamed on some changes to the media code: in this case, Joel speculates that the linux64 test machines we use might have changed from under us in some way, but we really don&rsquo;t know yet.</p>
 
 <p>I see two approaches possible here:</p>
 
 <ol>
- <li>Figure out what&#8217;s causing the same machines to produce qualitatively different result distributions and address that. This is of course the ideal solution, but it requires coordination with other parts of the organization who are likely quite busy and might be hard.</li>
- <li>Figure out better ways of detecting and managing these sorts of case. I have noticed that the standard deviation inside the results when we have spurious regressions/improvements tends to be higher (see for example <a href="https://treeherder.mozilla.org/perf.html#/compare?originalProject=mozilla-inbound&amp;#038;originalRevision=4d0818791d07&amp;#038;newProject=mozilla-inbound&amp;#038;newRevision=5e130ad70aa7">this compare view</a> for the aforementioned &#8220;regression&#8221;). Knowing what we do, maybe there&#8217;s some statistical methods we can use to detect bad data?</li></ol>
+ <li>Figure out what&rsquo;s causing the same machines to produce qualitatively different result distributions and address that. This is of course the ideal solution, but it requires coordination with other parts of the organization who are likely quite busy and might be hard.</li>
+ <li>Figure out better ways of detecting and managing these sorts of case. I have noticed that the standard deviation inside the results when we have spurious regressions/improvements tends to be higher (see for example <a href="https://treeherder.mozilla.org/perf.html#/compare?originalProject=mozilla-inbound&amp;originalRevision=4d0818791d07&amp;newProject=mozilla-inbound&amp;newRevision=5e130ad70aa7">this compare view</a> for the aforementioned &ldquo;regression&rdquo;). Knowing what we do, maybe there&rsquo;s some statistical methods we can use to detect bad data?</li></ol>
 
-<p>For now, I&#8217;m leaning towards (2). I don&#8217;t think we&#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!</p> 
+<p>For now, I&rsquo;m leaning towards (2). I don&rsquo;t think we&rsquo;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!</p> 
   <hr/>
 </article>
 <article>
@@ -184,36 +184,36 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     <p><span class="tags"><a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
   </header>
 
-<p>Haven&#8217;t been doing enough blogging about <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a> (our project to make Talos and other per-checkin performance data more useful) recently. Let&#8217;s fix that. We&#8217;ve been making some good progress, helped in part by a group of new contributors that joined us through an experimental &#8220;<a href="https://elvis314.wordpress.com/2015/06/09/please-welcome-the-dashboard-hacker-team/">summer of contribution</a>&#8221; program.</p>
+<p>Haven&rsquo;t been doing enough blogging about <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a> (our project to make Talos and other per-checkin performance data more useful) recently. Let&rsquo;s fix that. We&rsquo;ve been making some good progress, helped in part by a group of new contributors that joined us through an experimental "<a href="https://elvis314.wordpress.com/2015/06/09/please-welcome-the-dashboard-hacker-team/">summer of contribution</a>" program.</p>
 
 <p><strong>Comparison mode</strong></p>
 
-<p>Inspired by Compare Talos, we&#8217;ve designed something similar which hooks into the perfherder backend. This has already gotten some interest: see this post on <a href="https://groups.google.com/d/msg/mozilla.dev.tree-management/IUmMuY8b52A/Asne1cW0I8EJ">dev.tree-management</a> and this one on <a href="https://groups.google.com/d/msg/mozilla.dev.platform/PaJFBtvc3Vg/BvX-pFlsAkoJ">dev.platform</a>. We&#8217;re working towards building something that will be really useful both for (1) illustrating that the performance regressions we detect are real and (2) helping developers figure out the impact of their changes before they land them.</p>
+<p>Inspired by Compare Talos, we&rsquo;ve designed something similar which hooks into the perfherder backend. This has already gotten some interest: see this post on <a href="https://groups.google.com/d/msg/mozilla.dev.tree-management/IUmMuY8b52A/Asne1cW0I8EJ">dev.tree-management</a> and this one on <a href="https://groups.google.com/d/msg/mozilla.dev.platform/PaJFBtvc3Vg/BvX-pFlsAkoJ">dev.platform</a>. We&rsquo;re working towards building something that will be really useful both for (1) illustrating that the performance regressions we detect are real and (2) helping developers figure out the impact of their changes before they land them.</p>
 
 <table>
  <tr>
   <td><a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM.png"><img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM-300x207.png" alt="Screen Shot 2015-07-14 at 3.54.57 PM" width="300" height="207" class="alignnone size-medium wp-image-1219" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM-300x207.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.54.57-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /></a></td> 
   <td><a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png"><img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png" alt="Screen Shot 2015-07-14 at 3.53.20 PM" width="300" height="206" class="alignnone size-medium wp-image-1218" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /></a></td></tr></table>
 
-<p>Most of the initial work was done by <a href="https://elvis314.wordpress.com/">Joel Maher</a> with lots of review for aesthetics and correctness by me. Avi Halmachi from the Performance Team also helped out with the <a href="https://en.wikipedia.org/wiki/Student's_t-test">t-test</a> model for detecting the confidence that we have that a difference in performance was real. Lately myself and <a href="https://github.com/MikeLing">Mike Ling</a> (one of our summer of contribution members) have been working on further improving the interface for usability &#8212; I&#8217;m hopeful that we&#8217;ll soon have something implemented that&#8217;s broadly usable and comprehensible to the Mozilla Firefox and Platform developer community.</p>
+<p>Most of the initial work was done by <a href="https://elvis314.wordpress.com/">Joel Maher</a> with lots of review for aesthetics and correctness by me. Avi Halmachi from the Performance Team also helped out with the <a href="https://en.wikipedia.org/wiki/Student's_t-test">t-test</a> model for detecting the confidence that we have that a difference in performance was real. Lately myself and <a href="https://github.com/MikeLing">Mike Ling</a> (one of our summer of contribution members) have been working on further improving the interface for usability &#8212; I&rsquo;m hopeful that we&rsquo;ll soon have something implemented that&rsquo;s broadly usable and comprehensible to the Mozilla Firefox and Platform developer community.</p>
 
 <p><strong>Graphs improvements</strong></p>
 
-<p>Although it&#8217;s received slightly less attention lately than the comparison view above, we&#8217;ve been making steady progress on the graphs view of performance series. Aside from demonstrations and presentations, the primary use case for this is being able to detect visually sustained changes in the result distribution for talos tests, which is often necessary to be able to confirm regressions. Notable recent changes include a much easier way of selecting tests to add to the graph from Mike Ling and more readable/parseable urls from <a href="https://github.com/akhileshpillai">Akhilesh Pillai</a> (another summer of contribution participant).</p>
+<p>Although it&rsquo;s received slightly less attention lately than the comparison view above, we&rsquo;ve been making steady progress on the graphs view of performance series. Aside from demonstrations and presentations, the primary use case for this is being able to detect visually sustained changes in the result distribution for talos tests, which is often necessary to be able to confirm regressions. Notable recent changes include a much easier way of selecting tests to add to the graph from Mike Ling and more readable/parseable urls from <a href="https://github.com/akhileshpillai">Akhilesh Pillai</a> (another summer of contribution participant).</p>
 
 <p><a href="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM.png"><img src="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-300x174.png" alt="Screen Shot 2015-07-14 at 4.09.45 PM" width="300" height="174" class="alignnone size-medium wp-image-1221" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-300x174.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM-1024x595.png 1024w, /files/2015/07/Screen-Shot-2015-07-14-at-4.09.45-PM.png 1130w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
 
 <p><strong>Performance alerts</strong></p>
 
-<p>I&#8217;ve also been steadily working on making Perfherder generate alerts when there is a significant discontinuity in the performance numbers, similar to what <a href="http://graphs.mozilla.org">GraphServer</a> does now. Currently we have an option to generate a static CSV file of these alerts, but the eventual plan is to insert these things into a peristent database. After that&#8217;s done, we can actually work on creating a UI inside Perfherder to replace <a href="http://alertmanager.allizom.org:8080/alerts.html#">alertmanager</a> (which currently uses GraphServer data) and start using this thing to sheriff performance regressions &#8212; putting the herder into perfherder.</p>
+<p>I&rsquo;ve also been steadily working on making Perfherder generate alerts when there is a significant discontinuity in the performance numbers, similar to what <a href="http://graphs.mozilla.org">GraphServer</a> does now. Currently we have an option to generate a static CSV file of these alerts, but the eventual plan is to insert these things into a peristent database. After that&rsquo;s done, we can actually work on creating a UI inside Perfherder to replace <a href="http://alertmanager.allizom.org:8080/alerts.html#">alertmanager</a> (which currently uses GraphServer data) and start using this thing to sheriff performance regressions &#8212; putting the herder into perfherder.</p>
 
-<p>As part of this, I&#8217;ve converted the graphserver alert generation code into a standalone python library, which has already proven useful as a component in the <a href="https://hacks.mozilla.org/2015/06/performance-testing-firefox-os-with-raptor/">Raptor project for FirefoxOS</a>. Yay modularity and reusability.</p>
+<p>As part of this, I&rsquo;ve converted the graphserver alert generation code into a standalone python library, which has already proven useful as a component in the <a href="https://hacks.mozilla.org/2015/06/performance-testing-firefox-os-with-raptor/">Raptor project for FirefoxOS</a>. Yay modularity and reusability.</p>
 
 <p><strong>Python API</strong></p>
 
-<p>I&#8217;ve also been working on creating and improving a <a href="http://treeherder.readthedocs.org/retrieving_data.html#python-client">python API</a> to access Treeherder data, which includes Perfherder. This lets you do interesting things, like dynamically run various types of statistical analysis on the data stored in the production instance of Perfherder (no need to ask me for a database dump or other credentials). I&#8217;ve been using this to perform validation of the data we&#8217;re storing and debug various tricky problems. For example, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1182282">I found out last week that we were storing up to duplicate 200 entries in each performance series due to double data ingestion</a> &#8212; oops.</p>
+<p>I&rsquo;ve also been working on creating and improving a <a href="http://treeherder.readthedocs.org/retrieving_data.html#python-client">python API</a> to access Treeherder data, which includes Perfherder. This lets you do interesting things, like dynamically run various types of statistical analysis on the data stored in the production instance of Perfherder (no need to ask me for a database dump or other credentials). I&rsquo;ve been using this to perform validation of the data we&rsquo;re storing and debug various tricky problems. For example, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1182282">I found out last week that we were storing up to duplicate 200 entries in each performance series due to double data ingestion</a> &#8212; oops.</p>
 
-<p>You can also use this API to dynamically create interesting graphs and visualizations using <a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/">ipython notebook</a>, here&#8217;s a simple example of me plotting the last 7 days of youtube.com pageload data inline in a notebook:</p>
+<p>You can also use this API to dynamically create interesting graphs and visualizations using <a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/">ipython notebook</a>, here&rsquo;s a simple example of me plotting the last 7 days of youtube.com pageload data inline in a notebook:</p>
 
 <p><a href="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png"><img src="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png" alt="Screen Shot 2015-07-14 at 4.43.55 PM" width="300" height="224" class="alignnone size-medium wp-image-1224" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM-300x224.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-4.43.55-PM.png 842w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>
 
@@ -227,22 +227,22 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Python.html">Python</a></span></p>
   </header>
 
-<p>So I went to PyCon 2015. While I didn&#8217;t leave quite as inspired as I did in 2014 (<a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/">when I discovered iPython</a>), it was a great experience and I learned a ton. Once again, I was incredibly impressed with the organization of the conference and the diversity and quality of the speakers.</p>
+<p>So I went to PyCon 2015. While I didn&rsquo;t leave quite as inspired as I did in 2014 (<a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/">when I discovered iPython</a>), it was a great experience and I learned a ton. Once again, I was incredibly impressed with the organization of the conference and the diversity and quality of the speakers.</p>
 
 <p>Since Mozilla was nice enough to sponsor my attendance, I figured I should do another round up of notable talks that I went to.</p>
 
 <p>Technical stuff that was directly relevant to what I work on:</p>
 
 <ul>
- <li>To ORM or not to ORM (Christine Spang): Useful talk on when using a database ORM (object relational manager) can be helpful and even faster than using a database directly. I feel like there&#8217;s a lot of misinformation and FUD on this topic, so this was refreshing to see. <a href="https://www.youtube.com/watch?v=Sadng6tR7Q4">video</a> <a href="https://speakerdeck.com/pycon2015/christine-spang-to-orm-or-not-to-orm">slides</a></li>
- <li>Debugging hard problems (Alex Gaynor): Exactly what it says &#8212; how to figure out what&#8217;s going on when things aren&#8217;t behaving as they should. Great advice and wisdom in this one (hint: take nothing for granted, dive into the source of everything you&#8217;re using!). <a href="https://www.youtube.com/watch?v=ij99SGGEX34">video</a> <a href="https://speakerdeck.com/alex/techniques-for-debugging-hard-problems">slides</a></li>
- <li>Python Performance Profiling: The Guts And The Glory (Jesse Jiryu Davis): Quite an entertaining talk on how to properly profile python code. I really liked his systematic and realistic approach &#8212; which also discussed the thought process behind how to do this (hint: again it comes down to understanding what&#8217;s really going on). Unfortunately the video is truncated, but even the first few minutes are useful. <a href="https://www.youtube.com/watch?v=4uJWWXYHxaM">video</a></li></ul>
+ <li>To ORM or not to ORM (Christine Spang): Useful talk on when using a database ORM (object relational manager) can be helpful and even faster than using a database directly. I feel like there&rsquo;s a lot of misinformation and FUD on this topic, so this was refreshing to see. <a href="https://www.youtube.com/watch?v=Sadng6tR7Q4">video</a> <a href="https://speakerdeck.com/pycon2015/christine-spang-to-orm-or-not-to-orm">slides</a></li>
+ <li>Debugging hard problems (Alex Gaynor): Exactly what it says &#8212; how to figure out what&rsquo;s going on when things aren&rsquo;t behaving as they should. Great advice and wisdom in this one (hint: take nothing for granted, dive into the source of everything you&rsquo;re using!). <a href="https://www.youtube.com/watch?v=ij99SGGEX34">video</a> <a href="https://speakerdeck.com/alex/techniques-for-debugging-hard-problems">slides</a></li>
+ <li>Python Performance Profiling: The Guts And The Glory (Jesse Jiryu Davis): Quite an entertaining talk on how to properly profile python code. I really liked his systematic and realistic approach &#8212; which also discussed the thought process behind how to do this (hint: again it comes down to understanding what&rsquo;s really going on). Unfortunately the video is truncated, but even the first few minutes are useful. <a href="https://www.youtube.com/watch?v=4uJWWXYHxaM">video</a></li></ul>
 
 <p>Non-technical stuff:</p>
 
 <ul>
  <li>The Ethical Consequences Of Our Collective Activities (Glyph): A talk on the ethical implications of how our software is used. I feel like this is an under-discussed topic &#8212; how can we know that the results of our activity (programming) serves others and does not harm? <a href="https://www.youtube.com/watch?v=uSbKjRRbjZs">video</a></li>
- <li>How our engineering environments are killing diversity (and how we can fix it) (Kate Heddleston): This was a great talk on how to make the environments in which we develop more welcoming to under-represented groups (women, minorities, etc.). This is something I&#8217;ve been thinking a bunch about lately, especially in the context of expanding the community of people working on our projects in Automation &#38; Tools. The talk had some particularly useful advice (to me, anyway) on giving feedback. <a href="https://www.youtube.com/watch?v=kNke_4WOWAU">video</a> <a href="https://speakerdeck.com/pycon2015/kate-heddleston-how-our-engineering-environments-are-killing-diversity-and-how-we-can-fix-it">slides</a></li></ul>
+ <li>How our engineering environments are killing diversity (and how we can fix it) (Kate Heddleston): This was a great talk on how to make the environments in which we develop more welcoming to under-represented groups (women, minorities, etc.). This is something I&rsquo;ve been thinking a bunch about lately, especially in the context of expanding the community of people working on our projects in Automation &#38; Tools. The talk had some particularly useful advice (to me, anyway) on giving feedback. <a href="https://www.youtube.com/watch?v=kNke_4WOWAU">video</a> <a href="https://speakerdeck.com/pycon2015/kate-heddleston-how-our-engineering-environments-are-killing-diversity-and-how-we-can-fix-it">slides</a></li></ul>
 
 <p>I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!</p> 
   <hr/>
@@ -254,9 +254,9 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
   </header>
 
-<p>Just wanted to give another quick Perfherder update. Since the <a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/">last time</a>, I&#8217;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&#8217;t possible with Graphserver and I&#8217;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.</p>
+<p>Just wanted to give another quick Perfherder update. Since the <a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/">last time</a>, I&rsquo;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&rsquo;t possible with Graphserver and I&rsquo;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.</p>
 
-<p>Let&#8217;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354">bug 1128354</a>. Using <a href="https://mozillians.org/en-US/u/mishravikas/">Mishra Vikas</a>&#8216;s new &#8220;highlight revision mode&#8221; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:</p>
+<p>Let&rsquo;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354">bug 1128354</a>. Using <a href="https://mozillians.org/en-US/u/mishravikas/">Mishra Vikas</a>&#8216;s new &ldquo;highlight revision mode&rdquo; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:</p>
 
 <p><a href="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png"><img src="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png" alt="Screen Shot 2015-03-27 at 3.18.28 PM" width="474" height="230" class="alignnone size-large wp-image-1184" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-300x146.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png 1167w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
 
@@ -280,16 +280,16 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
   </header>
 
-<p>For the past few months I&#8217;ve been working on a sub-project of Treeherder called Perfherder, which aims to provide a workflow that will let us more easily detect and manage performance regressions in our products (initially just those detected in <a href="https://wiki.mozilla.org/Buildbot/Talos">Talos</a>, but there&#8217;s room to expand on that later). This is a long term project and we&#8217;re still sorting out the details of exactly how it will work, but I thought I&#8217;d quickly announce a milestone.</p>
+<p>For the past few months I&rsquo;ve been working on a sub-project of Treeherder called Perfherder, which aims to provide a workflow that will let us more easily detect and manage performance regressions in our products (initially just those detected in <a href="https://wiki.mozilla.org/Buildbot/Talos">Talos</a>, but there&rsquo;s room to expand on that later). This is a long term project and we&rsquo;re still sorting out the details of exactly how it will work, but I thought I&rsquo;d quickly announce a milestone.</p>
 
-<p>As a first step, I&#8217;ve been hacking on a graphical user interface to visualize the performance data we&#8217;re now storing inside Treeherder. It&#8217;s pretty bare bones so far, but already it has two features which <a href="http://graphs.mozilla.org">graphserver</a> doesn&#8217;t: the ability to view sub-test results (i.e. the page load time for a specific page in the tp5 suite, as opposed to the geometric mean of all of them) and the ability to see results for e10s builds.</p>
+<p>As a first step, I&rsquo;ve been hacking on a graphical user interface to visualize the performance data we&rsquo;re now storing inside Treeherder. It&rsquo;s pretty bare bones so far, but already it has two features which <a href="http://graphs.mozilla.org">graphserver</a> doesn&rsquo;t: the ability to view sub-test results (i.e. the page load time for a specific page in the tp5 suite, as opposed to the geometric mean of all of them) and the ability to see results for e10s builds.</p>
 
-<p>Here&#8217;s an example, comparing the tp5o 163.com page load times on windows 7 with e10s enabled (and not):</p>
+<p>Here&rsquo;s an example, comparing the tp5o 163.com page load times on windows 7 with e10s enabled (and not):</p>
 
 <p><a href="/files/2015/02/e10s-vs-non-e10s.png"><img src="/files/2015/02/e10s-vs-non-e10s.png" alt="e10s-vs-non-e10s" width="901" height="489" class="alignnone size-full wp-image-1157" srcset="/files/2015/02/e10s-vs-non-e10s-300x162.png 300w, /files/2015/02/e10s-vs-non-e10s.png 901w" sizes="(max-width: 901px) 100vw, 901px" /></a>
  <br /><a href="https://treeherder.mozilla.org/perf.html#/graphs?timerange=7776000&amp;#038;seriesList=[[%22mozilla-central%22,%22a78a233646c932ee1c56cf27da58b6aaa4eda2c3%22],[%22mozilla-central%22,%228e9323fd7fadb0623ec520a8ccaec2e733f3d501%22]]">[link]</a></p>
 
-<p>Green is e10s, red is non-e10s (the legend picture doesn&#8217;t reflect this because we have yet to deploy a fix to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1130554">bug 1130554</a>, but I promise I&#8217;m not lying). As you can see, the gap has been closing (in particular, something landed in mid-January that improved the e10s numbers quite a bit), but page load times are still measurably slower with this feature enabled.</p> 
+<p>Green is e10s, red is non-e10s (the legend picture doesn&rsquo;t reflect this because we have yet to deploy a fix to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1130554">bug 1130554</a>, but I promise I&rsquo;m not lying). As you can see, the gap has been closing (in particular, something landed in mid-January that improved the e10s numbers quite a bit), but page load times are still measurably slower with this feature enabled.</p> 
   <hr/>
 </article>
 <article>
@@ -299,7 +299,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
   </header>
 
-<p>Lots of movement in <a href="http://mozilla.github.io/mozregression">mozregression</a> (a tool for automatically determining when a regression was introduced in Firefox by bisecting builds on ftp.mozilla.org) in the last few months. Here&#8217;s some highlights:</p>
+<p>Lots of movement in <a href="http://mozilla.github.io/mozregression">mozregression</a> (a tool for automatically determining when a regression was introduced in Firefox by bisecting builds on ftp.mozilla.org) in the last few months. Here&rsquo;s some highlights:</p>
 
 <ul>
  <li>Support for win64 nightly and inbound builds (Kapil Singh, Vaibhav Agarwal)</li>
@@ -307,11 +307,11 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
  <li>Way better logging and printing of remaining time to finish bisection (Julien Pagès)</li>
  <li>Much improved performance when bisecting inbound (Julien)</li>
  <li>Support for automatic determination on whether a build is good/bad via a custom script (Julien)</li>
- <li>Tons of bug fixes and other robustness improvements (me, Sam, Julien, others&#8230;)</li></ul>
+ <li>Tons of bug fixes and other robustness improvements (me, Sam, Julien, others)</li></ul>
 
-<p>Also thanks to Julien, we have a <a href="http://mozilla.github.io/mozregression/">spiffy new website</a> which documents many of these features. If it&#8217;s been a while, be sure to <a href="http://mozilla.github.io/mozregression/install.html">update your copy of mozregression to the latest version</a> and check out the site for documentation on how to use the new features described above!</p>
+<p>Also thanks to Julien, we have a <a href="http://mozilla.github.io/mozregression/">spiffy new website</a> which documents many of these features. If it&rsquo;s been a while, be sure to <a href="http://mozilla.github.io/mozregression/install.html">update your copy of mozregression to the latest version</a> and check out the site for documentation on how to use the new features described above!</p>
 
-<p>Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&#8217;s just that much more useful to Firefox contributors everywhere.</p> 
+<p>Thanks to everyone involved (especially Julien) for all the hard work. Hopefully the payoff will be a tool that&rsquo;s just that much more useful to Firefox contributors everywhere.</p> 
   <hr/>
 </article>
 <article>
@@ -321,18 +321,18 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Web.html">Web</a></span></p>
   </header>
 
-<p>Over last few months, I discovered the joy that is CSS Flexbox, which solves the &#8220;how do I lay out this set of div&#8217;s in horizontally or vertically&#8221;. I&#8217;ve used it in three projects so far:</p>
+<p>Over last few months, I discovered the joy that is CSS Flexbox, which solves the &ldquo;how do I lay out this set of div&rsquo;s in horizontally or vertically&rdquo;. I&rsquo;ve used it in three projects so far:</p>
 
 <ul>
  <li>Centering the timer interface in my <a href="http://wrla.ch/blog/2014/08/a-new-meditation-app/">meditation app</a>, so that it scales nicely from a 320&#215;480 FirefoxOS device all the way up to a high definition monitor</li>
  <li>Laying out the chart / sidebar elements in the <a href="http://eideticker.mozilla.org">Eideticker dashboard</a> so that maximum horizontal space is used</li>
  <li>Fixing various problems in the <a href="http://treeherder.mozilla.org">Treeherder UI</a> on smaller screens (see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1043474">bug 1043474</a> and its dependent bugs)</li></ul>
 
-<p>When I talk to people about their troubles with CSS, layout comes up really high on the list. Historically, basic layout problems like a panel of vertical buttons have been ridiculously difficult, involving hacks involving floating divs and absolute positioning or <a href="http://layout.jquery-dev.com/">JavaScript layout libraries</a>. This is why people write articles entitled <a href="http://uxmag.com/articles/give-and-use-tables">&#8220;Give up and use tables&#8221;</a>.</p>
+<p>When I talk to people about their troubles with CSS, layout comes up really high on the list. Historically, basic layout problems like a panel of vertical buttons have been ridiculously difficult, involving hacks involving floating divs and absolute positioning or <a href="http://layout.jquery-dev.com/">JavaScript layout libraries</a>. This is why people write articles entitled <a href="http://uxmag.com/articles/give-and-use-tables">&ldquo;Give up and use tables&rdquo;</a>.</p>
 
-<p>Flexbox has pretty much put an end to these problems for me. There&#8217;s no longer any need to &#8220;give up and use tables&#8221; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&#8217;re so great. I think we&#8217;re pretty close to Flexbox being supported across all the major browsers, so it&#8217;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.</p>
+<p>Flexbox has pretty much put an end to these problems for me. There&rsquo;s no longer any need to &ldquo;give up and use tables&rdquo; because using flexbox is pretty much just *like* using tables for layout, just with more uniform and predictable behaviour. They&rsquo;re so great. I think we&rsquo;re pretty close to Flexbox being supported across all the major browsers, so it&rsquo;s fair to start using them for custom web applications where compatibility with (e.g.) IE8 is not an issue.</p>
 
-<p>To try and spread the word, I wrote up <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications">a howto article on using flexbox for web applications on MDN</a>, covering some of the common use cases I mention above. If you&#8217;ve been curious about flexbox but unsure how to use it, please have a look.</p> 
+<p>To try and spread the word, I wrote up <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_flexbox_to_lay_out_web_applications">a howto article on using flexbox for web applications on MDN</a>, covering some of the common use cases I mention above. If you&rsquo;ve been curious about flexbox but unsure how to use it, please have a look.</p> 
   <hr/>
 </article>
 <article>
@@ -346,11 +346,11 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 <ol>
  <li>
-  <p>Thanks to Sam Garrett, you can now specify a different branch other than inbound to get finer grained regression ranges from. E.g. if you&#8217;re pretty sure a regression occurred on fx-team, you can do something like:   <code>mozregression --inbound-branch fx-team -g 2014-09-13 -b 2014-09-14</code></p></li>
- <li>Fixed a bug where we could get an incorrect regression range (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1059856">bug 1059856</a>). Unfortunately the root cause of the bug is still open (it&#8217;s a bit tricky to match mozilla-central commits to that of other branches) but I think this most recent fix should make things work in 99.9% of cases. Let me know if I&#8217;m wrong.</li>
+  <p>Thanks to Sam Garrett, you can now specify a different branch other than inbound to get finer grained regression ranges from. E.g. if you&rsquo;re pretty sure a regression occurred on fx-team, you can do something like:  <code>mozregression --inbound-branch fx-team -g 2014-09-13 -b 2014-09-14</code></p></li>
+ <li>Fixed a bug where we could get an incorrect regression range (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1059856">bug 1059856</a>). Unfortunately the root cause of the bug is still open (it&rsquo;s a bit tricky to match mozilla-central commits to that of other branches) but I think this most recent fix should make things work in 99.9% of cases. Let me know if I&rsquo;m wrong.</li>
  <li>Thanks to Julien Pagès, we now download the inbound build metadata in parallel, which speeds up inbound bisection quite significantly</li></ol>
 
-<p>If you know a bit of python, contributing to mozregression is a great way to have a high impact on Mozilla. Many platform developers use this project in their day-to-day work, but there&#8217;s still <a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;#038;product=Testing">lots of room for improvement</a>.</p> 
+<p>If you know a bit of python, contributing to mozregression is a great way to have a high impact on Mozilla. Many platform developers use this project in their day-to-day work, but there&rsquo;s still <a href="https://bugzilla.mozilla.org/buglist.cgi?component=mozregression&amp;product=Testing">lots of room for improvement</a>.</p> 
   <hr/>
 </article>
 <article>
@@ -360,9 +360,9 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Over the past two weeks, I&#8217;ve been working a bit on the <a href="http://treeherder.mozilla.org">Treeherder</a> front end (our interface to managing build and test jobs from mercurial changesets), trying to help get things in shape so that the sheriffs can feel comfortable transitioning to it from <a href="https://tbpl.mozilla.org/">tbpl</a> by the end of the quarter.</p>
+<p>Over the past two weeks, I&rsquo;ve been working a bit on the <a href="http://treeherder.mozilla.org">Treeherder</a> front end (our interface to managing build and test jobs from mercurial changesets), trying to help get things in shape so that the sheriffs can feel comfortable transitioning to it from <a href="https://tbpl.mozilla.org/">tbpl</a> by the end of the quarter.</p>
 
-<p>One thing that has pleasantly surprised me is just how easy it&#8217;s been to get going and be productive. The process looks like this on Linux or Mac:</p>
+<p>One thing that has pleasantly surprised me is just how easy it&rsquo;s been to get going and be productive. The process looks like this on Linux or Mac:</p>
 
 <pre><code>git clone https://github.com/mozilla/treeherder-ui.git
 cd treeherder-ui/webapp
@@ -370,11 +370,11 @@ cd treeherder-ui/webapp
 
 <p>Then just load http://localhost:8000 in your favorite web browser (Firefox) and you should be good to go (it will load data from the actually treeherder site). If you want to make modifications to the HTML, Javascript, or CSS just go ahead and do so with your favorite editor and the changes will be immediately reflected.</p>
 
-<p>We have a fair backlog of issues to get through, many of them related to the front end. If you&#8217;re interested in helping out, please have a look:</p>
+<p>We have a fair backlog of issues to get through, many of them related to the front end. If you&rsquo;re interested in helping out, please have a look:</p>
 
 <p><a href="https://wiki.mozilla.org/Auto-tools/Projects/Treeherder#Bugs_.26_Project_Tracking">https://wiki.mozilla.org/Auto-tools/Projects/Treeherder#Bugs_.26_Project_Tracking</a></p>
 
-<p>If nothing jumps out at you, please drop by irc.mozilla.org #treeherder and we can probably find something for you to work on. We&#8217;re most active during Pacific Time working hours.</p> 
+<p>If nothing jumps out at you, please drop by irc.mozilla.org #treeherder and we can probably find something for you to work on. We&rsquo;re most active during Pacific Time working hours.</p> 
   <hr/>
 </article>
 <article>
@@ -384,33 +384,33 @@ cd treeherder-ui/webapp
     <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Meditation.html">Meditation</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/zen.html">zen</a></span></p>
   </header>
 
-<p>I had some time on my hands two weekends ago and was feeling a bit of an itch to build something, so I decided to do a project I&#8217;ve had in the back of my head for a while: a meditation timer.</p>
+<p>I had some time on my hands two weekends ago and was feeling a bit of an itch to build something, so I decided to do a project I&rsquo;ve had in the back of my head for a while: a meditation timer.</p>
 
-<p>If you&#8217;ve been following this log, you&#8217;d know that <a href="http://wrla.ch/blog/category/meditation/">meditation</a> has been a pretty major interest of mine for the past year. The foundation of my practice is a daily round of seated meditation at home, where I have been attempting to follow the breath and generally try to connect with the world for a set period every day (usually varying between 10 and 30 minutes, depending on how much of a rush I&#8217;m in).</p>
+<p>If you&rsquo;ve been following this log, you&rsquo;d know that <a href="http://wrla.ch/blog/category/meditation/">meditation</a> has been a pretty major interest of mine for the past year. The foundation of my practice is a daily round of seated meditation at home, where I have been attempting to follow the breath and generally try to connect with the world for a set period every day (usually varying between 10 and 30 minutes, depending on how much of a rush I&rsquo;m in).</p>
 
 <p>Clock watching is rather distracting while sitting so having a tool to notify you when a certain amount of time has elapsed is quite useful. Writing a smartphone app to do this is an obvious idea, and indeed approximately a zillion of these things have been written for Android and iOS. Unfortunately, most are not very good. Really, I just want something that does this:</p>
 
 <ol>
  <li>Select a meditation length (somewhere between 10 and 40 minutes).</li>
  <li>Sound a bell after a short preparation to demarcate the beginning of meditation.</li>
- <li>While the meditation period is ongoing, do a countdown of the time remaining (not strictly required, but useful for peace of mind in case you&#8217;re wondering whether you&#8217;ve really only sat for 25 minutes).</li>
+ <li>While the meditation period is ongoing, do a countdown of the time remaining (not strictly required, but useful for peace of mind in case you&rsquo;re wondering whether you&rsquo;ve really only sat for 25 minutes).</li>
  <li>Sound a bell when the meditation ends.</li></ol>
 
 <p>Yes, meditation can get more complex than that. In Zen practice, for example, sometimes you have several periods of varying length, broken up with kinhin (walking meditation). However, that mostly happens in the context of a formal setting (e.g. <a href="http://en.wikipedia.org/wiki/Zendo">a Zendo</a>) where you leave your smartphone at the door. Trying to shoehorn all that into an app needlessly complicates what should be simple.</p>
 
-<p>Even worse are the apps which &#8220;chart&#8221; your progress or have other gimmicks to connect you to a virtual &#8220;community&#8221; of meditators. I have to say I find that kind of stuff really turns me off. Meditation should be about connecting with reality in a more fundamental way, not charting gamified statistics or interacting online. We already have way too much of that going on elsewhere in our lives without adding even more to it.</p>
+<p>Even worse are the apps which &ldquo;chart&rdquo; your progress or have other gimmicks to connect you to a virtual &ldquo;community&rdquo; of meditators. I have to say I find that kind of stuff really turns me off. Meditation should be about connecting with reality in a more fundamental way, not charting gamified statistics or interacting online. We already have way too much of that going on elsewhere in our lives without adding even more to it.</p>
 
-<p>So, you might ask why the alarm feature of most clock apps isn&#8217;t sufficient? Really, it is most of the time. A specialized app can make selecting the interval slightly more convenient and we can preselect an appropriate bell sound up front. It&#8217;s also nice to hear something to demarcate the start of a meditation session. But honestly I didn&#8217;t have much of a reason to write this other than the fact than I could. Outside of work, I&#8217;ve been in a bit of a creative rut lately and felt like I needed to build something, anything and put it out into the world (even if it&#8217;s tiny and only a very incremental improvement over what&#8217;s out there already). So here it is:</p>
+<p>So, you might ask why the alarm feature of most clock apps isn&rsquo;t sufficient? Really, it is most of the time. A specialized app can make selecting the interval slightly more convenient and we can preselect an appropriate bell sound up front. It&rsquo;s also nice to hear something to demarcate the start of a meditation session. But honestly I didn&rsquo;t have much of a reason to write this other than the fact than I could. Outside of work, I&rsquo;ve been in a bit of a creative rut lately and felt like I needed to build something, anything and put it out into the world (even if it&rsquo;s tiny and only a very incremental improvement over what&rsquo;s out there already). So here it is:</p>
 
 <p><a href="/files/2014/08/meditation-timer-screen.png"><img src="/files/2014/08/meditation-timer-screen.png" alt="meditation-timer-screen" width="320" height="483" class="alignnone size-full wp-image-1089" srcset="/files/2014/08/meditation-timer-screen-198x300.png 198w, /files/2014/08/meditation-timer-screen.png 320w" sizes="(max-width: 320px) 100vw, 320px" /></a></p>
 
-<p>The app was written entirely in HTML5 so it should work fine on pretty much any reasonably modern device, desktop or mobile. I tested it on my Nexus 5 (Chrome, Firefox for Android)<sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup>, FirefoxOS Flame, and on my laptop (Chrome, Firefox, Safari). It lives on a <a href="http://meditation.wrla.ch">subdomain of this site</a> or you can <a href="https://marketplace.firefox.com/app/meditation/">grab it from the Firefox Marketplace</a> if you&#8217;re using some variant of Firefox (OS). The source, such as it is, <a href="http://github.com/wlach/meditation">can be found</a> on github.</p>
+<p>The app was written entirely in HTML5 so it should work fine on pretty much any reasonably modern device, desktop or mobile. I tested it on my Nexus 5 (Chrome, Firefox for Android)<sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup>, FirefoxOS Flame, and on my laptop (Chrome, Firefox, Safari). It lives on a <a href="http://meditation.wrla.ch">subdomain of this site</a> or you can <a href="https://marketplace.firefox.com/app/meditation/">grab it from the Firefox Marketplace</a> if you&rsquo;re using some variant of Firefox (OS). The source, such as it is, <a href="http://github.com/wlach/meditation">can be found</a> on github.</p>
 
 <p>I should acknowledge taking some design inspiration from the <a href="http://helloform.com/projects/mind/">Mind application</a> for iOS, which has a similarly minimalistic take on things. Check that out too if you have an iPhone or iPad!</p>
 
 <p>Happy meditating!</p>
 
-<p><sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup> Note that there isn&#8217;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock">requestWakeLock</a> API to make sure that doesn&#8217;t happen. I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113">a bug</a> to get this implemented on Firefox for Android.</p> 
+<p><sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup> Note that there isn&rsquo;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock">requestWakeLock</a> API to make sure that doesn&rsquo;t happen. I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113">a bug</a> to get this implemented on Firefox for Android.</p> 
   <hr/>
 </article>
 <footer>

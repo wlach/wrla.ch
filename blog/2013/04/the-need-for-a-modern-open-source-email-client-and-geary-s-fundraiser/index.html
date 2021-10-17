@@ -3,14 +3,14 @@
   <head>
 
     <meta charset="utf-8" />
-    <title>Mass code relicensing with facebook&#8217;s codemod</title>
-    <meta name="description" content="Recently the Firefox source repository (mozilla-central) was converted over recently to a new license with a lovely short boilerplate. This is great, but here in automation and tools, we have a fairly large number of projects that live outside of the main..." />
+    <title>The need for a modern open source email client and Geary's fundraiser</title>
+    <meta name="description" content="One of my frustrations with the Linux desktop is the lack of an email client that's in the same league as GMail or Apple's mail.app. Thunderbird is ok as far as it goes (I use it for my day-to-day Mozilla correspondence) but I miss having a decent convers..." />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Mozilla" />
+    <meta name="keywords" content="email, Free Software, GNOME" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="canonical" href="https://wrla.ch/blog/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod/" />
-    <link rel="next" href="/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/" /> <link rel="prev" href="/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/" />
+    <link rel="canonical" href="https://wrla.ch/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-s-fundraiser/" />
+    <link rel="next" href="/blog/2013/03/a-visit-to-the-montreal-zen-center/" /> <link rel="prev" href="/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last/" />
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link
@@ -92,20 +92,17 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
-    <h1>Mass code relicensing with facebook&#8217;s codemod</h1>
-    <p class="index-date">Jun 7th, 2012</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+    <h1>The need for a modern open source email client and Geary&rsquo;s fundraiser</h1>
+    <p class="index-date">Apr 19th, 2013</p>
+    <p><span class="tags"><a href="/tags/email.html">email</a>  <a href="/tags/Free-Software.html">Free Software</a>  <a href="/tags/GNOME.html">GNOME</a></span></p>
   </header>
 
-<p>Recently the Firefox source repository (mozilla-central) was converted over recently to a new license with a <a href="http://www.mozilla.org/MPL/headers/">lovely short boilerplate</a>. This is great, but here in <a href="https://wiki.mozilla.org/Auto-tools">automation and tools</a>, we have a fairly large number of projects that live outside of the main tree but for which the new license still applies. A few weeks ago, I wanted to move one our projects over (mozbase), but didn&#8217;t want to spend hours manually editing text files. I understand that a script was used to convert mozilla-central, but a quick google didn&#8217;t turn it up. <strong>[ edit:** thanks to Ed Morley for pointing out to me that it lives here: <a href="http://hg.mozilla.org/users/gerv_mozilla.org/relic/">http://hg.mozilla.org/users/gerv_mozilla.org/relic/</a> **]</strong></p>
+<div class="figure"><img src="http://www.yorba.org/images/igg/geary-2.png" alt="" />
+ <p class="caption"></p></div>
 
-<p>I surely could have asked about where this script is, but this problem gave me an excuse to try something that I&#8217;d been meaning to for a while: Facebook&#8217;s <a href="https://github.com/facebook/codemod">codemod</a>. Codemod is a neat little command-line utility which aims to help with mass refactorings of code. All you have to do is provide a few regular expressions to replace, and off it goes. I tried it out with mozbase, and the results were great: 5 minutes spent coming up with a regular expression and jiggering with command line options, and the job was done.</p>
+<p>One of my frustrations with the Linux desktop is the lack of an email client that&rsquo;s in the same league as GMail or Apple&rsquo;s mail.app. <a href="https://www.mozilla.org/EN/thunderbird">Thunderbird</a> is ok as far as it goes (I use it for my day-to-day Mozilla correspondence) but I miss having a decent conversation view of email (yes, I tried the <a href="https://addons.mozilla.org/en-us/thunderbird/addon/gmail-conversation-view/">conversation view extension</a> &#8212; while impressive in some ways, it ultimately didn&rsquo;t work particularly well for me) and the search functionality is rather slow and cumbersome. I&rsquo;d like to be optimistic about these problems being fixed at some point but after nearly 2 years of using the product without much visible improvement my expectation of that happening is rather low.</p>
 
-<p>I had the desire to do this again today for <a href="http://github.com/mozilla/eideticker">Eideticker</a>, and decided to document the (extremely simple) process for posterity. I just used this simple command line&#8230;</p>
-
-<p><code>../codemod/src/codemod.py --extensions py -m '# \*\*\*\*\* BEGIN LICENSE.*END LICENSE BLOCK \*\*\*\*\*' '# This Source Code Form is subject to the terms of the Mozilla Public\n# License, v. 2.0. If a copy of the MPL was not distributed with this file,\n# You can obtain one at http://mozilla.org/MPL/2.0/.'</code></p>
-
-<p>&#8230; et voila, out popped <a href="https://github.com/mozilla/eideticker/commit/9456933670fb4590af3060f4ff40d11271859b8d">shiny new boilerplate</a>.</p>
+<p>The <a href="http://yorba.org">Yorba</a> non-profit recently started a <a href="http://www.indiegogo.com/projects/geary-a-beautiful-modern-open-source-email-client">fundraiser</a> to work on the next edition of Geary, an email client which I hope will fill the niche that I&rsquo;m talking about. It&rsquo;s pretty rough around the edges still, but even at this early stage the conversation view is beautiful and more or less exactly what I want. The example of Shotwell (their photo management application) suggests that they know a thing or two about creating robust and useable software, not a common thing in this day and age. In any case, their pitch was compelling enough for me to donate a few dollars to the cause. If you care about having a great email experience that is completely under your control (and not that of an advertising or product company with their own agenda), then maybe you could too?</p>
   <hr/>
 </article>
     </div>

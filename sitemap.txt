@@ -11,7 +11,7 @@ https://wrla.ch/blog/2013/03/documentation-for-mozdevice/
 https://wrla.ch/blog/2013/05/proof-of-concept-eideticker-dashboard-for-firefoxos/
 https://wrla.ch/blog/2020/11/iodide-retrospective/
 https://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/
-https://wrla.ch/blog/2011/10/faster-but-not-quite-there-yet-8230/
+https://wrla.ch/blog/2011/10/faster-but-not-quite-there-yet/
 https://wrla.ch/blog/2018/10/pydata-nyc-2018/
 https://wrla.ch/blog/2013/02/eideticker-for-firefoxos/
 https://wrla.ch/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up/
@@ -50,7 +50,7 @@ https://wrla.ch/blog/2021/01/the-glean-dictionary/
 https://wrla.ch/blog/2010/11/rice-038-barley-rae-spoon-at-casa-del-popolo/
 https://wrla.ch/blog/2010/04/i-can-has-edmonton-transit-iphone-app/
 https://wrla.ch/blog/2016/10/slow-treeherder-fast-treeherder/
-https://wrla.ch/blog/2013/09/how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year/
+https://wrla.ch/blog/2013/09/how-to-make-great-coffee-that-doesn-t-generate-966-million-pounds-of-waste-a-year/
 https://wrla.ch/blog/2013/02/finding-a-camera-for-eideticker/
 https://wrla.ch/blog/2013/04/actual-useful-firefoxos-eideticker-results-at-last/
 https://wrla.ch/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/
@@ -58,7 +58,7 @@ https://wrla.ch/blog/2009/04/creating-a-google-transit-feed-for-fun-and-profit/
 https://wrla.ch/blog/2021/08/python-dependency-gotchas-always-go-to-the-source/
 https://wrla.ch/blog/2015/04/pycon-2015/
 https://wrla.ch/blog/2020/01/conda-is-pretty-great/
-https://wrla.ch/blog/2012/06/mass-code-relicensing-with-facebook-8217-s-codemod/
+https://wrla.ch/blog/2012/06/mass-code-relicensing-with-facebook-s-codemod/
 https://wrla.ch/blog/2012/05/launching-random-web-browsers-on-android/
 https://wrla.ch/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/
 https://wrla.ch/blog/2013/08/nixi-update/
@@ -75,11 +75,11 @@ https://wrla.ch/blog/2018/02/derived-versus-direct/
 https://wrla.ch/blog/2021/02/community-mozilla-people-first-open-source-second/
 https://wrla.ch/blog/2020/06/mozregression-gui-now-available-for-linux/
 https://wrla.ch/blog/2012/09/more-eideticker-happenings-profiling-and-startup-testing/
-https://wrla.ch/blog/2010/02/it-8217-s-alive/
+https://wrla.ch/blog/2010/02/it-s-alive/
 https://wrla.ch/blog/2014/03/upcoming-travels-to-japan-and-taiwan/
 https://wrla.ch/blog/2015/09/perfherder-summer-of-contribution-thoughts/
 https://wrla.ch/blog/2010/03/nexus-one/
-https://wrla.ch/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-8217-s-fundraiser/
+https://wrla.ch/blog/2013/04/the-need-for-a-modern-open-source-email-client-and-geary-s-fundraiser/
 https://wrla.ch/blog/2012/04/eideticker-with-less-eideticker/
 https://wrla.ch/blog/2012/10/using-the-dm-utility-to-interact-with-android-or-firefoxos-devices/
 https://wrla.ch/blog/2012/04/gofaster-dashboard-back-online/
@@ -92,7 +92,7 @@ https://wrla.ch/blog/2017/02/cancel-all-the-things/
 https://wrla.ch/blog/2011/12/an-api-for-amt-data/
 https://wrla.ch/blog/2015/01/mozregression-updates/
 https://wrla.ch/blog/2017/07/the-vastness/
-https://wrla.ch/blog/2014/03/it-8217-s-all-about-the-entropy/
+https://wrla.ch/blog/2014/03/it-s-all-about-the-entropy/
 https://wrla.ch/blog/2017/10/better-or-worse-by-what-measure/
 https://wrla.ch/blog/2020/04/mozregression-for-macos/
 https://wrla.ch/blog/2021/03/blog-moving-back-to-wrla-ch/
@@ -131,7 +131,7 @@ https://wrla.ch/blog/2012/09/say-hello-to-frof/
 https://wrla.ch/blog/2017/07/taking-over-an-npm-package-sanity-prevails/
 https://wrla.ch/blog/2010/11/back-to-wordperfect-libwpd-0-9-0/
 https://wrla.ch/blog/2011/12/eideticker-areas-to-explore/
-https://wrla.ch/blog/2011/10/-8220-developers-can-8217-t-do-ui-8221/
+https://wrla.ch/blog/2011/10/developers-can-t-do-ui/
 https://wrla.ch/blog/2011/11/measuring-what-the-user-sees/
 https://wrla.ch/blog/2010/11/ginger-tea-and-channa-masala/
 https://wrla.ch/blog/2011/11/a-planet-to-call-our-own/
@@ -144,7 +144,7 @@ https://wrla.ch/blog/2014/10/ebola-mini-campaign-successful-6212-for-msf/
 https://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/
 https://wrla.ch/blog/2011/09/changes/
 https://wrla.ch/blog/2011/11/hellofax-rocks-my-world/
-https://wrla.ch/blog/2013/03/follow-up-on-8220-finding-a-camera-for-eideticker-8221/
+https://wrla.ch/blog/2013/03/follow-up-on-finding-a-camera-for-eideticker/
 https://wrla.ch/blog/2017/06/using-docker-to-run-automated-tests/
 https://wrla.ch/blog/2020/05/the-humble-blog/
 https://wrla.ch/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit/

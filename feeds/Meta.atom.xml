@@ -1,23 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
- <title type="text">William Lachance's Log: Posts tagged 'meta'</title>
- <link rel="self" href="https://wrla.ch/feeds/meta.atom.xml" />
- <link href="https://wrla.ch/tags/meta.html" />
- <id>urn:https-wrla-ch:-tags-meta-html</id>
- <updated>2021-03-21T07:12:19Z</updated>
+ <title type="text">William Lachance's Log: Posts tagged 'Meta'</title>
+ <link rel="self" href="https://wrla.ch/feeds/Meta.atom.xml" />
+ <link href="https://wrla.ch/tags/Meta.html" />
+ <id>urn:https-wrla-ch:-tags-Meta-html</id>
+ <updated>2016-01-02T18:06:55Z</updated>
  <entry>
-  <title type="text">Blog moving back to wrla.ch</title>
-  <link rel="alternate" href="https://wrla.ch/blog/2021/03/blog-moving-back-to-wrla-ch/?utm_source=meta&amp;utm_medium=Atom" />
-  <id>urn:https-wrla-ch:-blog-2021-03-blog-moving-back-to-wrla-ch</id>
-  <published>2021-03-21T07:12:19Z</published>
-  <updated>2021-03-21T07:12:19Z</updated>
+  <title type="text">New year, new blog</title>
+  <link rel="alternate" href="https://wrla.ch/blog/2016/01/new-year-new-blog/?utm_source=Meta&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2016-01-new-year-new-blog</id>
+  <published>2016-01-02T18:06:55Z</published>
+  <updated>2016-01-02T18:06:55Z</updated>
   <author>
    <name>William Lachance</name></author>
   <content type="html">
-&lt;p&gt;House keeping news: I&amp;rsquo;m moving this blog back to the &lt;a href="https://wrla.ch"&gt;wrla.ch&lt;/a&gt; domain from wlach.github.io. This domain sorta kinda worked before (I set up a &lt;a href="https://netlify.com"&gt;netlify&lt;/a&gt; deploy a couple years ago), but the software used to generate this blog referenced github all over the place in its output, so it didn&amp;rsquo;t really work as you&amp;rsquo;d expect. Anyway, this will be the last entry published on wlach.github.io: my plan is to turn that domain into a set of redirects in the future.&lt;/p&gt;
+&lt;p&gt;After thinking about doing it for longer than I&amp;rsquo;d like to admit, I finally bit the bullet and decided to migrate away from WordPress, towards a markdown-based blog generator (&lt;a href="https://github.com/greghendershott/frog"&gt;Frog&lt;/a&gt; in this case). All the content from the old blog is coming with me (thanks mostly to WordPress&amp;rsquo;s jekyll exporter plugin).&lt;/p&gt;
 
-&lt;p&gt;I don&amp;rsquo;t know how many of you are out there who still use RSS, but if you do, please update your feeds. I have filed a bug to update my Planet Mozilla entry, so hopefully the change there will be seamless.&lt;/p&gt;
+&lt;p&gt;While WordPress is a pretty impressive piece of software, it isn&amp;rsquo;t the ideal platform for the sorts of things I want to express. It&amp;rsquo;s a reasonable tool for publishing straight longform essays, but my more interesting posts tend to also include images, code and examples, and sometimes &lt;a href="/blog/2014/03/it-8217-s-all-about-the-entropy/"&gt;even math&lt;/a&gt;. Making those look reasonable involved a bunch of manual effort and the end result wasn&amp;rsquo;t particularly great. I was particularly disappointed in its (lack of) support for inline code snippits.&lt;/p&gt;
 
-&lt;p&gt;Why? Recent events have made me not want to tie my public web presence to a particular company (especially a larger one, like Microsoft). I don&amp;rsquo;t have any immediate plans to move this blog off of github, but this gives me that option in the future. For those wondering, the original rationale for moving &lt;em&gt;to&lt;/em&gt; github is in &lt;a href="/blog/2016/01/new-year-new-blog/"&gt;this post&lt;/a&gt;. Looking back, the idea of moving away from a VPS and WordPress made sense, the move away from my own domain less so. I think it may have been harder to set up static hosting (esp. with HTTPS) at that time&amp;hellip; or I might have just been ignorant.&lt;/p&gt;
+&lt;p&gt;Perhaps this set of problems is resolvable by installing the right set of plugins. Perhaps. But therein lies my second problem with WordPress: it&amp;rsquo;s big, complex piece of software written in PHP, and I&amp;rsquo;m frankly tired of figuring out how to (barely) make it do the things I need it to do, while half-worrying that the new fancy WPAwesome plugin I&amp;rsquo;m installing is malware.&lt;/p&gt;
 
-&lt;p&gt;In related news, I decided to reactivate my twitter account: you can once again find me there as &lt;a href="https://twitter.com/wrlach"&gt;@wrlach&lt;/a&gt; (my old username got taken in my absence). I&amp;rsquo;m not totally thrilled about this (I basically stand by what I wrote a &lt;a href="/blog/2018/01/quitting-twitter/"&gt;few years ago&lt;/a&gt;, except maybe the concession I made to Facebook being &amp;ldquo;ok&amp;rdquo;), but Twitter seems to be where my industry peers are. As someone who doesn&amp;rsquo;t have a large organic following, I&amp;rsquo;ve come to really value forums where I can share my work. That said, I&amp;rsquo;m going to be very selective about what I engage with on that site: I appreciate your understanding.&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;As I&amp;rsquo;ve grown older, I&amp;rsquo;m increasingly realizing the limits to what I have the time (and energy) to accomplish. While &amp;ldquo;Making WordPress do the things I want&amp;rdquo; is something I &lt;em&gt;could&lt;/em&gt; continue working on, it would come at the expense of other things that I find more rewarding, whether that be meditating, &lt;a href="http://neuralnetworksanddeeplearning.com/"&gt;brushing up on deep learning&lt;/a&gt;, or even just writing more stuff here. I don&amp;rsquo;t expect this new blog to be maintenance free, but it should be an order of magnitude simpler using Frog, which is narrowly focused on my rather technical use case and specifically has great support for inline code, images, and math.&lt;/p&gt;
+
+&lt;p&gt;Along the same lines, I&amp;rsquo;m completely tired of maintaining the Linux server that my blog ran on. Registering domains and setting up my own HTTP server seemed like an interesting diversion in 2009, when cheap Linux VPSes were first starting to appear on the market. These days&amp;hellip; well, not so much. It&amp;rsquo;s a minor, though not completely trivial, expense ($10 USD/mo.) but more importantly it&amp;rsquo;s a sink of my time to install security patches, make sure things are to up to date, etc. It feels like I&amp;rsquo;m solving the same (boring) set of problems over and over, with no real payoff. Time to move on.&lt;/p&gt;
+
+&lt;p&gt;Thus, this blog (along with my other hosted projects, like &lt;a href="http://nixi.ca"&gt;NIXI&lt;/a&gt; and &lt;a href="meditation.wrla.ch"&gt;meditation&lt;/a&gt;) will be moving to &lt;a href="https://pages.github.com/"&gt;github pages&lt;/a&gt;. Initially I had the worry that this move would mean that I wouldn&amp;rsquo;t be &amp;ldquo;in control of my own destiny&amp;rdquo;, but on reflection I don&amp;rsquo;t think that&amp;rsquo;s true. The fact that my blog is basically a giant git repository should make switching hosting providers quite easy if Github becomes unsatisfactory for whatever reason.&lt;/p&gt;
+
+&lt;p&gt;Indeed, even the custom domain (wrla.ch) seems unnecessary at this point. Although github pages does support them, I&amp;rsquo;m just not seeing the value in keeping it around. What purpose does it &lt;em&gt;really&lt;/em&gt; serve? All a custom personal domain really says to me is that the person had the time/money to register it. Is that something that someone in my position really needs to communicate? And if I don&amp;rsquo;t need it, why continue with the unnecessary expense and hassle?&lt;/p&gt;
+
+&lt;p&gt;Perhaps the only legitimate reason to keep the domain would be continuity for readers (i.e. there&amp;rsquo;s a link or two in their browser history), but I don&amp;rsquo;t think that&amp;rsquo;s a big deal in my case. Yes, people might occasionally be thrown off and have to use Yahoo/Google to re-find something&amp;hellip; but for the type of content I host, I don&amp;rsquo;t think that will take too much collective time. In the grand stream of things, I&amp;rsquo;m pretty small potatoes. Most of my traffic just comes through planet.mozilla.org, and that&amp;rsquo;s easy to redirect automatically.&lt;/p&gt;
+
+&lt;p&gt;So though I&amp;rsquo;ll be keeping around wrla.ch for a little bit to give people time to migrate their links (it doesn&amp;rsquo;t expire until the end of February 2016), it will also be going away. Please redirect your feed readers to &lt;a href="https://wlach.github.io"&gt;wlach.github.io&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now, onto more interesting things!&lt;/p&gt;</content></entry>
+ <entry>
+  <title type="text">A new domain</title>
+  <link rel="alternate" href="https://wrla.ch/blog/2012/02/a-new-domain/?utm_source=Meta&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2012-02-a-new-domain</id>
+  <published>2012-02-06T05:00:00Z</published>
+  <updated>2012-02-06T05:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;A few years ago, I fancied the idea of creating my own software consulting business. For some reason, I thought &amp;ldquo;Masala Labs&amp;rdquo; would be a cool and witty name for it (&amp;ldquo;masala&amp;rdquo; means spice mixture in Hindi, and who doesn&amp;rsquo;t like spicy things?), so I registered the domain along with the associated small business paperwork in Nova Scotia. I only ever had one client, and it was only a few months before I wound up joining a few of my colleagues in founding &amp;ldquo;The Navarra Group&amp;rdquo; (which is also now defunct, a story I will perhaps tell at another time), so it never got very huge.&lt;/p&gt;
+
+&lt;p&gt;Anyway, I still had my own domain, and I wanted to move my blog from livejournal, which was beginning to jump the shark. The masalalabs domain was mine, so why not use it? I created a wordpress blog, pointed my DNS registration at it, and started writing. This worked well for a while (names don&amp;rsquo;t really matter for random personal blogs), but lately I&amp;rsquo;ve been wanting to start a new project and &amp;ldquo;Masala Labs&amp;rdquo; doesn&amp;rsquo;t exactly seem like a winning banner for me to put it under.&lt;/p&gt;
+
+&lt;p&gt;So I&amp;rsquo;ve decided it&amp;rsquo;s time for a bit of a change. I just registered the swiss domain name &amp;#8216;wrla.ch&amp;rsquo;, created a fancy new &lt;a href="http://wrla.ch"&gt;landing page&lt;/a&gt;, and made this blog its first &amp;ldquo;sub site&amp;rdquo;. More to come.&lt;/p&gt;
+
+&lt;p&gt;So, for all 20 of you who are subscribed to my doings, please update your links. For those of you using Google Reader / RSS, the new feed is at &lt;a href="http://wrla.ch/blog/feed/"&gt;this URL&lt;/a&gt;. All the old masalalabs links should at least &lt;strong&gt;work&lt;/strong&gt; until the domain expires in a few years, so there&amp;rsquo;s no huge rush. Then again, you&amp;rsquo;ll probably forget if you don&amp;rsquo;t do it now (and thus be deprived of my endless ravings about checkerboarding on mobile Fennec on Android), so why wait?&lt;/p&gt;</content></entry>
+ <entry>
+  <title type="text">Breaking news: Cat watches himself in TV</title>
+  <link rel="alternate" href="https://wrla.ch/blog/2009/03/breaking-news-cat-watches-himself-in-tv/?utm_source=Meta&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2009-03-breaking-news-cat-watches-himself-in-tv</id>
+  <published>2009-03-06T05:00:00Z</published>
+  <updated>2009-03-06T05:00:00Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt; &lt;a title="photo sharing" href="http://www.flickr.com/photos/wlach/3325846322/"&gt;&lt;img style="border: solid 2px #000000;" src="http://farm4.static.flickr.com/3577/3325846322_40e085d6d4_m.jpg" alt="" /&gt;&lt;/a&gt;   
+ &lt;p&gt;
+  &lt;br /&gt;&lt;a href="http://www.flickr.com/photos/wlach/3325846322/"&gt;Cat watching himself&lt;/a&gt;&lt;/p&gt;  
+ &lt;p&gt;Originally uploaded by&lt;a href="http://www.flickr.com/people/wlach/"&gt;William Lachance&lt;/a&gt;
+  &lt;br /&gt;&lt;/p&gt;&lt;/p&gt;
+
+&lt;p&gt;Been meaning to update this more, but I&amp;rsquo;ve been rather busy. Quite a bit of excitement going on, though I haven&amp;rsquo;t been making time to blog about it (I&amp;rsquo;ve been more into the &lt;a href="http://twitter.com/wlach"&gt;twitter&lt;/a&gt; thing lately).&lt;/p&gt;
+
+&lt;p&gt;More soon.&lt;/p&gt;</content></entry></feed>

@@ -9,7 +9,7 @@
     <meta name="keywords" content="Eideticker" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="canonical" href="https://wlach.github.io/tags/Eideticker-3.html" />
+    <link rel="canonical" href="https://wrla.ch/tags/Eideticker-3.html" />
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
@@ -99,9 +99,9 @@
 
 <p>Over the last while, Clint Talbert and I have been working on setting up automatic mobile performance tests using Eideticker (a framework to measure perceived Firefox performance by video capturing automated browser interactions: for more information, see my <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">earlier post</a>).</p>
 
-<p>There&#8217;s many reasons why this is interesting, but probably the most important one is that it can measure differences reliably across different types of mobile browsers. Currently I&#8217;m testing the old XUL fennec, the Android stock browser, and the latest nightlies.</p>
+<p>There&rsquo;s many reasons why this is interesting, but probably the most important one is that it can measure differences reliably across different types of mobile browsers. Currently I&rsquo;m testing the old XUL fennec, the Android stock browser, and the latest nightlies.</p>
 
-<p>I&#8217;m pleased to announce that the first iteration of the dashboard is available for public consumption, on my site.</p>
+<p>I&rsquo;m pleased to announce that the first iteration of the dashboard is available for public consumption, on my site.</p>
 
 <p><a href="http://wrla.ch/eideticker/dashboard/#/canvas">http://wrla.ch/eideticker/dashboard/#/canvas</a></p>
 
@@ -118,18 +118,18 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>I&#8217;ve been spending a bit more time on refining the checkerboarding tests in Eideticker that I talked about last time. Most of my work has been focused on making the results as representative of a real world scenario as possible, to that effect I&#8217;ve been working on:</p>
+<p>I&rsquo;ve been spending a bit more time on refining the checkerboarding tests in Eideticker that I talked about last time. Most of my work has been focused on making the results as representative of a real world scenario as possible, to that effect I&rsquo;ve been working on:</p>
 
 <ul>
  <li>Changed the test case from a web site of my own concoction to a more realistic example (the <a href="http://taskjs.org">taskjs.org</a> site)</li>
  <li>Use actual Android native events (via <a href="http://developer.android.com/guide/developing/tools/monkeyrunner_concepts.html">MonkeyRunner</a>) to synthesize touch-based scrolling instead of simulating the event in JavaScript (which exercises a completely different codepath).</li>
- <li>Fixing various synchronization issues to make results more repeatable. Before captures were of wildly variable lengths, which made the numbers extremely suspect. There&#8217;s probably still a few issues, but much less than before.</li></ul>
+ <li>Fixing various synchronization issues to make results more repeatable. Before captures were of wildly variable lengths, which made the numbers extremely suspect. There&rsquo;s probably still a few issues, but much less than before.</li></ul>
 
-<p>The end result of this is a framework that gives much more meaningful results. The bad news is that the results that I&#8217;m measuring don&#8217;t show a very positive picture for where we&#8217;re at with the native re-write of Firefox. Even relative to the version of mobile Firefox which is currently on the Android Market, we still have some catching up to do. Here&#8217;s some video of the &#8220;old&#8221; firefox in action:</p>
+<p>The end result of this is a framework that gives much more meaningful results. The bad news is that the results that I&rsquo;m measuring don&rsquo;t show a very positive picture for where we&rsquo;re at with the native re-write of Firefox. Even relative to the version of mobile Firefox which is currently on the Android Market, we still have some catching up to do. Here&rsquo;s some video of the &ldquo;old&rdquo; firefox in action:</p>
 
 <video src="/files/eideticker/taskjs_xul.webm" width="600px" controls="controls"></video>
 
-<p>And here&#8217;s the Native fennec (what we&#8217;re currently offering in nightly, with some minor modifications by me to change the way the &#8220;checkerboard&#8221; is drawn for analysis purposes):</p>
+<p>And here&rsquo;s the Native fennec (what we&rsquo;re currently offering in nightly, with some minor modifications by me to change the way the &ldquo;checkerboard&rdquo; is drawn for analysis purposes):</p>
 
 <video src="/files/eideticker/taskjs_native.webm" width="600px" controls="controls"></video>
 
@@ -148,7 +148,7 @@
 
 <p>(by the way, this performance regression is filed as <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447">bug 719447</a>)</p>
 
-<p>I know there&#8217;s lots of great effort going into improving this situation, so I have hope that we&#8217;ll be doing much better on this metric in the coming days/weeks. The process for creating these videos/analyses is mostly automated at this point, so my plan is to create a small dashboard (ala <a href="http://arewefastyet.com">arewefastyet.com</a>) to measure these numbers over time on the latest nightlies. Stay tuned!</p> 
+<p>I know there&rsquo;s lots of great effort going into improving this situation, so I have hope that we&rsquo;ll be doing much better on this metric in the coming days/weeks. The process for creating these videos/analyses is mostly automated at this point, so my plan is to create a small dashboard (ala <a href="http://arewefastyet.com">arewefastyet.com</a>) to measure these numbers over time on the latest nightlies. Stay tuned!</p> 
   <hr/>
 </article>
 <article>
@@ -158,7 +158,7 @@
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>After my <a href="http://wrla.ch/blog/2011/12/year-end-eideticker-update/">post</a> on measuring checkerboarding in mobile Firefox, <a href="http://cmtalbert.wordpress.com/">Clint Talbert</a> (my fearless manager) suggested I run a before and after test to measure the improvement that just landed as part of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=709152">bug 709512</a>. After a bit of cleanup, I did so, measuring the delta between my build on December 20th and the latest version of Aurora. The difference is pretty remarkable: at least on the LG G2X that I&#8217;ve been using for testing, we&#8217;ve gone from checkerboarding between 10&ndash;20% of the time and not checkerboarding almost at all (in between two runs of the test with the Aurora build, there is exactly one frame that checkerboards). All credit to <a href="http://chrislord.net/blog">Chris Lord</a> for that!</p>
+<p>After my <a href="http://wrla.ch/blog/2011/12/year-end-eideticker-update/">post</a> on measuring checkerboarding in mobile Firefox, <a href="http://cmtalbert.wordpress.com/">Clint Talbert</a> (my fearless manager) suggested I run a before and after test to measure the improvement that just landed as part of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=709152">bug 709512</a>. After a bit of cleanup, I did so, measuring the delta between my build on December 20th and the latest version of Aurora. The difference is pretty remarkable: at least on the LG G2X that I&rsquo;ve been using for testing, we&rsquo;ve gone from checkerboarding between 10&ndash;20% of the time and not checkerboarding almost at all (in between two runs of the test with the Aurora build, there is exactly one frame that checkerboards). All credit to <a href="http://chrislord.net/blog">Chris Lord</a> for that!</p>
 
 <p>See the video evidence for yourself. Before:</p>
 

@@ -4,7 +4,7 @@
 
     <meta charset="utf-8" />
     <title>Using the dm utility to interact with Android or FirefoxOS devices</title>
-    <meta name="description" content="I promised a few people I’d blog about this, so here you go.  To help with the business of making Android or FirefoxOS devices do our bidding, Mozilla Automation & Tools developed a Python library called mozdevice which allows you to control these devices..." />
+    <meta name="description" content="I promised a few people I'd blog about this, so here you go.  To help with the business of making Android or FirefoxOS devices do our bidding, Mozilla Automation & Tools developed a Python library called mozdevice which allows you to control these devices..." />
     <meta name="author" content="William Lachance" />
     <meta name="keywords" content="Android, Mozilla" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -97,11 +97,11 @@
     <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>I promised a few people I&#8217;d blog about this, so here you go.</p>
+<p>I promised a few people I&rsquo;d blog about this, so here you go.</p>
 
 <p>To help with the business of making Android or FirefoxOS devices do our bidding, <a href="https://wiki.mozilla.org/Auto-tools">Mozilla Automation &#38; Tools</a> developed a Python library called <a href="https://github.com/mozilla/mozbase/tree/master/mozdevice">mozdevice</a> which allows you to control these devices either using the Android Debug Bridge protocol (which is actually not Android specific: FirefoxOS devices use it too) or the <a href="https://wiki.mozilla.org/Auto-tools/Projects/SUTAgent">System Under Test protocol</a> (a Mozilla-specific thing).</p>
 
-<p>Anyone familiar with debugging these devices is doubtless familiar with adb, which provides a command line interface that allows you to push/pull files, run a shell, etc. To help test our python code (as well as expand the scope of what&#8217;s possible on the command line), I created a similar utility a few months ago called &#8220;dm&#8221; which provides a command-line interface to the aforementioned mozdevice code. It&#8217;s shipped as part of mozdevice, and testing it out is pretty simple if you have virtualenv installed:</p>
+<p>Anyone familiar with debugging these devices is doubtless familiar with adb, which provides a command line interface that allows you to push/pull files, run a shell, etc. To help test our python code (as well as expand the scope of what&rsquo;s possible on the command line), I created a similar utility a few months ago called &ldquo;dm&rdquo; which provides a command-line interface to the aforementioned mozdevice code. It&rsquo;s shipped as part of mozdevice, and testing it out is pretty simple if you have virtualenv installed:</p>
 
 <pre><code>virtualenv mozdevice
 cd mozdevice
@@ -112,19 +112,50 @@ dm --help</code></pre>
 <p>I generally use this utility for two things:</p>
 
 <ol>
- <li>
-  <p>Testing out mozdevice code. For example, today we discovered an (unfortunate) <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=803177">bug</a> in devicemanagerADB&#8217;s killProcess routine. It was easy to verify both the problem and my fix did what I expected by starting my custom build of fennec and running this command:</p>
-  <pre><code>dm --package-name org.mozilla.fennec_wlach killapp org.mozilla.fennec_wlach</code></pre>
-  <p>(yes, it&#8217;s a bit unfortunate that this bug occurred in the first place: devicemanagerADB really needs unit tests)</p></li>
- <li>
-  <p>Day-to-day menial tasks, like getting device info/status, capturing screenshots, etc. You can get a full list of what this utility is capable of by running &#8211;help. E.g.:</p>
-  <p>``` (mozbase)wlach@eideticker:~/src/eideticker$ dm &mdash;help Usage: dm [options] &lt;command&gt; [&lt;args&gt;]</p></li></ol>
+ <li>Testing out mozdevice code. For example, today we discovered an (unfortunate) <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=803177">bug</a> in devicemanagerADB&rsquo;s killProcess routine. It was easy to verify both the problem and my fix did what I expected by starting my custom build of fennec and running this command:</li></ol>
 
-<p>device commands:  info [os|id|uptime|systime|screen|memory|processes] - get  information on a specified aspect of the device (if no argument  given, print all available information)  install &lt;file&gt; - push this package file to the device and install it  killapp &lt;process name&gt; - kills any processes with a particular name  on device  launchapp &lt;appname&gt; &lt;activity name&gt; &lt;intent&gt; &lt;URL&gt; - launches  application on device  ls &lt;remote&gt; - list files on device  ps - get information on running processes on device  pull &lt;local&gt; [remote] - copy file/dir from device  push &lt;local&gt; &lt;remote&gt; - copy file/dir to device  rm &lt;remote&gt; - remove file from device  rmdir &lt;remote&gt; - recursively remove directory from device  screencap &lt;png file&gt; - capture screenshot of device in action  shell &lt;command&gt; - run shell command on device</p>
+<p> <code></code></p>
 
-<p>Options:  -h, &mdash;help show this help message and exit  -v, &mdash;verbose Verbose output from DeviceManager  &mdash;host=HOST Device hostname (only if using TCP/IP)  -p PORT, &mdash;port=PORT Custom device port (if using SUTAgent or adb-over-tcp)  -m DMTYPE, &mdash;dmtype=DMTYPE  DeviceManager type (adb or sut, defaults to adb)  -d HWID, &mdash;hwid=HWID HWID  &mdash;package-name=PACKAGENAME  Packagename (if using DeviceManagerADB) ```</p>
+<p>dm &mdash;package-name org.mozilla.fennec_wlach killapp org.mozilla.fennec_wlach</p>
 
-<pre><code>Before you ask, yes, it&amp;#8217;s technically possible to do much of this with the original adb utility. But (1) some of our internal stuff can&amp;#8217;t use adb a variety of reasons and (2) some of the tasks above (e.g. launching an app, getting a screenshot) involve considerably more typing with adb than with dm. So it&amp;#8217;s still a win. &lt;/li&gt; &lt;/ol&gt; 
+<p><code>(yes, it's a bit unfortunate that this bug occurred in the first place: devicemanagerADB really needs unit tests)
+
+  2. Day-to-day menial tasks, like getting device info/status, capturing screenshots, etc. You can get a full list of what this utility is capable of by running :help. E.g.:
+
+    ```
+(mozbase)wlach@eideticker:~/src/eideticker$ dm --help
+Usage: dm [options] &amp;lt;command&gt; [&amp;lt;args&gt;]
+
+device commands:
+  info [os|id|uptime|systime|screen|memory|processes] - get
+      information on a specified aspect of the device (if no argument
+      given, print all available information)
+  install &amp;lt;file&gt; - push this package file to the device and install it
+  killapp &amp;lt;process name&gt; - kills any processes with a particular name
+      on device
+  launchapp &amp;lt;appname&gt; &amp;lt;activity name&gt; &amp;lt;intent&gt; &amp;lt;URL&gt; - launches
+      application on device
+  ls &amp;lt;remote&gt; - list files on device
+  ps  - get information on running processes on device
+  pull &amp;lt;local&gt; [remote] - copy file/dir from device
+  push &amp;lt;local&gt; &amp;lt;remote&gt; - copy file/dir to device
+  rm &amp;lt;remote&gt; - remove file from device
+  rmdir &amp;lt;remote&gt; - recursively remove directory from device
+  screencap &amp;lt;png file&gt; - capture screenshot of device in action
+  shell &amp;lt;command&gt; - run shell command on device
+
+Options:
+  -h, --help            show this help message and exit
+  -v, --verbose         Verbose output from DeviceManager
+  --host=HOST           Device hostname (only if using TCP/IP)
+  -p PORT, --port=PORT  Custom device port (if using SUTAgent or adb-over-tcp)
+  -m DMTYPE, --dmtype=DMTYPE
+                        DeviceManager type (adb or sut, defaults to adb)
+  -d HWID, --hwid=HWID  HWID
+  --package-name=PACKAGENAME
+                        Packagename (if using DeviceManagerADB)</code></p>
+
+<pre><code>Before you ask, yes, it's technically possible to do much of this with the original adb utility. But (1) some of our internal stuff can't use adb a variety of reasons and (2) some of the tasks above (e.g. launching an app, getting a screenshot) involve considerably more typing with adb than with dm. So it's still a win. &lt;/li&gt; &lt;/ol&gt;
 
 Happy command-lining!</code></pre>
   <hr/>

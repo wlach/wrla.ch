@@ -3,13 +3,13 @@
   <head>
 
     <meta charset="utf-8" />
-    <title>It&#8217;s all about the entropy</title>
-    <meta name="description" content="_[ For more information on the Eideticker software I’m referring to, see this entry ]_  So recently I’ve been exploring new and different methods of measuring things that we care about on FirefoxOS — like startup time or amount of checkerboarding. With An..." />
+    <title>It's all about the entropy</title>
+    <meta name="description" content="_[ For more information on the Eideticker software I'm referring to, see this entry ]_  So recently I've been exploring new and different methods of measuring things that we care about on FirefoxOS — like startup time or amount of checkerboarding. With An..." />
     <meta name="author" content="William Lachance" />
     <meta name="keywords" content="Data Visualization, Eideticker, FirefoxOS, Mozilla" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="canonical" href="https://wrla.ch/blog/2014/03/it-8217-s-all-about-the-entropy/" />
+    <link rel="canonical" href="https://wrla.ch/blog/2014/03/it-s-all-about-the-entropy/" />
     <link rel="next" href="/blog/2014/03/eideticker-for-firefoxos-becoming-more-useful/" /> <link rel="prev" href="/blog/2014/03/upcoming-travels-to-japan-and-taiwan/" />
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
@@ -92,16 +92,16 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
-    <h1>It&#8217;s all about the entropy</h1>
+    <h1>It&rsquo;s all about the entropy</h1>
     <p class="index-date">Mar 14th, 2014</p>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
-<p>So recently I&#8217;ve been exploring new and different methods of measuring things that we care about on FirefoxOS &#8212; like startup time or amount of <a href="http://www.masonchang.com/blog/2014/3/2/wow-such-checkerboard">checkerboarding</a>. With Android, where we have a mostly clean signal, these measurements were pretty straightforward. Want to measure startup times? Just capture a video of Firefox starting, then compare the frames pixel by pixel to see how much they differ. When the pixels aren&#8217;t that different anymore, we&#8217;re &#8220;done&#8221;. Likewise, to measure checkerboarding we just calculated the areas of the screen where things were not completely drawn yet, frame-by-frame.</p>
+<p>So recently I&rsquo;ve been exploring new and different methods of measuring things that we care about on FirefoxOS &#8212; like startup time or amount of <a href="http://www.masonchang.com/blog/2014/3/2/wow-such-checkerboard">checkerboarding</a>. With Android, where we have a mostly clean signal, these measurements were pretty straightforward. Want to measure startup times? Just capture a video of Firefox starting, then compare the frames pixel by pixel to see how much they differ. When the pixels aren&rsquo;t that different anymore, we&rsquo;re &ldquo;done&rdquo;. Likewise, to measure checkerboarding we just calculated the areas of the screen where things were not completely drawn yet, frame-by-frame.</p>
 
-<p>On FirefoxOS, where we&#8217;re using a camera to measure these things, it has not been so simple. I&#8217;ve already discussed this with respect to startup time in a <a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">previous post</a>. One of the ideas I talk about there is &#8220;entropy&#8221; (or the amount of unique information in the frame). It turns out that this is a pretty deep concept, and is useful for even more things than I thought of at the time. Since this is probably a concept that people are going to be thinking/talking about for a while, it&#8217;s worth going into a little more detail about the math behind it.</p>
+<p>On FirefoxOS, where we&rsquo;re using a camera to measure these things, it has not been so simple. I&rsquo;ve already discussed this with respect to startup time in a <a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">previous post</a>. One of the ideas I talk about there is &ldquo;entropy&rdquo; (or the amount of unique information in the frame). It turns out that this is a pretty deep concept, and is useful for even more things than I thought of at the time. Since this is probably a concept that people are going to be thinking/talking about for a while, it&rsquo;s worth going into a little more detail about the math behind it.</p>
 
 <p>The <a href="http://en.wikipedia.org/wiki/Shannon_entropy">wikipedia article</a> on information theoretic entropy is a pretty good introduction. You should read it. It all boils down to this formula:</p>
 
@@ -109,9 +109,9 @@
 
 <p>You can see this section of the wikipedia article (and the various articles that it links to) if you want to break down where that comes from, but the short answer is that given a set of random samples, the more different values there are, the higher the entropy will be. Look at it from a probabilistic point of view: if you take a random set of data and want to make predictions on what future data will look like. If it is highly random, it will be harder to predict what comes next. Conversely, if it is more uniform it is easier to predict what form it will take.</p>
 
-<p>Another, possibly more accessible way of thinking about the entropy of a given set of data would be &#8220;how well would it compress?&#8221;. For example, a bitmap image with nothing but black in it could compress very well as there&#8217;s essentially only 1 piece of unique information in it repeated many times &#8212; the black pixel. On the other hand, a bitmap image of completely randomly generated pixels would probably compress very badly, as almost every pixel represents several dimensions of unique information. For all the statistics terminology, etc. that&#8217;s all the above formula is trying to say.</p>
+<p>Another, possibly more accessible way of thinking about the entropy of a given set of data would be &ldquo;how well would it compress?&rdquo;. For example, a bitmap image with nothing but black in it could compress very well as there&rsquo;s essentially only 1 piece of unique information in it repeated many times &#8212; the black pixel. On the other hand, a bitmap image of completely randomly generated pixels would probably compress very badly, as almost every pixel represents several dimensions of unique information. For all the statistics terminology, etc. that&rsquo;s all the above formula is trying to say.</p>
 
-<p>So we have a model of entropy, now what? For Eideticker, the question is &#8212; how can we break the frame data we&#8217;re gathering down into a form that&#8217;s amenable to this kind of analysis? The approach I took (on the recommendation of <a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html">this article</a>) was to create a histogram with 256 bins (representing the number of distinct possibilities in a black &#38; white capture) out of all the pixels in the frame, then run the formula over that. The exact function I wound up using looks like this:</p>
+<p>So we have a model of entropy, now what? For Eideticker, the question is &#8212; how can we break the frame data we&rsquo;re gathering down into a form that&rsquo;s amenable to this kind of analysis? The approach I took (on the recommendation of <a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html">this article</a>) was to create a histogram with 256 bins (representing the number of distinct possibilities in a black &#38; white capture) out of all the pixels in the frame, then run the formula over that. The exact function I wound up using looks like this:</p>
 
 <pre><code>def _get_frame_entropy((i, capture, sobelized)):
     frame = capture.get_frame(i, True).astype('float')
@@ -128,15 +128,13 @@
     samples_probability = [float(h) / histogram_length for h in histogram]
     entropy = -sum([p * math.log(p, 2) for p in samples_probability if p != 0])
 
-    return entropy
-
-</code></pre>
+    return entropy</code></pre>
 
 <p><a href="https://github.com/mozilla/eideticker/blob/master/src/videocapture/videocapture/entropy.py#L10">[Context]</a></p>
 
-<p>The &#8220;sobelized&#8221; bit allows us to optionally convolve the frame with a sobel filter before running the entropy calculation, which removes most of the data in the capture except for the edges. This is especially useful for FirefoxOS, where the signal has quite a bit of random noise from ambient lighting that artificially inflate the entropy values even in places where there is little actual &#8220;information&#8221;.</p>
+<p>The &ldquo;sobelized&rdquo; bit allows us to optionally convolve the frame with a sobel filter before running the entropy calculation, which removes most of the data in the capture except for the edges. This is especially useful for FirefoxOS, where the signal has quite a bit of random noise from ambient lighting that artificially inflate the entropy values even in places where there is little actual &ldquo;information&rdquo;.</p>
 
-<p>This type of transformation often reveals very interesting information about what&#8217;s going on in an eideticker test. For example, take this video of the user panning down in the contacts app:</p>
+<p>This type of transformation often reveals very interesting information about what&rsquo;s going on in an eideticker test. For example, take this video of the user panning down in the contacts app:</p>
 
 <div style="width: 640px; " class="wp-video">
  <video class="wp-video-shortcode" id="video-1012-2" width="640" height="917" preload="metadata" controls="controls">
@@ -147,20 +145,20 @@
 <p><a href="/files/2014/03/contacts-scrolling-entropy-graph.png"><img src="/files/2014/03/contacts-scrolling-entropy-graph.png" alt="contacts scrolling entropy graph" width="933" height="482" class="alignnone size-full wp-image-1022" srcset="/files/2014/03/contacts-scrolling-entropy-graph-300x154.png 300w, /files/2014/03/contacts-scrolling-entropy-graph.png 933w" sizes="(max-width: 933px) 100vw, 933px" /></a>
  <br /><a href="http://eideticker.wrla.ch/b2g/detail.html?id=3f7b7c88a9ed11e380c5f0def1767b24#/framesobelentropies">[Link to original]</a></p>
 
-<p>The Y axis represents entropy, as calculated by the code above. There is no inherently &#8220;right&#8221; value for this &#8212; it all depends on the application you&#8217;re testing and what you expect to see displayed on the screen. In general though, higher values are better as it indicates more frames of the capture are &#8220;complete&#8221;.</p>
+<p>The Y axis represents entropy, as calculated by the code above. There is no inherently &ldquo;right&rdquo; value for this &#8212; it all depends on the application you&rsquo;re testing and what you expect to see displayed on the screen. In general though, higher values are better as it indicates more frames of the capture are &ldquo;complete&rdquo;.</p>
 
-<p>The region at the beginning where it is at about 5.0 represents the contacts app with a set of contacts fully displayed (at startup). The &#8220;flat&#8221; regions where the entropy is at roughly 4.25? Those are the areas where the app is &#8220;checkerboarding&#8221; (blanking out waiting for graphics or layout engine to draw contact information). Click through to the original and swipe over the graph to see what I mean.</p>
+<p>The region at the beginning where it is at about 5.0 represents the contacts app with a set of contacts fully displayed (at startup). The &ldquo;flat&rdquo; regions where the entropy is at roughly 4.25? Those are the areas where the app is &ldquo;checkerboarding&rdquo; (blanking out waiting for graphics or layout engine to draw contact information). Click through to the original and swipe over the graph to see what I mean.</p>
 
-<p>It&#8217;s easy to see what a hypothetical ideal end state would be for this capture: a graph with a smooth entropy of about 5.0 (similar to the start state, where all contacts are fully drawn in). We can track our progress towards this goal (or our deviation from it), by watching the eideticker b2g dashboard and seeing if the summation of the entropy values for frames over the entire test increases or decreases over time. If we see it generally increase, that probably means we&#8217;re seeing less checkerboarding in the capture. If we see it decrease, that might mean we&#8217;re now seeing checkerboarding where we weren&#8217;t before.</p>
+<p>It&rsquo;s easy to see what a hypothetical ideal end state would be for this capture: a graph with a smooth entropy of about 5.0 (similar to the start state, where all contacts are fully drawn in). We can track our progress towards this goal (or our deviation from it), by watching the eideticker b2g dashboard and seeing if the summation of the entropy values for frames over the entire test increases or decreases over time. If we see it generally increase, that probably means we&rsquo;re seeing less checkerboarding in the capture. If we see it decrease, that might mean we&rsquo;re now seeing checkerboarding where we weren&rsquo;t before.</p>
 
-<p>It&#8217;s too early to say for sure, but over the past few days the trend has been positive:</p>
+<p>It&rsquo;s too early to say for sure, but over the past few days the trend has been positive:</p>
 
 <p><a href="/files/2014/03/entropy-levels-climbing.png"><img src="/files/2014/03/entropy-levels-climbing.png" alt="entropy-levels-climbing" width="822" height="529" class="alignnone size-full wp-image-1025" srcset="/files/2014/03/entropy-levels-climbing-300x193.png 300w, /files/2014/03/entropy-levels-climbing.png 822w" sizes="(max-width: 822px) 100vw, 822px" /></a>
  <br /><a href="http://eideticker.wrla.ch/b2g/#/inari/b2g-contacts-scrolling/overallentropy">[Link to original]</a></p>
 
 <p>(note that there were some problems in the way the tests were being run before, so results before the 12th should not be considered valid)</p>
 
-<p>So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&#8217;s find them!</p>
+<p>So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&rsquo;s find them!</p>
   <hr/>
 </article>
     </div>

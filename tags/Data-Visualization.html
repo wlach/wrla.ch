@@ -9,7 +9,7 @@
     <meta name="keywords" content="Data Visualization" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="canonical" href="https://wlach.github.io/tags/Data-Visualization.html" />
+    <link rel="canonical" href="https://wrla.ch/tags/Data-Visualization.html" />
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
@@ -218,13 +218,13 @@
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
   </header>
 
-<p>Since my last update, we&#8217;ve been trucking along with improvements to <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a>, the project for making Firefox performance sheriffing and analysis easier.</p>
+<p>Since my last update, we&rsquo;ve been trucking along with improvements to <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a>, the project for making Firefox performance sheriffing and analysis easier.</p>
 
 <p><strong>Compare visualization improvements</strong></p>
 
-<p>I&#8217;ve been spending quite a bit of time trying to fix up the display of information in the compare view, to address feedback from developers and hopefully generally streamline things. <a href="https://blog.mozilla.org/vdjeric/">Vladan</a> (from the perf team) referred me to <a href="https://mozillians.org/en-US/u/bwinton/">Blake Winton</a>, who provided tons of awesome suggestions on how to present things more concisely.</p>
+<p>I&rsquo;ve been spending quite a bit of time trying to fix up the display of information in the compare view, to address feedback from developers and hopefully generally streamline things. <a href="https://blog.mozilla.org/vdjeric/">Vladan</a> (from the perf team) referred me to <a href="https://mozillians.org/en-US/u/bwinton/">Blake Winton</a>, who provided tons of awesome suggestions on how to present things more concisely.</p>
 
-<p>Here&#8217;s an old versus new picture:</p>
+<p>Here&rsquo;s an old versus new picture:</p>
 
 <table>
  <tr>
@@ -235,17 +235,17 @@
 
 <ul>
  <li>Removed or consolidated several types of numerical information which were overwhelming or confusing (e.g. presenting both numerical and percentage standard deviation in their own columns).</li>
- <li>Added tooltips all over the place to explain what&#8217;s being displayed.</li>
- <li>Highlight more strongly when it appears there aren&#8217;t enough runs to make a definitive determination on whether there was a regression or improvement.</li>
- <li>Improve display of visual indicator of magnitude of regression/improvement (providing a pseudo-scale showing where the change ranges from 0% &#8211; 20%+).</li>
+ <li>Added tooltips all over the place to explain what&rsquo;s being displayed.</li>
+ <li>Highlight more strongly when it appears there aren&rsquo;t enough runs to make a definitive determination on whether there was a regression or improvement.</li>
+ <li>Improve display of visual indicator of magnitude of regression/improvement (providing a pseudo-scale showing where the change ranges from 0% : 20%+).</li>
  <li>Provide more detail on the two changesets being compared in the header and make it easier to retrigger them (thanks to Mike Ling).</li>
  <li>Much better and more intuitive error handling when something goes wrong (also thanks to Mike Ling).</li></ul>
 
-<p>The point of these changes isn&#8217;t necessarily to make everything &#8220;immediately obvious&#8221; to people. We&#8217;re not building general purpose software here: Perfherder will always be a rather specialized tool which presumes significant domain knowledge on the part of the people using it. However, even for our audience, it turns out that there&#8217;s a lot of room to improve how our presentation: reducing the amount of extraneous noise helps people zero in on the things they really need to care about.</p>
+<p>The point of these changes isn&rsquo;t necessarily to make everything &ldquo;immediately obvious&rdquo; to people. We&rsquo;re not building general purpose software here: Perfherder will always be a rather specialized tool which presumes significant domain knowledge on the part of the people using it. However, even for our audience, it turns out that there&rsquo;s a lot of room to improve how our presentation: reducing the amount of extraneous noise helps people zero in on the things they really need to care about.</p>
 
 <p>Special thanks to everyone who took time out of their schedules to provide so much good feedback, in particular <a href="http://avih.github.io/">Avi Halmachi</a>, <a href="http://glandium.org/blog/">Glandium</a>, and <a href="http://elvis314.wordpress.com/">Joel Maher</a>.</p>
 
-<p>Of course more suggestions are always welcome. Please <a href="https://treeherder.mozilla.org/perf.html#/comparechooser">give it a try</a> and <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Tree%20Management&amp;#038;component=Perfherder">file bugs against the perfherder component</a> if you find anything you&#8217;d like to see changed or improved.</p>
+<p>Of course more suggestions are always welcome. Please <a href="https://treeherder.mozilla.org/perf.html#/comparechooser">give it a try</a> and <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Tree%20Management&amp;component=Perfherder">file bugs against the perfherder component</a> if you find anything you&rsquo;d like to see changed or improved.</p>
 
 <p><strong>Getting the word out</strong></p>
 
@@ -271,31 +271,31 @@ remote:
 remote: It looks like this try push has talos jobs. Compare performance against a baseline revision:
 remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=try&amp;newRevision=e0aa56fb4ace</code></pre>
 
-<p>Try pushes incorporating Talos jobs now automatically link to perfherder&#8217;s compare view, both in the output from mercurial and in the emails the system sends. One of the challenges we&#8217;ve been facing up to this point is just letting developers know that Perfherder <em>exists</em> and it can help them either avoid or resolve performance regressions. I believe this will help.</p>
+<p>Try pushes incorporating Talos jobs now automatically link to perfherder&rsquo;s compare view, both in the output from mercurial and in the emails the system sends. One of the challenges we&rsquo;ve been facing up to this point is just letting developers know that Perfherder <em>exists</em> and it can help them either avoid or resolve performance regressions. I believe this will help.</p>
 
 <p><strong>Data quality and ingestion improvements</strong></p>
 
-<p>Over the past couple weeks, we&#8217;ve been comparing our regression detection code when run against Graphserver data to Perfherder data. In doing so, we discovered that we&#8217;ve sometimes been using the wrong algorithm (geometric mean) to summarize some of our tests, leading to unexpected and less meaningful results. For example, the v8_7 benchmark uses a custom weighting algorithm for its score, to account for the fact that the things it tests have a particular range of expected values.</p>
+<p>Over the past couple weeks, we&rsquo;ve been comparing our regression detection code when run against Graphserver data to Perfherder data. In doing so, we discovered that we&rsquo;ve sometimes been using the wrong algorithm (geometric mean) to summarize some of our tests, leading to unexpected and less meaningful results. For example, the v8_7 benchmark uses a custom weighting algorithm for its score, to account for the fact that the things it tests have a particular range of expected values.</p>
 
-<p>To hopefully prevent this from happening again in the future, we&#8217;ve decided to move the test summarization code out of Perfherder back into Talos (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1184966">bug 1184966</a>). This has the additional benefit of creating a stronger connection between the content of the Talos logs and what Perfherder displays in its comparison and graph views, which has thrown people off in the past.</p>
+<p>To hopefully prevent this from happening again in the future, we&rsquo;ve decided to move the test summarization code out of Perfherder back into Talos (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1184966">bug 1184966</a>). This has the additional benefit of creating a stronger connection between the content of the Talos logs and what Perfherder displays in its comparison and graph views, which has thrown people off in the past.</p>
 
 <p><strong>Continuing data challenges</strong></p>
 
-<p>Having better tools for visualizing this stuff is great, but it also highlights some continuing problems we&#8217;ve had with data quality. It turns out that our automation setup often produces <em>qualitatively different</em> performance results for the exact same set of data, depending on when and how the tests are run.</p>
+<p>Having better tools for visualizing this stuff is great, but it also highlights some continuing problems we&rsquo;ve had with data quality. It turns out that our automation setup often produces <em>qualitatively different</em> performance results for the exact same set of data, depending on when and how the tests are run.</p>
 
 <p>A certain amount of random noise is always expected when running performance tests. As much as we might try to make them uniform, our testing machines and environments are just not 100% identical. That we expect and can deal with: our standard approach is just to retrigger runs, to make sure we get a representative sample of data from our population of machines.</p>
 
-<p>The problem comes when there&#8217;s a <em>pattern</em> to the noise: we&#8217;ve already noticed that tests run on the weekends produce different results (see Joel&#8217;s post from a year ago, <a href="https://elvis314.wordpress.com/2014/10/30/a-case-of-the-weekends/">&#8220;A case of the weekends&#8221;</a>) but it seems as if there&#8217;s other circumstances where one set of results will be different from another, depending on the time that each set of tests was run. Some tests and platforms (e.g. the a11yr suite, MacOS X 10.10) seem particularly susceptible to this issue.</p>
+<p>The problem comes when there&rsquo;s a <em>pattern</em> to the noise: we&rsquo;ve already noticed that tests run on the weekends produce different results (see Joel&rsquo;s post from a year ago, <a href="https://elvis314.wordpress.com/2014/10/30/a-case-of-the-weekends/">&ldquo;A case of the weekends&rdquo;</a>) but it seems as if there&rsquo;s other circumstances where one set of results will be different from another, depending on the time that each set of tests was run. Some tests and platforms (e.g. the a11yr suite, MacOS X 10.10) seem particularly susceptible to this issue.</p>
 
-<p>We need to find better ways of dealing with this problem, as it can result in a lot of wasted time and energy, for both sheriffs and developers. See for example <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1190877">bug 1190877</a>, which concerned a completely spurious regression on the tresize benchmark that was initially blamed on some changes to the media code&#8211; in this case, Joel speculates that the linux64 test machines we use might have changed from under us in some way, but we really don&#8217;t know yet.</p>
+<p>We need to find better ways of dealing with this problem, as it can result in a lot of wasted time and energy, for both sheriffs and developers. See for example <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1190877">bug 1190877</a>, which concerned a completely spurious regression on the tresize benchmark that was initially blamed on some changes to the media code: in this case, Joel speculates that the linux64 test machines we use might have changed from under us in some way, but we really don&rsquo;t know yet.</p>
 
 <p>I see two approaches possible here:</p>
 
 <ol>
- <li>Figure out what&#8217;s causing the same machines to produce qualitatively different result distributions and address that. This is of course the ideal solution, but it requires coordination with other parts of the organization who are likely quite busy and might be hard.</li>
- <li>Figure out better ways of detecting and managing these sorts of case. I have noticed that the standard deviation inside the results when we have spurious regressions/improvements tends to be higher (see for example <a href="https://treeherder.mozilla.org/perf.html#/compare?originalProject=mozilla-inbound&amp;#038;originalRevision=4d0818791d07&amp;#038;newProject=mozilla-inbound&amp;#038;newRevision=5e130ad70aa7">this compare view</a> for the aforementioned &#8220;regression&#8221;). Knowing what we do, maybe there&#8217;s some statistical methods we can use to detect bad data?</li></ol>
+ <li>Figure out what&rsquo;s causing the same machines to produce qualitatively different result distributions and address that. This is of course the ideal solution, but it requires coordination with other parts of the organization who are likely quite busy and might be hard.</li>
+ <li>Figure out better ways of detecting and managing these sorts of case. I have noticed that the standard deviation inside the results when we have spurious regressions/improvements tends to be higher (see for example <a href="https://treeherder.mozilla.org/perf.html#/compare?originalProject=mozilla-inbound&amp;originalRevision=4d0818791d07&amp;newProject=mozilla-inbound&amp;newRevision=5e130ad70aa7">this compare view</a> for the aforementioned &ldquo;regression&rdquo;). Knowing what we do, maybe there&rsquo;s some statistical methods we can use to detect bad data?</li></ol>
 
-<p>For now, I&#8217;m leaning towards (2). I don&#8217;t think we&#8217;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!</p> 
+<p>For now, I&rsquo;m leaning towards (2). I don&rsquo;t think we&rsquo;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!</p> 
   <hr/>
 </article>
 <article>
@@ -305,21 +305,21 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a></span></p>
   </header>
 
-<p>Was feeling a bit restless today, so I decided to build something on a theme I&#8217;d been thinking of since, oh gosh, I guess high school &#8212; an ecosystem simulation.</p>
+<p>Was feeling a bit restless today, so I decided to build something on a theme I&rsquo;d been thinking of since, oh gosh, I guess high school &#8212; an ecosystem simulation.</p>
 
-<p>My original concept for it had three different types of entities &#8212; grass, rabbits, and foxes wandering around in a fixed environment. Each would eat the previous and try to reproduce. Both the rabbits and foxes need to continually eat to survive, otherwise they will die. The grass will just grow unprompted. I think I may have picked up the idea from elsewhere, but am not sure (it&#8217;s been nearly 17 years after all).</p>
+<p>My original concept for it had three different types of entities &#8212; grass, rabbits, and foxes wandering around in a fixed environment. Each would eat the previous and try to reproduce. Both the rabbits and foxes need to continually eat to survive, otherwise they will die. The grass will just grow unprompted. I think I may have picked up the idea from elsewhere, but am not sure (it&rsquo;s been nearly 17 years after all).</p>
 
-<p>I suppose the urge to do this comes from my fascination with the concepts of birth, death, and rebirth. Conway&#8217;s <a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">game of life</a> is probably the most famous computer representation of this sort of theme, but I always found the behavior slightly too contrived and simple to be deeply satisfying to me (at least from the point of view of representing this concept: the game is certainly interesting for other reasons). Conway&#8217;s simulation is completely deterministic and only has one type of entity, the cell. There&#8217;s an element of randomness and hierarchy in the real world, and I wanted to represent these somehow.</p>
+<p>I suppose the urge to do this comes from my fascination with the concepts of birth, death, and rebirth. Conway&rsquo;s <a href="http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">game of life</a> is probably the most famous computer representation of this sort of theme, but I always found the behavior slightly too contrived and simple to be deeply satisfying to me (at least from the point of view of representing this concept: the game is certainly interesting for other reasons). Conway&rsquo;s simulation is completely deterministic and only has one type of entity, the cell. There&rsquo;s an element of randomness and hierarchy in the real world, and I wanted to represent these somehow.</p>
 
-<p>It was remarkably easy to get things going using my preferred toolkit for these things (Javascript and Canvas) &#8212; about 3 hours to get something on the screen, then a bunch of tweaking until I found the behavior I wanted. Either I&#8217;m getting smarter or the tools to build these things are getting better. Probably the latter.</p>
+<p>It was remarkably easy to get things going using my preferred toolkit for these things (Javascript and Canvas) &#8212; about 3 hours to get something on the screen, then a bunch of tweaking until I found the behavior I wanted. Either I&rsquo;m getting smarter or the tools to build these things are getting better. Probably the latter.</p>
 
-<p>In the end, I only wound up having rabbits and grass in my simulation in this iteration and went for a very abstract representation of what was going on (colored squares for everything!). It turns out that no more than that was really necessary to create something that held my interest. Here&#8217;s a screenshot (doesn&#8217;t really do it justice):</p>
+<p>In the end, I only wound up having rabbits and grass in my simulation in this iteration and went for a very abstract representation of what was going on (colored squares for everything!). It turns out that no more than that was really necessary to create something that held my interest. Here&rsquo;s a screenshot (doesn&rsquo;t really do it justice):</p>
 
 <p><a href="/files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM.png"><img src="/files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM.png" alt="Screen Shot 2015-04-25 at 10.24.21 PM" width="1002" height="1006" class="alignnone size-full wp-image-1198" srcset="/files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM-150x150.png 150w, /files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM-298x300.png 298w, /files/2015/04/Screen-Shot-2015-04-25-at-10.24.21-PM.png 1002w" sizes="(max-width: 1002px) 100vw, 1002px" /></a></p>
 
-<p>If you&#8217;d like to check it out for yourself, I put a copy on my website <a href="http://wrla.ch/eco">here</a>. It probably requires a fairly fancy computer to run at a decent speed (I built it using a 2014 MacBook Pro and made very little effort to optimize it). If that doesn&#8217;t work out for you, I put up a <a href="https://youtu.be/LwLFw1_GGnU">video capture of the simulation on youtube</a>.</p>
+<p>If you&rsquo;d like to check it out for yourself, I put a copy on my website <a href="http://wrla.ch/eco">here</a>. It probably requires a fairly fancy computer to run at a decent speed (I built it using a 2014 MacBook Pro and made very little effort to optimize it). If that doesn&rsquo;t work out for you, I put up a <a href="https://youtu.be/LwLFw1_GGnU">video capture of the simulation on youtube</a>.</p>
 
-<p>The math and programming behind the simulation is completely arbitrary and anything but rigorous. There are probably a bunch of bugs and unintended behaviors. This has all probably been done a million times before by people I&#8217;ve never met and never will. I&#8217;m ok with that.</p>
+<p>The math and programming behind the simulation is completely arbitrary and anything but rigorous. There are probably a bunch of bugs and unintended behaviors. This has all probably been done a million times before by people I&rsquo;ve never met and never will. I&rsquo;m ok with that.</p>
 
 <p><strong>Update</strong>: <a href="https://github.com/wlach/ecoautomata">Source now on github</a>, for those who want to play with it and submit pull requests.</p> 
   <hr/>
@@ -331,9 +331,9 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
   </header>
 
-<p>Just wanted to give another quick Perfherder update. Since the <a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/">last time</a>, I&#8217;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&#8217;t possible with Graphserver and I&#8217;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.</p>
+<p>Just wanted to give another quick Perfherder update. Since the <a href="http://wrla.ch/blog/2015/02/measuring-e10s-vs-non-e10s-performance-with-perfherder/">last time</a>, I&rsquo;ve added summary series (which is what GraphServer shows you), so we now have (in theory) the best of both worlds when it comes to Talos data: aggregate summaries of the various suites we run (tp5, tart, etc), with the ability to dig into individual results as needed. This kind of analysis wasn&rsquo;t possible with Graphserver and I&rsquo;m hopeful this will be helpful in tracking down the root causes of Talos regressions more effectively.</p>
 
-<p>Let&#8217;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354">bug 1128354</a>. Using <a href="https://mozillians.org/en-US/u/mishravikas/">Mishra Vikas</a>&#8216;s new &#8220;highlight revision mode&#8221; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:</p>
+<p>Let&rsquo;s give an example of where this might be useful by showing how it can highlight problems. Recently we tracked a regression in the Customization Animation Tests (CART) suite from the commit in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1128354">bug 1128354</a>. Using <a href="https://mozillians.org/en-US/u/mishravikas/">Mishra Vikas</a>&#8216;s new &ldquo;highlight revision mode&rdquo; in Perfherder (combined with the revision hash when the regression was pushed to inbound), we can quickly zero in on the location of it:</p>
 
 <p><a href="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png"><img src="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png" alt="Screen Shot 2015-03-27 at 3.18.28 PM" width="474" height="230" class="alignnone size-large wp-image-1184" srcset="/files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-300x146.png 300w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM-1024x498.png 1024w, /files/2015/03/Screen-Shot-2015-03-27-at-3.18.28-PM.png 1167w" sizes="(max-width: 474px) 100vw, 474px" /></a></p>
 
@@ -352,16 +352,16 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 </article>
 <article>
   <header>
-    <h2><a href="/blog/2014/03/it-8217-s-all-about-the-entropy/">It&#8217;s all about the entropy</a></h2>
+    <h2><a href="/blog/2014/03/it-s-all-about-the-entropy/">It&rsquo;s all about the entropy</a></h2>
     <p class="index-date">Mar 14th, 2014</p>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
-<p>So recently I&#8217;ve been exploring new and different methods of measuring things that we care about on FirefoxOS &#8212; like startup time or amount of <a href="http://www.masonchang.com/blog/2014/3/2/wow-such-checkerboard">checkerboarding</a>. With Android, where we have a mostly clean signal, these measurements were pretty straightforward. Want to measure startup times? Just capture a video of Firefox starting, then compare the frames pixel by pixel to see how much they differ. When the pixels aren&#8217;t that different anymore, we&#8217;re &#8220;done&#8221;. Likewise, to measure checkerboarding we just calculated the areas of the screen where things were not completely drawn yet, frame-by-frame.</p>
+<p>So recently I&rsquo;ve been exploring new and different methods of measuring things that we care about on FirefoxOS &#8212; like startup time or amount of <a href="http://www.masonchang.com/blog/2014/3/2/wow-such-checkerboard">checkerboarding</a>. With Android, where we have a mostly clean signal, these measurements were pretty straightforward. Want to measure startup times? Just capture a video of Firefox starting, then compare the frames pixel by pixel to see how much they differ. When the pixels aren&rsquo;t that different anymore, we&rsquo;re &ldquo;done&rdquo;. Likewise, to measure checkerboarding we just calculated the areas of the screen where things were not completely drawn yet, frame-by-frame.</p>
 
-<p>On FirefoxOS, where we&#8217;re using a camera to measure these things, it has not been so simple. I&#8217;ve already discussed this with respect to startup time in a <a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">previous post</a>. One of the ideas I talk about there is &#8220;entropy&#8221; (or the amount of unique information in the frame). It turns out that this is a pretty deep concept, and is useful for even more things than I thought of at the time. Since this is probably a concept that people are going to be thinking/talking about for a while, it&#8217;s worth going into a little more detail about the math behind it.</p>
+<p>On FirefoxOS, where we&rsquo;re using a camera to measure these things, it has not been so simple. I&rsquo;ve already discussed this with respect to startup time in a <a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">previous post</a>. One of the ideas I talk about there is &ldquo;entropy&rdquo; (or the amount of unique information in the frame). It turns out that this is a pretty deep concept, and is useful for even more things than I thought of at the time. Since this is probably a concept that people are going to be thinking/talking about for a while, it&rsquo;s worth going into a little more detail about the math behind it.</p>
 
 <p>The <a href="http://en.wikipedia.org/wiki/Shannon_entropy">wikipedia article</a> on information theoretic entropy is a pretty good introduction. You should read it. It all boils down to this formula:</p>
 
@@ -369,9 +369,9 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 
 <p>You can see this section of the wikipedia article (and the various articles that it links to) if you want to break down where that comes from, but the short answer is that given a set of random samples, the more different values there are, the higher the entropy will be. Look at it from a probabilistic point of view: if you take a random set of data and want to make predictions on what future data will look like. If it is highly random, it will be harder to predict what comes next. Conversely, if it is more uniform it is easier to predict what form it will take.</p>
 
-<p>Another, possibly more accessible way of thinking about the entropy of a given set of data would be &#8220;how well would it compress?&#8221;. For example, a bitmap image with nothing but black in it could compress very well as there&#8217;s essentially only 1 piece of unique information in it repeated many times &#8212; the black pixel. On the other hand, a bitmap image of completely randomly generated pixels would probably compress very badly, as almost every pixel represents several dimensions of unique information. For all the statistics terminology, etc. that&#8217;s all the above formula is trying to say.</p>
+<p>Another, possibly more accessible way of thinking about the entropy of a given set of data would be &ldquo;how well would it compress?&rdquo;. For example, a bitmap image with nothing but black in it could compress very well as there&rsquo;s essentially only 1 piece of unique information in it repeated many times &#8212; the black pixel. On the other hand, a bitmap image of completely randomly generated pixels would probably compress very badly, as almost every pixel represents several dimensions of unique information. For all the statistics terminology, etc. that&rsquo;s all the above formula is trying to say.</p>
 
-<p>So we have a model of entropy, now what? For Eideticker, the question is &#8212; how can we break the frame data we&#8217;re gathering down into a form that&#8217;s amenable to this kind of analysis? The approach I took (on the recommendation of <a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html">this article</a>) was to create a histogram with 256 bins (representing the number of distinct possibilities in a black &#38; white capture) out of all the pixels in the frame, then run the formula over that. The exact function I wound up using looks like this:</p>
+<p>So we have a model of entropy, now what? For Eideticker, the question is &#8212; how can we break the frame data we&rsquo;re gathering down into a form that&rsquo;s amenable to this kind of analysis? The approach I took (on the recommendation of <a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html">this article</a>) was to create a histogram with 256 bins (representing the number of distinct possibilities in a black &#38; white capture) out of all the pixels in the frame, then run the formula over that. The exact function I wound up using looks like this:</p>
 
 <pre><code>def _get_frame_entropy((i, capture, sobelized)):
     frame = capture.get_frame(i, True).astype('float')
@@ -388,15 +388,13 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     samples_probability = [float(h) / histogram_length for h in histogram]
     entropy = -sum([p * math.log(p, 2) for p in samples_probability if p != 0])
 
-    return entropy
-
-</code></pre>
+    return entropy</code></pre>
 
 <p><a href="https://github.com/mozilla/eideticker/blob/master/src/videocapture/videocapture/entropy.py#L10">[Context]</a></p>
 
-<p>The &#8220;sobelized&#8221; bit allows us to optionally convolve the frame with a sobel filter before running the entropy calculation, which removes most of the data in the capture except for the edges. This is especially useful for FirefoxOS, where the signal has quite a bit of random noise from ambient lighting that artificially inflate the entropy values even in places where there is little actual &#8220;information&#8221;.</p>
+<p>The &ldquo;sobelized&rdquo; bit allows us to optionally convolve the frame with a sobel filter before running the entropy calculation, which removes most of the data in the capture except for the edges. This is especially useful for FirefoxOS, where the signal has quite a bit of random noise from ambient lighting that artificially inflate the entropy values even in places where there is little actual &ldquo;information&rdquo;.</p>
 
-<p>This type of transformation often reveals very interesting information about what&#8217;s going on in an eideticker test. For example, take this video of the user panning down in the contacts app:</p>
+<p>This type of transformation often reveals very interesting information about what&rsquo;s going on in an eideticker test. For example, take this video of the user panning down in the contacts app:</p>
 
 <div style="width: 640px; " class="wp-video">
  <video class="wp-video-shortcode" id="video-1012-2" width="640" height="917" preload="metadata" controls="controls">
@@ -407,20 +405,20 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
 <p><a href="/files/2014/03/contacts-scrolling-entropy-graph.png"><img src="/files/2014/03/contacts-scrolling-entropy-graph.png" alt="contacts scrolling entropy graph" width="933" height="482" class="alignnone size-full wp-image-1022" srcset="/files/2014/03/contacts-scrolling-entropy-graph-300x154.png 300w, /files/2014/03/contacts-scrolling-entropy-graph.png 933w" sizes="(max-width: 933px) 100vw, 933px" /></a>
  <br /><a href="http://eideticker.wrla.ch/b2g/detail.html?id=3f7b7c88a9ed11e380c5f0def1767b24#/framesobelentropies">[Link to original]</a></p>
 
-<p>The Y axis represents entropy, as calculated by the code above. There is no inherently &#8220;right&#8221; value for this &#8212; it all depends on the application you&#8217;re testing and what you expect to see displayed on the screen. In general though, higher values are better as it indicates more frames of the capture are &#8220;complete&#8221;.</p>
+<p>The Y axis represents entropy, as calculated by the code above. There is no inherently &ldquo;right&rdquo; value for this &#8212; it all depends on the application you&rsquo;re testing and what you expect to see displayed on the screen. In general though, higher values are better as it indicates more frames of the capture are &ldquo;complete&rdquo;.</p>
 
-<p>The region at the beginning where it is at about 5.0 represents the contacts app with a set of contacts fully displayed (at startup). The &#8220;flat&#8221; regions where the entropy is at roughly 4.25? Those are the areas where the app is &#8220;checkerboarding&#8221; (blanking out waiting for graphics or layout engine to draw contact information). Click through to the original and swipe over the graph to see what I mean.</p>
+<p>The region at the beginning where it is at about 5.0 represents the contacts app with a set of contacts fully displayed (at startup). The &ldquo;flat&rdquo; regions where the entropy is at roughly 4.25? Those are the areas where the app is &ldquo;checkerboarding&rdquo; (blanking out waiting for graphics or layout engine to draw contact information). Click through to the original and swipe over the graph to see what I mean.</p>
 
-<p>It&#8217;s easy to see what a hypothetical ideal end state would be for this capture: a graph with a smooth entropy of about 5.0 (similar to the start state, where all contacts are fully drawn in). We can track our progress towards this goal (or our deviation from it), by watching the eideticker b2g dashboard and seeing if the summation of the entropy values for frames over the entire test increases or decreases over time. If we see it generally increase, that probably means we&#8217;re seeing less checkerboarding in the capture. If we see it decrease, that might mean we&#8217;re now seeing checkerboarding where we weren&#8217;t before.</p>
+<p>It&rsquo;s easy to see what a hypothetical ideal end state would be for this capture: a graph with a smooth entropy of about 5.0 (similar to the start state, where all contacts are fully drawn in). We can track our progress towards this goal (or our deviation from it), by watching the eideticker b2g dashboard and seeing if the summation of the entropy values for frames over the entire test increases or decreases over time. If we see it generally increase, that probably means we&rsquo;re seeing less checkerboarding in the capture. If we see it decrease, that might mean we&rsquo;re now seeing checkerboarding where we weren&rsquo;t before.</p>
 
-<p>It&#8217;s too early to say for sure, but over the past few days the trend has been positive:</p>
+<p>It&rsquo;s too early to say for sure, but over the past few days the trend has been positive:</p>
 
 <p><a href="/files/2014/03/entropy-levels-climbing.png"><img src="/files/2014/03/entropy-levels-climbing.png" alt="entropy-levels-climbing" width="822" height="529" class="alignnone size-full wp-image-1025" srcset="/files/2014/03/entropy-levels-climbing-300x193.png 300w, /files/2014/03/entropy-levels-climbing.png 822w" sizes="(max-width: 822px) 100vw, 822px" /></a>
  <br /><a href="http://eideticker.wrla.ch/b2g/#/inari/b2g-contacts-scrolling/overallentropy">[Link to original]</a></p>
 
 <p>(note that there were some problems in the way the tests were being run before, so results before the 12th should not be considered valid)</p>
 
-<p>So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&#8217;s find them!</p> 
+<p>So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&rsquo;s find them!</p> 
   <hr/>
 </article>
 <article>
@@ -430,22 +428,22 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>So we&#8217;ve been using Eideticker to automatically measure startup/pageload times for about a year now on Android, and more recently on FirefoxOS as well (albeit not automatically). This gives us nice and pretty graphs like this:</p>
+<p>So we&rsquo;ve been using Eideticker to automatically measure startup/pageload times for about a year now on Android, and more recently on FirefoxOS as well (albeit not automatically). This gives us nice and pretty graphs like this:</p>
 
 <p><a href="/files/2013/10/flot-startup-times-gn.png"><img src="/files/2013/10/flot-startup-times-gn.png" alt="flot-startup-times-gn" width="620" height="568" class="alignnone size-full wp-image-986" srcset="/files/2013/10/flot-startup-times-gn-300x274.png 300w, /files/2013/10/flot-startup-times-gn.png 620w" sizes="(max-width: 620px) 100vw, 620px" /></a></p>
 
-<p>Ok, so we&#8217;re generating numbers and graphing them. That&#8217;s great. But what&#8217;s really going on behind the scenes? I&#8217;m glad you asked. The story is a bit different depending on which platform you&#8217;re talking about.</p>
+<p>Ok, so we&rsquo;re generating numbers and graphing them. That&rsquo;s great. But what&rsquo;s really going on behind the scenes? I&rsquo;m glad you asked. The story is a bit different depending on which platform you&rsquo;re talking about.</p>
 
 <p><strong>Android</strong></p>
 
-<p>On Android we connect Eideticker to the device&#8217;s HDMI out, so we count on a nearly pixel-perfect signal. In practice, it isn&#8217;t quite, but it is within a few RGB values that we can easily filter for. This lets us come up with a pretty good mechanism for determining when a page load or app startup is finished: just compare frames, and say we&#8217;ve &#8220;stopped&#8221; when the pixel differences between frames are negligible (previously defined at 2048 pixels, now 4096 &#8212; see below). Eideticker&#8217;s new frame difference view lets us see how this works. Look at this graph of application startup:</p>
+<p>On Android we connect Eideticker to the device&rsquo;s HDMI out, so we count on a nearly pixel-perfect signal. In practice, it isn&rsquo;t quite, but it is within a few RGB values that we can easily filter for. This lets us come up with a pretty good mechanism for determining when a page load or app startup is finished: just compare frames, and say we&rsquo;ve &ldquo;stopped&rdquo; when the pixel differences between frames are negligible (previously defined at 2048 pixels, now 4096 &#8212; see below). Eideticker&rsquo;s new frame difference view lets us see how this works. Look at this graph of application startup:</p>
 
 <p><a href="/files/2013/10/frame-difference-android-startup.png"><img src="/files/2013/10/frame-difference-android-startup.png" alt="frame-difference-android-startup" width="803" height="514" class="alignnone size-full wp-image-973" srcset="/files/2013/10/frame-difference-android-startup-300x192.png 300w, /files/2013/10/frame-difference-android-startup.png 803w" sizes="(max-width: 803px) 100vw, 803px" /></a>
  <br /><a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe">[Link to original]</a></p>
 
-<p>What&#8217;s going on here? Well, we see some huge jumps in the beginning. This represents the animated transitions that Android makes as we transition from the SUTAgent application (don&#8217;t ask) to the beginnings of the FirefoxOS browser chrome. You&#8217;ll notice though that there&#8217;s some more changes that come in around the 3 second mark. This is when the site bookmarks are fully loaded. If you load the original page (link above) and swipe your mouse over the graph, you can see what&#8217;s going on for yourself.</p>
+<p>What&rsquo;s going on here? Well, we see some huge jumps in the beginning. This represents the animated transitions that Android makes as we transition from the SUTAgent application (don&rsquo;t ask) to the beginnings of the FirefoxOS browser chrome. You&rsquo;ll notice though that there&rsquo;s some more changes that come in around the 3 second mark. This is when the site bookmarks are fully loaded. If you load the original page (link above) and swipe your mouse over the graph, you can see what&rsquo;s going on for yourself.</p>
 
-<p>This approach is not completely without problems. It turns out that there is sometimes some minor churn in the display even when the app is for all intents and purposes started. For example, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=922770">sometimes the scrollbar fading out of view can result in a significantish pixel value change</a>, so I recently upped the threshold of pixels that are different from 2048 to 4096. We also recently encountered a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=926997">silly problem</a> with a random automation app displaying &#8220;toasts&#8221; which caused results to artificially spike. More tweaking may still be required. However, on the whole I&#8217;m pretty happy with this solution. It gives useful, undeniably objective results whose meaning is easy to understand.</p>
+<p>This approach is not completely without problems. It turns out that there is sometimes some minor churn in the display even when the app is for all intents and purposes started. For example, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=922770">sometimes the scrollbar fading out of view can result in a significantish pixel value change</a>, so I recently upped the threshold of pixels that are different from 2048 to 4096. We also recently encountered a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=926997">silly problem</a> with a random automation app displaying &ldquo;toasts&rdquo; which caused results to artificially spike. More tweaking may still be required. However, on the whole I&rsquo;m pretty happy with this solution. It gives useful, undeniably objective results whose meaning is easy to understand.</p>
 
 <p><strong>FirefoxOS</strong></p>
 
@@ -455,21 +453,21 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
  <video class="wp-video-shortcode" id="video-972-1" width="409" height="580" preload="metadata" controls="controls">
   <source type="video/webm" src="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm?_=1" /> <a href="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm">/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm</a></video></div>
 
-<p>My experience has been that pixel differences can be so great between visually identical frames on an eideticker capture on these devices that it&#8217;s pretty much impossible to settle on when startup is done using the frame difference method. It&#8217;s of course possible to detect very large scale changes, but the small scale ones (like the contacts actually appearing in the example above) are very hard to distinguish from random differences in the amount of light absorbed by the camera sensor. Tricks like using median filtering (a.k.a. &#8220;blurring&#8221;) help a bit, but not much. Take a look at this graph, for example:</p>
+<p>My experience has been that pixel differences can be so great between visually identical frames on an eideticker capture on these devices that it&rsquo;s pretty much impossible to settle on when startup is done using the frame difference method. It&rsquo;s of course possible to detect very large scale changes, but the small scale ones (like the contacts actually appearing in the example above) are very hard to distinguish from random differences in the amount of light absorbed by the camera sensor. Tricks like using median filtering (a.k.a. &ldquo;blurring&rdquo;) help a bit, but not much. Take a look at this graph, for example:</p>
 
 <p><a href="/files/2013/10/plotly-contacts-load-pixeldiff.png"><img src="/files/2013/10/plotly-contacts-load-pixeldiff.png" alt="plotly-contacts-load-pixeldiff" width="531" height="679" class="alignnone size-full wp-image-980" srcset="/files/2013/10/plotly-contacts-load-pixeldiff-234x300.png 234w, /files/2013/10/plotly-contacts-load-pixeldiff.png 531w" sizes="(max-width: 531px) 100vw, 531px" /></a>
  <br /><a href="https://plot.ly/~WilliamLachance/3">[Link to original]</a></p>
 
-<p>You&#8217;ll note that the pixel differences during &#8220;static&#8221; parts of the capture are highly variable. This is because the pixel difference depends heavily on how &#8220;bright&#8221; each frame is: parts of the capture which are black (e.g. a contacts icon with a black background) have a much lower difference between them than parts that are bright (e.g. the contacts screen fully loaded).</p>
+<p>You&rsquo;ll note that the pixel differences during &ldquo;static&rdquo; parts of the capture are highly variable. This is because the pixel difference depends heavily on how &ldquo;bright&rdquo; each frame is: parts of the capture which are black (e.g. a contacts icon with a black background) have a much lower difference between them than parts that are bright (e.g. the contacts screen fully loaded).</p>
 
 <p>After a day or so of experimenting and research, I settled on an approach which seems to work pretty reliably. Instead of comparing the frames directly, I measure the <a href="http://en.wikipedia.org/wiki/Entropy">entropy</a> of the <a href="http://en.wikipedia.org/wiki/Image_histogram">histogram</a> of colours used in each frame (essentially just an indication of brightness in this case, see <a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html">this article</a> for more on calculating it), then compare that of each frame with the average of the same measure over 5 previous frames (to account for the fact that two frames may be arbitrarily different, but that is unlikely that a sequence of frames will be). This seems to work much better than frame difference in this environment: although there are plenty of minute differences in light absorption in a capture from this camera, the overall color composition stays mostly the same. See this graph:</p>
 
 <p><a href="/files/2013/10/plotly-contacts-load-entropy.png"><img src="/files/2013/10/plotly-contacts-load-entropy.png" alt="plotly-contacts-load-entropy" width="546" height="674" class="alignnone size-full wp-image-979" srcset="/files/2013/10/plotly-contacts-load-entropy-243x300.png 243w, /files/2013/10/plotly-contacts-load-entropy.png 546w" sizes="(max-width: 546px) 100vw, 546px" /></a>
  <br /><a href="https://plot.ly/~WilliamLachance/5">[Link to original]</a></p>
 
-<p>If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&#8217;s not nearly as pronounced as before. In practice, I&#8217;ve been able to get extremely consistent numbers with a reasonable &#8220;threshold&#8221; of &#8220;0.05&#8221;.</p>
+<p>If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&rsquo;s not nearly as pronounced as before. In practice, I&rsquo;ve been able to get extremely consistent numbers with a reasonable &ldquo;threshold&rdquo; of &ldquo;0.05&rdquo;.</p>
 
-<p>In Eideticker I&#8217;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &#8220;pixel differences&#8221; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&#8217;t count on light composition changing the same way for those cases. My initial thought was to use <a href="http://en.wikipedia.org/wiki/Edge_detection">edge detection</a> (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.</p> 
+<p>In Eideticker I&rsquo;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &ldquo;pixel differences&rdquo; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&rsquo;t count on light composition changing the same way for those cases. My initial thought was to use <a href="http://en.wikipedia.org/wiki/Edge_detection">edge detection</a> (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.</p> 
   <hr/>
 </article>
 <article>
@@ -479,7 +477,7 @@ remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=tr
     <p><span class="tags"><a href="/tags/BIXI.html">BIXI</a>  <a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Nixi.html">Nixi</a></span></p>
   </header>
 
-<p>I&#8217;ve been working on a new, mobile friendly version of <a href="http://nixi.ca/">Nixi</a> on-and-off for the past year and a bit. I&#8217;m not sure when it&#8217;s ever going to be finished, so I thought I might as well post the work-in-progress, which has these noteworthy improvements:</p>
+<p>I&rsquo;ve been working on a new, mobile friendly version of <a href="http://nixi.ca/">Nixi</a> on-and-off for the past year and a bit. I&rsquo;m not sure when it&rsquo;s ever going to be finished, so I thought I might as well post the work-in-progress, which has these noteworthy improvements:</p>
 
 <ul>
  <li>Even faster than before (using the <a href="http://getbootstrap.com">Bootstrap</a> library behind the scenes, no longer using slow canvas library to update map)</li>

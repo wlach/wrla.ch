@@ -9,7 +9,7 @@
     <meta name="keywords" content="Eideticker" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="canonical" href="https://wlach.github.io/tags/Eideticker-2.html" />
+    <link rel="canonical" href="https://wrla.ch/tags/Eideticker-2.html" />
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
@@ -92,18 +92,18 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Eideticker</em></p>  <article>
   <header>
-    <h2><a href="/blog/2013/03/follow-up-on-8220-finding-a-camera-for-eideticker-8221/">Follow up on &#8220;Finding a Camera for Eideticker&#8221;</a></h2>
+    <h2><a href="/blog/2013/03/follow-up-on-finding-a-camera-for-eideticker/">Follow up on &ldquo;Finding a Camera for Eideticker&rdquo;</a></h2>
     <p class="index-date">Mar 8th, 2013</p>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Quick update on my <a href="http://wrla.ch/blog/2013/02/finding-a-camera-for-eideticker/">last post</a> about finding some kind of camera suitable for use in automated performance testing of fennec and b2g with eideticker. Shortly after I wrote that, I found out about a company called <a href="http://ptgrey.com">Point Grey Research</a> which manufactures custom web cameras intended for exactly the sorts of things we&#8217;re doing. Initial results with the <a href="http://ww2.ptgrey.com/USB3/Flea3">Flea3 camera</a> I ordered from them are quite promising:</p>
+<p>Quick update on my <a href="http://wrla.ch/blog/2013/02/finding-a-camera-for-eideticker/">last post</a> about finding some kind of camera suitable for use in automated performance testing of fennec and b2g with eideticker. Shortly after I wrote that, I found out about a company called <a href="http://ptgrey.com">Point Grey Research</a> which manufactures custom web cameras intended for exactly the sorts of things we&rsquo;re doing. Initial results with the <a href="http://ww2.ptgrey.com/USB3/Flea3">Flea3 camera</a> I ordered from them are quite promising:</p>
 
 <video width="400px" src="/files/eideticker/pointgrey-taskjs.webm" controls="controls"></video>
 
-<p>(the actual capture is even higher quality than that would suggest&#8230; some detail is lost in the conversion to webm)</p>
+<p>(the actual capture is even higher quality than that would suggest some detail is lost in the conversion to webm)</p>
 
-<p>There seems to be some sort of issue with the white balance in that capture which is causing a flashing effect (I suspect this just involves flipping some kind of software setting&#8230; still trying to grok their SDK), and we&#8217;ll need to create some sort of enclosure for the setup so ambient light doesn&#8217;t interfere with the capture&#8230; but overall I&#8217;m pretty optimistic about this baby. 60 frames per second, very high resolution (1280&#215;960), no issues with HDMI (since it&#8217;s just a USB camera), relatively inexpensive.</p> 
+<p>There seems to be some sort of issue with the white balance in that capture which is causing a flashing effect (I suspect this just involves flipping some kind of software setting: still trying to grok their SDK), and we&rsquo;ll need to create some sort of enclosure for the setup so ambient light doesn&rsquo;t interfere with the capture but overall I&rsquo;m pretty optimistic about this baby. 60 frames per second, very high resolution (1280x960), no issues with HDMI (since it&rsquo;s just a USB camera), relatively inexpensive.</p> 
   <hr/>
 </article>
 <article>
@@ -113,26 +113,26 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
-<p>Ok, so as I mentioned <a href="http://wrla.ch/blog/2013/02/eideticker-for-firefoxos/">last time</a> I&#8217;ve been looking into making Eideticker work for devices without native HDMI output by capturing their output with some kind of camera. So far I&#8217;ve tried four different DSLRs for this task, which have all been inadequate for different reasons. I was originally just going to write an email about this to a few concerned parties, but then figured I may as well structure it into a blog post. Maybe someone will find it useful (or better yet, have some ideas.)</p>
+<p>Ok, so as I mentioned <a href="http://wrla.ch/blog/2013/02/eideticker-for-firefoxos/">last time</a> I&rsquo;ve been looking into making Eideticker work for devices without native HDMI output by capturing their output with some kind of camera. So far I&rsquo;ve tried four different DSLRs for this task, which have all been inadequate for different reasons. I was originally just going to write an email about this to a few concerned parties, but then figured I may as well structure it into a blog post. Maybe someone will find it useful (or better yet, have some ideas.)</p>
 
 <p><strong>Elmo MO&ndash;1</strong></p>
 
-<p>This is the device I mentioned last time. Easy to set up, plays nicely with the Decklink capture card we&#8217;re using for Eideticker. It seemed almost perfect, except for that:</p>
+<p>This is the device I mentioned last time. Easy to set up, plays nicely with the Decklink capture card we&rsquo;re using for Eideticker. It seemed almost perfect, except for that:</p>
 
 <ol>
  <li>The image quality is <em>really</em> bad (beaten even by $200 standard digital camera). Tons of noise, picture quality really bad. Not *necessarily* a deal breaker, but it still sucks.</li>
- <li>More importantly, there seems to be no way of turning off the auto white balance adjustment. This makes automated image analysis impossible if the picture changes, as is highlighted in this video:   
+ <li>More importantly, there seems to be no way of turning off the auto white balance adjustment. This makes automated image analysis impossible if the picture changes, as is highlighted in this video:  
   <video width="400px" src="/files/eideticker/elmo-white-balance-problem.webm" controls="controls"></video></li></ol>
 
 <p><strong>Canon Rebel T4i</strong></p>
 
-<p>This is the first camera that was recommended to me at the camera shop I&#8217;ve been going to. It does have an HDMI output signal, but it&#8217;s not &#8220;clean&#8221;. This <a href="http://www.hireacamera.com/blog/index.asp?post=canon-eos-650d--hdmi-explained">blog post</a> explains the details better than I could. Next.</p>
+<p>This is the first camera that was recommended to me at the camera shop I&rsquo;ve been going to. It does have an HDMI output signal, but it&rsquo;s not &ldquo;clean&rdquo;. This <a href="http://www.hireacamera.com/blog/index.asp?post=canon-eos-650d--hdmi-explained">blog post</a> explains the details better than I could. Next.</p>
 
 <p><strong>Nikon D600</strong></p>
 
-<p>Supposedly does native clean 720p output, but unfortunately the <a href="http://vimeo.com/49952287">output is in a &#8220;box&#8221;</a> so isn&#8217;t recognized by the Decklink cards that we&#8217;re using (which insist on a full 1280&#215;720 HDMI signal to work). Next.</p>
+<p>Supposedly does native clean 720p output, but unfortunately the <a href="http://vimeo.com/49952287">output is in a &ldquo;box&rdquo;</a> so isn&rsquo;t recognized by the Decklink cards that we&rsquo;re using (which insist on a full 1280&#215;720 HDMI signal to work). Next.</p>
 
 <p><strong>Nikon D800</strong></p>
 
@@ -140,9 +140,9 @@
 
 <p>&#8212;</p>
 
-<p>To be clear, with the exception of the Elmo all the devices above seem like fine cameras, and should more than do for manual captures of B2G or Android phones (which is something we probably want to do anyway). But for Eideticker, we need something that works in automation, and none of the above fit the bill. I guess I could explore using a &#8220;real&#8221; video camera as opposed to a DSLR acting like one, though I suspect I might run into some of the same sorts of issues depending on how the HDMI output of those devices behaves.</p>
+<p>To be clear, with the exception of the Elmo all the devices above seem like fine cameras, and should more than do for manual captures of B2G or Android phones (which is something we probably want to do anyway). But for Eideticker, we need something that works in automation, and none of the above fit the bill. I guess I could explore using a &ldquo;real&rdquo; video camera as opposed to a DSLR acting like one, though I suspect I might run into some of the same sorts of issues depending on how the HDMI output of those devices behaves.</p>
 
-<p>Part of me wonders whether a custom solution wouldn&#8217;t work better. How complicated could it be to construct your own digital camera anyway? 😉 Hook up a fancy camera sensor to a <a href="http://pandaboard.org">pandaboard</a>, get it to output through the HDMI port, and then we&#8217;re set? Or better yet, maybe just get a fancy webcam like the <a href="http://en.wikipedia.org/wiki/PlayStation_Eye">Playstation Eye</a> and hook it up directly to a computer? That would eliminate the need for our expensive video capture card setup altogether.</p> 
+<p>Part of me wonders whether a custom solution wouldn&rsquo;t work better. How complicated could it be to construct your own digital camera anyway? 😉 Hook up a fancy camera sensor to a <a href="http://pandaboard.org">pandaboard</a>, get it to output through the HDMI port, and then we&rsquo;re set? Or better yet, maybe just get a fancy webcam like the <a href="http://en.wikipedia.org/wiki/PlayStation_Eye">Playstation Eye</a> and hook it up directly to a computer? That would eliminate the need for our expensive video capture card setup altogether.</p> 
   <hr/>
 </article>
 <article>
@@ -152,44 +152,44 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
-<p>Here&#8217;s a long overdue update on where we&#8217;re at with Eideticker for FirefoxOS. While we&#8217;ve had a good amount of success getting <a href="http://eideticker.wrla.ch">useful, actionable data</a> out of Eideticker for Android, so far we haven&#8217;t been able to replicate that success for FirefoxOS. This is not for lack of trying: first, <a href="http://nakubu.com/">Malini Das</a> and then me have been working at it since summer 2012.</p>
+<p>Here&rsquo;s a long overdue update on where we&rsquo;re at with Eideticker for FirefoxOS. While we&rsquo;ve had a good amount of success getting <a href="http://eideticker.wrla.ch">useful, actionable data</a> out of Eideticker for Android, so far we haven&rsquo;t been able to replicate that success for FirefoxOS. This is not for lack of trying: first, <a href="http://nakubu.com/">Malini Das</a> and then me have been working at it since summer 2012.</p>
 
-<p>When it comes right down to it, instrumenting Eideticker for B2G is just a whole lot more complex. On Android, we could take the operating system (including support for all the things we needed, like HDMI capture) as a given. The only tricky part was instrumenting the capture so the right things happened at the right moment. With FirefoxOS, we need to run these tests on entire builds of a whole operating system which was constantly changing. Not nearly as simple. That said, I&#8217;m starting to see light at the end of the tunnel.</p>
+<p>When it comes right down to it, instrumenting Eideticker for B2G is just a whole lot more complex. On Android, we could take the operating system (including support for all the things we needed, like HDMI capture) as a given. The only tricky part was instrumenting the capture so the right things happened at the right moment. With FirefoxOS, we need to run these tests on entire builds of a whole operating system which was constantly changing. Not nearly as simple. That said, I&rsquo;m starting to see light at the end of the tunnel.</p>
 
 <p><strong>Platforms</strong></p>
 
-<p>We initially selected the <a href="http://pandaboard.org">pandaboard</a> as the main device to use for eideticker testing, for two reasons. First, it&#8217;s the same hardware platform we&#8217;re targeting for other b2g testing in tbpl (mochitest, reftest, etc.), and is the platform we&#8217;re using for running Gaia UI tests. Second, unlike every other device that we&#8217;re prototyping FirefoxOS on (to my knowledge), it has HDMI-out capability, so we can directly interface it with the Eideticker video capture setup.</p>
+<p>We initially selected the <a href="http://pandaboard.org">pandaboard</a> as the main device to use for eideticker testing, for two reasons. First, it&rsquo;s the same hardware platform we&rsquo;re targeting for other b2g testing in tbpl (mochitest, reftest, etc.), and is the platform we&rsquo;re using for running Gaia UI tests. Second, unlike every other device that we&rsquo;re prototyping FirefoxOS on (to my knowledge), it has HDMI-out capability, so we can directly interface it with the Eideticker video capture setup.</p>
 
-<p>However, the panda also has some serious shortcomings. First, it&#8217;s obviously not a platform we&#8217;re shipping, so the performance we&#8217;re seeing from it is subject to different factors that we might not see with a phone actually shipped to users. For the same reason, we&#8217;ve had many problems getting B2G running reliably on it, as it&#8217;s not something most developers have been hacking on a day to day basis. Thanks to the heroic efforts of Thomas Zimmerman, we&#8217;ve mostly got things working ok now, but it was a fairly long road to get here (several months last fall).</p>
+<p>However, the panda also has some serious shortcomings. First, it&rsquo;s obviously not a platform we&rsquo;re shipping, so the performance we&rsquo;re seeing from it is subject to different factors that we might not see with a phone actually shipped to users. For the same reason, we&rsquo;ve had many problems getting B2G running reliably on it, as it&rsquo;s not something most developers have been hacking on a day to day basis. Thanks to the heroic efforts of Thomas Zimmerman, we&rsquo;ve mostly got things working ok now, but it was a fairly long road to get here (several months last fall).</p>
 
 <p>More recently, we became aware of something called an <a href="http://www.elmousa.com/">Elmo</a> which might let us combine
  <br />the best of both worlds. An elmo is really just a tiny mounted video camera with a bunch of outputs, and is I understand most commonly used to project documents in a classroom/presentation setting. However, it seems to do a great job of capturing mobile phones in action as well.</p>
 
 <video width="400px" src="/files/eideticker/startup-test-elmo.webm" controls="controls"></video>
 
-<p>The nice thing about using an external camera for the video capture part of eideticker is that we are no longer limited to devices with HDMI out &#8212; we can run the standard set of automated tests on ANYTHING. We&#8217;ve already used this to some success in getting some videos of FirefoxOS startup times versus Android on the Unagi (a development phone that we&#8217;re using internally) for manual analysis. Automating this process may be trickier because of the fact that the video capture is no longer &#8220;perfect&#8221;, but we may be able to work around that (more discussion about this later).</p>
+<p>The nice thing about using an external camera for the video capture part of eideticker is that we are no longer limited to devices with HDMI out &#8212; we can run the standard set of automated tests on ANYTHING. We&rsquo;ve already used this to some success in getting some videos of FirefoxOS startup times versus Android on the Unagi (a development phone that we&rsquo;re using internally) for manual analysis. Automating this process may be trickier because of the fact that the video capture is no longer &ldquo;perfect&rdquo;, but we may be able to work around that (more discussion about this later).</p>
 
 <p><strong>FirefoxOS web page tests</strong></p>
 
-<p>These are the same tests we run on Android. They should give us an idea of roughly where our performance when browsing / panning web sites like CNN. So far, I&#8217;ve only run these tests on the Pandaboard and they are INCREDIBLY slow (like 1&ndash;3 frames per second when scrolling). So much so that I have to think there is something broken about our hardware acceleration on this platform.</p>
+<p>These are the same tests we run on Android. They should give us an idea of roughly where our performance when browsing / panning web sites like CNN. So far, I&rsquo;ve only run these tests on the Pandaboard and they are INCREDIBLY slow (like 1&ndash;3 frames per second when scrolling). So much so that I have to think there is something broken about our hardware acceleration on this platform.</p>
 
 <p><strong>FirefoxOS application tests</strong></p>
 
 <p>These are some new tests written in a framework that allows you to script arbitrary interactions in FirefoxOS, like launching applications or opening the task switcher.</p>
 
-<p>I&#8217;m pretty happy with this. It seems to work well. The only problems I&#8217;m seeing with this is with the platform we&#8217;re running these tests on. With the pandaboard, applications look weird (since the screen resolution doesn&#8217;t remotely resemble the 320&#215;480 resolution on our current devices) and performance is abysmal. Take, for example, this capture of application switching performance, which operates only at roughly 3&ndash;4 fps:</p>
+<p>I&rsquo;m pretty happy with this. It seems to work well. The only problems I&rsquo;m seeing with this is with the platform we&rsquo;re running these tests on. With the pandaboard, applications look weird (since the screen resolution doesn&rsquo;t remotely resemble the 320&#215;480 resolution on our current devices) and performance is abysmal. Take, for example, this capture of application switching performance, which operates only at roughly 3&ndash;4 fps:</p>
 
 <video width="400px" src="/files/eideticker/b2g-appswitching-video.webm" controls="controls"></video>
 
 <p><strong>So what now?</strong></p>
 
-<p>I&#8217;m not 100% sure yet (partly it will depend on what others say as well as my own investigation), but I have a feeling that capturing video of real devices running FirefoxOS using the Elmo is the way forward. First, the hardware and driver situation will be much more representative of what we&#8217;ll actually be shipping to users. Second, we can flash new builds of FirefoxOS onto them automatically, unlike the pandaboards where you currently either need to manually flash and reset (a time consuming and error prone process) or set up an instance of <a href="https://github.com/djmitche/mozpool">mozpool</a> (which I understand is quite complicated).</p>
+<p>I&rsquo;m not 100% sure yet (partly it will depend on what others say as well as my own investigation), but I have a feeling that capturing video of real devices running FirefoxOS using the Elmo is the way forward. First, the hardware and driver situation will be much more representative of what we&rsquo;ll actually be shipping to users. Second, we can flash new builds of FirefoxOS onto them automatically, unlike the pandaboards where you currently either need to manually flash and reset (a time consuming and error prone process) or set up an instance of <a href="https://github.com/djmitche/mozpool">mozpool</a> (which I understand is quite complicated).</p>
 
-<p>The main use case I see with eideticker-on-panda would be where we wanted to run a suite of tests on checkin (in tbpl-like fashion) and we&#8217;d need to scale to many devices. While cool, this sounds like an expensive project (both in terms of time and hardware) and I think we&#8217;d do better with getting something slightly smaller-scale running first.</p>
+<p>The main use case I see with eideticker-on-panda would be where we wanted to run a suite of tests on checkin (in tbpl-like fashion) and we&rsquo;d need to scale to many devices. While cool, this sounds like an expensive project (both in terms of time and hardware) and I think we&rsquo;d do better with getting something slightly smaller-scale running first.</p>
 
-<p>So, the real question is whether or not the capture produced by the Elmo is amenable to the same analysis that we do on the raw HDMI output. At the very least, some of eideticker&#8217;s image analysis code will have to be adapted to handle a much &#8220;noisier&#8221; capture. As opposed to capturing the raw HDMI signal, we now have to deal with the real world and its irritating fluctuations in ambient light levels and all that the rest. I have no doubt it is *possible* to compensate for this (after all this is what the human eye/brain does all the time), but the question is how much work it will be. Can&#8217;t speak for anyone else at Mozilla, but I&#8217;m not sure if I really have the time to start a Ph.D-level research project in computational vision. 😉 I&#8217;m optimistic that won&#8217;t be necessary, but we&#8217;ll just have to wait and see.</p> 
+<p>So, the real question is whether or not the capture produced by the Elmo is amenable to the same analysis that we do on the raw HDMI output. At the very least, some of eideticker&rsquo;s image analysis code will have to be adapted to handle a much &ldquo;noisier&rdquo; capture. As opposed to capturing the raw HDMI signal, we now have to deal with the real world and its irritating fluctuations in ambient light levels and all that the rest. I have no doubt it is *possible* to compensate for this (after all this is what the human eye/brain does all the time), but the question is how much work it will be. Can&rsquo;t speak for anyone else at Mozilla, but I&rsquo;m not sure if I really have the time to start a Ph.D-level research project in computational vision. 😉 I&rsquo;m optimistic that won&rsquo;t be necessary, but we&rsquo;ll just have to wait and see.</p> 
   <hr/>
 </article>
 <article>
@@ -199,13 +199,13 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
 <p>Just wanted to give some updates on a few new Eideticker features which have landed in the past week.</p>
 
 <p><strong>Profiling support</strong></p>
 
-<p>While Eideticker is a great tool for observing the external behaviour of the mobile browser, it hasn&#8217;t been able to tell us much about what&#8217;s going on inside. If something&#8217;s slow, why is it slow? If it&#8217;s slower than it was the day before, what&#8217;s the cause? If it&#8217;s faster? What explains the deviations in test results from one run to the other?</p>
+<p>While Eideticker is a great tool for observing the external behaviour of the mobile browser, it hasn&rsquo;t been able to tell us much about what&rsquo;s going on inside. If something&rsquo;s slow, why is it slow? If it&rsquo;s slower than it was the day before, what&rsquo;s the cause? If it&rsquo;s faster? What explains the deviations in test results from one run to the other?</p>
 
 <p>Thanks to <a href="http://benoitgirard.wordpress.com/">Benoit Girard</a> (+ a little bit of integration work from me), we can now start providing answers to these questions. Eideticker now has a mode that allows us to capture a <a href="https://developer.mozilla.org/en-US/docs/Performance/Profiling_with_the_Built-in_Profiler">sampling profile</a> of the application while the video capture is ongoing. From the dashboard, you can now get access said profile, just by clicking on a link.</p>
 
@@ -214,17 +214,17 @@
 
 <p>Note that the profile is not yet synchronized precisely to the videocapture (the profile works over the entire run of the browser), but Benoit is busily making that happen. That should hopefully land soon, in the mean time we still have some pretty useful data.</p>
 
-<p>To say I&#8217;m excited about this would be an understatement. I think it has the potential to open up a whole new world of understanding of why our mobile (and desktop, someday) browser performs the way it does.</p>
+<p>To say I&rsquo;m excited about this would be an understatement. I think it has the potential to open up a whole new world of understanding of why our mobile (and desktop, someday) browser performs the way it does.</p>
 
 <p><strong>Startup / pageload testing</strong></p>
 
-<p>Eideticker has had support for measuring startup and page load time for a few months now, but I hadn&#8217;t yet hooked it up to the dashboard. As of today, it now is. There&#8217;s a bunch of different angles that are interesting to measure here (new vs. old profiles, whether the browser has been launched since boot, launching web applications, loading about:home or loading a web page, &#8230;) which I&#8217;ll get to in due course. For now, we at least have a baseline of how long it takes to see the Firefox homescreen on a Galaxy Nexus:</p>
+<p>Eideticker has had support for measuring startup and page load time for a few months now, but I hadn&rsquo;t yet hooked it up to the dashboard. As of today, it now is. There&rsquo;s a bunch of different angles that are interesting to measure here (new vs. old profiles, whether the browser has been launched since boot, launching web applications, loading about:home or loading a web page, &hellip;) which I&rsquo;ll get to in due course. For now, we at least have a baseline of how long it takes to see the Firefox homescreen on a Galaxy Nexus:</p>
 
 <video width="400px" src="http://wrla.ch/eideticker/dashboard/videos/video-1347572002.11.webm" controls="controls"></video>
 
-<p>Of course, this is hooked up to the profiling support previously mentioned. Here&#8217;s <a href="http://people.mozilla.com/~bgirard/cleopatra/?zippedProfile=profiles/sps-profile-1347572285.4.zip&amp;#038;videoCapture=videos/video-1347572285.4.webm">an example profile</a>.</p>
+<p>Of course, this is hooked up to the profiling support previously mentioned. Here&rsquo;s <a href="http://people.mozilla.com/~bgirard/cleopatra/?zippedProfile=profiles/sps-profile-1347572285.4.zip&amp;videoCapture=videos/video-1347572285.4.webm">an example profile</a>.</p>
 
-<p>I&#8217;ve already filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=791106">one bug</a> based on the data gathered so far.</p> 
+<p>I&rsquo;ve already filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=791106">one bug</a> based on the data gathered so far.</p> 
   <hr/>
 </article>
 <article>
@@ -234,7 +234,7 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
 <p><a href="http://wrla.ch/blog/2012/09/oh-hai-i-upergaded-yer-eideticker/multi-device-dash/" rel="attachment wp-att-709"><img src="/files/2012/09/multi-device-dash.png" alt="" title="multi-device-dash" width="771" height="576" class="alignnone size-full wp-image-709" srcset="/files/2012/09/multi-device-dash-300x224.png 300w, /files/2012/09/multi-device-dash.png 771w" sizes="(max-width: 771px) 100vw, 771px" /></a></p>
 
@@ -254,17 +254,17 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Orangutan.html">Orangutan</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
 
-<p>I just merged a new approach I&#8217;ve been using to simulate touch events into the master branch of Eideticker called <a href="http://github.com/wlach/orangutan">Orangutan</a>.</p>
+<p>I just merged a new approach I&rsquo;ve been using to simulate touch events into the master branch of Eideticker called <a href="http://github.com/wlach/orangutan">Orangutan</a>.</p>
 
 <p><a href="http://wrla.ch/blog/2012/07/the-evolution-of-simulating-events-in-eideticker-from-monkeys-to-orangutns/orangutan/" rel="attachment wp-att-696"><img src="/files/2012/07/orangutan.jpg" alt="Image of Orangutan" title="orangutan" width="415" height="600" class="alignnone size-full wp-image-696" srcset="/files/2012/07/orangutan-207x300.jpg 207w, /files/2012/07/orangutan.jpg 415w" sizes="(max-width: 415px) 100vw, 415px" /></a></p>
 
-<p>As I&#8217;ve mentioned before, we really need to simulate actual user gestures when doing this type of testing to measure real-world performance with Eideticker. Up to now, I&#8217;ve been using google&#8217;s <a href="http://developer.android.com/tools/help/monkeyrunner_concepts.html">MonkeyRunner</a> tool to do this. I was always a little skeptical about its approach (which involved using a privileged tool written in Java with special access to Android&#8217;s windowing system), but up until recently I&#8217;d managed to get around its <a href="http://code.google.com/p/android/issues/detail?id=27955">issues</a> with a <a href="https://github.com/mozilla/eideticker/commit/8d034212bc38c1fc80b9fe792c0b06919c74141a">successively</a> <a href="https://github.com/mozilla/eideticker/commit/55d63960dc0a5090cee00fe917a851db082ee0fd">more</a> <a href="https://github.com/mozilla/eideticker/commit/686882d32fb25a700afec35c39e53a73658688e3">complicated</a> series of hacks.</p>
+<p>As I&rsquo;ve mentioned before, we really need to simulate actual user gestures when doing this type of testing to measure real-world performance with Eideticker. Up to now, I&rsquo;ve been using google&rsquo;s <a href="http://developer.android.com/tools/help/monkeyrunner_concepts.html">MonkeyRunner</a> tool to do this. I was always a little skeptical about its approach (which involved using a privileged tool written in Java with special access to Android&rsquo;s windowing system), but up until recently I&rsquo;d managed to get around its <a href="http://code.google.com/p/android/issues/detail?id=27955">issues</a> with a <a href="https://github.com/mozilla/eideticker/commit/8d034212bc38c1fc80b9fe792c0b06919c74141a">successively</a> <a href="https://github.com/mozilla/eideticker/commit/55d63960dc0a5090cee00fe917a851db082ee0fd">more</a> <a href="https://github.com/mozilla/eideticker/commit/686882d32fb25a700afec35c39e53a73658688e3">complicated</a> series of hacks.</p>
 
-<p>Unfortunately, I finally came up with a problem that I couldn&#8217;t figure out how to fix: monkeyrunner doesn&#8217;t attach precise timing information to the events it generates, which completely throws off Google Chrome for Android when you try to simulate a pan gesture. I&#8217;ve tried just about every way of using the existing functionality (both the networked mode and the &#8220;script&#8221; mode), but nothing seemed to help. My conclusion is that the only way of continuing to use monkey would be to create a fix for the software itself, which implies forking and extending the entire Android Open Source Project. As noble a goal as that might be, doing that across all the major Android versions I want to support (2.2, 2.3, 4.0 and now 4.1) was more work than I felt like taking on (not to mention the question of how to deploy that work). I decided to build something entirely new which did not have this requirement.</p>
+<p>Unfortunately, I finally came up with a problem that I couldn&rsquo;t figure out how to fix: monkeyrunner doesn&rsquo;t attach precise timing information to the events it generates, which completely throws off Google Chrome for Android when you try to simulate a pan gesture. I&rsquo;ve tried just about every way of using the existing functionality (both the networked mode and the &ldquo;script&rdquo; mode), but nothing seemed to help. My conclusion is that the only way of continuing to use monkey would be to create a fix for the software itself, which implies forking and extending the entire Android Open Source Project. As noble a goal as that might be, doing that across all the major Android versions I want to support (2.2, 2.3, 4.0 and now 4.1) was more work than I felt like taking on (not to mention the question of how to deploy that work). I decided to build something entirely new which did not have this requirement.</p>
 
-<p>Enter Orangutan. Unlike MonkeyRunner, Orangutan simply injects events directly into low-level the kernel device file that represents an Android device&#8217;s touch screen. It&#8217;s fast (written in native C), trivial to build, and seems to work seamlessly with any application I&#8217;ve tried using it with (including Google Chrome for Android). Most interestingly for Mozilla, this interface is also present on Firefox OS (<a href="https://wiki.mozilla.org/B2G">Boot to Gecko</a>) based devices, so we should be able to use Orangutan there to support both Eideticker and any other testing framework which needs to test real-world user input test cases. Exciting times!</p> 
+<p>Enter Orangutan. Unlike MonkeyRunner, Orangutan simply injects events directly into low-level the kernel device file that represents an Android device&rsquo;s touch screen. It&rsquo;s fast (written in native C), trivial to build, and seems to work seamlessly with any application I&rsquo;ve tried using it with (including Google Chrome for Android). Most interestingly for Mozilla, this interface is also present on Firefox OS (<a href="https://wiki.mozilla.org/B2G">Boot to Gecko</a>) based devices, so we should be able to use Orangutan there to support both Eideticker and any other testing framework which needs to test real-world user input test cases. Exciting times!</p> 
   <hr/>
 </article>
 <article>
@@ -281,9 +281,9 @@
 
 <p><strong>Idea 1: Put cross-browser performance tests on a more rigorous footing</strong></p>
 
-<p>One of the problems with existing benchmarks is that the graphical performance that they measure is entirely synthetic. So when something like Microsoft&#8217;s fishbowl demo claims 50 frames per second, that is based entirely on an internal measurement. There is no guarantee that is what the user is actually seeing. For all we know, it could be throwing half those frames away. To say nothing of the fact that measuring the results could interfere with the results themselves!</p>
+<p>One of the problems with existing benchmarks is that the graphical performance that they measure is entirely synthetic. So when something like Microsoft&rsquo;s fishbowl demo claims 50 frames per second, that is based entirely on an internal measurement. There is no guarantee that is what the user is actually seeing. For all we know, it could be throwing half those frames away. To say nothing of the fact that measuring the results could interfere with the results themselves!</p>
 
-<p>With Eideticker, we only analyze what the user sees (under the assumption that what the user sees is what comes out of the device&#8217;s HDMI out). To measure frame rate, Eideticker painstakingly analyzes a video capture to see the difference between each frame. Only if one frame is qualitatively different than the one before it will it consider it to be a step forward in the animation progression. There is no room for a browser to &#8220;cheat&#8221; by, for example, throwing a frame away. Here are two example frames from an Eideticker capture of an animated clock, along with a visual representation of the difference it measured between them:</p>
+<p>With Eideticker, we only analyze what the user sees (under the assumption that what the user sees is what comes out of the device&rsquo;s HDMI out). To measure frame rate, Eideticker painstakingly analyzes a video capture to see the difference between each frame. Only if one frame is qualitatively different than the one before it will it consider it to be a step forward in the animation progression. There is no room for a browser to &ldquo;cheat&rdquo; by, for example, throwing a frame away. Here are two example frames from an Eideticker capture of an animated clock, along with a visual representation of the difference it measured between them:</p>
 
 <table style="border:none;">
  <tr>
@@ -319,7 +319,7 @@
 
 <p>For the first item, I believe the best indication of perceived responsiveness and smoothness is found by measuring the number of frames that are displayed in response to user interaction. As with all measurements, it is not perfect, but one can safely say that if there are only a few frames changed in response to a swipe, the experience is going to be jerky.</p>
 
-<p>Compare these two videos of panning on <a href="http://CNN.com/">CNN.com</a>. The first is the previous Firefox for Android, clocking in at about 12.3 frames per second (fps). The second is the recent Firefox for Android , clocking in at 23 fps using Eideticker&#8217;s internal measurements:</p>
+<p>Compare these two videos of panning on <a href="http://CNN.com/">CNN.com</a>. The first is the previous Firefox for Android, clocking in at about 12.3 frames per second (fps). The second is the recent Firefox for Android , clocking in at 23 fps using Eideticker&rsquo;s internal measurements:</p>
 
 <p>&nbsp;</p>
 
@@ -330,7 +330,7 @@
   <td>
    <video width="200px" height="240" src="/files/2012/06/native-fennec-cnn.webm" controls="controls"></video></td></tr></table>
 
-<p>For the second, we can easily measure how quickly a user sees content by setting the background color of the page to an obvious color (in Eideticker we use magenta), overlaying an image on top, then measuring the amount of the page that is magenta while panning around. Since all modern browsers just use the background color of the page when something is to be redrawn (or at least can be configured that way), it&#8217;s easy to compare across browsers. You can see in the videos above that the new Native Firefox does much better than the old one in this regard, at least on this benchmark. Here&#8217;s an image of Eideticker detecting checkerboarding on a capture (red indicates checkerboarded areas):</p>
+<p>For the second, we can easily measure how quickly a user sees content by setting the background color of the page to an obvious color (in Eideticker we use magenta), overlaying an image on top, then measuring the amount of the page that is magenta while panning around. Since all modern browsers just use the background color of the page when something is to be redrawn (or at least can be configured that way), it&rsquo;s easy to compare across browsers. You can see in the videos above that the new Native Firefox does much better than the old one in this regard, at least on this benchmark. Here&rsquo;s an image of Eideticker detecting checkerboarding on a capture (red indicates checkerboarded areas):</p>
 
 <table style="border:none;">
  <tr>
@@ -346,11 +346,11 @@
 
 <p><em>Note: The red area of the graphic on the right indicates a region that Eideticker has detected as checkerboarded (i.e. undrawn). The black area of the graphic indicates a region that is fully drawn.</em></p>
 
-<p>The important thing in both cases is that these captures represent <strong>a real user experience</strong>. The swipe gestures are synthesized such that they are interpreted by Android as an actual touch event. This is important: using tricks like <a href="https://developer.mozilla.org/en/DOM/window.scrollTo">javascript scrollTo</a> inside your Web page to pan would not actually engage the renderer in quite the same way. On Firefox for Android (and probably other browsers as well, though I haven&#8217;t checked), the response to a touch event is always handled inside the browser internal rendering engine to give the expected &#8220;physical feel.&#8221; Manually moving the viewport would give completely different results since so much of the fancy code we use to reduce the redraw delay would not be engaged.</p>
+<p>The important thing in both cases is that these captures represent <strong>a real user experience</strong>. The swipe gestures are synthesized such that they are interpreted by Android as an actual touch event. This is important: using tricks like <a href="https://developer.mozilla.org/en/DOM/window.scrollTo">javascript scrollTo</a> inside your Web page to pan would not actually engage the renderer in quite the same way. On Firefox for Android (and probably other browsers as well, though I haven&rsquo;t checked), the response to a touch event is always handled inside the browser internal rendering engine to give the expected &ldquo;physical feel.&rdquo; Manually moving the viewport would give completely different results since so much of the fancy code we use to reduce the redraw delay would not be engaged.</p>
 
 <p><strong>Conclusion</strong></p>
 
-<p>Overall, I am very happy with how Eideticker has allowed us to track and measure improvements in Firefox for Android. In developing Eideticker, we aimed to create a benchmark that measured how users actually interact with a browser – not how abstract measurements claim how great a browser is.  As we move ahead with new projects to improve Firefox for Android, Eideticker will continue to be useful in making sure that using our browser is the best experience that it can be, especially combined with other tools like Benoit Girard&#8217;s <a href="http://benoitgirard.wordpress.com/2012/03/30/writing-a-profiler/">sampling profiler</a>.</p>
+<p>Overall, I am very happy with how Eideticker has allowed us to track and measure improvements in Firefox for Android. In developing Eideticker, we aimed to create a benchmark that measured how users actually interact with a browser – not how abstract measurements claim how great a browser is.  As we move ahead with new projects to improve Firefox for Android, Eideticker will continue to be useful in making sure that using our browser is the best experience that it can be, especially combined with other tools like Benoit Girard&rsquo;s <a href="http://benoitgirard.wordpress.com/2012/03/30/writing-a-profiler/">sampling profiler</a>.</p>
 
 <p>For more information on Eideticker, feel free to visit <a href="https://wiki.mozilla.org/Project_Eideticker">its homepage</a> on <a href="http://wiki.mozilla.org/">wiki.mozilla.org</a>.</p>
 
@@ -364,18 +364,18 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
 
 <p>tl;dr: You can now run the standard eideticker benchmarks easily on any Android phone without any kind of specialized hardware.</p>
 
-<p>So Eideticker is pretty great at comparing relative performance between different browsers and generally measuring things in an absolutely neutral way. Unfortunately it&#8217;s a bit of a pain to use it at the moment to catch regressions: the software still has a few bugs and encoding/decoding/analyzing the capture still takes a great deal of time. Not to mention the fact that it currently requires specialized hardware (though that will soon be less of a concern at least inside MoCo, where we have a bunch of Eideticker boxes on order for the Toronto and Mountain View offices).</p>
+<p>So Eideticker is pretty great at comparing relative performance between different browsers and generally measuring things in an absolutely neutral way. Unfortunately it&rsquo;s a bit of a pain to use it at the moment to catch regressions: the software still has a few bugs and encoding/decoding/analyzing the capture still takes a great deal of time. Not to mention the fact that it currently requires specialized hardware (though that will soon be less of a concern at least inside MoCo, where we have a bunch of Eideticker boxes on order for the Toronto and Mountain View offices).</p>
 
-<p>A few months ago, Chris Lord wrote up some great code to internally measure the amount of checkerboarding going on in Fennec. I&#8217;ve thought for a while that it would be a neat idea to hook this up to the Eideticker harness, and today I finally did so. After installing Eideticker, you can now run the benchmark on any machine against an arbitrary fennec build just by typing this from the eideticker root directory:</p>
+<p>A few months ago, Chris Lord wrote up some great code to internally measure the amount of checkerboarding going on in Fennec. I&rsquo;ve thought for a while that it would be a neat idea to hook this up to the Eideticker harness, and today I finally did so. After installing Eideticker, you can now run the benchmark on any machine against an arbitrary fennec build just by typing this from the eideticker root directory:</p>
 
 <pre><code>adb shell setprop log.tag.GeckoLayerRendererProf DEBUG
 ./bin/get-metric-for-build.py --no-capture --get-internal-checkerboard-stats --num-runs 3 nightly.apk src/tests/scrolling/taskjs.org/index.html</code></pre>
 
-<p>In return, you&#8217;ll get some nice clean results like this:</p>
+<p>In return, you&rsquo;ll get some nice clean results like this:</p>
 
 <pre><code>=== Internal Checkerboard Stats (sum of percents, not percentage) ===
 [167.34348, 171.871015, 175.3420296]</code></pre>
@@ -396,9 +396,9 @@
   <td>175.34</td> 
   <td>184.44</td></tr></table>
 
-<p>While the results aren&#8217;t identical (we measure number of frames differently inside Fennec than we do with Eideticker, for one thing), they do seem roughly correlated. So go forth, benchmark and tweak! 😉</p>
+<p>While the results aren&rsquo;t identical (we measure number of frames differently inside Fennec than we do with Eideticker, for one thing), they do seem roughly correlated. So go forth, benchmark and tweak! 😉</p>
 
-<p>P.S. If you&#8217;ve been following mobile automation, you might be asking why I don&#8217;t just suggest running Talos and Robocop on your workstation. Can&#8217;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&#8217;re much more involved to set up and use at the moment. Arguably they shouldn&#8217;t be, and this is something we (<a href="https://wiki.mozilla.org/Auto-tools/">Mozilla tools &amp; automation</a>) need to work on. We&#8217;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.</p> 
+<p>P.S. If you&rsquo;ve been following mobile automation, you might be asking why I don&rsquo;t just suggest running Talos and Robocop on your workstation. Can&rsquo;t they do the same sorts of things? The short answer is that yes, they can, but unfortunately they&rsquo;re much more involved to set up and use at the moment. Arguably they shouldn&rsquo;t be, and this is something we (<a href="https://wiki.mozilla.org/Auto-tools/">Mozilla tools &amp; automation</a>) need to work on. We&rsquo;ll get there eventually (and help would be welcome!). For now, hacks like this should help with getting out the first release of Fennec by providing a fast, easy to use tool for bisection and analysis.</p> 
   <hr/>
 </article>
 <article>
@@ -408,20 +408,20 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
 
-<p>Participated in an <a href="https://wiki.mozilla.org/Fennec/NativeUI/checkerboarding">interesting meeting</a> on checkerboarding in Firefox for Android yesterday. As a reminder, checkerboarding refers to the amount of time you spend waiting to see the full page after you do a swipe on your mobile device, and it&#8217;s a big issue right now &#8211; so much so that it puts our delivery goal for the new native browser at risk.</p>
+<p>Participated in an <a href="https://wiki.mozilla.org/Fennec/NativeUI/checkerboarding">interesting meeting</a> on checkerboarding in Firefox for Android yesterday. As a reminder, checkerboarding refers to the amount of time you spend waiting to see the full page after you do a swipe on your mobile device, and it&rsquo;s a big issue right now : so much so that it puts our delivery goal for the new native browser at risk.</p>
 
-<p>It seems like we have a number of strategies for improving performance which will likely solve the problem, but we need to be able to measure improvements to make sure that we&#8217;re making progress. This is one of the places where Eideticker could be useful (especially with regards to measuring us against the competition), though there are a few things that we need to add before it&#8217;s going to be as useful as it could be. The most urgent, as I understand, is to come up with a suite of tests which accurately represent the set of pages that we&#8217;re having issues with. The current main measure of checkerboarding that we&#8217;re using with eideticker is taskjs.org which, while an interesting test case in some ways, doesn&#8217;t accurately represent the sort of site that the user would normally go to in the wild (and thus be annoyed by). 😉</p>
+<p>It seems like we have a number of strategies for improving performance which will likely solve the problem, but we need to be able to measure improvements to make sure that we&rsquo;re making progress. This is one of the places where Eideticker could be useful (especially with regards to measuring us against the competition), though there are a few things that we need to add before it&rsquo;s going to be as useful as it could be. The most urgent, as I understand, is to come up with a suite of tests which accurately represent the set of pages that we&rsquo;re having issues with. The current main measure of checkerboarding that we&rsquo;re using with eideticker is taskjs.org which, while an interesting test case in some ways, doesn&rsquo;t accurately represent the sort of site that the user would normally go to in the wild (and thus be annoyed by). 😉</p>
 
-<p>This is going to take a few days (and a lot of review: I&#8217;m definitely no expert when it comes to this stuff) to get right, but I just added two tests for the New York Times which I think are a step in the right direction of being more representative of real-world use cases. Have a look here:</p>
+<p>This is going to take a few days (and a lot of review: I&rsquo;m definitely no expert when it comes to this stuff) to get right, but I just added two tests for the New York Times which I think are a step in the right direction of being more representative of real-world use cases. Have a look here:</p>
 
 <p><a href="http://wrla.ch/eideticker/dashboard/#/nytimes-scrolling">http://wrla.ch/eideticker/dashboard/#/nytimes-scrolling</a>
  <br /><a href="http://wrla.ch/eideticker/dashboard/#/nytimes-zooming">http://wrla.ch/eideticker/dashboard/#/nytimes-zooming</a></p>
 
-<p>The results here actually aren&#8217;t as bad as I would have expected/remembered. There amount of checkerboarding after a zoom out is a bit annoying (I understand this a known issue with font caching, or something) but not too terrible. Still, any improvements that show up here will probably apply across a wide variety of sites, as the design patterns on the New York Times site are very common.</p>
+<p>The results here actually aren&rsquo;t as bad as I would have expected/remembered. There amount of checkerboarding after a zoom out is a bit annoying (I understand this a known issue with font caching, or something) but not too terrible. Still, any improvements that show up here will probably apply across a wide variety of sites, as the design patterns on the New York Times site are very common.</p>
 
-<p>(P.S. yes, I know I promised a comparison with Google Chrome for Android last time&#8230; rest assured that&#8217;s still coming soon!)</p> 
+<p>(P.S. yes, I know I promised a comparison with Google Chrome for Android last time: rest assured that&rsquo;s still coming soon!)</p> 
   <hr/>
 </article>
 <article>
@@ -431,9 +431,9 @@
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p><em>[ For more information on the Eideticker software I&#8217;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
 
-<p>Since my <a href="http://wrla.ch/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/">first Eideticker dashboard post</a> was <a href="http://download.cnet.com/8301-2007_4-57401261-12/whats-going-on-with-firefox-for-android/?tag=epicStories">so well received</a>, I thought I&#8217;d give a quick update on another metric that I just brought online: checkerboarding (a.k.a. the amount of time you spend waiting to see the full page after you do a swipe on your mobile device).</p>
+<p>Since my <a href="http://wrla.ch/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/">first Eideticker dashboard post</a> was <a href="http://download.cnet.com/8301-2007_4-57401261-12/whats-going-on-with-firefox-for-android/?tag=epicStories">so well received</a>, I thought I&rsquo;d give a quick update on another metric that I just brought online: checkerboarding (a.k.a. the amount of time you spend waiting to see the full page after you do a swipe on your mobile device).</p>
 
 <p><a href="http://wrla.ch/blog/2012/03/eideticker-dashboard-update/checkerboard_dashboard/" rel="attachment wp-att-503"><img src="/files/2012/03/checkerboard_dashboard.png" alt="" title="checkerboard_dashboard" width="715" height="485" class="alignnone size-full wp-image-503" srcset="/files/2012/03/checkerboard_dashboard-300x203.png 300w, /files/2012/03/checkerboard_dashboard.png 715w" sizes="(max-width: 715px) 100vw, 715px" /></a></p>
 

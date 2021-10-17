@@ -3,14 +3,14 @@
  <channel>
   <title>William Lachance's Log: Posts tagged 'Environment'</title>
   <description>William Lachance's Log: Posts tagged 'Environment'</description>
-  <link>https://wlach.github.io/tags/Environment.html</link>
+  <link>https://wrla.ch/tags/Environment.html</link>
   <lastBuildDate>Tue, 17 Sep 2013 04:00:00 UT</lastBuildDate>
   <pubDate>Tue, 17 Sep 2013 04:00:00 UT</pubDate>
   <ttl>1800</ttl>
   <item>
-   <title>How to make great coffee that doesn&amp;#8217;t generate 966 million pounds of waste a year</title>
-   <link>https://wlach.github.io/blog/2013/09/how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year/?utm_source=Environment&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2013-09-how-to-make-great-coffee-that-doesn-8217-t-generate-966-million-pounds-of-waste-a-year</guid>
+   <title>How to make great coffee that doesn't generate 966 million pounds of waste a year</title>
+   <link>https://wrla.ch/blog/2013/09/how-to-make-great-coffee-that-doesn-t-generate-966-million-pounds-of-waste-a-year/?utm_source=Environment&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2013-09-how-to-make-great-coffee-that-doesn-t-generate-966-million-pounds-of-waste-a-year</guid>
    <pubDate>Tue, 17 Sep 2013 04:00:00 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -20,31 +20,33 @@
 
 &lt;p&gt;I initially thought this had to be a tall tale told by hippies, but doing a back of the envelope calculation, I realized that such a figure is entirely possible. Assume each packet weighs 0.05 pounds. Typing that into python I get:
  &lt;br /&gt;&lt;code&gt;&amp;lt;br /&amp;gt;
-&amp;gt;&amp;gt;&amp;gt; 966*(10**6)/0.05&amp;lt;br /&amp;gt;
-19320000000.0&lt;/code&gt;&lt;/p&gt;
+
+&amp;gt; &amp;gt; &amp;gt; 966\*(10\*\*6)/0.05&amp;lt;br /&amp;gt;
+&amp;gt; &amp;gt; &amp;gt; 19320000000.0&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;19 billion packets. Seems awfully big. But divide that by, say, 10 million people:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; x = 966*(10**6)/0.05&amp;lt;br /&amp;gt;
-&amp;gt;&amp;gt;&amp;gt; x/10**7&amp;lt;br /&amp;gt;
-1932.0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; x = 966\*(10\*\*6)/0.05&amp;lt;br /&amp;gt;
 
-&lt;p&gt;1932 cups. Hmm, still seems big. That&amp;#8217;s more than 5 cups a day. But if we say 30 million people are drinking this stuff, we rapidly get to the zone of plausibility.&lt;/p&gt;
+&amp;gt; &amp;gt; &amp;gt; x/10\*\*7&amp;lt;br /&amp;gt;
+&amp;gt; &amp;gt; &amp;gt; 1932.0&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;People, it doesn&amp;#8217;t have to be this way. You can have &lt;em&gt;way better&lt;/em&gt; coffee that produces &lt;em&gt;zero&lt;/em&gt; waste for only marginally more effort. Allow me to present the Will method of coffee production. First off, you use this thing:&lt;/p&gt;
+&lt;p&gt;1932 cups. Hmm, still seems big. That&amp;rsquo;s more than 5 cups a day. But if we say 30 million people are drinking this stuff, we rapidly get to the zone of plausibility.&lt;/p&gt;
+
+&lt;p&gt;People, it doesn&amp;rsquo;t have to be this way. You can have &lt;em&gt;way better&lt;/em&gt; coffee that produces &lt;em&gt;zero&lt;/em&gt; waste for only marginally more effort. Allow me to present the Will method of coffee production. First off, you use this thing:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/files/2013/09/bialetti_coffee_maker.jpg"&gt;&lt;img src="/files/2013/09/bialetti_coffee_maker-767x1024.jpg" alt="bialetti_coffee_maker" width="640" height="854" class="alignnone size-large wp-image-934" srcset="/files/2013/09/bialetti_coffee_maker-224x300.jpg 224w, /files/2013/09/bialetti_coffee_maker-767x1024.jpg 767w, /files/2013/09/bialetti_coffee_maker.jpg 800w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;I have tried alternatives: french presses, filter coffee, &amp;#8220;cowboy&amp;#8221; percolators, even &amp;#8220;professional&amp;#8221; espresso makers. I maintain that the Bialetti filter produces the best cup of coffee: one full cup of espresso goodness. Not too strong, not too weak. Just perfect. Add some milk and you have an amazing caf&amp;eacute; au lait. Of course, part of getting the best cup is using the right beans. If you&amp;#8217;re brewing at home, you can afford to go a little fancy. Here&amp;#8217;s what I&amp;#8217;m currently using:&lt;/p&gt;
+&lt;p&gt;I have tried alternatives: french presses, filter coffee, &amp;ldquo;cowboy&amp;rdquo; percolators, even &amp;ldquo;professional&amp;rdquo; espresso makers. I maintain that the Bialetti filter produces the best cup of coffee: one full cup of espresso goodness. Not too strong, not too weak. Just perfect. Add some milk and you have an amazing caf&amp;eacute; au lait. Of course, part of getting the best cup is using the right beans. If you&amp;rsquo;re brewing at home, you can afford to go a little fancy. Here&amp;rsquo;s what I&amp;rsquo;m currently using:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/files/2013/09/portlandia_coffee.jpg"&gt;&lt;img src="/files/2013/09/portlandia_coffee-767x1024.jpg" alt="portlandia_coffee" width="640" height="854" class="alignnone size-large wp-image-937" srcset="/files/2013/09/portlandia_coffee-224x300.jpg 224w, /files/2013/09/portlandia_coffee-767x1024.jpg 767w, /files/2013/09/portlandia_coffee.jpg 800w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;Yep, that&amp;#8217;s right. A slice of Portlandia. Got this bag of espresso from Cafe Myriad, a rather upscale coffee joint. I think it was 15 dollars. A small bag like this is good for 30 cups or so. A keurig k-pack is &lt;a href="https://www.keurig.ca/coffee/africana-organic-fair-trade-coffee-k-cup-van-houtte"&gt;$17.45 for 24&lt;/a&gt;. I&amp;#8217;d say I&amp;#8217;m still ahead. If you&amp;#8217;re on a tighter budget you can get fair trade beans for cheaper ($10 a pound?) from Santropol in Montr&amp;eacute;al. Or whatever. Even generic stuff is probably fine (though I encourage fair trade if you can possibly afford it).&lt;/p&gt;
+&lt;p&gt;Yep, that&amp;rsquo;s right. A slice of Portlandia. Got this bag of espresso from Cafe Myriad, a rather upscale coffee joint. I think it was 15 dollars. A small bag like this is good for 30 cups or so. A keurig k-pack is &lt;a href="https://www.keurig.ca/coffee/africana-organic-fair-trade-coffee-k-cup-van-houtte"&gt;$17.45 for 24&lt;/a&gt;. I&amp;rsquo;d say I&amp;rsquo;m still ahead. If you&amp;rsquo;re on a tighter budget you can get fair trade beans for cheaper ($10 a pound?) from Santropol in Montr&amp;eacute;al. Or whatever. Even generic stuff is probably fine (though I encourage fair trade if you can possibly afford it).&lt;/p&gt;
 
-&lt;p&gt;And what do I do with the waste? The only waste product of the Bialetti filter is coffee grinds. If I happened to live in a borough of Montr&amp;eacute;al with composting, I could dump it there. Unfortunately I don&amp;#8217;t (if you live in NDG, please vote for &lt;a href="http://projetmontreal.org"&gt;these people&lt;/a&gt; in the upcoming municipal election; municipal composting is part of their platform, amongst other awesomeness) so I have a vermicompost. My morning ritual is dump yesterday&amp;#8217;s coffee grinds into this bin:&lt;/p&gt;
+&lt;p&gt;And what do I do with the waste? The only waste product of the Bialetti filter is coffee grinds. If I happened to live in a borough of Montr&amp;eacute;al with composting, I could dump it there. Unfortunately I don&amp;rsquo;t (if you live in NDG, please vote for &lt;a href="http://projetmontreal.org"&gt;these people&lt;/a&gt; in the upcoming municipal election; municipal composting is part of their platform, amongst other awesomeness) so I have a vermicompost. My morning ritual is dump yesterday&amp;rsquo;s coffee grinds into this bin:&lt;/p&gt;
 
 &lt;p&gt;&lt;a href="/files/2013/09/vermicompost_pic.jpg"&gt;&lt;img src="/files/2013/09/vermicompost_pic-1024x934.jpg" alt="vermicompost_pic" width="640" height="583" class="alignnone size-large wp-image-935" srcset="/files/2013/09/vermicompost_pic-300x273.jpg 300w, /files/2013/09/vermicompost_pic-1024x934.jpg 1024w, /files/2013/09/vermicompost_pic.jpg 1560w" sizes="(max-width: 640px) 100vw, 640px" /&gt;&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&amp;#8230; and then my numerous worms do the work of turning it into beautiful soil which I use in my &lt;a href="https://plus.google.com/photos/112599231040201259540/albums/5891369648488530945"&gt;balcony garden&lt;/a&gt; to grow tomotatos, kale, swiss chard, basil, and oregano.&lt;/p&gt;
+&lt;p&gt;&amp;hellip; and then my numerous worms do the work of turning it into beautiful soil which I use in my &lt;a href="https://plus.google.com/photos/112599231040201259540/albums/5891369648488530945"&gt;balcony garden&lt;/a&gt; to grow tomotatos, kale, swiss chard, basil, and oregano.&lt;/p&gt;
 
-&lt;p&gt;What I want to emphasize most of all is that my ritual &lt;em&gt;takes very little time&lt;/em&gt;. Scraping out and cleaning my Bialetti in the worm compost bin takes around minute. Refilling it with water and coffee takes maybe 30 seconds. Yes, once a year I have to take the worm trailings out of my vermicompost bin. That takes longer (maybe 30 minutes to an hour) but it&amp;#8217;s a once a year thing and you avoid having to go to the store to buy fertilizer. Less waste. Way better coffee. Only a marginally more time spent. To me, this is a no-brainer.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;What I want to emphasize most of all is that my ritual &lt;em&gt;takes very little time&lt;/em&gt;. Scraping out and cleaning my Bialetti in the worm compost bin takes around minute. Refilling it with water and coffee takes maybe 30 seconds. Yes, once a year I have to take the worm trailings out of my vermicompost bin. That takes longer (maybe 30 minutes to an hour) but it&amp;rsquo;s a once a year thing and you avoid having to go to the store to buy fertilizer. Less waste. Way better coffee. Only a marginally more time spent. To me, this is a no-brainer.&lt;/p&gt;</description></item></channel></rss>

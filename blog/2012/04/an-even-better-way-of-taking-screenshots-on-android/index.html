@@ -4,7 +4,7 @@
 
     <meta charset="utf-8" />
     <title>An even better way of taking screenshots on Android</title>
-    <meta name="description" content="Just thought I’d mention this because I found it handy.  A while back AaronMT wrote up some clever instructions on taking Android screenshots by dumping the contents of ‘/dev/fb0’ and running ffmpeg on the results. This is useful, but you need to know the..." />
+    <meta name="description" content="Just thought I'd mention this because I found it handy.  A while back AaronMT wrote up some clever instructions on taking Android screenshots by dumping the contents of ‘/dev/fb0' and running ffmpeg on the results. This is useful, but you need to know the..." />
     <meta name="author" content="William Lachance" />
     <meta name="keywords" content="Android, Mozilla" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -97,11 +97,11 @@
     <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
   </header>
 
-<p>Just thought I&#8217;d mention this because I found it handy.</p>
+<p>Just thought I&rsquo;d mention this because I found it handy.</p>
 
-<p>A while back AaronMT <a href="http://aaronmt.com/?p=527">wrote up</a> some clever instructions on taking Android screenshots by dumping the contents of &#8216;/dev/fb0&#8217; and running ffmpeg on the results. This is useful, but you need to know the resolution of the device you have connected to pass the right arguments to ffmpeg. Wouldn&#8217;t it be better if you had just one script that would work for whatever device you had plugged in?</p>
+<p>A while back AaronMT <a href="http://aaronmt.com/?p=527">wrote up</a> some clever instructions on taking Android screenshots by dumping the contents of &#8216;/dev/fb0&rsquo; and running ffmpeg on the results. This is useful, but you need to know the resolution of the device you have connected to pass the right arguments to ffmpeg. Wouldn&rsquo;t it be better if you had just one script that would work for whatever device you had plugged in?</p>
 
-<p>In fact, there is a way to do this using the <a href="http://developer.android.com/guide/developing/tools/MonkeyRunner.html">monkeyrunner</a> utility. Intended mainly as a tool for synthesizing input on Android (more on that some other time), you can also easily get a capture of the Android screen with its python/jython API (assuming you have the Android SDK installed). Here&#8217;s a quick script which does the job:</p>
+<p>In fact, there is a way to do this using the <a href="http://developer.android.com/guide/developing/tools/MonkeyRunner.html">monkeyrunner</a> utility. Intended mainly as a tool for synthesizing input on Android (more on that some other time), you can also easily get a capture of the Android screen with its python/jython API (assuming you have the Android SDK installed). Here&rsquo;s a quick script which does the job:</p>
 
 <pre><code>from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice
 import os
@@ -116,10 +116,9 @@ result = device.takeSnapshot()
 result.writeToFile(sys.argv[1], 'png')</code></pre>
 
 <p>Copy that into a file called capture.py (or whatever), then run it like so:
- <br /><code>&lt;br /&gt;
-monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
+ <br /><code>&lt;br /&gt; monkeyrunner capture.py screenshot.png&lt;br /&gt;</code></p>
 
-<p>And you&#8217;re off to the races! Nice screenshot, no utilities or non-essential command line arguments required!</p>
+<p>And you&rsquo;re off to the races! Nice screenshot, no utilities or non-essential command line arguments required!</p>
 
 <p>(credit to <a href="http://stackoverflow.com/a/9311243/295132">this stackoverflow answer</a> for the idea)</p>
   <hr/>
