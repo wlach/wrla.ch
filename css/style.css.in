@@ -41,19 +41,18 @@ article {
     @apply mb-2;
 }
 
-article header h1,
-h2 {
+article header h1, h2, h3 {
   color: #2b2b2b;
   font-weight: bold;
   margin-top: 2px;
 }
 
 article header h1 {
-  font-size: 24px;
+  @apply text-2xl;
 }
 
-article header h2 a {
-  font-size: 20px;
+article header h2 {
+  @apply text-2xl;
 }
 
 article header {
@@ -81,8 +80,16 @@ article header .tags {
   font-size: 12px;
 }
 
-article > h2 {
+article > h2, h3 {
   @apply mb-4;
+}
+
+article h2 {
+  @apply text-xl;
+}
+
+article h3 {
+  @apply text-lg;
 }
 
 article > hr {
