@@ -105,4 +105,4 @@ Since then, others have tried a few other things in the same vein (an adhoc coff
 
 I suspect there are limits to how psychologically safe a workplace can ever feel (and some of that is probably outside of any individual’s control). There are dynamics in a workplace which make applying some of Recurse’s practices difficult. In particular, a posture of “not knowing things is o.k.” may not apply perfectly to a workplace where people are hired (and promoted) based on perceived competence and expertise. Still, I think it’s worth investigating what might be possible within the constraints of the system we’re in. There are big potential benefits, for our creative output and our well-being.
 
-_Many thanks to Jenny Zhang, Kathleen Beckett, Joe Trellick, Taylor Phebillo and Vaibhav Sagar for reviewing earlier drafts of this post_
+_Many thanks to Jenny Zhang, Kathleen Beckett, Joe Trellick, Taylor Phebillo and Vaibhav Sagar, and Will Kahn-Greene for reviewing earlier drafts of this post_
