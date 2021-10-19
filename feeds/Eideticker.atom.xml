@@ -39,7 +39,7 @@
 
 &lt;p&gt;&lt;strong&gt;Measurement problems&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;Ok, so you might not consider that class of problem that big a deal. Maybe we could just not consider the frames at the beginning or end of the capture. And for pauses in the middle&amp;#8230; as long as we get an absolute number at the end, we&amp;rsquo;re fine right? That&amp;rsquo;s at least enough to let us know that we&amp;rsquo;re getting better or worse, assuming that whatever we&amp;rsquo;re testing is behaving the same way between runs and we&amp;rsquo;re just trying to measure how many frames hit the screen.&lt;/p&gt;
+&lt;p&gt;Ok, so you might not consider that class of problem that big a deal. Maybe we could just not consider the frames at the beginning or end of the capture. And for pauses in the middle, as long as we get an absolute number at the end, we&amp;rsquo;re fine right? That&amp;rsquo;s at least enough to let us know that we&amp;rsquo;re getting better or worse, assuming that whatever we&amp;rsquo;re testing is behaving the same way between runs and we&amp;rsquo;re just trying to measure how many frames hit the screen.&lt;/p&gt;
 
 &lt;p&gt;I might agree with you there, but there&amp;rsquo;s a further problems that are specific to measuring on-screen performance using a high-speed camera as we are currently with FirefoxOS.&lt;/p&gt;
 

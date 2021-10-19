@@ -32,6 +32,7 @@ https://wrla.ch/blog/2014/09/mozregression-0-24/
 https://wrla.ch/blog/2021/06/glean-dictionary-updates/
 https://wrla.ch/blog/2016/05/quarter-of-contribution-june-july-2016-edition/
 https://wrla.ch/blog/2013/04/further-meditative-practice/
+https://wrla.ch/blog/2021/10/learning-about-psychological-safety-at-the-recurse-center/
 https://wrla.ch/blog/2015/07/perfherder-update/
 https://wrla.ch/blog/2012/02/playing-with-pandas/
 https://wrla.ch/blog/2009/02/maps-urls-on-mobile-safari/
