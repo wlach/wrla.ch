@@ -92,6 +92,83 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit/">Using BigQuery JavaScript UDFs to analyze Firefox telemetry for fun &amp; profit</a></h2>
+    <p class="index-date">Oct 30th, 2019</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Telemetry.html">Telemetry</a></span></p>
+  </header>
+
+<p>For the last year, we&rsquo;ve been gradually migrating our backend Telemetry systems from AWS to GCP. I&rsquo;ve been helping out here and there with this effort, most recently porting a job we used to detect slow tab spinners in Firefox nightly, which produced a small dataset that feeds a <a href="https://mikeconley.github.io/bug1310250/">small adhoc dashboard</a> which Mike Conley maintains. This was a relatively small task as things go, but it highlighted some features and improvements which I think might be broadly interesting, so I decided to write up a small blog post about it.</p>
+
+<p>Essentially all this dashboard tells you is what percentage of the Firefox nightly population saw a tab spinner over the past 6 months. And of those that did see a tab spinner, what was the severity? Essentially we’re just trying to make sure that there are no major regressions of user experience (and also that efforts to improve things bore fruit):</p>
+
+<center><img style="width:600px" srcset="/files/2019/10/tab-spinner-dash.png" /></center>
+
+<p>Pretty simple stuff, but getting the data necessary to produce this kind of dashboard used to be anything but trivial: while some common business/product questions could be answered by a quick query to <a href="https://docs.telemetry.mozilla.org/datasets/batch_view/clients_daily/reference.html">clients_daily</a>, getting engineering-specific metrics like this usually involved trawling through gigabytes of raw heka encoded blobs using an Apache Spark cluster and then extracting the relevant information out of the telemetry probe histograms (in this case, <code>FX_TAB_SWITCH_SPINNER_VISIBLE_MS</code> and <code>FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS</code>) contained therein.</p>
+
+<p>The code itself was rather complicated (<a href="https://github.com/mozilla/python_mozetl/blob/58dce245ce8012b338e8b102a8c2c0f00601be60/mozetl/tab_spinner/tab_spinner.py">take a look, if you dare</a>) but even worse, running it could get <em>very expensive</em>. We had a 14 node cluster churning through this script daily, and it took on average about an hour and a half to run! I don&rsquo;t have the exact cost figures on hand (and am not sure if I&rsquo;d be authorized to share them if I did), but based on a back of the envelope sketch, this one single script was probably costing us somewhere on the order of $10-$40 a day (that works out to between $3650-$14600 a year).</p>
+
+<p>With our move to <a href="https://cloud.google.com/bigquery/">BigQuery</a>, things get a lot simpler! Thanks to the combined effort of my team and data operations[1], we now produce &ldquo;stable&rdquo; ping tables on a daily basis with <em>all</em> the relevant histogram data (stored as JSON blobs), queryable using relatively vanilla SQL. In this case, the data we care about is in <code>telemetry.main</code> (named after the main ping, appropriately enough). With the help of a small <a href="https://cloud.google.com/bigquery/docs/reference/standard-sql/user-defined-functions">JavaScript UDF</a> function, all of this data can easily be extracted into a table inside a single SQL query scheduled by <a href="https://docs.telemetry.mozilla.org/tools/stmo.html">sql.telemetry.mozilla.org</a>.</p>
+
+<div class="brush: sql">
+ <div class="colorful">
+  <pre><span></span><span class="k">CREATE</span> <span class="n">TEMP</span> <span class="k">FUNCTION</span>
+  <span class="n">udf_js_json_extract_highest_long_spinner</span> <span class="p">(</span><span class="k">input</span> <span class="n">STRING</span><span class="p">)</span>
+  <span class="k">RETURNS</span> <span class="n">INT64</span>
+  <span class="k">LANGUAGE</span> <span class="n">js</span> <span class="k">AS</span> <span class="ss">"""</span>
+<span class="ss">    if (input == null) {</span>
+<span class="ss">      return 0;</span>
+<span class="ss">    }</span>
+<span class="ss">    var result = JSON.parse(input);</span>
+<span class="ss">    var valuesMap = result.values;</span>
+<span class="ss">    var highest = 0;</span>
+<span class="ss">    for (var key in valuesMap) {</span>
+<span class="ss">      var range = parseInt(key);</span>
+<span class="ss">      if (valuesMap[key]) {</span>
+<span class="ss">        highest = range &gt; 0 ? range : 1;</span>
+<span class="ss">      }</span>
+<span class="ss">    }</span>
+<span class="ss">    return highest;</span>
+<span class="ss">"""</span><span class="p">;</span>
+
+<span class="k">SELECT</span> <span class="n">build_id</span><span class="p">,</span>
+<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">64000</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_64000ms_or_higher</span><span class="p">,</span>
+<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">27856</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">64000</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_27856ms_to_63999ms</span><span class="p">,</span>
+<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">12124</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">27856</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_12124ms_to_27855ms</span><span class="p">,</span>
+<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">5277</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">12124</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_5277ms_to_12123ms</span><span class="p">,</span>
+<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">2297</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">5277</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_2297ms_to_5276ms</span><span class="p">,</span>
+<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">1000</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">2297</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_1000ms_to_2296ms</span><span class="p">,</span>
+<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_0ms_to_49ms</span><span class="p">,</span>
+<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">50</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_50ms_to_99ms</span><span class="p">,</span>
+<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">100</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">200</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_100ms_to_199ms</span><span class="p">,</span>
+<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">400</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_200ms_to_399ms</span><span class="p">,</span>
+<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">400</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">800</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_400ms_to_799ms</span><span class="p">,</span>
+<span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="k">count</span>
+<span class="k">from</span>
+<span class="p">(</span><span class="k">select</span> <span class="n">build_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="k">max</span><span class="p">(</span><span class="n">greatest</span><span class="p">(</span><span class="n">highest_long</span><span class="p">,</span> <span class="n">highest_short</span><span class="p">))</span> <span class="k">as</span> <span class="n">highest</span>
+<span class="k">from</span>
+<span class="p">(</span><span class="k">SELECT</span>
+    <span class="n">SUBSTR</span><span class="p">(</span><span class="n">application</span><span class="p">.</span><span class="n">build_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="k">as</span> <span class="n">build_id</span><span class="p">,</span>
+    <span class="n">client_id</span><span class="p">,</span>
+    <span class="n">udf_js_json_extract_highest_long_spinner</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">histograms</span><span class="p">.</span><span class="n">FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS</span><span class="p">)</span> <span class="k">AS</span> <span class="n">highest_long</span><span class="p">,</span>
+    <span class="n">udf_js_json_extract_highest_long_spinner</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">histograms</span><span class="p">.</span><span class="n">FX_TAB_SWITCH_SPINNER_VISIBLE_MS</span><span class="p">)</span> <span class="k">as</span> <span class="n">highest_short</span>
+<span class="k">FROM</span> <span class="n">telemetry</span><span class="p">.</span><span class="n">main</span>
+<span class="k">WHERE</span>
+    <span class="n">application</span><span class="p">.</span><span class="n">channel</span><span class="o">=</span><span class="s1">&#39;nightly&#39;</span>
+    <span class="k">AND</span> <span class="n">normalized_os</span><span class="o">=</span><span class="s1">&#39;Windows&#39;</span>
+    <span class="k">AND</span> <span class="n">application</span><span class="p">.</span><span class="n">build_id</span> <span class="o">&gt;</span> <span class="n">FORMAT_DATE</span><span class="p">(</span><span class="ss">"%Y%m%d"</span><span class="p">,</span> <span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span> <span class="nb">INTERVAL</span> <span class="mi">2</span> <span class="n">QUARTER</span><span class="p">))</span>
+    <span class="k">AND</span> <span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span> <span class="nb">INTERVAL</span> <span class="mi">2</span> <span class="n">QUARTER</span><span class="p">))</span>
+<span class="k">group</span> <span class="k">by</span> <span class="n">build_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">)</span> <span class="k">group</span> <span class="k">by</span> <span class="n">build_id</span><span class="p">;</span>
+</pre></div>
+
+</div>
+
+<p>In addition to being much simpler, this new job is also <em>way</em> cheaper. The last run of it scanned just over 1 TB of data, meaning it cost us just over $5. Not as cheap as I might like, but considerably less expensive than before: I&rsquo;ve also scheduled it to only run once every other day, since Mike tells me he doesn&rsquo;t need this data any more often than that.</p>
+
+<p>[1] I understand that Jeff Klukas, Frank Bertsch, Daniel Thorn, Anthony Miyaguchi, and Wesley Dawson are the principals involved - apologies if I&rsquo;m forgetting someone.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2019/09/metrics-graphics-stepping-back-for-a-while/">Metrics Graphics: Stepping back for a while</a></h2>
     <p class="index-date">Sep 26th, 2019</p>
     <p><span class="tags"><a href="/tags/Metrics-Graphics.html">Metrics Graphics</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -312,31 +389,6 @@
 <p>We&rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&rsquo;t (and shouldn&rsquo;t) draw any kind of conclusion whatsoever.</p>
 
 <p>Ok, so that&rsquo;s just science 101: don&rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2018/01/giving-and-receiving-help-at-mozilla/">Giving and receiving help at Mozilla</a></h2>
-    <p class="index-date">Jan 17th, 2018</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>This is going to sound corny, but helping people really is one of my favorite things at Mozilla, even with <a href="https://mozilla.github.io/mozregression/">projects I have mostly moved on from</a>. As someone who primarily works on internal tools, I love hearing about bugs in the software I maintain or questions on how to use it best.</p>
-
-<p>Given this, you might think that getting in touch with me via irc or slack is the fastest and best way to get your issue addressed. We certainly have a culture of using these instant-messaging applications at Mozilla for everything and anything. Unfortunately, I have found that being &ldquo;always on&rdquo; to respond to everything hasn&rsquo;t been positive for either my productivity or mental health. My personal situation aside, getting pinged on irc while I&rsquo;m out of the office often results in stuff getting lost &mdash; the person who asked me the question is often gone by the time I return and am able to answer.</p>
-
-<p>With that in mind, here&rsquo;s some notes on my preferred conversation style when making initial contact about an issue:</p>
-
-<ol>
- <li>Please don&rsquo;t send context-free pings on irc. It has been <a href="http://edunham.net/2017/10/05/saying_ping.html">explained elsewhere</a>  why this doesn&rsquo;t work that well, so I won&rsquo;t repeat the argument here.</li>
- <li>If you are at all suspicious that your issue might be a bug in some software  maintain, just <a href="https://bugzilla.mozilla.org/enter_bug.cgi">file a bug</a> and needinfo me. That puts us right on the path to documenting  the problem and getting to a resolution &mdash; even if something turns out to not  be a bug, if you&rsquo;re seeing an unexpected error it points to a usability issue.</li>
- <li>For everything else, email is best. I do check it quite frequently between  bursts of work (i.e. many times a day). I promise I won&rsquo;t leave you hanging  for days on end as long as I&rsquo;m not on vacation.</li></ol>
-
-<p>These aren&rsquo;t ironclad rules. If your question pertains to a project I&rsquo;m <em>actively</em> working on, it might make sense to ping me on irc first (preferably on a channel where other people are around who might also be able to help). If it&rsquo;s an actual <em>emergency</em>, then of course talk to me on irc straight away (or even call me on my phone) &mdash; if I don&rsquo;t respond, then fall back to filing bug or sending email. Use common sense.</p>
-
-<p>One of my new years resolutions is to also apply these rules to my communications with others at Mozilla as well, so if you see my violating it feel free to point me back at this post. Or just use this handy meme I created:</p>
-
-<center><img src="/files/2018/01/scale-of-asking.jpg" /></center> 
   <hr/>
 </article>
 <footer>

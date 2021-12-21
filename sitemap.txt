@@ -9,6 +9,7 @@ https://wrla.ch/blog/2009/03/breaking-news-cat-watches-himself-in-tv/
 https://wrla.ch/blog/2021/07/10-years-at-mozilla/
 https://wrla.ch/blog/2013/03/documentation-for-mozdevice/
 https://wrla.ch/blog/2013/05/proof-of-concept-eideticker-dashboard-for-firefoxos/
+https://wrla.ch/blog/2021/12/leaving-mozilla/
 https://wrla.ch/blog/2020/11/iodide-retrospective/
 https://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-038-more/
 https://wrla.ch/blog/2011/10/faster-but-not-quite-there-yet/
