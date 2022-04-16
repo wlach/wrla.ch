@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 13)</title>
     <meta name="description" content="William Lachance's Log (page 13)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Buddhism, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Mozilla, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Time, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, Community, Voltus, Life, Montreal, Video, Orangutan, Taskcluster, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Meditation, meta, Ebola, GNOME, Environment, Infraherder, Île Sans Fil, Treeherder, Statistics, zen, Music, telemetry, Buddhism, Usability, Responsiveness, Transit to Go, Iodide, Recurse, Eideticker, Open Data, Nixi, Meta, ateam, Perfherder, Talos, Docker, iodide, Telemetry, Toronto, Glean, Pandaboard, Food, Psychology, Android, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, Counting, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-13.html" />
@@ -91,6 +91,26 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2012/03/eideticker-dashboard-update/">Eideticker dashboard update</a></h2>
+    <p class="index-date">Mar 22nd, 2012</p>
+    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2011/11/measuring-what-the-user-sees/">this entry</a> ]</em></p>
+
+<p>Since my <a href="http://wrla.ch/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/">first Eideticker dashboard post</a> was <a href="http://download.cnet.com/8301-2007_4-57401261-12/whats-going-on-with-firefox-for-android/?tag=epicStories">so well received</a>, I thought I&rsquo;d give a quick update on another metric that I just brought online: checkerboarding (a.k.a. the amount of time you spend waiting to see the full page after you do a swipe on your mobile device).</p>
+
+<p><a href="http://wrla.ch/blog/2012/03/eideticker-dashboard-update/checkerboard_dashboard/" rel="attachment wp-att-503"><img src="/files/2012/03/checkerboard_dashboard.png" alt="" title="checkerboard_dashboard" width="715" height="485" class="alignnone size-full wp-image-503" srcset="/files/2012/03/checkerboard_dashboard-300x203.png 300w, /files/2012/03/checkerboard_dashboard.png 715w" sizes="(max-width: 715px) 100vw, 715px" /></a></p>
+
+<p>[ <a href="http://wrla.ch/eideticker/dashboard/#/checkerboarding">link to real thing</a> ]</p>
+
+<p>Unfortunately the news here is not as good as before: as the numbers indicate, the new Native Fennec currently performs substantially worse than the version in Android market. This is a known issue, and is currently being tracked in <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447">bug 719447</a>.</p>
+
+<p>Next up: Seeing how we do against Google Chrome for Android.</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2012/03/announcing-the-eideticker-mobile-performance-dashboard/">Announcing the Eideticker mobile performance dashboard</a></h2>
     <p class="index-date">Mar 16th, 2012</p>
@@ -321,22 +341,6 @@
 <p>If I can somehow figure that out, and smooth out some of the rough edges with the web interface and capture API, I think the stage will be set for us all to do some pretty interesting stuff! Looking forward to it.</p> 
   <hr/>
 </article>
-<article>
-  <header>
-    <h2><a href="/blog/2011/11/a-planet-to-call-our-own/">A planet to call our own</a></h2>
-    <p class="index-date">Nov 18th, 2011</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>Just a quick note that a planet for Mozilla Tools &#38; Automation (the so-called &ldquo;a team&rdquo;) is now up, thanks to Reed Loden. With the exception of <a href="http://k0s.org/mozilla/blog">Jeff Hammel</a>, everyone there was already being syndicated on <a href="http://planet.mozilla.org">Planet Mozilla</a>, but this should offer a more focused feed of our doings for those who can&rsquo;t always keep up with the firehose. Have a look:</p>
-
-<p><a href="http://planet.mozilla.org/ateam">http://planet.mozilla.org/ateam</a></p>
-
-<p>Who should care? Well, we maintain all the major testing frameworks like Mochitest, Reftest, and Talos as well as automated tooling for QA like <a href="https://developer.mozilla.org/en/Mozmill">Mozmill</a>. Our latest work is focused on making sure that Firefox is as robust, responsive, and performant as possible on desktop and mobile. In short, if you&rsquo;re writing or verifying code from mozilla-central, what we&rsquo;re doing probably affects you. Please let us know what you think about our projects and whether there&rsquo;s anything we can do to make your job easier: we&rsquo;re listening.</p>
-
-<p><strong>Quick bonus note</strong>: It&rsquo;s not immediately obvious (or at least it wasn&rsquo;t to me), but Mozilla has some fairly finely tuned infrastructure for running planets. If your team or group wants one, it&rsquo;s definitely better to plug into that instead of rolling your own. 😉 Reed Loden is the maintainer and the source <a href="http://viewvc.svn.mozilla.org/vc/projects/planet/">lives in subversion</a>.</p> 
-  <hr/>
-</article>
 <footer>
  <ul class="pagination">
   <li class="page-item"><a class="page-link" href="/index-12.html">
@@ -357,6 +361,7 @@
   <li class="page-item"><a class="page-link" href="/index-14.html">14</a></li>
   <li class="page-item"><a class="page-link" href="/index-15.html">15</a></li>
   <li class="page-item"><a class="page-link" href="/index-16.html">16</a></li>
+  <li class="page-item"><a class="page-link" href="/index-17.html">17</a></li>
   <li class="page-item"><a class="page-link" href="/index-14.html">
     <quote>&rarr;</quote></a></li></ul></footer>
     </div>

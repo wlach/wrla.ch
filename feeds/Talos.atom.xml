@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'Talos'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Talos.atom.xml" />
- <link href="https://wlach.github.io/tags/Talos.html" />
- <id>urn:https-wlach-github-io:-tags-Talos-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/Talos.atom.xml" />
+ <link href="https://wrla.ch/tags/Talos.html" />
+ <id>urn:https-wrla-ch:-tags-Talos-html</id>
  <updated>2016-02-13T19:28:47Z</updated>
  <entry>
   <title type="text">Talos suites now visible from trychooser</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2016/02/talos-suites-now-visible-from-trychooser/?utm_source=Talos&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2016-02-talos-suites-now-visible-from-trychooser</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2016/02/talos-suites-now-visible-from-trychooser/?utm_source=Talos&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2016-02-talos-suites-now-visible-from-trychooser</id>
   <published>2016-02-13T19:28:47Z</published>
   <updated>2016-02-13T19:28:47Z</updated>
   <author>

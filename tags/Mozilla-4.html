@@ -92,6 +92,34 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2018/02/derived-versus-direct/">Derived versus direct</a></h2>
+    <p class="index-date">Feb 12th, 2018</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
+  </header>
+
+<p>To attempt to make complex phenomena more understandable, we often use derived measures when representing Telemetry data at Mozilla. For error rates for example, we often measure things in terms of &ldquo;X per khours of use&rdquo; (where X might be &ldquo;main crashes&rdquo;, &ldquo;appearance of the slow script dialogue&rdquo;). I.e. instead of showing a raw <em>count</em> of errors we show a rate. Normally this is a good thing: it allows the user to easily compare two things which might have different raw numbers for whatever reason but where you&rsquo;d normally expect the ratio to be similar. For example, we see that although the <em>uptake</em> of the newly-released Firefox 58.0.2 is a bit slower than 58.0.1, the overall crash rate (as sampled every 5 minutes) is more or less the same after about a day has rolled around:</p>
+
+<p><img srcset="/files/2018/02/main_crashes_normalized.png" /></p>
+
+<p>On the other hand, looking at raw counts doesn&rsquo;t really give you much of a hint on how to interpret the results. Depending on the scale of the graph, the actual rates could actually resolve to being vastly different:</p>
+
+<p><img srcset="/files/2018/02/main_crashes_raw.png" /></p>
+
+<p>Ok, so this simple tool (using a ratio) is useful. Yay! Unfortunately, there is one case where using this technique can lead to a very deceptive visualization: when the number of samples is really small, a few outliers can give a really false impression of what&rsquo;s really happening. Take this graph of what the crash rate looked like <em>just after</em> Firefox 58.0 was released:</p>
+
+<p><img srcset="/files/2018/02/relative_small_crash_counts.png" /></p>
+
+<p>10 to 100 errors per 1000 hours, say it isn&rsquo;t so? But wait, how many errors do we have absolutely? Hovering over a representative point in the graph with the normalization (use of a ratio) turned off:</p>
+
+<p><img srcset="/files/2018/02/absolute_small_crash_counts.png" /></p>
+
+<p>We&rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&rsquo;t (and shouldn&rsquo;t) draw any kind of conclusion whatsoever.</p>
+
+<p>Ok, so that&rsquo;s just science 101: don&rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2018/01/giving-and-receiving-help-at-mozilla/">Giving and receiving help at Mozilla</a></h2>
     <p class="index-date">Jan 17th, 2018</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -320,10 +348,10 @@
   <pre><span></span><span class="kd">let</span> <span class="nx">transformedBuildData</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">mapValues</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="p">(</span><span class="nx">buildData</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span>
     <span class="p">...</span><span class="nx">buildData</span><span class="p">,</span>
     <span class="nx">data</span><span class="o">:</span> <span class="nx">buildData</span><span class="p">.</span><span class="nx">data</span>
-      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="nx">datum</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">minTimestamp</span><span class="p">)</span>
-      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">tzcified</span><span class="p">(</span><span class="nx">datum</span><span class="p">[</span><span class="mi">0</span><span class="p">])].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">datum</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="nx">datum</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">minTimestamp</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">tzcified</span><span class="p">(</span><span class="nx">datum</span><span class="p">[</span><span class="mf">0</span><span class="p">])].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">datum</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">1</span><span class="p">)))</span>
   <span class="p">})),</span>
-  <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">buildId</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">buildId</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mf">0</span><span class="p">);</span>
 </pre></div>
 
 </div>
@@ -394,52 +422,6 @@
  <li>You almost certainly want to create a script (<a href="https://github.com/mozilla/python_moztelemetry/blob/d2aa84bbac09465d38eeb0b5beb20edc7ddcc21b/runtests.sh">example</a>) to streamline all the steps of running the tests: this will make running the tests easier for anyone wanting to contribute to your project and reduce the amount of documentation that you will have to write.</li></ol>
 
 <p>The relevant files and documentation are in the repositories linked above.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/">Easier reproduction of intermittent test failures in automation</a></h2>
-    <p class="index-date">Apr 5th, 2017</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Treeherder.html">Treeherder</a>  <a href="/tags/Taskcluster.html">Taskcluster</a></span></p>
-  </header>
-
-<p>As part of the <a href="https://wiki.mozilla.org/Auto-tools/Projects/Stockwell">Stockwell project</a>, I&rsquo;ve been hacking on ways to make it easier for developers to diagnose failure of our tests in automation. It&rsquo;s often very difficult to reproduce an intermittent failure we see in Treeherder locally since the environment is so different, but historically it has been a big hassle to get access to the machines we use in automation for various reasons.</p>
-
-<p>One option that rolled out last year was the so-called one-click loaner, which enabled developers to sign out an virtual machine instance identical to the ones used to run unit tests (at least if the tests are running on Taskcluster, which is increasingly often the case), then execute their particular case with whatever extra debugging options they would find useful. This is a big step forward, but it&rsquo;s still quite a bit of hassle, since it requires a bunch of manual work on the part of the developer to interact with the instance.</p>
-
-<p>What if we could <em>just</em> re-run the particular test an arbitrary number of times with whatever options we wanted, simply by clicking on a few buttons on Treeherder? I&rsquo;ve been exploring this for the first few months of 2017 and I&rsquo;ve come up with a prototype which I think is ready for people to start playing with.</p>
-
-<p>The user interface to this is pretty straightforward. Just find a job you want to retrigger in Treeherder:</p>
-
-<p><img src="/files/2017/04/treeherder-selected-mochitest.png" /></p>
-
-<p>Then select the &rsquo;&hellip;&rsquo; option in the panel below and press &ldquo;Custom Action&hellip;&rdquo;:</p>
-
-<p><img src="/files/2017/04/treeherder-taskcluster-options.png" /></p>
-
-<p>You should get a small piece of JSON to edit, which corresponds to the configuration for the retriggered job:</p>
-
-<p><img src="/files/2017/04/treeherder-custom-action.png" /></p>
-
-<p>The main field to edit is &ldquo;path&rdquo;. You should set this to the name of the test you want to try retriggering. For example <code>dom/animation/test/css-transitions/test_animation-ready.html</code>. You can also set custom Firefox preferences and environment variables, to turn on different types of debugging.</p>
-
-<p>Unfortunately as usual with a new feature at Mozilla, there are a bunch of limitations and caveats:</p>
-
-<ul>
- <li>This depends on functionality that&rsquo;s only in Taskcluster, so  buildbot jobs are exempt.</li>
- <li>No support for Android yet. In combination with the above  limitation, this implies that this functionality only works  on Linux (at least until other platforms are moved to Taskcluster,  which hopefully isn&rsquo;t that far off).</li>
- <li>Browser chrome tests failing in mysterious ways if run repeatedly  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347654">bug 1347654</a>)</li>
- <li>Only reftest and mochitest are currently supported. XPCShell  support is blocked by the lack of support in its harness for  running a job repeatedly (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1347696">bug 1347696</a>).  Web Platform Tests need the requisite support in mozharness for  just setting up the tests without running them &mdash; the same issue  that prevents us from debugging such tests with a one-click loaner  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348833">bug 1348833</a>).</li></ul>
-
-<p>Aside from fixing the above limitations, the following features would also be really nifty to have:</p>
-
-<ul>
- <li>Ability to trigger a custom job as part of a try push (i.e.  not needing to retrigger off an existing job)</li>
- <li>Run these jobs under rr, and provide a way to login and  interactively debug when the problem is actually reproduced.</li></ul>
-
-<p>I am actually in the process of moving to another team @ Mozilla (more on that in another post), so I probably won&rsquo;t have a ton of time to work on the above &mdash; but I&rsquo;d be happy to help anyone who&rsquo;s interested in developing this idea further.</p>
-
-<p>A special shout out to the <a href="https://wiki.mozilla.org/TaskCluster">Taskcluster</a> team for helping me with the development of this feature: in particular the action task implementation from <a href="https://jonasfj.dk/">Jonas Finnemann Jensen</a> that made it possible to develop this feature in the first place.</p> 
   <hr/>
 </article>
 <footer>

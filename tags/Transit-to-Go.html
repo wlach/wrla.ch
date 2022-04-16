@@ -122,18 +122,6 @@
 </article>
 <article>
   <header>
-    <h2><a href="/blog/2010/04/i-can-has-edmonton-transit-iphone-app/">I can has Edmonton transit iPhone app?</a></h2>
-    <p class="index-date">Apr 10th, 2010</p>
-    <p><span class="tags"><a href="/tags/iphone.html">iphone</a>  <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
-  </header>
-
-<p><img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /></p>
-
-<p>With <a href="http://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/">yesterday&rsquo;s work</a> out of the way, there weren&rsquo;t too many extra steps required before I got a basic version of Transit to Go running for Edmonton. There are definitely bugs and rough edges (the bus names could definitely be better described/formatted, and there&rsquo;s some serious geocoder issues), but I think the heavy lifting is out of the way. I guess now would be a good time to open up an invitations to anyone in Edmonton with an iPhone to become part of our free private beta. We&rsquo;d love to hear what you think! Just send an email to <a href="mailto:wrlach@gmail.com">wrlach@gmail.com</a>.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
     <h2><a href="/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/">Oh, the lines! And some help for Edmonton.</a></h2>
     <p class="index-date">Apr 10th, 2010</p>
     <p><span class="tags"><a href="/tags/hbus.html">hbus</a>  <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
@@ -147,6 +135,18 @@
  <li>Sped up the graph and database generation by an order of magnitude. Not too exciting from a user perspective, but I should now be able to iterate the codebase much faster.</li>
  <li>Better transit stop / street graph linking: No more does libroutez simply try to find the closest street level vertice to link to when merging transit stops with street information: we now actually create _new_ street level vertices as needed and link to those. Upshot? Slightly better directions and prettier polylines. When I first thought up the algorithm a month ago, I thought I was totally brilliant, only to later find out that Andrew Byrd had done something almost identical a few months earlier for <a href="http://github.com/andrewbyrd/graphserver">graphserver</a>. Ah well, at least it&rsquo;s implemented.</li>
  <li>I <a href="http://gist.github.com/361848">coded up a script</a> to automatically generate synthetic headsigns for GTFS feeds which don&rsquo;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&rsquo;t you do better than saying that all your buses go in the &ldquo;1&rdquo; direction? There&rsquo;s a reason why it&rsquo;s a required field you know. Not only would it help me, but <a href="http://google.com/transit">Google Transit</a> would give better results for your city as well.</li></ul> 
+  <hr/>
+</article>
+<article>
+  <header>
+    <h2><a href="/blog/2010/04/i-can-has-edmonton-transit-iphone-app/">I can has Edmonton transit iPhone app?</a></h2>
+    <p class="index-date">Apr 10th, 2010</p>
+    <p><span class="tags"><a href="/tags/iphone.html">iphone</a>  <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
+  </header>
+
+<p><img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /></p>
+
+<p>With <a href="http://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/">yesterday&rsquo;s work</a> out of the way, there weren&rsquo;t too many extra steps required before I got a basic version of Transit to Go running for Edmonton. There are definitely bugs and rough edges (the bus names could definitely be better described/formatted, and there&rsquo;s some serious geocoder issues), but I think the heavy lifting is out of the way. I guess now would be a good time to open up an invitations to anyone in Edmonton with an iPhone to become part of our free private beta. We&rsquo;d love to hear what you think! Just send an email to <a href="mailto:wrlach@gmail.com">wrlach@gmail.com</a>.</p> 
   <hr/>
 </article>
     </div>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'Docker'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Docker.atom.xml" />
- <link href="https://wlach.github.io/tags/Docker.html" />
- <id>urn:https-wlach-github-io:-tags-Docker-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/Docker.atom.xml" />
+ <link href="https://wrla.ch/tags/Docker.html" />
+ <id>urn:https-wrla-ch:-tags-Docker-html</id>
  <updated>2017-06-02T20:04:38Z</updated>
  <entry>
   <title type="text">Using Docker to run automated tests</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/06/using-docker-to-run-automated-tests/?utm_source=Docker&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2017-06-using-docker-to-run-automated-tests</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2017/06/using-docker-to-run-automated-tests/?utm_source=Docker&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2017-06-using-docker-to-run-automated-tests</id>
   <published>2017-06-02T20:04:38Z</published>
   <updated>2017-06-02T20:04:38Z</updated>
   <author>

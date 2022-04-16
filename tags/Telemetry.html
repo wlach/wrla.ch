@@ -279,23 +279,23 @@
 
 <div class="brush: diff">
  <div class="colorful">
-  <pre><span></span><span class="gh">diff --git a/repositories.yaml b/repositories.yaml</span>
-<span class="gh">index dffcccf..6212e55 100644</span>
-<span class="gd">--- a/repositories.yaml</span>
-<span class="gi">+++ b/repositories.yaml</span>
-<span class="gu">@@ -239,3 +239,12 @@ firefox-android-release:</span>
-     - org.mozilla.components:browser-engine-gecko-beta
-     - org.mozilla.appservices:logins
-     - org.mozilla.components:support-migration
-<span class="gi">+mozregression:</span>
-<span class="gi">+  app_id: org-mozilla-mozregression</span>
-<span class="gi">+  notification_emails:</span>
-<span class="gi">+    - wlachance@mozilla.com</span>
-<span class="gi">+  url: &#39;https://github.com/mozilla/mozregression&#39;</span>
-<span class="gi">+  metrics_files:</span>
-<span class="gi">+    - &#39;mozregression/metrics.yaml&#39;</span>
-<span class="gi">+  ping_files:</span>
-<span class="gi">+    - &#39;mozregression/pings.yaml&#39;</span>
+  <pre><span></span><span class="gh">diff --git a/repositories.yaml b/repositories.yaml</span><span class="w"></span>
+<span class="gh">index dffcccf..6212e55 100644</span><span class="w"></span>
+<span class="gd">--- a/repositories.yaml</span><span class="w"></span>
+<span class="gi">+++ b/repositories.yaml</span><span class="w"></span>
+<span class="gu">@@ -239,3 +239,12 @@ firefox-android-release:</span><span class="w"></span>
+<span class="w"> </span>    - org.mozilla.components:browser-engine-gecko-beta<span class="w"></span>
+<span class="w"> </span>    - org.mozilla.appservices:logins<span class="w"></span>
+<span class="w"> </span>    - org.mozilla.components:support-migration<span class="w"></span>
+<span class="gi">+mozregression:</span><span class="w"></span>
+<span class="gi">+  app_id: org-mozilla-mozregression</span><span class="w"></span>
+<span class="gi">+  notification_emails:</span><span class="w"></span>
+<span class="gi">+    - wlachance@mozilla.com</span><span class="w"></span>
+<span class="gi">+  url: &#39;https://github.com/mozilla/mozregression&#39;</span><span class="w"></span>
+<span class="gi">+  metrics_files:</span><span class="w"></span>
+<span class="gi">+    - &#39;mozregression/metrics.yaml&#39;</span><span class="w"></span>
+<span class="gi">+  ping_files:</span><span class="w"></span>
+<span class="gi">+    - &#39;mozregression/pings.yaml&#39;</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -306,13 +306,13 @@
 
 <div class="brush: sql">
  <div class="colorful">
-  <pre><span></span><span class="k">SELECT</span> <span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span> <span class="k">AS</span> <span class="nb">date</span><span class="p">,</span>
-       <span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_variant</span> <span class="k">AS</span> <span class="n">variant</span><span class="p">,</span>
-       <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">),</span>
-<span class="k">FROM</span> <span class="o">`</span><span class="n">moz</span><span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">data</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">prod</span><span class="o">`</span><span class="p">.</span><span class="n">org_mozilla_mozregression_stable</span><span class="p">.</span><span class="n">usage_v1</span>
-<span class="k">WHERE</span> <span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="s1">&#39;2020-04-14&#39;</span>
-  <span class="k">AND</span> <span class="n">client_info</span><span class="p">.</span><span class="n">app_display_version</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">&#39;%.dev%&#39;</span>
-<span class="k">GROUP</span> <span class="k">BY</span> <span class="nb">date</span><span class="p">,</span> <span class="n">variant</span><span class="p">;</span>
+  <pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">date</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_variant</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">variant</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="o">`</span><span class="n">moz</span><span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">data</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">prod</span><span class="o">`</span><span class="p">.</span><span class="n">org_mozilla_mozregression_stable</span><span class="p">.</span><span class="n">usage_v1</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2020-04-14&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">client_info</span><span class="p">.</span><span class="n">app_display_version</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%.dev%&#39;</span><span class="w"></span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="nb">date</span><span class="p">,</span><span class="w"> </span><span class="n">variant</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -356,19 +356,19 @@
 
 <div class="brush: yaml">
  <div class="colorful">
-  <pre><span></span><span class="nn">---</span>
-<span class="nt">$schema</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/pings/1-0-0</span>
+  <pre><span></span><span class="nn">---</span><span class="w"></span>
+<span class="nt">$schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/pings/1-0-0</span><span class="w"></span>
 
-<span class="nt">usage</span><span class="p">:</span>
-  <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
-    <span class="no">A ping to record usage of mozregression</span>
-  <span class="nt">include_client_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">notification_emails</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span>
-  <span class="nt">bugs</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://bugzilla.mozilla.org/123456789/</span>
-  <span class="nt">data_reviews</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span>
+<span class="nt">usage</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="no">A ping to record usage of mozregression</span><span class="w"></span>
+<span class="w">  </span><span class="nt">include_client_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">notification_emails</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span><span class="w"></span>
+<span class="w">  </span><span class="nt">bugs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://bugzilla.mozilla.org/123456789/</span><span class="w"></span>
+<span class="w">  </span><span class="nt">data_reviews</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -377,23 +377,23 @@
 
 <div class="brush: yaml">
  <div class="colorful">
-  <pre><span></span><span class="nn">---</span>
-<span class="nt">$schema</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/metrics/1-0-0</span>
+  <pre><span></span><span class="nn">---</span><span class="w"></span>
+<span class="nt">$schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/metrics/1-0-0</span><span class="w"></span>
 
-<span class="nt">usage</span><span class="p">:</span>
-  <span class="nt">app</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
-    <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
-      <span class="no">The name of the app being bisected</span>
-    <span class="nt">notification_emails</span><span class="p">:</span> 
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span>
-    <span class="nt">bugs</span><span class="p">:</span> 
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">https://bugzilla.mozilla.org/show_bug.cgi?id=1581647</span>
-    <span class="nt">data_reviews</span><span class="p">:</span> 
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span>
-    <span class="nt">expires</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">never</span>
-    <span class="nt">send_in_pings</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">usage</span>
+<span class="nt">usage</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="no">The name of the app being bisected</span><span class="w"></span>
+<span class="w">    </span><span class="nt">notification_emails</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span><span class="w"></span>
+<span class="w">    </span><span class="nt">bugs</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://bugzilla.mozilla.org/show_bug.cgi?id=1581647</span><span class="w"></span>
+<span class="w">    </span><span class="nt">data_reviews</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expires</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">never</span><span class="w"></span>
+<span class="w">    </span><span class="nt">send_in_pings</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">usage</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -485,10 +485,10 @@
 
 <div class="brush: sql">
  <div class="colorful">
-  <pre><span></span><span class="k">CREATE</span> <span class="n">TEMP</span> <span class="k">FUNCTION</span>
-  <span class="n">udf_js_json_extract_highest_long_spinner</span> <span class="p">(</span><span class="k">input</span> <span class="n">STRING</span><span class="p">)</span>
-  <span class="k">RETURNS</span> <span class="n">INT64</span>
-  <span class="k">LANGUAGE</span> <span class="n">js</span> <span class="k">AS</span> <span class="ss">"""</span>
+  <pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"></span>
+<span class="w">  </span><span class="n">udf_js_json_extract_highest_long_spinner</span><span class="w"> </span><span class="p">(</span><span class="k">input</span><span class="w"> </span><span class="n">STRING</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">RETURNS</span><span class="w"> </span><span class="n">INT64</span><span class="w"></span>
+<span class="w">  </span><span class="k">LANGUAGE</span><span class="w"> </span><span class="n">js</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">"""</span>
 <span class="ss">    if (input == null) {</span>
 <span class="ss">      return 0;</span>
 <span class="ss">    }</span>
@@ -502,36 +502,36 @@
 <span class="ss">      }</span>
 <span class="ss">    }</span>
 <span class="ss">    return highest;</span>
-<span class="ss">"""</span><span class="p">;</span>
+<span class="ss">"""</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">SELECT</span> <span class="n">build_id</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">64000</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_64000ms_or_higher</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">27856</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">64000</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_27856ms_to_63999ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">12124</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">27856</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_12124ms_to_27855ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">5277</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">12124</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_5277ms_to_12123ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">2297</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">5277</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_2297ms_to_5276ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">1000</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">2297</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_1000ms_to_2296ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_0ms_to_49ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">50</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_50ms_to_99ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">100</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">200</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_100ms_to_199ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">400</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_200ms_to_399ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">400</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">800</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_400ms_to_799ms</span><span class="p">,</span>
-<span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="k">count</span>
-<span class="k">from</span>
-<span class="p">(</span><span class="k">select</span> <span class="n">build_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="k">max</span><span class="p">(</span><span class="n">greatest</span><span class="p">(</span><span class="n">highest_long</span><span class="p">,</span> <span class="n">highest_short</span><span class="p">))</span> <span class="k">as</span> <span class="n">highest</span>
-<span class="k">from</span>
-<span class="p">(</span><span class="k">SELECT</span>
-    <span class="n">SUBSTR</span><span class="p">(</span><span class="n">application</span><span class="p">.</span><span class="n">build_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="k">as</span> <span class="n">build_id</span><span class="p">,</span>
-    <span class="n">client_id</span><span class="p">,</span>
-    <span class="n">udf_js_json_extract_highest_long_spinner</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">histograms</span><span class="p">.</span><span class="n">FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS</span><span class="p">)</span> <span class="k">AS</span> <span class="n">highest_long</span><span class="p">,</span>
-    <span class="n">udf_js_json_extract_highest_long_spinner</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">histograms</span><span class="p">.</span><span class="n">FX_TAB_SWITCH_SPINNER_VISIBLE_MS</span><span class="p">)</span> <span class="k">as</span> <span class="n">highest_short</span>
-<span class="k">FROM</span> <span class="n">telemetry</span><span class="p">.</span><span class="n">main</span>
-<span class="k">WHERE</span>
-    <span class="n">application</span><span class="p">.</span><span class="n">channel</span><span class="o">=</span><span class="s1">&#39;nightly&#39;</span>
-    <span class="k">AND</span> <span class="n">normalized_os</span><span class="o">=</span><span class="s1">&#39;Windows&#39;</span>
-    <span class="k">AND</span> <span class="n">application</span><span class="p">.</span><span class="n">build_id</span> <span class="o">&gt;</span> <span class="n">FORMAT_DATE</span><span class="p">(</span><span class="ss">"%Y%m%d"</span><span class="p">,</span> <span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span> <span class="nb">INTERVAL</span> <span class="mi">2</span> <span class="n">QUARTER</span><span class="p">))</span>
-    <span class="k">AND</span> <span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span> <span class="nb">INTERVAL</span> <span class="mi">2</span> <span class="n">QUARTER</span><span class="p">))</span>
-<span class="k">group</span> <span class="k">by</span> <span class="n">build_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">)</span> <span class="k">group</span> <span class="k">by</span> <span class="n">build_id</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">build_id</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">64000</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_64000ms_or_higher</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">27856</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">64000</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_27856ms_to_63999ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">12124</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">27856</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_12124ms_to_27855ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5277</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">12124</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_5277ms_to_12123ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2297</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5277</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_2297ms_to_5276ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2297</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_1000ms_to_2296ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_0ms_to_49ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_50ms_to_99ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_100ms_to_199ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_200ms_to_399ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">800</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_400ms_to_799ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">count</span><span class="w"></span>
+<span class="k">from</span><span class="w"></span>
+<span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">build_id</span><span class="p">,</span><span class="w"> </span><span class="n">client_id</span><span class="p">,</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">greatest</span><span class="p">(</span><span class="n">highest_long</span><span class="p">,</span><span class="w"> </span><span class="n">highest_short</span><span class="p">))</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">highest</span><span class="w"></span>
+<span class="k">from</span><span class="w"></span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"></span>
+<span class="w">    </span><span class="n">SUBSTR</span><span class="p">(</span><span class="n">application</span><span class="p">.</span><span class="n">build_id</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">build_id</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">client_id</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">udf_js_json_extract_highest_long_spinner</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">histograms</span><span class="p">.</span><span class="n">FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">highest_long</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">udf_js_json_extract_highest_long_spinner</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">histograms</span><span class="p">.</span><span class="n">FX_TAB_SWITCH_SPINNER_VISIBLE_MS</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">highest_short</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">telemetry</span><span class="p">.</span><span class="n">main</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"></span>
+<span class="w">    </span><span class="n">application</span><span class="p">.</span><span class="n">channel</span><span class="o">=</span><span class="s1">&#39;nightly&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">normalized_os</span><span class="o">=</span><span class="s1">&#39;Windows&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">application</span><span class="p">.</span><span class="n">build_id</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">FORMAT_DATE</span><span class="p">(</span><span class="ss">"%Y%m%d"</span><span class="p">,</span><span class="w"> </span><span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">QUARTER</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">QUARTER</span><span class="p">))</span><span class="w"></span>
+<span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">build_id</span><span class="p">,</span><span class="w"> </span><span class="n">client_id</span><span class="p">)</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">build_id</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 
 </div>

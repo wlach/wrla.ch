@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 3)</title>
     <meta name="description" content="William Lachance's Log (page 3)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Buddhism, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Mozilla, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Time, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, Community, Voltus, Life, Montreal, Video, Orangutan, Taskcluster, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Meditation, meta, Ebola, GNOME, Environment, Infraherder, Île Sans Fil, Treeherder, Statistics, zen, Music, telemetry, Buddhism, Usability, Responsiveness, Transit to Go, Iodide, Recurse, Eideticker, Open Data, Nixi, Meta, ateam, Perfherder, Talos, Docker, iodide, Telemetry, Toronto, Glean, Pandaboard, Food, Psychology, Android, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, Counting, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-3.html" />
@@ -92,6 +92,104 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2020/05/a-principled-reorganization-of-docs-telemetry-mozilla-org/">A principled reorganization of docs.telemetry.mozilla.org</a></h2>
+    <p class="index-date">May 11th, 2020</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p>(this post is aimed primarily at an internal audience, but I thought I&rsquo;d go ahead and make it public as a blog post)</p>
+
+<p>I&rsquo;ve been thinking a bunch over the past few months about the Mozilla data organization&rsquo;s documentation story. We have a first class data platform here at Mozilla, but using it to answer questions, especially for newer employees, can be quite intimidating. As we continue our collective journey to becoming a modern data-driven organization, part of the formula for unlocking this promise is making the tools and platforms we create accessible to a broad internal audience.</p>
+
+<p>My data peers are a friendly group of people and we have historically been good at answering questions on forums like the #fx-metrics slack channel: we&rsquo;ll keep doing this. That said, our time is limited: we need a common resource for helping bring people up to speed on how to use the data platform to answer common questions.</p>
+
+<p>Our documentation site, <a href="https://docs.telemetry.mozilla.org">docs.telemetry.mozilla.org</a>, was meant to be this resource: however in the last couple of years an understanding of its purpose has been (at least partially) lost and it has become somewhat overgrown with content that isn&rsquo;t very relevant to those it&rsquo;s intended to help.</p>
+
+<p>This post&rsquo;s goal is to re-establish a mission for our documentation site &mdash; towards the end, some concrete proposals on what to change are also outlined.</p>
+
+<h2 id="setting-the-audience">Setting the audience</h2>
+
+<p>docs.telemetry.mozilla.org was and is meant to be a resource useful for <em>data practitioners</em> within Mozilla.</p>
+
+<p>Examples of different data practioners and their use cases:</p>
+
+<ul>
+ <li>A data scientist performing an experiment analysis</li>
+ <li>A data analyst producing a report on the effectiveness of a recent marketing campaign</li>
+ <li>A Firefox engineer trying to understand the performance characteristics of a new feature</li>
+ <li>A technical product manager trying to understand the characteristics of a particular user segment</li>
+ <li>A quality assurance engineer trying to understand the severity of a Firefox crash</li></ul>
+
+<p>There are a range of skills that these different groups bring to the table, but there are some common things we expect a data practitioner to have, whatever their formal job description:</p>
+
+<ul>
+ <li>At least some programming and analytical experience</li>
+ <li>Comfortable working with and understanding complex data systems with multiple levels of abstraction (for example: the relationship between the Firefox browser which produces Telemetry data and the backend system which processes it)</li>
+ <li>The time necessary to dig into details</li></ul>
+
+<p>This also <em>excludes</em> a few groups:</p>
+
+<ul>
+ <li>Senior leadership or executives: they are of course free to use docs.telemetry.mozilla.org if helpful, but it is expected that the type of analytical work covered by the documentation will normally be done by a data practitioner and that relevant concepts and background information will be explained <em>to them</em> (in the form of high-level dashboards, presentations, etc.).</li>
+ <li>Data Engineering: some of the material on docs.telemetry.mozilla.org may be incidentally useful to this internal audience, but explaining the full details of the data platform itself belongs elsewhere.</li></ul>
+
+<h2 id="what-do-these-users-need">What do these users need?</h2>
+
+<p>In general, a data practitioner is trying to answer a specific set of questions in the context of an exploration. There are a few things that they need:</p>
+
+<ul>
+ <li>A working knowledge of how to use the technological tools to answer the questions they might have: for example, how to create a SQL query counting the median value of a particular histogram for a particular usage segment.</li>
+ <li>A set of guidelines on best practices on how to measure specific things: for example, we want our people using our telemetry systems to use well-formulated practices for measuring things like &ldquo;Monthly Active Users&rdquo; rather than re-inventing such things themselves.</li></ul>
+
+<h2 id="what-serves-this-need">What serves this need?</h2>
+
+<p>A few years ago, Ryan Harter <a href="https://blog.harterrt.com/lit-review.html">did an extensive literature review</a> on writing documentation on technical subjects - the take away from this exploration is that the global consensus is that we should focus most of our attention on writing practical tutorials which enables our users to perform specific tasks in the service of the above objective.</p>
+
+<p>There is a proverb, allegedly attributed to Confucius which goes something like this:</p>
+
+<blockquote>
+ <p>&ldquo;I hear and I forget. I see and I remember. I do and I understand.&rdquo;</p></blockquote>
+
+<p>The understanding we want to build is how to use our data systems and tools to answer questions. Some knowledge of how our data platform works is no doubt necessary to accomplish this, but it is mostly functional knowledge we care about imparting to data practitioners: the best way to build this understanding is to guide users in performing tasks.</p>
+
+<p>This makes sense intuitively, but it is also borne out by the <em>data</em> that this is what our users are looking for. Looking through the top pages on Google Analytics, virtually all of them<sup><a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-1-definition" name="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-1-return">1</a></sup> refer either to a cookbook or howto guide:</p>
+
+<div class="figure"><img src="/files/2020/05/docs-tmo-ga.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>Happily, this allows us to significantly narrow our focus for docs.telemetry.mozilla.org. We no longer need to worry about:</p>
+
+<ul>
+ <li>Providing lists or summaries of data tools available inside Mozilla<sup><a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-2-definition" name="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-2-return">2</a></sup>: we can talk about tools only as needed in the context of tasks they want to accomplish. We may want to keep such a list handy elsewhere for some other reason (e.g. internal auditing purposes), but we can safely say that it belongs somewhere else, like the Mozilla wiki, mana, or the telemetry.mozilla.org portal.</li>
+ <li>Detailed reference on the technical details of the data platform implementation. Links to this kind of material can be surfaced inside the documentation where relevant, but it is expected that an implementation reference will normally be stored and presented within the context of the tools themselves (a good example would be <a href="https://mozilla.github.io/gcp-ingestion/">the existing documentation for GCP ingestion</a>).</li>
+ <li>Detailed reference on all data sets, ping types, or probes: hand-written documentation for this kind of information is difficult to keep up to date with manual processes<sup><a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-definition" name="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-return">3</a></sup> and is best generated automatically and browsed with tools like the <a href="https://probes.telemetry.mozilla.org/">probe dictionary</a>.</li>
+ <li>Detailed reference material on how to submit Telemetry. While an overview of how to <em>think about</em> submitting telemetry may be in scope (recall that we consider Firefox engineers a kind of data practitioner), the details are really a seperate topic that is better left to another resource which is closer to the implementation (for example, the <a href="https://firefox-source-docs.mozilla.org/">Firefox Source Documentation</a> or the <a href="https://mozilla.github.io/glean/book/index.html">Glean SDK reference</a>).</li></ul>
+
+<p>Scanning through the above, you&rsquo;ll see a common theme: avoid overly detailed reference material. The above is not to say that we should avoid background documentation altogether. For example, an understanding of how our data pipeline works is key to understanding how up-to-date a dashboard is expected to be. However, this type of documentation should be written bearing in mind the audience (focusing on what they need to know as data practitioners) and should be surfaced towards the end of the documentation as <em>supporting material</em>.</p>
+
+<p>As an exception, there is also a very small amount of reference documentation which we want to put at top-level because it is so important: for example the <a href="https://docs.telemetry.mozilla.org/metrics/index.html">standard metrics</a> page describes how we define &ldquo;MAU&rdquo; and &ldquo;DAU&rdquo;: these are measures that we want to standardize in the organization, and not have someone re-invent every time they produce an analysis or report. However, we should be very cautious about how much of this &ldquo;front facing&rdquo; material we include: if we overwhelm our audience with details right out of the gate, they are apt to ignore them.</p>
+
+<h2 id="concrete-actions">Concrete actions</h2>
+
+<ul>
+ <li>We should continue working on tutorials on how to perform common tasks: this includes not only the low-level guides that we currently have (e.g. BigQuery and SQL tutorials) but also information on how to effectively use our higher-level, more accessible tools like GLAM and GUD to answer questions.</li>
+ <li>Medium term, we should remove the per-dataset documentation and replace it with a graphical tool for browsing this type of information (perhaps <a href="https://cloud.google.com/data-catalog">Google Data Catalog</a>). Since this is likely to be a rather involved project, we can keep the existing documentation for now &mdash; but for new datasets, we should encourage their authors to write tutorials on how to use them effectively (assuming they are of broad general interest) instead of hand-creating schema definitions that are likely to go out of date quickly.</li>
+ <li>We should set clear expectations and guidelines of what does and doesn&rsquo;t belong on docs.telemetry.mozilla.org as part of a larger style guide. This style guide should be referenced somewhere prominent (perhaps as part of a <a href="https://help.github.com/en/github/building-a-strong-community/creating-a-pull-request-template-for-your-repository">pull request template</a>) so that historical knowledge of what this resource is for isn&rsquo;t lost.</li></ul>
+
+<h2 id="footnotes">Footnotes</h2>
+
+<div class="footnotes">
+ <ol>
+  <li id="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-1-definition" class="footnote-definition">
+   <p>For some reason which I cannot fathom, a broad (non-Mozilla) audience seems unusually interested in our SQL style guide.&nbsp;<a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-1-return">↩</a></p></li>
+  <li id="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-2-definition" class="footnote-definition">
+   <p>The current Firefox data documentation has a <a href="https://docs.telemetry.mozilla.org/tools/projects.html">project glossary</a> that is riddled with links to obsolete and unused projects.&nbsp;<a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-2-return">↩</a></p></li>
+  <li id="2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-definition" class="footnote-definition">
+   <p>docs.telemetry.mozilla.org has a huge section devoted to derived datasets (20+), many of which are obsolete or not recommended. At the same time, we are missing explicit reference material for the most commonly used tables in BigQuery (e.g. <code>telemetry.main</code>).&nbsp;<a href="#2020-05-11-a-principled-reorganization-of-docs-telemetry-mozilla-org-footnote-3-return">↩</a></p></li></ol></div> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/">This Week in Glean: mozregression telemetry (part 2)</a></h2>
     <p class="index-date">May 8th, 2020</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Telemetry.html">Telemetry</a>  <a href="/tags/Glean.html">Glean</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
@@ -151,23 +249,23 @@
 
 <div class="brush: diff">
  <div class="colorful">
-  <pre><span></span><span class="gh">diff --git a/repositories.yaml b/repositories.yaml</span>
-<span class="gh">index dffcccf..6212e55 100644</span>
-<span class="gd">--- a/repositories.yaml</span>
-<span class="gi">+++ b/repositories.yaml</span>
-<span class="gu">@@ -239,3 +239,12 @@ firefox-android-release:</span>
-     - org.mozilla.components:browser-engine-gecko-beta
-     - org.mozilla.appservices:logins
-     - org.mozilla.components:support-migration
-<span class="gi">+mozregression:</span>
-<span class="gi">+  app_id: org-mozilla-mozregression</span>
-<span class="gi">+  notification_emails:</span>
-<span class="gi">+    - wlachance@mozilla.com</span>
-<span class="gi">+  url: &#39;https://github.com/mozilla/mozregression&#39;</span>
-<span class="gi">+  metrics_files:</span>
-<span class="gi">+    - &#39;mozregression/metrics.yaml&#39;</span>
-<span class="gi">+  ping_files:</span>
-<span class="gi">+    - &#39;mozregression/pings.yaml&#39;</span>
+  <pre><span></span><span class="gh">diff --git a/repositories.yaml b/repositories.yaml</span><span class="w"></span>
+<span class="gh">index dffcccf..6212e55 100644</span><span class="w"></span>
+<span class="gd">--- a/repositories.yaml</span><span class="w"></span>
+<span class="gi">+++ b/repositories.yaml</span><span class="w"></span>
+<span class="gu">@@ -239,3 +239,12 @@ firefox-android-release:</span><span class="w"></span>
+<span class="w"> </span>    - org.mozilla.components:browser-engine-gecko-beta<span class="w"></span>
+<span class="w"> </span>    - org.mozilla.appservices:logins<span class="w"></span>
+<span class="w"> </span>    - org.mozilla.components:support-migration<span class="w"></span>
+<span class="gi">+mozregression:</span><span class="w"></span>
+<span class="gi">+  app_id: org-mozilla-mozregression</span><span class="w"></span>
+<span class="gi">+  notification_emails:</span><span class="w"></span>
+<span class="gi">+    - wlachance@mozilla.com</span><span class="w"></span>
+<span class="gi">+  url: &#39;https://github.com/mozilla/mozregression&#39;</span><span class="w"></span>
+<span class="gi">+  metrics_files:</span><span class="w"></span>
+<span class="gi">+    - &#39;mozregression/metrics.yaml&#39;</span><span class="w"></span>
+<span class="gi">+  ping_files:</span><span class="w"></span>
+<span class="gi">+    - &#39;mozregression/pings.yaml&#39;</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -178,13 +276,13 @@
 
 <div class="brush: sql">
  <div class="colorful">
-  <pre><span></span><span class="k">SELECT</span> <span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span> <span class="k">AS</span> <span class="nb">date</span><span class="p">,</span>
-       <span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_variant</span> <span class="k">AS</span> <span class="n">variant</span><span class="p">,</span>
-       <span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">),</span>
-<span class="k">FROM</span> <span class="o">`</span><span class="n">moz</span><span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">data</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">prod</span><span class="o">`</span><span class="p">.</span><span class="n">org_mozilla_mozregression_stable</span><span class="p">.</span><span class="n">usage_v1</span>
-<span class="k">WHERE</span> <span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="s1">&#39;2020-04-14&#39;</span>
-  <span class="k">AND</span> <span class="n">client_info</span><span class="p">.</span><span class="n">app_display_version</span> <span class="k">NOT</span> <span class="k">LIKE</span> <span class="s1">&#39;%.dev%&#39;</span>
-<span class="k">GROUP</span> <span class="k">BY</span> <span class="nb">date</span><span class="p">,</span> <span class="n">variant</span><span class="p">;</span>
+  <pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">date</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_variant</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">variant</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="o">`</span><span class="n">moz</span><span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">data</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">prod</span><span class="o">`</span><span class="p">.</span><span class="n">org_mozilla_mozregression_stable</span><span class="p">.</span><span class="n">usage_v1</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"> </span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2020-04-14&#39;</span><span class="w"></span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">client_info</span><span class="p">.</span><span class="n">app_display_version</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%.dev%&#39;</span><span class="w"></span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="nb">date</span><span class="p">,</span><span class="w"> </span><span class="n">variant</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -246,19 +344,19 @@
 
 <div class="brush: yaml">
  <div class="colorful">
-  <pre><span></span><span class="nn">---</span>
-<span class="nt">$schema</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/pings/1-0-0</span>
+  <pre><span></span><span class="nn">---</span><span class="w"></span>
+<span class="nt">$schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/pings/1-0-0</span><span class="w"></span>
 
-<span class="nt">usage</span><span class="p">:</span>
-  <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
-    <span class="no">A ping to record usage of mozregression</span>
-  <span class="nt">include_client_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">notification_emails</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span>
-  <span class="nt">bugs</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://bugzilla.mozilla.org/123456789/</span>
-  <span class="nt">data_reviews</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span>
+<span class="nt">usage</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="no">A ping to record usage of mozregression</span><span class="w"></span>
+<span class="w">  </span><span class="nt">include_client_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">notification_emails</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span><span class="w"></span>
+<span class="w">  </span><span class="nt">bugs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://bugzilla.mozilla.org/123456789/</span><span class="w"></span>
+<span class="w">  </span><span class="nt">data_reviews</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -267,23 +365,23 @@
 
 <div class="brush: yaml">
  <div class="colorful">
-  <pre><span></span><span class="nn">---</span>
-<span class="nt">$schema</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/metrics/1-0-0</span>
+  <pre><span></span><span class="nn">---</span><span class="w"></span>
+<span class="nt">$schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/metrics/1-0-0</span><span class="w"></span>
 
-<span class="nt">usage</span><span class="p">:</span>
-  <span class="nt">app</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
-    <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
-      <span class="no">The name of the app being bisected</span>
-    <span class="nt">notification_emails</span><span class="p">:</span> 
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span>
-    <span class="nt">bugs</span><span class="p">:</span> 
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">https://bugzilla.mozilla.org/show_bug.cgi?id=1581647</span>
-    <span class="nt">data_reviews</span><span class="p">:</span> 
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span>
-    <span class="nt">expires</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">never</span>
-    <span class="nt">send_in_pings</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">usage</span>
+<span class="nt">usage</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="no">The name of the app being bisected</span><span class="w"></span>
+<span class="w">    </span><span class="nt">notification_emails</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span><span class="w"></span>
+<span class="w">    </span><span class="nt">bugs</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://bugzilla.mozilla.org/show_bug.cgi?id=1581647</span><span class="w"></span>
+<span class="w">    </span><span class="nt">data_reviews</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expires</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">never</span><span class="w"></span>
+<span class="w">    </span><span class="nt">send_in_pings</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">usage</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -375,10 +473,10 @@
 
 <div class="brush: sql">
  <div class="colorful">
-  <pre><span></span><span class="k">CREATE</span> <span class="n">TEMP</span> <span class="k">FUNCTION</span>
-  <span class="n">udf_js_json_extract_highest_long_spinner</span> <span class="p">(</span><span class="k">input</span> <span class="n">STRING</span><span class="p">)</span>
-  <span class="k">RETURNS</span> <span class="n">INT64</span>
-  <span class="k">LANGUAGE</span> <span class="n">js</span> <span class="k">AS</span> <span class="ss">"""</span>
+  <pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="n">TEMP</span><span class="w"> </span><span class="k">FUNCTION</span><span class="w"></span>
+<span class="w">  </span><span class="n">udf_js_json_extract_highest_long_spinner</span><span class="w"> </span><span class="p">(</span><span class="k">input</span><span class="w"> </span><span class="n">STRING</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="k">RETURNS</span><span class="w"> </span><span class="n">INT64</span><span class="w"></span>
+<span class="w">  </span><span class="k">LANGUAGE</span><span class="w"> </span><span class="n">js</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="ss">"""</span>
 <span class="ss">    if (input == null) {</span>
 <span class="ss">      return 0;</span>
 <span class="ss">    }</span>
@@ -392,36 +490,36 @@
 <span class="ss">      }</span>
 <span class="ss">    }</span>
 <span class="ss">    return highest;</span>
-<span class="ss">"""</span><span class="p">;</span>
+<span class="ss">"""</span><span class="p">;</span><span class="w"></span>
 
-<span class="k">SELECT</span> <span class="n">build_id</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">64000</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_64000ms_or_higher</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">27856</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">64000</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_27856ms_to_63999ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">12124</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">27856</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_12124ms_to_27855ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">5277</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">12124</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_5277ms_to_12123ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">2297</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">5277</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_2297ms_to_5276ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">1000</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">2297</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_1000ms_to_2296ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">50</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_0ms_to_49ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">50</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">100</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_50ms_to_99ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">100</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">200</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_100ms_to_199ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">200</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">400</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_200ms_to_399ms</span><span class="p">,</span>
-<span class="k">sum</span> <span class="p">(</span><span class="k">case</span> <span class="k">when</span> <span class="n">highest</span> <span class="o">&gt;=</span> <span class="mi">400</span> <span class="k">and</span> <span class="n">highest</span> <span class="o">&lt;</span> <span class="mi">800</span> <span class="k">then</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">end</span><span class="p">)</span> <span class="k">as</span> <span class="n">v_400ms_to_799ms</span><span class="p">,</span>
-<span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="k">as</span> <span class="k">count</span>
-<span class="k">from</span>
-<span class="p">(</span><span class="k">select</span> <span class="n">build_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">,</span> <span class="k">max</span><span class="p">(</span><span class="n">greatest</span><span class="p">(</span><span class="n">highest_long</span><span class="p">,</span> <span class="n">highest_short</span><span class="p">))</span> <span class="k">as</span> <span class="n">highest</span>
-<span class="k">from</span>
-<span class="p">(</span><span class="k">SELECT</span>
-    <span class="n">SUBSTR</span><span class="p">(</span><span class="n">application</span><span class="p">.</span><span class="n">build_id</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span> <span class="k">as</span> <span class="n">build_id</span><span class="p">,</span>
-    <span class="n">client_id</span><span class="p">,</span>
-    <span class="n">udf_js_json_extract_highest_long_spinner</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">histograms</span><span class="p">.</span><span class="n">FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS</span><span class="p">)</span> <span class="k">AS</span> <span class="n">highest_long</span><span class="p">,</span>
-    <span class="n">udf_js_json_extract_highest_long_spinner</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">histograms</span><span class="p">.</span><span class="n">FX_TAB_SWITCH_SPINNER_VISIBLE_MS</span><span class="p">)</span> <span class="k">as</span> <span class="n">highest_short</span>
-<span class="k">FROM</span> <span class="n">telemetry</span><span class="p">.</span><span class="n">main</span>
-<span class="k">WHERE</span>
-    <span class="n">application</span><span class="p">.</span><span class="n">channel</span><span class="o">=</span><span class="s1">&#39;nightly&#39;</span>
-    <span class="k">AND</span> <span class="n">normalized_os</span><span class="o">=</span><span class="s1">&#39;Windows&#39;</span>
-    <span class="k">AND</span> <span class="n">application</span><span class="p">.</span><span class="n">build_id</span> <span class="o">&gt;</span> <span class="n">FORMAT_DATE</span><span class="p">(</span><span class="ss">"%Y%m%d"</span><span class="p">,</span> <span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span> <span class="nb">INTERVAL</span> <span class="mi">2</span> <span class="n">QUARTER</span><span class="p">))</span>
-    <span class="k">AND</span> <span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span> <span class="nb">INTERVAL</span> <span class="mi">2</span> <span class="n">QUARTER</span><span class="p">))</span>
-<span class="k">group</span> <span class="k">by</span> <span class="n">build_id</span><span class="p">,</span> <span class="n">client_id</span><span class="p">)</span> <span class="k">group</span> <span class="k">by</span> <span class="n">build_id</span><span class="p">;</span>
+<span class="k">SELECT</span><span class="w"> </span><span class="n">build_id</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">64000</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_64000ms_or_higher</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">27856</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">64000</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_27856ms_to_63999ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">12124</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">27856</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_12124ms_to_27855ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">5277</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">12124</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_5277ms_to_12123ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2297</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">5277</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_2297ms_to_5276ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2297</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_1000ms_to_2296ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_0ms_to_49ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_50ms_to_99ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_100ms_to_199ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_200ms_to_399ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">sum</span><span class="w"> </span><span class="p">(</span><span class="k">case</span><span class="w"> </span><span class="k">when</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">highest</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">800</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">end</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">v_400ms_to_799ms</span><span class="p">,</span><span class="w"></span>
+<span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">count</span><span class="w"></span>
+<span class="k">from</span><span class="w"></span>
+<span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">build_id</span><span class="p">,</span><span class="w"> </span><span class="n">client_id</span><span class="p">,</span><span class="w"> </span><span class="k">max</span><span class="p">(</span><span class="n">greatest</span><span class="p">(</span><span class="n">highest_long</span><span class="p">,</span><span class="w"> </span><span class="n">highest_short</span><span class="p">))</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">highest</span><span class="w"></span>
+<span class="k">from</span><span class="w"></span>
+<span class="p">(</span><span class="k">SELECT</span><span class="w"></span>
+<span class="w">    </span><span class="n">SUBSTR</span><span class="p">(</span><span class="n">application</span><span class="p">.</span><span class="n">build_id</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">build_id</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">client_id</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">udf_js_json_extract_highest_long_spinner</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">histograms</span><span class="p">.</span><span class="n">FX_TAB_SWITCH_SPINNER_VISIBLE_LONG_MS</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">highest_long</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">udf_js_json_extract_highest_long_spinner</span><span class="p">(</span><span class="n">payload</span><span class="p">.</span><span class="n">histograms</span><span class="p">.</span><span class="n">FX_TAB_SWITCH_SPINNER_VISIBLE_MS</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">highest_short</span><span class="w"></span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">telemetry</span><span class="p">.</span><span class="n">main</span><span class="w"></span>
+<span class="k">WHERE</span><span class="w"></span>
+<span class="w">    </span><span class="n">application</span><span class="p">.</span><span class="n">channel</span><span class="o">=</span><span class="s1">&#39;nightly&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">normalized_os</span><span class="o">=</span><span class="s1">&#39;Windows&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="n">application</span><span class="p">.</span><span class="n">build_id</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">FORMAT_DATE</span><span class="p">(</span><span class="ss">"%Y%m%d"</span><span class="p">,</span><span class="w"> </span><span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">QUARTER</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="k">AND</span><span class="w"> </span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="n">QUARTER</span><span class="p">))</span><span class="w"></span>
+<span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">build_id</span><span class="p">,</span><span class="w"> </span><span class="n">client_id</span><span class="p">)</span><span class="w"> </span><span class="k">group</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">build_id</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -510,31 +608,6 @@
 <p>I left a note with some pointers on what needs work and asking whoever fixes it up to give it a lot of love, but honestly this bike&rsquo;s fate is out of my control at this point. So it is with all things.</p> 
   <hr/>
 </article>
-<article>
-  <header>
-    <h2><a href="/blog/2019/03/new-ideas-old-buildings/">New ideas, old buildings</a></h2>
-    <p class="index-date">Mar 22nd, 2019</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Iodide.html">Iodide</a></span></p>
-  </header>
-
-<p>Last week, Brendan Colloran <a href="https://hacks.mozilla.org/2019/03/iodide-an-experimental-tool-for-scientific-communicatiodide-for-scientific-communication-exploration-on-the-web/">announced Iodide</a>, a new take on scientific collaboration and reporting that I&rsquo;ve been really happy to contribute to over the past year-and-a-bit. I&rsquo;ve been describing it to people I meet as kind of "<a href="https://glitch.com/">glitch</a> meets <a href="https://jupyter.org/">jupyter</a> " but that doesn&rsquo;t quite do it justice. I&rsquo;d recommend reading Brendan&rsquo;s blog post (and taking a look at our <a href="https://alpha.iodide.io">demonstration site</a>) to get the full picture.</p>
-
-<p>One question that I&rsquo;ve heard asked (including on Brendan&rsquo;s post) is why we chose a rather conventional and old technology (<a href="https://www.djangoproject.com/">Django</a>) for the server backend. Certainly, Iodide has not been shy about building with relatively new or experimental technologies for other parts (e.g. Python on WebAssembly for the notebooks, React/Redux for the frontend). Why not complete the cycle by using a new-fangled JavaScript web server like, I don&rsquo;t know, <a href="https://nestjs.com/">NestJS</a>? And while we&rsquo;re at it, what&rsquo;s with iodide&rsquo;s ridiculous <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST API</a>? Don&rsquo;t you know <a href="https://graphql.org/">GraphQL</a> is the only legitimate way to expose your backend to the world in 2019?</p>
-
-<p>The great urban theorist of the twentieth century, <a href="https://en.wikipedia.org/wiki/Jane_Jacobs">Jane Jacobs</a> has a quote I love:</p>
-
-<p>
- <i>“Old ideas can sometimes use new buildings. New ideas must use old buildings.”</i></p>
-
-<p>Laura Thompson (an engineering director at Mozilla) has restated this wisdom in a software development context as <a href="https://speakerdeck.com/lauraxt/build-exciting-things-with-boring-technologies">&ldquo;Build exciting things with boring technologies&rdquo;</a>.</p>
-
-<p>It so happened that the server was not an area Iodide was focusing on for innovation (at least initially), so it made much, much more sense to use something proven and battle-tested for the server side deployment. I&rsquo;d used Django for a number of projects at Mozilla before this one (<a href="https://github.com/mozilla/treeherder">Treeherder/Perfherder</a> and <a href="https://github.com/mozilla/missioncontrol/">Mission Control</a>) and have been wildly impressed by the project&rsquo;s excellent <a href="https://docs.djangoproject.com/">documentation</a>, <a href="https://docs.djangoproject.com/en/2.1/topics/db/">database access layer</a>, and support for building a standardized API via the <a href="https://www.django-rest-framework.org/">Django REST Framework</a> add-on. Not to mention the fact that so much of Mozilla&rsquo;s in-house ops and web development expertise is based around this framework (I could name off probably 5 or 6 internal business systems based around the Django stack, in addition to Treeherder), so deploying Iodide and getting help building it would be something of a known quantity.</p>
-
-<p>Only slightly more than half a year since I began work on the iodide server, we now have both a publicly accessible site for others to experiment with <em>and</em> an internal one for Mozilla&rsquo;s business needs. It&rsquo;s hard to say what would have happened had I chosen something more experimental to build Iodide&rsquo;s server piece, but at the very least there would have been a substantial learning curve involved &mdash; in addition to engineering effort to fill in the gaps where the new technology is not yet complete &mdash; which would have meant less time to innovate where it really mattered. Django&rsquo;s <a href="https://docs.djangoproject.com/en/2.1/topics/migrations/">database migration system</a>, for example, took years to come to fruition and I&rsquo;m not aware of anything comparable in the world of JavaScript web frameworks.</p>
-
-<p>As we move ahead, we may find places where applying new backend server technologies makes sense. Heck, maybe we&rsquo;ll chose to rewrite the whole thing at some point. But to get to launch, chosing a bunch of boring, tested software for this portion of Iodide was (in my view) absolutely the right decision and I make no apologies for it.</p> 
-  <hr/>
-</article>
 <footer>
  <ul class="pagination">
   <li class="page-item"><a class="page-link" href="/index-2.html">
@@ -555,6 +628,7 @@
   <li class="page-item"><a class="page-link" href="/index-14.html">14</a></li>
   <li class="page-item"><a class="page-link" href="/index-15.html">15</a></li>
   <li class="page-item"><a class="page-link" href="/index-16.html">16</a></li>
+  <li class="page-item"><a class="page-link" href="/index-17.html">17</a></li>
   <li class="page-item"><a class="page-link" href="/index-4.html">
     <quote>&rarr;</quote></a></li></ul></footer>
     </div>

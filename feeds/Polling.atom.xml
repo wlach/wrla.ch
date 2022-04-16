@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'Polling'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Polling.atom.xml" />
- <link href="https://wlach.github.io/tags/Polling.html" />
- <id>urn:https-wlach-github-io:-tags-Polling-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/Polling.atom.xml" />
+ <link href="https://wrla.ch/tags/Polling.html" />
+ <id>urn:https-wrla-ch:-tags-Polling-html</id>
  <updated>2018-05-27T16:57:30Z</updated>
  <entry>
   <title type="text">Some thoughts on opinion polling in the Ontario 2018 election</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2018/05/some-thoughts-on-opinion-polling-in-the-ontario-2018-election/?utm_source=Polling&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2018-05-some-thoughts-on-opinion-polling-in-the-ontario-2018-election</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2018/05/some-thoughts-on-opinion-polling-in-the-ontario-2018-election/?utm_source=Polling&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2018-05-some-thoughts-on-opinion-polling-in-the-ontario-2018-election</id>
   <published>2018-05-27T16:57:30Z</published>
   <updated>2018-05-27T16:57:30Z</updated>
   <author>

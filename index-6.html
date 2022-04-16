@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 6)</title>
     <meta name="description" content="William Lachance's Log (page 6)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Buddhism, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Mozilla, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Time, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, Community, Voltus, Life, Montreal, Video, Orangutan, Taskcluster, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Meditation, meta, Ebola, GNOME, Environment, Infraherder, Île Sans Fil, Treeherder, Statistics, zen, Music, telemetry, Buddhism, Usability, Responsiveness, Transit to Go, Iodide, Recurse, Eideticker, Open Data, Nixi, Meta, ateam, Perfherder, Talos, Docker, iodide, Telemetry, Toronto, Glean, Pandaboard, Food, Psychology, Android, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, Counting, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-6.html" />
@@ -92,6 +92,22 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2017/02/cancel-all-the-things/">Cancel all the things</a></h2>
+    <p class="index-date">Feb 7th, 2017</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Treeherder.html">Treeherder</a></span></p>
+  </header>
+
+<p>I just added a feature to Treeherder which lets you cancel a set of jobs (say, from a botched try push) much more easily. I&rsquo;m hopeful that this will be helpful in keeping our resource usage on try more under control.</p>
+
+<p>It uses the &ldquo;pinboard&rdquo; feature of Treeherder which very few people are familiar with, so I made a very short video tutorial on how to make use of this feature and put it on the Joy of Automation channel:</p>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ryzsy38yw5A" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
+
+<p>Happy cancelling!</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2016/11/training-an-autoclassifier/">Training an autoclassifier</a></h2>
     <p class="index-date">Nov 28th, 2016</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Treeherder.html">Treeherder</a></span></p>
@@ -113,11 +129,11 @@
 
 <div class="brush: sql">
  <div class="colorful">
-  <pre><span></span><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
-  <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_step</span> <span class="k">as</span> <span class="n">tls</span> <span class="k">on</span> <span class="n">tls</span><span class="p">.</span><span class="n">job_id</span> <span class="o">=</span> <span class="n">bjm</span><span class="p">.</span><span class="n">job_id</span>
-  <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_error</span> <span class="k">as</span> <span class="n">tle</span> <span class="k">on</span> <span class="n">tle</span><span class="p">.</span><span class="n">step_id</span> <span class="o">=</span> <span class="n">tls</span><span class="p">.</span><span class="n">id</span>
-  <span class="k">where</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&gt;</span> <span class="s1">&#39;2016-10-31&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&lt;</span> <span class="s1">&#39;2016-11-24&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">user_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span>
-  <span class="k">order</span> <span class="k">by</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">step_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+  <pre><span></span><span class="k">select</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">line</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">bug_job_map</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">bjm</span><span class="w"></span>
+<span class="w">  </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">text_log_step</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">tls</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tls</span><span class="p">.</span><span class="n">job_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">job_id</span><span class="w"></span>
+<span class="w">  </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">text_log_error</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">tle</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">step_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tls</span><span class="p">.</span><span class="n">id</span><span class="w"></span>
+<span class="w">  </span><span class="k">where</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">created</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s1">&#39;2016-10-31&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">created</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2016-11-24&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<span class="w">  </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">step_id</span><span class="p">,</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">id</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -126,20 +142,20 @@
 
 <div class="brush: json">
  <div class="colorful">
-  <pre><span></span><span class="p">{</span>
-<span class="nt">"bug_number"</span><span class="p">:</span> <span class="mi">1202623</span><span class="p">,</span>
-<span class="nt">"lines"</span><span class="p">:</span> <span class="p">[</span>
-  <span class="s2">"browser_private_clicktoplay.js Test timed out -"</span><span class="p">,</span>
-  <span class="s2">"browser_private_clicktoplay.js Found a tab after previous test timed out: http:/&lt;number&gt;&lt;number&gt;:&lt;number&gt;/browser/browser/base/content/test/plugins/plugin_test.html -"</span><span class="p">,</span>
-  <span class="s2">"browser_private_clicktoplay.js Found a browser window after previous test timed out -"</span><span class="p">,</span>
-  <span class="s2">"browser_private_clicktoplay.js A promise chain failed to handle a rejection:  - at chrome://mochikit/content/browser-test.js:&lt;number&gt; - TypeError: this.SimpleTest.isExpectingUncaughtException is not a function"</span><span class="p">,</span>
-  <span class="s2">"browser_privatebrowsing_newtab_from_popup.js Test timed out -"</span><span class="p">,</span>
-  <span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span>
-  <span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span>
-  <span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window</span>
-<span class="s2">  after previous test timed out -"</span>
-  <span class="p">]</span>
-<span class="p">}</span>
+  <pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="nt">"bug_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1202623</span><span class="p">,</span><span class="w"></span>
+<span class="nt">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js Test timed out -"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js Found a tab after previous test timed out: http:/&lt;number&gt;&lt;number&gt;:&lt;number&gt;/browser/browser/base/content/test/plugins/plugin_test.html -"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js Found a browser window after previous test timed out -"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js A promise chain failed to handle a rejection:  - at chrome://mochikit/content/browser-test.js:&lt;number&gt; - TypeError: this.SimpleTest.isExpectingUncaughtException is not a function"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Test timed out -"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window</span>
+<span class="s2">  after previous test timed out -"</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -432,28 +448,6 @@
 <p>Albert&rsquo;s instruction was the gateway to a practice that has had a profound impact on my life. More than anything, he helped me understand Zen as something that one could incorporate directly into daily life. I will remain forever grateful.</p> 
   <hr/>
 </article>
-<article>
-  <header>
-    <h2><a href="/blog/2016/01/nixi-is-moving-too/">NIXI is moving too</a></h2>
-    <p class="index-date">Jan 8th, 2016</p>
-    <p><span class="tags"><a href="/tags/BIXI.html">BIXI</a>  <a href="/tags/Nixi.html">Nixi</a></span></p>
-  </header>
-
-<p>As my blog goes to github pages, so do my other side projects. I just moved nixi, my bikestation finder project, to github pages. Its new location:</p>
-
-<p><a href="http://wlach.github.io/nixi">http://wlach.github.io/nixi</a></p>
-
-<p>I opted not to move over the domain: it would have cost extra money, time and hassle and I couldn&rsquo;t justify it for the very, very small number of people that still use this site (yes, there are a few, including myself!). For now, nixi.ca will redirect to the github pages site until I decommision my linode server, probably at the end of January (end of Feburary at the latest).</p>
-
-<p>This transition brings some other changes with it:</p>
-
-<ul>
- <li>Now using the <a href="https://citybik.es">citybik.es</a> API directly,  instead of proxing through an intermediary server. This was necessitated  by the switch to github pages, but I suspect this will be more reliable  than what we were doing before. Thanks citybik.es!</li>
- <li>Removed all analytics and facebook integration. As with the domain, it didn&rsquo;t  seem worth bringing over. Also, it&rsquo;s nice to give people at least marginally  more privacy than they had before where possible.</li></ul>
-
-<p>I still think nixi is worlds more usable than most bikesharing maps, even if it&rsquo;s not an actively maintained project of mine any more. Here&rsquo;s hoping it lasts many more years in its new incarnation.</p> 
-  <hr/>
-</article>
 <footer>
  <ul class="pagination">
   <li class="page-item"><a class="page-link" href="/index-5.html">
@@ -474,6 +468,7 @@
   <li class="page-item"><a class="page-link" href="/index-14.html">14</a></li>
   <li class="page-item"><a class="page-link" href="/index-15.html">15</a></li>
   <li class="page-item"><a class="page-link" href="/index-16.html">16</a></li>
+  <li class="page-item"><a class="page-link" href="/index-17.html">17</a></li>
   <li class="page-item"><a class="page-link" href="/index-7.html">
     <quote>&rarr;</quote></a></li></ul></footer>
     </div>

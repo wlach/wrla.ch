@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'Infraherder'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Infraherder.atom.xml" />
- <link href="https://wlach.github.io/tags/Infraherder.html" />
- <id>urn:https-wlach-github-io:-tags-Infraherder-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/Infraherder.atom.xml" />
+ <link href="https://wrla.ch/tags/Infraherder.html" />
+ <id>urn:https-wrla-ch:-tags-Infraherder-html</id>
  <updated>2016-08-17T20:18:12Z</updated>
  <entry>
   <title type="text">Herding Automation Infrastructure</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2016/08/herding-automation-infrastructure/?utm_source=Infraherder&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2016-08-herding-automation-infrastructure</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2016/08/herding-automation-infrastructure/?utm_source=Infraherder&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2016-08-herding-automation-infrastructure</id>
   <published>2016-08-17T20:18:12Z</published>
   <updated>2016-08-17T20:18:12Z</updated>
   <author>

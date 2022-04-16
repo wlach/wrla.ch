@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 5)</title>
     <meta name="description" content="William Lachance's Log (page 5)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Buddhism, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Mozilla, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Time, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, Community, Voltus, Life, Montreal, Video, Orangutan, Taskcluster, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Meditation, meta, Ebola, GNOME, Environment, Infraherder, Île Sans Fil, Treeherder, Statistics, zen, Music, telemetry, Buddhism, Usability, Responsiveness, Transit to Go, Iodide, Recurse, Eideticker, Open Data, Nixi, Meta, ateam, Perfherder, Talos, Docker, iodide, Telemetry, Toronto, Glean, Pandaboard, Food, Psychology, Android, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, Counting, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-5.html" />
@@ -91,6 +91,20 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2017/12/maintaining-metricsgraphics/">Maintaining metricsgraphics</a></h2>
+    <p class="index-date">Dec 6th, 2017</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
+  </header>
+
+<p>Just a quick announcement that I&rsquo;ve taken it upon myself to assume some maintership duties of the popular <a href="https://github.com/mozilla/metrics-graphics">MetricsGraphics</a> library and have released a <a href="https://www.npmjs.com/package/metrics-graphics">new version</a> with some bug fixes (2.12.0). We use this package pretty extensively at Mozilla for visualizing telemetry and other time series data, but its original authors (Hamilton Ulmer and Ali Almossawi) have mostly moved on to other things so there was a bit of a gap in getting fixes and improvements in that I hope to fill.</p>
+
+<p>I don&rsquo;t yet claim to be an expert in this library (which is quite rich and complex), but I&rsquo;m sure I&rsquo;ll learn more as I go along. At least initially, I expect that the changes I make will be small and primarily targetted to filling the needs of the <a href="https://github.com/mozilla/missioncontrol">Mission Control</a> project.</p>
+
+<p>Note that this emphatically does <em>not</em> mean I am promising to respond to every issue/question/pull request made against the project. Like my work with mozregression and perfherder, my maintenance work is being done on a best-effort basis to support Mozilla and the larger open source community. I&rsquo;ll help people out where I can, but there are only so many working hours in a day and I need to spend most of those pushing my team&rsquo;s immediate projects and deliverables forward! In particular, when it comes to getting pull requests merged, small, self-contained and logical changes with good commit messages will take priority.</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2017/10/better-or-worse-by-what-measure/">Better or worse: by what measure?</a></h2>
     <p class="index-date">Oct 26th, 2017</p>
@@ -281,10 +295,10 @@
   <pre><span></span><span class="kd">let</span> <span class="nx">transformedBuildData</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">mapValues</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="p">(</span><span class="nx">buildData</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span>
     <span class="p">...</span><span class="nx">buildData</span><span class="p">,</span>
     <span class="nx">data</span><span class="o">:</span> <span class="nx">buildData</span><span class="p">.</span><span class="nx">data</span>
-      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="nx">datum</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">minTimestamp</span><span class="p">)</span>
-      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">tzcified</span><span class="p">(</span><span class="nx">datum</span><span class="p">[</span><span class="mi">0</span><span class="p">])].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">datum</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="nx">datum</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">minTimestamp</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">tzcified</span><span class="p">(</span><span class="nx">datum</span><span class="p">[</span><span class="mf">0</span><span class="p">])].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">datum</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">1</span><span class="p">)))</span>
   <span class="p">})),</span>
-  <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">buildId</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">buildId</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mf">0</span><span class="p">);</span>
 </pre></div>
 
 </div>
@@ -417,22 +431,6 @@
 <p>A special shout out to the <a href="https://wiki.mozilla.org/TaskCluster">Taskcluster</a> team for helping me with the development of this feature: in particular the action task implementation from <a href="https://jonasfj.dk/">Jonas Finnemann Jensen</a> that made it possible to develop this feature in the first place.</p> 
   <hr/>
 </article>
-<article>
-  <header>
-    <h2><a href="/blog/2017/02/cancel-all-the-things/">Cancel all the things</a></h2>
-    <p class="index-date">Feb 7th, 2017</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Treeherder.html">Treeherder</a></span></p>
-  </header>
-
-<p>I just added a feature to Treeherder which lets you cancel a set of jobs (say, from a botched try push) much more easily. I&rsquo;m hopeful that this will be helpful in keeping our resource usage on try more under control.</p>
-
-<p>It uses the &ldquo;pinboard&rdquo; feature of Treeherder which very few people are familiar with, so I made a very short video tutorial on how to make use of this feature and put it on the Joy of Automation channel:</p>
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ryzsy38yw5A" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
-
-<p>Happy cancelling!</p> 
-  <hr/>
-</article>
 <footer>
  <ul class="pagination">
   <li class="page-item"><a class="page-link" href="/index-4.html">
@@ -453,6 +451,7 @@
   <li class="page-item"><a class="page-link" href="/index-14.html">14</a></li>
   <li class="page-item"><a class="page-link" href="/index-15.html">15</a></li>
   <li class="page-item"><a class="page-link" href="/index-16.html">16</a></li>
+  <li class="page-item"><a class="page-link" href="/index-17.html">17</a></li>
   <li class="page-item"><a class="page-link" href="/index-6.html">
     <quote>&rarr;</quote></a></li></ul></footer>
     </div>

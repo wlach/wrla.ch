@@ -3,14 +3,14 @@
  <channel>
   <title>William Lachance's Log: Posts tagged 'Mission Control'</title>
   <description>William Lachance's Log: Posts tagged 'Mission Control'</description>
-  <link>https://wlach.github.io/tags/Mission-Control.html</link>
+  <link>https://wrla.ch/tags/Mission-Control.html</link>
   <lastBuildDate>Tue, 05 Jun 2018 21:50:32 UT</lastBuildDate>
   <pubDate>Tue, 05 Jun 2018 21:50:32 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Mission Control 1.0</title>
-   <link>https://wlach.github.io/blog/2018/06/mission-control-1-0/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2018-06-mission-control-1-0</guid>
+   <link>https://wrla.ch/blog/2018/06/mission-control-1-0/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2018-06-mission-control-1-0</guid>
    <pubDate>Tue, 05 Jun 2018 21:50:32 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -35,8 +35,8 @@
 &lt;p&gt;&lt;a href="https://air.mozilla.org/mission-control-dashboard-intro/"&gt;link&lt;/a&gt;&lt;/p&gt;</description></item>
   <item>
    <title>Mission Control update</title>
-   <link>https://wlach.github.io/blog/2018/04/mission-control-update/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2018-04-mission-control-update</guid>
+   <link>https://wrla.ch/blog/2018/04/mission-control-update/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2018-04-mission-control-update</guid>
    <pubDate>Fri, 06 Apr 2018 18:46:43 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -65,8 +65,8 @@
 &lt;p&gt;If you want to play with the system yourself, the &lt;a href="https://data-missioncontrol.dev.mozaws.net/"&gt;development instance&lt;/a&gt; is still up. We will probably look at making this thing &amp;ldquo;official&amp;rdquo; next quarter.&lt;/p&gt;</description></item>
   <item>
    <title>Derived versus direct</title>
-   <link>https://wlach.github.io/blog/2018/02/derived-versus-direct/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2018-02-derived-versus-direct</guid>
+   <link>https://wrla.ch/blog/2018/02/derived-versus-direct/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2018-02-derived-versus-direct</guid>
    <pubDate>Mon, 12 Feb 2018 21:06:40 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -91,8 +91,8 @@
 &lt;p&gt;Ok, so that&amp;rsquo;s just science 101: don&amp;rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &amp;mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.&lt;/p&gt;</description></item>
   <item>
    <title>Maintaining metricsgraphics</title>
-   <link>https://wlach.github.io/blog/2017/12/maintaining-metricsgraphics/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-12-maintaining-metricsgraphics</guid>
+   <link>https://wrla.ch/blog/2017/12/maintaining-metricsgraphics/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2017-12-maintaining-metricsgraphics</guid>
    <pubDate>Wed, 06 Dec 2017 22:16:23 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -103,8 +103,8 @@
 &lt;p&gt;Note that this emphatically does &lt;em&gt;not&lt;/em&gt; mean I am promising to respond to every issue/question/pull request made against the project. Like my work with mozregression and perfherder, my maintenance work is being done on a best-effort basis to support Mozilla and the larger open source community. I&amp;rsquo;ll help people out where I can, but there are only so many working hours in a day and I need to spend most of those pushing my team&amp;rsquo;s immediate projects and deliverables forward! In particular, when it comes to getting pull requests merged, small, self-contained and logical changes with good commit messages will take priority.&lt;/p&gt;</description></item>
   <item>
    <title>Better or worse: by what measure?</title>
-   <link>https://wlach.github.io/blog/2017/10/better-or-worse-by-what-measure/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-better-or-worse-by-what-measure</guid>
+   <link>https://wrla.ch/blog/2017/10/better-or-worse-by-what-measure/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2017-10-better-or-worse-by-what-measure</guid>
    <pubDate>Thu, 26 Oct 2017 20:58:20 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -154,8 +154,8 @@
 &lt;p&gt;Shout out to &lt;a href="https://chuttenblog.wordpress.com/"&gt;chutten&lt;/a&gt; for reviewing this post and providing feedback and additions.&lt;/p&gt;</description></item>
   <item>
    <title>Mission Control: Ready for contributions</title>
-   <link>https://wlach.github.io/blog/2017/10/mission-control-ready-for-contributions/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-mission-control-ready-for-contributions</guid>
+   <link>https://wrla.ch/blog/2017/10/mission-control-ready-for-contributions/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2017-10-mission-control-ready-for-contributions</guid>
    <pubDate>Fri, 20 Oct 2017 18:33:19 UT</pubDate>
    <author>William Lachance</author>
    <description>
@@ -168,8 +168,8 @@
 &lt;p&gt;I&amp;rsquo;ve created some &lt;a href="https://github.com/mozilla/missioncontrol/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22"&gt;good first bugs&lt;/a&gt; to tackle in the github issue tracker. From there, I have a galaxy of other work in mind to improve and enhance the usefulness of this project. Please get in touch with me (wlach) on &lt;a href="https://wiki.mozilla.org/IRC"&gt;irc.mozilla.org&lt;/a&gt; #missioncontrol if you want to discuss further.&lt;/p&gt;</description></item>
   <item>
    <title>Mission Control</title>
-   <link>https://wlach.github.io/blog/2017/10/mission-control/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-10-mission-control</guid>
+   <link>https://wrla.ch/blog/2017/10/mission-control/?utm_source=Mission-Control&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2017-10-mission-control</guid>
    <pubDate>Fri, 06 Oct 2017 19:05:37 UT</pubDate>
    <author>William Lachance</author>
    <description>

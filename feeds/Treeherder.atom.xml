@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'Treeherder'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Treeherder.atom.xml" />
- <link href="https://wlach.github.io/tags/Treeherder.html" />
- <id>urn:https-wlach-github-io:-tags-Treeherder-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/Treeherder.atom.xml" />
+ <link href="https://wrla.ch/tags/Treeherder.html" />
+ <id>urn:https-wrla-ch:-tags-Treeherder-html</id>
  <updated>2017-04-05T20:14:35Z</updated>
  <entry>
   <title type="text">Easier reproduction of intermittent test failures in automation</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/?utm_source=Treeherder&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2017-04-easier-reproduction-of-intermittent-test-failures-in-automation</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2017/04/easier-reproduction-of-intermittent-test-failures-in-automation/?utm_source=Treeherder&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2017-04-easier-reproduction-of-intermittent-test-failures-in-automation</id>
   <published>2017-04-05T20:14:35Z</published>
   <updated>2017-04-05T20:14:35Z</updated>
   <author>
@@ -53,8 +53,8 @@
 &lt;p&gt;A special shout out to the &lt;a href="https://wiki.mozilla.org/TaskCluster"&gt;Taskcluster&lt;/a&gt; team for helping me with the development of this feature: in particular the action task implementation from &lt;a href="https://jonasfj.dk/"&gt;Jonas Finnemann Jensen&lt;/a&gt; that made it possible to develop this feature in the first place.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Cancel all the things</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2017/02/cancel-all-the-things/?utm_source=Treeherder&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2017-02-cancel-all-the-things</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2017/02/cancel-all-the-things/?utm_source=Treeherder&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2017-02-cancel-all-the-things</id>
   <published>2017-02-07T18:36:09Z</published>
   <updated>2017-02-07T18:36:09Z</updated>
   <author>
@@ -69,8 +69,8 @@
 &lt;p&gt;Happy cancelling!&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Training an autoclassifier</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2016/11/training-an-autoclassifier/?utm_source=Treeherder&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2016-11-training-an-autoclassifier</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2016/11/training-an-autoclassifier/?utm_source=Treeherder&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2016-11-training-an-autoclassifier</id>
   <published>2016-11-28T21:29:47Z</published>
   <updated>2016-11-28T21:29:47Z</updated>
   <author>
@@ -92,11 +92,11 @@
 
 &lt;div class="brush: sql"&gt;
  &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bug_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt; &lt;span class="k"&gt;from&lt;/span&gt; &lt;span class="n"&gt;bug_job_map&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;
-  &lt;span class="k"&gt;left&lt;/span&gt; &lt;span class="k"&gt;join&lt;/span&gt; &lt;span class="n"&gt;text_log_step&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;tls&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job_id&lt;/span&gt;
-  &lt;span class="k"&gt;left&lt;/span&gt; &lt;span class="k"&gt;join&lt;/span&gt; &lt;span class="n"&gt;text_log_error&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt; &lt;span class="k"&gt;on&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step_id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;
-  &lt;span class="k"&gt;where&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;created&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2016-10-31&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;created&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2016-11-24&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user_id&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;NULL&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bug_id&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="k"&gt;NULL&lt;/span&gt;
-  &lt;span class="k"&gt;order&lt;/span&gt; &lt;span class="k"&gt;by&lt;/span&gt; &lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;select&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bug_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;from&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bug_job_map&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;left&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;join&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;text_log_step&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job_id&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job_id&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;left&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;join&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;text_log_error&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;as&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;on&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step_id&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tls&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;where&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;created&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;2016-10-31&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;created&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;2016-11-24&amp;#39;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;user_id&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;not&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;and&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bug_id&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;is&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;not&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NULL&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;order&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;by&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;bjm&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;step_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;tle&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -105,20 +105,20 @@
 
 &lt;div class="brush: json"&gt;
  &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;
-&lt;span class="nt"&gt;"bug_number"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1202623&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="nt"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
-  &lt;span class="s2"&gt;"browser_private_clicktoplay.js Test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;"browser_private_clicktoplay.js Found a tab after previous test timed out: http:/&amp;lt;number&amp;gt;&amp;lt;number&amp;gt;:&amp;lt;number&amp;gt;/browser/browser/base/content/test/plugins/plugin_test.html -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;"browser_private_clicktoplay.js Found a browser window after previous test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;"browser_private_clicktoplay.js A promise chain failed to handle a rejection:  - at chrome://mochikit/content/browser-test.js:&amp;lt;number&amp;gt; - TypeError: this.SimpleTest.isExpectingUncaughtException is not a function"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;"browser_privatebrowsing_newtab_from_popup.js Test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-  &lt;span class="s2"&gt;"browser_privatebrowsing_newtab_from_popup.js Found a browser window&lt;/span&gt;
-&lt;span class="s2"&gt;  after previous test timed out -"&lt;/span&gt;
-  &lt;span class="p"&gt;]&lt;/span&gt;
-&lt;span class="p"&gt;}&lt;/span&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nt"&gt;"bug_number"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1202623&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nt"&gt;"lines"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;"browser_private_clicktoplay.js Test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;"browser_private_clicktoplay.js Found a tab after previous test timed out: http:/&amp;lt;number&amp;gt;&amp;lt;number&amp;gt;:&amp;lt;number&amp;gt;/browser/browser/base/content/test/plugins/plugin_test.html -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;"browser_private_clicktoplay.js Found a browser window after previous test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;"browser_private_clicktoplay.js A promise chain failed to handle a rejection:  - at chrome://mochikit/content/browser-test.js:&amp;lt;number&amp;gt; - TypeError: this.SimpleTest.isExpectingUncaughtException is not a function"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;"browser_privatebrowsing_newtab_from_popup.js Test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="s2"&gt;"browser_privatebrowsing_newtab_from_popup.js Found a browser window&lt;/span&gt;
+&lt;span class="s2"&gt;  after previous test timed out -"&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -185,8 +185,8 @@
 &lt;p&gt;If you&amp;rsquo;d like to experiment with the data and/or code, I&amp;rsquo;ve put it up on a &lt;a href="https://github.com/wlach/treeherder-classifier"&gt;github repository&lt;/a&gt;.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Slow Treeherder, Fast Treeherder</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2016/10/slow-treeherder-fast-treeherder/?utm_source=Treeherder&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2016-10-slow-treeherder-fast-treeherder</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2016/10/slow-treeherder-fast-treeherder/?utm_source=Treeherder&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2016-10-slow-treeherder-fast-treeherder</id>
   <published>2016-10-31T15:40:00Z</published>
   <updated>2016-10-31T15:40:00Z</updated>
   <author>

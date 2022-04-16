@@ -4,7 +4,29 @@
  <link rel="self" href="https://wrla.ch/feeds/Mozilla.atom.xml" />
  <link href="https://wrla.ch/tags/Mozilla.html" />
  <id>urn:https-wrla-ch:-tags-Mozilla-html</id>
- <updated>2021-12-21T18:43:09Z</updated>
+ <updated>2022-04-16T16:44:14Z</updated>
+ <entry>
+  <title type="text">90 days out and in</title>
+  <link rel="alternate" href="https://wrla.ch/blog/2022/04/90-days-out-and-in/?utm_source=Mozilla&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2022-04-90-days-out-and-in</id>
+  <published>2022-04-16T16:44:14Z</published>
+  <updated>2022-04-16T16:44:14Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;The 90 day mark just passed at my &lt;a href="https://voltus.co"&gt;new gig at Voltus&lt;/a&gt;, feels like a good time for a bit of self-reflection.&lt;/p&gt;
+
+&lt;p&gt;In general, I think it&amp;rsquo;s been a good change and that it was the right time to leave Mozilla. Since I left, a few people have asked me why I chose to do so: while the full answer is pretty complicated (these things are never simple!), I think it does ultimately come down to wanting to try something new after 10+ years. I&amp;rsquo;ve accumulated a fair amount of expertise in web development and data engineering and I wanted to see if I could apply them to a new area that I cared about&amp;mdash; in this case, climate change and the energy transition.&lt;/p&gt;
+
+&lt;p&gt;Voltus is a much younger and different company than Mozilla was, and there&amp;rsquo;s no shortage of things to learn and do. Energy markets are a rather interesting technical domain to work in&amp;mdash; a big intersection between politics, technology, and business. Lots of very old and very new things all at once. As a still-relatively young company, there is definitely more of a feeling that it&amp;rsquo;s possible to shape Voltus&amp;rsquo;s culture and practices, which has been interesting. There&amp;rsquo;s a bit of a balancing act between sharing what you&amp;rsquo;ve learned in previous roles while having the humility to recognize that there&amp;rsquo;s much you still don&amp;rsquo;t understand in a new workplace.&lt;/p&gt;
+
+&lt;p&gt;On the downside, I have to admit that I do miss being able to work in the open. &lt;a href="https://www.canarymedia.com/articles/climatetech-finance/voltus-launches-1-3b-spac-to-help-businesses-reshape-their-power-use-and-ease-grid-stress"&gt;Voltus is currently in the process of going public&lt;/a&gt;, which has made me extra shy about saying much of anything about what I&amp;rsquo;ve been working on in a public forum.&lt;/p&gt;
+
+&lt;p&gt;To some extent I&amp;rsquo;ve been scratching this itch by continuing to work on &lt;a href="https://irydium.dev"&gt;Irydium&lt;/a&gt; when I have the chance. I&amp;rsquo;ve done up a few new releases in the last couple of months, which I think have been fairly well received inside my very small community of people doing like-minded things. I&amp;rsquo;m planning on attending (at least part of) a &lt;a href="https://github.com/pyodide/pyodide/wiki/PyCon2022-sprint"&gt;pyodide sprint&lt;/a&gt; in early May, which I think should be a lot of fun as well as an opportunity to push browser-based data science forward.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve also kept more of a connection with Mozilla than I thought I would have: some video meetings with former colleagues, answering questions on Element (&lt;a href="https://wiki.mozilla.org/Matrix"&gt;chat.mozilla.org&lt;/a&gt;), even &lt;a href="https://github.com/mozilla/glean-dictionary/pulls?q=is%3Apr+author%3Awlach+is%3Aclosed"&gt;some pull requests&lt;/a&gt; where I felt like I could make a quick contribution. I&amp;rsquo;m still using Firefox, which has actually given me more perspective on some problems that people at Mozilla might not experience (e.g. &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1536777"&gt;this screensharing bug&lt;/a&gt; which you&amp;rsquo;d only see if you&amp;rsquo;re using a WebRTC-based video conferencing solution like Google Meet).&lt;/p&gt;
+
+&lt;p&gt;That said, I&amp;rsquo;m not sure to what extent this will continue: even if the source code to Firefox and the tooling that supports it is technically &amp;ldquo;open source&amp;rdquo;, outsiders like myself really have very limited visibility into what Mozilla is doing these days. This makes it difficult to really connect with much of what&amp;rsquo;s going on or know how I might be able to contribute. While it might be theoretically possible to join Mozilla&amp;rsquo;s Slack (at least last I checked), that feels like a rabbit hole I&amp;rsquo;d prefer not to go down. While I&amp;rsquo;m still interested in supporting Mozilla&amp;rsquo;s mission, I really don&amp;rsquo;t want more than one workplace chat tool in my life: there&amp;rsquo;s a lot of content there that is no longer relevant to me as a non-employee and (being honest) I&amp;rsquo;d rather leave behind. There&amp;rsquo;s lots more I could say about this, but probably best to leave it there: I understand that there&amp;rsquo;s reasons why things are the way they are, even if they make me a little sad.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">Leaving Mozilla</title>
   <link rel="alternate" href="https://wrla.ch/blog/2021/12/leaving-mozilla/?utm_source=Mozilla&amp;utm_medium=Atom" />
@@ -594,15 +616,15 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;div class="brush: sql"&gt;
  &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_app&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-       &lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_build_type&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;build_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-       &lt;span class="n"&gt;DATE_DIFF&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="k"&gt;IF&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;PARSE_DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%Y-%m-%d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt; &lt;span class="n"&gt;PARSE_DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%Y-%m-%d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_launch_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))),&lt;/span&gt; &lt;span class="k"&gt;MONTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;build_age&lt;/span&gt;
-&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="n"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fx&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org_mozilla_mozregression&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;usage&lt;/span&gt;
-&lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="n"&gt;DATE_SUB&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;CURRENT_DATE&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt; &lt;span class="nb"&gt;INTERVAL&lt;/span&gt; &lt;span class="mi"&gt;6&lt;/span&gt; &lt;span class="k"&gt;MONTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-  &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;client_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app_display_version&lt;/span&gt; &lt;span class="k"&gt;NOT&lt;/span&gt; &lt;span class="k"&gt;LIKE&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;%dev%&amp;#39;&lt;/span&gt;
-  &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_build_type&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
-  &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
-       &lt;span class="k"&gt;OR&lt;/span&gt; &lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_launch_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_app&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;AS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_build_type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;AS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;build_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="n"&gt;DATE_DIFF&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;IF&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PARSE_DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%Y-%m-%d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PARSE_DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%Y-%m-%d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_launch_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;MONTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;AS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;build_age&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="n"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fx&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org_mozilla_mozregression&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;usage&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;DATE_SUB&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;CURRENT_DATE&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;INTERVAL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;MONTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;AND&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;client_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app_display_version&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NOT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;LIKE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%dev%&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;AND&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_build_type&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;AND&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="k"&gt;OR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_launch_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -935,23 +957,23 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;div class="brush: diff"&gt;
  &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gh"&gt;diff --git a/repositories.yaml b/repositories.yaml&lt;/span&gt;
-&lt;span class="gh"&gt;index dffcccf..6212e55 100644&lt;/span&gt;
-&lt;span class="gd"&gt;--- a/repositories.yaml&lt;/span&gt;
-&lt;span class="gi"&gt;+++ b/repositories.yaml&lt;/span&gt;
-&lt;span class="gu"&gt;@@ -239,3 +239,12 @@ firefox-android-release:&lt;/span&gt;
-     - org.mozilla.components:browser-engine-gecko-beta
-     - org.mozilla.appservices:logins
-     - org.mozilla.components:support-migration
-&lt;span class="gi"&gt;+mozregression:&lt;/span&gt;
-&lt;span class="gi"&gt;+  app_id: org-mozilla-mozregression&lt;/span&gt;
-&lt;span class="gi"&gt;+  notification_emails:&lt;/span&gt;
-&lt;span class="gi"&gt;+    - wlachance@mozilla.com&lt;/span&gt;
-&lt;span class="gi"&gt;+  url: &amp;#39;https://github.com/mozilla/mozregression&amp;#39;&lt;/span&gt;
-&lt;span class="gi"&gt;+  metrics_files:&lt;/span&gt;
-&lt;span class="gi"&gt;+    - &amp;#39;mozregression/metrics.yaml&amp;#39;&lt;/span&gt;
-&lt;span class="gi"&gt;+  ping_files:&lt;/span&gt;
-&lt;span class="gi"&gt;+    - &amp;#39;mozregression/pings.yaml&amp;#39;&lt;/span&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="gh"&gt;diff --git a/repositories.yaml b/repositories.yaml&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gh"&gt;index dffcccf..6212e55 100644&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gd"&gt;--- a/repositories.yaml&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gi"&gt;+++ b/repositories.yaml&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gu"&gt;@@ -239,3 +239,12 @@ firefox-android-release:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;    - org.mozilla.components:browser-engine-gecko-beta&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;    - org.mozilla.appservices:logins&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt; &lt;/span&gt;    - org.mozilla.components:support-migration&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gi"&gt;+mozregression:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gi"&gt;+  app_id: org-mozilla-mozregression&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gi"&gt;+  notification_emails:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gi"&gt;+    - wlachance@mozilla.com&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gi"&gt;+  url: &amp;#39;https://github.com/mozilla/mozregression&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gi"&gt;+  metrics_files:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gi"&gt;+    - &amp;#39;mozregression/metrics.yaml&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gi"&gt;+  ping_files:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="gi"&gt;+    - &amp;#39;mozregression/pings.yaml&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -962,13 +984,13 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;div class="brush: sql"&gt;
  &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="nb"&gt;date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-       &lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_variant&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;variant&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-       &lt;span class="k"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-&lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="n"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fx&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org_mozilla_mozregression_stable&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_v1&lt;/span&gt;
-&lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;2020-04-14&amp;#39;&lt;/span&gt;
-  &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;client_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app_display_version&lt;/span&gt; &lt;span class="k"&gt;NOT&lt;/span&gt; &lt;span class="k"&gt;LIKE&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;%.dev%&amp;#39;&lt;/span&gt;
-&lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="nb"&gt;date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;variant&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;AS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_variant&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;AS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;variant&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="k"&gt;count&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="n"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fx&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org_mozilla_mozregression_stable&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_v1&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;WHERE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;2020-04-14&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;AND&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;client_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app_display_version&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NOT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;LIKE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%.dev%&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="k"&gt;GROUP&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;BY&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;variant&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -1030,19 +1052,19 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;div class="brush: yaml"&gt;
  &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
-&lt;span class="nt"&gt;$schema&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;moz://mozilla.org/schemas/glean/pings/1-0-0&lt;/span&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nt"&gt;$schema&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;moz://mozilla.org/schemas/glean/pings/1-0-0&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-&lt;span class="nt"&gt;usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class="no"&gt;A ping to record usage of mozregression&lt;/span&gt;
-  &lt;span class="nt"&gt;include_client_id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;
-  &lt;span class="nt"&gt;notification_emails&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;wlachance@mozilla.com&lt;/span&gt;
-  &lt;span class="nt"&gt;bugs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://bugzilla.mozilla.org/123456789/&lt;/span&gt;
-  &lt;span class="nt"&gt;data_reviews&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://example.com/path/to/data-review&lt;/span&gt;
+&lt;span class="nt"&gt;usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="no"&gt;A ping to record usage of mozregression&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;include_client_id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;notification_emails&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;wlachance@mozilla.com&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;bugs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://bugzilla.mozilla.org/123456789/&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;data_reviews&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://example.com/path/to/data-review&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -1051,23 +1073,23 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;div class="brush: yaml"&gt;
  &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;---&lt;/span&gt;
-&lt;span class="nt"&gt;$schema&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;moz://mozilla.org/schemas/glean/metrics/1-0-0&lt;/span&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="nt"&gt;$schema&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;moz://mozilla.org/schemas/glean/metrics/1-0-0&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 
-&lt;span class="nt"&gt;usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-  &lt;span class="nt"&gt;app&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;string&lt;/span&gt;
-    &lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p p-Indicator"&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class="no"&gt;The name of the app being bisected&lt;/span&gt;
-    &lt;span class="nt"&gt;notification_emails&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
-      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;wlachance@mozilla.com&lt;/span&gt;
-    &lt;span class="nt"&gt;bugs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
-      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;https://bugzilla.mozilla.org/show_bug.cgi?id=1581647&lt;/span&gt;
-    &lt;span class="nt"&gt;data_reviews&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; 
-      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://example.com/path/to/data-review&lt;/span&gt;
-    &lt;span class="nt"&gt;expires&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;never&lt;/span&gt;
-    &lt;span class="nt"&gt;send_in_pings&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-      &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;usage&lt;/span&gt;
+&lt;span class="nt"&gt;usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;app&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;string&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="no"&gt;The name of the app being bisected&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;notification_emails&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;wlachance@mozilla.com&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;bugs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;https://bugzilla.mozilla.org/show_bug.cgi?id=1581647&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;data_reviews&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://example.com/path/to/data-review&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;expires&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;never&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;send_in_pings&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
+&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;usage&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -1115,24 +1137,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id="next-steps"&gt;Next steps&lt;/h2&gt;
 
-&lt;p&gt;There are a bunch of things I still need to work through before landing this inside mozregression itself. Notably, the Glean python bindings are python3-only, so we&amp;rsquo;ll need to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766"&gt;port the mozregression GUI to python 3&lt;/a&gt; before we can start measuring usage there. But I&amp;rsquo;m excited at how quickly this work is coming together: stay tuned for part 2 in a few weeks.&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">Conda is pretty great</title>
-  <link rel="alternate" href="https://wrla.ch/blog/2020/01/conda-is-pretty-great/?utm_source=Mozilla&amp;utm_medium=Atom" />
-  <id>urn:https-wrla-ch:-blog-2020-01-conda-is-pretty-great</id>
-  <published>2020-01-13T16:08:57Z</published>
-  <updated>2020-01-13T16:08:57Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;Lately the data engineering team has been looking into productionizing (i.e. running in Airflow) a bunch of models that the data science team has been producing. This often involves languages and environments that are a bit outside of our comfort zone &amp;mdash; for example, &lt;a href="https://github.com/mozilla/missioncontrol-v2"&gt;the next version of Mission Control&lt;/a&gt; relies on the &lt;a href="https://mc-stan.org/users/interfaces/rstan"&gt;R-stan library&lt;/a&gt; to produce a model of expected crash behaviour as Firefox is released.&lt;/p&gt;
-
-&lt;p&gt;To make things as simple and deterministic as possible, we&amp;rsquo;ve been building up Docker containers to run/execute this code along with their dependencies, which makes things nice and reproducible. My initial thought was to use just the language-native toolchains to build up my container for the above project, but quickly found a number of problems:&lt;/p&gt;
-
-&lt;ol&gt;
- &lt;li&gt;For local testing, Docker on Mac is &lt;em&gt;slow&lt;/em&gt;: when doing a large number of statistical calculations (as above), you can count on your testing iterations taking 3 to 4 (or more) times longer.&lt;/li&gt;
- &lt;li&gt;On initial setup, the default R packaging strategy is to have the user of a package like R-stan recompile from source. This can take &lt;em&gt;forever&lt;/em&gt; if you have a long list of dependencies with C-compiled extensions (pretty much a given if you&amp;rsquo;re working in the data space): rebuilding my initial docker environment for missioncontrol-v2 took almost an hour. This isn&amp;rsquo;t just a problem for local development: it also makes continuous integration using a service like Circle or Travis expensive and painful.&lt;/li&gt;&lt;/ol&gt;
-
-&lt;p&gt;I had been vaguely aware of &lt;a href="https://docs.conda.io/en/latest/"&gt;Conda&lt;/a&gt; for a few years, but didn&amp;rsquo;t really understand its value proposition until I started working on the above project: why bother with a heavyweight package manager when you already have Docker to virtualize things? The answer is that it solves both of the above problems: for local development, you can get something more-or-less identical to what you&amp;rsquo;re running inside Docker with no performance penalty whatsoever. And for building the docker container itself, Conda&amp;rsquo;s package repository contains pre-compiled versions of all the dependencies you&amp;rsquo;d want to use for something like this (even somewhat esoteric libraries like R-stan are available on &lt;a href="https://conda-forge.org/"&gt;conda-forge&lt;/a&gt;), which brought my build cycle times down to less than 5 minutes.&lt;/p&gt;
-
-&lt;p&gt;tl;dr: If you have a bunch of R / python code you want to run in a reproducible manner, consider Conda.&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;There are a bunch of things I still need to work through before landing this inside mozregression itself. Notably, the Glean python bindings are python3-only, so we&amp;rsquo;ll need to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766"&gt;port the mozregression GUI to python 3&lt;/a&gt; before we can start measuring usage there. But I&amp;rsquo;m excited at how quickly this work is coming together: stay tuned for part 2 in a few weeks.&lt;/p&gt;</content></entry></feed>

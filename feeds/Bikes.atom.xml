@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'Bikes'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Bikes.atom.xml" />
- <link href="https://wlach.github.io/tags/Bikes.html" />
- <id>urn:https-wlach-github-io:-tags-Bikes-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/Bikes.atom.xml" />
+ <link href="https://wrla.ch/tags/Bikes.html" />
+ <id>urn:https-wrla-ch:-tags-Bikes-html</id>
  <updated>2019-05-22T00:52:21Z</updated>
  <entry>
   <title type="text">Goodbye, noble stead</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2019/05/goodbye-noble-stead/?utm_source=Bikes&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2019-05-goodbye-noble-stead</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2019/05/goodbye-noble-stead/?utm_source=Bikes&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2019-05-goodbye-noble-stead</id>
   <published>2019-05-22T00:52:21Z</published>
   <updated>2019-05-22T00:52:21Z</updated>
   <author>

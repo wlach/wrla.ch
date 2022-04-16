@@ -3,14 +3,14 @@
  <channel>
   <title>William Lachance's Log: Posts tagged 'Docker'</title>
   <description>William Lachance's Log: Posts tagged 'Docker'</description>
-  <link>https://wlach.github.io/tags/Docker.html</link>
+  <link>https://wrla.ch/tags/Docker.html</link>
   <lastBuildDate>Fri, 02 Jun 2017 20:04:38 UT</lastBuildDate>
   <pubDate>Fri, 02 Jun 2017 20:04:38 UT</pubDate>
   <ttl>1800</ttl>
   <item>
    <title>Using Docker to run automated tests</title>
-   <link>https://wlach.github.io/blog/2017/06/using-docker-to-run-automated-tests/?utm_source=Docker&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wlach-github-io:-blog-2017-06-using-docker-to-run-automated-tests</guid>
+   <link>https://wrla.ch/blog/2017/06/using-docker-to-run-automated-tests/?utm_source=Docker&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2017-06-using-docker-to-run-automated-tests</guid>
    <pubDate>Fri, 02 Jun 2017 20:04:38 UT</pubDate>
    <author>William Lachance</author>
    <description>

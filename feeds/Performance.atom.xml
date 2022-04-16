@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'Performance'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Performance.atom.xml" />
- <link href="https://wlach.github.io/tags/Performance.html" />
- <id>urn:https-wlach-github-io:-tags-Performance-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/Performance.atom.xml" />
+ <link href="https://wrla.ch/tags/Performance.html" />
+ <id>urn:https-wrla-ch:-tags-Performance-html</id>
  <updated>2016-10-31T15:40:00Z</updated>
  <entry>
   <title type="text">Slow Treeherder, Fast Treeherder</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2016/10/slow-treeherder-fast-treeherder/?utm_source=Performance&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2016-10-slow-treeherder-fast-treeherder</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2016/10/slow-treeherder-fast-treeherder/?utm_source=Performance&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2016-10-slow-treeherder-fast-treeherder</id>
   <published>2016-10-31T15:40:00Z</published>
   <updated>2016-10-31T15:40:00Z</updated>
   <author>

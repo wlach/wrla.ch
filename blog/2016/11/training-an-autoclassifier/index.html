@@ -113,11 +113,11 @@
 
 <div class="brush: sql">
  <div class="colorful">
-  <pre><span></span><span class="k">select</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">line</span> <span class="k">from</span> <span class="n">bug_job_map</span> <span class="k">as</span> <span class="n">bjm</span>
-  <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_step</span> <span class="k">as</span> <span class="n">tls</span> <span class="k">on</span> <span class="n">tls</span><span class="p">.</span><span class="n">job_id</span> <span class="o">=</span> <span class="n">bjm</span><span class="p">.</span><span class="n">job_id</span>
-  <span class="k">left</span> <span class="k">join</span> <span class="n">text_log_error</span> <span class="k">as</span> <span class="n">tle</span> <span class="k">on</span> <span class="n">tle</span><span class="p">.</span><span class="n">step_id</span> <span class="o">=</span> <span class="n">tls</span><span class="p">.</span><span class="n">id</span>
-  <span class="k">where</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&gt;</span> <span class="s1">&#39;2016-10-31&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">created</span> <span class="o">&lt;</span> <span class="s1">&#39;2016-11-24&#39;</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">user_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span> <span class="k">and</span> <span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span> <span class="k">is</span> <span class="k">not</span> <span class="k">NULL</span>
-  <span class="k">order</span> <span class="k">by</span> <span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">step_id</span><span class="p">,</span> <span class="n">tle</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
+  <pre><span></span><span class="k">select</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">line</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">bug_job_map</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">bjm</span><span class="w"></span>
+<span class="w">  </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">text_log_step</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">tls</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tls</span><span class="p">.</span><span class="n">job_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">job_id</span><span class="w"></span>
+<span class="w">  </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">text_log_error</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">tle</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">step_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tls</span><span class="p">.</span><span class="n">id</span><span class="w"></span>
+<span class="w">  </span><span class="k">where</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">created</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s1">&#39;2016-10-31&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">created</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2016-11-24&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
+<span class="w">  </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">step_id</span><span class="p">,</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">id</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -126,20 +126,20 @@
 
 <div class="brush: json">
  <div class="colorful">
-  <pre><span></span><span class="p">{</span>
-<span class="nt">"bug_number"</span><span class="p">:</span> <span class="mi">1202623</span><span class="p">,</span>
-<span class="nt">"lines"</span><span class="p">:</span> <span class="p">[</span>
-  <span class="s2">"browser_private_clicktoplay.js Test timed out -"</span><span class="p">,</span>
-  <span class="s2">"browser_private_clicktoplay.js Found a tab after previous test timed out: http:/&lt;number&gt;&lt;number&gt;:&lt;number&gt;/browser/browser/base/content/test/plugins/plugin_test.html -"</span><span class="p">,</span>
-  <span class="s2">"browser_private_clicktoplay.js Found a browser window after previous test timed out -"</span><span class="p">,</span>
-  <span class="s2">"browser_private_clicktoplay.js A promise chain failed to handle a rejection:  - at chrome://mochikit/content/browser-test.js:&lt;number&gt; - TypeError: this.SimpleTest.isExpectingUncaughtException is not a function"</span><span class="p">,</span>
-  <span class="s2">"browser_privatebrowsing_newtab_from_popup.js Test timed out -"</span><span class="p">,</span>
-  <span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span>
-  <span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span>
-  <span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window</span>
-<span class="s2">  after previous test timed out -"</span>
-  <span class="p">]</span>
-<span class="p">}</span>
+  <pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="nt">"bug_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1202623</span><span class="p">,</span><span class="w"></span>
+<span class="nt">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js Test timed out -"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js Found a tab after previous test timed out: http:/&lt;number&gt;&lt;number&gt;:&lt;number&gt;/browser/browser/base/content/test/plugins/plugin_test.html -"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js Found a browser window after previous test timed out -"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js A promise chain failed to handle a rejection:  - at chrome://mochikit/content/browser-test.js:&lt;number&gt; - TypeError: this.SimpleTest.isExpectingUncaughtException is not a function"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Test timed out -"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window</span>
+<span class="s2">  after previous test timed out -"</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 
 </div>

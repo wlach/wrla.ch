@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
  <title type="text">William Lachance's Log: Posts tagged 'Data'</title>
- <link rel="self" href="https://wlach.github.io/feeds/Data.atom.xml" />
- <link href="https://wlach.github.io/tags/Data.html" />
- <id>urn:https-wlach-github-io:-tags-Data-html</id>
+ <link rel="self" href="https://wrla.ch/feeds/Data.atom.xml" />
+ <link href="https://wrla.ch/tags/Data.html" />
+ <id>urn:https-wrla-ch:-tags-Data-html</id>
  <updated>2018-10-29T13:19:23Z</updated>
  <entry>
   <title type="text">pydata nyc 2018</title>
-  <link rel="alternate" href="https://wlach.github.io/blog/2018/10/pydata-nyc-2018/?utm_source=Data&amp;utm_medium=Atom" />
-  <id>urn:https-wlach-github-io:-blog-2018-10-pydata-nyc-2018</id>
+  <link rel="alternate" href="https://wrla.ch/blog/2018/10/pydata-nyc-2018/?utm_source=Data&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2018-10-pydata-nyc-2018</id>
   <published>2018-10-29T13:19:23Z</published>
   <updated>2018-10-29T13:19:23Z</updated>
   <author>

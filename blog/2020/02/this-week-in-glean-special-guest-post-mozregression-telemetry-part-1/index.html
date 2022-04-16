@@ -117,19 +117,19 @@
 
 <div class="brush: yaml">
  <div class="colorful">
-  <pre><span></span><span class="nn">---</span>
-<span class="nt">$schema</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/pings/1-0-0</span>
+  <pre><span></span><span class="nn">---</span><span class="w"></span>
+<span class="nt">$schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/pings/1-0-0</span><span class="w"></span>
 
-<span class="nt">usage</span><span class="p">:</span>
-  <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
-    <span class="no">A ping to record usage of mozregression</span>
-  <span class="nt">include_client_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="nt">notification_emails</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span>
-  <span class="nt">bugs</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://bugzilla.mozilla.org/123456789/</span>
-  <span class="nt">data_reviews</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span>
+<span class="nt">usage</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="no">A ping to record usage of mozregression</span><span class="w"></span>
+<span class="w">  </span><span class="nt">include_client_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="nt">notification_emails</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span><span class="w"></span>
+<span class="w">  </span><span class="nt">bugs</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://bugzilla.mozilla.org/123456789/</span><span class="w"></span>
+<span class="w">  </span><span class="nt">data_reviews</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span><span class="w"></span>
 </pre></div>
 
 </div>
@@ -138,23 +138,23 @@
 
 <div class="brush: yaml">
  <div class="colorful">
-  <pre><span></span><span class="nn">---</span>
-<span class="nt">$schema</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/metrics/1-0-0</span>
+  <pre><span></span><span class="nn">---</span><span class="w"></span>
+<span class="nt">$schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">moz://mozilla.org/schemas/glean/metrics/1-0-0</span><span class="w"></span>
 
-<span class="nt">usage</span><span class="p">:</span>
-  <span class="nt">app</span><span class="p">:</span>
-    <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
-    <span class="nt">description</span><span class="p">:</span> <span class="p p-Indicator">&gt;</span>
-      <span class="no">The name of the app being bisected</span>
-    <span class="nt">notification_emails</span><span class="p">:</span> 
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span>
-    <span class="nt">bugs</span><span class="p">:</span> 
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">https://bugzilla.mozilla.org/show_bug.cgi?id=1581647</span>
-    <span class="nt">data_reviews</span><span class="p">:</span> 
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span>
-    <span class="nt">expires</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">never</span>
-    <span class="nt">send_in_pings</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">usage</span>
+<span class="nt">usage</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">app</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="w"></span>
+<span class="w">      </span><span class="no">The name of the app being bisected</span><span class="w"></span>
+<span class="w">    </span><span class="nt">notification_emails</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">wlachance@mozilla.com</span><span class="w"></span>
+<span class="w">    </span><span class="nt">bugs</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://bugzilla.mozilla.org/show_bug.cgi?id=1581647</span><span class="w"></span>
+<span class="w">    </span><span class="nt">data_reviews</span><span class="p">:</span><span class="w"> </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://example.com/path/to/data-review</span><span class="w"></span>
+<span class="w">    </span><span class="nt">expires</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">never</span><span class="w"></span>
+<span class="w">    </span><span class="nt">send_in_pings</span><span class="p">:</span><span class="w"></span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">usage</span><span class="w"></span>
 </pre></div>
 
 </div>

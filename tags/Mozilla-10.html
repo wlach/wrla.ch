@@ -92,6 +92,32 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/">Ghetto retroscope with ffmpeg and the &lt;video&gt; tag</a></h2>
+    <p class="index-date">May 7th, 2012</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Video.html">Video</a></span></p>
+  </header>
+
+<p>So yesterday we had a small get-together at my place, which gave me the opportunity to try something I&rsquo;d been meaning to do for a while: build my own retroscope.</p>
+
+<p>The idea is pretty simple: have a webcam record bits and pieces of a social event, then play them back on-the-spot a few minutes/hours later. I first heard about the concept from reading Nat Friedman&rsquo;s <a href="http://nat.org/blog/2005/10/the-retroscope/">blog entry</a> from 2005 &#8212; if you read that, you see that he just hooked up a video camera to his TiVo. 7 years in the future, laptop webcams are ubiquitous and we have the awesome HTML5  tag, so I figured it would be easy to knock up something interesting in short order with zero custom hardware.</p>
+
+<p>Having only remembered that I wanted to do this about 30 minutes before people were scheduled to start arriving, I didn&rsquo;t have much time to do anything really perfect. I settled on using <a href="http://stackoverflow.com/questions/7500763/command-line-streaming-webcam-with-audio-from-ubuntu-server-in-webm-format">this little snippet</a> from stackoverflow to generate short (5 second) movies on my laptop, then used scp to copy them over and display a montage of them in an auto-refreshing webpage on my &ldquo;television&rdquo; (which is a Mac-Mini connected to a large computer monitor). Despite being a total hack job, the end result generated much amusement. I think this is a bit different from what Nat originally did (it sounds from his blog like his retroscope played back longer segments), but I think the end result is actually a bit more fun.</p>
+
+<p><a href="http://wrla.ch/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-video-tag/retroscope-screenshot/" rel="attachment wp-att-598"><img src="/files/2012/05/retroscope-screenshot-1024x694.png" alt="" title="retroscope-screenshot" width="640" height="433" class="alignnone size-large wp-image-598" srcset="/files/2012/05/retroscope-screenshot-300x203.png 300w, /files/2012/05/retroscope-screenshot-1024x694.png 1024w, /files/2012/05/retroscope-screenshot.png 1319w" sizes="(max-width: 640px) 100vw, 640px" /></a></p>
+
+<p>Perhaps unfortunately, but probably ultimately for the best, only a few snippets from the actual night got stored away. One example is this gem:</p>
+
+<p>(yes, that handsome fellow with the Pernot is me)</p>
+
+<p>I thought it might be fun to release the slightly-cleaned up results of this experiment as opensource for others to play with, so I created a small project for it on github. Unlike the original version, no complicated scp scheme is required &#8212; I just reused Joel Maher&rsquo;s most excellent mozhttpd library from <a href="http://github.com/mozilla/mozbase">mozbase</a> to run a web server in the same process as the capture logic. All you need to do is run the server on a Linux machine with a webcam and connect to it with a web browser from any other machine on your local network.</p>
+
+<p><a href="https://github.com/wlach/retroscope">https://github.com/wlach/retroscope</a></p>
+
+<p>Enjoy!</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2012/05/launching-random-web-browsers-on-android/">Launching random web browsers on Android</a></h2>
     <p class="index-date">May 4th, 2012</p>
     <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -365,24 +391,6 @@ result.writeToFile(sys.argv[1], 'png')</code></pre>
 <p>(by the way, this performance regression is filed as <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447">bug 719447</a>)</p>
 
 <p>I know there&rsquo;s lots of great effort going into improving this situation, so I have hope that we&rsquo;ll be doing much better on this metric in the coming days/weeks. The process for creating these videos/analyses is mostly automated at this point, so my plan is to create a small dashboard (ala <a href="http://arewefastyet.com">arewefastyet.com</a>) to measure these numbers over time on the latest nightlies. Stay tuned!</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2012/01/measuring-reduced-checkerboarding-in-mobile-fennec/">Measuring reduced checkerboarding in mobile Fennec</a></h2>
-    <p class="index-date">Jan 3rd, 2012</p>
-    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>After my <a href="http://wrla.ch/blog/2011/12/year-end-eideticker-update/">post</a> on measuring checkerboarding in mobile Firefox, <a href="http://cmtalbert.wordpress.com/">Clint Talbert</a> (my fearless manager) suggested I run a before and after test to measure the improvement that just landed as part of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=709152">bug 709512</a>. After a bit of cleanup, I did so, measuring the delta between my build on December 20th and the latest version of Aurora. The difference is pretty remarkable: at least on the LG G2X that I&rsquo;ve been using for testing, we&rsquo;ve gone from checkerboarding between 10&ndash;20% of the time and not checkerboarding almost at all (in between two runs of the test with the Aurora build, there is exactly one frame that checkerboards). All credit to <a href="http://chrislord.net/blog">Chris Lord</a> for that!</p>
-
-<p>See the video evidence for yourself. Before:</p>
-
-<video src="/files/eideticker/lotsocheckerboarding.webm" width="600px" controls="controls"></video>
-
-<p>After:</p>
-
-<video src="/files/eideticker/almostnocheckerboarding.webm" width="600px" controls="controls"></video> 
   <hr/>
 </article>
 <footer>

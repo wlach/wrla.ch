@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0">
+ <channel>
+  <title>William Lachance's Log: Posts tagged 'meta'</title>
+  <description>William Lachance's Log: Posts tagged 'meta'</description>
+  <link>https://wrla.ch/tags/meta.html</link>
+  <lastBuildDate>Sun, 21 Mar 2021 07:12:19 UT</lastBuildDate>
+  <pubDate>Sun, 21 Mar 2021 07:12:19 UT</pubDate>
+  <ttl>1800</ttl>
+  <item>
+   <title>Blog moving back to wrla.ch</title>
+   <link>https://wrla.ch/blog/2021/03/blog-moving-back-to-wrla-ch/?utm_source=meta&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2021-03-blog-moving-back-to-wrla-ch</guid>
+   <pubDate>Sun, 21 Mar 2021 07:12:19 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;House keeping news: I&amp;rsquo;m moving this blog back to the &lt;a href="https://wrla.ch"&gt;wrla.ch&lt;/a&gt; domain from wlach.github.io. This domain sorta kinda worked before (I set up a &lt;a href="https://netlify.com"&gt;netlify&lt;/a&gt; deploy a couple years ago), but the software used to generate this blog referenced github all over the place in its output, so it didn&amp;rsquo;t really work as you&amp;rsquo;d expect. Anyway, this will be the last entry published on wlach.github.io: my plan is to turn that domain into a set of redirects in the future.&lt;/p&gt;
+
+&lt;p&gt;I don&amp;rsquo;t know how many of you are out there who still use RSS, but if you do, please update your feeds. I have filed a bug to update my Planet Mozilla entry, so hopefully the change there will be seamless.&lt;/p&gt;
+
+&lt;p&gt;Why? Recent events have made me not want to tie my public web presence to a particular company (especially a larger one, like Microsoft). I don&amp;rsquo;t have any immediate plans to move this blog off of github, but this gives me that option in the future. For those wondering, the original rationale for moving &lt;em&gt;to&lt;/em&gt; github is in &lt;a href="/blog/2016/01/new-year-new-blog/"&gt;this post&lt;/a&gt;. Looking back, the idea of moving away from a VPS and WordPress made sense, the move away from my own domain less so. I think it may have been harder to set up static hosting (esp. with HTTPS) at that time&amp;hellip; or I might have just been ignorant.&lt;/p&gt;
+
+&lt;p&gt;In related news, I decided to reactivate my twitter account: you can once again find me there as &lt;a href="https://twitter.com/wrlach"&gt;@wrlach&lt;/a&gt; (my old username got taken in my absence). I&amp;rsquo;m not totally thrilled about this (I basically stand by what I wrote a &lt;a href="/blog/2018/01/quitting-twitter/"&gt;few years ago&lt;/a&gt;, except maybe the concession I made to Facebook being &amp;ldquo;ok&amp;rdquo;), but Twitter seems to be where my industry peers are. As someone who doesn&amp;rsquo;t have a large organic following, I&amp;rsquo;ve come to really value forums where I can share my work. That said, I&amp;rsquo;m going to be very selective about what I engage with on that site: I appreciate your understanding.&lt;/p&gt;</description></item></channel></rss>

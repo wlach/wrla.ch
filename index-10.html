@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 10)</title>
     <meta name="description" content="William Lachance's Log (page 10)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Taskcluster, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Buddhism, all, Profiling, BIXI, iodide, Community, Iodide, Life, telemetry, Video, Meditation, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Android, Treeherder, meta, GNOME, Environment, Île Sans Fil, Time, Psychology, Statistics, zen, Music, Counting, Mozilla, Eideticker, Usability, Transit to Go, Infraherder, Recurse, Ebola, Orangutan, Open Data, Nixi, Meta, ateam, Perfherder, Montreal, Docker, Talos, Telemetry, Responsiveness, Glean, Pandaboard, Food, Toronto, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, MSF" />
+    <meta name="keywords" content="Time, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, Community, Voltus, Life, Montreal, Video, Orangutan, Taskcluster, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Meditation, meta, Ebola, GNOME, Environment, Infraherder, Île Sans Fil, Treeherder, Statistics, zen, Music, telemetry, Buddhism, Usability, Responsiveness, Transit to Go, Iodide, Recurse, Eideticker, Open Data, Nixi, Meta, ateam, Perfherder, Talos, Docker, iodide, Telemetry, Toronto, Glean, Pandaboard, Food, Psychology, Android, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, Counting, MSF" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-10.html" />
@@ -91,6 +91,55 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">Automatically measuring startup / load time with Eideticker</a></h2>
+    <p class="index-date">Oct 17th, 2013</p>
+    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p>So we&rsquo;ve been using Eideticker to automatically measure startup/pageload times for about a year now on Android, and more recently on FirefoxOS as well (albeit not automatically). This gives us nice and pretty graphs like this:</p>
+
+<p><a href="/files/2013/10/flot-startup-times-gn.png"><img src="/files/2013/10/flot-startup-times-gn.png" alt="flot-startup-times-gn" width="620" height="568" class="alignnone size-full wp-image-986" srcset="/files/2013/10/flot-startup-times-gn-300x274.png 300w, /files/2013/10/flot-startup-times-gn.png 620w" sizes="(max-width: 620px) 100vw, 620px" /></a></p>
+
+<p>Ok, so we&rsquo;re generating numbers and graphing them. That&rsquo;s great. But what&rsquo;s really going on behind the scenes? I&rsquo;m glad you asked. The story is a bit different depending on which platform you&rsquo;re talking about.</p>
+
+<p><strong>Android</strong></p>
+
+<p>On Android we connect Eideticker to the device&rsquo;s HDMI out, so we count on a nearly pixel-perfect signal. In practice, it isn&rsquo;t quite, but it is within a few RGB values that we can easily filter for. This lets us come up with a pretty good mechanism for determining when a page load or app startup is finished: just compare frames, and say we&rsquo;ve &ldquo;stopped&rdquo; when the pixel differences between frames are negligible (previously defined at 2048 pixels, now 4096 &#8212; see below). Eideticker&rsquo;s new frame difference view lets us see how this works. Look at this graph of application startup:</p>
+
+<p><a href="/files/2013/10/frame-difference-android-startup.png"><img src="/files/2013/10/frame-difference-android-startup.png" alt="frame-difference-android-startup" width="803" height="514" class="alignnone size-full wp-image-973" srcset="/files/2013/10/frame-difference-android-startup-300x192.png 300w, /files/2013/10/frame-difference-android-startup.png 803w" sizes="(max-width: 803px) 100vw, 803px" /></a>
+ <br /><a href="http://eideticker.wrla.ch/#/samsung-gn/startup-abouthome-dirty/timetostableframe">[Link to original]</a></p>
+
+<p>What&rsquo;s going on here? Well, we see some huge jumps in the beginning. This represents the animated transitions that Android makes as we transition from the SUTAgent application (don&rsquo;t ask) to the beginnings of the FirefoxOS browser chrome. You&rsquo;ll notice though that there&rsquo;s some more changes that come in around the 3 second mark. This is when the site bookmarks are fully loaded. If you load the original page (link above) and swipe your mouse over the graph, you can see what&rsquo;s going on for yourself.</p>
+
+<p>This approach is not completely without problems. It turns out that there is sometimes some minor churn in the display even when the app is for all intents and purposes started. For example, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=922770">sometimes the scrollbar fading out of view can result in a significantish pixel value change</a>, so I recently upped the threshold of pixels that are different from 2048 to 4096. We also recently encountered a <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=926997">silly problem</a> with a random automation app displaying &ldquo;toasts&rdquo; which caused results to artificially spike. More tweaking may still be required. However, on the whole I&rsquo;m pretty happy with this solution. It gives useful, undeniably objective results whose meaning is easy to understand.</p>
+
+<p><strong>FirefoxOS</strong></p>
+
+<p>So as mentioned previously, we use a camera on FirefoxOS to record output instead of HDMI output. Pretty unsurprisingly, this is much noisier. See this movie of the contacts app starting and note all the random lighting changes, for example:</p>
+
+<div style="width: 409px; " class="wp-video"><!--[if lt IE 9]><![endif]-->
+ <video class="wp-video-shortcode" id="video-972-1" width="409" height="580" preload="metadata" controls="controls">
+  <source type="video/webm" src="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm?_=1" /> <a href="/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm">/files/2013/10/contacts-b2g-aug30-load-taphomescreen1.webm</a></video></div>
+
+<p>My experience has been that pixel differences can be so great between visually identical frames on an eideticker capture on these devices that it&rsquo;s pretty much impossible to settle on when startup is done using the frame difference method. It&rsquo;s of course possible to detect very large scale changes, but the small scale ones (like the contacts actually appearing in the example above) are very hard to distinguish from random differences in the amount of light absorbed by the camera sensor. Tricks like using median filtering (a.k.a. &ldquo;blurring&rdquo;) help a bit, but not much. Take a look at this graph, for example:</p>
+
+<p><a href="/files/2013/10/plotly-contacts-load-pixeldiff.png"><img src="/files/2013/10/plotly-contacts-load-pixeldiff.png" alt="plotly-contacts-load-pixeldiff" width="531" height="679" class="alignnone size-full wp-image-980" srcset="/files/2013/10/plotly-contacts-load-pixeldiff-234x300.png 234w, /files/2013/10/plotly-contacts-load-pixeldiff.png 531w" sizes="(max-width: 531px) 100vw, 531px" /></a>
+ <br /><a href="https://plot.ly/~WilliamLachance/3">[Link to original]</a></p>
+
+<p>You&rsquo;ll note that the pixel differences during &ldquo;static&rdquo; parts of the capture are highly variable. This is because the pixel difference depends heavily on how &ldquo;bright&rdquo; each frame is: parts of the capture which are black (e.g. a contacts icon with a black background) have a much lower difference between them than parts that are bright (e.g. the contacts screen fully loaded).</p>
+
+<p>After a day or so of experimenting and research, I settled on an approach which seems to work pretty reliably. Instead of comparing the frames directly, I measure the <a href="http://en.wikipedia.org/wiki/Entropy">entropy</a> of the <a href="http://en.wikipedia.org/wiki/Image_histogram">histogram</a> of colours used in each frame (essentially just an indication of brightness in this case, see <a href="http://brainacle.com/calculating-image-entropy-with-python-how-and-why.html">this article</a> for more on calculating it), then compare that of each frame with the average of the same measure over 5 previous frames (to account for the fact that two frames may be arbitrarily different, but that is unlikely that a sequence of frames will be). This seems to work much better than frame difference in this environment: although there are plenty of minute differences in light absorption in a capture from this camera, the overall color composition stays mostly the same. See this graph:</p>
+
+<p><a href="/files/2013/10/plotly-contacts-load-entropy.png"><img src="/files/2013/10/plotly-contacts-load-entropy.png" alt="plotly-contacts-load-entropy" width="546" height="674" class="alignnone size-full wp-image-979" srcset="/files/2013/10/plotly-contacts-load-entropy-243x300.png 243w, /files/2013/10/plotly-contacts-load-entropy.png 546w" sizes="(max-width: 546px) 100vw, 546px" /></a>
+ <br /><a href="https://plot.ly/~WilliamLachance/5">[Link to original]</a></p>
+
+<p>If you look closely, you can see some minor variance in the entropy differences depending on the state of the screen, but it&rsquo;s not nearly as pronounced as before. In practice, I&rsquo;ve been able to get extremely consistent numbers with a reasonable &ldquo;threshold&rdquo; of &ldquo;0.05&rdquo;.</p>
+
+<p>In Eideticker I&rsquo;ve tried to steer away from using really complicated math or algorithms to measure things, unless all the alternatives fail. In that sense, I really liked the simplicity of &ldquo;pixel differences&rdquo; and am not thrilled about having to resort to this: hopefully the concepts in this case (histograms and entropy) are simple enough that most people will be able to understand my methodology, if they care to. Likely I will need to come up with something else for measuring responsiveness and animation smoothness (frames per second), as likely we can&rsquo;t count on light composition changing the same way for those cases. My initial thought was to use <a href="http://en.wikipedia.org/wiki/Edge_detection">edge detection</a> (which, while somewhat complex to calculate, is at least easy to understand conceptually) but am open to other ideas.</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2013/10/first-eideticker-responsiveness-tests/">First Eideticker Responsiveness Tests</a></h2>
     <p class="index-date">Oct 7th, 2013</p>
@@ -314,26 +363,6 @@
 <p>The <a href="http://yorba.org">Yorba</a> non-profit recently started a <a href="http://www.indiegogo.com/projects/geary-a-beautiful-modern-open-source-email-client">fundraiser</a> to work on the next edition of Geary, an email client which I hope will fill the niche that I&rsquo;m talking about. It&rsquo;s pretty rough around the edges still, but even at this early stage the conversation view is beautiful and more or less exactly what I want. The example of Shotwell (their photo management application) suggests that they know a thing or two about creating robust and useable software, not a common thing in this day and age. In any case, their pitch was compelling enough for me to donate a few dollars to the cause. If you care about having a great email experience that is completely under your control (and not that of an advertising or product company with their own agenda), then maybe you could too?</p> 
   <hr/>
 </article>
-<article>
-  <header>
-    <h2><a href="/blog/2013/03/a-visit-to-the-montreal-zen-center/">A visit to the Montreal Zen Center</a></h2>
-    <p class="index-date">Mar 24th, 2013</p>
-    <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>  <a href="/tags/zen.html">zen</a></span></p>
-  </header>
-
-<center><a href="/files/2013/03/zencenter.jpg"><img src="/files/2013/03/zencenter.jpg" alt="The Road to the Montreal Zen Center" width="640" height="853" class="alignnone size-full wp-image-871" srcset="/files/2013/03/zencenter-225x300.jpg 225w, /files/2013/03/zencenter.jpg 640w" sizes="(max-width: 640px) 100vw, 640px" /></a></center>
-
-<p>So for a bit of a departure from the usual technical content, a personal anecdote. I went to the Montreal Zen Center today for a <a href="http://www.zenmontreal.ca/en/center/workshops.htm">workshop</a>, which was a most illuminating experience. I&rsquo;d been pretty fascinated with the idea of zen for a while (see this <a href="http://wlach.livejournal.com/8637.html">post of mine from 2006</a>, for example) but was pretty stuck on how to put it into practice (aside from being sure it was something you had <em>to live</em>). So, this was a step in that direction. After having gone to it, I wouldn&rsquo;t say I&rsquo;ve figured anything out (in fact I&rsquo;m more confused than ever), but I would say one thing with conviction: <em>this is the way to learn more</em>.</p>
-
-<p>It was pretty simple stuff: exactly how they describe on the web page I linked to. A short verbal introduction on some of the ideas of zen, then a tea break, then instruction on how to begin practising meditation, another tea break (this time with biscuits), then actually practising meditation, then question &#38; answer about the meditation. It doesn&rsquo;t really sound like much, and it wasn&rsquo;t. But nonetheless I can&rsquo;t stop thinking about the experience.</p>
-
-<p>As far as I can gather, the &ldquo;revelation&rdquo; offered by Zen Buddhism is simple: our existence as separate, unique beings is an illusion of the mind. This illusion makes us suffer. However, it is possible with practice to overcome this illusion and realize your true nature as being one with the world. I&rsquo;m probably butchering it a little bit by writing about it in this way, to a certain extent that&rsquo;s me, but in another way it&rsquo;s rather unavoidable since in a way the concepts are beyond words (since words imply a dualism). Regardless, the important thing isn&rsquo;t to grasp zen intellectually, but to come to a natural understanding through the practice of meditation (aka &ldquo;the practice&rdquo;).</p>
-
-<p>And on that note, the meditation is austere and almost certainly less than you&rsquo;d expect. There is no prayer and very little ritual. Just a very minimal breath counting exercise conducted in a seated posture for 20 minutes, followed by a short walking exercise that lasts 5 minutes, then repeating the breath counting exercise for another 20 minutes. For its utter simplicity, I found it incredibly difficult. I imagine like anything with weeks, months, years of practice it (and the variations of it that experienced practitioners use where they meditate on <a href="http://en.wikipedia.org/wiki/K%C5%8Dan">koans</a>) it would become easier.</p>
-
-<p>I&rsquo;m still giving thought on whether I want to take the next steps with them and begin a regular meditation practice. It sounds like really hard work (self meditation practice 6 days a week by yourself, plus regular visits to the zen center), which brings up the question: why do you want to do this? There&rsquo;s a weird contradiction between realizing that you as a self don&rsquo;t really exist and committing yourself radically to this kind of practice. The only thing I can call it would be a &ldquo;leap of faith&rdquo;. My current thinking is that I&rsquo;m not quite ready for that right now, but maybe in a while. For now I think I&rsquo;m pretty happy going to yoga a few times a week and living my sham of a human existence. 😉</p> 
-  <hr/>
-</article>
 <footer>
  <ul class="pagination">
   <li class="page-item"><a class="page-link" href="/index-9.html">
@@ -354,6 +383,7 @@
   <li class="page-item"><a class="page-link" href="/index-14.html">14</a></li>
   <li class="page-item"><a class="page-link" href="/index-15.html">15</a></li>
   <li class="page-item"><a class="page-link" href="/index-16.html">16</a></li>
+  <li class="page-item"><a class="page-link" href="/index-17.html">17</a></li>
   <li class="page-item"><a class="page-link" href="/index-11.html">
     <quote>&rarr;</quote></a></li></ul></footer>
     </div>
