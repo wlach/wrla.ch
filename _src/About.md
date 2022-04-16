@@ -1,16 +1,14 @@
 Hi! My name is William Lachance, though most people just call me "Will".
 
-I'm an (early, as of this writing) fortysomething developer of software in
-Toronto, Ontario, Canada currently working for [Mozilla] in the [Data Engineering]
-group (formerly in the now-defunct [Engineering Productivity] organization).
+I'm an (early, as of this writing) fortysomething developer of software in Toronto, Ontario, Canada currently working at [Voltus] on energy market integrations.
 
-I've worked on a bunch of things over the course of my career here (big themes
-have been automation, browser performance, and stability), but the unifying principle
-is me trying to help people understand the world around them. I try to help people
-think critically about data and build computational systems that help them do this.
+From 2011-2022, I worked at [Mozilla] (as in [Firefox]) in [Data Engineering] and [Engineering Productivity].
+Virtually all of my work there was done in the open (at least nominally), so much of the content on this blog has to do with my work there.
 
-More broadly, I am interested in open systems, accountability, and helping people
-achieve their potential.
+I've worked on a bunch of things over the course of my career, but a unifying principle has been trying to help people understand the world around them.
+I try to help people think critically about business problems and build computational systems to help them do this.
+
+More broadly, I am interested in open systems, accountability, and helping people achieve their potential.
 
 Other random facts:
 
@@ -21,13 +19,15 @@ Other random facts:
 
 I try to be judicious about using social media. That said, there's a bunch of places you can find me:
 
+- [twitter] (semi-frequently updated)
 - [instagram] (infrequently)
 - [dreamwidth] (for more personal stuff, also infrequent)
-- [twitter]
 - [linkedin]
 - [github]
 
+[voltus]: https://voltus.co
 [mozilla]: https://mozilla.org
+[firefox]: https://www.mozilla.org/firefox/
 [data engineering]: https://wiki.mozilla.org/Data
 [engineering productivity]: https://wiki.mozilla.org/EngineeringProductivity
 [toronto zen centre]: https://torontozen.org/
