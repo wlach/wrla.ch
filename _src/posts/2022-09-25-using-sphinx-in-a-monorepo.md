@@ -71,7 +71,7 @@ The most obvious solution is to just copy the files from various parts of the mo
 Mozilla did this for Firefox, with the [moztreedocs](https://searchfox.org/mozilla-central/source/tools/moztreedocs/__init__.py)
 system.
 
-The [results look pretty good](firefox-source-docs.mozilla.org/), but this is a bespoke solution.
+The [results look pretty good](https://firefox-source-docs.mozilla.org/), but this is a bespoke solution.
 Aside from general ideas, there's no way I'm going to be able to apply anything in moztreedocs to Voltus's monorepo (which is based on a completely different build system).
 And being honest, I'm not sure if the 40+ hour (estimated) effort to reimplement it would be a good use of time compared to other things I could be doing.
 
