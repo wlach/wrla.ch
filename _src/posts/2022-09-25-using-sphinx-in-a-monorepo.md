@@ -90,6 +90,9 @@ Just create a directory for these files to live (say `services`) and slot them i
 
 I'm currently in the process of implementing this solution inside Voltus.
 I have optimism that this will be a big (if incremental) step up over what we have right now.
+There are obviously limits, but you can cram a lot of useful information in a README.
+As a bonus, it's a pretty nice marker for those spelunking through the source code
+(much more so than a forest of tiny documentation files).
 
 ## Solution 3: Sphinx Collections
 
