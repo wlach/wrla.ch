@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?> 
-<rss version="2.0">
- <channel>
-  <title>William Lachance's Log: Posts tagged 'Voltus'</title>
-  <description>William Lachance's Log: Posts tagged 'Voltus'</description>
-  <link>https://wrla.ch/tags/Voltus.html</link>
-  <lastBuildDate>Sun, 25 Sep 2022 19:55:40 UT</lastBuildDate>
-  <pubDate>Sun, 25 Sep 2022 19:55:40 UT</pubDate>
-  <ttl>1800</ttl>
-  <item>
-   <title>Using Sphinx in a Monorepo</title>
-   <link>https://wrla.ch/blog/2022/09/using-sphinx-in-a-monorepo/?utm_source=Voltus&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2022-09-using-sphinx-in-a-monorepo</guid>
-   <pubDate>Sun, 25 Sep 2022 19:55:40 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+ <title type="text">William Lachance's Log: Posts tagged 'Sphinx'</title>
+ <link rel="self" href="https://wrla.ch/feeds/Sphinx.atom.xml" />
+ <link href="https://wrla.ch/tags/Sphinx.html" />
+ <id>urn:https-wrla-ch:-tags-Sphinx-html</id>
+ <updated>2022-09-25T19:55:40Z</updated>
+ <entry>
+  <title type="text">Using Sphinx in a Monorepo</title>
+  <link rel="alternate" href="https://wrla.ch/blog/2022/09/using-sphinx-in-a-monorepo/?utm_source=Sphinx&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2022-09-using-sphinx-in-a-monorepo</id>
+  <published>2022-09-25T19:55:40Z</published>
+  <updated>2022-09-25T19:55:40Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
 &lt;p&gt;Just wanted to type up a couple of notes about working with &lt;a href="https://www.sphinx-doc.org/en/master/"&gt;Sphinx&lt;/a&gt; (the python documentation generator) inside a monorepo, an issue I&amp;rsquo;ve been struggling with (off and on) at &lt;a href="https://voltus.co"&gt;Voltus&lt;/a&gt; since I started. I haven&amp;rsquo;t seen much written about this topic despite (I suspect) it being a reasonably frequent problem.&lt;/p&gt;
 
 &lt;p&gt;In general, there&amp;rsquo;s a lot to like about Sphinx: it&amp;rsquo;s great at handling deeply nested trees of detailed documentation with cross-references inside a version control system. It has local search that works pretty well and some themes (like &lt;a href="https://sphinx-rtd-theme.readthedocs.io/en/stable/"&gt;readthedocs&lt;/a&gt;) scale pretty nicely to hundreds of documents. The directives and roles system is pretty flexible and covers most of the common things one might want to express in technical documentation. And if the built-in set of functionality isn&amp;rsquo;t enough, there&amp;rsquo;s a wealth of third party extension modules. My only major complaint is that it uses the somewhat obscure &lt;a href="https://docutils.sourceforge.io/rst.html"&gt;restructuredText&lt;/a&gt; file format by default, but you can get around that by using the excellent &lt;a href="https://myst-parser.readthedocs.io/en/latest/"&gt;MyST extension&lt;/a&gt;.&lt;/p&gt;
@@ -107,24 +107,4 @@ _collections/submodule-a/index.md
 
 &lt;p&gt;Pretty nifty. The main downside I&amp;rsquo;ve found so far is that this doesn&amp;rsquo;t play nicely with the &lt;a href="https://docs.readthedocs.io/en/stable/guides/edit-source-links-sphinx.html"&gt;Edit on GitHub&lt;/a&gt; links that the readthedocs theme automatically inserts (it thinks the files exist under &lt;code&gt;_collections&lt;/code&gt;), but there&amp;rsquo;s probably a way to work around that.&lt;/p&gt;
 
-&lt;p&gt;I plan on investigating this approach further in the coming months.&lt;/p&gt;</description></item>
-  <item>
-   <title>90 days out and in</title>
-   <link>https://wrla.ch/blog/2022/04/90-days-out-and-in/?utm_source=Voltus&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2022-04-90-days-out-and-in</guid>
-   <pubDate>Sat, 16 Apr 2022 16:44:14 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;The 90 day mark just passed at my &lt;a href="https://voltus.co"&gt;new gig at Voltus&lt;/a&gt;, feels like a good time for a bit of self-reflection.&lt;/p&gt;
-
-&lt;p&gt;In general, I think it&amp;rsquo;s been a good change and that it was the right time to leave Mozilla. Since I left, a few people have asked me why I chose to do so: while the full answer is pretty complicated (these things are never simple!), I think it does ultimately come down to wanting to try something new after 10+ years. I&amp;rsquo;ve accumulated a fair amount of expertise in web development and data engineering and I wanted to see if I could apply them to a new area that I cared about&amp;mdash; in this case, climate change and the energy transition.&lt;/p&gt;
-
-&lt;p&gt;Voltus is a much younger and different company than Mozilla was, and there&amp;rsquo;s no shortage of things to learn and do. Energy markets are a rather interesting technical domain to work in&amp;mdash; a big intersection between politics, technology, and business. Lots of very old and very new things all at once. As a still-relatively young company, there is definitely more of a feeling that it&amp;rsquo;s possible to shape Voltus&amp;rsquo;s culture and practices, which has been interesting. There&amp;rsquo;s a bit of a balancing act between sharing what you&amp;rsquo;ve learned in previous roles while having the humility to recognize that there&amp;rsquo;s much you still don&amp;rsquo;t understand in a new workplace.&lt;/p&gt;
-
-&lt;p&gt;On the downside, I have to admit that I do miss being able to work in the open. &lt;a href="https://www.canarymedia.com/articles/climatetech-finance/voltus-launches-1-3b-spac-to-help-businesses-reshape-their-power-use-and-ease-grid-stress"&gt;Voltus is currently in the process of going public&lt;/a&gt;, which has made me extra shy about saying much of anything about what I&amp;rsquo;ve been working on in a public forum.&lt;/p&gt;
-
-&lt;p&gt;To some extent I&amp;rsquo;ve been scratching this itch by continuing to work on &lt;a href="https://irydium.dev"&gt;Irydium&lt;/a&gt; when I have the chance. I&amp;rsquo;ve done up a few new releases in the last couple of months, which I think have been fairly well received inside my very small community of people doing like-minded things. I&amp;rsquo;m planning on attending (at least part of) a &lt;a href="https://github.com/pyodide/pyodide/wiki/PyCon2022-sprint"&gt;pyodide sprint&lt;/a&gt; in early May, which I think should be a lot of fun as well as an opportunity to push browser-based data science forward.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;ve also kept more of a connection with Mozilla than I thought I would have: some video meetings with former colleagues, answering questions on Element (&lt;a href="https://wiki.mozilla.org/Matrix"&gt;chat.mozilla.org&lt;/a&gt;), even &lt;a href="https://github.com/mozilla/glean-dictionary/pulls?q=is%3Apr+author%3Awlach+is%3Aclosed"&gt;some pull requests&lt;/a&gt; where I felt like I could make a quick contribution. I&amp;rsquo;m still using Firefox, which has actually given me more perspective on some problems that people at Mozilla might not experience (e.g. &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1536777"&gt;this screensharing bug&lt;/a&gt; which you&amp;rsquo;d only see if you&amp;rsquo;re using a WebRTC-based video conferencing solution like Google Meet).&lt;/p&gt;
-
-&lt;p&gt;That said, I&amp;rsquo;m not sure to what extent this will continue: even if the source code to Firefox and the tooling that supports it is technically &amp;ldquo;open source&amp;rdquo;, outsiders like myself really have very limited visibility into what Mozilla is doing these days. This makes it difficult to really connect with much of what&amp;rsquo;s going on or know how I might be able to contribute. While it might be theoretically possible to join Mozilla&amp;rsquo;s Slack (at least last I checked), that feels like a rabbit hole I&amp;rsquo;d prefer not to go down. While I&amp;rsquo;m still interested in supporting Mozilla&amp;rsquo;s mission, I really don&amp;rsquo;t want more than one workplace chat tool in my life: there&amp;rsquo;s a lot of content there that is no longer relevant to me as a non-employee and (being honest) I&amp;rsquo;d rather leave behind. There&amp;rsquo;s lots more I could say about this, but probably best to leave it there: I understand that there&amp;rsquo;s reasons why things are the way they are, even if they make me a little sad.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;I plan on investigating this approach further in the coming months.&lt;/p&gt;</content></entry></feed>

@@ -4,7 +4,110 @@
  <link rel="self" href="https://wrla.ch/feeds/all.atom.xml" />
  <link href="https://wrla.ch/index.html" />
  <id>urn:https-wrla-ch:-index-html</id>
- <updated>2022-04-16T16:44:14Z</updated>
+ <updated>2022-09-25T19:55:40Z</updated>
+ <entry>
+  <title type="text">Using Sphinx in a Monorepo</title>
+  <link rel="alternate" href="https://wrla.ch/blog/2022/09/using-sphinx-in-a-monorepo/?utm_source=all&amp;utm_medium=Atom" />
+  <id>urn:https-wrla-ch:-blog-2022-09-using-sphinx-in-a-monorepo</id>
+  <published>2022-09-25T19:55:40Z</published>
+  <updated>2022-09-25T19:55:40Z</updated>
+  <author>
+   <name>William Lachance</name></author>
+  <content type="html">
+&lt;p&gt;Just wanted to type up a couple of notes about working with &lt;a href="https://www.sphinx-doc.org/en/master/"&gt;Sphinx&lt;/a&gt; (the python documentation generator) inside a monorepo, an issue I&amp;rsquo;ve been struggling with (off and on) at &lt;a href="https://voltus.co"&gt;Voltus&lt;/a&gt; since I started. I haven&amp;rsquo;t seen much written about this topic despite (I suspect) it being a reasonably frequent problem.&lt;/p&gt;
+
+&lt;p&gt;In general, there&amp;rsquo;s a lot to like about Sphinx: it&amp;rsquo;s great at handling deeply nested trees of detailed documentation with cross-references inside a version control system. It has local search that works pretty well and some themes (like &lt;a href="https://sphinx-rtd-theme.readthedocs.io/en/stable/"&gt;readthedocs&lt;/a&gt;) scale pretty nicely to hundreds of documents. The directives and roles system is pretty flexible and covers most of the common things one might want to express in technical documentation. And if the built-in set of functionality isn&amp;rsquo;t enough, there&amp;rsquo;s a wealth of third party extension modules. My only major complaint is that it uses the somewhat obscure &lt;a href="https://docutils.sourceforge.io/rst.html"&gt;restructuredText&lt;/a&gt; file format by default, but you can get around that by using the excellent &lt;a href="https://myst-parser.readthedocs.io/en/latest/"&gt;MyST extension&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, it has a pretty deeply baked in assumption that all documentation for your project lives inside a &lt;em&gt;single&lt;/em&gt; subfolder. This is fine for a small repository representing a single python module, like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;root&amp;gt;
+README.md
+setup.cfg
+pyproject.toml
+mymodule/
+docs/&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However, this doesn&amp;rsquo;t work for a large monorepo, where you would typically see something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;root&amp;gt;/module-1/submodule-a
+&amp;lt;root&amp;gt;/module-1/submodule-b
+&amp;lt;root&amp;gt;/module-2/submodule-c
+...&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In a monorepo, you usually want to include a module&amp;rsquo;s documentation inside its own directory. This allows you to use your &lt;a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners"&gt;code ownership constraints&lt;/a&gt; for documentation, among other things.&lt;/p&gt;
+
+&lt;p&gt;The naive solution would be to create a sphinx site for every single one of these submodules. This is what happened at Voltus and I don&amp;rsquo;t recommend it. For a large monorepo you&amp;rsquo;ll end up with dozens, maybe hundreds of documentation &amp;ldquo;sites&amp;rdquo;. Under this scenario, discoverability becomes a huge problem: no longer can you rely on tables of contents and the built-in search to discover content: you just have to &amp;ldquo;know&amp;rdquo; where things live. I&amp;rsquo;m more than nine months in here and I&amp;rsquo;m &lt;em&gt;still&lt;/em&gt; discovering new documentation.&lt;/p&gt;
+
+&lt;p&gt;It would be much better if we could somehow collect documentation from other parts of the repository into a single site. Is this possible? tl;dr: Yes. There&amp;rsquo;s a few solutions, each with their pros and cons.&lt;/p&gt;
+
+&lt;h2 id="the-obvious-solution-that-doesnt-work"&gt;The obvious solution that doesn&amp;rsquo;t work&lt;/h2&gt;
+
+&lt;p&gt;The most obvious solution here is to create a symbolic link inside your documentation directory, say the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;root&amp;gt;/docs/
+&amp;lt;root&amp;gt;/docs/module-1/submodule-a -&amp;gt; &amp;lt;root&amp;gt;/module-1/submodule-a/docs&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Unfortunately, &lt;a href="https://stackoverflow.com/questions/10199233/can-sphinx-link-to-documents-that-are-not-located-in-directories-below-the-root"&gt;this doesn&amp;rsquo;t work&lt;/a&gt;. ☹️ Sphinx doesn&amp;rsquo;t follow symbolic links.&lt;/p&gt;
+
+&lt;h2 id="solution-1-just-copy-the-files-in"&gt;Solution 1: Just copy the files in&lt;/h2&gt;
+
+&lt;p&gt;The most obvious solution is to just copy the files from various parts of the monorepo into place, as part of the build system. Mozilla did this for Firefox, with the &lt;a href="https://searchfox.org/mozilla-central/source/tools/moztreedocs/__init__.py"&gt;moztreedocs&lt;/a&gt; system.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href="firefox-source-docs.mozilla.org/"&gt;results look pretty good&lt;/a&gt;, but this is a bespoke solution. Aside from general ideas, there&amp;rsquo;s no way I&amp;rsquo;m going to be able to apply anything in moztreedocs to Voltus&amp;rsquo;s monorepo (which is based on a completely different build system). And being honest, I&amp;rsquo;m not sure if the 40+ hour (estimated) effort to reimplement it would be a good use of time compared to other things I could be doing.&lt;/p&gt;
+
+&lt;h2 id="solution-2-use-the-include-directive-with-myst"&gt;Solution 2: Use the include directive with MyST&lt;/h2&gt;
+
+&lt;p&gt;Later versions of MyST include support for &lt;a href="https://myst-parser.readthedocs.io/en/latest/faq/index.html#include-a-file-from-outside-the-docs-folder-like-readme-md"&gt;directly importing a markdown file from another part of the repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is a limited form of embedding: it won&amp;rsquo;t let you import an entire directory of markdown files. But if your submodules mostly just include content in the form of a &lt;code&gt;README.md&lt;/code&gt; (or similar), it might just be enough. Just create a directory for these files to live (say &lt;code&gt;services&lt;/code&gt;) and slot them in:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;root&amp;gt;/docs/services/module-1/submodule-a/index.md&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;```{include} ../../../module-1/submodule-a/README.md
+```&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I&amp;rsquo;m currently in the process of implementing this solution inside Voltus. I have optimism that this will be a big (if incremental) step up over what we have right now.&lt;/p&gt;
+
+&lt;h2 id="solution-3-sphinx-collections"&gt;Solution 3: Sphinx Collections&lt;/h2&gt;
+
+&lt;p&gt;This one I just found about today: &lt;a href="https://sphinx-collections.readthedocs.io"&gt;Sphinx Collections&lt;/a&gt; is a small python module that lets you automatically import entire &lt;em&gt;directories&lt;/em&gt; of files into your sphinx tree, under a &lt;code&gt;_collections&lt;/code&gt; module. You configure it in your top-level &lt;code&gt;conf.py&lt;/code&gt; like this:&lt;/p&gt;
+
+&lt;div class="brush: py"&gt;
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="s2"&gt;"sphinxcontrib.collections"&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="n"&gt;collections&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;"submodule-a"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s2"&gt;"driver"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"symlink"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;"source"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"/monorepo/module-1/submodule-a/docs"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;"target"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"submodule-a"&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;After setting this up, &lt;code&gt;submodule-a&lt;/code&gt; is now available under &lt;code&gt;_collections&lt;/code&gt; and you can include it in your table of contents like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+
+```{toctree}
+:caption: submodule-a
+
+_collections/submodule-a/index.md
+```
+
+...&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At this point, &lt;code&gt;submodule-a&lt;/code&gt;&amp;rsquo;s documentation should be available under &lt;code&gt;http://&amp;lt;my doc domain&amp;gt;/_collections/submodule-a/index.html&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Pretty nifty. The main downside I&amp;rsquo;ve found so far is that this doesn&amp;rsquo;t play nicely with the &lt;a href="https://docs.readthedocs.io/en/stable/guides/edit-source-links-sphinx.html"&gt;Edit on GitHub&lt;/a&gt; links that the readthedocs theme automatically inserts (it thinks the files exist under &lt;code&gt;_collections&lt;/code&gt;), but there&amp;rsquo;s probably a way to work around that.&lt;/p&gt;
+
+&lt;p&gt;I plan on investigating this approach further in the coming months.&lt;/p&gt;</content></entry>
  <entry>
   <title type="text">90 days out and in</title>
   <link rel="alternate" href="https://wrla.ch/blog/2022/04/90-days-out-and-in/?utm_source=all&amp;utm_medium=Atom" />
@@ -986,18 +1089,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Even after doing all of these things, the end result is still a little underwhelming: the mozregression GUI distribution on Linux is still 79.5 megabytes big. There are probably other things we could do, but we&amp;rsquo;re definitely entering the land of diminishing returns.&lt;/p&gt;
 
-&lt;p&gt;Honestly, my main takeaway is just not to build an application like this in Python unless you absolutely have to (e.g. you&amp;rsquo;re building an application which needs system-level access). The web is a pretty wonderful medium for creating graphical applications these days, and by using it you sidestep these type of installation issues.&lt;/p&gt;</content></entry>
- <entry>
-  <title type="text">The humble blog</title>
-  <link rel="alternate" href="https://wrla.ch/blog/2020/05/the-humble-blog/?utm_source=all&amp;utm_medium=Atom" />
-  <id>urn:https-wrla-ch:-blog-2020-05-the-humble-blog</id>
-  <published>2020-05-24T18:01:24Z</published>
-  <updated>2020-05-24T18:01:24Z</updated>
-  <author>
-   <name>William Lachance</name></author>
-  <content type="html">
-&lt;p&gt;I&amp;rsquo;ve been thinking a lot about markdown, presentation, dashboards, and other frontendy sorts of things lately, partly inspired by my work on &lt;a href="https://iodide.io"&gt;Iodide&lt;/a&gt; last year, partly inspired by my recent efforts on improving &lt;a href="https://docs.telemetry.mozilla.org"&gt;docs.telemetry.mozilla.org&lt;/a&gt;. I haven&amp;rsquo;t fully fleshed out my thoughts on this yet, but in general I think blogs (for some value of &amp;ldquo;blog&amp;rdquo;) are still a great way to communicate ideas and concepts to an interested audience.&lt;/p&gt;
-
-&lt;p&gt;Like many organizations, Mozilla&amp;rsquo;s gone down the path of Google Docs, Zoom and Slack which makes me more than a little sad: good ideas disappear down the memory hole &lt;em&gt;super&lt;/em&gt; quickly with these tools, not to mention the fact that they are closed-by-default (even to people inside Mozilla!). My view on &amp;ldquo;open&amp;rdquo; is a bit more nuanced than it used to be: I no longer think everything need be all-public, all-the-time&amp;mdash; but I still think talking about and through our ideas (even if imperfectly formed or stated) with a broad audience builds trust and leads to better outcomes.&lt;/p&gt;
-
-&lt;p&gt;Is there some way we can blend some of these old school ideas (blogs, newsgroups, open discussion forums) with better technology and &lt;a href="https://www.mozilla.org/en-US/about/governance/policies/participation/"&gt;social practices&lt;/a&gt;? Let&amp;rsquo;s find out.&lt;/p&gt;</content></entry></feed>
+&lt;p&gt;Honestly, my main takeaway is just not to build an application like this in Python unless you absolutely have to (e.g. you&amp;rsquo;re building an application which needs system-level access). The web is a pretty wonderful medium for creating graphical applications these days, and by using it you sidestep these type of installation issues.&lt;/p&gt;</content></entry></feed>

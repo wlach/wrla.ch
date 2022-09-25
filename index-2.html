@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 2)</title>
     <meta name="description" content="William Lachance's Log (page 2)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Time, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, Community, Voltus, Life, Montreal, Video, Orangutan, Taskcluster, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Meditation, meta, Ebola, GNOME, Environment, Infraherder, Île Sans Fil, Treeherder, Statistics, zen, Music, telemetry, Buddhism, Usability, Responsiveness, Transit to Go, Iodide, Recurse, Eideticker, Open Data, Nixi, Meta, ateam, Perfherder, Talos, Docker, iodide, Telemetry, Toronto, Glean, Pandaboard, Food, Psychology, Android, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, Counting, MSF" />
+    <meta name="keywords" content="Orangutan, Iodide, Meditation, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-2.html" />
@@ -91,6 +91,23 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2021/06/mini-sabbatical-and-introducing-irydium/">Mini-sabbatical and introducing Irydium</a></h2>
+    <p class="index-date">Jun 23rd, 2021</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Recurse.html">Recurse</a>  <a href="/tags/Irydium.html">Irydium</a></span></p>
+  </header>
+
+<p>Approaching my 10-year moz-iversary in July, I&rsquo;ve decided it&rsquo;s time to take a bit of a mini-sabbatical: I&rsquo;ll be out (and trying as hard as possible not to check bugmail) from Friday, June 25th until August 9th. During this time, I&rsquo;ll be doing a batch at the <a href="https://recurse.com">Recurse Centre</a> (something like a writer&rsquo;s retreat for programmers), exploring some of my interests around data visualization and analysis that don&rsquo;t quite fit into my role as a Data Engineer here at Mozilla.</p>
+
+<p>In particular, I&rsquo;m planning to work a bunch on a project tentatively called &ldquo;Irydium&rdquo;, which pursues some of the ideas I <a href="https://wrla.ch/blog/2020/11/iodide-retrospective/">sketched out last year in my Iodide retrospective</a> and a few more besides. I&rsquo;ve been steadily working on it in my off hours, but it&rsquo;s become clear that some of the things I want to pursue would benefit from more dedicated attention and the broader perspective that I&rsquo;m hoping the Recurse community will be able to provide.</p>
+
+<div class="figure"><img src="/files/2021/06/irydium.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>I had meant to write up a proper blog post to announce the project before I left, but it looks like I&rsquo;m pretty much out of time. Instead, I&rsquo;ll just offer up the examples on the newly-minted <a href="https://irydium.dev">irydium.dev</a> and invite people to contact me if any of the ideas on the site sounds interesting. I&rsquo;m hoping to blog a whole bunch while I&rsquo;m there, but probably not under the Mozilla tag. Feel free to add wrla.ch to your RSS feed if you want to follow what I&rsquo;m up to!</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2021/06/glean-dictionary-updates/">Glean Dictionary updates</a></h2>
     <p class="index-date">Jun 2nd, 2021</p>
@@ -593,20 +610,6 @@ while (1) { true }</code></pre>
 <p>Even after doing all of these things, the end result is still a little underwhelming: the mozregression GUI distribution on Linux is still 79.5 megabytes big. There are probably other things we could do, but we&rsquo;re definitely entering the land of diminishing returns.</p>
 
 <p>Honestly, my main takeaway is just not to build an application like this in Python unless you absolutely have to (e.g. you&rsquo;re building an application which needs system-level access). The web is a pretty wonderful medium for creating graphical applications these days, and by using it you sidestep these type of installation issues.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2020/05/the-humble-blog/">The humble blog</a></h2>
-    <p class="index-date">May 24th, 2020</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>I&rsquo;ve been thinking a lot about markdown, presentation, dashboards, and other frontendy sorts of things lately, partly inspired by my work on <a href="https://iodide.io">Iodide</a> last year, partly inspired by my recent efforts on improving <a href="https://docs.telemetry.mozilla.org">docs.telemetry.mozilla.org</a>. I haven&rsquo;t fully fleshed out my thoughts on this yet, but in general I think blogs (for some value of &ldquo;blog&rdquo;) are still a great way to communicate ideas and concepts to an interested audience.</p>
-
-<p>Like many organizations, Mozilla&rsquo;s gone down the path of Google Docs, Zoom and Slack which makes me more than a little sad: good ideas disappear down the memory hole <em>super</em> quickly with these tools, not to mention the fact that they are closed-by-default (even to people inside Mozilla!). My view on &ldquo;open&rdquo; is a bit more nuanced than it used to be: I no longer think everything need be all-public, all-the-time&mdash; but I still think talking about and through our ideas (even if imperfectly formed or stated) with a broad audience builds trust and leads to better outcomes.</p>
-
-<p>Is there some way we can blend some of these old school ideas (blogs, newsgroups, open discussion forums) with better technology and <a href="https://www.mozilla.org/en-US/about/governance/policies/participation/">social practices</a>? Let&rsquo;s find out.</p> 
   <hr/>
 </article>
 <footer>

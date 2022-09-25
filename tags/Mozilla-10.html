@@ -92,6 +92,24 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2012/06/mass-code-relicensing-with-facebook-s-codemod/">Mass code relicensing with facebook&rsquo;s codemod</a></h2>
+    <p class="index-date">Jun 7th, 2012</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p>Recently the Firefox source repository (mozilla-central) was converted over recently to a new license with a <a href="http://www.mozilla.org/MPL/headers/">lovely short boilerplate</a>. This is great, but here in <a href="https://wiki.mozilla.org/Auto-tools">automation and tools</a>, we have a fairly large number of projects that live outside of the main tree but for which the new license still applies. A few weeks ago, I wanted to move one our projects over (mozbase), but didn&rsquo;t want to spend hours manually editing text files. I understand that a script was used to convert mozilla-central, but a quick google didn&rsquo;t turn it up. <strong>[ edit:** thanks to Ed Morley for pointing out to me that it lives here: <a href="http://hg.mozilla.org/users/gerv_mozilla.org/relic/">http://hg.mozilla.org/users/gerv_mozilla.org/relic/</a> **]</strong></p>
+
+<p>I surely could have asked about where this script is, but this problem gave me an excuse to try something that I&rsquo;d been meaning to for a while: Facebook&rsquo;s <a href="https://github.com/facebook/codemod">codemod</a>. Codemod is a neat little command-line utility which aims to help with mass refactorings of code. All you have to do is provide a few regular expressions to replace, and off it goes. I tried it out with mozbase, and the results were great: 5 minutes spent coming up with a regular expression and jiggering with command line options, and the job was done.</p>
+
+<p>I had the desire to do this again today for <a href="http://github.com/mozilla/eideticker">Eideticker</a>, and decided to document the (extremely simple) process for posterity. I just used this simple command line&#8230;</p>
+
+<p><code>../codemod/src/codemod.py --extensions py -m '# \*\*\*\*\* BEGIN LICENSE.*END LICENSE BLOCK \*\*\*\*\*' '# This Source Code Form is subject to the terms of the Mozilla Public\n# License, v. 2.0. If a copy of the MPL was not distributed with this file,\n# You can obtain one at http://mozilla.org/MPL/2.0/.'</code></p>
+
+<p>&#8230; et voila, out popped <a href="https://github.com/mozilla/eideticker/commit/9456933670fb4590af3060f4ff40d11271859b8d">shiny new boilerplate</a>.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2012/05/ghetto-retroscope-with-ffmpeg-and-the-lt-video-gt-tag/">Ghetto retroscope with ffmpeg and the &lt;video&gt; tag</a></h2>
     <p class="index-date">May 7th, 2012</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Video.html">Video</a></span></p>
@@ -351,46 +369,6 @@ result.writeToFile(sys.argv[1], 'png')</code></pre>
 <p>Also, while not strictly necessary to get something up and running, I recommend highly getting an HDMI monitor as well as a serialUSB adapter. The former is useful to see if your Android device actually successfully booted up, the latter is useful for debugging boot issues where you don&rsquo;t get that far (the serial console is always available from boot).</p>
 
 <p>So, after painfully learning about the above caveats, I have managed to get things mostly working. I can see the ICS homescreen on my attached HDMI monitor and interact with it if I attach a USB mouse. The one gotcha is that both ethernet and WIFI networking are totally broken. Plugging in an ethernet cable or connecting to a WIFI network seems to result in the machine randomly rebooting, with the logs saying nothing useful. Both of these things are ostensibly supposed to be working according to the latest I&rsquo;ve read from Google so I&rsquo;m not exactly sure what&rsquo;s going on. Investigations will continue.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2012/01/yet-more-checkerboarding-analysis/">Yet more checkerboarding analysis</a></h2>
-    <p class="index-date">Jan 25th, 2012</p>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>I&rsquo;ve been spending a bit more time on refining the checkerboarding tests in Eideticker that I talked about last time. Most of my work has been focused on making the results as representative of a real world scenario as possible, to that effect I&rsquo;ve been working on:</p>
-
-<ul>
- <li>Changed the test case from a web site of my own concoction to a more realistic example (the <a href="http://taskjs.org">taskjs.org</a> site)</li>
- <li>Use actual Android native events (via <a href="http://developer.android.com/guide/developing/tools/monkeyrunner_concepts.html">MonkeyRunner</a>) to synthesize touch-based scrolling instead of simulating the event in JavaScript (which exercises a completely different codepath).</li>
- <li>Fixing various synchronization issues to make results more repeatable. Before captures were of wildly variable lengths, which made the numbers extremely suspect. There&rsquo;s probably still a few issues, but much less than before.</li></ul>
-
-<p>The end result of this is a framework that gives much more meaningful results. The bad news is that the results that I&rsquo;m measuring don&rsquo;t show a very positive picture for where we&rsquo;re at with the native re-write of Firefox. Even relative to the version of mobile Firefox which is currently on the Android Market, we still have some catching up to do. Here&rsquo;s some video of the &ldquo;old&rdquo; firefox in action:</p>
-
-<video src="/files/eideticker/taskjs_xul.webm" width="600px" controls="controls"></video>
-
-<p>And here&rsquo;s the Native fennec (what we&rsquo;re currently offering in nightly, with some minor modifications by me to change the way the &ldquo;checkerboard&rdquo; is drawn for analysis purposes):</p>
-
-<video src="/files/eideticker/taskjs_native.webm" width="600px" controls="controls"></video>
-
-<p>The numbers behind this comparison:</p>
-
-<table>
- <tr>
-  <td>Platform</td> 
-  <td>Percent checkerboarding over run of test</td></tr>
- <tr>
-  <td>Old Fennec</td> 
-  <td>2%</td></tr>
- <tr>
-  <td>Native Fennec</td> 
-  <td>57%</td></tr></table>
-
-<p>(by the way, this performance regression is filed as <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=719447">bug 719447</a>)</p>
-
-<p>I know there&rsquo;s lots of great effort going into improving this situation, so I have hope that we&rsquo;ll be doing much better on this metric in the coming days/weeks. The process for creating these videos/analyses is mostly automated at this point, so my plan is to create a small dashboard (ala <a href="http://arewefastyet.com">arewefastyet.com</a>) to measure these numbers over time on the latest nightlies. Stay tuned!</p> 
   <hr/>
 </article>
 <footer>

@@ -4,9 +4,110 @@
   <title>William Lachance's Log: Posts tagged 'Mozilla'</title>
   <description>William Lachance's Log: Posts tagged 'Mozilla'</description>
   <link>https://wrla.ch/tags/Mozilla.html</link>
-  <lastBuildDate>Sat, 16 Apr 2022 16:44:14 UT</lastBuildDate>
-  <pubDate>Sat, 16 Apr 2022 16:44:14 UT</pubDate>
+  <lastBuildDate>Sun, 25 Sep 2022 19:55:40 UT</lastBuildDate>
+  <pubDate>Sun, 25 Sep 2022 19:55:40 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Using Sphinx in a Monorepo</title>
+   <link>https://wrla.ch/blog/2022/09/using-sphinx-in-a-monorepo/?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2022-09-using-sphinx-in-a-monorepo</guid>
+   <pubDate>Sun, 25 Sep 2022 19:55:40 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;Just wanted to type up a couple of notes about working with &lt;a href="https://www.sphinx-doc.org/en/master/"&gt;Sphinx&lt;/a&gt; (the python documentation generator) inside a monorepo, an issue I&amp;rsquo;ve been struggling with (off and on) at &lt;a href="https://voltus.co"&gt;Voltus&lt;/a&gt; since I started. I haven&amp;rsquo;t seen much written about this topic despite (I suspect) it being a reasonably frequent problem.&lt;/p&gt;
+
+&lt;p&gt;In general, there&amp;rsquo;s a lot to like about Sphinx: it&amp;rsquo;s great at handling deeply nested trees of detailed documentation with cross-references inside a version control system. It has local search that works pretty well and some themes (like &lt;a href="https://sphinx-rtd-theme.readthedocs.io/en/stable/"&gt;readthedocs&lt;/a&gt;) scale pretty nicely to hundreds of documents. The directives and roles system is pretty flexible and covers most of the common things one might want to express in technical documentation. And if the built-in set of functionality isn&amp;rsquo;t enough, there&amp;rsquo;s a wealth of third party extension modules. My only major complaint is that it uses the somewhat obscure &lt;a href="https://docutils.sourceforge.io/rst.html"&gt;restructuredText&lt;/a&gt; file format by default, but you can get around that by using the excellent &lt;a href="https://myst-parser.readthedocs.io/en/latest/"&gt;MyST extension&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, it has a pretty deeply baked in assumption that all documentation for your project lives inside a &lt;em&gt;single&lt;/em&gt; subfolder. This is fine for a small repository representing a single python module, like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;root&amp;gt;
+README.md
+setup.cfg
+pyproject.toml
+mymodule/
+docs/&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;However, this doesn&amp;rsquo;t work for a large monorepo, where you would typically see something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;root&amp;gt;/module-1/submodule-a
+&amp;lt;root&amp;gt;/module-1/submodule-b
+&amp;lt;root&amp;gt;/module-2/submodule-c
+...&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In a monorepo, you usually want to include a module&amp;rsquo;s documentation inside its own directory. This allows you to use your &lt;a href="https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners"&gt;code ownership constraints&lt;/a&gt; for documentation, among other things.&lt;/p&gt;
+
+&lt;p&gt;The naive solution would be to create a sphinx site for every single one of these submodules. This is what happened at Voltus and I don&amp;rsquo;t recommend it. For a large monorepo you&amp;rsquo;ll end up with dozens, maybe hundreds of documentation &amp;ldquo;sites&amp;rdquo;. Under this scenario, discoverability becomes a huge problem: no longer can you rely on tables of contents and the built-in search to discover content: you just have to &amp;ldquo;know&amp;rdquo; where things live. I&amp;rsquo;m more than nine months in here and I&amp;rsquo;m &lt;em&gt;still&lt;/em&gt; discovering new documentation.&lt;/p&gt;
+
+&lt;p&gt;It would be much better if we could somehow collect documentation from other parts of the repository into a single site. Is this possible? tl;dr: Yes. There&amp;rsquo;s a few solutions, each with their pros and cons.&lt;/p&gt;
+
+&lt;h2 id="the-obvious-solution-that-doesnt-work"&gt;The obvious solution that doesn&amp;rsquo;t work&lt;/h2&gt;
+
+&lt;p&gt;The most obvious solution here is to create a symbolic link inside your documentation directory, say the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;root&amp;gt;/docs/
+&amp;lt;root&amp;gt;/docs/module-1/submodule-a -&amp;gt; &amp;lt;root&amp;gt;/module-1/submodule-a/docs&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Unfortunately, &lt;a href="https://stackoverflow.com/questions/10199233/can-sphinx-link-to-documents-that-are-not-located-in-directories-below-the-root"&gt;this doesn&amp;rsquo;t work&lt;/a&gt;. ☹️ Sphinx doesn&amp;rsquo;t follow symbolic links.&lt;/p&gt;
+
+&lt;h2 id="solution-1-just-copy-the-files-in"&gt;Solution 1: Just copy the files in&lt;/h2&gt;
+
+&lt;p&gt;The most obvious solution is to just copy the files from various parts of the monorepo into place, as part of the build system. Mozilla did this for Firefox, with the &lt;a href="https://searchfox.org/mozilla-central/source/tools/moztreedocs/__init__.py"&gt;moztreedocs&lt;/a&gt; system.&lt;/p&gt;
+
+&lt;p&gt;The &lt;a href="firefox-source-docs.mozilla.org/"&gt;results look pretty good&lt;/a&gt;, but this is a bespoke solution. Aside from general ideas, there&amp;rsquo;s no way I&amp;rsquo;m going to be able to apply anything in moztreedocs to Voltus&amp;rsquo;s monorepo (which is based on a completely different build system). And being honest, I&amp;rsquo;m not sure if the 40+ hour (estimated) effort to reimplement it would be a good use of time compared to other things I could be doing.&lt;/p&gt;
+
+&lt;h2 id="solution-2-use-the-include-directive-with-myst"&gt;Solution 2: Use the include directive with MyST&lt;/h2&gt;
+
+&lt;p&gt;Later versions of MyST include support for &lt;a href="https://myst-parser.readthedocs.io/en/latest/faq/index.html#include-a-file-from-outside-the-docs-folder-like-readme-md"&gt;directly importing a markdown file from another part of the repository&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is a limited form of embedding: it won&amp;rsquo;t let you import an entire directory of markdown files. But if your submodules mostly just include content in the form of a &lt;code&gt;README.md&lt;/code&gt; (or similar), it might just be enough. Just create a directory for these files to live (say &lt;code&gt;services&lt;/code&gt;) and slot them in:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;root&amp;gt;/docs/services/module-1/submodule-a/index.md&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;```{include} ../../../module-1/submodule-a/README.md
+```&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I&amp;rsquo;m currently in the process of implementing this solution inside Voltus. I have optimism that this will be a big (if incremental) step up over what we have right now.&lt;/p&gt;
+
+&lt;h2 id="solution-3-sphinx-collections"&gt;Solution 3: Sphinx Collections&lt;/h2&gt;
+
+&lt;p&gt;This one I just found about today: &lt;a href="https://sphinx-collections.readthedocs.io"&gt;Sphinx Collections&lt;/a&gt; is a small python module that lets you automatically import entire &lt;em&gt;directories&lt;/em&gt; of files into your sphinx tree, under a &lt;code&gt;_collections&lt;/code&gt; module. You configure it in your top-level &lt;code&gt;conf.py&lt;/code&gt; like this:&lt;/p&gt;
+
+&lt;div class="brush: py"&gt;
+ &lt;div class="colorful"&gt;
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;extensions&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+    &lt;span class="s2"&gt;"sphinxcontrib.collections"&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="n"&gt;collections&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;"submodule-a"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s2"&gt;"driver"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"symlink"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;"source"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"/monorepo/module-1/submodule-a/docs"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="s2"&gt;"target"&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;"submodule-a"&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="o"&gt;...&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;p&gt;After setting this up, &lt;code&gt;submodule-a&lt;/code&gt; is now available under &lt;code&gt;_collections&lt;/code&gt; and you can include it in your table of contents like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;...
+
+```{toctree}
+:caption: submodule-a
+
+_collections/submodule-a/index.md
+```
+
+...&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At this point, &lt;code&gt;submodule-a&lt;/code&gt;&amp;rsquo;s documentation should be available under &lt;code&gt;http://&amp;lt;my doc domain&amp;gt;/_collections/submodule-a/index.html&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Pretty nifty. The main downside I&amp;rsquo;ve found so far is that this doesn&amp;rsquo;t play nicely with the &lt;a href="https://docs.readthedocs.io/en/stable/guides/edit-source-links-sphinx.html"&gt;Edit on GitHub&lt;/a&gt; links that the readthedocs theme automatically inserts (it thinks the files exist under &lt;code&gt;_collections&lt;/code&gt;), but there&amp;rsquo;s probably a way to work around that.&lt;/p&gt;
+
+&lt;p&gt;I plan on investigating this approach further in the coming months.&lt;/p&gt;</description></item>
   <item>
    <title>90 days out and in</title>
    <link>https://wrla.ch/blog/2022/04/90-days-out-and-in/?utm_source=Mozilla&amp;utm_medium=RSS</link>
@@ -986,117 +1087,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;I haven&amp;rsquo;t gotten around to producing GUI binaries for the Linux yet, but it should not be much work.&lt;/p&gt;
 
-&lt;p&gt;Speaking of Glean, mozregression, and Telemetry, stay tuned for more updates on that soon. It&amp;rsquo;s been an adventure!&lt;/p&gt;</description></item>
-  <item>
-   <title>This week in Glean (special guest post): mozregression telemetry (part 1)</title>
-   <link>https://wrla.ch/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-02-this-week-in-glean-special-guest-post-mozregression-telemetry-part-1</guid>
-   <pubDate>Fri, 28 Feb 2020 15:50:58 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;&lt;em&gt;(“This Week in Glean” is a series of blog posts that the Glean Team at Mozilla is using to try to communicate better about our work. They could be release notes, documentation, hopes, dreams, or whatever: so long as it is inspired by Glean. You can find &lt;a href="https://mozilla.github.io/glean/book/appendix/twig.html"&gt;an index of all TWiG posts online.&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;This is a special guest post by non-Glean-team member William Lachance!&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;As I &lt;a href="/blog/2019/09/mozregression-update-python-3-edition/"&gt;mentioned last time&lt;/a&gt; I talked about &lt;a href="https://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt;, I have been thinking about adding some telemetry to the system to better understand the usage of this tool, to justify some part of Mozilla spending some cycles maintaining and improving it (assuming my intuition that this tool is heavily used is confirmed).&lt;/p&gt;
-
-&lt;p&gt;Coincidentally, the Telemetry client team has been working on a new library for measuring these types of things in a principled way called &lt;a href="https://mozilla.github.io/glean/book/index.html"&gt;Glean&lt;/a&gt;, which even has python bindings! Using this has the potential in saving a lot of work: not only does Glean provide a framework for submitting data, our backend systems are automatically set up to process data submitted via into Glean into &lt;a href="https://cloud.google.com/bigquery"&gt;BigQuery&lt;/a&gt; tables, which can then easily be queried using tools like &lt;a href="https://docs.telemetry.mozilla.org/tools/stmo.html"&gt;sql.telemetry.mozilla.org&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;I thought it might be useful to go through some of what I&amp;rsquo;ve been exploring, in case others at Mozilla are interested in instrumenting their pet internal tools or projects. If this effort is successful, I&amp;rsquo;ll distill these notes into a tutorial in the Glean documentation.&lt;/p&gt;
-
-&lt;h2 id="initial-steps-defining-pings-and-metrics"&gt;Initial steps: defining pings and metrics&lt;/h2&gt;
-
-&lt;p&gt;The initial step in setting up a Glean project of any type is to define explicitly the types of pings and metrics. You can look at a &amp;ldquo;ping&amp;rdquo; as being a small bucket of data submitted by a piece of software in the field. A &amp;ldquo;metric&amp;rdquo; is something we&amp;rsquo;re measuring and including in a ping.&lt;/p&gt;
-
-&lt;p&gt;Most of the Glean documentation focuses on browser-based use-cases where we might want to sample lots of different things on an ongoing basis, but for mozregression our needs are considerably simpler: we just want to know when someone &lt;em&gt;has&lt;/em&gt; used it along with a small number of non-personally identifiable characteristics of their usage, e.g. the mozregression version number and the name of the application they are bisecting.&lt;/p&gt;
-
-&lt;p&gt;Glean has &lt;a href="https://mozilla.github.io/glean/book/user/pings/events.html"&gt;the concept of event pings&lt;/a&gt;, but it seems like those are there more for a fine-grained view of what&amp;rsquo;s going on during an application&amp;rsquo;s use. So let&amp;rsquo;s define a new ping just for ourselves, giving it the unimaginative name &amp;ldquo;usage&amp;rdquo;. This goes in a file called &lt;code&gt;pings.yaml&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class="brush: yaml"&gt;
- &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="nt"&gt;$schema&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;moz://mozilla.org/schemas/glean/pings/1-0-0&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-
-&lt;span class="nt"&gt;usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="no"&gt;A ping to record usage of mozregression&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;include_client_id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;true&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;notification_emails&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;wlachance@mozilla.com&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;bugs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://bugzilla.mozilla.org/123456789/&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;data_reviews&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://example.com/path/to/data-review&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;We also need to define a list of things we want to measure. To start with, let&amp;rsquo;s just test with one piece of sample information: the app we&amp;rsquo;re bisecting (e.g. &amp;ldquo;Firefox&amp;rdquo; or &amp;ldquo;Gecko View Example&amp;rdquo;). This goes in a file called &lt;code&gt;metrics.yaml&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class="brush: yaml"&gt;
- &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nn"&gt;---&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="nt"&gt;$schema&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;moz://mozilla.org/schemas/glean/metrics/1-0-0&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-
-&lt;span class="nt"&gt;usage&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="nt"&gt;app&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;type&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;string&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p p-Indicator"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="no"&gt;The name of the app being bisected&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;notification_emails&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;wlachance@mozilla.com&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;bugs&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;https://bugzilla.mozilla.org/show_bug.cgi?id=1581647&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;data_reviews&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;http://example.com/path/to/data-review&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;expires&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;never&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;    &lt;/span&gt;&lt;span class="nt"&gt;send_in_pings&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;      &lt;/span&gt;&lt;span class="p p-Indicator"&gt;-&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;usage&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;The &lt;code&gt;data_reviews&lt;/code&gt; sections in both of the above are obviously bogus, we will need to actually get data review before landing and using this code, to make sure that we&amp;rsquo;re in conformance with Mozilla&amp;rsquo;s &lt;a href="https://wiki.mozilla.org/Firefox/Data_Collection"&gt;data collection policies&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id="testing-it-out"&gt;Testing it out&lt;/h2&gt;
-
-&lt;p&gt;But in the mean time, we can test our setup with the &lt;a href="https://docs.telemetry.mozilla.org/concepts/glean/debug_ping_view.html"&gt;Glean debug pings viewer&lt;/a&gt; by setting a special tag (&lt;code&gt;mozregression-test-tag&lt;/code&gt;) on our output. Here&amp;rsquo;s a small python script which does just that:&lt;/p&gt;
-
-&lt;div class="brush: py"&gt;
- &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;pathlib&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;glean&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Glean&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Configuration&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;glean&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;load_metrics&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-                   &lt;span class="n"&gt;load_pings&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;mozregression_path&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.mozilla2&amp;#39;&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;mozregression&amp;#39;&lt;/span&gt;
-
-&lt;span class="n"&gt;Glean&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;initialize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-    &lt;span class="n"&gt;application_id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"mozregression"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;application_version&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"0.1.1"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;upload_enabled&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="n"&gt;configuration&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;Configuration&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-      &lt;span class="n"&gt;ping_tag&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"mozregression-test-tag"&lt;/span&gt;
-    &lt;span class="p"&gt;),&lt;/span&gt;
-    &lt;span class="n"&gt;data_dir&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;mozregression_path&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="s2"&gt;"data"&lt;/span&gt;
-&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;Glean&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set_upload_enabled&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;pings&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load_pings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"pings.yaml"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;metrics&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;load_metrics&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"metrics.yaml"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"reality"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;pings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;submit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;Running this script on my laptop, I see that a respectable JSON payload was delivered to and processed by our servers:&lt;/p&gt;
-
-&lt;p&gt;&lt;img style="width:600px" src="/files/2020/02/glean-debug-ping-viewer.png" /&gt;&lt;/p&gt;
-
-&lt;p&gt;As you can see, we&amp;rsquo;re successfully processing both the &amp;ldquo;version&amp;rdquo; number of mozregression, some characteristics of the machine sending the information (my MacBook in this case), as well as our single measure. We also have a client id, which should tell us roughly how many distinct installations of mozregression are sending pings. This should be more than sufficient for an initial &amp;ldquo;mozregression usage dashboard&amp;rdquo;.&lt;/p&gt;
-
-&lt;h2 id="next-steps"&gt;Next steps&lt;/h2&gt;
-
-&lt;p&gt;There are a bunch of things I still need to work through before landing this inside mozregression itself. Notably, the Glean python bindings are python3-only, so we&amp;rsquo;ll need to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766"&gt;port the mozregression GUI to python 3&lt;/a&gt; before we can start measuring usage there. But I&amp;rsquo;m excited at how quickly this work is coming together: stay tuned for part 2 in a few weeks.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;Speaking of Glean, mozregression, and Telemetry, stay tuned for more updates on that soon. It&amp;rsquo;s been an adventure!&lt;/p&gt;</description></item></channel></rss>

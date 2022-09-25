@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 15)</title>
     <meta name="description" content="William Lachance's Log (page 15)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Time, FirefoxOS, Web, Philosophy, Data, Metrics Graphics, Mozilla, all, Profiling, BIXI, Community, Voltus, Life, Montreal, Video, Orangutan, Taskcluster, Irydium, iphone, GoFaster, Bikes, Social Media, Business, Meditation, meta, Ebola, GNOME, Environment, Infraherder, Île Sans Fil, Treeherder, Statistics, zen, Music, telemetry, Buddhism, Usability, Responsiveness, Transit to Go, Iodide, Recurse, Eideticker, Open Data, Nixi, Meta, ateam, Perfherder, Talos, Docker, iodide, Telemetry, Toronto, Glean, Pandaboard, Food, Psychology, Android, Mission Control, Coffee, hbus, Python, Cats, email, Data Visualization, WifiDog, SQL, Release Engineering, Polling, Performance, Free Software, Transit, mozregression, Counting, MSF" />
+    <meta name="keywords" content="Orangutan, Iodide, Meditation, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-15.html" />
@@ -91,6 +91,20 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2011/06/template-for-a-map-based-web-app/">Template for a map-based web app</a></h2>
+    <p class="index-date">Jun 3rd, 2011</p>
+    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Open-Data.html">Open Data</a></span></p>
+  </header>
+
+<p>Finally got around doing something I&rsquo;d meaning to for a while, which is create a simple template for a web-based mapping application based on jQuery and some of my earlier work on <a href="https://github.com/wlach/routez">routez</a>. I&rsquo;m hoping this might be useful as a starter for a few open data applications!</p>
+
+<p><a href="http://wrla.ch/blog/2011/06/template-for-a-map-based-web-app/example-map-site-2/" rel="attachment wp-att-258"><img src="/files/2011/06/example-map-site1.png" alt="" title="Example Map Site" width="400" height="303" class="alignnone size-full wp-image-258" srcset="/files/2011/06/example-map-site1-300x227.png 300w, /files/2011/06/example-map-site1.png 400w" sizes="(max-width: 400px) 100vw, 400px" /></a></p>
+
+<p><a href="http://wlach.wrla.ch/blog/Map-Layout-Template/">Preview</a> <a href="https://github.com/wlach/Map-Layout-Template">Source</a></p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2011/04/routez-opensourced/">Routez opensourced</a></h2>
     <p class="index-date">Apr 19th, 2011</p>
@@ -300,20 +314,6 @@
 <p><img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /></p>
 
 <p>With <a href="http://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/">yesterday&rsquo;s work</a> out of the way, there weren&rsquo;t too many extra steps required before I got a basic version of Transit to Go running for Edmonton. There are definitely bugs and rough edges (the bus names could definitely be better described/formatted, and there&rsquo;s some serious geocoder issues), but I think the heavy lifting is out of the way. I guess now would be a good time to open up an invitations to anyone in Edmonton with an iPhone to become part of our free private beta. We&rsquo;d love to hear what you think! Just send an email to <a href="mailto:wrlach@gmail.com">wrlach@gmail.com</a>.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2010/03/fun-with-wifidog/">Fun with WifiDog</a></h2>
-    <p class="index-date">Mar 23rd, 2010</p>
-    <p><span class="tags"><a href="/tags/I%CC%82le-Sans-Fil.html">Île Sans Fil</a>  <a href="/tags/Usability.html">Usability</a>  <a href="/tags/WifiDog.html">WifiDog</a></span></p>
-  </header>
-
-<p>Because I don&rsquo;t have enough spare time projects (<em>this is a joke</em>), I decided to take on the task of adding a must-requested special iPhone/iPod-touch friendly view for the <a href="http://dev.wifidog.org/">WifiDog</a> authentication server (used by the infamous <a href="http://www.ilesansfil.org/">Île Sans Fil</a>) after being inspired by the WifiDog camp held a few weeks ago at Station C. I finally finally finished up a prototype today. It&rsquo;s a bit of a hack, but a relatively clean one: hopefully some version of it can be integrated into trunk, and users with mobile devices will have a better experience when they&rsquo;re on the go in Montr&eacute;al (or any other area with a community-oriented wifidog deployment: I hear there&rsquo;s lots).</p>
-
-<p><img src="/files/2010/03/wifidog_iphone_2.jpg" alt="WifiDog on iPhone yo" title="WifiDog on iPhone yo" width="320" height="480" class="alignnone size-full wp-image-108" /></p>
-
-<p>For those interested in grubby details, you can track the progress of this work on the <a href="http://dev.wifidog.org/ticket/696">WifiDog ticket tracker</a>.</p> 
   <hr/>
 </article>
 <footer>
