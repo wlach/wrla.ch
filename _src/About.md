@@ -20,7 +20,8 @@ Other random facts:
 
 I try to be judicious about using social media. That said, there's a bunch of places you can find me:
 
-- [twitter] (semi-frequently updated)
+- [mastodon] (semi-frequently updated)
+- [twitter] (trying to migrate to Mastodon)
 - [instagram] (infrequently)
 - [dreamwidth] (for more personal stuff, also infrequent)
 - [linkedin]
@@ -36,4 +37,5 @@ I try to be judicious about using social media. That said, there's a bunch of pl
 [dreamwidth]: https://wlach.dreamwidth.org
 [github]: https://github.com/wlach
 [linkedin]: https://www.linkedin.com/in/wrlach/
+[mastodon]: https://mastodon.social/@wlach
 [twitter]: https://twitter.com/wrlach
