@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 15)</title>
     <meta name="description" content="William Lachance's Log (page 15)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Orangutan, Iodide, Meditation, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
+    <meta name="keywords" content="Orangutan, Meditation, Iodide, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Personal, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-15.html" />
@@ -91,6 +91,30 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2011/06/a-better-bixi-web-site/">A better BIXI web site</a></h2>
+    <p class="index-date">Jun 10th, 2011</p>
+    <p><span class="tags"><a href="/tags/BIXI.html">BIXI</a>  <a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Montreal.html">Montreal</a></span></p>
+  </header>
+
+<p>There&rsquo;s much to like about the BIXI bike-sharing system in Montr&eacute;al: it&rsquo;s affordable ($78 for a year of biking), accessible and fun to use. There&rsquo;s absolutely no doubt in my mind that it&rsquo;s made cycling more of a main stream activity here in Montreal, which benefits everyone (even drivers indirectly gain from less congested streets).</p>
+
+<p>With the arrival of the first BIXI stations in NDG, I decided to subscribe to it this year even though I have a bike of my own. So far, it looks like I&rsquo;m going to easily use it enough to justify the cost. I still use my regular bike for my commute from NDG to the Plateau, but on the edges there&rsquo;s a ton of cases where it just makes sense to use something that I don&rsquo;t have to worry about locking up and returning home. Sometimes I only want to go one way (for weather or whatever other reason). Other times I want to take public transit for one leg of my trip (or day), but need/want to take a quick jaunt elsewhere once I&rsquo;m downtown.</p>
+
+<p>I do have to say though, their new web site drives me <em>crazy</em>. I&rsquo;ve thought prety deeply about the domain of creating user-friendly transit-focused web sites, so I think I can speak with some authority here.</p>
+
+<p><a href="http://wrla.ch/blog/2011/06/a-better-bixi-web-site/bixi_shot/" rel="attachment wp-att-268"><img src="/files/2011/06/bixi_shot.png" alt="" title="bixi_shot" width="400" height="265" class="alignnone size-full wp-image-268" srcset="/files/2011/06/bixi_shot-300x198.png 300w, /files/2011/06/bixi_shot.png 400w" sizes="(max-width: 400px) 100vw, 400px" /></a></p>
+
+<p>Leaving aside it&rsquo;s value as a promotional tool for the service itself (not my area of expertise), the experience of trying to find a nearby station is complicated by a slow, multi-layered UI that requires repeated clicking and searching to find the nearest station that has bikes available. Why bother with this step when we can just display this information outright on the map? iPhone applications like <a href="http://sites.google.com/site/bixouiphone/">Bixou</a> have been doing this for years. It&rsquo;s time we brought the same experience to the desktop.</p>
+
+<p>Thus, I present <a href="http://nixi.ca">nixi.ca</a>: a clean, useable interface to BIXI&rsquo;s bike share system that presents the information you care about as effectively as possible, without all the clutter. I&rsquo;ve already found it useful, and I hope you do too. Think you can do better? Fork the source on <a href="http://github.com/wlach/nixi">github</a> and submit your changes back to me! Minus some glue code to fetch station info server side, it&rsquo;s entirely a client-side application written in HTML/JavaScript.</p>
+
+<p><a href="http://wrla.ch/blog/2011/06/a-better-bixi-web-site/nixi_shot/" rel="attachment wp-att-269"><img src="/files/2011/06/nixi_shot.png" alt="" title="nixi_shot" width="400" height="265" class="alignnone size-full wp-image-269" srcset="/files/2011/06/nixi_shot-300x198.png 300w, /files/2011/06/nixi_shot.png 400w" sizes="(max-width: 400px) 100vw, 400px" /></a></p>
+
+<p>Note that the site uses a bunch of modern HTML5 features, so currently requires a modern browser like Firefox, Chrome, or Safari to display properly. I may or may not fix this. Other notable omissions include support for other cities with the BIXI system (Toronto, Ottawa, &hellip;) and French localization. Patches welcome!</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2011/06/template-for-a-map-based-web-app/">Template for a map-based web app</a></h2>
     <p class="index-date">Jun 3rd, 2011</p>
@@ -302,18 +326,6 @@
  <li>Sped up the graph and database generation by an order of magnitude. Not too exciting from a user perspective, but I should now be able to iterate the codebase much faster.</li>
  <li>Better transit stop / street graph linking: No more does libroutez simply try to find the closest street level vertice to link to when merging transit stops with street information: we now actually create _new_ street level vertices as needed and link to those. Upshot? Slightly better directions and prettier polylines. When I first thought up the algorithm a month ago, I thought I was totally brilliant, only to later find out that Andrew Byrd had done something almost identical a few months earlier for <a href="http://github.com/andrewbyrd/graphserver">graphserver</a>. Ah well, at least it&rsquo;s implemented.</li>
  <li>I <a href="http://gist.github.com/361848">coded up a script</a> to automatically generate synthetic headsigns for GTFS feeds which don&rsquo;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&rsquo;t you do better than saying that all your buses go in the &ldquo;1&rdquo; direction? There&rsquo;s a reason why it&rsquo;s a required field you know. Not only would it help me, but <a href="http://google.com/transit">Google Transit</a> would give better results for your city as well.</li></ul> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2010/04/i-can-has-edmonton-transit-iphone-app/">I can has Edmonton transit iPhone app?</a></h2>
-    <p class="index-date">Apr 10th, 2010</p>
-    <p><span class="tags"><a href="/tags/iphone.html">iphone</a>  <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
-  </header>
-
-<p><img src="/files/2010/04/t2go-edmonton-take1.png" alt="Transit to Go Edmonton take 1" title="Transit to Go Edmonton take 1" width="320" height="595" class="alignleft size-full wp-image-130" /></p>
-
-<p>With <a href="http://wrla.ch/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/">yesterday&rsquo;s work</a> out of the way, there weren&rsquo;t too many extra steps required before I got a basic version of Transit to Go running for Edmonton. There are definitely bugs and rough edges (the bus names could definitely be better described/formatted, and there&rsquo;s some serious geocoder issues), but I think the heavy lifting is out of the way. I guess now would be a good time to open up an invitations to anyone in Edmonton with an iPhone to become part of our free private beta. We&rsquo;d love to hear what you think! Just send an email to <a href="mailto:wrlach@gmail.com">wrlach@gmail.com</a>.</p> 
   <hr/>
 </article>
 <footer>

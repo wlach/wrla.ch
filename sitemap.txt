@@ -103,6 +103,7 @@ https://wrla.ch/blog/2022/04/90-days-out-and-in/
 https://wrla.ch/blog/2010/02/it-s-alive/
 https://wrla.ch/blog/2020/01/conda-is-pretty-great/
 https://wrla.ch/blog/2018/06/mission-control-1-0/
+https://wrla.ch/blog/2022/11/working-with-depression/
 https://wrla.ch/blog/2013/09/early-morning-questions/
 https://wrla.ch/blog/2015/01/mozregression-updates/
 https://wrla.ch/blog/2021/01/the-glean-dictionary/

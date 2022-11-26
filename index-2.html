@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 2)</title>
     <meta name="description" content="William Lachance's Log (page 2)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Orangutan, Iodide, Meditation, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
+    <meta name="keywords" content="Orangutan, Meditation, Iodide, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Personal, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-2.html" />
@@ -91,6 +91,75 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2021/06/irydium-points-of-departure/">Irydium: Points of departure</a></h2>
+    <p class="index-date">Jun 28th, 2021</p>
+    <p><span class="tags"><a href="/tags/Recurse.html">Recurse</a>  <a href="/tags/Irydium.html">Irydium</a></span></p>
+  </header>
+
+<p>So it&rsquo;s my first day at the Recurse centre, which I <a href="/blog/2021/06/mini-sabbatical-and-introducing-irydium/">blogged briefly about last week</a>. I thought I&rsquo;d start out by going into a bit more detail about what I&rsquo;m trying to do with <a href="https://github.com/irydium/irydium">Irydium</a>. This post might be a bit discursive and some of my thoughts are only half-formed: my intent here is towards trying to <em>express some of these ideas at all</em> rather than to come up with the perfect formulation for them, which is going to take time. It is based partly on a presentation I gave at Mozilla last Friday (just before going on my 6-week leave, which starts today).</p>
+
+<h2 id="first-principles">First principles</h2>
+
+<p>The premise of Irydium is that despite obvious advances in terms of the ability of computers to crunch numbers and analyze data, our ability to share whatever we learn from these understandings is still far too difficult, especially for people new to the field. Even for domain experts (those with the job title &ldquo;Data Engineer&rdquo; or &ldquo;Data Scientist&rdquo; or similar) this is still more difficult than one would like.</p>
+
+<p>I&rsquo;ve made a few observations over the past couple years of trying to explain and document Mozilla&rsquo;s data platform that I think form a good starting point for trying to close the gap:</p>
+
+<ul>
+ <li><em>Text is pretty great</em>.  Writing, just plain text, is (in my opinion) the single best medium for giving context to data.  In terms of raw information density and ability to communicate complex ideas, nothing beats it.  If you haven&rsquo;t read it before, the essay <a href="https://graydon2.dreamwidth.org/193447.html">always bet on text</a> (by Graydon Hoare, creator of Rust) is well worth reading.</li>
+ <li><em>Markdown is pretty great too</em>.  Essentially an easy-to-write superset of HTML, it&rsquo;s become the medium of choice for many desktop publishing workflows and has become the basis for many efforts in the &ldquo;interactive presentation&rdquo; space that I&rsquo;m most interested in.</li>
+ <li><em>Reactive Systems make Data Exposition Exposition Easier</em>.  A reactive abstraction in front of your computational model reduces development times, makes your work more reproducible and is often easier for less-experienced people to understand.  I&rsquo;d cite the long-standing success of Excel and the recent interest in projects like Observable as evidence for this.</li></ul>
+
+<h2 id="ok-so-what-is-irydium">Ok, so what is Irydium?</h2>
+
+<p>Irydium is, at heart, a way to translate markdown documents into an interactive, compelling visual presentation.</p>
+
+<div class="figure"><img src="/files/2021/06/irydium-2.png" alt="" />
+ <p class="caption"></p></div>
+
+<p>My view is that publishing markdown text on the web is very close to a solved problem, and that we should build on that success rather than invent something new. This is not necessarily a new point of view (e.g. <a href="https://rmarkdown.rstudio.com/">Rmarkdown</a> and <a href="https://jupyterbook.org/">JupyterBook</a> have similar premises) but I think some aspects of Irydium&rsquo;s approach are mildly novel (or at least within the space of &ldquo;not generally accepted ideas&rdquo;).</p>
+
+<p>If you want to get a bit of a flavor for how it works, visit the demonstration site (<a href="https://irydium.dev">irydium.dev</a>) and play with some of the examples.</p>
+
+<h2 id="what-makes-irydium-different-from-x">What makes Irydium different from &lt;X&gt;?</h2>
+
+<p>While there are a bunch of related projects in this space, there&rsquo;s a few design principles about Irydium that make it a little different from most of what&rsquo;s already out there<sup><a href="#2021-06-28-irydium-points-of-departure-footnote-1-definition" name="2021-06-28-irydium-points-of-departure-footnote-1-return">1</a></sup>:</p>
+
+<ul>
+ <li><em>Reactive</em>: Irydium is reactive in the same way that a spreadsheet is &mdash; that is, any individual change you make will immediately flow to the rest of the system.  This provides a more intuitive model for the creator of the document and also makes it easier to create truly interactive visualizations.</li>
+ <li><em>Idempotent</em>: in Irydium, a source document will yield the same presentation every time it&rsquo;s run.  There&rsquo;s no need to reason about what the state of the &ldquo;kernel&rdquo; is.  This is a highly valuable property when thinking about how to make your analyses reproducible.</li>
+ <li><em>Familiar</em>: Irydium uses as few <em>novel</em> concepts and technologies as possible: it builds on some of the best ideas and technologies produced by the open source community: <a href="https://python.org">Python</a>, <a href="https://pyodide.org">pyodide</a>, <a href="https://svelte.dev">Svelte</a>, <a href="https://mdsvex.com">mdsvex</a>, <a href="https://myst-parser.readthedocs.io/en/latest/">MyST</a> and a few others &mdash; chosen for having a reasonably shallow learning curve.</li>
+ <li><em>Hackable</em>: While I&rsquo;m working on an online environment to build and share irydium documents, it&rsquo;s also fully possible to do so using the tools you know and love like Visual Studio Code.</li></ul>
+
+<h2 id="related-projects">Related projects</h2>
+
+<p>With the above caveats, there are still a number of projects that overlap with Irydium&rsquo;s ideas and/or design goals. A few that seem worth mentioning here:</p>
+
+<ul>
+ <li><a href="https://alpha.iodide.io">Iodide</a>: This is the obvious one, at least for those who have been following my work for a while.  Iodide was an experiment in making a &ldquo;web native&rdquo; version of a scientific notebook: it uses the cell-based computational model that will be familiar to anyone who&rsquo;s used Jupyter, but all the computation happens on the client.  It is probably most famous for launching <a href="https://pyodide.org">pyodide</a>, a port of Python to WebAssembly (that Irydium now uses to support Python).  I feel like it has a number of design issues (some of which I&rsquo;ve <a href="/blog/2020/11/iodide-retrospective/">blogged about previously</a>) and is not currently in active development.</li>
+ <li><a href="https://observablehq.com">Observable</a>: Client-side reactive notebooks, commercial backing, broadly used in the D3 community.  Shares Irydium&rsquo;s reactive approach, departs from it in terms of using a custom file format and emphasizing their interactive editing and collaboration environment (which is indeed quite impressive).  I&rsquo;ve used Observable for a few small work things (<a href="https://observablehq.com/@wlach/mozregression-public-usage-dashboard">example</a>) and while there&rsquo;s a lot I like about it, I am a bit non-plussed by how many wheels it reinvents and the implicit lock-in to a single vendor.<sup><a href="#2021-06-28-irydium-points-of-departure-footnote-2-definition" name="2021-06-28-irydium-points-of-departure-footnote-2-return">2</a></sup></li>
+ <li><a href="https://starboard.gg">Starboard</a>: Similar in some ways to Iodide, but in active development.  I&rsquo;ve started chatting a bit with the core developers on whether there might be areas we could collaborate.</li>
+ <li><a href="https://ellx.io/">Ellx</a>: I found out a bit about this relatively recently, via the Svelte discord.  Actually very close in some ways to Irydium in terms of choices of technology (e.g. <a href="https://svelte.dev">Svelte</a>).  Again, in initial chats with the core developers on possible collaborations.</li></ul>
+
+<h2 id="success-criteria">Success criteria</h2>
+
+<p>My intent with Irydium, at this point in its development, is to prove out some concepts and see where they lead. While I&rsquo;d welcome it if Irydium became a successful, widely adopted environment for building interactive data visualizations, I&rsquo;d also be totally happy with other outcomes, such as:</p>
+
+<ol>
+ <li>Providing a source of ideas and/or code for other people.</li>
+ <li>Working on (or with) Irydium being a good learning experience both for myself and others</li></ol>
+
+<hr />
+
+<div class="footnotes">
+ <ol>
+  <li id="2021-06-28-irydium-points-of-departure-footnote-1-definition" class="footnote-definition">
+   <p>Please don&rsquo;t conflate &ldquo;unique&rdquo; with &ldquo;superior&rdquo;: I&rsquo;m well aware that all designs come with trade offs. In particular, Irydium&rsquo;s approach will almost certainly make it difficult / impossible to directly interact with &ldquo;big data&rdquo; systems in an efficient way.&nbsp;<a href="#2021-06-28-irydium-points-of-departure-footnote-1-return">↩</a></p></li>
+  <li id="2021-06-28-irydium-points-of-departure-footnote-2-definition" class="footnote-definition">
+   <p>There is at least one effort (<a href="https://github.com/asg017/dataflow">Dataflow</a>) to allow editing Observable documents without using Observable itself, which is interesting.&nbsp;<a href="#2021-06-28-irydium-points-of-departure-footnote-2-return">↩</a></p></li></ol></div> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2021/06/mini-sabbatical-and-introducing-irydium/">Mini-sabbatical and introducing Irydium</a></h2>
     <p class="index-date">Jun 23rd, 2021</p>
@@ -573,43 +642,6 @@ while (1) { true }</code></pre>
    <p>This is actually a capability that the Glean SDK provides, so other products (e.g. Lockwise, Firefox for iOS) also benefit from this capability.&nbsp;<a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-2-return">↩</a></p></li>
   <li id="2020-07-16-mozilla-telemetry-in-2020-footnote-3-definition" class="footnote-definition">
    <p>The scope of this data collection comes from the fact that Fenix is a <em>very</em> large and complex application. rather than a desire to collect everything just because we can&mdash; smaller efforts like mozregression collect a <a href="https://mozilla.github.io/mozregression/documentation/telemetry.html">much more limited set of data</a>.&nbsp;<a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-3-return">↩</a></p></li></ol></div> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2020/06/mozregression-gui-now-available-for-linux/">mozregression GUI: now available for Linux</a></h2>
-    <p class="index-date">Jun 29th, 2020</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
-  </header>
-
-<p>Thanks to <a href="https://github.com/AnAverageHuman">@AnAverageHuman</a>, <a href="https://mozilla.github.io/mozregression">mozregression</a> once again has an easy to use and install GUI version for Linux! This used to work a few years ago, but got broken with some changes in the mozregression-python2 era and didn&rsquo;t get resolved until now:</p>
-
-<div class="figure"><img src="/files/2020/06/mozregression-on-linux.png" alt="" />
- <p class="caption"></p></div>
-
-<p>This is an area where using telemetry in mozregression can help us measure the impact of a change like this: although Windows still dominates in terms of marketshare, Linux is very widely used by contributors &mdash; of the usage of mozregression in the past 2 months, fully 30% of the sessions were on Linux (and it is possible we were undercounting that due to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1646402">bug 1646402</a>):</p>
-
-<div class="figure"><img src="/files/2020/06/mozregression-usage-share-by-os.png" alt="" />
- <p class="caption"></p></div>
-
-<p><a href="https://sql.telemetry.mozilla.org/queries/72363/source">link to query</a> (internal-only)</p>
-
-<p>It will be interesting to watch the usage numbers for Linux evolve over the next few months. In particular, I&rsquo;m curious to see what percentage of users on that platform prefer a GUI.</p>
-
-<h2 id="appendix-reducing-mozregression-guis-massive-size">Appendix: reducing mozregression-GUI&rsquo;s massive size</h2>
-
-<p>One thing that&rsquo;s bothered me a bunch lately is that the mozregression GUI&rsquo;s size is <em>massive</em> and this is even more apparent on Linux, where the initial distribution of the GUI came in at over 120 megabytes! Why so big? There were a few reasons:</p>
-
-<ol>
- <li><a href="https://pypi.org/project/PySide2/">PySide2</a> (the GUI library we use) is very large (10s of megabytes), and <a href="https://www.pyinstaller.org/">PyInstaller</a> packages <em>all of it</em> by default into your application distribution.</li>
- <li>The binary/rust portions of the <a href="https://pypi.org/project/glean-sdk/">Glean Python SDK</a> were been built with debugging information included (basically as a carry-over when it was a pre-alpha product), which made it 38 megabytes big (!) on Linux.</li>
- <li>On Linux at least, a large number of other system libraries are packaged into the distribution.</li></ol>
-
-<p>A few aspects of this were under our control: Ian Moody (:Kwan) and myself crafted a script to manually remove unneeded PySide2 libraries as part of the packaging process. The Glean team was awesome-as-always and quickly rebuilt Glean without debugging information (this was basically an oversight). Finally, I managed to shave off a few more megabytes by reverting the Linux build to an earlier version of Ubuntu (Xenial), which is something I had been meaning to do anyway.</p>
-
-<p>Even after doing all of these things, the end result is still a little underwhelming: the mozregression GUI distribution on Linux is still 79.5 megabytes big. There are probably other things we could do, but we&rsquo;re definitely entering the land of diminishing returns.</p>
-
-<p>Honestly, my main takeaway is just not to build an application like this in Python unless you absolutely have to (e.g. you&rsquo;re building an application which needs system-level access). The web is a pretty wonderful medium for creating graphical applications these days, and by using it you sidestep these type of installation issues.</p> 
   <hr/>
 </article>
 <footer>

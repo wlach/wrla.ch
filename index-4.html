@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 4)</title>
     <meta name="description" content="William Lachance's Log (page 4)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Orangutan, Iodide, Meditation, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
+    <meta name="keywords" content="Orangutan, Meditation, Iodide, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Personal, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-4.html" />
@@ -91,6 +91,18 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2019/09/time-for-some-project-updates/">Time for some project updates</a></h2>
+    <p class="index-date">Sep 16th, 2019</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p>I&rsquo;ve been a bit bad about updating this blog over the past year or so, though this hasn&rsquo;t meant there haven&rsquo;t been things to talk about. For the next couple weeks, I&rsquo;m going to try to give some updates on the projects I have been spending time on in the past year, both old and new. I&rsquo;m going to begin with some of the less-loved things I&rsquo;ve been working on, partially in an attempt to motivate some forward-motion on things that I believe are rather important to Mozilla.</p>
+
+<p>More to come.</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2019/05/goodbye-noble-stead/">Goodbye, noble stead</a></h2>
     <p class="index-date">May 21st, 2019</p>
@@ -407,31 +419,6 @@
 <p>We&rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&rsquo;t (and shouldn&rsquo;t) draw any kind of conclusion whatsoever.</p>
 
 <p>Ok, so that&rsquo;s just science 101: don&rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2018/01/giving-and-receiving-help-at-mozilla/">Giving and receiving help at Mozilla</a></h2>
-    <p class="index-date">Jan 17th, 2018</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>This is going to sound corny, but helping people really is one of my favorite things at Mozilla, even with <a href="https://mozilla.github.io/mozregression/">projects I have mostly moved on from</a>. As someone who primarily works on internal tools, I love hearing about bugs in the software I maintain or questions on how to use it best.</p>
-
-<p>Given this, you might think that getting in touch with me via irc or slack is the fastest and best way to get your issue addressed. We certainly have a culture of using these instant-messaging applications at Mozilla for everything and anything. Unfortunately, I have found that being &ldquo;always on&rdquo; to respond to everything hasn&rsquo;t been positive for either my productivity or mental health. My personal situation aside, getting pinged on irc while I&rsquo;m out of the office often results in stuff getting lost &mdash; the person who asked me the question is often gone by the time I return and am able to answer.</p>
-
-<p>With that in mind, here&rsquo;s some notes on my preferred conversation style when making initial contact about an issue:</p>
-
-<ol>
- <li>Please don&rsquo;t send context-free pings on irc. It has been <a href="http://edunham.net/2017/10/05/saying_ping.html">explained elsewhere</a>  why this doesn&rsquo;t work that well, so I won&rsquo;t repeat the argument here.</li>
- <li>If you are at all suspicious that your issue might be a bug in some software  maintain, just <a href="https://bugzilla.mozilla.org/enter_bug.cgi">file a bug</a> and needinfo me. That puts us right on the path to documenting  the problem and getting to a resolution &mdash; even if something turns out to not  be a bug, if you&rsquo;re seeing an unexpected error it points to a usability issue.</li>
- <li>For everything else, email is best. I do check it quite frequently between  bursts of work (i.e. many times a day). I promise I won&rsquo;t leave you hanging  for days on end as long as I&rsquo;m not on vacation.</li></ol>
-
-<p>These aren&rsquo;t ironclad rules. If your question pertains to a project I&rsquo;m <em>actively</em> working on, it might make sense to ping me on irc first (preferably on a channel where other people are around who might also be able to help). If it&rsquo;s an actual <em>emergency</em>, then of course talk to me on irc straight away (or even call me on my phone) &mdash; if I don&rsquo;t respond, then fall back to filing bug or sending email. Use common sense.</p>
-
-<p>One of my new years resolutions is to also apply these rules to my communications with others at Mozilla as well, so if you see my violating it feel free to point me back at this post. Or just use this handy meme I created:</p>
-
-<center><img src="/files/2018/01/scale-of-asking.jpg" /></center> 
   <hr/>
 </article>
 <footer>

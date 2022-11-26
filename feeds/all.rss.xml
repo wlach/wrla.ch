@@ -4,9 +4,43 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wrla.ch/index.html</link>
-  <lastBuildDate>Sun, 25 Sep 2022 19:55:40 UT</lastBuildDate>
-  <pubDate>Sun, 25 Sep 2022 19:55:40 UT</pubDate>
+  <lastBuildDate>Sat, 26 Nov 2022 15:24:01 UT</lastBuildDate>
+  <pubDate>Sat, 26 Nov 2022 15:24:01 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Working with depression</title>
+   <link>https://wrla.ch/blog/2022/11/working-with-depression/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2022-11-working-with-depression</guid>
+   <pubDate>Sat, 26 Nov 2022 15:24:01 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;Been struggling with depression over the past couple of weeks. Some of this is seasonal (with the shortening of the days), though I wouldn&amp;rsquo;t say it &lt;em&gt;always&lt;/em&gt; happens. Last year at this time I recall feeling the &lt;em&gt;opposite&lt;/em&gt; of depressed: that probably had to do with the fact that I knew I was leaving my previous job at Mozilla and wanted to get as much done as possible. Sometimes a highly motivating life situation can keep it in abeyance. Nonetheless, it&amp;rsquo;s here now, again, and demands to be dealt with.&lt;/p&gt;
+
+&lt;p&gt;What does depression even mean? It&amp;rsquo;s a bit of a hard thing to pin down, exactly. But from the perspective of looking after my own well being, I don&amp;rsquo;t think I really need a definition. What matters are the symptoms, which I&amp;rsquo;d roughly express as:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Knowing what I &lt;em&gt;should&lt;/em&gt; be doing but not able to do it&lt;/li&gt;
+ &lt;li&gt;An increase in time spent scanning social media, news sites&lt;/li&gt;
+ &lt;li&gt;Feelings of low self worth&lt;/li&gt;
+ &lt;li&gt;Feelings that nothing really matters&lt;/li&gt;
+ &lt;li&gt;Lack of creativity, improvisation&lt;/li&gt;
+ &lt;li&gt;An increase in self-referential thinking (this post would be an example of that)&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;A few things I tend to try to diminish its effects:&lt;/p&gt;
+
+&lt;ul&gt;
+ &lt;li&gt;Go outside, expose myself to sunlight. Explore nature.&lt;/li&gt;
+ &lt;li&gt;Exercise&lt;/li&gt;
+ &lt;li&gt;Meditate&lt;/li&gt;
+ &lt;li&gt;Eat less carbohydrates, more vegetables and protein&lt;/li&gt;
+ &lt;li&gt;Talk to friends&lt;/li&gt;
+ &lt;li&gt;Do nice things for other people&lt;/li&gt;&lt;/ul&gt;
+
+&lt;p&gt;I don&amp;rsquo;t feel like doing these things but I try with all my might, against all my will, to do them anyway. Any individual action might not do much: but the cumulative effect of doing &lt;em&gt;all&lt;/em&gt; of the above seems to have an impact &amp;mdash; or at least that&amp;rsquo;s what I tell myself.&lt;/p&gt;
+
+&lt;p&gt;And yet despite my best efforts, it&amp;rsquo;s not always enough. I do all of the things in the second list, and yet still find myself suffering in all the ways described by the first. What do I do then?&lt;/p&gt;
+
+&lt;p&gt;I try to understand that there really isn&amp;rsquo;t an escape from unpleasant feeling, and that it&amp;rsquo;s just part of life: glorious and beautiful in its complexity. I try to be &lt;em&gt;curious&lt;/em&gt; about what&amp;rsquo;s going on, even if I think it&amp;rsquo;s all happened before. If that&amp;rsquo;s not possible, I at least try to be present with it. That&amp;rsquo;s all I can do.&lt;/p&gt;</description></item>
   <item>
    <title>Using Sphinx in a Monorepo</title>
    <link>https://wrla.ch/blog/2022/09/using-sphinx-in-a-monorepo/?utm_source=all&amp;utm_medium=RSS</link>
@@ -1016,39 +1050,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
   &lt;li id="2020-07-16-mozilla-telemetry-in-2020-footnote-2-definition" class="footnote-definition"&gt;
    &lt;p&gt;This is actually a capability that the Glean SDK provides, so other products (e.g. Lockwise, Firefox for iOS) also benefit from this capability.&amp;nbsp;&lt;a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-2-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
   &lt;li id="2020-07-16-mozilla-telemetry-in-2020-footnote-3-definition" class="footnote-definition"&gt;
-   &lt;p&gt;The scope of this data collection comes from the fact that Fenix is a &lt;em&gt;very&lt;/em&gt; large and complex application. rather than a desire to collect everything just because we can&amp;mdash; smaller efforts like mozregression collect a &lt;a href="https://mozilla.github.io/mozregression/documentation/telemetry.html"&gt;much more limited set of data&lt;/a&gt;.&amp;nbsp;&lt;a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-3-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</description></item>
-  <item>
-   <title>mozregression GUI: now available for Linux</title>
-   <link>https://wrla.ch/blog/2020/06/mozregression-gui-now-available-for-linux/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-06-mozregression-gui-now-available-for-linux</guid>
-   <pubDate>Mon, 29 Jun 2020 20:39:06 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;Thanks to &lt;a href="https://github.com/AnAverageHuman"&gt;@AnAverageHuman&lt;/a&gt;, &lt;a href="https://mozilla.github.io/mozregression"&gt;mozregression&lt;/a&gt; once again has an easy to use and install GUI version for Linux! This used to work a few years ago, but got broken with some changes in the mozregression-python2 era and didn&amp;rsquo;t get resolved until now:&lt;/p&gt;
-
-&lt;div class="figure"&gt;&lt;img src="/files/2020/06/mozregression-on-linux.png" alt="" /&gt;
- &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
-
-&lt;p&gt;This is an area where using telemetry in mozregression can help us measure the impact of a change like this: although Windows still dominates in terms of marketshare, Linux is very widely used by contributors &amp;mdash; of the usage of mozregression in the past 2 months, fully 30% of the sessions were on Linux (and it is possible we were undercounting that due to &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1646402"&gt;bug 1646402&lt;/a&gt;):&lt;/p&gt;
-
-&lt;div class="figure"&gt;&lt;img src="/files/2020/06/mozregression-usage-share-by-os.png" alt="" /&gt;
- &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href="https://sql.telemetry.mozilla.org/queries/72363/source"&gt;link to query&lt;/a&gt; (internal-only)&lt;/p&gt;
-
-&lt;p&gt;It will be interesting to watch the usage numbers for Linux evolve over the next few months. In particular, I&amp;rsquo;m curious to see what percentage of users on that platform prefer a GUI.&lt;/p&gt;
-
-&lt;h2 id="appendix-reducing-mozregression-guis-massive-size"&gt;Appendix: reducing mozregression-GUI&amp;rsquo;s massive size&lt;/h2&gt;
-
-&lt;p&gt;One thing that&amp;rsquo;s bothered me a bunch lately is that the mozregression GUI&amp;rsquo;s size is &lt;em&gt;massive&lt;/em&gt; and this is even more apparent on Linux, where the initial distribution of the GUI came in at over 120 megabytes! Why so big? There were a few reasons:&lt;/p&gt;
-
-&lt;ol&gt;
- &lt;li&gt;&lt;a href="https://pypi.org/project/PySide2/"&gt;PySide2&lt;/a&gt; (the GUI library we use) is very large (10s of megabytes), and &lt;a href="https://www.pyinstaller.org/"&gt;PyInstaller&lt;/a&gt; packages &lt;em&gt;all of it&lt;/em&gt; by default into your application distribution.&lt;/li&gt;
- &lt;li&gt;The binary/rust portions of the &lt;a href="https://pypi.org/project/glean-sdk/"&gt;Glean Python SDK&lt;/a&gt; were been built with debugging information included (basically as a carry-over when it was a pre-alpha product), which made it 38 megabytes big (!) on Linux.&lt;/li&gt;
- &lt;li&gt;On Linux at least, a large number of other system libraries are packaged into the distribution.&lt;/li&gt;&lt;/ol&gt;
-
-&lt;p&gt;A few aspects of this were under our control: Ian Moody (:Kwan) and myself crafted a script to manually remove unneeded PySide2 libraries as part of the packaging process. The Glean team was awesome-as-always and quickly rebuilt Glean without debugging information (this was basically an oversight). Finally, I managed to shave off a few more megabytes by reverting the Linux build to an earlier version of Ubuntu (Xenial), which is something I had been meaning to do anyway.&lt;/p&gt;
-
-&lt;p&gt;Even after doing all of these things, the end result is still a little underwhelming: the mozregression GUI distribution on Linux is still 79.5 megabytes big. There are probably other things we could do, but we&amp;rsquo;re definitely entering the land of diminishing returns.&lt;/p&gt;
-
-&lt;p&gt;Honestly, my main takeaway is just not to build an application like this in Python unless you absolutely have to (e.g. you&amp;rsquo;re building an application which needs system-level access). The web is a pretty wonderful medium for creating graphical applications these days, and by using it you sidestep these type of installation issues.&lt;/p&gt;</description></item></channel></rss>
+   &lt;p&gt;The scope of this data collection comes from the fact that Fenix is a &lt;em&gt;very&lt;/em&gt; large and complex application. rather than a desire to collect everything just because we can&amp;mdash; smaller efforts like mozregression collect a &lt;a href="https://mozilla.github.io/mozregression/documentation/telemetry.html"&gt;much more limited set of data&lt;/a&gt;.&amp;nbsp;&lt;a href="#2020-07-16-mozilla-telemetry-in-2020-footnote-3-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</description></item></channel></rss>

@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 8)</title>
     <meta name="description" content="William Lachance's Log (page 8)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Orangutan, Iodide, Meditation, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
+    <meta name="keywords" content="Orangutan, Meditation, Iodide, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Personal, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-8.html" />
@@ -91,6 +91,33 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2015/04/pycon-2015/">PyCon 2015</a></h2>
+    <p class="index-date">Apr 23rd, 2015</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Python.html">Python</a></span></p>
+  </header>
+
+<p>So I went to PyCon 2015. While I didn&rsquo;t leave quite as inspired as I did in 2014 (<a href="http://wrla.ch/blog/2014/04/pycon-2014-impressions-ipython-notebook-is-the-future-more/">when I discovered iPython</a>), it was a great experience and I learned a ton. Once again, I was incredibly impressed with the organization of the conference and the diversity and quality of the speakers.</p>
+
+<p>Since Mozilla was nice enough to sponsor my attendance, I figured I should do another round up of notable talks that I went to.</p>
+
+<p>Technical stuff that was directly relevant to what I work on:</p>
+
+<ul>
+ <li>To ORM or not to ORM (Christine Spang): Useful talk on when using a database ORM (object relational manager) can be helpful and even faster than using a database directly. I feel like there&rsquo;s a lot of misinformation and FUD on this topic, so this was refreshing to see. <a href="https://www.youtube.com/watch?v=Sadng6tR7Q4">video</a> <a href="https://speakerdeck.com/pycon2015/christine-spang-to-orm-or-not-to-orm">slides</a></li>
+ <li>Debugging hard problems (Alex Gaynor): Exactly what it says &#8212; how to figure out what&rsquo;s going on when things aren&rsquo;t behaving as they should. Great advice and wisdom in this one (hint: take nothing for granted, dive into the source of everything you&rsquo;re using!). <a href="https://www.youtube.com/watch?v=ij99SGGEX34">video</a> <a href="https://speakerdeck.com/alex/techniques-for-debugging-hard-problems">slides</a></li>
+ <li>Python Performance Profiling: The Guts And The Glory (Jesse Jiryu Davis): Quite an entertaining talk on how to properly profile python code. I really liked his systematic and realistic approach &#8212; which also discussed the thought process behind how to do this (hint: again it comes down to understanding what&rsquo;s really going on). Unfortunately the video is truncated, but even the first few minutes are useful. <a href="https://www.youtube.com/watch?v=4uJWWXYHxaM">video</a></li></ul>
+
+<p>Non-technical stuff:</p>
+
+<ul>
+ <li>The Ethical Consequences Of Our Collective Activities (Glyph): A talk on the ethical implications of how our software is used. I feel like this is an under-discussed topic &#8212; how can we know that the results of our activity (programming) serves others and does not harm? <a href="https://www.youtube.com/watch?v=uSbKjRRbjZs">video</a></li>
+ <li>How our engineering environments are killing diversity (and how we can fix it) (Kate Heddleston): This was a great talk on how to make the environments in which we develop more welcoming to under-represented groups (women, minorities, etc.). This is something I&rsquo;ve been thinking a bunch about lately, especially in the context of expanding the community of people working on our projects in Automation &#38; Tools. The talk had some particularly useful advice (to me, anyway) on giving feedback. <a href="https://www.youtube.com/watch?v=kNke_4WOWAU">video</a> <a href="https://speakerdeck.com/pycon2015/kate-heddleston-how-our-engineering-environments-are-killing-diversity-and-how-we-can-fix-it">slides</a></li></ul>
+
+<p>I probably missed out on a bunch of interesting things. If you also went to PyCon, please feel free to add links to your favorite talks in the comments!</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2015/03/perfherder-update-summary-series-drilldown/">Perfherder update: Summary series drilldown</a></h2>
     <p class="index-date">Mar 27th, 2015</p>
@@ -292,26 +319,6 @@ cd treeherder-ui/webapp
 <p>Happy meditating!</p>
 
 <p><sup><a href="http://wrla.ch/blog/category/meditation/">1</a></sup> Note that there isn&rsquo;t a way to inhibit the screen/device from going to sleep with these browsers, which means that you might miss the ending bell. On FirefoxOS, I used the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator.requestWakeLock">requestWakeLock</a> API to make sure that doesn&rsquo;t happen. I filed <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1054113">a bug</a> to get this implemented on Firefox for Android.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2014/07/new-city-new-cellphone-provider/">New city, new cellphone provider</a></h2>
-    <p class="index-date">Jul 12th, 2014</p>
-    <p><span class="tags"><a href="/tags/Toronto.html">Toronto</a></span></p>
-  </header>
-
-<p>Rogers, my previous cell phone provider, is ridiculous.</p>
-
-<p>So for those of you who don&rsquo;t know, I just moved from Montreal to Toronto. There are very few people who call me these days, but some still do and keeping my old Montreal number subjects me to a bunch of long distance fees I didn&rsquo;t want to pay every time someone dials my number while I&rsquo;m here.</p>
-
-<p>I really didn&rsquo;t want to go to the trouble of changing my cellphone company, so was ready to just switch my number and keep my $60/mo. plan with Rogers. I knew it was kind of expensive, but they haven&rsquo;t given me much trouble and I do put a premium on my time not being occupied with changing service providers. I also figured I had bigger fish to fry in terms of finding budgetary savings.</p>
-
-<p>But no, apparently the &ldquo;market&rdquo; in Ontario is &ldquo;less competitive&rdquo;, so my plan doesn&rsquo;t exist here. After an hour and several levels of polite escalation (in strict violation of the &ldquo;don&rsquo;t waste my time&rdquo; rule), the best they could give me was a $70/mo. plan (a $10 increase) with a decrease of 3gb data -&gt; 2gb. I gave them plenty of opportunities to relent, but they wouldn&rsquo;t budge. They claimed there was no reasonable alternative.</p>
-
-<p>Did some shopping around: unfortunately Wind (the best value) didn&rsquo;t seem to work with my Nexus 5, so I went with Virgin Mobile who looked like the next best option. Up and running in just half an hour, and will probably be paying no more than $50 a month now.</p>
-
-<p>So what happened to the legendary Rogers customer retention department? How do they think they can get away charging these kinds of rates?</p> 
   <hr/>
 </article>
 <footer>
