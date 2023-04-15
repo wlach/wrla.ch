@@ -1,9 +1,9 @@
 Hi! My name is William Lachance, though most people just call me "Will".
 
-I'm an (early, as of this writing) fortysomething developer of software in Toronto, Ontario, Canada currently working at [Voltus] on energy market integrations.
+I'm an (early, as of this writing) fortysomething software developer in Toronto, Ontario, Canada currently working at [Voltus] on demand response technology for the electricity grid.
 
 From 2011-2022, I worked at [Mozilla] (as in [Firefox]) in [Data Engineering] and [Engineering Productivity].
-Virtually everything I did at that time in the open, so much of the historical content on this blog has to do with my work there.
+Virtually everything I did at that time was done in the open, so much of the historical content on this blog has to do with my work there.
 
 I've worked on a bunch of things over the course of my career, but a unifying principle has been trying to help people understand the world around them.
 I try to help people think critically about business problems and build computational systems to help them do this.
@@ -21,7 +21,6 @@ Other random facts:
 I try to be judicious about using social media. That said, there's a bunch of places you can find me:
 
 - [mastodon] (semi-frequently updated)
-- [twitter] (trying to migrate to Mastodon)
 - [instagram] (infrequently)
 - [dreamwidth] (for more personal stuff, also infrequent)
 - [linkedin]
