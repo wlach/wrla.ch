@@ -6,7 +6,7 @@
     <title>William Lachance's Log</title>
     <meta name="description" content="William Lachance's Log" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Orangutan, Meditation, Iodide, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Personal, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
+    <meta name="keywords" content="Orangutan, Meditation, Iodide, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Personal, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, AI, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index.html" />
@@ -91,6 +91,43 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2023/04/neural-networks-mystify-me/">Neural networks mystify me</a></h2>
+    <p class="index-date">Apr 15th, 2023</p>
+    <p><span class="tags"><a href="/tags/AI.html">AI</a></span></p>
+  </header>
+
+<p>Spent a good chunk of a week off (re)learning the basics of neural networks: forward propagation, gradient descent, loss functions. It&rsquo;s taking some time, but gradually I feel some level of understanding is taking hold. What kind of continues to amaze me is how simple it all is: you really only need a high-school level understanding of linear algebra and calculus to understand most of what&rsquo;s going on behind the scenes. Best as I can tell, the recent innovations in the last few years (in particular transformer models behind things like ChatGPT) are just refinements on top of these basic concepts.</p>
+
+<p>Neural networks (there really there is nothing &ldquo;neural&rdquo; about them) are really not new: I remember hearing about that as an undergraduate in the early 2000s (and I think they were rather old hat even then). At the time, they were pretty much dismissed as a warmed-over model of <a href="https://en.wikipedia.org/wiki/Behaviorism">behaviorism</a>, unlikely to be useful anywhere except perhaps in a few simplistic applications. Based on what I saw at the time, I agreed and basically bought into the idea that computers are mainly useful as an adjunct to human processes, systems and intuition.</p>
+
+<p>Thus, I find the fact that these systems can produce something even mildly resembling novel or creative outputs (as is the case with things like ChatGPT and Midjourney) <em>surprising</em> - as in it wasn&rsquo;t something I saw coming at all. Yes, much of what has been built using these technologies is overhyped and arguably dangerous. Still, I also don&rsquo;t want to lose the sense of wonder that this is possible at all. If I was mistaken about this what else might I be missing?</p>
+
+<p>I feel like the best response at this point is to take a step back, learn as much as I can, and <em>then</em> develop an opinion. I expect this process to take at least a year, probably longer.</p>
+
+<p>In case it&rsquo;s helpful to others, here&rsquo;s some literature I&rsquo;ve been working through on these topics.</p>
+
+<p>Some theoretical but approachable material for understanding the basics:</p>
+
+<ul>
+ <li><a href="http://karpathy.github.io/neuralnets/">Hacker&rsquo;s Guide to Neural Networks</a>: Now dislcaimed by the author as out of date, I still found its explanation of neural networks as a circuit quite helpful for building my intuition.</li>
+ <li><a href="http://neuralnetworksanddeeplearning.com/index.html">Neural Networks and Deep Learning</a>: Another introduction to the basics, more refined and comprehensive than the above.</li>
+ <li><a href="https://codewords.recurse.com/issues/five/why-do-neural-networks-think-a-panda-is-a-vulture">How to trick a neural network into thinking a panda is a vulture</a>: Often the best way of understanding something is to break it.</li></ul>
+
+<p>On the ethical side:</p>
+
+<ul>
+ <li><a href="https://dl.acm.org/doi/10.1145/3442188.3445922">On the Dangers of Stochastic Parrots</a>: Good antidote to some of the hype around LLMs, incorporating an understanding of how these systems may further perpetuate social harms. Much more nuanced and interesting than most of the critiques I&rsquo;ve seen fly by in the last few months.</li>
+ <li><a href="https://zephoria.medium.com/resisting-deterministic-thinking-52ef8d78248c">Resisting Determinstic Thinking</a>: How can we think critically about AI without falling into the trap of black/white thinking (&ldquo;this is all good&rdquo; vs. &ldquo;this is all bad&rdquo;)</li></ul>
+
+<p>And some articles on how to think about LLMs from a pragmatic perspective as a programmer:</p>
+
+<ul>
+ <li><a href="https://simonwillison.net/2023/Apr/2/calculator-for-words/">Think of language models like ChatGPT as a “calculator for words”</a>: This feels right to me based on my usage of OpenAI as a &ldquo;tool for thought so far&rdquo; (though I don&rsquo;t think I&rsquo;ve yet been able to use ChatGPT as effectively as this person).</li>
+ <li><a href="https://about.sourcegraph.com/blog/cheating-is-all-you-need">Cheating is all you need</a>: Some speculative thinking about how this stuff might play out for those of us doing programming from the internet-famous Steve Yegge.</li></ul> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2022/11/working-with-depression/">Working with depression</a></h2>
     <p class="index-date">Nov 26th, 2022</p>
@@ -572,52 +609,6 @@ surge
    <p>To the extent that Zen Buddhism is a religion.&nbsp;<a href="#2021-07-12-10-years-at-mozilla-footnote-1-return">↩</a></p></li>
   <li id="2021-07-12-10-years-at-mozilla-footnote-2-definition" class="footnote-definition">
    <p>I&rsquo;ve since moved to <a href="https://wiki.mozilla.org/Data">Data @ Mozilla</a>&nbsp;<a href="#2021-07-12-10-years-at-mozilla-footnote-2-return">↩</a></p></li></ol></div> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2021/07/adding-persistence-to-irydium-with-supabase/">Adding persistence to Irydium with Supabase</a></h2>
-    <p class="index-date">Jul 5th, 2021</p>
-    <p><span class="tags"><a href="/tags/Recurse.html">Recurse</a>  <a href="/tags/Irydium.html">Irydium</a></span></p>
-  </header>
-
-<p>Entering the second week of <a href="https://recurse.com">Recurse</a>. Besides orientation and a few adventures in pair programming (special shout out to <a href="http://universalities.com/">Jane Adams</a> for trying out Irydium with me!), I spent most of my time attempting to get document saving &amp; loading working with Irydium.</p>
-
-<p>I learned from <a href="https://alpha.iodide.io">Iodide</a> that not having a good document sharing story really inhibits collaboration and sharing, which is something I explicitly want to do here at the Recurse centre (and in general for this project). That said, this isn&rsquo;t actually an area I want to spend a lot of time on right now: it&rsquo;s the shape of problem I&rsquo;ve solved many times before (and that has been solved by many others). I&rsquo;d rather spend my time over the next few weeks on things I haven&rsquo;t had much of a chance to look at or pursue in my day-to-day.</p>
-
-<p>So, to try to keep the complexity down, I decided to take the same approach as the <a href="https://svelte.dev/repl">svelte repl</a>, which aims only to allow the reproduction of simple examples. It allows you to save anything you type in it and also browse anything that you had previously saved. That&rsquo;s not going to replace GitHub, but it&rsquo;s more than enough to get started.</p>
-
-<h2 id="supabase">Supabase</h2>
-
-<p>So with that goal in mind, how to do go about it? If I wanted to completely fall back on my previous knowledge, I could have gone for the tried + true approach of Django / Heroku to add a persistence layer (what I did for Iodide). That would have had the benefit of being familiar but would also have increased the overall implementation complexity of Irydium considerably. In the past year, I&rsquo;ve become convinced that <a href="https://en.wikipedia.org/wiki/Serverless_computing">serverless</a> approaches to building web applications are the wave of the future, at least for applications like this one. They&rsquo;re easier to set up, easier to develop, and (generally speaking) cheaper to deploy. Just before I launched, I set up <a href="https://irydium.dev">irydium.dev</a> as a static site on <a href="https://netlify.com">Netlify</a> and it&rsquo;s been a great experience: deploys are super fast and it&rsquo;s easy to reason about what&rsquo;s going on &ldquo;under the hood&rdquo; (since there&rsquo;s not a much of a hood to look under).</p>
-
-<p>With that in mind, I decided to take a (small) gamble and give <a href="https://supabase.io/">Supabase</a> a try for this one after determining it would be compatible with the approach I wanted to take. Supabase bills itself as a &ldquo;Firebase Alternative&rdquo; (<a href="https://firebase.google.com/">Firebase</a> is another popular solution for bootstrapping simple web applications with persistence). In contrast to Firebase, Supabase uses a standard database technologies (Postgres!) and has a nice JavaScript SDK and a bunch of well-written tutorials (including <a href="https://supabase.io/docs/guides/with-svelte">one especially for Svelte</a>).</p>
-
-<p>The naive model for integrating with Supabase is pretty simple:</p>
-
-<ul>
- <li>Set up a Supabase application, which provides you with a unique API endpoint to make web requests (this endpoint can be exposed publicly).</li>
- <li>Have your client authenticate with an OAuth provider (e.g. GitHub, GitLab), then store an authentication token in localStorage.</li>
- <li>You can then make requests to the above endpoint with the authentication token, which lets Supabase use row-level security to restrict modifications to the database: in this case, we can restrict users to updating their own documents.</li></ul>
-
-<p>I&rsquo;d say it probably took me 20&ndash;30 hours to get the feature working end-to-end (including documentation), which wasn&rsquo;t too bad. My impressions were pretty positive: the aforementioned tutorial is pretty decent, the supabase-js library provides a nice ORM-like abstraction over SQL and integrates nicely with Svelte. In general working with Supabase felt pretty familiar to me from previous experiences writing database-backed applications, which I take as a very good sign.</p>
-
-<p>The part that felt the weirdest was writing raw SQL to set up the &ldquo;documents&rdquo; table that Irydium uses: SQL is something I&rsquo;m fairly used to writing because of my experiences at Mozilla, but I imagine this might be off-putting to someone newer to writing these types of things. Also, I have some concerns of how maintainable a Supabase database is over the long term: while it was easy enough to <a href="https://github.com/irydium/irydium/blob/f816ea6444c94635972a57bc92d7770398117c1e/README.md#working-on-the-site">document the currently-simple setup instructions in the README</a>, I do somewhat fear the prospect of managing my database via their SQL console. Something like Django&rsquo;s <a href="https://docs.djangoproject.com/en/3.2/topics/migrations/">schema migrations</a> and <a href="https://docs.djangoproject.com/en/3.2/howto/custom-management-commands/">management commands</a> would be a welcome addition to Supabase&rsquo;s SDK.</p>
-
-<h2 id="netlify-functions">Netlify functions</h2>
-
-<p>The above approach isn&rsquo;t what most people would consider to be &ldquo;best practice&rdquo;<sup><a href="#2021-07-05-adding-persistence-to-irydium-with-supabase-footnote-1-definition" name="2021-07-05-adding-persistence-to-irydium-with-supabase-footnote-1-return">1</a></sup>. In particular, storing credentials in localStorage is probably not the best idea for an application presenting interactive content like Irydium: it wouldn&rsquo;t be particularly difficult for a malicious document to steal someone&rsquo;s secret and send it somewhere it shouldn&rsquo;t be.</p>
-
-<p>I&rsquo;m not <em>so</em> worried about it at this stage of the project, but one intriguing possibility here (that&rsquo;s compatible with our current deploy set up) would be to write some simple <a href="https://www.netlify.com/products/functions/">Netlify Functions</a> to do the actual interaction with Supabase, while delegating to Netlify for the authentication itself (using <a href="https://docs.netlify.com/visitor-access/identity/">Netlify Identity</a>).</p>
-
-<p>I experimented writing a simple function to prove out this approach and it seems to work quite well (<a href="https://github.com/irydium/irydium/blob/fecea66a1cd0bedaaab4a3e6502413c55d34ec11/packages/site/netlify_functions/post.js">source</a>, <a href="https://irydium.dev/.netlify/functions/post?id=65107940-dd88-11eb-866c-0a4e9a1089db">example</a>). This particular function is making an anonymous query to the database, but I see no obstacle to handling authenticated ones as well. Having an API under a <code>.netlify</code> namespace seems kinda weird on first blush, but I can probably get used to it.</p>
-
-<p>I want to move on to other things now (parsers! document state visualizations!) but might poke at this more later. In the mean time, if you write/build something cool at <a href="https://irydium.dev/repl">irydium.dev/repl</a>, let me know!</p>
-
-<div class="footnotes">
- <ol>
-  <li id="2021-07-05-adding-persistence-to-irydium-with-supabase-footnote-1-definition" class="footnote-definition">
-   <p>See, for example, <a href="https://dev.to/rdegges/please-stop-using-local-storage-1i04">Please Stop Using Local Storage</a>&nbsp;<a href="#2021-07-05-adding-persistence-to-irydium-with-supabase-footnote-1-return">↩</a></p></li></ol></div> 
   <hr/>
 </article>
 <footer>

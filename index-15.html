@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 15)</title>
     <meta name="description" content="William Lachance's Log (page 15)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Orangutan, Meditation, Iodide, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Personal, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
+    <meta name="keywords" content="Orangutan, Meditation, Iodide, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Personal, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, AI, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-15.html" />
@@ -91,6 +91,23 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2011/09/changes/">Changes!</a></h2>
+    <p class="index-date">Sep 1st, 2011</p>
+    <p><span class="tags"><a href="/tags/Life.html">Life</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p>A bit quiet here for the last few months. What&rsquo;s been happening?</p>
+
+<ol>
+ <li>I got married and had a <a href="http://www.flickr.com/photos/wlach/sets/72157626998555629">wonderful honeymoon</a> in France.</li>
+ <li>I started a fantastic new job with Mozilla&rsquo;s <a href="https://wiki.mozilla.org/Auto-tools/">tools &#38; automation</a> group. Currently working on bringing down the build/test times for Firefox (part of a project called <a href="http://brasstacks.mozilla.com/gofaster/">GoFaster</a>), which has been really interesting.</li>
+ <li>I moved into a fantastic new apartment in an old victorian building near Vend&ocirc;me metro.</li></ol>
+
+<p>In short, life has been treating me really well! More updates soon.</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2011/06/a-better-bixi-web-site/">A better BIXI web site</a></h2>
     <p class="index-date">Jun 10th, 2011</p>
@@ -309,23 +326,6 @@
 <p><a href="http://hbus.ca"><img src="/files/2010/05/hbus_shot1.png" alt="hbus_shot" title="hbus_shot" width="320" height="181" class="alignleft size-full wp-image-135" /></a></p>
 
 <p>After a month long hiatus, I finally had a chance to get <a href="http://hbus.ca">hbus.ca</a> back into a working state. The big difference is that we&rsquo;re now using the <a href="http://www.mindsea.com/2010/03/03/transit-to-go-pulling-out-all-the-stops/">official HRM transit data</a>. Lots more remains to be done to make this site competitive for 2010 (most of the recent work has been back-end infrastructure stuff), but at least it&rsquo;s usable again.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2010/04/oh-the-lines-and-some-help-for-edmonton/">Oh, the lines! And some help for Edmonton.</a></h2>
-    <p class="index-date">Apr 10th, 2010</p>
-    <p><span class="tags"><a href="/tags/hbus.html">hbus</a>  <a href="/tags/Transit-to-Go.html">Transit to Go</a></span></p>
-  </header>
-
-<p><img src="/files/2010/04/linked_map1.jpg" alt="Map with new link nodes" title="Map with new link nodes" width="320" height="242" class="aligncenter size-full wp-image-118" /></p>
-
-<p>A productive day on the transit development front. Finished up a few big features related to hbus.ca and Transit to Go:</p>
-
-<ul>
- <li>Sped up the graph and database generation by an order of magnitude. Not too exciting from a user perspective, but I should now be able to iterate the codebase much faster.</li>
- <li>Better transit stop / street graph linking: No more does libroutez simply try to find the closest street level vertice to link to when merging transit stops with street information: we now actually create _new_ street level vertices as needed and link to those. Upshot? Slightly better directions and prettier polylines. When I first thought up the algorithm a month ago, I thought I was totally brilliant, only to later find out that Andrew Byrd had done something almost identical a few months earlier for <a href="http://github.com/andrewbyrd/graphserver">graphserver</a>. Ah well, at least it&rsquo;s implemented.</li>
- <li>I <a href="http://gist.github.com/361848">coded up a script</a> to automatically generate synthetic headsigns for GTFS feeds which don&rsquo;t have them. This was needed to provide a sensible view for the Edmonton version of Transit to Go. All the props in the world for opening up your data guys, but can&rsquo;t you do better than saying that all your buses go in the &ldquo;1&rdquo; direction? There&rsquo;s a reason why it&rsquo;s a required field you know. Not only would it help me, but <a href="http://google.com/transit">Google Transit</a> would give better results for your city as well.</li></ul> 
   <hr/>
 </article>
 <footer>

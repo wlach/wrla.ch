@@ -6,7 +6,7 @@
     <title>William Lachance's Log (page 4)</title>
     <meta name="description" content="William Lachance's Log (page 4)" />
     <meta name="author" content="William Lachance" />
-    <meta name="keywords" content="Orangutan, Meditation, Iodide, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Personal, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
+    <meta name="keywords" content="Orangutan, Meditation, Iodide, Web, GoFaster, Release Engineering, zen, Python, Glean, Time, Metrics Graphics, iphone, Buddhism, Video, Transit to Go, Responsiveness, Data, Profiling, Docker, Social Media, GNOME, Psychology, Personal, Food, Montreal, Taskcluster, Talos, Telemetry, Treeherder, Mozilla, telemetry, Open Data, ateam, Data Visualization, mozregression, all, MSF, Pandaboard, Polling, Philosophy, Recurse, Usability, Meta, Irydium, Counting, email, Infraherder, Statistics, Free Software, Bikes, Mission Control, Nixi, Music, Business, Transit, BIXI, iodide, AI, Life, Île Sans Fil, Eideticker, Android, Voltus, Performance, FirefoxOS, hbus, Documentation, Environment, meta, Toronto, Ebola, Cats, Perfherder, Coffee, WifiDog, Sphinx, SQL, Community" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="https://wrla.ch/index-4.html" />
@@ -91,6 +91,41 @@
     </nav>
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
+  <header>
+    <h2><a href="/blog/2019/09/mozregression-update-python-3-edition/">mozregression update: python 3 edition</a></h2>
+    <p class="index-date">Sep 16th, 2019</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
+  </header>
+
+<p>For those who are still wondering, yup, I am still maintaining <a href="https://mozilla.github.io/mozregression/">mozregression</a>, though increasingly reluctantly. Given how important this project is to the development of Firefox (getting a regression window using mozregression is standard operating procedure whenever a new bug is reported in Firefox), it feels like this project is pretty vital, so I continue out of some sense of obligation &mdash; but really, someone more interested in Mozilla&rsquo;a build, automation and testing systems would be better suited to this task: over the past few years, my interests/focus have shifted away from this area to building up Mozilla&rsquo;s data storage and visualization platform.</p>
+
+<p>This post will describe some of the things that have happened in the last year and where I see the project going. My hope is to attract some new blood to add some needed features to the project and maybe take on some of the maintainership duties.</p>
+
+<h2 id="python-3">python 3</h2>
+
+<p>The most important update is that, as of today, the command-line version of mozregression (v3.0.1) should work with python 3.5+. <a href="https://python-modernize.readthedocs.io/en/latest/">modernize</a> did most of the work for us, though there were some unit tests that needed updating: special thanks to <a href="https://github.com/gloomy-ghost">@gloomy-ghost</a> for helping with that.</p>
+
+<p>For now, we will continue to support python 2.7 in parallel, mainly because the GUI has not yet been ported to python 3 (more on that later) and we have CI to make sure it doesn&rsquo;t break.</p>
+
+<h2 id="other-updates">other updates</h2>
+
+<p>The last year has mostly been one of maintenance. Thanks in particular to Ian Moody (:kwan) for his work throughout the year &mdash; including patches to adapt mozregression support to our new updates policy and shippable builds (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1532412">bug 1532412</a>), and Kartikaya Gupta (:kats) for adding support for bisecting the GeckoView example app (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1507225">bug 1507225</a>).</p>
+
+<h2 id="future-work">future work</h2>
+
+<p>There are a bunch of things I see us wanting to add or change with mozregression over the next year or so. I might get to some of these if I have some spare cycles, but probably best not to count on it:</p>
+
+<ul>
+ <li>Port the mozregression GUI to Python 3 (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581633">bug  1581633</a>) As mentioned  above, the command-line client works with python 3, but we have yet to port  the <a href="">GUI</a>. We should do that. This probably also entails porting the GUI to  use PyQT5 (which is pip-installable and thus much easier to integrate into a  CI process), see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1426766">bug 1426766</a>.</li>
+ <li>Make self-contained GUI builds available for MacOS X (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1425105">bug  1425105</a>) and Linux  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581643">bug 1581643</a>).</li>
+ <li>Improve our mechanism for producing a standalone version of the GUI in  general. We&rsquo;ve used <a href="https://github.com/anthony-tuininga/cx_Freeze">cx_Freeze</a>  which mostly works ok, but has a number of problems (e.g. it pulls in a bunch of unnecessary dependencies, which  bloats the size of the installer). Upgrading the GUI to use python 3 may  alleviate some of these issues, but it might be worth considering other  options in this space, like Gregory Szorc&rsquo;s <a href="https://github.com/indygreg/PyOxidizer">pyoxidizer</a>.</li>
+ <li>Add some kind of telemetry to mozregression to measure usage of this tool  (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1581647">bug 1581647</a>).  My anecdotal experience is that this tool is pretty invaluable for Firefox  development and QA, but this is not immediately apparent to Mozilla&rsquo;s  leadership and it&rsquo;s thus very difficult to convince people to spend their  cycles on maintaining and improving this tool. Field data may help change  that story.</li>
+ <li>Supporting new Mozilla products which aren&rsquo;t built (entirely) out of mozilla-central,  most especially Fenix (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1556042">bug 1556042</a>)  and Firefox Reality (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1568488">bug 1568488</a>).  This is probably rather involved (mozregression has a big pile of assumptions about how  the builds it pulls down are stored and organized) but that doesn&rsquo;t mean that  this work isn&rsquo;t necessary.</li></ul>
+
+<p>If you&rsquo;re interested in working on any of the above, please feel free to dive in on one of the above bugs. I can&rsquo;t offer formal mentorship, but am happy to help out where I can.</p> 
+  <hr/>
+</article>
+<article>
   <header>
     <h2><a href="/blog/2019/09/time-for-some-project-updates/">Time for some project updates</a></h2>
     <p class="index-date">Sep 16th, 2019</p>
@@ -391,34 +426,6 @@
 <p>Data issues aside, the indications are that there&rsquo;s been a steady increase in the quality of Firefox over the last few releases based on the main user facing error metric we&rsquo;ve cared about in the past (main crashes), so that&rsquo;s good. :)</p>
 
 <p>If you want to play with the system yourself, the <a href="https://data-missioncontrol.dev.mozaws.net/">development instance</a> is still up. We will probably look at making this thing &ldquo;official&rdquo; next quarter.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2018/02/derived-versus-direct/">Derived versus direct</a></h2>
-    <p class="index-date">Feb 12th, 2018</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
-  </header>
-
-<p>To attempt to make complex phenomena more understandable, we often use derived measures when representing Telemetry data at Mozilla. For error rates for example, we often measure things in terms of &ldquo;X per khours of use&rdquo; (where X might be &ldquo;main crashes&rdquo;, &ldquo;appearance of the slow script dialogue&rdquo;). I.e. instead of showing a raw <em>count</em> of errors we show a rate. Normally this is a good thing: it allows the user to easily compare two things which might have different raw numbers for whatever reason but where you&rsquo;d normally expect the ratio to be similar. For example, we see that although the <em>uptake</em> of the newly-released Firefox 58.0.2 is a bit slower than 58.0.1, the overall crash rate (as sampled every 5 minutes) is more or less the same after about a day has rolled around:</p>
-
-<p><img srcset="/files/2018/02/main_crashes_normalized.png" /></p>
-
-<p>On the other hand, looking at raw counts doesn&rsquo;t really give you much of a hint on how to interpret the results. Depending on the scale of the graph, the actual rates could actually resolve to being vastly different:</p>
-
-<p><img srcset="/files/2018/02/main_crashes_raw.png" /></p>
-
-<p>Ok, so this simple tool (using a ratio) is useful. Yay! Unfortunately, there is one case where using this technique can lead to a very deceptive visualization: when the number of samples is really small, a few outliers can give a really false impression of what&rsquo;s really happening. Take this graph of what the crash rate looked like <em>just after</em> Firefox 58.0 was released:</p>
-
-<p><img srcset="/files/2018/02/relative_small_crash_counts.png" /></p>
-
-<p>10 to 100 errors per 1000 hours, say it isn&rsquo;t so? But wait, how many errors do we have absolutely? Hovering over a representative point in the graph with the normalization (use of a ratio) turned off:</p>
-
-<p><img srcset="/files/2018/02/absolute_small_crash_counts.png" /></p>
-
-<p>We&rsquo;re really only talking about something between 1 to 40 crashes events over a relatively small number of usage hours. This is clearly so little data that we can&rsquo;t (and shouldn&rsquo;t) draw any kind of conclusion whatsoever.</p>
-
-<p>Ok, so that&rsquo;s just science 101: don&rsquo;t jump to conclusions based on small, vastly unrepresentative samples. Unfortunately due to human psychology people tend to assume that charts like this are authoritative and represent something real, absent an explanation otherwise &mdash; and the use of a ratio obscured the one fact (extreme lack of data) that would have given the user a hint on how to correctly interpret the results. Something to keep in mind as we build our tools.</p> 
   <hr/>
 </article>
 <footer>
