@@ -4,9 +4,21 @@
   <title>William Lachance's Log: Posts tagged 'Mozilla'</title>
   <description>William Lachance's Log: Posts tagged 'Mozilla'</description>
   <link>https://wrla.ch/tags/Mozilla.html</link>
-  <lastBuildDate>Sun, 25 Sep 2022 19:55:40 UT</lastBuildDate>
-  <pubDate>Sun, 25 Sep 2022 19:55:40 UT</pubDate>
+  <lastBuildDate>Sat, 05 Apr 2025 23:11:12 UT</lastBuildDate>
+  <pubDate>Sat, 05 Apr 2025 23:11:12 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Electrification and solar</title>
+   <link>https://wrla.ch/blog/2025/04/electrification-and-solar/?utm_source=Mozilla&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2025-04-electrification-and-solar</guid>
+   <pubDate>Sat, 05 Apr 2025 23:11:12 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;I did up an &lt;a href="https://evidence.dev"&gt;evidence&lt;/a&gt; dashboard with some (hopefully) data-driven thoughts on the environmental and financial aspects of heat pump and solar technology in the Greater Toronto / Hamilton area:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://wlach.github.io/gtha-electrification"&gt;wlach.github.io/gtha-electrification&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Evidence is pretty neat: very close to what I originally had in mind when building Irydium a few years ago at Mozilla and Recurse (see previous entries in this journal).&lt;/p&gt;</description></item>
   <item>
    <title>Using Sphinx in a Monorepo</title>
    <link>https://wrla.ch/blog/2022/09/using-sphinx-in-a-monorepo/?utm_source=Mozilla&amp;utm_medium=RSS</link>
@@ -1071,20 +1083,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id="next-steps"&gt;Next Steps&lt;/h2&gt;
 
-&lt;p&gt;We&amp;rsquo;re not done yet! Next time, we&amp;rsquo;ll look into making a public-facing dashboard demonstrating these results and making an aggregated version of the mozregression telemetry data publicly accessible to researchers and the general public. If we&amp;rsquo;re lucky, there might even be a bit of &lt;em&gt;data science&lt;/em&gt;. Stay tuned!&lt;/p&gt;</description></item>
-  <item>
-   <title>mozregression for MacOS</title>
-   <link>https://wrla.ch/blog/2020/04/mozregression-for-macos/?utm_source=Mozilla&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-04-mozregression-for-macos</guid>
-   <pubDate>Fri, 24 Apr 2020 14:59:04 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;Just a quick note that, as a side-effect of the work I mentioned a while ago to &lt;a href="/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/"&gt;add telemetry to mozregression&lt;/a&gt;, mozregression now has a graphical Mac client! It&amp;rsquo;s a bit of a pain to install (since it&amp;rsquo;s unsigned), but likely worlds easier for the average person to get going than the command-line version. Please feel free to &lt;a href="https://mozilla.github.io/mozregression/install.html"&gt;point people to it&lt;/a&gt; if you&amp;rsquo;re looking to get a regression range for a MacOS-specific problem with Firefox.&lt;/p&gt;
-
-&lt;center&gt;&lt;img style="width:600px" src="/files/2020/04/mozregression-gui-mac.png" /&gt;&lt;/center&gt;
-
-&lt;p&gt;More details: The &lt;a href="https://mozilla.github.io/glean/book/dev/python/index.html"&gt;Glean Python SDK&lt;/a&gt;, which &lt;a href="https://mozilla.github.io/mozregression/documentation/telemetry.html"&gt;mozregression now uses for telemetry&lt;/a&gt;, requires Python 3. This provided the impetus to port the GUI itself to Python 3 and PySide2 (the modern incarnation of PyQt), which brought with it a much easier installation/development experience for the GUI on platforms like Mac and Linux.&lt;/p&gt;
-
-&lt;p&gt;I haven&amp;rsquo;t gotten around to producing GUI binaries for the Linux yet, but it should not be much work.&lt;/p&gt;
-
-&lt;p&gt;Speaking of Glean, mozregression, and Telemetry, stay tuned for more updates on that soon. It&amp;rsquo;s been an adventure!&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;We&amp;rsquo;re not done yet! Next time, we&amp;rsquo;ll look into making a public-facing dashboard demonstrating these results and making an aggregated version of the mozregression telemetry data publicly accessible to researchers and the general public. If we&amp;rsquo;re lucky, there might even be a bit of &lt;em&gt;data science&lt;/em&gt;. Stay tuned!&lt;/p&gt;</description></item></channel></rss>

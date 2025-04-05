@@ -4,9 +4,21 @@
   <title>William Lachance's Log: William Lachance's Log</title>
   <description>William Lachance's Log: William Lachance's Log</description>
   <link>https://wrla.ch/index.html</link>
-  <lastBuildDate>Sat, 15 Apr 2023 14:33:52 UT</lastBuildDate>
-  <pubDate>Sat, 15 Apr 2023 14:33:52 UT</pubDate>
+  <lastBuildDate>Sat, 05 Apr 2025 23:11:12 UT</lastBuildDate>
+  <pubDate>Sat, 05 Apr 2025 23:11:12 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Electrification and solar</title>
+   <link>https://wrla.ch/blog/2025/04/electrification-and-solar/?utm_source=all&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2025-04-electrification-and-solar</guid>
+   <pubDate>Sat, 05 Apr 2025 23:11:12 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;I did up an &lt;a href="https://evidence.dev"&gt;evidence&lt;/a&gt; dashboard with some (hopefully) data-driven thoughts on the environmental and financial aspects of heat pump and solar technology in the Greater Toronto / Hamilton area:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://wlach.github.io/gtha-electrification"&gt;wlach.github.io/gtha-electrification&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Evidence is pretty neat: very close to what I originally had in mind when building Irydium a few years ago at Mozilla and Recurse (see previous entries in this journal).&lt;/p&gt;</description></item>
   <item>
    <title>Neural networks mystify me</title>
    <link>https://wrla.ch/blog/2023/04/neural-networks-mystify-me/?utm_source=all&amp;utm_medium=RSS</link>
@@ -943,54 +955,4 @@ while (1) { true }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;More on this in the future, I hope.&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;Many thanks to &lt;a href="https://teonbrooks.com/"&gt;Teon Brooks&lt;/a&gt; and Devin Bayly for reviewing an early draft of this post&lt;/em&gt;&lt;/p&gt;</description></item>
-  <item>
-   <title>mozregression and older builds</title>
-   <link>https://wrla.ch/blog/2020/08/mozregression-and-older-builds/?utm_source=all&amp;utm_medium=RSS</link>
-   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2020-08-mozregression-and-older-builds</guid>
-   <pubDate>Mon, 17 Aug 2020 19:01:57 UT</pubDate>
-   <author>William Lachance</author>
-   <description>
-&lt;p&gt;Periodically the discussion comes up about pruning away old stored Firefox build artifacts in S3. Each build is tens of megabytes, multiply that by the number of platforms we support and the set of revisions we churn through on a daily basis, and pretty soon you&amp;rsquo;re talking about real money.&lt;/p&gt;
-
-&lt;p&gt;This came up recently in a discussion about &lt;a href="https://groups.google.com/g/mozilla.dev.platform/c/0OV_M3b-cMM/m/kkknfFdECgAJ"&gt;removing the legacy taskcluster deployment&lt;/a&gt; &amp;mdash; what do we actually lose by cutting back our archive of integration builds? The main reason to keep them around is to facilitate bisection testing with &lt;a href="https://mozilla.github.io/mozregression/"&gt;mozregression&lt;/a&gt;, to find out when a bug was introduced. Up to now, discussions about this have been a bit hand-wavey: we do keep logs about who&amp;rsquo;s accessing old builds, but it&amp;rsquo;s never been clear whether it was mozregression accessing them or something else.&lt;/p&gt;
-
-&lt;p&gt;Happily, now that &lt;a href="/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/"&gt;mozregression has some telemetry&lt;/a&gt;, it&amp;rsquo;s a little easier to get some answers on what people are actually doing. This query gets the distribution of build ages (launched or bisected) over the past 6 months, at a month long granularity.&lt;sup&gt;&lt;a href="#2020-08-17-mozregression-and-older-builds-footnote-1-definition" name="2020-08-17-mozregression-and-older-builds-footnote-1-return"&gt;1&lt;/a&gt;&lt;/sup&gt; Ages are relative to the date mozregression was launched: for example, if someone asked for a build from May 2019 in June 2020, the number would be &amp;ldquo;13&amp;rdquo;.&lt;/p&gt;
-
-&lt;div class="brush: sql"&gt;
- &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_app&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;AS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;app&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_build_type&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;AS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;build_type&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="n"&gt;DATE_DIFF&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;IF&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PARSE_DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%Y-%m-%d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;)),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;PARSE_DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%Y-%m-%d&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;substr&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_launch_date&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;MONTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;AS&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;build_age&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="k"&gt;FROM&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="n"&gt;moz&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;fx&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="k"&gt;data&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;shared&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="o"&gt;`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;org_mozilla_mozregression&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="k"&gt;usage&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="k"&gt;WHERE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;DATE&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;submission_timestamp&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;=&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;DATE_SUB&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;CURRENT_DATE&lt;/span&gt;&lt;span class="p"&gt;(),&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="nb"&gt;INTERVAL&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;MONTH&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;AND&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="n"&gt;client_info&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;app_display_version&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;NOT&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;LIKE&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;%dev%&amp;#39;&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;AND&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_build_type&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;  &lt;/span&gt;&lt;span class="k"&gt;AND&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_bad_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;span class="w"&gt;       &lt;/span&gt;&lt;span class="k"&gt;OR&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="k"&gt;LENGTH&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;metrics&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;datetime&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;usage_launch_date&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="w"&gt; &lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="w"&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;p&gt;I ran this query on sql.telemetry.mozilla.org and generated a box plot, broken down by product and build type:&lt;/p&gt;
-
-&lt;div class="figure"&gt;&lt;img src="/files/2020/08/mozregression-build-age-box-plot.png" alt="" /&gt;
- &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;a href="https://sql.telemetry.mozilla.org/queries/73968#184980"&gt;link&lt;/a&gt; (requires Mozilla LDAP)&lt;/p&gt;
-
-&lt;p&gt;Unsurprisingly, Firefox shippable builds are the number one thing people try to bisect. Let&amp;rsquo;s take a little bit of a closer look at what&amp;rsquo;s going on there:&lt;/p&gt;
-
-&lt;div class="figure"&gt;&lt;img src="/files/2020/08/mozregression-build-age-box-plot-detail.png" alt="" /&gt;
- &lt;p class="caption"&gt;&lt;/p&gt;&lt;/div&gt;
-
-&lt;p&gt;The median value is 1, which indicates that most people are bisecting builds within one month of the day in which mozregression was run. And the &lt;a href="https://www.statisticshowto.com/upper-and-lower-fences/"&gt;upper fence&lt;/a&gt; result is 6, suggesting that most of the time people are looking at a regression range that is within a 6 month range. However, looking more closely at the data points themselves (the little points in the chart above), there are a considerable number of outliers where a range greater than 20 months was asked for.&lt;/p&gt;
-
-&lt;p&gt;&amp;hellip; which brings up to the question that we want to answer. Given that getting old builds isn&amp;rsquo;t that common (which we sort of knew already, based on the access patterns in the S3 logs), what is the impact of the times that we do? And it&amp;rsquo;s here where I have to throw up my hands and say &amp;ldquo;I don&amp;rsquo;t know&amp;rdquo; and suggest that we go back to empirical observation and user research.&lt;/p&gt;
-
-&lt;p&gt;You can go back to the thread I linked above, and see that core Firefox/Gecko developers find the ability to get a precise regression range for older revisions valuable. One thing that&amp;rsquo;s worth mentioning is that mozregression isn&amp;rsquo;t run that often, compared to a product that we ship: on the order of 50 to 100 times per a day. But when it comes to internal tooling, a small amount of use might have a big impact: if a mozregression invocation a developer a few hours (or more), that&amp;rsquo;s a real benefit to Firefox and Mozilla. The same argument might apply here, where a small number of bisections on older builds might have a disproportionate impact on the quality of the product.&lt;/p&gt;
-
-&lt;div class="footnotes"&gt;
- &lt;ol&gt;
-  &lt;li id="2020-08-17-mozregression-and-older-builds-footnote-1-definition" class="footnote-definition"&gt;
-   &lt;p&gt;I only added the telemetry to capture this information &lt;a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1651401"&gt;relatively recently&lt;/a&gt;, so we&amp;rsquo;re actually only looking at about a month of data in this post. We&amp;rsquo;ll have more complete results later this year.&amp;nbsp;&lt;a href="#2020-08-17-mozregression-and-older-builds-footnote-1-return"&gt;↩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;&lt;/div&gt;</description></item></channel></rss>
+&lt;p&gt;&lt;em&gt;Many thanks to &lt;a href="https://teonbrooks.com/"&gt;Teon Brooks&lt;/a&gt; and Devin Bayly for reviewing an early draft of this post&lt;/em&gt;&lt;/p&gt;</description></item></channel></rss>

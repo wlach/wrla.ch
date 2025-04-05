@@ -4,9 +4,21 @@
   <title>William Lachance's Log: Posts tagged 'Recurse'</title>
   <description>William Lachance's Log: Posts tagged 'Recurse'</description>
   <link>https://wrla.ch/tags/Recurse.html</link>
-  <lastBuildDate>Sat, 16 Apr 2022 16:44:14 UT</lastBuildDate>
-  <pubDate>Sat, 16 Apr 2022 16:44:14 UT</pubDate>
+  <lastBuildDate>Sat, 05 Apr 2025 23:11:12 UT</lastBuildDate>
+  <pubDate>Sat, 05 Apr 2025 23:11:12 UT</pubDate>
   <ttl>1800</ttl>
+  <item>
+   <title>Electrification and solar</title>
+   <link>https://wrla.ch/blog/2025/04/electrification-and-solar/?utm_source=Recurse&amp;utm_medium=RSS</link>
+   <guid isPermaLink="false">urn:https-wrla-ch:-blog-2025-04-electrification-and-solar</guid>
+   <pubDate>Sat, 05 Apr 2025 23:11:12 UT</pubDate>
+   <author>William Lachance</author>
+   <description>
+&lt;p&gt;I did up an &lt;a href="https://evidence.dev"&gt;evidence&lt;/a&gt; dashboard with some (hopefully) data-driven thoughts on the environmental and financial aspects of heat pump and solar technology in the Greater Toronto / Hamilton area:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://wlach.github.io/gtha-electrification"&gt;wlach.github.io/gtha-electrification&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Evidence is pretty neat: very close to what I originally had in mind when building Irydium a few years ago at Mozilla and Recurse (see previous entries in this journal).&lt;/p&gt;</description></item>
   <item>
    <title>90 days out and in</title>
    <link>https://wrla.ch/blog/2022/04/90-days-out-and-in/?utm_source=Recurse&amp;utm_medium=RSS</link>

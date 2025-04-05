@@ -92,6 +92,25 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2021/07/10-years-at-mozilla/">10 years at Mozilla</a></h2>
+    <p class="index-date">Jul 12th, 2021</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Recurse.html">Recurse</a></span></p>
+  </header>
+
+<p>Yesterday (July 11, 2021) was the 10 year anniversary of starting at the Mozilla Corporation. My life has changed a <em>ton</em> in those years: in that time I ended a marriage, changed the city in which I live two times, and took up religion<sup><a href="#2021-07-12-10-years-at-mozilla-footnote-1-definition" name="2021-07-12-10-years-at-mozilla-footnote-1-return">1</a></sup>. Mozilla has also changed pretty drastically in my time here, <a href="https://blog.mozilla.org/blog/2020/08/11/changing-world-changing-mozilla/">especially in the last year</a>.</p>
+
+<p>Yet somehow I&rsquo;m still at it, for more or less for the same reasons that led me to accept my initial offer to join the <a href="https://wiki.mozilla.org/EngineeringProductivity">A-team</a>.<sup><a href="#2021-07-12-10-years-at-mozilla-footnote-2-definition" name="2021-07-12-10-years-at-mozilla-footnote-2-return">2</a></sup> The Internet has the immense potential to be a force for individual empowerment and yet more than ever, we see this technology used to consolidate unchecked power, spread misinformation, and generally exploit people. Mozilla is not perfect (no organization is: 10 years anywhere will teach you that), but it&rsquo;s one of the few remaining counter-forces to these accelerating trends. While I&rsquo;m currently taking a bit of a break to <a href="https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/">explore some stuff on my own</a>, I am looking forward to getting back to work on <a href="https://www.mozilla.org/en-CA/about/manifesto/">the mission</a> when I return in mid-August.</p>
+
+<div class="footnotes">
+ <ol>
+  <li id="2021-07-12-10-years-at-mozilla-footnote-1-definition" class="footnote-definition">
+   <p>To the extent that Zen Buddhism is a religion.&nbsp;<a href="#2021-07-12-10-years-at-mozilla-footnote-1-return">↩</a></p></li>
+  <li id="2021-07-12-10-years-at-mozilla-footnote-2-definition" class="footnote-definition">
+   <p>I&rsquo;ve since moved to <a href="https://wiki.mozilla.org/Data">Data @ Mozilla</a>&nbsp;<a href="#2021-07-12-10-years-at-mozilla-footnote-2-return">↩</a></p></li></ol></div> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2021/07/adding-persistence-to-irydium-with-supabase/">Adding persistence to Irydium with Supabase</a></h2>
     <p class="index-date">Jul 5th, 2021</p>
     <p><span class="tags"><a href="/tags/Recurse.html">Recurse</a>  <a href="/tags/Irydium.html">Irydium</a></span></p>
@@ -542,58 +561,6 @@ while (1) { true }</code></pre>
 <p>More on this in the future, I hope.</p>
 
 <p><em>Many thanks to <a href="https://teonbrooks.com/">Teon Brooks</a> and Devin Bayly for reviewing an early draft of this post</em></p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2020/08/mozregression-and-older-builds/">mozregression and older builds</a></h2>
-    <p class="index-date">Aug 17th, 2020</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a>  <a href="/tags/telemetry.html">telemetry</a></span></p>
-  </header>
-
-<p>Periodically the discussion comes up about pruning away old stored Firefox build artifacts in S3. Each build is tens of megabytes, multiply that by the number of platforms we support and the set of revisions we churn through on a daily basis, and pretty soon you&rsquo;re talking about real money.</p>
-
-<p>This came up recently in a discussion about <a href="https://groups.google.com/g/mozilla.dev.platform/c/0OV_M3b-cMM/m/kkknfFdECgAJ">removing the legacy taskcluster deployment</a> &mdash; what do we actually lose by cutting back our archive of integration builds? The main reason to keep them around is to facilitate bisection testing with <a href="https://mozilla.github.io/mozregression/">mozregression</a>, to find out when a bug was introduced. Up to now, discussions about this have been a bit hand-wavey: we do keep logs about who&rsquo;s accessing old builds, but it&rsquo;s never been clear whether it was mozregression accessing them or something else.</p>
-
-<p>Happily, now that <a href="/blog/2020/05/this-week-in-glean-mozregression-telemetry-part-2/">mozregression has some telemetry</a>, it&rsquo;s a little easier to get some answers on what people are actually doing. This query gets the distribution of build ages (launched or bisected) over the past 6 months, at a month long granularity.<sup><a href="#2020-08-17-mozregression-and-older-builds-footnote-1-definition" name="2020-08-17-mozregression-and-older-builds-footnote-1-return">1</a></sup> Ages are relative to the date mozregression was launched: for example, if someone asked for a build from May 2019 in June 2020, the number would be &ldquo;13&rdquo;.</p>
-
-<div class="brush: sql">
- <div class="colorful">
-  <pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_app</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">app</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_build_type</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">build_type</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="n">DATE_DIFF</span><span class="p">(</span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">),</span><span class="w"> </span><span class="k">IF</span><span class="p">(</span><span class="k">LENGTH</span><span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="n">usage_bad_date</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">PARSE_DATE</span><span class="p">(</span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">substr</span><span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="n">usage_bad_date</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)),</span><span class="w"> </span><span class="n">PARSE_DATE</span><span class="p">(</span><span class="s1">&#39;%Y-%m-%d&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">substr</span><span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="n">usage_launch_date</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">))),</span><span class="w"> </span><span class="k">MONTH</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">build_age</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="o">`</span><span class="n">moz</span><span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">data</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">prod</span><span class="o">`</span><span class="p">.</span><span class="n">org_mozilla_mozregression</span><span class="p">.</span><span class="k">usage</span><span class="w"></span>
-<span class="k">WHERE</span><span class="w"> </span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">DATE_SUB</span><span class="p">(</span><span class="k">CURRENT_DATE</span><span class="p">(),</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="k">MONTH</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">client_info</span><span class="p">.</span><span class="n">app_display_version</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%dev%&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="k">LENGTH</span><span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_build_type</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="p">(</span><span class="k">LENGTH</span><span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="n">usage_bad_date</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">       </span><span class="k">OR</span><span class="w"> </span><span class="k">LENGTH</span><span class="p">(</span><span class="n">metrics</span><span class="p">.</span><span class="n">datetime</span><span class="p">.</span><span class="n">usage_launch_date</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-
-</div>
-
-<p>I ran this query on sql.telemetry.mozilla.org and generated a box plot, broken down by product and build type:</p>
-
-<div class="figure"><img src="/files/2020/08/mozregression-build-age-box-plot.png" alt="" />
- <p class="caption"></p></div>
-
-<p><a href="https://sql.telemetry.mozilla.org/queries/73968#184980">link</a> (requires Mozilla LDAP)</p>
-
-<p>Unsurprisingly, Firefox shippable builds are the number one thing people try to bisect. Let&rsquo;s take a little bit of a closer look at what&rsquo;s going on there:</p>
-
-<div class="figure"><img src="/files/2020/08/mozregression-build-age-box-plot-detail.png" alt="" />
- <p class="caption"></p></div>
-
-<p>The median value is 1, which indicates that most people are bisecting builds within one month of the day in which mozregression was run. And the <a href="https://www.statisticshowto.com/upper-and-lower-fences/">upper fence</a> result is 6, suggesting that most of the time people are looking at a regression range that is within a 6 month range. However, looking more closely at the data points themselves (the little points in the chart above), there are a considerable number of outliers where a range greater than 20 months was asked for.</p>
-
-<p>&hellip; which brings up to the question that we want to answer. Given that getting old builds isn&rsquo;t that common (which we sort of knew already, based on the access patterns in the S3 logs), what is the impact of the times that we do? And it&rsquo;s here where I have to throw up my hands and say &ldquo;I don&rsquo;t know&rdquo; and suggest that we go back to empirical observation and user research.</p>
-
-<p>You can go back to the thread I linked above, and see that core Firefox/Gecko developers find the ability to get a precise regression range for older revisions valuable. One thing that&rsquo;s worth mentioning is that mozregression isn&rsquo;t run that often, compared to a product that we ship: on the order of 50 to 100 times per a day. But when it comes to internal tooling, a small amount of use might have a big impact: if a mozregression invocation a developer a few hours (or more), that&rsquo;s a real benefit to Firefox and Mozilla. The same argument might apply here, where a small number of bisections on older builds might have a disproportionate impact on the quality of the product.</p>
-
-<div class="footnotes">
- <ol>
-  <li id="2020-08-17-mozregression-and-older-builds-footnote-1-definition" class="footnote-definition">
-   <p>I only added the telemetry to capture this information <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1651401">relatively recently</a>, so we&rsquo;re actually only looking at about a month of data in this post. We&rsquo;ll have more complete results later this year.&nbsp;<a href="#2020-08-17-mozregression-and-older-builds-footnote-1-return">↩</a></p></li></ol></div> 
   <hr/>
 </article>
 <footer>

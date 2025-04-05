@@ -68,6 +68,7 @@ https://wrla.ch/blog/2014/07/measuring-frames-per-second-and-animation-smoothnes
 https://wrla.ch/blog/2014/09/mozregression-0-24/
 https://wrla.ch/blog/2019/03/new-ideas-old-buildings/
 https://wrla.ch/blog/2018/10/pydata-nyc-2018/
+https://wrla.ch/blog/2025/04/electrification-and-solar/
 https://wrla.ch/blog/2010/05/hbus-is-back/
 https://wrla.ch/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/
 https://wrla.ch/blog/2019/10/using-bigquery-javascript-udfs-to-analyze-firefox-telemetry-for-fun-profit/

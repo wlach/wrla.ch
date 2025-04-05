@@ -92,6 +92,41 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
        <p class="less-important">Showing posts tagged <em>Mozilla</em></p>  <article>
   <header>
+    <h2><a href="/blog/2012/02/playing-with-pandas/">Playing with pandas</a></h2>
+    <p class="index-date">Feb 10th, 2012</p>
+    <p><span class="tags"><a href="/tags/Android.html">Android</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Pandaboard.html">Pandaboard</a></span></p>
+  </header>
+
+<p>For the last few days I&rsquo;ve been experimenting with getting a Pandaboard running Android 4.0, continuing the work that Clint Talbert <a href="http://cmtalbert.wordpress.com/2011/10/12/pandaboard-status/">started in the fall</a> to get these boards for use as a replacement for the Tegra in Mozilla&rsquo;s android automation. The first objective is to get a reproducible build going, after that we&rsquo;ll try to get some of our custom tools (<a href="https://wiki.mozilla.org/Mobile/Fennec_Unittests/Remote_Testing">SUTAgent</a> &#38; friends) installed by default.</p>
+
+<p>So far this has been interesting. Much as Clint did before, I thought I&rsquo;d document some of the notes on what I did in the hopes that they&rsquo;ll be helpful to other people trying to do similar things.</p>
+
+<p>Getting things up and running is a two step process. First, you build the beast. This part is straightforward, just follow the instructions here:</p>
+
+<p>At least the build part is more or less straightforward. Just follow the instructions here:</p>
+
+<ul>
+ <li><a href="http://source.android.com/source/building.html">http://source.android.com/source/building.html</a></li>
+ <li><a href="http://source.android.com/source/building-devices.html">http://source.android.com/source/building-devices.html</a></li></ul>
+
+<p>Note that you almost certainly want to build in the &ldquo;eng&rdquo; configuration, which is rooted and (apparently) has some extra tools installed.</p>
+
+<p>Installing it is a little more tricky. The way they want you to do this is put the pandaboard into a special mode and copy the stuff you built onto an sdcard. Seem a little funny to you? Yeah, it does to me too. Why not just build an sdcard image directly?
+ <br />Nonetheless, this is the officially supported way of imaging a pandaboard, so let&rsquo;s just follow it until we can think of a better way of doing things. The instructions for doing this on the pandaboard are located in the source tree here:</p>
+
+<p><code>&lt;a href="http://source-android.frandroid.com/device/ti/panda/README"&gt;device/ti/panda/README&lt;/a&gt;</code></p>
+
+<p>These are mostly correct as far as I can tell, but there&rsquo;s a few gotchas. First, you need to run the commands mentioned as root unless you&rsquo;ve configured USB to be configurable by your user. Second, most of those commands are not in the path by default so you&rsquo;ll need to specify the full path to e.g. the fastboot utility. The instructions <a href="http://fosiao.com/node/19">here</a> cover these exception cases: I recommend following them instead.</p>
+
+<p>One thing which neither document mentions is that you really need to make sure your sdcard is wiped completely clean before using fastboot. The &ldquo;oem format&rdquo; step only recreates the partition table, it doesn&rsquo;t delete any corrupted partitions. If you reboot while these are still in place, it will try to bring up your corrupted version of Android, not the fastboot console. I spent quite some time debugging why I couldn&rsquo;t properly flash the operating system before realizing this. Easiest way to get around this is to dd <code>/dev/zero</code> onto the sdcard before beginning the flashing process.</p>
+
+<p>Also, while not strictly necessary to get something up and running, I recommend highly getting an HDMI monitor as well as a serialUSB adapter. The former is useful to see if your Android device actually successfully booted up, the latter is useful for debugging boot issues where you don&rsquo;t get that far (the serial console is always available from boot).</p>
+
+<p>So, after painfully learning about the above caveats, I have managed to get things mostly working. I can see the ICS homescreen on my attached HDMI monitor and interact with it if I attach a USB mouse. The one gotcha is that both ethernet and WIFI networking are totally broken. Plugging in an ethernet cable or connecting to a WIFI network seems to result in the machine randomly rebooting, with the logs saying nothing useful. Both of these things are ostensibly supposed to be working according to the latest I&rsquo;ve read from Google so I&rsquo;m not exactly sure what&rsquo;s going on. Investigations will continue.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2012/01/yet-more-checkerboarding-analysis/">Yet more checkerboarding analysis</a></h2>
     <p class="index-date">Jan 25th, 2012</p>
     <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -336,23 +371,6 @@
 <p>All this is not to say that usability experts and graphic designers don&rsquo;t have special skills that are worthy of respect. Indeed, if you&rsquo;re a designer and would like to get involved with our work, please <a href="https://wiki.mozilla.org/Auto-tools#Want_to_Help.3F">join us</a>, we&rsquo;d love your help. My only point is that on a project where a design resource isn&rsquo;t available, thinking explicitly about usability is still worthwhile. And even where you have a UX expert on staff, programmers can have useful feedback too. Good UI is everyone&rsquo;s responsibility!</p> 
   <hr/>
 </article>
-<article>
-  <header>
-    <h2><a href="/blog/2011/09/changes/">Changes!</a></h2>
-    <p class="index-date">Sep 1st, 2011</p>
-    <p><span class="tags"><a href="/tags/Life.html">Life</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>A bit quiet here for the last few months. What&rsquo;s been happening?</p>
-
-<ol>
- <li>I got married and had a <a href="http://www.flickr.com/photos/wlach/sets/72157626998555629">wonderful honeymoon</a> in France.</li>
- <li>I started a fantastic new job with Mozilla&rsquo;s <a href="https://wiki.mozilla.org/Auto-tools/">tools &#38; automation</a> group. Currently working on bringing down the build/test times for Firefox (part of a project called <a href="http://brasstacks.mozilla.com/gofaster/">GoFaster</a>), which has been really interesting.</li>
- <li>I moved into a fantastic new apartment in an old victorian building near Vend&ocirc;me metro.</li></ol>
-
-<p>In short, life has been treating me really well! More updates soon.</p> 
-  <hr/>
-</article>
 <footer>
  <ul class="pagination">
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-10.html">
@@ -368,7 +386,8 @@
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-9.html">9</a></li>
   <li class="page-item"><a class="page-link" href="/tags/Mozilla-10.html">10</a></li>
   <li class="page-item active"><a class="page-link" href="/tags/Mozilla-11.html">11</a></li>
-  <li class="page-item disabled"><a class="page-link" href="#">
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-12.html">12</a></li>
+  <li class="page-item"><a class="page-link" href="/tags/Mozilla-12.html">
     <quote>&rarr;</quote></a></li></ul></footer>
     </div>
     <footer class="container max-w-screen-md px-8 py-4 mx-auto less-important">

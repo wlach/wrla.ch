@@ -92,6 +92,32 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2017/07/taking-over-an-npm-package-sanity-prevails/">Taking over an npm package: sanity prevails</a></h2>
+    <p class="index-date">Jul 13th, 2017</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p>Sometimes problems are easier to solve than expected.</p>
+
+<p>For the last few months I&rsquo;ve been working on the front end of a new project called <a href="https://github.com/mozilla/missioncontrol">Mission Control</a>, which aims to chart lots of interesting live information in something approximating realtime. Since this is a greenfield project, I thought it would make sense to use the currently-invogue framework at Mozilla (react) along with our standard visualization library, <a href="http://metricsgraphicsjs.org/">metricsgraphics</a>.</p>
+
+<p>Metricsgraphics is great, but its jquery-esque api is somewhat at odds with the react way. The obvious solution to this problem is to wrap its functionality in a react component, and a quick google search determined that several people have tried to do exactly that, the most popular one being one called (obviously) react-metrics-graphics. Unfortunately, it hadn&rsquo;t been updated in quite some time and some pull requests (including ones implementing features I needed for my project) weren&rsquo;t being responded to.</p>
+
+<p>I expected this to be pretty difficult to resolve: I had no interaction with the author (Carter Feldman) before but based on my past experiences in free software, I was expecting stonewalling, leaving me no choice but to fork the package and give it a new name, a rather unsatisfying end result.</p>
+
+<p>But, hey, let&rsquo;s keep an open mind on this. What does google say about unmaintained npm packages? Oh what&rsquo;s this? They actually have a <a href="https://docs.npmjs.com/misc/disputes">policy</a>?</p>
+
+<p>tl;dr: You email the maintainer (politely) and CC support@npmjs.org about your interest in helping maintain the software. If you&rsquo;re unable to come up with a resolution on your own, they will intervene.</p>
+
+<p>So I tried that. It turns out that Carter was really happy to hear that Mozilla was interested in taking over maintenance of this project, and not only gave me permission to start publishing newer versions to npm, but even transferred his repository over to Mozilla (so we could preserve issue and PR history). The project&rsquo;s new location is here:</p>
+
+<p><a href="https://github.com/mozilla/react-metrics-graphics">https://github.com/mozilla/react-metrics-graphics</a></p>
+
+<p>In hindsight, this is obviously the most reasonable outcome and I&rsquo;m not sure why I was expecting anything else. Is the node community just friendlier than other areas I&rsquo;ve worked in? Have community standards improved generally? In any case, thank you Carter for a great piece of software, hopefully it will thrive in its new home. :P</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2017/07/the-vastness/">The vastness</a></h2>
     <p class="index-date">Jul 8th, 2017</p>
     <p><span class="tags"><a href="/tags/Counting.html">Counting</a></span></p>
@@ -416,45 +442,6 @@
 <p>I&rsquo;ve found this program to be a really great experience on both sides &mdash; it&rsquo;s an opportunity for contributors to really go beyond the &ldquo;good first bug&rdquo; style of patches to having a really substantial impact on some of the projects that we&rsquo;re working on while gaining lots of software development skills that are useful in the real world.</p>
 
 <p>Once again, I&rsquo;m going to be mentoring one or two people on the Perfherder project, a tool we use to measure and sheriff Firefox performance. If you&rsquo;re inclined to work on some really interesting data analysis and user interface problems in Python and JavaScript, please have a look at the <a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Perfherder">project page</a> and get in touch. :)</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2016/03/are-we-fast-yet-and-perfherder/">Are We Fast Yet and Perfherder</a></h2>
-    <p class="index-date">Mar 30th, 2016</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-  </header>
-
-<p>Historically at Mozilla, we&rsquo;ve had a bunch of different systems running to benchmark Firefox&rsquo;s performance. The two most broadly-scoped are <a href="https://wiki.mozilla.org/Buildbot/Talos">Talos</a> (which runs as part of our build process, and emphasizes common real-world use cases, like page loading) and <a href="https://arewefastyet.com/">Are We Fast Yet</a> (which runs seperately, and emphasizes JavaScript performance and benchmarks).</p>
-
-<p>As many of you know, most of my focus over the last year-and-a-bit has been developing a system called Perfherder, which aims to make monitoring and acting on performance data easier. A great introduction to Perfherder is my <a href="/blog/2016/03/platform-engineering-project-of-the-month-perfherder/">project of the month post</a>.</p>
-
-<p>The initial focus of Perfherder has been Talos, which is deeply integrated into our automation and also maintained by Engineering Productivity (my group). However, the intention was always to allow anyone in the Mozilla community to submit performance data for Firefox and sheriff it, much like Treeherder has supported the submission of test result data from third parties (e.g. autophone, Firefox UI tests). There are more commonalities than differences in how we do performance sheriffing with Are We Fast Yet (which currently has its own web interface) and Perfherder, so it made sense to see if we could pool resources.</p>
-
-<p>So, over the last couple of months, <a href="https://elvis314.wordpress.com/">Joel Maher</a> and I have been in discussions with Hannes Verschore, current maintainer of Are We Fast Yet (AWFY) to see what could be done. It looks like it is possible for Perfherder to provide most of what AWFY needs, though there are a few exceptions. I thought for the benefit of others, it might be useful to outline what&rsquo;s done, what&rsquo;s coming next, and what might not be implemented (at least not any time soon).</p>
-
-<h3 id="whats-done">What&rsquo;s done</h3>
-
-<ul>
- <li>Get AWFY submitting data to Perfherder and allow it to be sheriffed  seperately from Talos. This is working on treeherder stage, and you  can already examine the <a href="https://treeherder.allizom.org/perf.html#/alerts?status=0&amp;framework=5">alert data</a>.</li></ul>
-
-<h3 id="whats-in-progress-or-in-the-near-term-pipeline">What&rsquo;s in progress (or in the near-term pipeline)</h3>
-
-<ul>
- <li>Allow custom alerting behaviour (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1254595">bug 1254595</a>). For example, we want  to alert on subtests for AWFY while still summarizing the results.  This is something we don&rsquo;t currently support.</li>
- <li>Allow creating an alert manually (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1260791">bug 1260791</a>). Sadly, our regression detection  algorithm is not perfect. AWFY already supports this, we should too. This is something we also want for Talos.</li>
- <li>Make regression-filing templates non-talos-specific (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1260805">bug 1260805</a>). Currently we have a convenience template for filing bugs for performance  regressions, but this is currently specific to various things about Talos (job running instructions, links to documentation, etc.). We should  make it configurable so other projects like AWFY can take advantage of this functionality.</li></ul>
-
-<h3 id="under-consideration">Under consideration</h3>
-
-<ul>
- <li>Some kind of support for bisecting a push to figure out which patch  caused a regression. AWFY currently supports this, but it&rsquo;s a fairly  difficult thing to add to Perfherder (much of which is built upon  Treeherder&rsquo;s per-push result model). Maybe this is something we should  do, but it would be a significant amount of effort.</li>
- <li>Proprietary benchmarks: AWFY runs one benchmark the results for  which we can&rsquo;t make public. Adding &ldquo;private&rdquo; jobs or results to  Treeherder is likely a big can of worms, but it might be something  we want to do eventually.</li></ul>
-
-<h3 id="probably-wont-fix">Probably won&rsquo;t fix</h3>
-
-<ul>
- <li>Supporting comparative measurements between Firefox and other  browsers. This is an important task, but doesn&rsquo;t really fit into the  model of Perfherder, which is intimately tied to the revision data  associated with Firefox. To do this would require detailed tracking  of Chrome on the same basis, and I don&rsquo;t think that&rsquo;s really a place  where we want to go. We should definitely monitor for general  trends, but I think that is best done with a seperate system.</li></ul> 
   <hr/>
 </article>
 <footer>

@@ -92,6 +92,30 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2014/09/hacking-on-the-treeherder-front-end-refreshingly-easy/">Hacking on the Treeherder front end: refreshingly easy</a></h2>
+    <p class="index-date">Sep 11th, 2014</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p>Over the past two weeks, I&rsquo;ve been working a bit on the <a href="http://treeherder.mozilla.org">Treeherder</a> front end (our interface to managing build and test jobs from mercurial changesets), trying to help get things in shape so that the sheriffs can feel comfortable transitioning to it from <a href="https://tbpl.mozilla.org/">tbpl</a> by the end of the quarter.</p>
+
+<p>One thing that has pleasantly surprised me is just how easy it&rsquo;s been to get going and be productive. The process looks like this on Linux or Mac:</p>
+
+<pre><code>git clone https://github.com/mozilla/treeherder-ui.git
+cd treeherder-ui/webapp
+./scripts/web-server.js</code></pre>
+
+<p>Then just load http://localhost:8000 in your favorite web browser (Firefox) and you should be good to go (it will load data from the actually treeherder site). If you want to make modifications to the HTML, Javascript, or CSS just go ahead and do so with your favorite editor and the changes will be immediately reflected.</p>
+
+<p>We have a fair backlog of issues to get through, many of them related to the front end. If you&rsquo;re interested in helping out, please have a look:</p>
+
+<p><a href="https://wiki.mozilla.org/Auto-tools/Projects/Treeherder#Bugs_.26_Project_Tracking">https://wiki.mozilla.org/Auto-tools/Projects/Treeherder#Bugs_.26_Project_Tracking</a></p>
+
+<p>If nothing jumps out at you, please drop by irc.mozilla.org #treeherder and we can probably find something for you to work on. We&rsquo;re most active during Pacific Time working hours.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2014/08/a-new-meditation-app/">A new meditation app</a></h2>
     <p class="index-date">Aug 14th, 2014</p>
     <p><span class="tags"><a href="/tags/Buddhism.html">Buddhism</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Meditation.html">Meditation</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/zen.html">zen</a></span></p>
@@ -383,31 +407,6 @@
 <p>(note that there were some problems in the way the tests were being run before, so results before the 12th should not be considered valid)</p>
 
 <p>So one concept, at least two relevant metrics we can measure with it (startup time and checkerboarding). Are there any more? Almost certainly, let&rsquo;s find them!</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2014/03/eideticker-for-firefoxos-becoming-more-useful/">Eideticker for FirefoxOS: Becoming more useful</a></h2>
-    <p class="index-date">Mar 9th, 2014</p>
-    <p><span class="tags"><a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/FirefoxOS.html">FirefoxOS</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p><em>[ For more information on the Eideticker software I&rsquo;m referring to, see <a href="http://wrla.ch/blog/2012/06/mobile-firefox-measuring-how-a-browser-feels/">this entry</a> ]</em></p>
-
-<p>Time for a long overdue eideticker-for-firefoxos update. <a href="http://wrla.ch/blog/2013/10/automatically-measuring-startup-load-time-with-eideticker/">Last time we were here</a> (almost 5 months ago! man time flies), I was discussing methodologies for measuring startup performance. Since then, <a href="http://blargon7.com/">Dave Hunt</a> and myself have been doing lots of work to make Eideticker more robust and useful. Notably, we now have a setup in London running a suite of Eideticker tests on the latest version of FirefoxOS on the Inari on a daily basis, reporting to <a href="http://eideticker.mozilla.org/b2g">http://eideticker.mozilla.org/b2g</a>.</p>
-
-<p><a href="/files/2014/03/b2g-contacts-startup-dashboard.png"><img src="/files/2014/03/b2g-contacts-startup-dashboard.png" alt="b2g-contacts-startup-dashboard" width="840" height="601" class="alignnone size-full wp-image-1005" srcset="/files/2014/03/b2g-contacts-startup-dashboard-300x214.png 300w, /files/2014/03/b2g-contacts-startup-dashboard.png 840w" sizes="(max-width: 840px) 100vw, 840px" /></a></p>
-
-<p>There were more than a few false starts with and some of the earlier data is not to be entirely trusted but it now seems to be chugging along nicely, hopefully providing startup numbers that provide a useful counterpoint to the <a href="https://datazilla.mozilla.org/b2g">datazilla startup numbers</a> we&rsquo;ve already been collecting for some time. There still seem to be some minor problems, but in general I am becoming more and more confident in it as time goes on.</p>
-
-<p>One feature that I am particularly proud of is the detail view, which enables you to see frame-by-frame what&rsquo;s going on. Click on any datapoint on the graph, then open up the view that gives an account of what eideticker is measuring. Hover over the graph and you can see what the video looks like at any point in the capture. This not only lets you know that something regressed, but how. For example, in the messages app, you can scan through this view to see exactly when the first message shows up, and what exact state the application is in when Eideticker says it&rsquo;s &ldquo;done loading&rdquo;.</p>
-
-<p><a href="/files/2014/03/capture-detail-view.png"><img src="/files/2014/03/capture-detail-view.png" alt="Capture Detail View" width="964" height="843" class="alignnone size-full wp-image-1008" srcset="/files/2014/03/capture-detail-view-300x262.png 300w, /files/2014/03/capture-detail-view.png 964w" sizes="(max-width: 964px) 100vw, 964px" /></a>
- <br /><a href="http://eideticker.wrla.ch/b2g/framediff.html?id=3819a484a6d611e3ab89f0def1767b24">[link to original]</a></p>
-
-<p>(apologies for the low quality of the video &#8212; should be fixed with <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=980479">this bug</a> next week)</p>
-
-<p>As it turns out, this view has also proven to be particularly useful when working with the new entropy measurements in Eideticker which I&rsquo;ve been using to measure checkerboarding (redraw delay) on FirefoxOS. More on that next week.</p> 
   <hr/>
 </article>
 <footer>
