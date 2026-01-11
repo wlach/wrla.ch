@@ -92,6 +92,20 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2017/07/mozregression-s-new-mascot/">mozregression&rsquo;s new mascot</a></h2>
+    <p class="index-date">Jul 3131, 2017</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
+  </header>
+
+<p>Spent a few hours this morning on a few housekeeping issues with <a href="https://mozilla.github.io/mozregression">mozregression</a>. The web site was badly in need of an update (it was full of references to obsolete stuff like B2G and codefirefox.com) and the usual pile of fixes motivated a new release of the actual software. But most importantly, mozregression now has a proper application icon / logo, thanks to Victoria Wang!</p>
+
+<p><img src="/files/2017/07/mozregressionicon3.png" /></p>
+
+<p>One of the nice parts about working at Mozilla is the flexibility it offers to just hack on stuff that&rsquo;s important, whether or not it&rsquo;s part of your formal job description. Maintaining mozregression is pretty far outside my current set of responsibilities (or even interests), but I keep it going because it&rsquo;s a key tool used by developers team here and no one else seems willing to take it over. Fortunately, tools like appveyor and pypi keep the time suckage to a mostly-reasonable level.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2017/07/taking-over-an-npm-package-sanity-prevails/">Taking over an npm package: sanity prevails</a></h2>
     <p class="index-date">Jul 13th, 2017</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -240,11 +254,11 @@
 
 <div class="brush: sql">
  <div class="colorful">
-  <pre><span></span><span class="k">select</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">line</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">bug_job_map</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">bjm</span><span class="w"></span>
-<span class="w">  </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">text_log_step</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">tls</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tls</span><span class="p">.</span><span class="n">job_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">job_id</span><span class="w"></span>
-<span class="w">  </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">text_log_error</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">tle</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">step_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tls</span><span class="p">.</span><span class="n">id</span><span class="w"></span>
-<span class="w">  </span><span class="k">where</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">created</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s1">&#39;2016-10-31&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">created</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2016-11-24&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">NULL</span><span class="w"></span>
-<span class="w">  </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">step_id</span><span class="p">,</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">id</span><span class="p">;</span><span class="w"></span>
+  <pre><span></span><span class="k">select</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="p">,</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">line</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">bug_job_map</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">bjm</span>
+<span class="w">  </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">text_log_step</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">tls</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tls</span><span class="p">.</span><span class="n">job_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">job_id</span>
+<span class="w">  </span><span class="k">left</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">text_log_error</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">tle</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">step_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tls</span><span class="p">.</span><span class="n">id</span>
+<span class="w">  </span><span class="k">where</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">created</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s1">&#39;2016-10-31&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">created</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s1">&#39;2016-11-24&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">bug_id</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">NULL</span>
+<span class="w">  </span><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">bjm</span><span class="p">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">step_id</span><span class="p">,</span><span class="w"> </span><span class="n">tle</span><span class="p">.</span><span class="n">id</span><span class="p">;</span>
 </pre></div>
 
 </div>
@@ -253,20 +267,20 @@
 
 <div class="brush: json">
  <div class="colorful">
-  <pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="nt">"bug_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1202623</span><span class="p">,</span><span class="w"></span>
-<span class="nt">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js Test timed out -"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js Found a tab after previous test timed out: http:/&lt;number&gt;&lt;number&gt;:&lt;number&gt;/browser/browser/base/content/test/plugins/plugin_test.html -"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js Found a browser window after previous test timed out -"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js A promise chain failed to handle a rejection:  - at chrome://mochikit/content/browser-test.js:&lt;number&gt; - TypeError: this.SimpleTest.isExpectingUncaughtException is not a function"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Test timed out -"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span><span class="w"></span>
+  <pre><span></span><span class="p">{</span>
+<span class="nt">"bug_number"</span><span class="p">:</span><span class="w"> </span><span class="mi">1202623</span><span class="p">,</span>
+<span class="nt">"lines"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js Test timed out -"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js Found a tab after previous test timed out: http:/&lt;number&gt;&lt;number&gt;:&lt;number&gt;/browser/browser/base/content/test/plugins/plugin_test.html -"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js Found a browser window after previous test timed out -"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"browser_private_clicktoplay.js A promise chain failed to handle a rejection:  - at chrome://mochikit/content/browser-test.js:&lt;number&gt; - TypeError: this.SimpleTest.isExpectingUncaughtException is not a function"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Test timed out -"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span>
+<span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window after previous test timed out -"</span><span class="p">,</span>
 <span class="w">  </span><span class="s2">"browser_privatebrowsing_newtab_from_popup.js Found a browser window</span>
-<span class="s2">  after previous test timed out -"</span><span class="w"></span>
-<span class="w">  </span><span class="p">]</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="s2">  after previous test timed out -"</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
 </pre></div>
 
 </div>
@@ -428,20 +442,6 @@
  <li><a href="https://github.com/mozilla/treeherder/commits/master?author=crosscent">Roy Chiang</a></li></ul>
 
 <p>Thank you Shruti and Roy! You&rsquo;ve helped to make sure Firefox (and Servo!) performance remains top-notch.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2016/05/quarter-of-contribution-june-july-2016-edition/">Quarter of Contribution: June / July 2016 edition</a></h2>
-    <p class="index-date">May 27th, 2016</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
-  </header>
-
-<p>Just wanted to announce that, once again, my team (<a href="https://wiki.mozilla.org/EngineeringProductivity">Mozilla Engineering Productivity</a>) is just about to start running another <a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution">quarter of contribution</a> &mdash; a great opportunity for newer community members to dive deep on some of the projects we&rsquo;re working on, brush up on their programming and problem solving skills, and work with experienced mentors. You can find more information on this program <a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Summer_2016">here</a>.</p>
-
-<p>I&rsquo;ve found this program to be a really great experience on both sides &mdash; it&rsquo;s an opportunity for contributors to really go beyond the &ldquo;good first bug&rdquo; style of patches to having a really substantial impact on some of the projects that we&rsquo;re working on while gaining lots of software development skills that are useful in the real world.</p>
-
-<p>Once again, I&rsquo;m going to be mentoring one or two people on the Perfherder project, a tool we use to measure and sheriff Firefox performance. If you&rsquo;re inclined to work on some really interesting data analysis and user interface problems in Python and JavaScript, please have a look at the <a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Perfherder">project page</a> and get in touch. :)</p> 
   <hr/>
 </article>
 <footer>

@@ -92,6 +92,31 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2026/01/rethinking-music-listening/">Rethinking Music Listening</a></h2>
+    <p class="index-date">Jan 11th, 2026</p>
+    <p><span class="tags"><a href="/tags/Music.html">Music</a></span></p>
+  </header>
+
+<p>On this day in 2026, I canceled my Spotify subscription. This was a long time coming, but what finally pushed me over the edge was listening to this podcast on streaming services a couple weeks ago:</p>
+
+<p><a href="https://techwontsave.us/episode/262_how_spotify_remade_the_music_industry_w_liz_pelly">How Spotify Remade the Music Industry</a></p>
+
+<p>I lament the loss of place that music has had in my life over the last decade. It&rsquo;s probably unfair to say that streaming services were the sole cause of this: aging and changes in circumstance clearly played a role. That said, I don&rsquo;t think they&rsquo;ve helped, and I want to try a different approach to music listening with a bit of deliberate friction.</p>
+
+<p>Here&rsquo;s what I&rsquo;ve done:</p>
+
+<ul>
+ <li>Revived my archive of music from ~2009, just before I started streaming seriously. Was lucky enough to have an old hard drive laying around (that immediately died after the transfer).</li>
+ <li>Bought a bunch of music on <a href="https://bandcamp.com/">Bandcamp</a> that I&rsquo;d been listening to recently direct from the artist / label, downloaded AAC versions.</li>
+ <li>Installed <a href="https://syncthing.net/">Syncthing</a> to share said folder between my Linux laptop, my work (Mac) laptop and my Pixel 8 phone (cool software!)</li>
+ <li>Installed <a href="https://krosbits.in/musicolet/">Musicolet</a> on my Pixel</li>
+ <li>Installed <a href="https://brushedtype.co/doppler/">Doppler</a> on my Mac (much of my legacy CD collection was transcoded to Ogg Vorbis, which iTunes doesn&rsquo;t support). For Linux, I&rsquo;m just going to use Rhythmbox for a while and see how it goes.</li></ul>
+
+<p>So far, so good? I&rsquo;m still listening to music at least. Various one-time expenses incurred for new software and I expect Bandcamp will be an ongoing one (which will definitely exceed what I paid for a Spotify subscription up to now), but feels worth it as long as I can afford it.</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2025/04/electrification-and-solar/">Electrification and solar</a></h2>
     <p class="index-date">Apr 5th, 2025</p>
     <p><span class="tags"><a href="/tags/Recurse.html">Recurse</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -531,9 +556,9 @@ Usage: bqetl [OPTIONS] COMMAND [ARGS]...
 
 <div class="brush: bash">
  <div class="colorful">
-  <pre><span></span>npx degit git@github.com:irydium/irydium-template.git my-notebook
-npm install
-npm run dev
+  <pre><span></span>npx<span class="w"> </span>degit<span class="w"> </span>git@github.com:irydium/irydium-template.git<span class="w"> </span>my-notebook
+npm<span class="w"> </span>install
+npm<span class="w"> </span>run<span class="w"> </span>dev
 </pre></div>
 
 </div>
@@ -546,7 +571,7 @@ npm run dev
 
 <div class="brush: bash">
  <div class="colorful">
-  <pre><span></span>npm install -g surge
+  <pre><span></span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>surge
 surge
 </pre></div>
 
@@ -555,55 +580,6 @@ surge
 <p>Surge will prompt you for an email and a password, then will automatically publish your site at a unique URL. As an example, I published a site for the above template: <a href="https://few-blade.surge.sh">few-blade.surge.sh</a></p>
 
 <p>Interested in chatting more about this? Feel free to reach out on the <a href="https://gitter.im/irydium/community">Irydium Gitter chat</a>.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2021/07/irydium-recurse-updates/">Irydium @ Recurse Updates</a></h2>
-    <p class="index-date">Jul 28th, 2021</p>
-    <p><span class="tags"><a href="/tags/Irydium.html">Irydium</a>  <a href="/tags/Recurse.html">Recurse</a></span></p>
-  </header>
-
-<p>Some quick updates on where <a href="https://irydium.dev">Irydium</a> is at, roughly a week-and-a-half before my mini-sabbatical at the <a href="https://recurse.com">Recurse Centre</a> ends.</p>
-
-<h2 id="jupyterbook-and-myst">JupyterBook and MyST</h2>
-
-<p>I&rsquo;d been admiring <a href="https://jupyterbook.org">JupyterBook</a> from afar for some time: their project philosophy appealed to me greatly. In particular, the <a href="https://myst-parser.readthedocs.io/">MyST extensions</a> to markdown seemed like a natural fit for this project and a natural point of collaboration and cross-pollination. A couple of weeks ago, I finally got in touch with some people working on that project, which prompted a few small efforts:</p>
-
-<ul>
- <li><a href="https://github.com/executablebooks/myst-vs-code/pull/32">Adding Svelte support to VSCode&rsquo;s MyST Plugin</a>, which in turn prompted me to figure out <a href="https://github.com/sveltejs/language-tools/issues/1094">why the VSCode plugin for Svelte doesn&rsquo;t render inline content correctly</a> (tl;dr: probably a bug in VSCode?)</li>
- <li><a href="https://irydium.dev/examples#myst-directives">Adding support for a couple of MyST&rsquo;s built-in directives</a> (&ldquo;warning&rdquo; and &ldquo;note&rdquo;).</li></ul>
-
-<p><a href="https://irydium.dev/examples#myst-directives"><img src="https://i.imgur.com/A24e302.png" alt="" /></a></p>
-
-<p>I&rsquo;ve become convinced that building on top of MyST is right for both Irydium and the larger community. Increasing Irydium&rsquo;s support for MyST is tracked in <a href="https://github.com/irydium/irydium/issues/123">irydium/irydium#123</a>.</p>
-
-<h2 id="using-irydium-to-build-irydium">Using Irydium to build Irydium</h2>
-
-<p>I&rsquo;ve been spending a fair bit of time thinking of how to ma ke it easier for people to build Irydium documents through <em>composition</em> of existing documents. Landed the first pieces of this. The first is the ability to &ldquo;import&rdquo; a code chunk from another irydium document. There&rsquo;s a few examples of this in the new <a href="https://irydium.dev/components">components section</a> of irydium.dev:</p>
-
-<div class="figure"><img src="https://i.imgur.com/y4qNTj6.png" alt="" />
- <p class="caption"></p></div>
-
-<p>In a sense this allows you to define a reusable piece of code along with both documentation and usage examples. I think this concept will be particularly useful for supporting language plugins (which I will write about in an upcoming post).</p>
-
-<h2 id="its-a-real-project-now">It&rsquo;s a real project now</h2>
-
-<p>I spent a bit of time last week doing some community gardening. I still consider Irydium an &ldquo;experiment&rdquo; but I&rsquo;d like to at least open up the possibility of it being something larger. To help make that happen, I started working on some basic project governance pieces, namely:</p>
-
-<ul>
- <li>We have a <a href="https://github.com/irydium/irydium/blob/main/CODE_OF_CONDUCT.md">code of conduct</a> and <a href="https://github.com/irydium/irydium/blob/main/CONTRIBUTING.md">contributing guidelines</a>. I opted to go for the Contributor Covenant, which seems to be a good minimal viable social contract. I considered something proposing something more comprehensive (like the <a href="https://www.rust-lang.org/policies/code-of-conduct">Rust Code of Conduct</a>), but I felt that&rsquo;s something for a <em>group</em> of people to discuss and debate, should the time come where Irydium is more than a one-person show. For now, I&rsquo;ll do my best to make sure that everyone in Irydium&rsquo;s orbit has a good experience.</li>
- <li>There&rsquo;s a proper issues list, including some &ldquo;good first bugs&rdquo; for people to look at (shout out to <a href="https://github.com/m-clare/">@m-clare</a> for submitting the first PR to Irydium!)</li>
- <li>We have a <a href="https://gitter.im/irydium/community">channel on gitter</a>, also accessible <a href="https://matrix.to/#/#irydium_community:gitter.im">via Matrix</a>. Come say hi!</li></ul>
-
-<h2 id="next-steps">Next steps</h2>
-
-<p>There&rsquo;s not a ton of time left at RC, so some of these things may have to be done in my spare time after the batch ends. That said, here&rsquo;s my near-term roadmap:</p>
-
-<ul>
- <li>Add support for code chunks to output content directly to the DOM (currently the only way to output to an Irydium document is through a Svelte component). This will be particularly important for Python support, where people expect the output of a cell running <a href="https://github.com/altair-viz">altair</a> or <a href="https://github.com/matplotlib/matplotlib/">matplotlib</a> to display directly in the document (as they do in Jupyter). Tracked in <a href="https://github.com/irydium/irydium/issues/122">irydium/irydium#122</a>.</li>
- <li>Integrate <a href="https://ellx.io/">ellx.io</a>&rsquo;s next-generation JavaScript bundler, <a href="https://github.com/dmaevsky/tokamak">tokamak</a>. This should make building irydium documents much more robust and error proof and paves the way to further improvements. Special shout-out to the ellx developers for being so friendly and open to collaboration: ellx is a novel approach to application development and definitely worth checking out if you haven&rsquo;t already. Tracked in <a href="https://github.com/irydium/irydium/issues/125">irydium/irydium#125</a>.</li>
- <li>Finish and document support for language plugins (and make another blog post especially about them, they&rsquo;re cool!). Tracked in <a href="https://github.com/irydium/irydium/issues/144">irydium/irydium#144</a>.</li></ul> 
   <hr/>
 </article>
 <footer>

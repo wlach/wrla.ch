@@ -92,6 +92,22 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2018/04/metricsgraphics-movements/">metricsgraphics movements</a></h2>
+    <p class="index-date">Apr 30th, 2018</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Metrics-Graphics.html">Metrics Graphics</a></span></p>
+  </header>
+
+<p>Just wanted to give a quick update on some things that have been happening with the <a href="https://www.metricsgraphics.org">metrics graphics</a> since I stepped up to help with maintainership a few months ago:</p>
+
+<ul>
+ <li><a href="https://github.com/hamilton">Hamilton</a>&rsquo;s back as co-maintainer! This has been especially helpful  as he understands much of the historical context of metricsgraphics better than I do.</li>
+ <li>We&rsquo;ve merged in a large number of small fixes and improvements into the codebase,  thanks to myself and a number of other contributors. Special shout-out to Thomas  Champagne, who has contributed a <a href="https://github.com/metricsgraphics/metrics-graphics/commits?author=thomaschampagne">large number of nifty new features</a>.</li>
+ <li>We moved the project from Mozilla to its <a href="https://github.com/metricsgraphics/">own organization</a> on  github. This feels like a much better way forward for a project which is supposed to be useful  far outside the bounds of Mozilla, and hopeful makes contributors feel more like the first-class  citizens of the project that they actually are.</li>
+ <li>We have a GSOC intern! As part of the Mozilla GSOC, Yunhao Zheng is going to be working on  adding rich brushing/zooming support to Metrics Graphics, which should be quite useful for  visualizing complex data in projects like <a href="https://wiki.mozilla.org/EngineeringProductivity/Projects/Perfherder">Perfherder</a> (<a href="https://docs.google.com/document/d/1_KIOJtemqlCBktDdfdjDuS4XhICeaKO3QhNRwbnnf-g/">Project outline</a>, <a href="https://summerofcode.withgoogle.com/projects/#5422620527296512">Yunhao&rsquo;s proposal</a>)</li></ul> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2018/04/mission-control-update/">Mission Control update</a></h2>
     <p class="index-date">Apr 6th, 2018</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Mission-Control.html">Mission Control</a></span></p>
@@ -403,32 +419,18 @@
 
 <div class="brush: js">
  <div class="colorful">
-  <pre><span></span><span class="kd">let</span> <span class="nx">transformedBuildData</span> <span class="o">=</span> <span class="nx">_</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">mapValues</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="p">(</span><span class="nx">buildData</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">({</span>
-    <span class="p">...</span><span class="nx">buildData</span><span class="p">,</span>
-    <span class="nx">data</span><span class="o">:</span> <span class="nx">buildData</span><span class="p">.</span><span class="nx">data</span>
-      <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="nx">datum</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="nx">minTimestamp</span><span class="p">)</span>
-      <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">datum</span> <span class="p">=&gt;</span> <span class="p">[</span><span class="nx">tzcified</span><span class="p">(</span><span class="nx">datum</span><span class="p">[</span><span class="mf">0</span><span class="p">])].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">datum</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">1</span><span class="p">)))</span>
-  <span class="p">})),</span>
-  <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">buildId</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mf">0</span><span class="p">);</span>
+  <pre><span></span><span class="kd">let</span><span class="w"> </span><span class="nx">transformedBuildData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">_</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">mapValues</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">buildData</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">    </span><span class="p">...</span><span class="nx">buildData</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">buildData</span><span class="p">.</span><span class="nx">data</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">datum</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">datum</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">minTimestamp</span><span class="p">)</span>
+<span class="w">      </span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">datum</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">[</span><span class="nx">tzcified</span><span class="p">(</span><span class="nx">datum</span><span class="p">[</span><span class="mf">0</span><span class="p">])].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">datum</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">1</span><span class="p">)))</span>
+<span class="w">  </span><span class="p">})),</span>
+<span class="w">  </span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">buildId</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">);</span>
 </pre></div>
 
 </div>
 
 <p>A little bit easier to understand, but more importantly (to me anyway) it comes across as idiomatic and natural in a way that the python version just doesn&rsquo;t. I&rsquo;ve been happily programming Python for the last 10 years, but it&rsquo;s increasingly feeling time to move on to greener pastures.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2017/07/mozregression-s-new-mascot/">mozregression&rsquo;s new mascot</a></h2>
-    <p class="index-date">Jul 3131, 2017</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/mozregression.html">mozregression</a></span></p>
-  </header>
-
-<p>Spent a few hours this morning on a few housekeeping issues with <a href="https://mozilla.github.io/mozregression">mozregression</a>. The web site was badly in need of an update (it was full of references to obsolete stuff like B2G and codefirefox.com) and the usual pile of fixes motivated a new release of the actual software. But most importantly, mozregression now has a proper application icon / logo, thanks to Victoria Wang!</p>
-
-<p><img src="/files/2017/07/mozregressionicon3.png" /></p>
-
-<p>One of the nice parts about working at Mozilla is the flexibility it offers to just hack on stuff that&rsquo;s important, whether or not it&rsquo;s part of your formal job description. Maintaining mozregression is pretty far outside my current set of responsibilities (or even interests), but I keep it going because it&rsquo;s a key tool used by developers team here and no one else seems willing to take it over. Fortunately, tools like appveyor and pypi keep the time suckage to a mostly-reasonable level.</p> 
   <hr/>
 </article>
 <footer>

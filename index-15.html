@@ -92,6 +92,32 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2011/10/developers-can-t-do-ui/">Developers can&rsquo;t do UI</a></h2>
+    <p class="index-date">Oct 7th, 2011</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Usability.html">Usability</a></span></p>
+  </header>
+
+<p>Despite making a dramatic shift from front-end development to <a href="https://wiki.mozilla.org/Auto-tools">back-end stuff</a> since I started at Mozilla a few months ago, I&rsquo;ve still had occasion to have to do a fair bit of user-facing code, even if an audience of other developers is a bit more limited than what I&rsquo;ve been used to. Since my mission is to make the rest of Mozilla more productive, it&rsquo;s worth putting a bit of time and intention into the user interface for my stuff. If I can reduce learning curves or streamline day-to-day workflows, that&rsquo;s a win for everyone since they can spend that much more time rocking at their jobs (whether that be release engineering, platform work, or whatever). This brings up a point that I&rsquo;ve had in the back of my mind for a while:</p>
+
+<p><em>Despite conventional wisdom, developers can design half-decent user interfaces (if they try)!</em></p>
+
+<p>I used to be certain that a project really needed graphic designers and/or usability experts to provide guidance on UI issues, but my experience over the last few years with iOS/web development has made me reconsider. Sure, pixel pushing and vector art is never going to be a programmer&rsquo;s strong suit (and there&rsquo;s certain high-level techniques that take years of study to acquire/understand), but the basic principles behind good UI design are accessible to anyone. There&rsquo;s really only three core skills:</p>
+
+<ul>
+ <li>
+  <p>An ability to put yourself in the shoes of the user. Who are you designing for, and what are they trying to accomplish? How can I streamline my UI to help them quickly solve the task at hand? This is one of the reasons why I find <a href="http://en.wikipedia.org/wiki/User_story">user stories</a> so helpful.</p></li>
+ <li>
+  <p>An understanding of common vocabulary for describing/designing applications and knowing what is &ldquo;good&rdquo;. Unfortunately I haven&rsquo;t found anything like this for the web, but <a href="http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/MobileHIG/UEBestPractices/UEBestPractices.html#//apple_ref/doc/uid/TP40006556-CH20-SW1">Apple&rsquo;s human interface guidelines</a> have some good general advice on this (just ignore the stuff specific to phones/tablet apps if that&rsquo;s not what you&rsquo;re doing).</p></li>
+ <li>
+  <p>A willingness to iterate. The best ideas usually aren&rsquo;t apparent immediately, and may only come out of a back forth. It&rsquo;s been my experience that the more constructive dialog there is between people actively involved in the project on user experience issues, the better the end result is likely to be.</p></li></ul>
+
+<p>For example, one of the things that release engineering has found most useful in the GoFaster Dashboard has been the <a href="http://brasstacks.mozilla.com/gofaster/#/buildcharts">build charts</a>. Believe it or not, the idea for that view started out as this <a href="http://people.mozilla.com/~wlachance/overall-build-and-test-area.png">useless piece of junk</a> (I can say that because I created it). It was only after a good half hour back and forth on irc between myself, jgriffin, and jmaher (all of us backend/tool developers) that we came up with the view that inspired so much <a href="http://jagriffin.wordpress.com/2011/09/06/gofaster-deeper-data-analysis/">good analysis</a> on the project.</p>
+
+<p>All this is not to say that usability experts and graphic designers don&rsquo;t have special skills that are worthy of respect. Indeed, if you&rsquo;re a designer and would like to get involved with our work, please <a href="https://wiki.mozilla.org/Auto-tools#Want_to_Help.3F">join us</a>, we&rsquo;d love your help. My only point is that on a project where a design resource isn&rsquo;t available, thinking explicitly about usability is still worthwhile. And even where you have a UX expert on staff, programmers can have useful feedback too. Good UI is everyone&rsquo;s responsibility!</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2011/09/updates-on-my-ridiculous-pet-projects/">Updates on my ridiculous pet projects</a></h2>
     <p class="index-date">Sep 29th, 2011</p>
     <p><span class="tags"><a href="/tags/BIXI.html">BIXI</a>  <a href="/tags/Free-Software.html">Free Software</a>  <a href="/tags/hbus.html">hbus</a>  <a href="/tags/Montreal.html">Montreal</a>  <a href="/tags/Open-Data.html">Open Data</a></span></p>
@@ -316,22 +342,6 @@
 <p>All this goodness should be available transparently whenever you import a WordPerfect file in an upcoming release of <a href="http://libreoffice.org">LibreOffice</a>. AbiWord and KOffice filters should come soon enough as well (the updates needed to support libwpd 0.9 are fairly minimal).</p>
 
 <p>Integration with OpenOffice.org is another story. Without going into great amount of detail on the situation (see <a href="http://arstechnica.com/open-source/news/2010/09/document-foundation-forks-openofficeorg-to-liberate-it-from-oracle.ars">this article</a> on Ars Technica for the gory details if you&rsquo;re really interested), it&rsquo;s quite unlikely that OpenOffice.org WordPerfect support will advance unless (1) someone volunteers to do it and (2) Oracle drops their copyright assignment policy. The chances of these things happening seem rather low to me. My personal recommendation would be to switch to <a href="http://libreoffice.org">LibreOffice</a> as soon as the first production version is released. I expect it to rapidly overtake OpenOffice.org in functionality due to its more open participation model.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2010/08/google-transit-halifax-is-down-but-hbus-and-transit-to-go-are-still-up/">Google Transit Halifax is down (but hbus and Transit to Go are still up)</a></h2>
-    <p class="index-date">Aug 29th, 2010</p>
-    <p><span class="tags"><a href="/tags/hbus.html">hbus</a></span></p>
-  </header>
-
-<p>Due to some schedule adjustments, it appears as if Metro Transit&rsquo;s Google Transit is <a href="http://www.halifax.ca/googletransit/">temporarily out of service</a> while they wait for Google to process their new transit feed.</p>
-
-<p>However, fear not! Unlike Google, obsessive compulsive computer programmer William Lachance works on weekends for free (or the low, low price of $1.99 in the case of iPhone applications) so your thirst for updated transit information can be satisfied. I link to these things often enough on this blog, but here they are again, for the benefit of first time viewers:</p>
-
-<ul>
- <li><a href="http://hbus.ca">hbus.ca</a></li>
- <li><a href="http://transittogo.mindsea.ca">Transit to Go</a>   In other news, it appears as if Metro Transit has finally seen the light and made their transit information available to anyone who wants it. I would like to think that I might have had <a href="http://www.thecoast.ca/halifax/beta-the-public-transit-day-tripper/Content?oid=1098826">something to do with this</a>, but I honestly have no idea. Anyway, if you want to check it out, it&rsquo;s available <a href="http://www.halifax.ca/GoogleTransit/developerdata.html">here</a>.</li></ul> 
   <hr/>
 </article>
 <footer>

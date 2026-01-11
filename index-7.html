@@ -92,6 +92,20 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2016/05/quarter-of-contribution-june-july-2016-edition/">Quarter of Contribution: June / July 2016 edition</a></h2>
+    <p class="index-date">May 27th, 2016</p>
+    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p>Just wanted to announce that, once again, my team (<a href="https://wiki.mozilla.org/EngineeringProductivity">Mozilla Engineering Productivity</a>) is just about to start running another <a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution">quarter of contribution</a> &mdash; a great opportunity for newer community members to dive deep on some of the projects we&rsquo;re working on, brush up on their programming and problem solving skills, and work with experienced mentors. You can find more information on this program <a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Summer_2016">here</a>.</p>
+
+<p>I&rsquo;ve found this program to be a really great experience on both sides &mdash; it&rsquo;s an opportunity for contributors to really go beyond the &ldquo;good first bug&rdquo; style of patches to having a really substantial impact on some of the projects that we&rsquo;re working on while gaining lots of software development skills that are useful in the real world.</p>
+
+<p>Once again, I&rsquo;m going to be mentoring one or two people on the Perfherder project, a tool we use to measure and sheriff Firefox performance. If you&rsquo;re inclined to work on some really interesting data analysis and user interface problems in Python and JavaScript, please have a look at the <a href="https://wiki.mozilla.org/Auto-tools/New_Contributor/Quarter_of_Contribution/Perfherder">project page</a> and get in touch. :)</p> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2016/03/are-we-fast-yet-and-perfherder/">Are We Fast Yet and Perfherder</a></h2>
     <p class="index-date">Mar 30th, 2016</p>
     <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
@@ -404,93 +418,6 @@
  <li>What advice would give you to future ateam contributors?</li></ol>
 
 <p><em>The only thing you need to do is bring your question to irc and ask. Do not hesitate to ask for help if you need it! All the people in here are nice and willing to help. Enjoy it!</em></p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2015/08/more-perfherder-updates/">More Perfherder updates</a></h2>
-    <p class="index-date">Aug 7th, 2015</p>
-    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Perfherder.html">Perfherder</a></span></p>
-  </header>
-
-<p>Since my last update, we&rsquo;ve been trucking along with improvements to <a href="https://wiki.mozilla.org/Auto-tools/Projects/Perfherder">Perfherder</a>, the project for making Firefox performance sheriffing and analysis easier.</p>
-
-<p><strong>Compare visualization improvements</strong></p>
-
-<p>I&rsquo;ve been spending quite a bit of time trying to fix up the display of information in the compare view, to address feedback from developers and hopefully generally streamline things. <a href="https://blog.mozilla.org/vdjeric/">Vladan</a> (from the perf team) referred me to <a href="https://mozillians.org/en-US/u/bwinton/">Blake Winton</a>, who provided tons of awesome suggestions on how to present things more concisely.</p>
-
-<p>Here&rsquo;s an old versus new picture:</p>
-
-<table>
- <tr>
-  <td><a href="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png"><img src="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png" alt="Screen Shot 2015-07-14 at 3.53.20 PM" width="300" height="206" class="alignnone size-medium wp-image-1218" srcset="/files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM-300x206.png 300w, /files/2015/07/Screen-Shot-2015-07-14-at-3.53.20-PM.png 980w" sizes="(max-width: 300px) 100vw, 300px" /></a></td> 
-  <td><a href="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM.png"><img src="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM-300x178.png" alt="Screen Shot 2015-08-07 at 1.57.39 PM" width="300" height="178" class="alignnone size-medium wp-image-1229" srcset="/files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM-300x178.png 300w, /files/2015/08/Screen-Shot-2015-08-07-at-1.57.39-PM.png 1003w" sizes="(max-width: 300px) 100vw, 300px" /></a></td></tr></table>
-
-<p>Summary of significant changes in this view:</p>
-
-<ul>
- <li>Removed or consolidated several types of numerical information which were overwhelming or confusing (e.g. presenting both numerical and percentage standard deviation in their own columns).</li>
- <li>Added tooltips all over the place to explain what&rsquo;s being displayed.</li>
- <li>Highlight more strongly when it appears there aren&rsquo;t enough runs to make a definitive determination on whether there was a regression or improvement.</li>
- <li>Improve display of visual indicator of magnitude of regression/improvement (providing a pseudo-scale showing where the change ranges from 0% : 20%+).</li>
- <li>Provide more detail on the two changesets being compared in the header and make it easier to retrigger them (thanks to Mike Ling).</li>
- <li>Much better and more intuitive error handling when something goes wrong (also thanks to Mike Ling).</li></ul>
-
-<p>The point of these changes isn&rsquo;t necessarily to make everything &ldquo;immediately obvious&rdquo; to people. We&rsquo;re not building general purpose software here: Perfherder will always be a rather specialized tool which presumes significant domain knowledge on the part of the people using it. However, even for our audience, it turns out that there&rsquo;s a lot of room to improve how our presentation: reducing the amount of extraneous noise helps people zero in on the things they really need to care about.</p>
-
-<p>Special thanks to everyone who took time out of their schedules to provide so much good feedback, in particular <a href="http://avih.github.io/">Avi Halmachi</a>, <a href="http://glandium.org/blog/">Glandium</a>, and <a href="http://elvis314.wordpress.com/">Joel Maher</a>.</p>
-
-<p>Of course more suggestions are always welcome. Please <a href="https://treeherder.mozilla.org/perf.html#/comparechooser">give it a try</a> and <a href="https://bugzilla.mozilla.org/enter_bug.cgi?product=Tree%20Management&amp;component=Perfherder">file bugs against the perfherder component</a> if you find anything you&rsquo;d like to see changed or improved.</p>
-
-<p><strong>Getting the word out</strong></p>
-
-<pre><code>Hammersmith:mozilla-central wlach$ hg push -f try
-pushing to ssh://hg.mozilla.org/try
-no revisions specified to push; using . to avoid pushing multiple heads
-searching for changes
-remote: waiting for lock on repository /repo/hg/mozilla/try held by 'hgssh1.dmz.scl3.mozilla.com:8270'
-remote: got lock after 4 seconds
-remote: adding changesets
-remote: adding manifests
-remote: adding file changes
-remote: added 1 changesets with 1 changes to 1 files
-remote: Trying to insert into pushlog.
-remote: Inserted into the pushlog db successfully.
-remote:
-remote: View your change here:
-remote:   https://hg.mozilla.org/try/rev/e0aa56fb4ace
-remote:
-remote: Follow the progress of your build on Treeherder:
-remote:   https://treeherder.mozilla.org/#/jobs?repo=try&amp;revision=e0aa56fb4ace
-remote:
-remote: It looks like this try push has talos jobs. Compare performance against a baseline revision:
-remote:   https://treeherder.mozilla.org/perf.html#/comparechooser?newProject=try&amp;newRevision=e0aa56fb4ace</code></pre>
-
-<p>Try pushes incorporating Talos jobs now automatically link to perfherder&rsquo;s compare view, both in the output from mercurial and in the emails the system sends. One of the challenges we&rsquo;ve been facing up to this point is just letting developers know that Perfherder <em>exists</em> and it can help them either avoid or resolve performance regressions. I believe this will help.</p>
-
-<p><strong>Data quality and ingestion improvements</strong></p>
-
-<p>Over the past couple weeks, we&rsquo;ve been comparing our regression detection code when run against Graphserver data to Perfherder data. In doing so, we discovered that we&rsquo;ve sometimes been using the wrong algorithm (geometric mean) to summarize some of our tests, leading to unexpected and less meaningful results. For example, the v8_7 benchmark uses a custom weighting algorithm for its score, to account for the fact that the things it tests have a particular range of expected values.</p>
-
-<p>To hopefully prevent this from happening again in the future, we&rsquo;ve decided to move the test summarization code out of Perfherder back into Talos (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1184966">bug 1184966</a>). This has the additional benefit of creating a stronger connection between the content of the Talos logs and what Perfherder displays in its comparison and graph views, which has thrown people off in the past.</p>
-
-<p><strong>Continuing data challenges</strong></p>
-
-<p>Having better tools for visualizing this stuff is great, but it also highlights some continuing problems we&rsquo;ve had with data quality. It turns out that our automation setup often produces <em>qualitatively different</em> performance results for the exact same set of data, depending on when and how the tests are run.</p>
-
-<p>A certain amount of random noise is always expected when running performance tests. As much as we might try to make them uniform, our testing machines and environments are just not 100% identical. That we expect and can deal with: our standard approach is just to retrigger runs, to make sure we get a representative sample of data from our population of machines.</p>
-
-<p>The problem comes when there&rsquo;s a <em>pattern</em> to the noise: we&rsquo;ve already noticed that tests run on the weekends produce different results (see Joel&rsquo;s post from a year ago, <a href="https://elvis314.wordpress.com/2014/10/30/a-case-of-the-weekends/">&ldquo;A case of the weekends&rdquo;</a>) but it seems as if there&rsquo;s other circumstances where one set of results will be different from another, depending on the time that each set of tests was run. Some tests and platforms (e.g. the a11yr suite, MacOS X 10.10) seem particularly susceptible to this issue.</p>
-
-<p>We need to find better ways of dealing with this problem, as it can result in a lot of wasted time and energy, for both sheriffs and developers. See for example <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1190877">bug 1190877</a>, which concerned a completely spurious regression on the tresize benchmark that was initially blamed on some changes to the media code: in this case, Joel speculates that the linux64 test machines we use might have changed from under us in some way, but we really don&rsquo;t know yet.</p>
-
-<p>I see two approaches possible here:</p>
-
-<ol>
- <li>Figure out what&rsquo;s causing the same machines to produce qualitatively different result distributions and address that. This is of course the ideal solution, but it requires coordination with other parts of the organization who are likely quite busy and might be hard.</li>
- <li>Figure out better ways of detecting and managing these sorts of case. I have noticed that the standard deviation inside the results when we have spurious regressions/improvements tends to be higher (see for example <a href="https://treeherder.mozilla.org/perf.html#/compare?originalProject=mozilla-inbound&amp;originalRevision=4d0818791d07&amp;newProject=mozilla-inbound&amp;newRevision=5e130ad70aa7">this compare view</a> for the aforementioned &ldquo;regression&rdquo;). Knowing what we do, maybe there&rsquo;s some statistical methods we can use to detect bad data?</li></ol>
-
-<p>For now, I&rsquo;m leaning towards (2). I don&rsquo;t think we&rsquo;ll ever completely solve this problem and I think coming up with better approaches to understanding and managing it will pay the largest dividends. Open to other opinions of course!</p> 
   <hr/>
 </article>
 <footer>

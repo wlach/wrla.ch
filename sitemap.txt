@@ -80,6 +80,7 @@ https://wrla.ch/blog/2010/11/back-to-wordperfect-libwpd-0-9-0/
 https://wrla.ch/blog/2017/06/using-docker-to-run-automated-tests/
 https://wrla.ch/blog/2020/02/this-week-in-glean-special-guest-post-mozregression-telemetry-part-1/
 https://wrla.ch/blog/2021/06/mini-sabbatical-and-introducing-irydium/
+https://wrla.ch/blog/2026/01/rethinking-music-listening/
 https://wrla.ch/blog/2011/09/updates-on-my-ridiculous-pet-projects/
 https://wrla.ch/blog/2011/11/weirdest-and-saddest-unsolicited-email-ever/
 https://wrla.ch/blog/2021/07/10-years-at-mozilla/

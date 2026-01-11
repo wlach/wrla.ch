@@ -151,23 +151,23 @@
 
 <div class="brush: diff">
  <div class="colorful">
-  <pre><span></span><span class="gh">diff --git a/repositories.yaml b/repositories.yaml</span><span class="w"></span>
-<span class="gh">index dffcccf..6212e55 100644</span><span class="w"></span>
-<span class="gd">--- a/repositories.yaml</span><span class="w"></span>
-<span class="gi">+++ b/repositories.yaml</span><span class="w"></span>
-<span class="gu">@@ -239,3 +239,12 @@ firefox-android-release:</span><span class="w"></span>
-<span class="w"> </span>    - org.mozilla.components:browser-engine-gecko-beta<span class="w"></span>
-<span class="w"> </span>    - org.mozilla.appservices:logins<span class="w"></span>
-<span class="w"> </span>    - org.mozilla.components:support-migration<span class="w"></span>
-<span class="gi">+mozregression:</span><span class="w"></span>
-<span class="gi">+  app_id: org-mozilla-mozregression</span><span class="w"></span>
-<span class="gi">+  notification_emails:</span><span class="w"></span>
-<span class="gi">+    - wlachance@mozilla.com</span><span class="w"></span>
-<span class="gi">+  url: &#39;https://github.com/mozilla/mozregression&#39;</span><span class="w"></span>
-<span class="gi">+  metrics_files:</span><span class="w"></span>
-<span class="gi">+    - &#39;mozregression/metrics.yaml&#39;</span><span class="w"></span>
-<span class="gi">+  ping_files:</span><span class="w"></span>
-<span class="gi">+    - &#39;mozregression/pings.yaml&#39;</span><span class="w"></span>
+  <pre><span></span><span class="gh">diff --git a/repositories.yaml b/repositories.yaml</span>
+<span class="gh">index dffcccf..6212e55 100644</span>
+<span class="gd">--- a/repositories.yaml</span>
+<span class="gi">+++ b/repositories.yaml</span>
+<span class="gu">@@ -239,3 +239,12 @@ firefox-android-release:</span>
+<span class="w"> </span>    - org.mozilla.components:browser-engine-gecko-beta
+<span class="w"> </span>    - org.mozilla.appservices:logins
+<span class="w"> </span>    - org.mozilla.components:support-migration
+<span class="gi">+mozregression:</span>
+<span class="gi">+  app_id: org-mozilla-mozregression</span>
+<span class="gi">+  notification_emails:</span>
+<span class="gi">+    - wlachance@mozilla.com</span>
+<span class="gi">+  url: &#39;https://github.com/mozilla/mozregression&#39;</span>
+<span class="gi">+  metrics_files:</span>
+<span class="gi">+    - &#39;mozregression/metrics.yaml&#39;</span>
+<span class="gi">+  ping_files:</span>
+<span class="gi">+    - &#39;mozregression/pings.yaml&#39;</span>
 </pre></div>
 
 </div>
@@ -178,13 +178,13 @@
 
 <div class="brush: sql">
  <div class="colorful">
-  <pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">date</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_variant</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">variant</span><span class="p">,</span><span class="w"></span>
-<span class="w">       </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">),</span><span class="w"></span>
-<span class="k">FROM</span><span class="w"> </span><span class="o">`</span><span class="n">moz</span><span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">data</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">prod</span><span class="o">`</span><span class="p">.</span><span class="n">org_mozilla_mozregression_stable</span><span class="p">.</span><span class="n">usage_v1</span><span class="w"></span>
-<span class="k">WHERE</span><span class="w"> </span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2020-04-14&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">client_info</span><span class="p">.</span><span class="n">app_display_version</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%.dev%&#39;</span><span class="w"></span>
-<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="nb">date</span><span class="p">,</span><span class="w"> </span><span class="n">variant</span><span class="p">;</span><span class="w"></span>
+  <pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="nb">date</span><span class="p">,</span>
+<span class="w">       </span><span class="n">metrics</span><span class="p">.</span><span class="n">string</span><span class="p">.</span><span class="n">usage_variant</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">variant</span><span class="p">,</span>
+<span class="w">       </span><span class="k">count</span><span class="p">(</span><span class="o">*</span><span class="p">),</span>
+<span class="k">FROM</span><span class="w"> </span><span class="o">`</span><span class="n">moz</span><span class="o">-</span><span class="n">fx</span><span class="o">-</span><span class="k">data</span><span class="o">-</span><span class="n">shared</span><span class="o">-</span><span class="n">prod</span><span class="o">`</span><span class="p">.</span><span class="n">org_mozilla_mozregression_stable</span><span class="p">.</span><span class="n">usage_v1</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="nb">DATE</span><span class="p">(</span><span class="n">submission_timestamp</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="s1">&#39;2020-04-14&#39;</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="n">client_info</span><span class="p">.</span><span class="n">app_display_version</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%.dev%&#39;</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="nb">date</span><span class="p">,</span><span class="w"> </span><span class="n">variant</span><span class="p">;</span>
 </pre></div>
 
 </div>

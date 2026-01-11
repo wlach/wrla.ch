@@ -22,9 +22,9 @@
 
 &lt;div class="brush: bash"&gt;
  &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;npx degit git@github.com:irydium/irydium-template.git my-notebook
-npm install
-npm run dev
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;npx&lt;span class="w"&gt; &lt;/span&gt;degit&lt;span class="w"&gt; &lt;/span&gt;git@github.com:irydium/irydium-template.git&lt;span class="w"&gt; &lt;/span&gt;my-notebook
+npm&lt;span class="w"&gt; &lt;/span&gt;install
+npm&lt;span class="w"&gt; &lt;/span&gt;run&lt;span class="w"&gt; &lt;/span&gt;dev
 &lt;/pre&gt;&lt;/div&gt;
 
 &lt;/div&gt;
@@ -37,7 +37,7 @@ npm run dev
 
 &lt;div class="brush: bash"&gt;
  &lt;div class="colorful"&gt;
-  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;npm install -g surge
+  &lt;pre&gt;&lt;span&gt;&lt;/span&gt;npm&lt;span class="w"&gt; &lt;/span&gt;install&lt;span class="w"&gt; &lt;/span&gt;-g&lt;span class="w"&gt; &lt;/span&gt;surge
 surge
 &lt;/pre&gt;&lt;/div&gt;
 

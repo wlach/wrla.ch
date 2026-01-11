@@ -92,6 +92,24 @@
     <div id="content" class="container max-w-screen-md px-8 py-4 mx-auto">
          <article>
   <header>
+    <h2><a href="/blog/2012/01/measuring-reduced-checkerboarding-in-mobile-fennec/">Measuring reduced checkerboarding in mobile Fennec</a></h2>
+    <p class="index-date">Jan 3rd, 2012</p>
+    <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Eideticker.html">Eideticker</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
+  </header>
+
+<p>After my <a href="http://wrla.ch/blog/2011/12/year-end-eideticker-update/">post</a> on measuring checkerboarding in mobile Firefox, <a href="http://cmtalbert.wordpress.com/">Clint Talbert</a> (my fearless manager) suggested I run a before and after test to measure the improvement that just landed as part of <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=709152">bug 709512</a>. After a bit of cleanup, I did so, measuring the delta between my build on December 20th and the latest version of Aurora. The difference is pretty remarkable: at least on the LG G2X that I&rsquo;ve been using for testing, we&rsquo;ve gone from checkerboarding between 10&ndash;20% of the time and not checkerboarding almost at all (in between two runs of the test with the Aurora build, there is exactly one frame that checkerboards). All credit to <a href="http://chrislord.net/blog">Chris Lord</a> for that!</p>
+
+<p>See the video evidence for yourself. Before:</p>
+
+<video src="/files/eideticker/lotsocheckerboarding.webm" width="600px" controls="controls"></video>
+
+<p>After:</p>
+
+<video src="/files/eideticker/almostnocheckerboarding.webm" width="600px" controls="controls"></video> 
+  <hr/>
+</article>
+<article>
+  <header>
     <h2><a href="/blog/2011/12/year-end-eideticker-update/">Year end Eideticker update</a></h2>
     <p class="index-date">Dec 23rd, 2011</p>
     <p><span class="tags"><a href="/tags/Data-Visualization.html">Data Visualization</a>  <a href="/tags/Mozilla.html">Mozilla</a></span></p>
@@ -307,32 +325,6 @@
 <p>It&rsquo;s a bit hard to see the exact number on the graph (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697277">someone should fix that</a>), but we seem to teetering around an average of 3 hours at this point. Looking at our <a href="http://brasstacks.mozilla.com/gofaster/#/buildcharts">build charts</a>, it seems like the critical path has shifted in many cases from Windows to MacOS X. Is there something we can do to close the gap there? Or is there a more general fix which would lead to substantial savings? If you have any thoughts, or would like to help out, we&rsquo;re scheduled to have a <a href="https://wiki.mozilla.org/ReleaseEngineering/BuildFaster/Meetings/2011-10-26">short meeting tomorrow</a>.</p>
 
 <p>Anyone is welcome to join, but note that we&rsquo;re practical, results-oriented people. Crazy ideas are fun, but we&rsquo;re most interested in proposals that have measurable data behind them and can be implemented in reasonable amounts of time.</p> 
-  <hr/>
-</article>
-<article>
-  <header>
-    <h2><a href="/blog/2011/10/developers-can-t-do-ui/">Developers can&rsquo;t do UI</a></h2>
-    <p class="index-date">Oct 7th, 2011</p>
-    <p><span class="tags"><a href="/tags/Mozilla.html">Mozilla</a>  <a href="/tags/Usability.html">Usability</a></span></p>
-  </header>
-
-<p>Despite making a dramatic shift from front-end development to <a href="https://wiki.mozilla.org/Auto-tools">back-end stuff</a> since I started at Mozilla a few months ago, I&rsquo;ve still had occasion to have to do a fair bit of user-facing code, even if an audience of other developers is a bit more limited than what I&rsquo;ve been used to. Since my mission is to make the rest of Mozilla more productive, it&rsquo;s worth putting a bit of time and intention into the user interface for my stuff. If I can reduce learning curves or streamline day-to-day workflows, that&rsquo;s a win for everyone since they can spend that much more time rocking at their jobs (whether that be release engineering, platform work, or whatever). This brings up a point that I&rsquo;ve had in the back of my mind for a while:</p>
-
-<p><em>Despite conventional wisdom, developers can design half-decent user interfaces (if they try)!</em></p>
-
-<p>I used to be certain that a project really needed graphic designers and/or usability experts to provide guidance on UI issues, but my experience over the last few years with iOS/web development has made me reconsider. Sure, pixel pushing and vector art is never going to be a programmer&rsquo;s strong suit (and there&rsquo;s certain high-level techniques that take years of study to acquire/understand), but the basic principles behind good UI design are accessible to anyone. There&rsquo;s really only three core skills:</p>
-
-<ul>
- <li>
-  <p>An ability to put yourself in the shoes of the user. Who are you designing for, and what are they trying to accomplish? How can I streamline my UI to help them quickly solve the task at hand? This is one of the reasons why I find <a href="http://en.wikipedia.org/wiki/User_story">user stories</a> so helpful.</p></li>
- <li>
-  <p>An understanding of common vocabulary for describing/designing applications and knowing what is &ldquo;good&rdquo;. Unfortunately I haven&rsquo;t found anything like this for the web, but <a href="http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/MobileHIG/UEBestPractices/UEBestPractices.html#//apple_ref/doc/uid/TP40006556-CH20-SW1">Apple&rsquo;s human interface guidelines</a> have some good general advice on this (just ignore the stuff specific to phones/tablet apps if that&rsquo;s not what you&rsquo;re doing).</p></li>
- <li>
-  <p>A willingness to iterate. The best ideas usually aren&rsquo;t apparent immediately, and may only come out of a back forth. It&rsquo;s been my experience that the more constructive dialog there is between people actively involved in the project on user experience issues, the better the end result is likely to be.</p></li></ul>
-
-<p>For example, one of the things that release engineering has found most useful in the GoFaster Dashboard has been the <a href="http://brasstacks.mozilla.com/gofaster/#/buildcharts">build charts</a>. Believe it or not, the idea for that view started out as this <a href="http://people.mozilla.com/~wlachance/overall-build-and-test-area.png">useless piece of junk</a> (I can say that because I created it). It was only after a good half hour back and forth on irc between myself, jgriffin, and jmaher (all of us backend/tool developers) that we came up with the view that inspired so much <a href="http://jagriffin.wordpress.com/2011/09/06/gofaster-deeper-data-analysis/">good analysis</a> on the project.</p>
-
-<p>All this is not to say that usability experts and graphic designers don&rsquo;t have special skills that are worthy of respect. Indeed, if you&rsquo;re a designer and would like to get involved with our work, please <a href="https://wiki.mozilla.org/Auto-tools#Want_to_Help.3F">join us</a>, we&rsquo;d love your help. My only point is that on a project where a design resource isn&rsquo;t available, thinking explicitly about usability is still worthwhile. And even where you have a UX expert on staff, programmers can have useful feedback too. Good UI is everyone&rsquo;s responsibility!</p> 
   <hr/>
 </article>
 <footer>
