@@ -15,10 +15,7 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = [
-    "ruff>=0.14.14",
-    "ty>=0.0.14",
-]
+dev = ["pytest>=9.0.2", "ruff>=0.14.14", "ty>=0.0.14"]
 
 [project.scripts]
 site = "sitegen.cli:app"
@@ -27,12 +24,13 @@ site = "sitegen.cli:app"
 requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.blog]
-title = "William Lachance's Log"
-author = "William Lachance"
+[tool.site]
+title = "Will Lachance's Log"
+author = "Will Lachance"
 base_url = "https://wrla.ch"
 posts_per_page = 10
 posts_in_rss = 20
+repo_url = "https://github.com/wlach/wrla.ch"
 
 [tool.setuptools.packages.find]
 include = ["sitegen"]
@@ -41,11 +39,10 @@ include = ["sitegen"]
 package = true
 
 [tool.ruff]
-exclude = [
-    "_build/**",
-    "files/**",
-    "src/files/**",
-]
+exclude = ["_build/**", "files/**", "src/files/**"]
+
+[tool.ruff.lint.isort]
+force-single-line = true
 
 [tool.ty.environment]
 root = ["."]

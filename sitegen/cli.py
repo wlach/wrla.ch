@@ -9,7 +9,8 @@ from pathlib import Path
 import typer
 from slugify import slugify
 
-from .config import find_project_root, load_config
+from .config import find_project_root
+from .config import load_config
 from .site import build_site
 
 app = typer.Typer(add_completion=False)
@@ -57,7 +58,10 @@ def preview(port: int = 5000) -> None:
     build_dir = root / "_build"
     os.chdir(build_dir)
     handler = http.server.SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", port), handler) as httpd:
+    class ReusableTCPServer(socketserver.TCPServer):
+        allow_reuse_address = True
+
+    with ReusableTCPServer(("", port), handler) as httpd:
         typer.echo(f"Serving on http://localhost:{port}")
         try:
             httpd.serve_forever()

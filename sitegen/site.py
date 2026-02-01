@@ -2,29 +2,30 @@ from __future__ import annotations
 
 import shutil
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import UTC
+from datetime import datetime
 from math import ceil
 from pathlib import Path
 from typing import Any
 
 import frontmatter
-from jinja2 import Environment, FileSystemLoader, select_autoescape
+from jinja2 import Environment
+from jinja2 import FileSystemLoader
+from jinja2 import select_autoescape
 from markupsafe import Markup
-from slugify import slugify
 from pygments.formatters import HtmlFormatter  # type: ignore[unresolved-import]
+from slugify import slugify
 
 from .config import BlogConfig
-from .markdown import (
-    extract_title,
-    format_atom_date,
-    format_pretty_date,
-    format_rss_date,
-    markdown_renderer,
-    normalize_tags,
-    strip_html,
-    truncate_text,
-    validate_heading_sequence,
-)
+from .markdown import extract_title
+from .markdown import format_atom_date
+from .markdown import format_pretty_date
+from .markdown import format_rss_date
+from .markdown import markdown_renderer
+from .markdown import normalize_tags
+from .markdown import strip_html
+from .markdown import truncate_text
+from .markdown import validate_heading_sequence
 
 
 @dataclass(frozen=True)
@@ -53,10 +54,11 @@ class Post:
     content_html: str
     content_text: str
     tags: tuple[Tag, ...]
+    source_path: str
 
     @property
     def url(self) -> str:
-        return f"/blog/{self.date.year:04d}/{self.date.month:02d}/{self.slug}/"
+        return f"/log/{self.date.year:04d}/{self.date.month:02d}/{self.slug}/"
 
     @property
     def date_pretty(self) -> str:
@@ -102,6 +104,7 @@ def _load_posts(posts_dir: Path) -> list[Post]:
                 content_html=content_html,
                 content_text=content_text,
                 tags=tags,
+                source_path=directory.name,
             )
         )
     posts.sort(key=lambda post: post.date, reverse=True)
@@ -121,6 +124,7 @@ def _load_pages(pages_dir: Path) -> list[dict[str, Any]]:
             {
                 "title": title,
                 "slug": path.stem,
+                "url": f"/{path.stem}/",
                 "content_html": content_html,
                 "content_text": content_text,
             }
@@ -138,6 +142,9 @@ def _copy_static_assets(root: Path, build_dir: Path) -> None:
         if target.exists():
             shutil.rmtree(target)
         shutil.copytree(source, target)
+    redirects = src_dir / "_redirects"
+    if redirects.exists():
+        shutil.copyfile(redirects, build_dir / "_redirects")
 
 
 def _write_pygments_css(build_dir: Path) -> None:
@@ -165,6 +172,10 @@ def build_site(root: Path, config: BlogConfig) -> None:
 
     posts = _load_posts(posts_dir)
     pages = _load_pages(pages_dir) if pages_dir.exists() else []
+    page_links = [
+        {"title": page["title"], "slug": page["slug"], "url": page["url"]}
+        for page in pages
+    ]
 
     env = Environment(
         loader=FileSystemLoader(templates_dir),
@@ -193,14 +204,16 @@ def build_site(root: Path, config: BlogConfig) -> None:
             "rel_next": rel_next,
             "rel_prev": rel_prev,
             "active_nav": None,
+            "page_links": page_links,
             "title": post.title,
             "date": post.date_pretty,
             "tags": [{"name": tag.name, "url": tag.url} for tag in post.tags],
             "content": Markup(post.content_html),
+            "source_url": f"{config.repo_url}/tree/main/src/posts/{post.source_path}",
             "tag": None,
         }
-        html = _render_template(env, "post.html", context)
-        target_dir = build_dir / "blog" / f"{post.date.year:04d}" / f"{post.date.month:02d}" / post.slug
+        html = _render_template(env, "post.html.jinja", context)
+        target_dir = build_dir / "log" / f"{post.date.year:04d}" / f"{post.date.month:02d}" / post.slug
         target_dir.mkdir(parents=True, exist_ok=True)
         (target_dir / "index.html").write_text(html, encoding="utf-8")
 
@@ -237,6 +250,8 @@ def build_site(root: Path, config: BlogConfig) -> None:
             "rel_next": None,
             "rel_prev": None,
             "active_nav": None,
+            "page_links": page_links,
+            "source_url": "https://github.com/wlach/wrla.ch",
             "posts": [
                 {
                     "title": post.title,
@@ -250,7 +265,7 @@ def build_site(root: Path, config: BlogConfig) -> None:
             "pagination": pagination if total_pages > 1 else None,
             "tag": None,
         }
-        html = _render_template(env, "index.html", context)
+        html = _render_template(env, "index.html.jinja", context)
         target = build_dir / page_urls[page].lstrip("/")
         target.write_text(html, encoding="utf-8")
 
@@ -277,6 +292,8 @@ def build_site(root: Path, config: BlogConfig) -> None:
             "rel_next": None,
             "rel_prev": None,
             "active_nav": None,
+            "page_links": page_links,
+            "source_url": "https://github.com/wlach/wrla.ch",
             "posts": [
                 {
                     "title": post.title,
@@ -289,7 +306,7 @@ def build_site(root: Path, config: BlogConfig) -> None:
             ],
             "tag": tag.name,
         }
-        html = _render_template(env, "tag.html", context)
+        html = _render_template(env, "tag.html.jinja", context)
         (tags_dir / f"{tag.slug}.html").write_text(html, encoding="utf-8")
 
     for page in pages:
@@ -299,17 +316,21 @@ def build_site(root: Path, config: BlogConfig) -> None:
             "description": description,
             "author": config.author,
             "keywords": "",
-            "canonical_url": f"{config.base_url}/{page['slug']}.html",
+            "canonical_url": f"{config.base_url}{page['url']}",
             "atom_feed_url": atom_all,
             "rss_feed_url": rss_all,
             "rel_next": None,
             "rel_prev": None,
-            "active_nav": "about" if page["slug"] == "about" else None,
+            "active_nav": page["slug"],
+            "page_links": page_links,
             "content": Markup(page["content_html"]),
             "tag": None,
+            "source_url": f"{config.repo_url}/tree/main/src/pages/{page['slug']}.md",
         }
-        html = _render_template(env, "page.html", context)
-        (build_dir / f"{page['slug']}.html").write_text(html, encoding="utf-8")
+        html = _render_template(env, "page.html.jinja", context)
+        page_dir = build_dir / page["slug"]
+        page_dir.mkdir(parents=True, exist_ok=True)
+        (page_dir / "index.html").write_text(html, encoding="utf-8")
 
     _build_feeds(build_dir, config, posts, tag_defs, tag_map, env)
     _build_sitemap(build_dir, config, posts, pages)
@@ -392,7 +413,7 @@ def _build_feeds(
 
     for spec in feed_specs:
         atom = render_feed(
-            template="feeds/atom.xml",
+            template="feeds/atom.xml.jinja",
             title=str(spec["title"]),
             self_url=str(spec["self_url"]),
             home_url=str(spec["home_url"]),
@@ -403,7 +424,7 @@ def _build_feeds(
             include_updated=True,
         )
         rss = render_feed(
-            template="feeds/rss.xml",
+            template="feeds/rss.xml.jinja",
             title=str(spec["title"]),
             home_url=str(spec["home_url"]),
             items=spec["items"],  # type: ignore[arg-type]
@@ -419,6 +440,6 @@ def _build_feeds(
 def _build_sitemap(build_dir: Path, config: BlogConfig, posts: list[Post], pages: list[dict[str, Any]]) -> None:
     urls = [f"{config.base_url}{post.url}" for post in posts]
     for page in pages:
-        urls.append(f"{config.base_url}/{page['slug']}.html")
+        urls.append(f"{config.base_url}{page['url']}")
     sitemap_text = "\n".join(urls)
     (build_dir / "sitemap.txt").write_text(sitemap_text, encoding="utf-8")

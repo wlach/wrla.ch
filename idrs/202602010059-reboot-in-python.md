@@ -20,7 +20,7 @@ Incidentally, this is basically what Frog's creator recommends now:
 
 ### Goals
 
-- Recreate core frog functionality (new blog entry, preview blog, publish blog as static site)
+- Recreate core frog functionality (new log entry, preview log, publish site as static site)
 - Preserve exact file generation semantics so that people don't need to update their RSS feeds
 - Preserve look and feel for site (no major changes)
 - Use a language (Python) that I'm familiar with
@@ -28,7 +28,7 @@ Incidentally, this is basically what Frog's creator recommends now:
 
 ### Non-Goals
 
-- Create a "blog framework" of any kind, the tooling need only work for this site
+- Create a "log framework" of any kind, the tooling need only work for this site
 - Port existing content over (as a seperate effort, we'll fork the old version and publish it as https://archive-pre-2026.wrla.ch, with redirects for any existing pages)
 - Create / update continuous integration
 - Handle particulars of hosting (e.g. generating a 404.html page for Cloudflare)
@@ -37,7 +37,7 @@ Incidentally, this is basically what Frog's creator recommends now:
 
 Create a standard python project using uv. Add a command-line tool using [typer] which can:
 
-- Create a new blog entry (in the style of existing entries) as a markdown file
+- Create a new log entry (in the style of existing entries) as a markdown file
 - Preview the entire site via a static host (use Python's built-in `http.server`)
 - Publish the site
 
@@ -71,8 +71,8 @@ site CSS. We will check in its output, so no need to make it part of the build p
 
 Frog allows browsing a view of all entries, or by tag using pagination (configurable limit per page, let's go with 10).
 
-In addition to the blog, we want to have one static page "about" linked from the header. This will just be a markdown page rendered at `/about.html` using the same
-template as the rest of the site. The header will be static for now, but keep the mechanism for generating static pages general in case we want to create more in the future.
+In addition to the log, we want to have one static page "about" linked from the header. This will just be a markdown page rendered at `/about/` using the same
+template as the rest of the site. The header should iterate over all static pages (for future expansion).
 
 All template content should go into `src` as well,
 under the appropriate directory (e.g. `src/css`).
@@ -82,15 +82,15 @@ Static files are stored in `files/`, indexed by date as is done previously.
 Generate a sitemap.txt in `_build` based on generated content. Should have the same format as the old one:
 
 ```
-https://wrla.ch/blog/2012/03/eideticker-dashboard-update/
-https://wrla.ch/blog/2014/06/managing-test-manifests-manifestdestiny-manifestparser/
+https://wrla.ch/log/2012/03/eideticker-dashboard-update/
+https://wrla.ch/log/2014/06/managing-test-manifests-manifestdestiny-manifestparser/
 ```
 
 **Important**: Where there is ambiguity in requirements, use the existing site (files in `blog/`, `feeds/`, `css/`, etc.) as the source of truth for behavior and formatting.
 
 ## Future plans (as needed)
 
-- Extract out Python blog and necessary files into a _new_ site
+- Extract out Python log and necessary files into a _new_ site
 - Actually deploy new site (planning Cloudflare pages)
 - Create an archive-pre-2026 site, create redirects.
 
@@ -108,11 +108,11 @@ https://wrla.ch/blog/2014/06/managing-test-manifests-manifestdestiny-manifestpar
 
 ### File Structure and Naming
 
-New blog entries created as: `src/posts/YYYYMMDDHHMMSS-title-slug/index.md`
+New log entries created as: `src/posts/YYYYMMDDHHMMSS-title-slug/index.md`
 
 Date is always from the filename. Generated output follows existing pattern:
 
-- Blog post: `/blog/YYYY/MM/title-slug/index.html`
+- Blog post: `/log/YYYY/MM/title-slug/index.html`
 - Feeds: `/feeds/*.atom.xml` and `/feeds/*.rss.xml`
 - Sitemap: `/sitemap.txt`
 
@@ -121,13 +121,15 @@ Create a simple test post in `src/posts` to test the new generation system.
 
 ### Templates
 
-Create in `src/templates/`:
+Create in `src/templates/` (use `.jinja` suffix):
 
-- `post.html` - individual post page
-- `index.html` - homepage/pagination pages
-- `tag.html` - tag listing page
+- `post.html.jinja` - individual post page
+- `index.html.jinja` - homepage/pagination pages
+- `tag.html.jinja` - tag listing page
 
 Use Jinja2 with variables like `{{ title }}`, `{{ content }}`, `{{ date }}`, `{{ tags }}`, etc.
+
+Footer should include a public-domain dedication via the Unlicense and a per-post source link to the repository (main branch), e.g. `https://github.com/wlach/wrla.ch/tree/main/src/posts/YYYYMMDDHHMMSS-title-slug`.
 
 ### Command Line Interface
 
@@ -174,12 +176,13 @@ Parse frontmatter for tags (optional). Title is always first `# ` line (required
 Add to `pyproject.toml`:
 
 ```toml
-[tool.blog]
+[tool.site]
 title = "William Lachance's Log"
 author = "William Lachance"
 base_url = "https://wrla.ch"
 posts_per_page = 10
 posts_in_rss = 20
+repo_url = "https://github.com/wlach/wrla.ch"
 ```
 
 ### Content Handling

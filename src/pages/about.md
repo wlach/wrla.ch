@@ -1,14 +1,16 @@
-Hi! My name is William Lachance, though most people just call me "Will".
+👋 Hi! My name is Will Lachance and this is my website.
+I'm a fortysomething software developer in Toronto, Ontario, Canada currently working at [Voltus] on demand response technology for the electricity grid.
 
-I'm an (early, as of this writing) fortysomething software developer in Toronto, Ontario, Canada currently working at [Voltus] on demand response technology for the electricity grid.
+General areas of professional focus include:
 
-From 2011-2022, I worked at [Mozilla] (as in [Firefox]) in [Data Engineering] and [Engineering Productivity].
-Virtually everything I did at that time was done in the open, so much of the historical content on this blog has to do with my work there.
-
-I've worked on a bunch of things over the course of my career, but a unifying principle has been trying to help people understand the world around them.
-I try to help people think critically about business problems and build computational systems to help them do this.
+- Energy and Control Systems
+- Data Engineering
+- Developer Productivity Tooling
 
 More broadly, I am interested in open systems, accountability, and helping people achieve their potential.
+
+From 2011-2022, I worked at [Mozilla] (as in [Firefox]) in [Data Engineering] and [Engineering Productivity].
+Older posts related to this are at [archive.wrla.ch].
 
 Other random facts:
 
@@ -18,11 +20,9 @@ Other random facts:
 - I am _mostly_ vegetarian (sometimes I eat mussels, oysters and other invertebrates).
 - I prefer they/them pronouns.
 
-I try to be judicious about using social media. That said, there's a bunch of places you can find me:
+I try to be judicious about using social media. That said, you can find me on:
 
-- [mastodon] (semi-frequently updated)
-- [instagram] (infrequently)
-- [dreamwidth] (for more personal stuff, also infrequent)
+- [mastodon]
 - [linkedin]
 - [github]
 
@@ -31,10 +31,8 @@ I try to be judicious about using social media. That said, there's a bunch of pl
 [firefox]: https://www.mozilla.org/firefox/
 [data engineering]: https://wiki.mozilla.org/Data
 [engineering productivity]: https://wiki.mozilla.org/EngineeringProductivity
+[archive.wrla.ch]: https://archive.wrla.ch
 [toronto zen centre]: https://torontozen.org/
-[instagram]: https://instagram.com/wlach
-[dreamwidth]: https://wlach.dreamwidth.org
 [github]: https://github.com/wlach
 [linkedin]: https://www.linkedin.com/in/wrlach/
 [mastodon]: https://mastodon.social/@wlach
-[twitter]: https://twitter.com/wrlach

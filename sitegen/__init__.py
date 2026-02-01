@@ -1,1 +1,1 @@
-"""wrla.ch blog tooling package."""
+"""Site tooling package."""

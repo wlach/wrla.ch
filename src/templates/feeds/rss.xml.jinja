@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<rss version="2.0">
+ <channel>
+  <title>{{ title | e }}</title>
+  <description>{{ description | e }}</description>
+  <link>{{ home_url | e }}</link>
+  <lastBuildDate>{{ updated }}</lastBuildDate>
+  <pubDate>{{ updated }}</pubDate>
+  <ttl>1800</ttl>
+{% for item in items %}
+  <item>
+   <title>{{ item.title | e }}</title>
+   <link>{{ item.link | e }}</link>
+   <guid isPermaLink="false">{{ item.id | e }}</guid>
+   <pubDate>{{ item.published | e }}</pubDate>
+   <author>{{ item.author | e }}</author>
+   <description>
+{{ item.content | e }}</description></item>
+{% endfor %}</channel></rss>

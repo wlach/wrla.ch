@@ -1,16 +1,18 @@
 from __future__ import annotations
 
 import re
-from datetime import UTC, datetime
+from datetime import UTC
+from datetime import datetime
 from html import escape as html_escape
 from html import unescape as html_unescape
 from typing import Any
 
 from markdown_it import MarkdownIt
 from pygments import highlight
-import pygments
 from pygments.formatters import HtmlFormatter  # type: ignore[unresolved-import]
-from pygments.lexers import TextLexer, get_lexer_by_name  # type: ignore[unresolved-import]
+from pygments.lexers import TextLexer  # type: ignore[unresolved-import]
+from pygments.lexers import get_lexer_by_name
+from pygments.util import ClassNotFound
 
 _TITLE_RE = re.compile(r"^#\s+(.+)$")
 
@@ -62,12 +64,12 @@ def markdown_renderer() -> MarkdownIt:
         lang = info.split()[0] if info else ""
         try:
             lexer = get_lexer_by_name(lang) if lang else TextLexer()
-        except pygments.util.ClassNotFound:
+        except ClassNotFound:
             lexer = TextLexer()
         highlighted = highlight(token.content, lexer, formatter)
         return f'<div class="brush: {lang}">{highlighted}</div>\n'
 
-    md.renderer.rules["fence"] = _fence_renderer
+    md.renderer.rules["fence"] = _fence_renderer  # type: ignore[possibly-missing-attribute]
     return md
 
 
