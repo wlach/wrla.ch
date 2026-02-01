@@ -1,0 +1,72 @@
+[project]
+name = "wrla-ch"
+version = "0.1.0"
+description = "Will Lachance's Personal Blog"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "jinja2>=3.1.2",
+    "markdown-it-py>=3.0.0",
+    "mdit-py-plugins>=0.4.0",
+    "pygments>=2.17.2",
+    "python-frontmatter>=1.1.0",
+    "python-slugify>=8.0.4",
+    "typer>=0.12.3",
+]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.14",
+    "ty>=0.0.14",
+]
+
+[project.scripts]
+site = "sitegen.cli:app"
+
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.blog]
+title = "William Lachance's Log"
+author = "William Lachance"
+base_url = "https://wrla.ch"
+posts_per_page = 10
+posts_in_rss = 20
+
+[tool.setuptools.packages.find]
+include = ["sitegen"]
+
+[tool.uv]
+package = true
+
+[tool.ruff]
+exclude = [
+    "_build/**",
+    "files/**",
+    "src/files/**",
+]
+
+[tool.ty.environment]
+root = ["."]
+
+[tool.ty.src]
+include = ["sitegen"]
+exclude = ["_build/**", "files/**", "src/files/**"]
+
+[tool.ruff.lint]
+select = [
+    "E4",  # pycodestyle errors (subset)
+    "E7",  # pycodestyle errors (subset)
+    "E9",  # pycodestyle errors (subset)
+    "F",   # pyflakes
+    "B",   # flake8-bugbear
+    "I",   # isort
+    "TRY", # tryceratops (exception handling)
+    "UP",  # pyupgrade (modern Python syntax)
+    "RUF", # Ruff-specific rules
+    "C4",  # flake8-comprehensions
+    "PTH", # flake8-use-pathlib
+    "RET", # flake8-return
+    "ARG", # flake8-unused-arguments
+]

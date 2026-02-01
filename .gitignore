@@ -1,1 +1,7 @@
+_build
 .frog
+
+__pycache__/
+.vscode/
+.ruff_cache
+.pytest_cache
