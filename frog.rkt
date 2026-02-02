@@ -4,10 +4,10 @@
 ;; in frog/params.
 (define/contract (init)
   (-> any)
-  (current-scheme/host "https://wrla.ch")
+  (current-scheme/host "https://archive.wrla.ch")
   (current-uri-prefix "/")
-  (current-title "William Lachance's Log")
-  (current-author "William Lachance")
+  (current-title "Will Lachance's Log (Archive)")
+  (current-author "Will Lachance")
   (current-editor "$EDITOR")
   (current-editor-command "{editor} {filename}")
   (current-show-tag-counts? #t)
