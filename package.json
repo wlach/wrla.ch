@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "css": "tailwindcss build css/style.css.in -o css/style.css",
+    "css": "tailwindcss build src/css/style.css.in -o src/css/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
