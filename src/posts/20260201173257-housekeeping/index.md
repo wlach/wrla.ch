@@ -13,7 +13,7 @@ Decided it was time to give this site a refresh:
 Upshot: hopefully more content from me in 2026, now that I'm not fighting the tooling as much. We'll see!
 
 I tried to make the transition seamless. RSS and Atom feeds should be in exactly the same format and places as before.
-Links to old content should transparently redirect to their place in the archive.
+Links to old posts should transparently redirect to the appropriate link in the archive.
 
 [archive.wrla.ch]: https://archive.wrla.ch
 [Frog]: https://github.com/greghendershott/frog
