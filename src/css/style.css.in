@@ -11,6 +11,11 @@ body {
   color: #222;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 pre {
   display: block;
   padding: 9.5px;
