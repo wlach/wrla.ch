@@ -391,7 +391,7 @@ def _build_feeds(
     feed_specs: list[dict[str, str | list[Post]]] = [
         {
             "key": "all",
-            "title": f"{config.title}: {config.title}",
+            "title": config.title,
             "self_url": "/feeds/all.atom.xml",
             "home_url": "/index.html",
             "items": posts[: config.posts_in_rss],
