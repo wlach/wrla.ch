@@ -23,6 +23,7 @@ from .markdown import format_pretty_date
 from .markdown import format_rss_date
 from .markdown import markdown_renderer
 from .markdown import normalize_tags
+from .markdown import render_inline_markdown
 from .markdown import strip_html
 from .markdown import truncate_text
 from .markdown import validate_heading_sequence
@@ -49,6 +50,7 @@ class Tag:
 @dataclass(frozen=True)
 class Post:
     title: str
+    title_html: str
     slug: str
     date: datetime
     content_html: str
@@ -96,9 +98,11 @@ def _load_posts(posts_dir: Path) -> list[Post]:
         )
         content_html = md.render(body_without_title)
         content_text = strip_html(content_html)
+        title_html = render_inline_markdown(title)
         posts.append(
             Post(
                 title=title,
+                title_html=title_html,
                 slug=slug,
                 date=date,
                 content_html=content_html,
@@ -205,7 +209,7 @@ def build_site(root: Path, config: BlogConfig) -> None:
             "rel_prev": rel_prev,
             "active_nav": None,
             "page_links": page_links,
-            "title": post.title,
+            "title": Markup(post.title_html),
             "date": post.date_pretty,
             "tags": [{"name": tag.name, "url": tag.url} for tag in post.tags],
             "content": Markup(post.content_html),
@@ -254,7 +258,7 @@ def build_site(root: Path, config: BlogConfig) -> None:
             "source_url": "https://github.com/wlach/wrla.ch",
             "posts": [
                 {
-                    "title": post.title,
+                    "title": Markup(post.title_html),
                     "url": post.url,
                     "date": post.date_pretty,
                     "tags": [{"name": tag.name, "url": tag.url} for tag in post.tags],
@@ -296,7 +300,7 @@ def build_site(root: Path, config: BlogConfig) -> None:
             "source_url": "https://github.com/wlach/wrla.ch",
             "posts": [
                 {
-                    "title": post.title,
+                    "title": Markup(post.title_html),
                     "url": post.url,
                     "date": post.date_pretty,
                     "tags": [{"name": t.name, "url": t.url} for t in post.tags],

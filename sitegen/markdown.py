@@ -51,6 +51,11 @@ def validate_heading_sequence(markdown_text: str, md: MarkdownIt) -> None:
         last_level = level
 
 
+def render_inline_markdown(text: str) -> str:
+    md = MarkdownIt("commonmark")
+    return md.renderInline(text)
+
+
 def markdown_renderer() -> MarkdownIt:
     formatter = HtmlFormatter(cssclass="colorful")
 
