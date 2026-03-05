@@ -97,6 +97,39 @@ class BuildSiteTests(unittest.TestCase):
         content = sitemap.read_text(encoding="utf-8").strip().splitlines()
         self.assertEqual(len(content), 30)
 
+    def test_copies_post_images_and_rewrites_feed_urls(self) -> None:
+        # Create a post with an image reference
+        posts_dir = self.root / "src" / "posts"
+        post_dir = posts_dir / "20260201120000-img-test"
+        post_dir.mkdir(parents=True, exist_ok=True)
+        (post_dir / "index.md").write_text(
+            "---\ntags: [test]\n---\n\n# Image Test\n\n![photo](photo.jpg)\n",
+            encoding="utf-8",
+        )
+        # Place a fake image file
+        (post_dir / "photo.jpg").write_bytes(b"\xff\xd8fake")
+
+        build_site(self.root, self._config())
+
+        # Image should be copied to the output directory
+        output_img = self.root / "_build" / "log" / "2026" / "02" / "img-test" / "photo.jpg"
+        self.assertTrue(output_img.exists())
+        self.assertEqual(output_img.read_bytes(), b"\xff\xd8fake")
+
+        # Post HTML should use relative image src (unchanged)
+        post_html = (self.root / "_build" / "log" / "2026" / "02" / "img-test" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('src="photo.jpg"', post_html)
+
+        # Feed should use absolute post URL for the image (HTML-escaped in Atom)
+        atom = (self.root / "_build" / "feeds" / "all.atom.xml").read_text(encoding="utf-8")
+        self.assertIn("/log/2026/02/img-test/photo.jpg", atom)
+        self.assertNotIn('src="photo.jpg"', atom)
+
+        # Index page should also use absolute image paths
+        index_html = (self.root / "_build" / "index.html").read_text(encoding="utf-8")
+        self.assertIn('src="/log/2026/02/img-test/photo.jpg"', index_html)
+        self.assertNotIn('src="photo.jpg"', index_html)
+
     def test_generates_page_source_link(self) -> None:
         pages_dir = self.root / "src" / "pages"
         pages_dir.mkdir(parents=True, exist_ok=True)

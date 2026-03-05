@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 import shutil
 from dataclasses import dataclass
 from datetime import UTC
@@ -27,6 +28,20 @@ from .markdown import render_inline_markdown
 from .markdown import strip_html
 from .markdown import truncate_text
 from .markdown import validate_heading_sequence
+
+_IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png"}
+
+
+def _rewrite_img_srcs(html: str, post_url: str) -> str:
+    """Rewrite relative image src attributes to use absolute post URLs (for feeds)."""
+
+    def _repl(match: re.Match[str]) -> str:
+        src = match.group(1)
+        if src.lower().endswith(tuple(_IMAGE_EXTENSIONS)) and not src.startswith(("http://", "https://")):
+            return f'src="{post_url}{src}"'
+        return match.group(0)
+
+    return re.sub(r'src=["\']([^"\']+)["\']', _repl, html)
 
 
 @dataclass(frozen=True)
@@ -189,6 +204,11 @@ def build_site(root: Path, config: BlogConfig) -> None:
     _copy_static_assets(root, build_dir)
     _write_pygments_css(build_dir)
 
+    rewritten_content: dict[str, str] = {
+        post.source_path: _rewrite_img_srcs(post.content_html, post.url)
+        for post in posts
+    }
+
     keywords_all = ", ".join(sorted({tag.name for post in posts for tag in post.tags}))
     atom_all = "/feeds/all.atom.xml"
     rss_all = "/feeds/all.rss.xml"
@@ -197,6 +217,13 @@ def build_site(root: Path, config: BlogConfig) -> None:
         rel_next = posts[index + 1].url if index + 1 < len(posts) else None
         rel_prev = posts[index - 1].url if index > 0 else None
         description = truncate_text(post.content_text, 255)
+        post_src_dir = posts_dir / post.source_path
+        target_dir = build_dir / "log" / f"{post.date.year:04d}" / f"{post.date.month:02d}" / post.slug
+        target_dir.mkdir(parents=True, exist_ok=True)
+        for child in post_src_dir.iterdir():
+            if child.suffix.lower() in _IMAGE_EXTENSIONS:
+                shutil.copy2(child, target_dir / child.name)
+
         context = {
             "page_title": post.title,
             "description": description,
@@ -217,8 +244,6 @@ def build_site(root: Path, config: BlogConfig) -> None:
             "tag": None,
         }
         html = _render_template(env, "post.html.jinja", context)
-        target_dir = build_dir / "log" / f"{post.date.year:04d}" / f"{post.date.month:02d}" / post.slug
-        target_dir.mkdir(parents=True, exist_ok=True)
         (target_dir / "index.html").write_text(html, encoding="utf-8")
 
     posts_per_page = config.posts_per_page
@@ -262,7 +287,7 @@ def build_site(root: Path, config: BlogConfig) -> None:
                     "url": post.url,
                     "date": post.date_pretty,
                     "tags": [{"name": tag.name, "url": tag.url} for tag in post.tags],
-                    "content": Markup(post.content_html),
+                    "content": Markup(rewritten_content[post.source_path]),
                 }
                 for post in page_posts
             ],
@@ -304,7 +329,7 @@ def build_site(root: Path, config: BlogConfig) -> None:
                     "url": post.url,
                     "date": post.date_pretty,
                     "tags": [{"name": t.name, "url": t.url} for t in post.tags],
-                    "content": Markup(post.content_html),
+                    "content": Markup(rewritten_content[post.source_path]),
                 }
                 for post in tag_posts
             ],
@@ -336,7 +361,7 @@ def build_site(root: Path, config: BlogConfig) -> None:
         page_dir.mkdir(parents=True, exist_ok=True)
         (page_dir / "index.html").write_text(html, encoding="utf-8")
 
-    _build_feeds(build_dir, config, posts, tag_defs, tag_map, env)
+    _build_feeds(build_dir, config, posts, tag_defs, tag_map, rewritten_content, env)
     _build_sitemap(build_dir, config, posts, pages)
 
 
@@ -346,6 +371,7 @@ def _build_feeds(
     posts: list[Post],
     tag_defs: dict[str, Tag],
     tag_map: dict[str, list[Post]],
+    feed_content: dict[str, str],
     env: Environment,
 ) -> None:
     feeds_dir = build_dir / "feeds"
@@ -380,7 +406,7 @@ def _build_feeds(
                     "published": date_formatter(post.date),
                     "updated": date_formatter(post.date) if include_updated else "",
                     "author": config.author,
-                    "content": post.content_html,
+                    "content": feed_content.get(post.source_path, post.content_html),
                 }
                 for post in items
             ],
