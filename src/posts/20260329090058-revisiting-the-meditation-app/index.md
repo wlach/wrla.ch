@@ -14,7 +14,7 @@ For various reasons, I felt this was a concept worth resurrecting. I gave it som
 - Remove jQuery/iCanHaz.js dependencies (just uses raw DOM APIs)
 
 No JavaScript build system, no frameworks, no business model, no gamification, no courses.
-Just a timer with a bell.
+Just a timer.
 Less than 300k: virtually of that a pleasant bell sound.
 Free forever at [meditation.wrla.ch](https://meditation.wrla.ch) (and should keep working even if it goes down if you have a copy on your phone).
 
