@@ -18,7 +18,7 @@ I set up a small Tailscale network so I can access the server from outside the h
 
 ![Thinkpad w520 Power Consumption](w520-power.jpg)
 
-Listening to a snapshot of my music collection from the mid 2000s is a bit of a time capsule, but it's been pleasant so far? There's a lot of stuff in my old collection that I haven't listened to in a while, and it's been fun to rediscover. I expect I'll be gradually putting newer stuff from Bandcamp into the rotation after that gets old. Already started to do that a bit: [Mandy Indiana](https://mandyindiana.bandcamp.com/) is great.
+Listening to a snapshot of my music collection from the mid 2000s is a bit of a time capsule, but it's been pleasant so far? There's a lot of stuff in my old collection that I haven't listened to in a while, and it's been fun to rediscover. I expect I'll be gradually putting newer stuff from Bandcamp into the rotation after that gets old. Already started to do that a bit: [Mandy, Indiana](https://mandyindiana.bandcamp.com/) is great.
 
 ![Radiohead In Rainbows in Jellyfin](in-rainbows.png)
 
