@@ -111,7 +111,7 @@ def format_atom_date(dt: datetime) -> str:
 
 
 def format_rss_date(dt: datetime) -> str:
-    return dt.astimezone(UTC).strftime("%a, %d %b %Y %H:%M:%S UT")
+    return dt.astimezone(UTC).strftime("%a, %d %b %Y %H:%M:%S GMT")
 
 
 def format_pretty_date(dt: datetime) -> str:

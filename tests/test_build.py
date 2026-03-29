@@ -137,3 +137,25 @@ class BuildSiteTests(unittest.TestCase):
         build_site(self.root, self._config())
         about_html = (self.root / "_build" / "about" / "index.html").read_text(encoding="utf-8")
         self.assertIn("Source on GitHub", about_html)
+
+    def test_rss_feed_dates_use_gmt(self) -> None:
+        build_site(self.root, self._config())
+        rss = (self.root / "_build" / "feeds" / "all.rss.xml").read_text(encoding="utf-8")
+        self.assertIn("<lastBuildDate>", rss)
+        # All dates should end with GMT per RFC 822
+        import re
+
+        dates = re.findall(r"<(?:pubDate|lastBuildDate)>([^<]+)</", rss)
+        self.assertTrue(len(dates) > 0)
+        for date_str in dates:
+            self.assertTrue(date_str.strip().endswith("GMT"), f"Date does not end with GMT: {date_str}")
+
+    def test_atom_feed_dates_use_utc(self) -> None:
+        build_site(self.root, self._config())
+        atom = (self.root / "_build" / "feeds" / "all.atom.xml").read_text(encoding="utf-8")
+        import re
+
+        dates = re.findall(r"<(?:published|updated)>([^<]+)</", atom)
+        self.assertTrue(len(dates) > 0)
+        for date_str in dates:
+            self.assertTrue(date_str.strip().endswith("Z"), f"Date does not end with Z: {date_str}")

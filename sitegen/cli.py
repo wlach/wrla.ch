@@ -3,6 +3,7 @@ from __future__ import annotations
 import http.server
 import os
 import socketserver
+from datetime import UTC
 from datetime import datetime
 from pathlib import Path
 
@@ -22,7 +23,7 @@ def new_post(title: str) -> None:
     root = find_project_root(Path.cwd())
     posts_dir = root / "src" / "posts"
     posts_dir.mkdir(parents=True, exist_ok=True)
-    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    timestamp = datetime.now(UTC).strftime("%Y%m%d%H%M%S")
     slug = slugify(title)
     dir_path = posts_dir / f"{timestamp}-{slug}"
     path = dir_path / "index.md"
