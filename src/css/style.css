@@ -878,6 +878,30 @@ ol {
   margin-bottom: 1rem;
 }
 
+.footnotes-sep {
+  margin-top: 2rem;
+}
+
+.footnotes {
+  font-size: 0.875rem;
+  --text-opacity: 1;
+  color: #718096;
+  color: rgba(113, 128, 150, var(--text-opacity));
+}
+
+.footnotes-list {
+  margin-bottom: 0;
+}
+
+.footnote-item p {
+  margin-bottom: 0.5rem;
+}
+
+.footnote-ref,
+.footnote-backref {
+  white-space: nowrap;
+}
+
 .less-important {
   --text-opacity: 1;
   color: #718096;

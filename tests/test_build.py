@@ -90,6 +90,29 @@ class BuildSiteTests(unittest.TestCase):
         html = (post_dir / "index.html").read_text(encoding="utf-8")
         self.assertIn("Source on GitHub", html)
 
+    def test_renders_footnotes(self) -> None:
+        post = self.root / "src" / "posts" / "20260102000000-footnotes"
+        post.mkdir(parents=True)
+        (post / "index.md").write_text(
+            "---\ntags: [test]\n---\n\n# Footnotes\n\nText.[^note]\n\n[^note]: A note.\n",
+            encoding="utf-8",
+        )
+
+        build_site(self.root, self._config())
+
+        html = (
+            self.root / "_build" / "log" / "2026" / "01" / "footnotes" / "index.html"
+        ).read_text(encoding="utf-8")
+        self.assertIn(
+            '<sup class="footnote-ref"><a href="#fn-footnotes-1" '
+            'id="fnref-footnotes-1">[1]</a></sup>',
+            html,
+        )
+        self.assertIn('<section class="footnotes">', html)
+        self.assertIn('id="fn-footnotes-1"', html)
+        self.assertIn('href="#fnref-footnotes-1" class="footnote-backref"', html)
+        self.assertNotIn("[^note]", html)
+
     def test_generates_sitemap(self) -> None:
         build_site(self.root, self._config())
         sitemap = self.root / "_build" / "sitemap.txt"

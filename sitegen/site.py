@@ -111,7 +111,7 @@ def _load_posts(posts_dir: Path) -> list[Post]:
             Tag(name=tag, slug=slugify(tag))
             for tag in normalize_tags(parsed.metadata.get("tags"))
         )
-        content_html = md.render(body_without_title)
+        content_html = md.render(body_without_title, {"docId": slug})
         content_text = strip_html(content_html)
         title_html = render_inline_markdown(title)
         posts.append(
@@ -137,7 +137,7 @@ def _load_pages(pages_dir: Path) -> list[dict[str, Any]]:
         raw = path.read_text(encoding="utf-8")
         parsed = frontmatter.loads(raw)
         title = parsed.metadata.get("title") or path.stem.replace("-", " ").title()
-        content_html = md.render(parsed.content)
+        content_html = md.render(parsed.content, {"docId": path.stem})
         content_text = strip_html(content_html)
         pages.append(
             {

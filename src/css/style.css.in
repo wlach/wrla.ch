@@ -113,6 +113,27 @@ ol {
     @apply mb-4;
 }
 
+.footnotes-sep {
+    margin-top: 2rem;
+}
+
+.footnotes {
+    @apply text-sm text-gray-600;
+}
+
+.footnotes-list {
+    margin-bottom: 0;
+}
+
+.footnote-item p {
+    margin-bottom: 0.5rem;
+}
+
+.footnote-ref,
+.footnote-backref {
+    white-space: nowrap;
+}
+
 .less-important {
     @apply text-gray-600;
 }

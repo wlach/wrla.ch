@@ -8,6 +8,7 @@ from html import unescape as html_unescape
 from typing import Any
 
 from markdown_it import MarkdownIt
+from mdit_py_plugins.footnote import footnote_plugin
 from pygments import highlight
 from pygments.formatters import HtmlFormatter  # type: ignore[unresolved-import]
 from pygments.lexers import TextLexer  # type: ignore[unresolved-import]
@@ -62,6 +63,7 @@ def markdown_renderer() -> MarkdownIt:
     md = MarkdownIt("commonmark", {"html": True})
     md.enable("table")
     md.enable("strikethrough")
+    md.use(footnote_plugin)
 
     def _fence_renderer(tokens, idx, _options, _env):
         token = tokens[idx]
