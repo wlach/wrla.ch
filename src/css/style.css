@@ -765,7 +765,21 @@ code {
 
 body {
   font-family: inherit;
-  color: #222;
+  color: black;
+  background-color: #fff;
+}
+
+p {
+  margin: 1em 0;
+}
+
+table p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+blockquote {
+  margin-left: 2em;
 }
 
 img {
@@ -860,6 +874,14 @@ article h3 {
   font-size: 1.125rem;
 }
 
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+}
+
 article > hr {
   padding-top: 1rem;
 }
@@ -876,6 +898,18 @@ ol {
   list-style-position: outside;
   padding-left: 40px;
   margin-bottom: 1rem;
+}
+
+ol ol {
+  list-style-type: lower-alpha;
+}
+
+ol ol ol {
+  list-style-type: lower-roman;
+}
+
+ol ol ol ol {
+  list-style-type: upper-alpha;
 }
 
 .footnotes-sep {

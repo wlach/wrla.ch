@@ -8,7 +8,21 @@ code {
 
 body {
   font-family: inherit;
-  color: #222;
+  color: black;
+  background-color: #fff;
+}
+
+p {
+  margin: 1em 0;
+}
+
+table p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+blockquote {
+  margin-left: 2em;
 }
 
 img {
@@ -97,6 +111,14 @@ article h3 {
   @apply text-lg;
 }
 
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 1.75em;
+  margin-bottom: 0.5em;
+}
+
 article > hr {
     @apply pt-4;
 }
@@ -111,6 +133,18 @@ ol {
     @apply list-decimal list-outside;
     padding-left: 40px;
     @apply mb-4;
+}
+
+ol ol {
+    list-style-type: lower-alpha;
+}
+
+ol ol ol {
+    list-style-type: lower-roman;
+}
+
+ol ol ol ol {
+    list-style-type: upper-alpha;
 }
 
 .footnotes-sep {
