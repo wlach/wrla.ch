@@ -109,6 +109,7 @@ class BuildSiteTests(unittest.TestCase):
             html,
         )
         self.assertIn('<section class="footnotes">', html)
+        self.assertIn('<ol class="footnotes-list">', html)
         self.assertIn('id="fn-footnotes-1"', html)
         self.assertIn('href="#fnref-footnotes-1" class="footnote-backref"', html)
         self.assertNotIn("[^note]", html)

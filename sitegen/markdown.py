@@ -65,6 +65,11 @@ def markdown_renderer() -> MarkdownIt:
     md.enable("strikethrough")
     md.use(footnote_plugin)
 
+    def _footnote_block_open_renderer(_tokens, _idx, _options, _env):
+        return '<section class="footnotes">\n<ol class="footnotes-list">\n'
+
+    md.renderer.rules["footnote_block_open"] = _footnote_block_open_renderer
+
     def _fence_renderer(tokens, idx, _options, _env):
         token = tokens[idx]
         info = token.info.strip() if token.info else ""

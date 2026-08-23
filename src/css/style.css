@@ -912,11 +912,8 @@ ol ol ol ol {
   list-style-type: upper-alpha;
 }
 
-.footnotes-sep {
-  margin-top: 2rem;
-}
-
 .footnotes {
+  margin-top: 2rem;
   font-size: 0.875rem;
   --text-opacity: 1;
   color: #718096;
@@ -924,6 +921,7 @@ ol ol ol ol {
 }
 
 .footnotes-list {
+  padding-left: 1.25rem;
   margin-bottom: 0;
 }
 
