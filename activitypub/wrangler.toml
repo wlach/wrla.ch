@@ -1,0 +1,55 @@
+name = "wrla-ch-activitypub"
+main = "worker/entry.py"
+compatibility_date = "2026-08-23"
+compatibility_flags = ["python_workers", "global_fetch_strictly_public"]
+
+[vars]
+BASE_URL = "https://wrla.ch"
+ACTOR_NAME = "wrlach"
+ALLOW_INSECURE_TEST_URLS = "false"
+OUTBOUND_DELIVERY_ENABLED = "false"
+
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+[triggers]
+crons = ["*/5 * * * *"]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "wrla-ch-activitypub"
+database_id = "076b954b-231e-43f1-a40b-07292b80ebdf"
+migrations_dir = "migrations"
+
+[[ratelimits]]
+name = "INBOX_RATE_LIMITER"
+namespace_id = "20260824"
+
+  [ratelimits.simple]
+  limit = 120
+  period = 60
+
+[[routes]]
+pattern = "wrla.ch/.well-known/webfinger*"
+zone_name = "wrla.ch"
+
+[[routes]]
+pattern = "wrla.ch/activitypub/wrlach/inbox"
+zone_name = "wrla.ch"
+
+[[routes]]
+pattern = "wrla.ch/activitypub/wrlach/followers"
+zone_name = "wrla.ch"
+
+[[routes]]
+pattern = "wrla.ch/activitypub/replies/*"
+zone_name = "wrla.ch"
+
+[[routes]]
+pattern = "wrla.ch/activitypub/likes/*"
+zone_name = "wrla.ch"
+
+[[routes]]
+pattern = "wrla.ch/activitypub/shares/*"
+zone_name = "wrla.ch"

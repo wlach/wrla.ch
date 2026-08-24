@@ -15,6 +15,10 @@ generates entirely static HTML and CSS.
 - Build the site: `uv run site build` (writes to `_build`)
 - Preview the site: `uv run site preview`
 
+The build also generates the static half of the `@wrlach@wrla.ch` ActivityPub
+feed. Its stateful Cloudflare Worker, deployment notes, and redaction procedure
+are documented in [`activitypub/README.md`](activitypub/README.md).
+
 ## Maintenance tasks
 
 - Typechecking: `uv run ty check`

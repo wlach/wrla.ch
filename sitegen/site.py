@@ -18,6 +18,7 @@ from markupsafe import Markup
 from pygments.formatters.html import HtmlFormatter
 from slugify import slugify
 
+from .activitypub import build_activitypub
 from .config import BlogConfig
 from .markdown import extract_title
 from .markdown import format_atom_date
@@ -71,6 +72,7 @@ class Post:
     date: datetime
     content_html: str
     content_text: str
+    body_markdown: str
     tags: tuple[Tag, ...]
     source_path: str
 
@@ -132,6 +134,7 @@ def _load_posts(posts_dir: Path) -> list[Post]:
                 date=date,
                 content_html=content_html,
                 content_text=content_text,
+                body_markdown=body_without_title,
                 tags=tags,
                 source_path=directory.name,
             )
@@ -391,6 +394,7 @@ def build_site(root: Path, config: BlogConfig) -> None:
 
     _build_feeds(build_dir, config, posts, tag_defs, tag_map, rewritten_content, env)
     _build_sitemap(build_dir, config, posts, pages)
+    build_activitypub(root, build_dir, config, posts)
 
 
 def _build_feeds(

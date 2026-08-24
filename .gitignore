@@ -5,3 +5,12 @@ __pycache__/
 .vscode/
 .ruff_cache
 .pytest_cache
+
+# Local ActivityPub signing material and Worker state
+activitypub/private-key.pem
+activitypub/.dev.vars
+activitypub/.wrangler/
+activitypub/.venv/
+activitypub/.venv-workers/
+activitypub/pylock.toml
+activitypub/python_modules/

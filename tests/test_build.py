@@ -18,6 +18,7 @@ class BuildSiteTests(unittest.TestCase):
         self.root = Path(self.temp_dir.name)
         (self.root / "src").mkdir(parents=True, exist_ok=True)
         self._copy_templates()
+        self._copy_activitypub_config()
         self._write_posts(count=30, tag_count=15)
 
     def tearDown(self) -> None:
@@ -28,6 +29,14 @@ class BuildSiteTests(unittest.TestCase):
         source = repo_root / "src" / "templates"
         target = self.root / "src" / "templates"
         shutil.copytree(source, target)
+
+    def _copy_activitypub_config(self) -> None:
+        repo_root = Path(__file__).resolve().parents[1]
+        source = repo_root / "activitypub"
+        target = self.root / "activitypub"
+        target.mkdir()
+        shutil.copy2(source / "public-key.pem", target / "public-key.pem")
+        shutil.copy2(source / "redactions.json", target / "redactions.json")
 
     def _write_posts(self, count: int, tag_count: int) -> None:
         posts_dir = self.root / "src" / "posts"
@@ -126,6 +135,30 @@ class BuildSiteTests(unittest.TestCase):
         self.assertTrue(sitemap.exists())
         content = sitemap.read_text(encoding="utf-8").strip().splitlines()
         self.assertEqual(len(content), 30)
+
+    def test_generates_activitypub_archive(self) -> None:
+        import json
+
+        build_site(self.root, self._config())
+        actor = json.loads(
+            (self.root / "_build/activitypub/wrlach/index.html").read_text()
+        )
+        self.assertEqual(actor["type"], "Service")
+        self.assertEqual(actor["preferredUsername"], "wrlach")
+        self.assertIn("BEGIN PUBLIC KEY", actor["publicKey"]["publicKeyPem"])
+
+        outbox = json.loads(
+            (self.root / "_build/activitypub/wrlach/outbox/index.html").read_text()
+        )
+        self.assertEqual(outbox["totalItems"], 30)
+        self.assertTrue(
+            (self.root / "_build/activitypub/wrlach/outbox/page/2/index.html").exists()
+        )
+        manifest = json.loads(
+            (self.root / "_build/activitypub/manifest.json").read_text()
+        )
+        self.assertEqual(len(manifest["posts"]), 30)
+        self.assertTrue(all(not item["redacted"] for item in manifest["posts"]))
 
     def test_copies_post_images_and_rewrites_feed_urls(self) -> None:
         # Create a post with an image reference
