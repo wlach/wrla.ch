@@ -24,6 +24,17 @@ wheels = [
 ]
 
 [[package]]
+name = "idr-tools"
+version = "0.2.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/c3/b6/9dbdfab1c1c05d31a5b527a3492bb35990bb78dc8977f7c44ec0707b372a/idr_tools-0.2.1.tar.gz", hash = "sha256:5df3db402887dbbbf46edc0818dacad793dcd24f99f782d392edb91463dac000", size = 37863, upload-time = "2026-03-06T17:25:05.215Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8d/6b/5a940a46fba19046afd232ba8a18abd70e416aef9e90a198cf2796e17c06/idr_tools-0.2.1-py3-none-macosx_11_0_arm64.whl", hash = "sha256:d6f38c131e931c809e7e8dda14a5cf7b218ea4c6f2ee2c51bc396be3032a1ce9", size = 1487387, upload-time = "2026-03-06T17:25:00.8Z" },
+    { url = "https://files.pythonhosted.org/packages/f5/1d/d6d7466aaf4c4e31aa359447120a977984c01aca978818f8f32dcb669e83/idr_tools-0.2.1-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:2acc735ead901db5b1019c51fdf3d0c9ccb7e371a6be0da7e468da8893b4f284", size = 1638052, upload-time = "2026-03-06T17:25:02.342Z" },
+    { url = "https://files.pythonhosted.org/packages/74/25/85ecda09782a8e4dbc45310f1c5aae15278f36c8488adc4a9968a20d0e56/idr_tools-0.2.1-py3-none-win_amd64.whl", hash = "sha256:14178dcbd8f1fcf5d676afcf08f5fc0af723491d5e3e2c73ecf4ab2988ab89c3", size = 1557394, upload-time = "2026-03-06T17:25:03.752Z" },
+]
+
+[[package]]
 name = "iniconfig"
 version = "2.3.0"
 source = { registry = "https://pypi.org/simple" }
@@ -310,6 +321,7 @@ name = "wrla-ch"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "idr-tools" },
     { name = "jinja2" },
     { name = "markdown-it-py" },
     { name = "mdit-py-plugins" },
@@ -328,6 +340,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "idr-tools", specifier = ">=0.2.1" },
     { name = "jinja2", specifier = ">=3.1.2" },
     { name = "markdown-it-py", specifier = ">=3.0.0" },
     { name = "mdit-py-plugins", specifier = ">=0.4.0" },
