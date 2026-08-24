@@ -1,1 +1,3 @@
 /blog/* https://archive.wrla.ch/blog/:splat 301
+/feeds/Mozilla.atom.xml /feeds/mozilla.atom.xml 301
+/feeds/Mozilla.rss.xml /feeds/mozilla.rss.xml 301

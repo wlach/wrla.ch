@@ -83,6 +83,12 @@ class BuildSiteTests(unittest.TestCase):
         self.assertIn("tag-00.html", tag_pages)
         self.assertIn("tag-14.html", tag_pages)
 
+    def test_generates_not_found_page(self) -> None:
+        build_site(self.root, self._config())
+        not_found = (self.root / "_build" / "404.html").read_text(encoding="utf-8")
+        self.assertIn("<title>Page not found</title>", not_found)
+        self.assertIn("The requested page could not be found.", not_found)
+
     def test_generates_posts(self) -> None:
         build_site(self.root, self._config())
         post_dir = self.root / "_build" / "log" / "2026" / "01" / "post-00"

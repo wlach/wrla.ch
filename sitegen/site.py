@@ -371,6 +371,24 @@ def build_site(root: Path, config: BlogConfig) -> None:
         page_dir.mkdir(parents=True, exist_ok=True)
         (page_dir / "index.html").write_text(html, encoding="utf-8")
 
+    not_found_context = {
+        "page_title": "Page not found",
+        "description": "The requested page could not be found.",
+        "author": config.author,
+        "keywords": "",
+        "canonical_url": f"{config.base_url}/404.html",
+        "atom_feed_url": atom_all,
+        "rss_feed_url": rss_all,
+        "rel_next": None,
+        "rel_prev": None,
+        "active_nav": None,
+        "page_links": page_links,
+        "source_url": None,
+        "tag": None,
+    }
+    not_found_html = _render_template(env, "404.html.jinja", not_found_context)
+    (build_dir / "404.html").write_text(not_found_html, encoding="utf-8")
+
     _build_feeds(build_dir, config, posts, tag_defs, tag_map, rewritten_content, env)
     _build_sitemap(build_dir, config, posts, pages)
 
