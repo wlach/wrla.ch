@@ -53,6 +53,9 @@ include = ["sitegen"]
 exclude = ["_build/**", "files/**", "src/files/**"]
 
 [tool.ruff.lint]
+# TRY003 does more harm than good:
+# https://github.com/astral-sh/ruff/issues/14398#issuecomment-4681370313
+ignore = ["TRY003"]
 select = [
     "E4",  # pycodestyle errors (subset)
     "E7",  # pycodestyle errors (subset)

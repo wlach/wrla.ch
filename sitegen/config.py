@@ -20,7 +20,7 @@ def load_config(root: Path) -> BlogConfig:
     data = tomllib.loads(config_path.read_text(encoding="utf-8"))
     tool = data.get("tool", {}).get("site", {})
     if not tool:
-        raise RuntimeError("Missing [tool.site] configuration in pyproject.toml")  # noqa: TRY003
+        raise RuntimeError("Missing [tool.site] configuration in pyproject.toml")
     return BlogConfig(
         title=tool["title"],
         author=tool["author"],
@@ -37,5 +37,5 @@ def find_project_root(start: Path) -> Path:
         if (current / "pyproject.toml").exists():
             return current
         if current.parent == current:
-            raise RuntimeError("Could not find pyproject.toml in parent directories")  # noqa: TRY003
+            raise RuntimeError("Could not find pyproject.toml in parent directories")
         current = current.parent

@@ -24,7 +24,7 @@ def extract_title(markdown_text: str) -> tuple[str, str]:
             continue
         match = _TITLE_RE.match(line)
         if not match:
-            raise ValueError("First non-empty line must be a '# ' title")  # noqa: TRY003
+            raise ValueError("First non-empty line must be a '# ' title")
         title = match.group(1).strip()
         stripped = markdown_text.splitlines()
         for idx, original in enumerate(stripped):
@@ -32,7 +32,7 @@ def extract_title(markdown_text: str) -> tuple[str, str]:
                 remaining = "\n".join(stripped[idx + 1 :]).lstrip("\n")
                 return title, remaining
         break
-    raise ValueError("Missing title")  # noqa: TRY003
+    raise ValueError("Missing title")
 
 
 def validate_heading_sequence(markdown_text: str, md: MarkdownIt) -> None:
@@ -44,11 +44,11 @@ def validate_heading_sequence(markdown_text: str, md: MarkdownIt) -> None:
         level = int(token.tag[1:])
         if last_level is None:
             if level != 1:
-                raise ValueError("First heading must be level 1")  # noqa: TRY003
+                raise ValueError("First heading must be level 1")
             last_level = level
             continue
         if level > last_level + 1:
-            raise ValueError("Heading levels must increment by one")  # noqa: TRY003
+            raise ValueError("Heading levels must increment by one")
         last_level = level
 
 

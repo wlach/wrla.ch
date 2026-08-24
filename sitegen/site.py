@@ -106,13 +106,13 @@ def _load_posts(posts_dir: Path) -> list[Post]:
         directory = path.parent
         stem = directory.name
         if len(stem) < 16 or stem[14] != "-":
-            raise ValueError(f"Invalid post directory: {directory.name}")  # noqa: TRY003
+            raise ValueError(f"Invalid post directory: {directory.name}")
         timestamp = stem[:14]
         slug = stem[15:]
         try:
             date = datetime.strptime(timestamp, "%Y%m%d%H%M%S").replace(tzinfo=UTC)
         except ValueError as exc:
-            raise ValueError(f"Invalid timestamp in {directory.name}") from exc  # noqa: TRY003
+            raise ValueError(f"Invalid timestamp in {directory.name}") from exc
         raw = path.read_text(encoding="utf-8")
         parsed = frontmatter.loads(raw)
         title, body_without_title = extract_title(parsed.content)
