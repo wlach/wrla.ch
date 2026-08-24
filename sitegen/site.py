@@ -8,13 +8,14 @@ from datetime import datetime
 from math import ceil
 from pathlib import Path
 from typing import Any
+from typing import TypedDict
 
 import frontmatter
 from jinja2 import Environment
 from jinja2 import FileSystemLoader
 from jinja2 import select_autoescape
 from markupsafe import Markup
-from pygments.formatters import HtmlFormatter  # type: ignore[unresolved-import]
+from pygments.formatters.html import HtmlFormatter
 from slugify import slugify
 
 from .config import BlogConfig
@@ -80,6 +81,15 @@ class Post:
     @property
     def date_pretty(self) -> str:
         return format_pretty_date(self.date)
+
+
+class FeedSpec(TypedDict):
+    key: str
+    title: str
+    self_url: str
+    home_url: str
+    items: list[Post]
+    source: str
 
 
 def _make_urn(base_url: str, path: str) -> str:
@@ -418,7 +428,7 @@ def _build_feeds(
             payload["description"] = title
         return _render_template(env, template, payload)
 
-    feed_specs: list[dict[str, str | list[Post]]] = [
+    feed_specs: list[FeedSpec] = [
         {
             "key": "all",
             "title": config.title,
@@ -447,7 +457,7 @@ def _build_feeds(
             title=str(spec["title"]),
             self_url=str(spec["self_url"]),
             home_url=str(spec["home_url"]),
-            items=spec["items"],  # type: ignore[arg-type]
+            items=spec["items"],
             source=str(spec["source"]),
             medium="Atom",
             date_formatter=format_atom_date,
@@ -457,7 +467,7 @@ def _build_feeds(
             template="feeds/rss.xml.jinja",
             title=str(spec["title"]),
             home_url=str(spec["home_url"]),
-            items=spec["items"],  # type: ignore[arg-type]
+            items=spec["items"],
             source=str(spec["source"]),
             medium="RSS",
             date_formatter=format_rss_date,

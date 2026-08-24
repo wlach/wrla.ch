@@ -10,9 +10,9 @@ from typing import Any
 from markdown_it import MarkdownIt
 from mdit_py_plugins.footnote import footnote_plugin
 from pygments import highlight
-from pygments.formatters import HtmlFormatter  # type: ignore[unresolved-import]
-from pygments.lexers import TextLexer  # type: ignore[unresolved-import]
+from pygments.formatters.html import HtmlFormatter
 from pygments.lexers import get_lexer_by_name
+from pygments.lexers.special import TextLexer
 from pygments.util import ClassNotFound
 
 _TITLE_RE = re.compile(r"^#\s+(.+)$")
@@ -65,12 +65,12 @@ def markdown_renderer() -> MarkdownIt:
     md.enable("strikethrough")
     md.use(footnote_plugin)
 
-    def _footnote_block_open_renderer(_tokens, _idx, _options, _env):
+    def _footnote_block_open_renderer(_renderer, _tokens, _idx, _options, _env):
         return '<section class="footnotes">\n<ol class="footnotes-list">\n'
 
-    md.renderer.rules["footnote_block_open"] = _footnote_block_open_renderer
+    md.add_render_rule("footnote_block_open", _footnote_block_open_renderer)
 
-    def _fence_renderer(tokens, idx, _options, _env):
+    def _fence_renderer(_renderer, tokens, idx, _options, _env):
         token = tokens[idx]
         info = token.info.strip() if token.info else ""
         lang = info.split()[0] if info else ""
@@ -81,7 +81,7 @@ def markdown_renderer() -> MarkdownIt:
         highlighted = highlight(token.content, lexer, formatter)
         return f'<div class="brush: {lang}">{highlighted}</div>\n'
 
-    md.renderer.rules["fence"] = _fence_renderer  # type: ignore[possibly-missing-attribute]
+    md.add_render_rule("fence", _fence_renderer)
     return md
 
 
