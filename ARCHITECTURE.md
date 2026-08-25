@@ -57,10 +57,10 @@ image with useful alt text. The repository's public key is embedded in the
 actor. Explicitly redacted posts become static `Tombstone` objects.
 
 The Worker owns the private key as the `ACTIVITYPUB_PRIVATE_KEY` secret. D1
-stores followers, observed post state, replies, likes and shares, queued
-deliveries, retries, and the destinations that successfully received each
-post. Pydantic models validate remote JSON, manifest data, Notes, and
-multi-column database results at their boundaries.
+stores followers, observed post state, replies, likes and shares, quote
+authorizations, queued deliveries, retries, and the destinations that
+successfully received each post. Pydantic models validate remote JSON,
+manifest data, Notes, and multi-column database results at their boundaries.
 
 All global fetches use Cloudflare's strictly-public routing. Remote URLs must
 use HTTPS and cannot name localhost or a literal non-public IP address. Actor
@@ -84,6 +84,7 @@ includes the query string, and WebFinger uses `?resource=...`.
 | `/.well-known/webfinger?resource=...` | Worker | Resolves `acct:wrlach@wrla.ch` to the actor |
 | `/activitypub/wrlach/inbox` | Worker | Accepts supported signed activities |
 | `/activitypub/wrlach/followers` | Worker | Returns the active follower count |
+| `/activitypub/wrlach/quote-authorizations/*` | Worker | Returns a public FEP-044f approval stamp |
 | `/activitypub/replies/*` | Worker | Returns known verified reply URLs, paginated |
 | `/activitypub/likes/*`, `/activitypub/shares/*` | Worker | Returns aggregate interaction counts |
 
@@ -101,11 +102,21 @@ to 120 requests per minute in each Cloudflare location before these more
 expensive operations run.
 
 Supported activities are `Follow`, `Like`, `Announce`, public replies expressed
-as `Create(Note)`, and corresponding `Undo` operations. A Follow records the
-remote inbox or shared inbox and queues a signed `Accept`. Likes and shares are
-idempotent per actor and post. Replies are retained as verified object URLs;
-their remote HTML is neither trusted nor rendered on the blog. Unsupported,
-misaddressed, unsigned, or unknown-post activities are rejected.
+as `Create(Note)`, FEP-044f `QuoteRequest`, and corresponding `Undo` operations.
+A Follow records the remote inbox or shared inbox and queues a signed `Accept`.
+Likes and shares are idempotent per actor and post. Replies are retained as
+verified object URLs; their remote HTML is neither trusted nor rendered on the
+blog. Unsupported, misaddressed, unsigned, or unknown-post activities are
+rejected.
+
+Generated Notes advertise a quote policy whose automatic audience is Public.
+For a quote request, the Worker verifies that the quote is public, belongs to
+the signed actor's origin, and names the local Note as its `quote`. It then
+stores a stable, publicly dereferenceable `QuoteAuthorization` and sends the
+requesting actor a signed `Accept` whose `result` is that authorization URL.
+This is deliberately unconditional for valid public quotes; there is no manual
+moderation queue. The policy alone would only be a user-interface hint—the
+authorization exchange is what lets third-party servers verify consent.
 
 ## Publication and delivery
 

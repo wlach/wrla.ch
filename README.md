@@ -7,7 +7,7 @@ generates entirely static HTML and CSS.
 
 ## Requirements
 
-[uv](https://astral.sh/uv) for bootstraping. npm/node required to regenerate CSS.
+[uv](https://astral.sh/uv) for bootstraping. npm/node required to regenerate CSS and test ActivityPub implementation
 
 ## Common tasks
 
@@ -23,6 +23,7 @@ are documented in [`activitypub/README.md`](activitypub/README.md).
 
 - Typechecking: `uv run ty check`
 - Linting: `uv run ruff check`
+- Testing: `uv run pytest` (requires nodejs)
 
 ## Meta
 

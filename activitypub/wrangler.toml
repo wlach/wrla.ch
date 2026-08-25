@@ -43,6 +43,10 @@ pattern = "wrla.ch/activitypub/wrlach/followers"
 zone_name = "wrla.ch"
 
 [[routes]]
+pattern = "wrla.ch/activitypub/wrlach/quote-authorizations/*"
+zone_name = "wrla.ch"
+
+[[routes]]
 pattern = "wrla.ch/activitypub/replies/*"
 zone_name = "wrla.ch"
 

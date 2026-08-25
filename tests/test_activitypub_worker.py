@@ -15,11 +15,13 @@ from pydantic import ValidationError
 from activitypub.worker.core import GRACE_PERIOD
 from activitypub.worker.core import PUBLIC
 from activitypub.worker.core import ProtocolError
+from activitypub.worker.core import accept_quote_request
 from activitypub.worker.core import digest_header
 from activitypub.worker.core import eligible
 from activitypub.worker.core import ensure_remote_url
 from activitypub.worker.core import parse_inbound_activity
 from activitypub.worker.core import parse_signature
+from activitypub.worker.core import quote_authorization
 from activitypub.worker.core import read_limited_body
 from activitypub.worker.core import retry_at
 from activitypub.worker.core import signature_input
@@ -28,6 +30,7 @@ from activitypub.worker.core import validate_inbox_activity
 from activitypub.worker.models import DeliveryRow
 from activitypub.worker.models import Manifest
 from activitypub.worker.models import PostRow
+from activitypub.worker.models import QuoteRequestActivity
 from activitypub.worker.models import RemoteActor
 
 BASE_URL = "https://wrla.ch"
@@ -38,7 +41,9 @@ POST_URL = f"{BASE_URL}/activitypub/posts/20260101000000-post"
 def test_digest_round_trip() -> None:
     body = b'{"type":"Follow"}'
     value = digest_header(body)
-    assert value == "SHA-256=" + base64.b64encode(hashlib.sha256(body).digest()).decode()
+    assert (
+        value == "SHA-256=" + base64.b64encode(hashlib.sha256(body).digest()).decode()
+    )
     validate_digest(value, body)
     with pytest.raises(ProtocolError):
         validate_digest(value, body + b" ")
@@ -140,10 +145,86 @@ def test_public_reply() -> None:
             "to": [PUBLIC],
         },
     }
-    event = validate_inbox_activity(
-        activity, actor_url=REMOTE_ACTOR, base_url=BASE_URL
-    )
+    event = validate_inbox_activity(activity, actor_url=REMOTE_ACTOR, base_url=BASE_URL)
     assert event.kind == "Reply"
+
+
+def test_public_quote_request_builds_stable_accept_and_authorization() -> None:
+    value = {
+        "@context": [
+            "https://www.w3.org/ns/activitystreams",
+            {
+                "QuoteRequest": "https://w3id.org/fep/044f#QuoteRequest",
+                "quote": {
+                    "@id": "https://w3id.org/fep/044f#quote",
+                    "@type": "@id",
+                },
+            },
+        ],
+        "id": f"{REMOTE_ACTOR}/quote-requests/1",
+        "type": "QuoteRequest",
+        "actor": REMOTE_ACTOR,
+        "object": POST_URL,
+        "instrument": {
+            "id": f"{REMOTE_ACTOR}/posts/quoted",
+            "type": "Note",
+            "attributedTo": REMOTE_ACTOR,
+            "quote": POST_URL,
+            "to": [PUBLIC],
+        },
+    }
+    activity = parse_inbound_activity(value)
+    assert isinstance(activity, QuoteRequestActivity)
+    event = validate_inbox_activity(activity, actor_url=REMOTE_ACTOR, base_url=BASE_URL)
+    assert event.kind == "QuoteRequest"
+    assert event.object_id == f"{REMOTE_ACTOR}/posts/quoted"
+
+    authorization = quote_authorization(f"{BASE_URL}/activitypub/wrlach", activity)
+    accept = accept_quote_request(
+        f"{BASE_URL}/activitypub/wrlach", activity, authorization
+    )
+    assert authorization["type"] == "QuoteAuthorization"
+    assert authorization["interactingObject"] == event.object_id
+    assert authorization["interactionTarget"] == POST_URL
+    assert accept["result"] == authorization["id"]
+    assert accept["object"]["instrument"] == event.object_id
+    assert (
+        quote_authorization(f"{BASE_URL}/activitypub/wrlach", activity) == authorization
+    )
+
+
+@pytest.mark.parametrize(
+    ("change", "message"),
+    [
+        ({"attributedTo": "https://attacker.example/users/me"}, "author"),
+        (
+            {"quote": "https://wrla.ch/activitypub/posts/20260101000000-other"},
+            "targets",
+        ),
+        ({"to": ["https://remote.example/users/me/followers"]}, "public"),
+        ({"id": "https://attacker.example/posts/quoted"}, "belong"),
+    ],
+)
+def test_rejects_invalid_quote_requests(
+    change: dict[str, object], message: str
+) -> None:
+    instrument = {
+        "id": f"{REMOTE_ACTOR}/posts/quoted",
+        "type": "Note",
+        "attributedTo": REMOTE_ACTOR,
+        "quote": POST_URL,
+        "to": [PUBLIC],
+        **change,
+    }
+    activity = {
+        "id": f"{REMOTE_ACTOR}/quote-requests/1",
+        "type": "QuoteRequest",
+        "actor": REMOTE_ACTOR,
+        "object": POST_URL,
+        "instrument": instrument,
+    }
+    with pytest.raises(ProtocolError, match=message):
+        validate_inbox_activity(activity, actor_url=REMOTE_ACTOR, base_url=BASE_URL)
 
 
 def test_rejects_private_and_foreign_replies() -> None:
@@ -188,7 +269,9 @@ def test_remote_response_body_is_streamed_and_bounded() -> None:
 
         async def read(self):
             try:
-                return type("ReadResult", (), {"done": False, "value": next(self.chunks)})()
+                return type(
+                    "ReadResult", (), {"done": False, "value": next(self.chunks)}
+                )()
             except StopIteration:
                 return type("ReadResult", (), {"done": True, "value": None})()
 
@@ -286,12 +369,10 @@ def test_grace_period_and_retry_cap() -> None:
 
 
 def test_d1_schema_applies_to_sqlite() -> None:
-    migration = (
-        Path(__file__).resolve().parents[1]
-        / "activitypub/migrations/0001_initial.sql"
-    ).read_text()
     database = sqlite3.connect(":memory:")
-    database.executescript(migration)
+    migrations = Path(__file__).resolve().parents[1] / "activitypub/migrations"
+    for migration in sorted(migrations.glob("*.sql")):
+        database.executescript(migration.read_text())
     tables = {
         row[0]
         for row in database.execute("SELECT name FROM sqlite_master WHERE type='table'")
@@ -304,6 +385,7 @@ def test_d1_schema_applies_to_sqlite() -> None:
         "interactions",
         "deliveries",
         "delivery_recipients",
+        "quote_authorizations",
     } <= tables
 
 

@@ -27,6 +27,13 @@ if TYPE_CHECKING:
 
 ACTIVITYSTREAMS_CONTEXT = "https://www.w3.org/ns/activitystreams"
 PUBLIC = "https://www.w3.org/ns/activitystreams#Public"
+QUOTE_POLICY_CONTEXT: dict[str, object] = {
+    "gts": "https://gotosocial.org/ns#",
+    "interactionPolicy": {"@id": "gts:interactionPolicy", "@type": "@id"},
+    "canQuote": {"@id": "gts:canQuote", "@type": "@id"},
+    "automaticApproval": {"@id": "gts:automaticApproval", "@type": "@id"},
+    "manualApproval": {"@id": "gts:manualApproval", "@type": "@id"},
+}
 OUTBOX_PAGE_SIZE = 20
 EXCERPT_LIMIT = 300
 
@@ -70,7 +77,9 @@ def _source_parts(source_id: str) -> tuple[datetime, str]:
     if len(source_id) < 16 or source_id[14] != "-":
         raise ValueError(f"Invalid ActivityPub source ID: {source_id}")
     try:
-        published = datetime.strptime(source_id[:14], "%Y%m%d%H%M%S").replace(tzinfo=UTC)
+        published = datetime.strptime(source_id[:14], "%Y%m%d%H%M%S").replace(
+            tzinfo=UTC
+        )
     except ValueError as exc:
         raise ValueError(f"Invalid ActivityPub source ID: {source_id}") from exc
     return published, source_id[15:]
@@ -212,7 +221,7 @@ def _post_note(config: BlogConfig, post: Post) -> dict[str, object]:
     object_id = f"{config.base_url}/activitypub/posts/{post.source_path}"
     canonical = f"{config.base_url}{post.url}"
     note: dict[str, object] = {
-        "@context": ACTIVITYSTREAMS_CONTEXT,
+        "@context": [ACTIVITYSTREAMS_CONTEXT, QUOTE_POLICY_CONTEXT],
         "id": object_id,
         "type": "Note",
         "attributedTo": actor,
@@ -226,6 +235,12 @@ def _post_note(config: BlogConfig, post: Post) -> dict[str, object]:
         "url": canonical,
         "to": [PUBLIC],
         "cc": [f"{actor}/followers"],
+        "interactionPolicy": {
+            "canQuote": {
+                "automaticApproval": [PUBLIC],
+                "manualApproval": [],
+            }
+        },
         "tag": [
             {
                 "type": "Hashtag",
@@ -284,7 +299,9 @@ def _actor(config: BlogConfig, public_key: str) -> dict[str, object]:
     }
 
 
-def build_activitypub(root: Path, build_dir: Path, config: BlogConfig, posts: list[Post]) -> None:
+def build_activitypub(
+    root: Path, build_dir: Path, config: BlogConfig, posts: list[Post]
+) -> None:
     source_dir = root / "activitypub"
     public_key_path = source_dir / "public-key.pem"
     if not public_key_path.exists():
@@ -299,7 +316,9 @@ def build_activitypub(root: Path, build_dir: Path, config: BlogConfig, posts: li
         _source_parts(source_id)
 
     actor_url = f"{config.base_url}/activitypub/wrlach"
-    _write_json(build_dir / "activitypub" / "wrlach" / "index.html", _actor(config, public_key))
+    _write_json(
+        build_dir / "activitypub" / "wrlach" / "index.html", _actor(config, public_key)
+    )
 
     creates: list[dict[str, object]] = []
     manifest_posts: list[dict[str, object]] = []
@@ -308,7 +327,9 @@ def build_activitypub(root: Path, build_dir: Path, config: BlogConfig, posts: li
         create = _create(note)
         creates.append(create)
         body = _json_bytes(note)
-        _write_json(build_dir / "activitypub" / "posts" / post.source_path / "index.html", note)
+        _write_json(
+            build_dir / "activitypub" / "posts" / post.source_path / "index.html", note
+        )
         manifest_posts.append(
             {
                 "source_id": post.source_path,
@@ -329,7 +350,9 @@ def build_activitypub(root: Path, build_dir: Path, config: BlogConfig, posts: li
             "formerType": "Note",
             "deleted": _isoformat(redaction.deleted),
         }
-        _write_json(build_dir / "activitypub" / "posts" / source_id / "index.html", tombstone)
+        _write_json(
+            build_dir / "activitypub" / "posts" / source_id / "index.html", tombstone
+        )
         manifest_posts.append(
             {
                 "source_id": source_id,
@@ -366,7 +389,13 @@ def build_activitypub(root: Path, build_dir: Path, config: BlogConfig, posts: li
         if page < total_pages:
             page_value["next"] = f"{outbox_url}/page/{page + 1}"
         _write_json(
-            build_dir / "activitypub" / "wrlach" / "outbox" / "page" / str(page) / "index.html",
+            build_dir
+            / "activitypub"
+            / "wrlach"
+            / "outbox"
+            / "page"
+            / str(page)
+            / "index.html",
             page_value,
         )
 

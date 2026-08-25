@@ -3,7 +3,8 @@
 This directory contains the small stateful half of the blog's ActivityPub
 feed. The site generator publishes the actor, outbox, post objects, and
 manifest. This Python Worker handles discovery, inbox traffic, collections,
-scheduled publication, and signed delivery. D1 holds only federation state.
+quote authorization, scheduled publication, and signed delivery. D1 holds only
+federation state.
 Pydantic models validate all remote protocol objects and the deployed manifest;
 unknown ActivityPub extension fields are preserved for interoperability.
 
@@ -40,6 +41,11 @@ cd activitypub
    ```sh
    uv run pywrangler d1 migrations apply wrla-ch-activitypub --remote
    ```
+
+   Run this again before deploying any revision that adds a migration. Wrangler
+   records applied migrations and runs only the new ones. In particular,
+   `0002_quote_authorizations.sql` must be present before deploying quote-post
+   support.
 
 4. Install the signing key as a Worker secret without printing it:
 
@@ -135,6 +141,23 @@ explicit record creates its tombstone and triggers federation. Absence alone
 never triggers a federated Delete. On its next scheduled runs, the Worker sends
 the explicit Delete to every inbox that successfully received the original
 Create and retries temporary failures.
+
+## Quote posts
+
+Every generated public Note advertises unconditional automatic quote approval
+using the FEP-044f `interactionPolicy`. The policy enables quote controls in
+supporting software, but is only advisory. The Worker implements the matching
+authorization handshake: it accepts a signed `QuoteRequest`, verifies that the
+public quote Note belongs to the signing actor and targets a known local post,
+stores a stable approval, and sends a signed `Accept` containing its URL.
+
+Approval stamps are publicly dereferenceable at
+`/activitypub/wrlach/quote-authorizations/<id>`. They contain only the local
+actor, the public quote URL, and the public quoted-post URL. There is no manual
+approval queue or block list: valid public quote requests are approved
+unconditionally. D1 persistence makes the response idempotent and leaves room
+for explicit revocation later, but no revocation interface is currently
+implemented.
 
 ## Operational care
 

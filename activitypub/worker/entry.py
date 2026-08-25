@@ -15,6 +15,7 @@ from core import REMOTE_FETCH_TIMEOUT_MS
 from core import SIGNATURE_HEADERS
 from core import ProtocolError
 from core import accept_activity
+from core import accept_quote_request
 from core import canonical_json
 from core import create_activity
 from core import delete_activity
@@ -25,6 +26,8 @@ from core import http_date
 from core import isoformat
 from core import parse_inbound_activity
 from core import parse_signature
+from core import quote_authorization
+from core import quote_authorization_document
 from core import read_limited_body
 from core import retry_at
 from core import signature_header
@@ -41,6 +44,9 @@ from models import Manifest
 from models import OutboundActivity
 from models import PostRow
 from models import PublishedNote
+from models import QuoteAuthorizationRow
+from models import QuoteInstrument
+from models import QuoteRequestActivity
 from models import RemoteActor
 from pydantic import BaseModel
 from pydantic import ValidationError
@@ -145,9 +151,7 @@ async def _sign_rsa(private_pem: str, signed: bytes) -> bytes:
         False,
         _js(["sign"]),
     )
-    result = await crypto.subtle.sign(
-        "RSASSA-PKCS1-v1_5", key, _to_js(signed)
-    )
+    result = await crypto.subtle.sign("RSASSA-PKCS1-v1_5", key, _to_js(signed))
     return bytes(Uint8Array.new(result).to_py())
 
 
@@ -261,6 +265,11 @@ class Default(WorkerEntrypoint):
                 return self._webfinger(url.query)
             if request.method == "POST" and path == "/activitypub/wrlach/inbox":
                 return await self._inbox(request)
+            authorization_prefix = "/activitypub/wrlach/quote-authorizations/"
+            if request.method == "GET" and path.startswith(authorization_prefix):
+                return await self._quote_authorization(
+                    path.removeprefix(authorization_prefix)
+                )
             if (
                 self.allow_insecure
                 and request.method == "POST"
@@ -319,7 +328,10 @@ class Default(WorkerEntrypoint):
                         "type": "application/activity+json",
                         "href": self.local_actor,
                     },
-                    {"rel": "http://webfinger.net/rel/profile-page", "href": self.base_url},
+                    {
+                        "rel": "http://webfinger.net/rel/profile-page",
+                        "href": self.base_url,
+                    },
                 ],
             },
             content_type=JRD_JSON,
@@ -370,7 +382,9 @@ class Default(WorkerEntrypoint):
             _js({"key": "activitypub-inbox"})
         )
         if not rate_limit.success:
-            raise ProtocolError("Inbox rate limit exceeded", HTTPStatus.TOO_MANY_REQUESTS)
+            raise ProtocolError(
+                "Inbox rate limit exceeded", HTTPStatus.TOO_MANY_REQUESTS
+            )
 
         content_type = (request.headers.get("content-type") or "").lower()
         if not any(
@@ -393,8 +407,27 @@ class Default(WorkerEntrypoint):
         activity = parse_inbound_activity(body)
         actor = await self._verified_actor(request, body, activity)
         actor_url = actor.id
+        if isinstance(activity, QuoteRequestActivity) and isinstance(
+            activity.instrument, str
+        ):
+            instrument_url = ensure_remote_url(
+                activity.instrument, allow_insecure=self.allow_insecure
+            )
+            instrument = _validated(
+                QuoteInstrument,
+                await _remote_json(instrument_url, allow_insecure=self.allow_insecure),
+                "quote instrument",
+            )
+            if instrument.id != instrument_url:
+                raise ProtocolError(
+                    "Quote instrument id mismatch", HTTPStatus.UNAUTHORIZED
+                )
+            activity.instrument = instrument
         event = validate_inbox_activity(
-            activity, actor_url=actor_url, base_url=self.base_url
+            activity,
+            actor_url=actor_url,
+            base_url=self.base_url,
+            allow_insecure=self.allow_insecure,
         )
         now = isoformat(utc_now())
 
@@ -478,7 +511,62 @@ class Default(WorkerEntrypoint):
                     event.source_id,
                     now,
                 )
+            elif event.kind == "QuoteRequest":
+                if not isinstance(activity, QuoteRequestActivity):
+                    raise ProtocolError("Quote request model mismatch")
+                authorization = quote_authorization(self.local_actor, activity)
+                await _run(
+                    self.env.DB,
+                    """INSERT INTO quote_authorizations
+                       (authorization_id, request_id, actor_url, quote_url,
+                        target_url, source_id, received_at)
+                       VALUES (?, ?, ?, ?, ?, ?, ?)
+                       ON CONFLICT(authorization_id) DO UPDATE SET
+                         request_id=excluded.request_id,
+                         received_at=excluded.received_at""",
+                    authorization["id"],
+                    event.activity_id,
+                    actor_url,
+                    event.object_id,
+                    activity.object,
+                    event.source_id,
+                    now,
+                )
+                accept = accept_quote_request(self.local_actor, activity, authorization)
+                await self._queue_delivery(
+                    source_id=f"quote:{event.activity_id}",
+                    destination=actor.inbox,
+                    activity=accept,
+                    now=now,
+                )
+                if self.delivery_enabled:
+                    await self._deliver_due(utc_now())
         return Response(status=HTTPStatus.ACCEPTED)
+
+    async def _quote_authorization(self, digest: str):
+        """Dereference a public FEP-044f approval stamp."""
+
+        if len(digest) != 32 or any(
+            character not in "0123456789abcdef" for character in digest
+        ):
+            raise ProtocolError("Unknown quote authorization", HTTPStatus.NOT_FOUND)
+        authorization_id = f"{self.local_actor}/quote-authorizations/{digest}"
+        row_value = await _first(
+            self.env.DB,
+            "SELECT * FROM quote_authorizations WHERE authorization_id=?",
+            authorization_id,
+        )
+        if row_value is None:
+            raise ProtocolError("Unknown quote authorization", HTTPStatus.NOT_FOUND)
+        row = QuoteAuthorizationRow.model_validate(row_value)
+        return _json(
+            quote_authorization_document(
+                row.authorization_id,
+                self.local_actor,
+                row.quote_url,
+                row.target_url,
+            )
+        )
 
     async def _assert_known_post(self, source_id: str | None) -> None:
         """Require a known post that has not been cancelled or redacted."""
@@ -630,7 +718,11 @@ class Default(WorkerEntrypoint):
             current = existing.get(source_id)
             redacted = item.redacted
             if current is None:
-                state = "redacted" if redacted else ("pending" if initialized else "historical")
+                state = (
+                    "redacted"
+                    if redacted
+                    else ("pending" if initialized else "historical")
+                )
                 await _run(
                     self.env.DB,
                     """INSERT INTO posts
@@ -699,9 +791,7 @@ class Default(WorkerEntrypoint):
                 continue
             note = _validated(
                 PublishedNote,
-                await _remote_json(
-                    post.object_url, allow_insecure=self.allow_insecure
-                ),
+                await _remote_json(post.object_url, allow_insecure=self.allow_insecure),
                 "deployed post object",
             )
             if note.id != post.object_url or note.attributed_to != self.local_actor:
@@ -786,7 +876,9 @@ class Default(WorkerEntrypoint):
                 "Content-Type": "application/activity+json",
                 "Date": date,
                 "Digest": digest,
-                "Signature": signature_header(f"{self.local_actor}#main-key", signature),
+                "Signature": signature_header(
+                    f"{self.local_actor}#main-key", signature
+                ),
                 "User-Agent": "wrla.ch ActivityPub/1.0",
             },
             body=body,

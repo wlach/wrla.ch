@@ -56,9 +56,7 @@ class _FederationHandler(BaseHTTPRequestHandler):
     def log_message(self, _format, *_args):
         return
 
-    def _send_json(
-        self, value: object, status: HTTPStatus = HTTPStatus.OK
-    ) -> None:
+    def _send_json(self, value: object, status: HTTPStatus = HTTPStatus.OK) -> None:
         body = json.dumps(value).encode()
         self.send_response(status)
         self.send_header("Content-Type", "application/activity+json")
@@ -198,7 +196,7 @@ class _WorkerHarness:
                     timeout=1,
                 ):
                     break
-            except (urllib.error.URLError, TimeoutError):
+            except urllib.error.URLError, TimeoutError:
                 if self.worker.poll() is not None:
                     output = self.worker.stdout.read() if self.worker.stdout else ""
                     raise RuntimeError(f"pywrangler exited early:\n{output}") from None
@@ -347,6 +345,63 @@ def test_federation_lifecycle(worker_harness: _WorkerHarness) -> None:
     _, replies = worker_harness.request(f"/activitypub/replies/{source_id}?page=1")
     assert replies is not None
     assert replies["orderedItems"] == [reply["object"]["id"]]
+
+    quote_url = f"{remote_actor}/notes/quote-1"
+    quote_request = {
+        "@context": [
+            "https://www.w3.org/ns/activitystreams",
+            {
+                "QuoteRequest": "https://w3id.org/fep/044f#QuoteRequest",
+                "quote": {
+                    "@id": "https://w3id.org/fep/044f#quote",
+                    "@type": "@id",
+                },
+            },
+        ],
+        "id": f"{remote_actor}/quote-requests/1",
+        "type": "QuoteRequest",
+        "actor": remote_actor,
+        "object": object_url,
+        "instrument": {
+            "id": quote_url,
+            "type": "Note",
+            "attributedTo": remote_actor,
+            "quote": object_url,
+            "to": [PUBLIC],
+        },
+    }
+    worker_harness.request(
+        "/activitypub/wrlach/inbox", method="POST", value=quote_request
+    )
+    quote_accept = _FederationHandler.inbox[-1]
+    assert quote_accept["type"] == "Accept"
+    assert quote_accept["object"]["type"] == "QuoteRequest"
+    authorization_url = quote_accept["result"]
+    authorization_path = urllib.parse.urlsplit(authorization_url).path
+    _, authorization = worker_harness.request(authorization_path)
+    assert authorization is not None
+    assert authorization == {
+        "@context": [
+            "https://www.w3.org/ns/activitystreams",
+            {
+                "QuoteAuthorization": "https://w3id.org/fep/044f#QuoteAuthorization",
+                "gts": "https://gotosocial.org/ns#",
+                "interactingObject": {
+                    "@id": "gts:interactingObject",
+                    "@type": "@id",
+                },
+                "interactionTarget": {
+                    "@id": "gts:interactionTarget",
+                    "@type": "@id",
+                },
+            },
+        ],
+        "id": authorization_url,
+        "type": "QuoteAuthorization",
+        "attributedTo": local_actor,
+        "interactingObject": quote_url,
+        "interactionTarget": object_url,
+    }
 
     _FederationHandler.manifest["posts"][0].update(
         {"redacted": True, "deleted": "2026-08-24T01:00:00Z"}

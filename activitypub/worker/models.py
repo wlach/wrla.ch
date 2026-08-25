@@ -19,8 +19,11 @@ NonEmptyString = Annotated[str, StringConstraints(strip_whitespace=True, min_len
 Addressing = NonEmptyString | list[NonEmptyString]
 PostState = Literal["historical", "pending", "delivered", "cancelled", "redacted"]
 DeliveryKind = Literal["Create", "Delete", "Accept"]
+JsonLdContext = str | dict[str, object]
 
-_ActivityContext = TypedDict("_ActivityContext", {"@context": str})
+_ActivityContext = TypedDict(
+    "_ActivityContext", {"@context": JsonLdContext | list[JsonLdContext]}
+)
 
 
 class OutboundActivity(_ActivityContext):
@@ -28,6 +31,8 @@ class OutboundActivity(_ActivityContext):
     type: DeliveryKind
     actor: str
     object: object
+    result: NotRequired[str]
+    published: NotRequired[str]
     to: NotRequired[list[str]]
     cc: NotRequired[list[str]]
 
@@ -52,6 +57,13 @@ class DeliveryRow(SqlRow):
     kind: DeliveryKind
     body: str
     attempts: int
+
+
+class QuoteAuthorizationRow(SqlRow):
+    authorization_id: str
+    actor_url: str
+    quote_url: str
+    target_url: str
 
 
 POST_STATE_ADAPTER = TypeAdapter(PostState)
@@ -117,12 +129,31 @@ class CreateReplyActivity(ActivityPubModel):
     audience: Addressing | None = None
 
 
+class QuoteInstrument(ActivityPubModel):
+    id: NonEmptyString
+    type: Literal["Note"]
+    attributed_to: NonEmptyString = Field(alias="attributedTo")
+    quote: NonEmptyString
+    to: Addressing | None = None
+    cc: Addressing | None = None
+    audience: Addressing | None = None
+
+
+class QuoteRequestActivity(ActivityPubModel):
+    id: NonEmptyString
+    type: Literal["QuoteRequest"]
+    actor: NonEmptyString
+    object: NonEmptyString
+    instrument: QuoteInstrument | NonEmptyString
+
+
 InboundActivity = Annotated[
     FollowActivity
     | LikeActivity
     | AnnounceActivity
     | UndoActivity
-    | CreateReplyActivity,
+    | CreateReplyActivity
+    | QuoteRequestActivity,
     Field(discriminator="type"),
 ]
 INBOUND_ACTIVITY_ADAPTER = TypeAdapter(InboundActivity)
@@ -146,7 +177,9 @@ class RemoteActor(ActivityPubModel):
 
     @property
     def public_keys(self) -> list[RemotePublicKey]:
-        return self.public_key if isinstance(self.public_key, list) else [self.public_key]
+        return (
+            self.public_key if isinstance(self.public_key, list) else [self.public_key]
+        )
 
 
 class PublishedNote(ActivityPubModel):

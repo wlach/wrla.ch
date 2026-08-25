@@ -147,6 +147,18 @@ class BuildSiteTests(unittest.TestCase):
         self.assertEqual(actor["preferredUsername"], "wrlach")
         self.assertIn("BEGIN PUBLIC KEY", actor["publicKey"]["publicKeyPem"])
 
+        note = json.loads(
+            (
+                self.root / "_build/activitypub/posts/20260101000000-post-00/index.html"
+            ).read_text()
+        )
+        self.assertEqual(
+            note["interactionPolicy"]["canQuote"]["automaticApproval"],
+            ["https://www.w3.org/ns/activitystreams#Public"],
+        )
+        self.assertEqual(note["interactionPolicy"]["canQuote"]["manualApproval"], [])
+        self.assertIn("interactionPolicy", note["@context"][1])
+
         outbox = json.loads(
             (self.root / "_build/activitypub/wrlach/outbox/index.html").read_text()
         )
@@ -175,16 +187,22 @@ class BuildSiteTests(unittest.TestCase):
         build_site(self.root, self._config())
 
         # Image should be copied to the output directory
-        output_img = self.root / "_build" / "log" / "2026" / "02" / "img-test" / "photo.jpg"
+        output_img = (
+            self.root / "_build" / "log" / "2026" / "02" / "img-test" / "photo.jpg"
+        )
         self.assertTrue(output_img.exists())
         self.assertEqual(output_img.read_bytes(), b"\xff\xd8fake")
 
         # Post HTML should use relative image src (unchanged)
-        post_html = (self.root / "_build" / "log" / "2026" / "02" / "img-test" / "index.html").read_text(encoding="utf-8")
+        post_html = (
+            self.root / "_build" / "log" / "2026" / "02" / "img-test" / "index.html"
+        ).read_text(encoding="utf-8")
         self.assertIn('src="photo.jpg"', post_html)
 
         # Feed should use absolute post URL for the image (HTML-escaped in Atom)
-        atom = (self.root / "_build" / "feeds" / "all.atom.xml").read_text(encoding="utf-8")
+        atom = (self.root / "_build" / "feeds" / "all.atom.xml").read_text(
+            encoding="utf-8"
+        )
         self.assertIn("/log/2026/02/img-test/photo.jpg", atom)
         self.assertNotIn('src="photo.jpg"', atom)
 
@@ -198,12 +216,16 @@ class BuildSiteTests(unittest.TestCase):
         pages_dir.mkdir(parents=True, exist_ok=True)
         (pages_dir / "about.md").write_text("# About\n\nHello.\n", encoding="utf-8")
         build_site(self.root, self._config())
-        about_html = (self.root / "_build" / "about" / "index.html").read_text(encoding="utf-8")
+        about_html = (self.root / "_build" / "about" / "index.html").read_text(
+            encoding="utf-8"
+        )
         self.assertIn("Source on GitHub", about_html)
 
     def test_rss_feed_dates_use_gmt(self) -> None:
         build_site(self.root, self._config())
-        rss = (self.root / "_build" / "feeds" / "all.rss.xml").read_text(encoding="utf-8")
+        rss = (self.root / "_build" / "feeds" / "all.rss.xml").read_text(
+            encoding="utf-8"
+        )
         self.assertIn("<lastBuildDate>", rss)
         # All dates should end with GMT per RFC 822
         import re
@@ -211,14 +233,21 @@ class BuildSiteTests(unittest.TestCase):
         dates = re.findall(r"<(?:pubDate|lastBuildDate)>([^<]+)</", rss)
         self.assertTrue(len(dates) > 0)
         for date_str in dates:
-            self.assertTrue(date_str.strip().endswith("GMT"), f"Date does not end with GMT: {date_str}")
+            self.assertTrue(
+                date_str.strip().endswith("GMT"),
+                f"Date does not end with GMT: {date_str}",
+            )
 
     def test_atom_feed_dates_use_utc(self) -> None:
         build_site(self.root, self._config())
-        atom = (self.root / "_build" / "feeds" / "all.atom.xml").read_text(encoding="utf-8")
+        atom = (self.root / "_build" / "feeds" / "all.atom.xml").read_text(
+            encoding="utf-8"
+        )
         import re
 
         dates = re.findall(r"<(?:published|updated)>([^<]+)</", atom)
         self.assertTrue(len(dates) > 0)
         for date_str in dates:
-            self.assertTrue(date_str.strip().endswith("Z"), f"Date does not end with Z: {date_str}")
+            self.assertTrue(
+                date_str.strip().endswith("Z"), f"Date does not end with Z: {date_str}"
+            )

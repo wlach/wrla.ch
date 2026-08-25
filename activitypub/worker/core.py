@@ -26,6 +26,8 @@ try:
     from .models import LikeActivity
     from .models import OutboundActivity
     from .models import PublishedNote
+    from .models import QuoteInstrument
+    from .models import QuoteRequestActivity
     from .models import UndoActivity
 except ImportError:  # pragma: no cover - modules are top-level in a Worker bundle
     from models import INBOUND_ACTIVITY_ADAPTER
@@ -36,10 +38,14 @@ except ImportError:  # pragma: no cover - modules are top-level in a Worker bund
     from models import LikeActivity
     from models import OutboundActivity
     from models import PublishedNote
+    from models import QuoteInstrument
+    from models import QuoteRequestActivity
     from models import UndoActivity
 
 ACTIVITYSTREAMS_CONTEXT = "https://www.w3.org/ns/activitystreams"
 PUBLIC = "https://www.w3.org/ns/activitystreams#Public"
+QUOTE_REQUEST = "https://w3id.org/fep/044f#QuoteRequest"
+QUOTE_AUTHORIZATION = "https://w3id.org/fep/044f#QuoteAuthorization"
 MAX_BODY_BYTES = 256 * 1024
 MAX_REMOTE_BYTES = 512 * 1024
 REMOTE_FETCH_TIMEOUT_MS = 10_000
@@ -282,13 +288,24 @@ def parse_inbound_activity(activity: object | str | bytes) -> InboundActivity:
 
 
 def validate_inbox_activity(
-    activity: InboundActivity | object, *, actor_url: str, base_url: str
+    activity: InboundActivity | object,
+    *,
+    actor_url: str,
+    base_url: str,
+    allow_insecure: bool = False,
 ) -> InboxEvent:
     """Validate an inbound activity and normalize it for persistence."""
 
     if not isinstance(
         activity,
-        (FollowActivity, LikeActivity, AnnounceActivity, UndoActivity, CreateReplyActivity),
+        (
+            FollowActivity,
+            LikeActivity,
+            AnnounceActivity,
+            UndoActivity,
+            CreateReplyActivity,
+            QuoteRequestActivity,
+        ),
     ):
         activity = parse_inbound_activity(activity)
     kind = activity.type
@@ -324,6 +341,31 @@ def validate_inbox_activity(
             raise ProtocolError(f"{kind} targets an unknown object")
         return InboxEvent(kind, activity_id, actor, obj, source_id)
 
+    if isinstance(activity, QuoteRequestActivity):
+        instrument = activity.instrument
+        if not isinstance(instrument, QuoteInstrument):
+            raise ProtocolError("Quote instrument has not been resolved")
+        ensure_remote_url(activity.id, allow_insecure=allow_insecure)
+        ensure_remote_url(instrument.id, allow_insecure=allow_insecure)
+        if not _same_origin(activity.id, actor) or not _same_origin(
+            instrument.id, actor
+        ):
+            raise ProtocolError(
+                "Quote request does not belong to actor", HTTPStatus.UNAUTHORIZED
+            )
+        if instrument.attributed_to != actor:
+            raise ProtocolError(
+                "Quote author does not match actor", HTTPStatus.UNAUTHORIZED
+            )
+        if instrument.quote != obj:
+            raise ProtocolError("Quote instrument targets another object")
+        if PUBLIC not in _addressing(instrument):
+            raise ProtocolError("Only public quotes are automatically approved")
+        source_id = source_id_from_object(obj, base_url)
+        if not source_id:
+            raise ProtocolError("Quote targets an unknown object")
+        return InboxEvent("QuoteRequest", activity_id, actor, instrument.id, source_id)
+
     if obj.attributed_to != actor:
         raise ProtocolError(
             "Reply author does not match actor", HTTPStatus.UNAUTHORIZED
@@ -349,6 +391,20 @@ def _addressing(value: CreateReplyActivity | object) -> set[str]:
     return result
 
 
+def _same_origin(left: str, right: str) -> bool:
+    """Compare origins after URL parsing and case normalization."""
+
+    left_url = urlsplit(left)
+    right_url = urlsplit(right)
+    return (
+        left_url.scheme.casefold(),
+        left_url.netloc.casefold(),
+    ) == (
+        right_url.scheme.casefold(),
+        right_url.netloc.casefold(),
+    )
+
+
 def accept_activity(
     local_actor: str, follow: FollowActivity | dict[str, object]
 ) -> OutboundActivity:
@@ -365,6 +421,91 @@ def accept_activity(
         "actor": local_actor,
         "object": follow_value,
         "to": [follow.actor],
+    }
+
+
+def quote_authorization(
+    local_actor: str, request: QuoteRequestActivity
+) -> dict[str, object]:
+    """Build a stable public approval stamp for a quote interaction."""
+
+    if not isinstance(request.instrument, QuoteInstrument):
+        raise ProtocolError("Quote instrument has not been resolved")
+    identity = {
+        "actor": request.actor,
+        "interactingObject": request.instrument.id,
+        "interactionTarget": request.object,
+    }
+    digest = hashlib.sha256(canonical_json(identity).encode()).hexdigest()[:32]
+    return quote_authorization_document(
+        f"{local_actor}/quote-authorizations/{digest}",
+        local_actor,
+        request.instrument.id,
+        request.object,
+    )
+
+
+def quote_authorization_document(
+    authorization_id: str,
+    local_actor: str,
+    interacting_object: str,
+    interaction_target: str,
+) -> dict[str, object]:
+    """Serialize a stored FEP-044f quote approval stamp."""
+
+    return {
+        "@context": [
+            ACTIVITYSTREAMS_CONTEXT,
+            {
+                "QuoteAuthorization": QUOTE_AUTHORIZATION,
+                "gts": "https://gotosocial.org/ns#",
+                "interactingObject": {
+                    "@id": "gts:interactingObject",
+                    "@type": "@id",
+                },
+                "interactionTarget": {
+                    "@id": "gts:interactionTarget",
+                    "@type": "@id",
+                },
+            },
+        ],
+        "id": authorization_id,
+        "type": "QuoteAuthorization",
+        "attributedTo": local_actor,
+        "interactingObject": interacting_object,
+        "interactionTarget": interaction_target,
+    }
+
+
+def accept_quote_request(
+    local_actor: str,
+    request: QuoteRequestActivity,
+    authorization: dict[str, object],
+) -> OutboundActivity:
+    """Build a stable Accept carrying a FEP-044f approval stamp URL."""
+
+    if not isinstance(request.instrument, QuoteInstrument):
+        raise ProtocolError("Quote instrument has not been resolved")
+    authorization_id = str(authorization["id"])
+    request_value = {
+        "id": request.id,
+        "type": "QuoteRequest",
+        "actor": request.actor,
+        "object": request.object,
+        "instrument": request.instrument.id,
+    }
+    digest = hashlib.sha256(canonical_json(request_value).encode()).hexdigest()[:24]
+    return {
+        "@context": [
+            ACTIVITYSTREAMS_CONTEXT,
+            {"QuoteRequest": QUOTE_REQUEST},
+        ],
+        "id": f"{local_actor}/accepts/{digest}",
+        "type": "Accept",
+        "actor": local_actor,
+        "object": request_value,
+        "result": authorization_id,
+        "to": [request.actor],
     }
 
 
