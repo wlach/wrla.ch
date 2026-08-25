@@ -12,9 +12,9 @@ The design and its intentional limitations are recorded in
 
 ## Repository safety
 
-`public-key.pem` is public by design and is safe to commit. `private-key.pem`,
-`.dev.vars`, local Wrangler data, Cloudflare credentials, and the production D1
-identifier are not safe to commit. Git ignores the local secret-bearing files.
+`public-key.pem` and the D1 database identifier are public by design and are
+safe to commit. `private-key.pem`, `.dev.vars`, local Wrangler data, and
+Cloudflare credentials are not. Git ignores the local secret-bearing files.
 Never paste the private key into `wrangler.toml`.
 
 ## One-time setup
@@ -54,9 +54,24 @@ cd activitypub
    ```
 
 5. Deploy once with `OUTBOUND_DELIVERY_ENABLED = "false"`, then configure the
-   Worker Builds Git integration to use
-   `activitypub` as its root directory. The deployment command is
-   `uv run pywrangler deploy`.
+   Worker Builds Git integration. If Cloudflare exposes a root-directory
+   setting, set it to `activitypub` and use this deploy command:
+
+   ```sh
+   uv run --locked pywrangler deploy
+   ```
+
+   If the root-directory setting is unavailable, Worker Builds runs from the
+   repository root. Change directories in the deploy command instead:
+
+   ```sh
+   cd activitypub && uv run --locked pywrangler deploy
+   ```
+
+   The `cd` and `pywrangler` parts are both required. `uv --project` changes
+   the selected Python project but not the directory where Wrangler searches
+   for its configuration. Plain `npx wrangler deploy` does not prepare and
+   bundle the packages in `pyproject.toml`.
 
 6. Verify WebFinger and follow the actor from an account you control. Once the
    actor and stored follower look correct, change `OUTBOUND_DELIVERY_ENABLED`
@@ -68,6 +83,24 @@ the private key is lost before it is installed in Cloudflare, generate a new
 pair and replace `public-key.pem` before publishing the actor. Rotating a key
 after federation begins requires retaining the old key long enough for remote
 servers to refresh the actor document.
+
+### Worker Builds troubleshooting
+
+The build log should show one of the deploy commands above. Two errors point to
+specific configuration mistakes:
+
+- A Pages-project warning followed by `Missing entry-point to Worker script or
+  to assets directory` means Wrangler ran from the repository root and found
+  the site's root `wrangler.toml`.
+- `ModuleNotFoundError: No module named 'pydantic'` during upload validation
+  means plain Wrangler ran from `activitypub`. Use `uv run --locked pywrangler
+  deploy`; pywrangler vendors the dependencies before passing the deployment to
+  Wrangler.
+
+An automatic root-level `uv sync` in the build log is unrelated. It installs
+the static site's dependencies into the build machine, not the Python packages
+uploaded with the Worker. A failed build leaves the most recent successful
+Worker deployment running.
 
 ## Local development
 
