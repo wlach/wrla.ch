@@ -7,7 +7,7 @@ compatibility_flags = ["python_workers", "global_fetch_strictly_public"]
 BASE_URL = "https://wrla.ch"
 ACTOR_NAME = "wrlach"
 ALLOW_INSECURE_TEST_URLS = "false"
-OUTBOUND_DELIVERY_ENABLED = "false"
+OUTBOUND_DELIVERY_ENABLED = "true"
 
 [observability]
 enabled = true
