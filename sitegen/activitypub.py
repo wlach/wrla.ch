@@ -281,8 +281,26 @@ def _actor(config: BlogConfig, public_key: str) -> dict[str, object]:
         "type": "Service",
         "preferredUsername": "wrlach",
         "name": config.title,
-        "summary": "New posts from wrla.ch",
+        "summary": "New posts from wrla.ch. 🪴",
         "url": config.base_url,
+        "attachment": [
+            {
+                "type": "PropertyValue",
+                "name": "Home",
+                "value": (
+                    f'<a href="{escape(config.base_url, quote=True)}">'
+                    f"{escape(config.base_url)}</a>"
+                ),
+            },
+            {
+                "type": "PropertyValue",
+                "name": "Source",
+                "value": (
+                    f'<a href="{escape(config.repo_url, quote=True)}">'
+                    f"{escape(config.repo_url)}</a>"
+                ),
+            },
+        ],
         "icon": {
             "type": "Image",
             "mediaType": "image/png",
