@@ -10,4 +10,4 @@ an ActivityPub server to this domain ([wrla.ch](https://wrla.ch)).
 ![Mastodon Screenshot with wrla.ch account](mastodon.png)
 
 If it worked, you should be able to subscribe to future posts on from this blog
-by adding `@wrlach@wrlach.ch` to your fediverse client (e.g. [Mastodon](https://joinmastodon.org)).
+by adding `@wrlach@wrla.ch` to your fediverse client (e.g. [Mastodon](https://joinmastodon.org)).
