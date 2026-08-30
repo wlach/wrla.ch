@@ -159,6 +159,68 @@ unconditionally. D1 persistence makes the response idempotent and leaves room
 for explicit revocation later, but no revocation interface is currently
 implemented.
 
+## Inspecting federation state
+
+The public collections expose aggregate state without identifying followers or
+the people who liked and shared a post. They can be inspected directly; replace
+`<source-id>` with the post's timestamp-and-slug source directory name:
+
+```text
+https://wrla.ch/activitypub/wrlach/followers
+https://wrla.ch/activitypub/likes/<source-id>
+https://wrla.ch/activitypub/shares/<source-id>
+https://wrla.ch/activitypub/replies/<source-id>
+https://wrla.ch/activitypub/replies/<source-id>?page=1
+```
+
+The follower, like, and share collections expose `totalItems` only. The reply
+collection's pages also contain the verified remote reply object URLs known to
+this Worker. These are protocol documents, so a browser may display their JSON
+rather than a human-oriented page.
+
+Operational details are available through read-only D1 queries. Run these from
+the `activitypub` directory. The `--remote` flag is important: without it,
+Wrangler queries the local development database instead of production.
+
+Current followers:
+
+```sh
+uv run pywrangler d1 execute wrla-ch-activitypub --remote --command \
+  "SELECT actor_url, COALESCE(shared_inbox_url, inbox_url) AS delivery_inbox, created_at, updated_at FROM followers WHERE active=1 ORDER BY created_at"
+```
+
+Current likes and boosts (`Announce` is an ActivityPub boost):
+
+```sh
+uv run pywrangler d1 execute wrla-ch-activitypub --remote --command \
+  "SELECT * FROM interactions WHERE active=1 ORDER BY received_at DESC"
+```
+
+Known replies and approved quotes:
+
+```sh
+uv run pywrangler d1 execute wrla-ch-activitypub --remote --command \
+  "SELECT * FROM replies ORDER BY received_at DESC"
+
+uv run pywrangler d1 execute wrla-ch-activitypub --remote --command \
+  "SELECT * FROM quote_authorizations ORDER BY received_at DESC"
+```
+
+Post publication state and the 50 most recent delivery records:
+
+```sh
+uv run pywrangler d1 execute wrla-ch-activitypub --remote --command \
+  "SELECT * FROM posts ORDER BY published DESC"
+
+uv run pywrangler d1 execute wrla-ch-activitypub --remote --command \
+  "SELECT * FROM deliveries ORDER BY id DESC LIMIT 50"
+```
+
+Rows with `active=0` are retained so an `Undo` remains idempotent; they are not
+current follows, likes, or boosts. Remove the `active=1` predicate when
+investigating historical interactions. The same `SELECT` statements can be run
+against local development data by replacing `--remote` with `--local`.
+
 ## Operational care
 
 This is deliberately “houseplant software.” Normal operation should require no
