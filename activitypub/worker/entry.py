@@ -1,9 +1,14 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable
+from collections.abc import Mapping
 from datetime import UTC
 from datetime import datetime
+from http import HTTPMethod
 from http import HTTPStatus
+from typing import Protocol
+from typing import cast
 from urllib.parse import parse_qs
 from urllib.parse import urljoin
 from urllib.parse import urlsplit
@@ -14,6 +19,7 @@ from core import MAX_REMOTE_BYTES
 from core import REMOTE_FETCH_TIMEOUT_MS
 from core import SIGNATURE_HEADERS
 from core import ProtocolError
+from core import StreamingResponse
 from core import accept_activity
 from core import accept_quote_request
 from core import canonical_json
@@ -40,6 +46,7 @@ from core import validate_inbox_activity
 from models import POST_STATE_ADAPTER
 from models import DeliveryRow
 from models import FollowActivity
+from models import InboundActivity
 from models import Manifest
 from models import OutboundActivity
 from models import PostRow
@@ -51,54 +58,92 @@ from models import RemoteActor
 from pydantic import BaseModel
 from pydantic import ValidationError
 from pyodide.ffi import to_js as _to_js
+from workers import Request
 from workers import Response
 from workers import WorkerEntrypoint
 from workers import fetch
 
-from js import AbortSignal
-from js import Object
-from js import Uint8Array
-from js import crypto
+# These names are injected by Pyodide from the JavaScript global scope.
+from js import AbortSignal  # ty: ignore[unresolved-import]
+from js import Object  # ty: ignore[unresolved-import]
+from js import Uint8Array  # ty: ignore[unresolved-import]
+from js import crypto  # ty: ignore[unresolved-import]
 
 ACTIVITY_JSON = "application/activity+json; charset=utf-8"
 JRD_JSON = "application/jrd+json; charset=utf-8"
 
+type _Row = dict[str, object]
 
-def _to_python(value):
+
+class _D1Result(Protocol):
+    results: object
+
+
+class _D1PreparedStatement(Protocol):
+    def bind(self, *bindings: object) -> _D1PreparedStatement: ...
+
+    async def all(self) -> _D1Result: ...
+
+    async def first(self) -> object | None: ...
+
+    async def run(self) -> object: ...
+
+
+class _D1Database(Protocol):
+    def prepare(self, sql: str) -> _D1PreparedStatement: ...
+
+
+class _ScheduledController(Protocol):
+    scheduledTime: int | float
+
+
+def _to_python(value: object) -> object | None:
     if value is None:
         return None
     converter = getattr(value, "to_py", None)
     return converter() if converter else value
 
 
-async def _all(db, sql: str, *bindings) -> list[dict]:
+async def _all(db: _D1Database, sql: str, *bindings: object) -> list[_Row]:
     statement = db.prepare(sql)
     if bindings:
         statement = statement.bind(*bindings)
     result = await statement.all()
-    rows = _to_python(result.results)
+    rows = cast(Iterable[Mapping[str, object]], _to_python(result.results))
     return [dict(row) for row in rows]
 
 
-async def _first(db, sql: str, *bindings) -> dict | None:
+async def _first(db: _D1Database, sql: str, *bindings: object) -> _Row | None:
     statement = db.prepare(sql)
     if bindings:
         statement = statement.bind(*bindings)
-    value = _to_python(await statement.first())
+    value = cast(Mapping[str, object] | None, _to_python(await statement.first()))
     return dict(value) if value is not None else None
 
 
 async def _all_as[ModelT: BaseModel](
-    db, model: type[ModelT], sql: str, *bindings
+    db: _D1Database, model: type[ModelT], sql: str, *bindings: object
 ) -> list[ModelT]:
     return [model.model_validate(row) for row in await _all(db, sql, *bindings)]
 
 
-async def _run(db, sql: str, *bindings):
+async def _run(db: _D1Database, sql: str, *bindings: object) -> object:
     statement = db.prepare(sql)
     if bindings:
         statement = statement.bind(*bindings)
     return await statement.run()
+
+
+def _integer_column(row: _Row | None, column: str) -> int:
+    if row is None or not isinstance(value := row.get(column), int):
+        raise RuntimeError(f"D1 did not return integer column {column!r}")
+    return value
+
+
+def _string_column(row: _Row, column: str) -> str:
+    if not isinstance(value := row.get(column), str):
+        raise TypeError(f"D1 did not return string column {column!r}")
+    return value
 
 
 def _json(
@@ -106,7 +151,7 @@ def _json(
     *,
     status: HTTPStatus = HTTPStatus.OK,
     content_type: str = ACTIVITY_JSON,
-):
+) -> Response:
     return Response(
         json.dumps(value, ensure_ascii=False),
         status=status,
@@ -121,7 +166,7 @@ def _pem_bytes(pem: str) -> bytes:
     return base64.b64decode("".join(lines))
 
 
-def _js(value):
+def _js(value: object) -> object:
     return _to_js(value, dict_converter=Object.fromEntries)
 
 
@@ -199,7 +244,8 @@ async def _remote_json(url: str, *, allow_insecure: bool) -> dict:
                 "Remote response has invalid Content-Length", HTTPStatus.BAD_GATEWAY
             ) from exc
         try:
-            body = await read_limited_body(response)
+            # The Python SDK exposes this as a dynamically typed JS ReadableStream.
+            body = await read_limited_body(cast(StreamingResponse, response))
         except ProtocolError:
             raise
         except Exception as exc:
@@ -255,7 +301,7 @@ class Default(WorkerEntrypoint):
     def delivery_enabled(self) -> bool:
         return str(self.env.OUTBOUND_DELIVERY_ENABLED).lower() == "true"
 
-    async def fetch(self, request):
+    async def fetch(self, request: Request) -> Response:
         """Route public ActivityPub and discovery HTTP requests."""
 
         try:
@@ -311,7 +357,7 @@ class Default(WorkerEntrypoint):
                 status=HTTPStatus.INTERNAL_SERVER_ERROR,
             )
 
-    def _webfinger(self, query: str):
+    def _webfinger(self, query: str) -> Response:
         """Return discovery metadata for the local actor handle."""
 
         resource = parse_qs(query).get("resource", [""])[0]
@@ -337,7 +383,9 @@ class Default(WorkerEntrypoint):
             content_type=JRD_JSON,
         )
 
-    async def _verified_actor(self, request, body: bytes, activity) -> RemoteActor:
+    async def _verified_actor(
+        self, request: Request, body: bytes, activity: InboundActivity
+    ) -> RemoteActor:
         """Resolve the signing actor and verify the request signature."""
 
         validate_date(request.headers.get("date"), utc_now())
@@ -375,7 +423,7 @@ class Default(WorkerEntrypoint):
             raise ProtocolError("Invalid HTTP signature", HTTPStatus.UNAUTHORIZED)
         return actor
 
-    async def _inbox(self, request):
+    async def _inbox(self, request: Request) -> Response:
         """Validate and persist supported inbound activities."""
 
         rate_limit = await self.env.INBOX_RATE_LIMITER.limit(
@@ -543,7 +591,7 @@ class Default(WorkerEntrypoint):
                     await self._deliver_due(utc_now())
         return Response(status=HTTPStatus.ACCEPTED)
 
-    async def _quote_authorization(self, digest: str):
+    async def _quote_authorization(self, digest: str) -> Response:
         """Dereference a public FEP-044f approval stamp."""
 
         if len(digest) != 32 or any(
@@ -593,7 +641,7 @@ class Default(WorkerEntrypoint):
         if state in {None, "redacted", "cancelled"}:
             raise ProtocolError("Unknown local post", HTTPStatus.NOT_FOUND)
 
-    async def _followers(self):
+    async def _followers(self) -> Response:
         """Return the public follower collection summary."""
 
         row = await _first(
@@ -604,11 +652,13 @@ class Default(WorkerEntrypoint):
                 "@context": "https://www.w3.org/ns/activitystreams",
                 "id": f"{self.local_actor}/followers",
                 "type": "Collection",
-                "totalItems": int(row["count"]),
+                "totalItems": _integer_column(row, "count"),
             }
         )
 
-    async def _collection(self, source_id: str, kind: str, *, page: int | None):
+    async def _collection(
+        self, source_id: str, kind: str, *, page: int | None
+    ) -> Response:
         """Return replies or aggregate interaction data for a post."""
 
         await self._assert_known_post(source_id)
@@ -619,7 +669,7 @@ class Default(WorkerEntrypoint):
                 "SELECT COUNT(*) AS count FROM replies WHERE source_id=?",
                 source_id,
             )
-            count = int(count_row["count"])
+            count = _integer_column(count_row, "count")
             collection_id = f"{base}/replies/{source_id}"
             if page is None:
                 return _json(
@@ -667,11 +717,13 @@ class Default(WorkerEntrypoint):
                 "@context": "https://www.w3.org/ns/activitystreams",
                 "id": f"{base}/{name}/{source_id}",
                 "type": "Collection",
-                "totalItems": int(row["count"]),
+                "totalItems": _integer_column(row, "count"),
             }
         return _json(value)
 
-    async def scheduled(self, controller, _env, _ctx):
+    async def scheduled(
+        self, controller: _ScheduledController, _env: object, _ctx: object
+    ) -> None:
         """Synchronize published posts and process due deliveries."""
 
         now = datetime.fromtimestamp(float(controller.scheduledTime) / 1000, UTC)
@@ -802,7 +854,7 @@ class Default(WorkerEntrypoint):
             for destination in destinations:
                 await self._queue_delivery(
                     source_id=post.source_id,
-                    destination=destination["destination"],
+                    destination=_string_column(destination, "destination"),
                     activity=activity,
                     now=now_text,
                 )
@@ -826,7 +878,7 @@ class Default(WorkerEntrypoint):
         for recipient in recipients:
             await self._queue_delivery(
                 source_id=source_id,
-                destination=recipient["destination"],
+                destination=_string_column(recipient, "destination"),
                 activity=activity,
                 now=now,
             )
@@ -855,7 +907,9 @@ class Default(WorkerEntrypoint):
             now,
         )
 
-    async def _signed_post(self, destination: str, body: str, now: datetime):
+    async def _signed_post(
+        self, destination: str, body: str, now: datetime
+    ) -> Response:
         """POST an activity with the local actor's HTTP signature."""
 
         body_bytes = body.encode()
@@ -863,7 +917,7 @@ class Default(WorkerEntrypoint):
         digest = digest_header(body_bytes)
         headers = {"date": date, "digest": digest}
         signed = signature_input(
-            method="POST",
+            method=HTTPMethod.POST,
             url=destination,
             headers=headers,
             covered=SIGNATURE_HEADERS,
@@ -871,7 +925,7 @@ class Default(WorkerEntrypoint):
         signature = await _sign_rsa(str(self.env.ACTIVITYPUB_PRIVATE_KEY), signed)
         return await fetch(
             destination,
-            method="POST",
+            method=HTTPMethod.POST,
             headers={
                 "Content-Type": "application/activity+json",
                 "Date": date,

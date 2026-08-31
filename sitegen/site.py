@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import re
 import shutil
+from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import UTC
 from datetime import datetime
@@ -417,7 +418,7 @@ def _build_feeds(
         items: list[Post],
         source: str,
         medium: str,
-        date_formatter,
+        date_formatter: Callable[[datetime], str],
         include_updated: bool,
         self_url: str | None = None,
     ) -> str:

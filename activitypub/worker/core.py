@@ -6,6 +6,7 @@ import hmac
 import ipaddress
 import json
 import re
+from collections.abc import Iterable
 from dataclasses import dataclass
 from datetime import UTC
 from datetime import datetime
@@ -13,6 +14,7 @@ from datetime import timedelta
 from email.utils import format_datetime
 from email.utils import parsedate_to_datetime
 from http import HTTPStatus
+from typing import Protocol
 from urllib.parse import urlsplit
 
 from pydantic import ValidationError
@@ -54,6 +56,31 @@ GRACE_PERIOD = timedelta(minutes=15)
 MAX_ATTEMPTS = 8
 SIGNATURE_HEADERS = ("(request-target)", "host", "date", "digest")
 SOURCE_ID_RE = re.compile(r"^\d{14}-[a-z0-9][a-z0-9-]*$")
+
+
+class _StreamReadResult(Protocol):
+    @property
+    def done(self) -> bool: ...
+
+    @property
+    def value(self) -> Iterable[int] | None: ...
+
+
+class _StreamReader(Protocol):
+    async def read(self) -> _StreamReadResult: ...
+
+    async def cancel(self) -> object: ...
+
+    def releaseLock(self) -> None: ...
+
+
+class _ResponseBody(Protocol):
+    def getReader(self) -> _StreamReader: ...
+
+
+class StreamingResponse(Protocol):
+    @property
+    def body(self) -> _ResponseBody | None: ...
 
 
 class ProtocolError(ValueError):
@@ -234,7 +261,9 @@ def ensure_remote_url(url: str, *, allow_insecure: bool = False) -> str:
     return url
 
 
-async def read_limited_body(response, limit: int = MAX_REMOTE_BYTES) -> bytes:
+async def read_limited_body(
+    response: StreamingResponse, limit: int = MAX_REMOTE_BYTES
+) -> bytes:
     """Read a streaming response without buffering more than the allowed size."""
 
     if response.body is None:
@@ -247,6 +276,8 @@ async def read_limited_body(response, limit: int = MAX_REMOTE_BYTES) -> bytes:
             if result.done:
                 return bytes(body)
             value = result.value
+            if value is None:
+                raise ProtocolError("Remote response stream returned no data")
             converter = getattr(value, "to_py", None)
             chunk = converter() if converter else value
             body.extend(chunk)

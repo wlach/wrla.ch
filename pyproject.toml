@@ -71,6 +71,7 @@ select = [
     "PTH", # flake8-use-pathlib
     "RET", # flake8-return
     "ARG", # flake8-unused-arguments
+    "ANN", # flake8-annotations
 ]
 
 [tool.ruff.lint.per-file-ignores]

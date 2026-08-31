@@ -4,6 +4,7 @@ import asyncio
 import base64
 import hashlib
 import sqlite3
+from dataclasses import dataclass
 from datetime import UTC
 from datetime import datetime
 from datetime import timedelta
@@ -261,19 +262,22 @@ def test_remote_url_policy(unsafe: str) -> None:
 
 
 def test_remote_response_body_is_streamed_and_bounded() -> None:
+    @dataclass
+    class ReadResult:
+        done: bool
+        value: bytes | None
+
     class Reader:
         def __init__(self, chunks: list[bytes]) -> None:
             self.chunks = iter(chunks)
             self.cancelled = False
             self.released = False
 
-        async def read(self):
+        async def read(self) -> ReadResult:
             try:
-                return type(
-                    "ReadResult", (), {"done": False, "value": next(self.chunks)}
-                )()
+                return ReadResult(done=False, value=next(self.chunks))
             except StopIteration:
-                return type("ReadResult", (), {"done": True, "value": None})()
+                return ReadResult(done=True, value=None)
 
         async def cancel(self) -> None:
             self.cancelled = True

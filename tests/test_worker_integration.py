@@ -53,7 +53,7 @@ class _FederationHandler(BaseHTTPRequestHandler):
     notes: ClassVar[dict[str, dict]] = {}
     inbox: ClassVar[list[dict]] = []
 
-    def log_message(self, _format, *_args):
+    def log_message(self, _format: str, *_args: object) -> None:
         return
 
     def _send_json(self, value: object, status: HTTPStatus = HTTPStatus.OK) -> None:

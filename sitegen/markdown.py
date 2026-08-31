@@ -1,13 +1,14 @@
 from __future__ import annotations
 
 import re
+from collections.abc import Sequence
 from datetime import UTC
 from datetime import datetime
 from html import escape as html_escape
 from html import unescape as html_unescape
-from typing import Any
 
 from markdown_it import MarkdownIt
+from markdown_it.token import Token
 from mdit_py_plugins.footnote import footnote_plugin
 from pygments import highlight
 from pygments.formatters.html import HtmlFormatter
@@ -65,12 +66,24 @@ def markdown_renderer() -> MarkdownIt:
     md.enable("strikethrough")
     md.use(footnote_plugin)
 
-    def _footnote_block_open_renderer(_renderer, _tokens, _idx, _options, _env):
+    def _footnote_block_open_renderer(
+        _renderer: object,
+        _tokens: Sequence[Token],
+        _idx: int,
+        _options: object,
+        _env: object,
+    ) -> str:
         return '<section class="footnotes">\n<ol class="footnotes-list">\n'
 
     md.add_render_rule("footnote_block_open", _footnote_block_open_renderer)
 
-    def _fence_renderer(_renderer, tokens, idx, _options, _env):
+    def _fence_renderer(
+        _renderer: object,
+        tokens: Sequence[Token],
+        idx: int,
+        _options: object,
+        _env: object,
+    ) -> str:
         token = tokens[idx]
         info = token.info.strip() if token.info else ""
         lang = info.split()[0] if info else ""
@@ -85,7 +98,7 @@ def markdown_renderer() -> MarkdownIt:
     return md
 
 
-def normalize_tags(raw_tags: Any) -> list[str]:
+def normalize_tags(raw_tags: object) -> list[str]:
     if raw_tags is None:
         return []
     if isinstance(raw_tags, str):
