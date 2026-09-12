@@ -1,5 +1,5 @@
 {
-  "name": "wlach.github.io",
+  "name": "wrla.ch",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,11 +12,6 @@
     "url": "git+https://github.com/wlach/wlach.github.io.git"
   },
   "author": "William Lachance <wlach@protonmail.com>",
-  "license": "CC-BY-4.0",
-  "bugs": {
-    "url": "https://github.com/wlach/wlach.github.io/issues"
-  },
-  "homepage": "https://github.com/wlach/wlach.github.io#readme",
   "dependencies": {
     "tailwindcss": "^1.4.6"
   }
