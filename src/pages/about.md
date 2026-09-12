@@ -22,7 +22,7 @@ Other random facts:
 
 I try to be judicious about using social media. That said, you can find me on:
 
-- [mastodon]
+- [mastodon] (@wlach@cosocial.ca)
 - [linkedin]
 - [github]
 
@@ -35,4 +35,4 @@ I try to be judicious about using social media. That said, you can find me on:
 [toronto zen centre]: https://torontozen.org/
 [github]: https://github.com/wlach
 [linkedin]: https://www.linkedin.com/in/wrlach/
-[mastodon]: https://mastodon.social/@wlach
+[mastodon]: https://cosocial.ca/@wlach
