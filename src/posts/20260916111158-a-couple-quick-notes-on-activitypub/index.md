@@ -8,7 +8,7 @@ A few weeks ago, I made this site publish to ActivityPub (really mostly thinking
 about Mastodon, although as an open standard other software can consume it).
 Just wanted to write down a few notes on the experience for posterity.
 
-*tl;dr: At this time, a pure-static ActivityPub site isn't possible but implementing your own isn't particularly hard.*
+*tl;dr: At this time, a pure-static ActivityPub site isn't possible but the dynamic parts aren't particularly complicated and can be implemented with relatively minimal effort and compute.*
 
 ## Mechanism
 
