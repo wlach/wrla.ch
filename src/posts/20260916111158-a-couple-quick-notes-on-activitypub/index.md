@@ -42,7 +42,7 @@ It's simple, cheap, and probably portable elsewhere without too much trouble if 
 ## Payoff
 
 Honestly pretty marginal so far.
-You can follow `@wlach@wrla.ch` from your favorite ActivityPub implementation and get post summaries as they are published.
+You can follow `@wrlach@wrla.ch` from your favorite ActivityPub implementation and get post summaries as they are published.
 If you wish, you can also boost/quote/like them.
 As of 2026-09-16 I appear to be the only one who has done this. 
 
