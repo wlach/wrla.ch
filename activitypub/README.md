@@ -161,19 +161,34 @@ implemented.
 
 ## Inspecting federation state
 
-The public collections expose aggregate state without identifying followers or
-the people who liked and shared a post. They can be inspected directly; replace
+The public follower collection exposes current followers' actor URLs. Likes and
+shares expose aggregate state without identifying people. Inspect them directly; replace
 `<source-id>` with the post's timestamp-and-slug source directory name:
 
 ```text
 https://wrla.ch/activitypub/wrlach/followers
+https://wrla.ch/activitypub/wrlach/followers?page=1
 https://wrla.ch/activitypub/likes/<source-id>
 https://wrla.ch/activitypub/shares/<source-id>
 https://wrla.ch/activitypub/replies/<source-id>
 https://wrla.ch/activitypub/replies/<source-id>?page=1
 ```
 
-The follower, like, and share collections expose `totalItems` only. The reply
+The follower collection is an `OrderedCollection` with `totalItems` and a `first`
+page link. Pages contain up to 20 active follower actor URLs, newest first, with
+`next` and `prev` links where applicable. Unfollowed accounts are excluded.
+The site generator also publishes a public empty `following` collection with a
+first page because this actor follows no accounts. Mastodon interprets either
+relationship collection lacking `first` as a request to hide both lists. Deploy
+both the site and Worker, then allow Mastodon to refresh the actor to clear any
+previously cached hidden-collection flag.
+Mastodon's follower list uses relationships stored on the viewing server; it
+does not automatically import this full collection. Publishing these pages makes
+the complete list available to ActivityPub clients, but cannot force Mastodon
+to show followers from other servers. Mastodon may also cache the follower count
+until it refreshes the actor.
+
+The like and share collections expose `totalItems` only. The reply
 collection's pages also contain the verified remote reply object URLs known to
 this Worker. These are protocol documents, so a browser may display their JSON
 rather than a human-oriented page.

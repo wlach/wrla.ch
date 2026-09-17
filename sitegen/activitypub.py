@@ -309,6 +309,7 @@ def _actor(config: BlogConfig, public_key: str) -> dict[str, object]:
         "inbox": f"{actor}/inbox",
         "outbox": f"{actor}/outbox",
         "followers": f"{actor}/followers",
+        "following": f"{actor}/following",
         "publicKey": {
             "id": f"{actor}#main-key",
             "owner": actor,
@@ -336,6 +337,31 @@ def build_activitypub(
     actor_url = f"{config.base_url}/activitypub/wrlach"
     _write_json(
         build_dir / "activitypub" / "wrlach" / "index.html", _actor(config, public_key)
+    )
+
+    # Mastodon treats both relationship lists as hidden unless both collections
+    # expose a first page. This publishing-only actor follows no accounts.
+    following_url = f"{actor_url}/following"
+    following_page_url = f"{following_url}/page1"
+    _write_json(
+        build_dir / "activitypub" / "wrlach" / "following" / "index.html",
+        {
+            "@context": ACTIVITYSTREAMS_CONTEXT,
+            "id": following_url,
+            "type": "OrderedCollection",
+            "totalItems": 0,
+            "first": following_page_url,
+        },
+    )
+    _write_json(
+        build_dir / "activitypub" / "wrlach" / "following" / "page1" / "index.html",
+        {
+            "@context": ACTIVITYSTREAMS_CONTEXT,
+            "id": following_page_url,
+            "type": "OrderedCollectionPage",
+            "partOf": following_url,
+            "orderedItems": [],
+        },
     )
 
     creates: list[dict[str, object]] = []

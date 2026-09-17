@@ -329,7 +329,16 @@ class Default(WorkerEntrypoint):
                 await self._deliver_due(now)
                 return _json({"ok": True, "time": isoformat(now)})
             if request.method == "GET" and path == "/activitypub/wrlach/followers":
-                return await self._followers()
+                page_value = parse_qs(url.query, keep_blank_values=True).get(
+                    "page", [None]
+                )[0]
+                try:
+                    page = int(page_value) if page_value is not None else None
+                except ValueError as exc:
+                    raise ProtocolError(
+                        "Invalid collection page", HTTPStatus.NOT_FOUND
+                    ) from exc
+                return await self._followers(page=page)
             for collection, kind in (
                 ("replies", "Reply"),
                 ("likes", "Like"),
@@ -641,20 +650,48 @@ class Default(WorkerEntrypoint):
         if state in {None, "redacted", "cancelled"}:
             raise ProtocolError("Unknown local post", HTTPStatus.NOT_FOUND)
 
-    async def _followers(self) -> Response:
-        """Return the public follower collection summary."""
+    async def _followers(self, *, page: int | None = None) -> Response:
+        """Return the current followers as a paginated public collection."""
+
+        if page is not None and page < 1:
+            raise ProtocolError("Invalid collection page", HTTPStatus.NOT_FOUND)
 
         row = await _first(
             self.env.DB, "SELECT COUNT(*) AS count FROM followers WHERE active=1"
         )
-        return _json(
-            {
-                "@context": "https://www.w3.org/ns/activitystreams",
-                "id": f"{self.local_actor}/followers",
-                "type": "Collection",
-                "totalItems": _integer_column(row, "count"),
-            }
+        count = _integer_column(row, "count")
+        collection_id = f"{self.local_actor}/followers"
+        if page is None:
+            return _json(
+                {
+                    "@context": "https://www.w3.org/ns/activitystreams",
+                    "id": collection_id,
+                    "type": "OrderedCollection",
+                    "totalItems": count,
+                    "first": f"{collection_id}?page=1",
+                }
+            )
+        page_size = 20
+        offset = (page - 1) * page_size
+        rows = await _all(
+            self.env.DB,
+            """SELECT actor_url FROM followers WHERE active=1
+               ORDER BY created_at DESC, actor_url LIMIT ? OFFSET ?""",
+            page_size,
+            offset,
         )
+        value = {
+            "@context": "https://www.w3.org/ns/activitystreams",
+            "id": f"{collection_id}?page={page}",
+            "type": "OrderedCollectionPage",
+            "partOf": collection_id,
+            "orderedItems": [_string_column(row, "actor_url") for row in rows],
+        }
+        if page > 1:
+            value["prev"] = f"{collection_id}?page={page - 1}"
+        if offset + len(rows) < count:
+            value["next"] = f"{collection_id}?page={page + 1}"
+        return _json(value)
 
     async def _collection(
         self, source_id: str, kind: str, *, page: int | None
