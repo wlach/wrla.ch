@@ -34,6 +34,9 @@ from .markdown import validate_heading_sequence
 
 _IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png"}
 _EMPTY_POST_LINK_RE = re.compile(r"\[\]\(\.\./([0-9]{14}-[^/)]+?)(?:/index\.md)?\)")
+_CROSS_POST_IMAGE_RE = re.compile(
+    r"(!\[[^\]]*\]\()\.\./([0-9]{14}-[^/)]+)/([^/\s)]+)(\))"
+)
 
 
 def _rewrite_img_srcs(html: str, post_url: str) -> str:
@@ -132,7 +135,27 @@ def _resolve_empty_post_links(body: str, post_titles: dict[str, tuple[str, str, 
     return _EMPTY_POST_LINK_RE.sub(_repl, body)
 
 
-def _load_posts(posts_dir: Path) -> list[Post]:
+def _resolve_cross_post_images(
+    body: str,
+    posts_dir: Path,
+    post_titles: dict[str, tuple[str, str, datetime]],
+    base_url: str,
+) -> str:
+    """Turn source-relative images from another post into published image URLs."""
+
+    def _repl(match: re.Match[str]) -> str:
+        stem, filename = match.group(2), match.group(3)
+        info = post_titles.get(stem)
+        if info is None or not (posts_dir / stem / filename).is_file():
+            return match.group(0)
+        _, slug, date = info
+        url = f"{base_url}/log/{date.year:04d}/{date.month:02d}/{slug}/{filename}"
+        return f"{match.group(1)}{url}{match.group(4)}"
+
+    return _CROSS_POST_IMAGE_RE.sub(_repl, body)
+
+
+def _load_posts(posts_dir: Path, base_url: str) -> list[Post]:
     md = markdown_renderer()
     sources: list[tuple[str, str, datetime, frontmatter.Post]] = []
     for path in sorted(posts_dir.glob("*/index.md")):
@@ -154,6 +177,9 @@ def _load_posts(posts_dir: Path) -> list[Post]:
             for tag in normalize_tags(parsed.metadata.get("tags"))
         )
         body_without_title = _resolve_empty_post_links(body_without_title, post_titles)
+        body_without_title = _resolve_cross_post_images(
+            body_without_title, posts_dir, post_titles, base_url
+        )
         content_html = md.render(body_without_title, {"docId": slug})
         content_text = strip_html(content_html)
         title_html = render_inline_markdown(title)
@@ -233,7 +259,7 @@ def build_site(root: Path, config: BlogConfig) -> None:
     pages_dir = root / "src" / "pages"
     templates_dir = root / "src" / "templates"
 
-    posts = _load_posts(posts_dir)
+    posts = _load_posts(posts_dir, config.base_url)
     pages = _load_pages(pages_dir) if pages_dir.exists() else []
     page_links = [
         {"title": page["title"], "slug": page["slug"], "url": page["url"]}

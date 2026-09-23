@@ -205,6 +205,47 @@ class BuildSiteTests(unittest.TestCase):
         )
         self.assertNotIn("20260305084829", html)
 
+    def test_resolves_images_from_another_post(self) -> None:
+        import json
+
+        posts_dir = self.root / "src" / "posts"
+        target = posts_dir / "20260305084829-music-updates"
+        target.mkdir(parents=True)
+        (target / "index.md").write_text(
+            "---\ntags: [music]\n---\n\n# Music updates\n\nBody.\n",
+            encoding="utf-8",
+        )
+        (target / "w520.jpg").write_bytes(b"\xff\xd8fake")
+        source = posts_dir / "20260923134430-building-a-homelab"
+        source.mkdir(parents=True)
+        (source / "index.md").write_text(
+            "---\ntags: [homelab]\n---\n\n# Building a homelab\n\n"
+            "![ThinkPad](../20260305084829-music-updates/w520.jpg)\n",
+            encoding="utf-8",
+        )
+
+        build_site(self.root, self._config())
+
+        image_url = "https://example.com/log/2026/03/music-updates/w520.jpg"
+        post_html = (
+            self.root / "_build/log/2026/09/building-a-homelab/index.html"
+        ).read_text(encoding="utf-8")
+        index_html = (self.root / "_build/index.html").read_text(encoding="utf-8")
+        atom = (self.root / "_build/feeds/all.atom.xml").read_text(encoding="utf-8")
+        note = json.loads(
+            (
+                self.root
+                / "_build/activitypub/posts/20260923134430-building-a-homelab/index.html"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertIn(f'src="{image_url}"', post_html)
+        self.assertIn(f'src="{image_url}"', index_html)
+        self.assertIn(image_url, atom)
+        self.assertEqual(note["attachment"][0]["url"], image_url)
+        self.assertTrue(
+            (self.root / "_build/log/2026/03/music-updates/w520.jpg").is_file()
+        )
+
     def test_copies_post_images_and_rewrites_feed_urls(self) -> None:
         # Create a post with an image reference
         posts_dir = self.root / "src" / "posts"
