@@ -33,6 +33,7 @@ from .markdown import truncate_text
 from .markdown import validate_heading_sequence
 
 _IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png"}
+_EMPTY_POST_LINK_RE = re.compile(r"\[\]\(\.\./([0-9]{14}-[^/)]+?)(?:/index\.md)?\)")
 
 
 def _rewrite_img_srcs(html: str, post_url: str) -> str:
@@ -102,28 +103,57 @@ def _make_urn(base_url: str, path: str) -> str:
     return f"urn:{base}:{normalized}"
 
 
+def _parse_post_stem(stem: str) -> tuple[str, datetime]:
+    if len(stem) < 16 or stem[14] != "-":
+        raise ValueError(f"Invalid post directory: {stem}")
+    timestamp = stem[:14]
+    slug = stem[15:]
+    try:
+        date = datetime.strptime(timestamp, "%Y%m%d%H%M%S").replace(tzinfo=UTC)
+    except ValueError as exc:
+        raise ValueError(f"Invalid timestamp in {stem}") from exc
+    return slug, date
+
+
+def _resolve_empty_post_links(body: str, post_titles: dict[str, tuple[str, str, datetime]]) -> str:
+    """Rewrite empty-label links to other post sources (e.g. [](../20260101000000-post/index.md))
+    to the target post's canonical URL, using its title as link text."""
+
+    def _repl(match: re.Match[str]) -> str:
+        target = match.group(1)
+        info = post_titles.get(target)
+        if info is None:
+            return match.group(0)
+        target_title, slug, date = info
+        url = f"/log/{date.year:04d}/{date.month:02d}/{slug}/"
+        label = target_title.replace("[", "\\[").replace("]", "\\]")
+        return f"[{label}]({url})"
+
+    return _EMPTY_POST_LINK_RE.sub(_repl, body)
+
+
 def _load_posts(posts_dir: Path) -> list[Post]:
     md = markdown_renderer()
-    posts: list[Post] = []
+    sources: list[tuple[str, str, datetime, frontmatter.Post]] = []
     for path in sorted(posts_dir.glob("*/index.md")):
-        directory = path.parent
-        stem = directory.name
-        if len(stem) < 16 or stem[14] != "-":
-            raise ValueError(f"Invalid post directory: {directory.name}")
-        timestamp = stem[:14]
-        slug = stem[15:]
-        try:
-            date = datetime.strptime(timestamp, "%Y%m%d%H%M%S").replace(tzinfo=UTC)
-        except ValueError as exc:
-            raise ValueError(f"Invalid timestamp in {directory.name}") from exc
-        raw = path.read_text(encoding="utf-8")
-        parsed = frontmatter.loads(raw)
+        stem = path.parent.name
+        slug, date = _parse_post_stem(stem)
+        sources.append((stem, slug, date, frontmatter.loads(path.read_text(encoding="utf-8"))))
+
+    post_titles: dict[str, tuple[str, str, datetime]] = {
+        stem: (extract_title(parsed.content)[0], slug, date)
+        for stem, slug, date, parsed in sources
+    }
+
+    posts: list[Post] = []
+    for stem, slug, date, parsed in sources:
         title, body_without_title = extract_title(parsed.content)
         validate_heading_sequence(parsed.content, md)
         tags = tuple(
             Tag(name=tag, slug=slugify(tag))
             for tag in normalize_tags(parsed.metadata.get("tags"))
         )
+        body_without_title = _resolve_empty_post_links(body_without_title, post_titles)
         content_html = md.render(body_without_title, {"docId": slug})
         content_text = strip_html(content_html)
         title_html = render_inline_markdown(title)
@@ -137,7 +167,7 @@ def _load_posts(posts_dir: Path) -> list[Post]:
                 content_text=content_text,
                 body_markdown=body_without_title,
                 tags=tags,
-                source_path=directory.name,
+                source_path=stem,
             )
         )
     posts.sort(key=lambda post: post.date, reverse=True)

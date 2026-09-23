@@ -172,6 +172,39 @@ class BuildSiteTests(unittest.TestCase):
         self.assertEqual(len(manifest["posts"]), 30)
         self.assertTrue(all(not item["redacted"] for item in manifest["posts"]))
 
+    def test_resolves_empty_post_links(self) -> None:
+        posts_dir = self.root / "src" / "posts"
+        target = posts_dir / "20260305084829-music-updates"
+        target.mkdir(parents=True)
+        (target / "index.md").write_text(
+            "---\ntags: [music]\n---\n\n# Music updates\n\nBody.\n",
+            encoding="utf-8",
+        )
+        source = posts_dir / "20260923134430-building-a-homelab"
+        source.mkdir(parents=True)
+        (source / "index.md").write_text(
+            "---\ntags: [homelab]\n---\n\n# Building a homelab\n\n"
+            "Over the past half a year (starting around "
+            "[](../20260305084829-music-updates/index.md)) I've been building.\n",
+            encoding="utf-8",
+        )
+
+        build_site(self.root, self._config())
+
+        html = (
+            self.root
+            / "_build"
+            / "log"
+            / "2026"
+            / "09"
+            / "building-a-homelab"
+            / "index.html"
+        ).read_text(encoding="utf-8")
+        self.assertIn(
+            '<a href="/log/2026/03/music-updates/">Music updates</a>', html
+        )
+        self.assertNotIn("20260305084829", html)
+
     def test_copies_post_images_and_rewrites_feed_urls(self) -> None:
         # Create a post with an image reference
         posts_dir = self.root / "src" / "posts"
