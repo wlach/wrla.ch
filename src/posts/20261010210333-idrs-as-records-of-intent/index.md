@@ -13,7 +13,8 @@ As a refresher, I created them to serve a couple purposes:
 1. To get better output out of LLMs
 2. To provide a durable record of a decision made during the implementation of a feature
 
-I've realized that left to their own devices given a vague prompt, an LLM will often just try to fill one in with a textual description of what it planned to implement anyway.[^1]  This makes them pretty lossy as a record of intent (it's basically not much better than a diff, and arguably worse) and I'm somewhat skeptical it improves their output much (it might allow you to steer them towards a better outcome before too much code is written, in some cases).
+I've realized that left to their own devices given a vague prompt, an LLM will often just try to fill one in with a textual description of what it planned to implement anyway.[^1]  This makes them pretty lossy as a record of intent (it's basically not much better than a diff, and arguably worse) and I'm somewhat skeptical it improves their output much.
+At best, they might allow you to steer them towards a better outcome before too much code is written.
 
 A great example is this one, where I asked the agent to update [repo-parser] to use DuckDB for the intermediate representation:
 
